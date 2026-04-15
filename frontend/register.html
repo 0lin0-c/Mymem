@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初始化 - AI 助手</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 第一阶段：用户画像 -->
+        <div id="step1" class="step">
+            <h1>让我们认识一下你</h1>
+
+            <div class="form-group">
+                <label for="username">你的昵称</label>
+                <input type="text" id="username" placeholder="请输入昵称" maxlength="50">
+                <span class="error-msg"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="password">设置密码</label>
+                <input type="password" id="password" placeholder="请输入密码">
+                <span class="error-msg"></span>
+            </div>
+
+            <div class="form-group">
+                <label>你的身份</label>
+                <select id="identity_type">
+                    <option value="">请选择</option>
+                    <option value="student">学生</option>
+                    <option value="worker">上班族</option>
+                    <option value="teacher">教师</option>
+                    <option value="freelancer">自由职业者</option>
+                    <option value="other">其他</option>
+                </select>
+                <span class="error-msg"></span>
+            </div>
+
+            <!-- 身份详情（动态展示） -->
+            <div id="identity_detail_container"></div>
+
+            <div class="form-group">
+                <label>使用场景（可多选）</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" value="学习辅助"> 学习辅助</label>
+                    <label><input type="checkbox" value="工作助手"> 工作助手</label>
+                    <label><input type="checkbox" value="生活顾问"> 生活顾问</label>
+                    <label><input type="checkbox" value="情感陪伴"> 情感陪伴</label>
+                    <label><input type="checkbox" value="创意灵感"> 创意灵感</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>兴趣标签（可多选）</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" value="编程"> 编程</label>
+                    <label><input type="checkbox" value="AI"> AI</label>
+                    <label><input type="checkbox" value="文学"> 文学</label>
+                    <label><input type="checkbox" value="电影"> 电影</label>
+                    <label><input type="checkbox" value="音乐"> 音乐</label>
+                    <label><input type="checkbox" value="旅行"> 旅行</label>
+                    <label><input type="checkbox" value="游戏"> 游戏</label>
+                    <label><input type="checkbox" value="美食"> 美食</label>
+                </div>
+            </div>
+
+            <button id="nextBtn" class="btn-primary">下一步</button>
+        </div>
+
+        <!-- 第二阶段：AI 助手定制 -->
+        <div id="step2" class="step hidden">
+            <h1>定制你的 AI 助手</h1>
+
+            <div class="form-group">
+                <label for="ai_name">给 AI 起个名字</label>
+                <input type="text" id="ai_name" placeholder="如：小智、Jarvis" maxlength="20">
+                <span class="error-msg"></span>
+            </div>
+
+            <div class="form-group">
+                <label>AI 的身份角色</label>
+                <select id="ai_role">
+                    <option value="">请选择</option>
+                    <option value="assistant">助手 - 高效可靠的执行者</option>
+                    <option value="mentor">导师 - 循循善诱的引导者</option>
+                    <option value="friend">朋友 - 平等亲近的伙伴</option>
+                    <option value="advisor">顾问 - 专业理性的分析师</option>
+                    <option value="partner">伙伴 - 共同成长的合作者</option>
+                </select>
+                <span class="error-msg"></span>
+            </div>
+
+            <div class="form-group">
+                <label>性格特点（可多选）</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" value="严谨专业"> 严谨专业</label>
+                    <label><input type="checkbox" value="幽默风趣"> 幽默风趣</label>
+                    <label><input type="checkbox" value="温柔耐心"> 温柔耐心</label>
+                    <label><input type="checkbox" value="简洁高效"> 简洁高效</label>
+                    <label><input type="checkbox" value="热情活泼"> 热情活泼</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>沟通风格</label>
+                <select id="communication_style">
+                    <option value="daily">日常轻松</option>
+                    <option value="formal">正式严谨</option>
+                    <option value="casual">轻松随意</option>
+                    <option value="academic">学术专业</option>
+                </select>
+            </div>
+
+            <div class="btn-group">
+                <button id="prevBtn" class="btn-secondary">上一步</button>
+                <button id="submitBtn" class="btn-primary">完成</button>
+            </div>
+        </div>
+
+        <!-- 加载状态 -->
+        <div id="loading" class="hidden">
+            <p>正在初始化...</p>
+        </div>
+
+        <div class="register-footer">
+            <p>已有账号？<a href="index.html">立即登录</a></p>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

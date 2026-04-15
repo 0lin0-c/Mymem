@@ -1,0 +1,32 @@
+# Web 框架与服务器 (极速与异步基石)
+fastapi==0.135.1
+uvicorn==0.42.0
+pydantic>=2.9.0
+pydantic-settings>=2.0.0
+
+# 数据库与 ORM (完美支持 PG16 和最新异步语法)
+sqlalchemy==2.0.48
+asyncpg==0.29.0
+pgvector==0.4.2
+
+# 大模型官方 SDK (必须使用 2026 年的最新接口)
+openai==2.28.0
+anthropic==0.84.0
+
+# 对象存储
+oss2>=2.18.0  # 阿里云 OSS
+
+# 分布式 Session
+redis>=5.0.0
+
+# 文档解析
+PyPDF2>=3.0.0  # PDF 解析
+pdfplumber>=0.10.0  # PDF 解析（备选）
+python-docx>=1.1.0  # Word 文档解析
+
+# 视频处理
+opencv-python>=4.8.0  # 视频帧抽取
+
+# 异步 HTTP 客户端
+aiohttp>=3.9.0
+httpx>=0.25.0

@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd D:\\\\Research\\\\Agent Memory\\\\Project\\\\Mymem:*)",
+      "Bash(python3:*)",
+      "Bash(xxd:*)",
+      "Bash(cd D:\\\\Research\\\\Agent Memory\\\\Project\\\\Mymem\\\\docs:*)",
+      "Bash(head:*)",
+      "Bash(tasklist:*)",
+      "Bash(netstat:*)",
+      "Bash(taskkill:*)",
+      "Bash(pip list:*)",
+      "Bash(pip install:*)",
+      "Bash(cd \"D:\\\\Research\\\\Agent Memory\\\\Project\\\\Mymem\" && pytest tests/ -v --tb=short 2>&1)",
+      "Bash(tee:*)",
+      "Bash(tail:*)",
+      "WebSearch",
+      "Bash(chmod +x \"$HOME/.claude/skills/planning-with-files-zh/scripts/check-complete.sh\")",
+      "Bash(chmod +x \"$HOME/.claude/skills/planning-with-files-zh/scripts/init-session.sh\")",
+      "Bash(cd \"D:\\\\Research\\\\Agent Memory\\\\Project\\\\Mymem\" && pytest tests/test_repositories.py::TestUserRepository::test_create_user tests/test_tables.py::TestUserModel::test_user_creation -v --tb=short 2>&1)",
+      "Read(//d/Research/Agent Memory/Project/Mymem/$HOME/.claude/skills/skill-creator/**)",
+      "Bash(cd \"D:\\\\Research\\\\Agent Memory\\\\Project\\\\Mymem\" && pytest tests/test_services/test_llm.py::TestMemoryIntentExtraction -v --tb=short 2>&1)",
+      "Bash(cd \"D:\\\\Research\\\\Agent Memory\\\\Project\\\\Mymem\" && pytest tests/ --tb=no -q 2>&1)",
+      "Bash(python -c \":*)",
+      "mcp__ide__getDiagnostics",
+      "Read(//tmp/**)",
+      "Bash(playwright install:*)",
+      "Read(//d/tmp/**)",
+      "Read(//c/msys64/**)",
+      "Read(//d/Research/Agent Memory/Project/Mymem/frontend/$TEMP/**)",
+      "Read(//c/Users/23631/AppData/Local/Temp/**)"
+    ]
+  }
+}
