@@ -20,7 +20,7 @@ LLM 充足性判断结果为"不足"时，进入 Resource 层检索。
 | `user_id` | String(36) | 用户 ID |
 | `description` | Text | 对话摘要 |
 | `description_vector` | Vector(1536) | 摘要的向量嵌入 |
-| `importance_score` | Integer | 重要性评分 (1-10) |
+| `importance_score` | Integer | 重要性评分 (0-3) |
 | `access_count` | Integer | 访问次数（用于检索分数计算） |
 | `updated_at` | DateTime | 更新时间（用于时间衰减计算） |
 
@@ -30,8 +30,8 @@ LLM 充足性判断结果为"不足"时，进入 Resource 层检索。
 
 ```
 1. 根据已检索的 Category ID 找到关联的 Resource ID（通过 resource_categories 关联表）
-2. 过滤条件：user_id + resource_id IN (关联的 Resource 列表) + 相似度 >= 0.55
-3. 四因子评分：cosine_similarity × log(access_count+1) × exp(-0.693 × days_ago / 60) × (importance_score / 5)
+2. 过滤条件：user_id + resource_id IN (关联的 Resource 列表) + description_vector IS NOT NULL
+3. 四因子评分：power(GREATEST(cosine_similarity, 0), similarity_power) × power(log(access_count+2), access_power) × power(recency, recency_power) × power(importance_factor, importance_power)
 4. 按评分降序返回 Top-K
 ```
 
@@ -52,8 +52,12 @@ LLM 充足性判断结果为"不足"时，进入 Resource 层检索。
 
 | 参数 | 值 | 说明 |
 |------|------|------|
-| `recency_decay_days` | 60 | Resource 层半衰期 |
-| 相似度阈值 | 0.55 | 低于此值过滤 |
+| `recency_decay_days` | 60 | Resource 层默认半衰期 |
+| `similarity_power` | 1.5 | 默认提高相似度差异对排序的影响 |
+| `access_power` | 1.0 | 访问次数指数 |
+| `recency_power` | 1.0 | 时间衰减指数 |
+| `importance_power` | 1.0 | 重要性指数 |
+| 综合分数阈值 | 0.03 | 低于此值过滤 |
 
 ---
 

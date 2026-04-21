@@ -1,0 +1,1805 @@
+{
+  "sample_index": 2,
+  "characters": [
+    "John",
+    "Maria"
+  ],
+  "total_questions": 193,
+  "questions": [
+    {
+      "question": "Who did Maria have dinner with on February 18, 2026?",
+      "answer": "her mother",
+      "category": 2,
+      "evidence": [
+        "D13:16"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "When did Maria donate her car?",
+      "answer": "6 January 2026",
+      "category": 2,
+      "evidence": [
+        "D2:1"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What martial arts has John done?",
+      "answer": "Kickboxing, Taekwondo",
+      "category": 1,
+      "evidence": [
+        "D2:28",
+        "D1:4"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What type of volunteering have John and Maria both done?",
+      "answer": "Volunteering at a homeless shelter",
+      "category": 1,
+      "evidence": [
+        "D3:5",
+        "D2:1"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "When did John join the online support group?",
+      "answer": "The week before 9 January 2026",
+      "category": 2,
+      "evidence": [
+        "D3:1"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "When did Maria go to the beach?",
+      "answer": "January 2026",
+      "category": 2,
+      "evidence": [
+        "D3:15"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "Where has Maria made friends?",
+      "answer": "homeless shelter, gym, church",
+      "category": 1,
+      "evidence": [
+        "D4:1",
+        "D2:1",
+        "D19:1",
+        "D14:10"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What items des John mention having as a child?",
+      "answer": "A doll, a film camera",
+      "category": 1,
+      "evidence": [
+        "D5:13",
+        "D3:15"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What might John's financial status be?",
+      "answer": "Middle-class or wealthy",
+      "category": 3,
+      "evidence": [
+        "D5:5"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Who gave Maria's family money when she was younger and her family was going through tough times?",
+      "answer": "Her aunt",
+      "category": 1,
+      "evidence": [
+        "D6:9",
+        "D5:8"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "When did Maria meet Jean?",
+      "answer": "January 27, 2026",
+      "category": 2,
+      "evidence": [
+        "D7:1"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What people has Maria met and helped while volunteering?",
+      "answer": "David, Jean, Cindy, Laura",
+      "category": 1,
+      "evidence": [
+        "D7:5",
+        "D6:5",
+        "D27:8",
+        "D21:19"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What test has John taken multiple times?",
+      "answer": "The military aptitude test",
+      "category": 1,
+      "evidence": [
+        "D8:18",
+        "D3:11"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "When did Maria's grandmother pass away?",
+      "answer": "The week before 30 January 2026",
+      "category": 2,
+      "evidence": [
+        "D8:1"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "Would John be considered a patriotic person?",
+      "answer": "Yes",
+      "category": 3,
+      "evidence": [
+        "D8:18",
+        "D8:20"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What writing classes has Maria taken?",
+      "answer": "Poetry, creative writing",
+      "category": 1,
+      "evidence": [
+        "D9:1",
+        "D7:1"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "When did John get his degree?",
+      "answer": "The week before 8 February 2026",
+      "category": 2,
+      "evidence": [
+        "D9:2"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What might John's degree be in?",
+      "answer": "Political science, Public administration, Public affairs",
+      "category": 3,
+      "evidence": [
+        "D9:6"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Who did John go to yoga with?",
+      "answer": "Rob",
+      "category": 1,
+      "evidence": [
+        "D7:16",
+        "D10:1"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What damages have happened to John's car?",
+      "answer": "Broken windshield, Car broke down",
+      "category": 1,
+      "evidence": [
+        "D11:1",
+        "D4:2"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "When did John take a road trip to the Pacific Northwest?",
+      "answer": "2026",
+      "category": 2,
+      "evidence": [
+        "D11:3",
+        "D11:5"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What areas of the U.S. has John been to or is planning to go to?",
+      "answer": "Pacific northwest, east coast",
+      "category": 1,
+      "evidence": [
+        "D11:5",
+        "D12:17"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "When did John go to a convention with colleagues?",
+      "answer": "February 2026",
+      "category": 2,
+      "evidence": [
+        "D12:9"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What desserts has Maria made?",
+      "answer": "Banana split sundae, Peach cobbler",
+      "category": 1,
+      "evidence": [
+        "D2:25",
+        "D13:18"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "When did John start boot camp with his family?",
+      "answer": "April.2026",
+      "category": 2,
+      "evidence": [
+        "D13:3"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What European countries has Maria been to?",
+      "answer": "Spain, England",
+      "category": 1,
+      "evidence": [
+        "D13:24",
+        "D8:15"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What has Maria done to feel closer to her faith?",
+      "answer": "Join a local church, buy a cross necklace",
+      "category": 1,
+      "evidence": [
+        "D14:10",
+        "D11:10"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "When did John have a party with veterans?",
+      "answer": "The Friday before 24 February 2026",
+      "category": 2,
+      "evidence": [
+        "D15:11"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What causes does John feel passionate about supporting?",
+      "answer": "Veterans, schools, infrastructure",
+      "category": 1,
+      "evidence": [
+        "D15:3",
+        "D12:5",
+        "D9:8",
+        "D1:8"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What events is Maria planning for the homeless shelter funraiser?",
+      "answer": "Chili cook-off, ring-toss tournament",
+      "category": 1,
+      "evidence": [
+        "D16:4",
+        "D15:18"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What shelters does Maria volunteer at?",
+      "answer": "The homeless shelter, the dog shelter",
+      "category": 1,
+      "evidence": [
+        "D2:1",
+        "D11:10",
+        "D17:12"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "When did John get his dog Max?",
+      "answer": "In 2017",
+      "category": 2,
+      "evidence": [
+        "D17:1"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What outdoor activities has John done with his colleagues?",
+      "answer": "Hiking, mountaineering",
+      "category": 1,
+      "evidence": [
+        "D18:2",
+        "D16:2"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What types of yoga has Maria practiced?",
+      "answer": "Aerial, kundalini",
+      "category": 1,
+      "evidence": [
+        "D1:3",
+        "D18:15",
+        "D19:3"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "When did Maria join a gym?",
+      "answer": "The week before 5 March 2026",
+      "category": 2,
+      "evidence": [
+        "D19:1"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What states has Maria vacationed at?",
+      "answer": "Oregon, Florida",
+      "category": 1,
+      "evidence": [
+        "D19:23",
+        "D18:3"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What music events has John attended?",
+      "answer": "Live music event, violin concert",
+      "category": 1,
+      "evidence": [
+        "D20:4",
+        "D8:12"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What events for veterans has John participated in?",
+      "answer": "Petition, march, party, visiting veterans hospital, 5K charity run",
+      "category": 1,
+      "evidence": [
+        "D15:1",
+        "D15:11",
+        "D21:22",
+        "D24:1",
+        "D29:4"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "When did Maria get in a car accident?",
+      "answer": "March 10, 2026",
+      "category": 2,
+      "evidence": [
+        "D21:3"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "Around which US holiday did Maria get into a car accident?",
+      "answer": "Independence Day",
+      "category": 3,
+      "evidence": [
+        "D21:3"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What are the names of John's children?",
+      "answer": "Kyle, Sara",
+      "category": 1,
+      "evidence": [
+        "D8:4",
+        "D22:7"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Does John live close to a beach or the mountains?",
+      "answer": "beach",
+      "category": 3,
+      "evidence": [
+        "D22:15"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What area was hit by a flood?",
+      "answer": "West County",
+      "category": 1,
+      "evidence": [
+        "D14:21",
+        "D23:1"
+      ],
+      "target_character": null
+    },
+    {
+      "question": "When was John's old area hit with a flood?",
+      "answer": "The week before 11 March 2026",
+      "category": 2,
+      "evidence": [
+        "D23:1"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What activities has Maria done with her church friends?",
+      "answer": "Hiking, picnic, volunteer work",
+      "category": 1,
+      "evidence": [
+        "D25:2",
+        "D24:6",
+        "D28:5"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "Would John be open to moving to another country?",
+      "answer": "No, he has goals specifically in the U.S. like joining the military and running for office.",
+      "category": 3,
+      "evidence": [
+        "D24:3",
+        "D7:2"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "When did Maria go hiking with her church friends?",
+      "answer": "The weekend before 16 March 2026",
+      "category": 2,
+      "evidence": [
+        "D25:2"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What exercises has John done?",
+      "answer": "Weight training, Circuit training, Kickboxing, yoga",
+      "category": 1,
+      "evidence": [
+        "D25:17",
+        "D25:13",
+        "D10:1",
+        "D1:4"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "When did John have his first firefighter call-out?",
+      "answer": "The sunday before 3` March 2026",
+      "category": 2,
+      "evidence": [
+        "D26:4"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What food item did Maria drop off at the homeless shelter?",
+      "answer": "Cakes",
+      "category": 1,
+      "evidence": [
+        "D26:1",
+        "D25:19"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What attributes describe John?",
+      "answer": "Selfless, family-oriented, passionate, rational",
+      "category": 3,
+      "evidence": [
+        "D26:6",
+        "D2:14",
+        "D3:5",
+        "D4:6"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "When did Maria start volunteering at the homeless shelter?",
+      "answer": "Around November 2025",
+      "category": 2,
+      "evidence": [
+        "D27:4"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "Who have written notes of gratitude to Maria?",
+      "answer": "Cindy, Laura",
+      "category": 1,
+      "evidence": [
+        "D27:8",
+        "D21:19"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "When did John help renovate his hometown community center?",
+      "answer": "2026",
+      "category": 2,
+      "evidence": [
+        "D28:11"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "When did Maria take up community work with her church friends?",
+      "answer": "March 21, 2026",
+      "category": 2,
+      "evidence": [
+        "D28:8"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "When did Maria receive a medal from the homeless shelter?",
+      "answer": "The week before 22 March 2026",
+      "category": 2,
+      "evidence": [
+        "D29:1"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "When did John participate in a 5K charity run?",
+      "answer": "first weekend of March 2026",
+      "category": 2,
+      "evidence": [
+        "D29:2",
+        "D29:4"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What causes has John done events for?",
+      "answer": "Toy drive, Community food drive, veterans, domestic violence",
+      "category": 1,
+      "evidence": [
+        "D3:5",
+        "D6:12",
+        "D29:4",
+        "D29:10"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "When did Maria get Coco?",
+      "answer": "Two weeks before 23 March 2026",
+      "category": 2,
+      "evidence": [
+        "D30:1"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "When did John go on a camping trip with Max?",
+      "answer": "The summer of 2026",
+      "category": 2,
+      "evidence": [
+        "D30:6"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What are Maria's dogs' names?",
+      "answer": "Coco, Shadow",
+      "category": 1,
+      "evidence": [
+        "D30:1",
+        "D31:4"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "When did Maria adopt Shadow?",
+      "answer": "The week before 24 March 2026",
+      "category": 2,
+      "evidence": [
+        "D31:2"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "How many dogs has Maria adopted from the dog shelter she volunteers at?",
+      "answer": "two",
+      "category": 1,
+      "evidence": [
+        "D30:1",
+        "D31:2"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "How many weeks passed between Maria adopting Coco and Shadow?",
+      "answer": "two weeks",
+      "category": 2,
+      "evidence": [
+        "D30:1",
+        "D31:2"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What job might Maria pursue in the future?",
+      "answer": "Shelter coordinator, Counselor",
+      "category": 3,
+      "evidence": [
+        "D32:14",
+        "D5:8",
+        "D11:10",
+        "D27:4"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What is John's main focus in local politics?",
+      "answer": "Improving education and infrastructure",
+      "category": 4,
+      "evidence": [
+        "D1:8"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What sparked John's interest in improving education and infrastructure in the community?",
+      "answer": "Seeing how lack of education and crumbling infrastructure affected his neighborhood while growing up.",
+      "category": 4,
+      "evidence": [
+        "D1:10"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "How did the extra funding help the school shown in the photo shared by John?",
+      "answer": "Enabled needed repairs and renovations, making the learning environment safer and more modern for students.",
+      "category": 4,
+      "evidence": [
+        "D1:12"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What type of workout class did Maria start doing in May 2026?",
+      "answer": "aerial yoga",
+      "category": 4,
+      "evidence": [
+        "D1:3"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What did Maria donate to a homeless shelter in May 2026?",
+      "answer": "old car",
+      "category": 4,
+      "evidence": [
+        "D2:1"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What kind of meal did John and his family make together in the photo shared by John?",
+      "answer": "pizza",
+      "category": 4,
+      "evidence": [
+        "D2:24"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What kind of online group did John join?",
+      "answer": "service-focused online group",
+      "category": 4,
+      "evidence": [
+        "D3:1"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What kind of activities did John and his mates from the online group do as part of their service efforts?",
+      "answer": "gave out food and supplies at a homeless shelter, organized a toy drive for kids in need",
+      "category": 4,
+      "evidence": [
+        "D3:5"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Who inspired Maria to start volunteering?",
+      "answer": "Her aunt",
+      "category": 4,
+      "evidence": [
+        "D5:8"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "Why did Maria sit with the little girl at the shelter event in January 2026?",
+      "answer": "The girl seemed sad and had no other family",
+      "category": 4,
+      "evidence": [
+        "D5:10"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What did Jean go through before meeting Maria?",
+      "answer": "divorce, job loss, homelessness",
+      "category": 4,
+      "evidence": [
+        "D7:7"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "Why did John decide to run for office again?",
+      "answer": "saw the impact he could make in the community through politics",
+      "category": 4,
+      "evidence": [
+        "D7:4"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What activity did John's colleague, Rob, invite him to?",
+      "answer": "beginner's yoga class",
+      "category": 4,
+      "evidence": [
+        "D7:16"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What is the name of John's one-year-old child?",
+      "answer": "Kyle",
+      "category": 4,
+      "evidence": [
+        "D8:4"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "How often does John take his kids to the park?",
+      "answer": "A few times a week",
+      "category": 4,
+      "evidence": [
+        "D8:8"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What did Maria make for her home to remind her of a trip to England?",
+      "answer": "painting of a castle on a hill",
+      "category": 4,
+      "evidence": [
+        "D8:15"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "Where did Maria get the idea for the castle shadow box in her home?",
+      "answer": "England",
+      "category": 4,
+      "evidence": [
+        "D8:15"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What did John receive a certificate for?",
+      "answer": "completion of a university degree",
+      "category": 4,
+      "evidence": [
+        "D9:2"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What areas is John particularly interested in for policymaking?",
+      "answer": "education and infrastructure",
+      "category": 4,
+      "evidence": [
+        "D9:8"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What did Maria participate in last weekend before February 11, 2026?",
+      "answer": "a 5K charity run",
+      "category": 4,
+      "evidence": [
+        "D10:10"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What event did John volunteer at last weekend?",
+      "answer": "career fair at a local school",
+      "category": 4,
+      "evidence": [
+        "D10:13"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What did John do that put a strain on his wallet?",
+      "answer": "His car broke down",
+      "category": 4,
+      "evidence": [
+        "D11:1"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Where did John explore on a road trip last year?",
+      "answer": "Pacific Northwest",
+      "category": 4,
+      "evidence": [
+        "D11:5"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What topic has John been blogging about recently?",
+      "answer": "politics and the government",
+      "category": 4,
+      "evidence": [
+        "D12:1"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Why did John start blogging about politics and policies?",
+      "answer": "raise awareness and start conversations to create positive change",
+      "category": 4,
+      "evidence": [
+        "D12:3"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What was the focus of John's recent research and writing on his blog?",
+      "answer": "education reform and infrastructure development",
+      "category": 4,
+      "evidence": [
+        "D12:5"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What did John attend with his colleagues in February 2026?",
+      "answer": "a tech-for-good convention",
+      "category": 2,
+      "evidence": [
+        "D12:9"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "How often does John work out with his family?",
+      "answer": "Three times a week",
+      "category": 4,
+      "evidence": [
+        "D13:7"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "How has John's fitness improved since starting boot camps with his family?",
+      "answer": "More energy, gains in strength and endurance",
+      "category": 4,
+      "evidence": [
+        "D13:5"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What kind of food did Maria have on her dinner spread iwth her mother?",
+      "answer": "Salads, sandwiches, homemade desserts",
+      "category": 4,
+      "evidence": [
+        "D13:18"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What activity did Maria and her mom do together in February 2026?",
+      "answer": "Made dinner together",
+      "category": 4,
+      "evidence": [
+        "D13:16"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What did Maria do to feel closer to a community and her faith?",
+      "answer": "joined a nearby church",
+      "category": 4,
+      "evidence": [
+        "D14:10"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "Why did Maria join a nearby church recently?",
+      "answer": "to feel closer to a community and her faith",
+      "category": 4,
+      "evidence": [
+        "D14:10"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What did John host for the veterans in February 2026 as part of the project?",
+      "answer": "a small party to share their stories",
+      "category": 4,
+      "evidence": [
+        "D15:13"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What did John and the veterans do during the small party?",
+      "answer": "share stories and make connections",
+      "category": 4,
+      "evidence": [
+        "D15:13"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What emotions did John feel during the small party with the veterans?",
+      "answer": "heartwarming",
+      "category": 4,
+      "evidence": [
+        "D15:13"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What event is Maria getting ready for at the shelter on February 25, 2026?",
+      "answer": "fundraiser",
+      "category": 4,
+      "evidence": [
+        "D16:2"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What does Maria need to spread the word about for the fundraiser for the volunteer shelter?",
+      "answer": "chili cook-off",
+      "category": 4,
+      "evidence": [
+        "D16:4"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What was the name of the pet that John had to say goodbye to on 28 February 2026?",
+      "answer": "Max",
+      "category": 4,
+      "evidence": [
+        "D17:1"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "How long was Max a part of John's family?",
+      "answer": "10 years",
+      "category": 4,
+      "evidence": [
+        "D17:1"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "How does John plan to honor the memories of his beloved pet?",
+      "answer": "By considering adopting a rescue dog",
+      "category": 4,
+      "evidence": [
+        "D17:11"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What important values does John want to teach his kids through adopting a rescue dog?",
+      "answer": "Responsibility and compassion",
+      "category": 4,
+      "evidence": [
+        "D17:11"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What new activity did Maria start recently, as mentioned on 28 February 2026?",
+      "answer": "volunteering at a local dog shelter once a month",
+      "category": 4,
+      "evidence": [
+        "D17:12"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What did Maria say it was like being at the waterfall in Oregon?",
+      "answer": "Like being in a fairy tale",
+      "category": 4,
+      "evidence": [
+        "D18:7"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What does Maria say she feels when doing upside-down yoga poses?",
+      "answer": "Free and light",
+      "category": 4,
+      "evidence": [
+        "D18:17"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What exciting news did Maria share on 5 March 2026?",
+      "answer": "joined a gym",
+      "category": 4,
+      "evidence": [
+        "D19:1"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What yoga activity has Maria been trying to improve her strength and endurance?",
+      "answer": "kundalini yoga",
+      "category": 4,
+      "evidence": [
+        "D19:3"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What did John recently get promoted to?",
+      "answer": "assistant manager",
+      "category": 4,
+      "evidence": [
+        "D19:8"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What was one of the biggest challenges John faced in his journey to becoming assistant manager?",
+      "answer": "self-doubt",
+      "category": 4,
+      "evidence": [
+        "D19:12"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "How does John describe the support he received during his journey to becoming assistant manager?",
+      "answer": "having support at home and his own grit",
+      "category": 4,
+      "evidence": [
+        "D19:12"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What kind of event did John and his family attend in March 2026?",
+      "answer": "live music event",
+      "category": 4,
+      "evidence": [
+        "D20:4"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Why did Maria need to help her cousin find a new place to live?",
+      "answer": "Her cousin had to leave and find a new place in a hurry.",
+      "category": 4,
+      "evidence": [
+        "D21:5"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What event did John participate in to show support for veterans' rights?",
+      "answer": "marching event",
+      "category": 4,
+      "evidence": [
+        "D21:22"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What inspired John to join the marching event for veterans' rights?",
+      "answer": "Respect for the military and the desire to show support",
+      "category": 4,
+      "evidence": [
+        "D21:24"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "How often does John get to see sunsets like the one he shared with Maria?",
+      "answer": "At least once a week",
+      "category": 4,
+      "evidence": [
+        "D22:17"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "What natural disaster affected John's old area on 11 March 2026?",
+      "answer": "Flood",
+      "category": 4,
+      "evidence": [
+        "D23:1"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "How did the flood impact the homes in John's old area?",
+      "answer": "Lots of homes were ruined.",
+      "category": 4,
+      "evidence": [
+        "D23:1"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What motivated Maria and John to discuss potential solutions for their community on 11 March 2026?",
+      "answer": "Flood in John's old area",
+      "category": 4,
+      "evidence": [
+        "D23:1"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "What did Maria plan to do later on the evening of 11 March 2026?",
+      "answer": "have dinner with friends from the gym",
+      "category": 4,
+      "evidence": [
+        "D23:14"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What kind of activities did Maria do at the picnic with her church friends?",
+      "answer": "played games like charades and a scavenger hunt",
+      "category": 4,
+      "evidence": [
+        "D24:8"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What does John appreciate about the veteran's hospital visit?",
+      "answer": "the resilience of the veterans and their inspiring stories",
+      "category": 4,
+      "evidence": [
+        "D24:3"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What did John take away from visiting the veteran's hospital?",
+      "answer": "appreciation for giving back",
+      "category": 4,
+      "evidence": [
+        "D24:1"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Why did John feel inspired to join the military after the visit to the hospital?",
+      "answer": "seeing the resilience of the veterans",
+      "category": 4,
+      "evidence": [
+        "D24:3"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "In what activity did Maria and her church friends participate in March 2026?",
+      "answer": "hiking",
+      "category": 4,
+      "evidence": [
+        "D25:2"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What does John think about trying new classes at the yoga studio?",
+      "answer": "Trying new classes is a fun way to switch up the exercise routine.",
+      "category": 4,
+      "evidence": [
+        "D25:14"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Which activity has John done apart from yoga at the studio?",
+      "answer": "weight training",
+      "category": 4,
+      "evidence": [
+        "D25:17"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What community service did Maria mention that she was involved in on 19 March 2026?",
+      "answer": "volunteered at a homeless shelter",
+      "category": 4,
+      "evidence": [
+        "D26:1"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "How did Maria start volunteering at the homeless shelter?",
+      "answer": "Witnessed a family struggling on the streets and reached out to the shelter",
+      "category": 4,
+      "evidence": [
+        "D27:4"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What did John do the week before March 20, 2026 involving his kids?",
+      "answer": "Had a meaningful experience at a military memorial",
+      "category": 4,
+      "evidence": [
+        "D27:9"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "How did John describe his kids' reaction at the military memorial?",
+      "answer": "awestruck and humbled",
+      "category": 4,
+      "evidence": [
+        "D27:11"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Why does Maria think it's important for younger generations to visit military memorials?",
+      "answer": "To remember and appreciate those who served",
+      "category": 4,
+      "evidence": [
+        "D27:12"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What does John believe is important for children regarding veterans?",
+      "answer": "Teaching them to respect and appreciate those who served",
+      "category": 4,
+      "evidence": [
+        "D27:13"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What happened to John's job in March 2026?",
+      "answer": "John lost his job at the mechanical engineering company.",
+      "category": 4,
+      "evidence": [
+        "D28:1"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What activity did Maria take up with her friends from church in March 2026?",
+      "answer": "community work",
+      "category": 4,
+      "evidence": [
+        "D28:8"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What did John do to help his community last year in his hometown?",
+      "answer": "Helped renovate a rundown community center.",
+      "category": 4,
+      "evidence": [
+        "D28:11"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What cause did the 5K charity run organized by John support?",
+      "answer": "veterans and their families",
+      "category": 4,
+      "evidence": [
+        "D29:4"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Who did John work with to raise awareness and funds for victims of domestic abuse?",
+      "answer": "a local organization",
+      "category": 4,
+      "evidence": [
+        "D29:10"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What recognition did Maria receive at the homeless shelter in March 2026?",
+      "answer": "a medal for volunteering",
+      "category": 4,
+      "evidence": [
+        "D29:1"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What is the name of Maria's puppy she got two weeks before March 23, 2026?",
+      "answer": "Coco",
+      "category": 4,
+      "evidence": [
+        "D30:1"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What activity did John and Max enjoy together last summer?",
+      "answer": "Camping",
+      "category": 4,
+      "evidence": [
+        "D30:6"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "How does John describe the camping trip with Max?",
+      "answer": "Peaceful and awesome",
+      "category": 4,
+      "evidence": [
+        "D30:6"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Why does John say he feels stuck and questioning his decisions and goals?",
+      "answer": "Not feeling like making much of an impact",
+      "category": 4,
+      "evidence": [
+        "D30:14"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What is the name of Maria's second puppy?",
+      "answer": "Shadow",
+      "category": 4,
+      "evidence": [
+        "D31:4"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "How is Maria's new puppy adjusting to its new home?",
+      "answer": "doing great - learning commands and house training",
+      "category": 4,
+      "evidence": [
+        "D31:10"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What is John currently doing as a volunteer in March 2026?",
+      "answer": "mentoring students at a local school",
+      "category": 4,
+      "evidence": [
+        "D31:1"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What activities does John's family enjoy doing together?",
+      "answer": "going for hikes, hanging out at the park, having picnics, playing board games, having movie nights",
+      "category": 4,
+      "evidence": [
+        "D31:19"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What did the donations help John's community acquire on 25 March 2026?",
+      "answer": "a brand new fire truck",
+      "category": 4,
+      "evidence": [
+        "D32:11"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What is John's main focus in international politics?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D1:8"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What did Maria donate to a luxury store in May 2026?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D2:1"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "Who inspired John to start volunteering?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D5:8"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Why did Maria decide to run for office again?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D7:4"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What activity did Maria's colleague, Rob, invite her to?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D7:16"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What is the name of Maria's one-year-old child?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D8:4"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "How often does John take his kids to the library?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D8:8"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What did Maria make for her home to remind her of a trip to France?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D8:15"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "Where did John get the idea for the castle shadow box in his home?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D8:15"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What did Maria receive a certificate for?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D9:2"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What areas is John particularly interested in for art appreciation?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D9:8"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Why did Maria start blogging about politics and policies?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D12:3"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What was the focus of John's recent travel and photography blog?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D12:5"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "How often does Maria work out with her family?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D13:7"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "How has John's artistic skills improved since starting boot camps with his family?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D13:5"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What kind of food did Maria have on her dinner spread with her father?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D13:18"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What did John do to feel closer to a community and his faith?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D14:10"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Why did John join a nearby church recently?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D14:10"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "How long was Max a part of Maria's family?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D17:1"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "How does Maria plan to honor the memories of her beloved pet?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D17:11"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What important values does Maria want to teach her kids through adopting a rescue dog?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D17:11"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What did Maria say it was like being at the desert in Oregon?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D18:7"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What does John say she feels when doing upside-down yoga poses?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D18:17"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What did Maria recently get promoted to?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D19:8"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What was one of the biggest challenges Maria faced in her journey to becoming assistant manager?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D19:12"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "Why did John need to help his cousin find a new place to live?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D21:5"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What event did Maria participate in to show support for veterans' rights?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D21:22"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "How did the drought impact the homes in John's old area?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D23:1"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What does John criticize about the veteran's hospital visit?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D24:3"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What did John take away from visiting the orphanage?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D24:1"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Why did Maria feel inspired to join the military after the visit to the hospital?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D24:3"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "How did Maria describe her kids' reaction at the military memorial?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D27:11"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "Why does Maria think it's important for younger generations to visit art galleries?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D27:12"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What happened to Maria's job in March 2026?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D28:1"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What cause did the 5K charity run organized by Maria support?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D29:4"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "Who did John work with to raise awareness and funds for animal welfare?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D29:10"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What recognition did John receive at the homeless shelter in March 2026?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D29:1"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What is the name of John's puppy he got two weeks before March 23, 2026?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D30:1"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "How does Maria describe the camping trip with Max?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D30:6"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "What is the name of Maria's second kitten?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D31:4"
+      ],
+      "target_character": "Maria"
+    },
+    {
+      "question": "How is John's new puppy adjusting to its new home?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D31:10"
+      ],
+      "target_character": "John"
+    }
+  ]
+}

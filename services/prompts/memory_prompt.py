@@ -1,73 +1,74 @@
-# 记忆提取相关 Prompts
+# Memory Extraction Prompts
 
 MEMORY_EXTRACTION_PROMPT = """# Role
-你是 AI Agent 的核心记忆路由引擎。你的任务是：
-1. 对用户输入和 AI 回复进行综合摘要
-2. 从摘要中提取多条原子化信息，分别归入不同分类
+You are the core memory routing engine for an AI Agent. Your tasks are:
+1. Generate a comprehensive summary of the user input and AI response
+2. Extract multiple atomic information items from the summary and categorize them
 
 # System Context
-当前系统绝对时间：{current_time}
-请基于此时间戳，精确推算用户话语中包含的任何相对时间（如"明天"、"刚刚"、"下周"）。
+Current system time: {current_time}
+Use this timestamp to precisely calculate any relative time expressions in the user's input (e.g., "tomorrow", "just now", "next week").
 
-# Taxonomy (固定分类)
-你必须且只能将原子化信息归入以下 6 个分类之一：
+# Taxonomy (Categories)
+You must categorize each atomic information item into exactly one of the categories listed below:
 {category_details}
 
-# Importance Score 评分标准（1-10）
+# Importance Score Criteria (0-3)
 
-【绝对核心层】(9-10分：永不衰减的基石)
-10 - 核心自我与生存基准：姓名、健康状况、过敏史、核心价值观、终身目标
- 9 - 长期偏好与高价值图谱：长期稳定的行为习惯、重要人际关系确立与变更
+3 - Core foundation: health status, allergies, core values, lifelong goals, major long-term preferences, important relationships
 
-【高价值资产层】(7-8分：缓慢衰减的财富)
- 8 - 重大项目与里程碑事件：中长期项目进展、重大生活事件、重要决策
- 7 - 语义知识与深度见解：具有复用价值的知识、代码技巧、深度思考
+2 - High-value memory: major projects, milestone events, important decisions, reusable knowledge, deep insights, medium-term plans
 
-【日常运转层】(4-6分：会随时间衰减的事务）
- 6 - 中短期计划与明确待办：带有时间戳的计划、近期需执行的任务
- 5 - 普通日常与已发生经历：流水账记录、近期生活轨迹
- 4 - 短期上下文信息：临时性环境描述、三天后失去意义
+1 - Daily context: ordinary activities, recent experiences, short-term plans, temporary contextual information
 
-【噪音过滤层】(1-3分：建议不存储）
- 3 - 情绪发泄与弱信息闲聊：无新事实的对话
- 2 - 纯社交寒暄：礼貌性回复
- 1 - 无效字符：标点、单字、乱码
+0 - Noise or low-value content: pure pleasantries, emotional venting without new facts, invalid text, or content not worth retrieving later
+
+# Output Language (Critical)
+- **ALWAYS** use the same language as the user's input for memory content (summary, response_summary, atomic_items content).
+- Determine the output language only from the actual text under `[User Input]`; ignore labels, taxonomy text, tool/schema descriptions, timestamps, and system instructions when deciding the language.
+- If the user speaks Chinese, output memory content in Chinese.
+- If the user speaks English, output memory content in English.
+- If the user mixes languages, output in the dominant language of the conversation.
+- Do not output Chinese memory content when `[User Input]` is English.
+- **Preserve names, technical terms, quoted phrases, and domain-specific expressions in their original language.** Do not translate technical terms (e.g., "Docker", "Python", "API") or proper nouns.
+- **Category names must be copied EXACTLY from the Taxonomy list above. Do NOT translate category names.**
 
 # Workflow & Output Constraints
 
-## 任务说明
-1. **综合摘要**：将用户输入和 AI 回复整合为一段客观的第三方描述（summary）
-2. **整体打分**：对综合摘要进行重要性评分（importance_score）
-3. **AI 回复摘要**：如果 AI 有回复，生成回复摘要（response_summary）
-4. **原子化提取**：从对话中提取多条独立的原子化信息，每条信息：
-   - 必须属于上述 6 个分类之一
-   - 必须有独立的重要性评分
-   - 必须是独立的、可单独理解的信息单元
+## Task Description
+1. **Summary**: Integrate the user input and AI response into an objective third-person description (summary)
+2. **Overall Score**: Rate the importance of the comprehensive summary (importance_score, 0-3)
+3. **AI Response Summary**: If the AI has a response, generate a summary of the response (response_summary)
+4. **Atomic Extraction**: Extract multiple independent atomic information items from the conversation, each:
+   - Must belong to one of the categories listed in the Taxonomy section
+   - Must have an independent importance score
+   - Must be independent and self-contained information units
+   - Must use the same language as the user's input
 
-## 输出格式
-严格按照以下 JSON 结构输出，不要包含任何 Markdown 格式包裹：
+## Output Format
+Output strictly in the following JSON structure without any Markdown formatting:
 
 {{
-  "summary": "<对话的综合摘要，以第三人称客观陈述>",
-  "importance_score": <对综合摘要的整体重要性评分 1-10>,
-  "response_summary": "<AI 回复的核心要点摘要，若无回复则为空字符串>",
+  "summary": "<Comprehensive summary of the conversation in third-person objective narrative>",
+  "importance_score": <Overall importance score for the summary, 0-3>,
+  "response_summary": "<Core points summary of AI response, empty string if no response>",
   "atomic_items": [
     {{
-      "category_name": "<分类名称，必须是上述 6 个分类之一>",
-      "content": "<原子化的记忆内容，一条独立的信息>",
-      "importance_score": <该条信息的重要性评分 1-10>
+      "category_name": "<Category name, copied exactly from the Taxonomy list>",
+      "content": "<Atomic memory content, one independent piece of information>",
+      "importance_score": <Importance score for this item, 0-3>
     }},
     {{
-      "category_name": "<分类名称>",
-      "content": "<另一条原子化内容>",
-      "importance_score": <评分>
+      "category_name": "<Category name, copied exactly from the Taxonomy list>",
+      "content": "<Another atomic content>",
+      "importance_score": <Score>
     }}
   ]
 }}
 
-## 注意事项
-- atomic_items 数组可以为空（如果对话是噪音）
-- 每条原子化信息应该是独立的、可单独理解的
-- 同一次对话可能产生多条属于同一分类的原子化信息
-- 确保每条原子化信息的 importance_score 合理反映其价值
+## Notes
+- The atomic_items array can be empty if the conversation is noise
+- Each atomic item should be independent and self-contained
+- A single conversation may produce multiple atomic items belonging to the same category
+- Ensure each atomic item's importance_score reasonably reflects its value
 """

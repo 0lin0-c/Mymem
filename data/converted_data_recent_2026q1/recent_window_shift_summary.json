@@ -1,0 +1,68 @@
+{
+  "source_dir": "data\\converted_data_zh",
+  "target_start": "2026-01-05",
+  "target_end": "2026-03-25",
+  "note": "Temporary benchmark copy. Each sample timeline is linearly compressed into the target window.",
+  "samples": {
+    "0": {
+      "source_start": "2023-05-08",
+      "source_end": "2023-10-22",
+      "target_start": "2026-01-05",
+      "target_end": "2026-03-25"
+    },
+    "1": {
+      "source_start": "2023-01-20",
+      "source_end": "2023-07-23",
+      "target_start": "2026-01-05",
+      "target_end": "2026-03-25"
+    },
+    "2": {
+      "source_start": "2022-12-17",
+      "source_end": "2023-08-16",
+      "target_start": "2026-01-05",
+      "target_end": "2026-03-25"
+    },
+    "3": {
+      "source_start": "2022-01-21",
+      "source_end": "2022-11-11",
+      "target_start": "2026-01-05",
+      "target_end": "2026-03-25"
+    },
+    "4": {
+      "source_start": "2023-05-21",
+      "source_end": "2024-01-12",
+      "target_start": "2026-01-05",
+      "target_end": "2026-03-25"
+    },
+    "5": {
+      "source_start": "2023-03-27",
+      "source_end": "2023-11-22",
+      "target_start": "2026-01-05",
+      "target_end": "2026-03-25"
+    },
+    "6": {
+      "source_start": "2022-03-17",
+      "source_end": "2022-11-07",
+      "target_start": "2026-01-05",
+      "target_end": "2026-03-25"
+    },
+    "7": {
+      "source_start": "2023-01-23",
+      "source_end": "2023-09-20",
+      "target_start": "2026-01-05",
+      "target_end": "2026-03-25"
+    },
+    "8": {
+      "source_start": "2023-05-18",
+      "source_end": "2024-01-11",
+      "target_start": "2026-01-05",
+      "target_end": "2026-03-25"
+    },
+    "9": {
+      "source_start": "2023-03-23",
+      "source_end": "2023-11-17",
+      "target_start": "2026-01-05",
+      "target_end": "2026-03-25"
+    }
+  }
+}

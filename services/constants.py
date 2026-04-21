@@ -1,9 +1,9 @@
 # 🔧 公共常量定义
 
-# 固定的 4 个基座分类
+# 固定的 4 个基座分类 (Base Categories)
 BASE_CATEGORIES = [
-    {"name": "核心自我", "description": "用户的静态画像、偏好习惯、底层价值观，以及长期的宏观目标"},
-    {"name": "情景时间轴", "description": "绑定在绝对时间点上的具体事件与微观待办"},
-    {"name": "语义知识库", "description": "剥离了时间属性的纯粹知识、灵感与资产"},
-    {"name": "社交关系图谱", "description": "用户与外部世界的人际链接"},
+    {"name": "Core Self", "description": "User's static profile, preferences, habits, core values, and long-term goals"},
+    {"name": "Timeline", "description": "Specific events and micro-tasks bound to absolute time points"},
+    {"name": "Knowledge Base", "description": "Timeless knowledge, insights, and assets without time attributes"},
+    {"name": "Social Graph", "description": "Interpersonal connections and relationships with others"},
 ]

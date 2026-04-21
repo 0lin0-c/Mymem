@@ -22,7 +22,7 @@
 ┌─────────────────────────────────────┐
 │ 2. Category 层向量检索（第一层）     │
 │    在 LLM 指定的类别中检索 Category  │
-│    按 content_vector 相似度排序      │
+│    按 content_vector + 可配置四因子评分排序 │
 └─────────────────────────────────────┘
     │
     ▼
@@ -37,7 +37,7 @@
 ┌─────────────────────────────────────┐
 │ 4. Resource 层向量检索（第二层）     │
 │    根据已检索 Category 关联的 Resource │
-│    按 description_vector 相似度排序   │
+│    按 description_vector + 可配置四因子评分排序 │
 └─────────────────────────────────────┘
     │
     ▼
@@ -75,10 +75,12 @@ class MemoryRetriever:
         categories: list[str],
         query: str,
         top_k: int,
+        min_importance: int = 0,
+        scoring_config: RetrievalScoringConfig | None = None,
     ) -> list[dict]:
         """
         Category 层向量检索（第一层）
-        使用 content_vector 相似度 + 检索分数排序
+        使用 content_vector + 可配置四因子评分排序
         """
         pass
 
@@ -98,10 +100,12 @@ class MemoryRetriever:
         categories: list[str],
         query: str,
         top_k: int,
+        min_importance: int = 0,
+        scoring_config: RetrievalScoringConfig | None = None,
     ) -> list[dict]:
         """
         Resource 层向量检索（第二层）
-        根据分类关联检索 Resource，使用 description_vector 相似度排序
+        根据分类关联检索 Resource，使用 description_vector + 可配置四因子评分排序
         """
         pass
 
@@ -136,10 +140,14 @@ class MemoryRetriever:
 
 ## 4. 检索分数计算
 
-四因子乘法评分：
+可配置四因子乘法评分：
 
 ```
-score = cosine_similarity × log(access_count + 1) × exp(-0.693 × days_ago / 60) × (importance_score / 5)
+score =
+  power(GREATEST(cosine_similarity, 0), similarity_power)
+  × power(log(access_count + 2), access_power)
+  × power(exp(-0.693 × days_ago / recency_decay_days), recency_power)
+  × power(0.7 + importance_score / 10.0, importance_power)
 ```
 
 详见 `retrieval-pipeline/config/scoring.md`。
@@ -148,19 +156,20 @@ score = cosine_similarity × log(access_count + 1) × exp(-0.693 × days_ago / 6
 
 ## 5. 上下文构建
 
-检索结果作为 System Prompt 上下文：
+真实 chat 路径由 `services/chat_orchestrator.py` 编排。检索结果与最近 pending conversation 一起作为 LLM `context`，当前用户输入保持在独立的 `user_query`。
 
 ```
-# 用户画像
-{user_prompt_template}
+system_prompt:
+  assistant rules
+  profile/persona
+  memory-use priority rules
 
-# AI 人设
-{agent_persona_template}
+context:
+  recent pending conversation first
+  retrieved memories second
 
-# 相关记忆（供参考）
-{retrieved_context}
-
----
-
-请根据以上信息回答用户的问题。
+user_query:
+  current user message only
 ```
+
+`ChatOrchestrator.build_context()` 可以返回 trace 给测试、评估和开发者调试；普通 `/v1/chat` 默认不暴露 trace。

@@ -1,0 +1,202 @@
+{
+  "test_info": {
+    "timestamp": "20260421_114908",
+    "eval_mode": "assistant_eval"
+  },
+  "statistics": {
+    "total_questions": 1,
+    "correct_count": 0,
+    "accuracy": 0.0,
+    "adjusted_accuracy_excluding_empty_standard": 0.0,
+    "answer_failure_patterns": {
+      "retrieval_gap": 1
+    },
+    "recall_at_k": 0.0,
+    "top1_hit_rate": 0.0,
+    "top3_hit_rate": 0.0,
+    "top5_hit_rate": 0.0,
+    "storage_coverage_rate": 100.0,
+    "category_accuracy": {
+      "2": {
+        "label": "时间相关（when/how long）",
+        "display_name": "Category 2 - 时间相关（when/how long）",
+        "count": 1,
+        "correct": 0,
+        "accuracy": 0.0
+      }
+    }
+  },
+  "samples": [
+    {
+      "sample_index": 0,
+      "character": "Caroline",
+      "total_memories": 100,
+      "qa_results": [
+        {
+          "question": "When did Caroline go to the LGBTQ support group?",
+          "standard_answer": "4 January 2026",
+          "generated_answer": "Caroline joined the new LGBTQ activist group on Tuesday, February 3, 2026.",
+          "is_correct": false,
+          "category": 2,
+          "storage_hit": true,
+          "retrieval_hit": false,
+          "rank_position": null,
+          "failure_type": "retrieval_gap",
+          "trace_summary": {
+            "resolved_layer": "category_only",
+            "top_contexts": [
+              "Mel's son was involved in an accident around 2026-03-24; the other children were scared but reassured that their brother would be OK",
+              "User is hosting/participating in an LGBTQ art show in March 2026"
+            ],
+            "top_scores": [
+              0.111,
+              0.0963
+            ],
+            "diagnosis_type": "retrieval_gap"
+          },
+          "trace_detail": {
+            "evaluation_trace": {
+              "storage_eval": {
+                "storage_hit": true,
+                "keywords": [
+                  "when",
+                  "did",
+                  "caroline",
+                  "the",
+                  "lgbtq",
+                  "support",
+                  "group",
+                  "january"
+                ],
+                "db_hits": {
+                  "resource_count": 55,
+                  "category_count": 71
+                },
+                "db_memories_sample": [
+                  {
+                    "id": "05ad4845-551f-4569-8df7-f44ed9fc825e",
+                    "source": "resource",
+                    "text": "The user expressed their dream of creating a safe and loving home for children in need, emphasizing that love and acceptance are fundamental rights that everyone deserves. They conveyed deep passion and commitment toward helping these kids experience a nurturing environment. The AI responded with supportive encouragement, acknowledging and validating the user's dedication.",
+                    "importance_score": 3,
+                    "updated_at": "2026-03-25T09:55:00+00:00",
+                    "matched_keyword": "the"
+                  },
+                  {
+                    "id": "60196345-826f-4d8c-9437-a77515214f1c",
+                    "source": "resource",
+                    "text": "The user thanked someone named Melanie for something beautiful and reflected on the love found in both blood families and chosen families. The user shared a deeply personal life goal: they hope to build their own family through adoption, specifically to provide a home for children who haven't had one before. For the user, adoption represents a way of giving back and showing love and acceptance.",
+                    "importance_score": 3,
+                    "updated_at": "2026-03-25T09:55:00+00:00",
+                    "matched_keyword": "the"
+                  },
+                  {
+                    "id": "e4554626-c1dc-4293-906b-adf30201a61c",
+                    "source": "resource",
+                    "text": "The user shared a heartfelt reflection on their personal transition journey, expressing gratitude for the support they received from friends, family, and role models during difficult times. They credited this support with helping them discover their true identity and stated their desire to pay that support forward by helping others going through similar experiences. They emphasized that bringing comfort and helping others grow brings them deep joy. The AI responded with warm encouragement, calling the user inspiring.",
+                    "importance_score": 3,
+                    "updated_at": "2026-03-25T09:55:00+00:00",
+                    "matched_keyword": "the"
+                  },
+                  {
+                    "id": "7ef23c10-de15-4356-90d8-93437276d611",
+                    "source": "resource",
+                    "text": "The user expressed excitement about starting the adoption process, describing it as a long-held dream to provide a safe, loving home for children in need. They asked the AI (addressed as \"Melanie\") about adoption experience. The AI shared that a friend adopted last year and is very happy, and mentioned it inspired thoughts of possibly adopting as well.",
+                    "importance_score": 3,
+                    "updated_at": "2026-03-20T10:31:00+00:00",
+                    "matched_keyword": "the"
+                  },
+                  {
+                    "id": "5b25487d-52e1-4037-927e-449facb4eb26",
+                    "source": "resource",
+                    "text": "The user finds a sense of freedom through art and supportive communities. They are passionate about LGBTQ rights, living authentically, and helping others do the same. Their work positively impacts the LGBTQ+ community, giving them a sense of meaning in creating a more loving world. They credit friends, family, and mentors for their support, and this motivation continues to inspire their art practice.",
+                    "importance_score": 3,
+                    "updated_at": "2026-03-06T00:09:00+00:00",
+                    "matched_keyword": "the"
+                  }
+                ]
+              }
+            },
+            "retrieval_layer": {
+              "resolved_layer": "category_only",
+              "is_sufficient_at_category": true,
+              "llm_classified_categories": [
+                "Timeline"
+              ],
+              "category_results_count": 5,
+              "resource_results_count": 0
+            },
+            "retrieved_contexts": [
+              "Mel's son was involved in an accident around 2026-03-24; the other children were scared but reassured that their brother would be OK",
+              "User is hosting/participating in an LGBTQ art show in March 2026",
+              "The user attended a transgender poetry reading event.",
+              "Melanie joined a mentorship program for LGBTQ youth last weekend (around January 31 - February 1, 2026).",
+              "User joined a new LGBTQ activist group on 2026-02-03 (Tuesday)."
+            ],
+            "retrieved_scores": [
+              0.111,
+              0.0963,
+              0.0879,
+              0.0852,
+              0.0847
+            ],
+            "db_diagnosis": {
+              "diagnosis_type": "retrieval_gap",
+              "summary": "数据库命中相关记忆但未被检索召回，倾向检索/排序失效",
+              "missed_in_retrieval": [
+                {
+                  "id": "05ad4845-551f-4569-8df7-f44ed9fc825e",
+                  "source": "resource",
+                  "text": "The user expressed their dream of creating a safe and loving home for children in need, emphasizing that love and acceptance are fundamental rights that everyone deserves. They conveyed deep passion and commitment toward helping these kids experience a nurturing environment. The AI responded with supportive encouragement, acknowledging and validating the user's dedication.",
+                  "importance_score": 3,
+                  "updated_at": "2026-03-25T09:55:00+00:00",
+                  "matched_keyword": "the"
+                },
+                {
+                  "id": "e4554626-c1dc-4293-906b-adf30201a61c",
+                  "source": "resource",
+                  "text": "The user shared a heartfelt reflection on their personal transition journey, expressing gratitude for the support they received from friends, family, and role models during difficult times. They credited this support with helping them discover their true identity and stated their desire to pay that support forward by helping others going through similar experiences. They emphasized that bringing comfort and helping others grow brings them deep joy. The AI responded with warm encouragement, calling the user inspiring.",
+                  "importance_score": 3,
+                  "updated_at": "2026-03-25T09:55:00+00:00",
+                  "matched_keyword": "the"
+                },
+                {
+                  "id": "60196345-826f-4d8c-9437-a77515214f1c",
+                  "source": "resource",
+                  "text": "The user thanked someone named Melanie for something beautiful and reflected on the love found in both blood families and chosen families. The user shared a deeply personal life goal: they hope to build their own family through adoption, specifically to provide a home for children who haven't had one before. For the user, adoption represents a way of giving back and showing love and acceptance.",
+                  "importance_score": 3,
+                  "updated_at": "2026-03-25T09:55:00+00:00",
+                  "matched_keyword": "the"
+                },
+                {
+                  "id": "7ef23c10-de15-4356-90d8-93437276d611",
+                  "source": "resource",
+                  "text": "The user expressed excitement about starting the adoption process, describing it as a long-held dream to provide a safe, loving home for children in need. They asked the AI (addressed as \"Melanie\") about adoption experience. The AI shared that a friend adopted last year and is very happy, and mentioned it inspired thoughts of possibly adopting as well.",
+                  "importance_score": 3,
+                  "updated_at": "2026-03-20T10:31:00+00:00",
+                  "matched_keyword": "the"
+                },
+                {
+                  "id": "5b25487d-52e1-4037-927e-449facb4eb26",
+                  "source": "resource",
+                  "text": "The user finds a sense of freedom through art and supportive communities. They are passionate about LGBTQ rights, living authentically, and helping others do the same. Their work positively impacts the LGBTQ+ community, giving them a sense of meaning in creating a more loving world. They credit friends, family, and mentors for their support, and this motivation continues to inspire their art practice.",
+                  "importance_score": 3,
+                  "updated_at": "2026-03-06T00:09:00+00:00",
+                  "matched_keyword": "the"
+                }
+              ],
+              "llm_verification": {
+                "can_answer": false,
+                "reason": "片段中未提及Caroline、LGBTQ支持小组及任何具体日期，缺乏回答问题所需的关键信息。",
+                "raw": "<can_answer>NO</can_answer>\n<reason>片段中未提及Caroline、LGBTQ支持小组及任何具体日期，缺乏回答问题所需的关键信息。</reason>"
+              }
+            },
+            "correctness_explanation": "The generated answer provides an incorrect date (February 3, 2026) instead of the correct date (4 January 2026) and incorrectly states she joined an \"activist group\" rather than a \"support group\".",
+            "evidence": [
+              "D1:3"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

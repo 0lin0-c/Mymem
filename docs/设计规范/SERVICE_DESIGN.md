@@ -4,6 +4,8 @@
 
 ```
 services/
+├── chat_orchestrator.py     # 真实聊天编排：profile + pending conversation + retrieval + LLM streaming
+│
 ├── llm/                    # 大模型服务
 │   ├── __init__.py
 │   ├── base.py             # BaseLLMProvider 抽象基类
@@ -26,6 +28,7 @@ services/
 ├── retrieval/              # 检索服务
 │   ├── __init__.py
 │   ├── base.py             # RetrievalStrategy 抽象基类
+│   ├── scoring_config.py    # 检索打分默认参数
 │   ├── retriever.py         # MemoryRetriever 检索服务
 │   └── vector_strategy.py
 │
@@ -245,9 +248,71 @@ class BaseSessionStore(ABC):
 
 ---
 
-## 5. Retrieval 模块 (`services/retrieval/`)
+## 5. ChatOrchestrator (`services/chat_orchestrator.py`)
 
-### 5.1 LLM 驱动的串行检索
+`ChatOrchestrator` 是真实聊天路径的业务编排层，负责把用户画像、助手人设、最近 pending conversation、长期记忆检索结果和 LLM 流式生成连接起来。API 层仍负责用户/session 识别、请求响应封装、pending 写入和 flush 触发。
+
+### 5.1 职责边界
+
+| 职责 | 所在位置 |
+|------|----------|
+| 用户/session 识别 | `api/v1/chat.py`（当前阶段暂留） |
+| profile/persona + memory priority rules 拼接 | `ChatOrchestrator` |
+| 每轮检索长期记忆 | `ChatOrchestrator` 调用 `MemoryRetriever.retrieve()` |
+| context 顺序控制 | `ChatOrchestrator` |
+| LLM 流式生成 | `ChatOrchestrator.stream()` |
+| pending_chats 写入和 flush | `api/v1/chat.py` 保持原行为 |
+
+### 5.2 LLM 输入契约
+
+```
+system_prompt:
+  assistant rules
+  profile/persona
+  memory-use priority rules
+
+context:
+  recent pending conversation first
+  retrieved memories second
+
+user_query:
+  current user message only
+```
+
+必须保持 `user_query` 干净，不把 retrieved context 或 recent conversation 拼进当前用户消息。
+
+### 5.3 记忆使用优先级
+
+`system_prompt` 必须包含以下规则：
+
+```
+When answering, prioritize information in this order:
+1. The user's current message.
+2. Relevant retrieved memories.
+3. Stable user profile.
+4. Assistant persona and style.
+
+Use retrieved memories when they help answer the current message.
+If the user's current message updates or contradicts older information, follow the current message.
+Do not infer the user's current intent only from profile interests.
+```
+
+### 5.4 Trace 契约
+
+`ChatOrchestrator.build_context()` 可以返回 trace，供测试、评估和开发者调试使用。普通 `/v1/chat` 默认不暴露 trace。
+
+| 字段 | 说明 |
+|------|------|
+| `retrieved_results` | `MemoryRetriever.retrieve()` 原始结果 |
+| `retrieved_context` | 格式化后的检索上下文 |
+| `recent_context` | 最近 pending conversation 上下文 |
+| `context` | 最终传给 LLM 的 context |
+
+---
+
+## 6. Retrieval 模块 (`services/retrieval/`)
+
+### 6.1 LLM 驱动的串行检索
 
 ```
 用户查询
@@ -261,20 +326,33 @@ class BaseSessionStore(ABC):
     │
     ▼
 ┌─────────────────────────────────────┐
-│ 2. 分类内检索                        │
-│    只在 LLM 指定的类别中检索          │
-│    按 importance_score + 向量相似度  │
+│ 2. Category 层向量检索               │
+│    在 LLM 指定的类别中检索 Category   │
+│    按可配置四因子评分排序             │
 └─────────────────────────────────────┘
     │
     ▼
 ┌─────────────────────────────────────┐
-│ 3. 结果作为上下文                    │
-│    检索到的记忆作为 system prompt    │
-│    上下文供 LLM 回答时参考           │
+│ 3. LLM 充足性判断                    │
+│    足够：直接构建上下文               │
+│    不足：进入 Resource 层检索         │
+└─────────────────────────────────────┘
+    │ (不足时)
+    ▼
+┌─────────────────────────────────────┐
+│ 4. Resource 层向量检索               │
+│    根据已检索 Category 关联 Resource  │
+│    按可配置四因子评分排序             │
+└─────────────────────────────────────┘
+    │
+    ▼
+┌─────────────────────────────────────┐
+│ 5. 结果合并与上下文构建              │
+│    作为 LLM context 供回答参考        │
 └─────────────────────────────────────┘
 ```
 
-### 5.2 MemoryRetriever 接口
+### 6.2 MemoryRetriever 接口
 
 ```python
 class MemoryRetriever:
@@ -291,17 +369,33 @@ class MemoryRetriever:
         """
         pass
 
-    async def _search_in_categories(
+    async def _search_category_layer(
         self,
         user_id: str,
         categories: list[str],
         query: str,
         top_k: int,
-        min_importance: int = 3,
+        min_importance: int = 0,
+        scoring_config: RetrievalScoringConfig | None = None,
     ) -> list[dict]:
         """
-        在指定类别内检索
-        使用向量相似度 + importance_score 综合排序
+        Category 层向量检索
+        使用 content_vector + 可配置四因子评分排序
+        """
+        pass
+
+    async def _search_resource_layer(
+        self,
+        user_id: str,
+        categories: list[str],
+        query: str,
+        top_k: int,
+        min_importance: int = 0,
+        scoring_config: RetrievalScoringConfig | None = None,
+    ) -> list[dict]:
+        """
+        Resource 层向量检索
+        使用 description_vector + 可配置四因子评分排序
         """
         pass
 
@@ -310,6 +404,7 @@ class MemoryRetriever:
         user_id: str,
         query: str,
         max_tokens: int = 2000,
+        scoring_config: RetrievalScoringConfig | None = None,
     ) -> str:
         """
         执行检索并将结果构建为上下文字符串
@@ -318,9 +413,9 @@ class MemoryRetriever:
         pass
 ```
 
-> **注意**：`_classify_query` 和 `_search_in_categories` 为内部方法，外部调用使用 `retrieve()` 或 `build_context()`。
+> **注意**：`_classify_query`、`_search_category_layer`、`_search_resource_layer` 为内部方法，外部调用使用 `retrieve()` 或 `build_context()`。
 
-### 5.3 动态类别判断
+### 6.3 动态类别判断
 
 **特点**：LLM 根据问题复杂度决定类别数量，而非固定值。
 
@@ -330,7 +425,30 @@ class MemoryRetriever:
 | 多维度 | 2-3 个 | "我最近学习情况怎么样" → [核心自我, 考试与升学] |
 | 开放式 | 可能多个 | "帮我回顾一下最近的事" → [情景时间轴, 核心自我] |
 
-### 5.4 策略对比
+### 6.4 检索打分配置
+
+检索使用可配置四因子评分，默认配置位于 `services/retrieval/scoring_config.py`：
+
+| 参数 | 默认值 | 说明 |
+|------|--------|------|
+| `recency_decay_days` | 60 | 时间衰减半衰期 |
+| `similarity_power` | 1.5 | 提高语义相似度差异对排序的影响 |
+| `access_power` | 1.0 | 访问次数因子指数 |
+| `recency_power` | 1.0 | 时间衰减因子指数 |
+| `importance_power` | 1.0 | 重要性因子指数 |
+
+SQL 公式：
+
+```sql
+power(GREATEST((1 - (vector <=> CAST(:query_vector AS vector))), 0), :similarity_power)
+* power(ln(access_count + 2), :access_power)
+* power(exp(-0.693 * EXTRACT(EPOCH FROM (NOW() - updated_at)) / 86400 / :recency_decay_days), :recency_power)
+* power((0.7 + (importance_score / 10.0)), :importance_power)
+```
+
+测试/CLI 可以覆盖 `RetrievalScoringConfig` 做实验；`/v1/retrieve` 默认不暴露这些参数为公开 API 字段。
+
+### 6.5 策略对比
 
 | 策略 | 检索方式 | 适用场景 |
 |------|---------|---------|
@@ -338,9 +456,9 @@ class MemoryRetriever:
 
 ---
 
-## 6. OSS 模块 (`services/oss/`)
+## 7. OSS 模块 (`services/oss/`)
 
-### 6.1 OSS 客户端接口
+### 7.1 OSS 客户端接口
 
 ```python
 class BaseOSSClient(ABC):
@@ -373,7 +491,7 @@ class BaseOSSClient(ABC):
         pass
 ```
 
-### 6.2 存储路径命名规范
+### 7.2 存储路径命名规范
 
 **格式**：`{user_id}/{modality}/{yyyy-mm-dd}/{uuid}.{ext}`
 
@@ -396,7 +514,7 @@ a1b2c3d4-e5f6-7890-abcd-ef1234567890/
 - 按 `modality` 分类：便于存储审计和容量统计
 - 按 `yyyy-mm-dd` 分区：便于数据清洗和冷热分离
 
-### 6.3 实现状态
+### 7.3 实现状态
 
 | 客户端 | 说明 | 状态 |
 |--------|------|------|
@@ -405,9 +523,9 @@ a1b2c3d4-e5f6-7890-abcd-ef1234567890/
 
 ---
 
-## 7. 监控与度量
+## 8. 监控与度量
 
-### 7.1 核心指标
+### 8.1 核心指标
 
 | 指标 | 说明 | 告警阈值 |
 |------|------|----------|
@@ -417,7 +535,7 @@ a1b2c3d4-e5f6-7890-abcd-ef1234567890/
 | **Session TTL** | 会话平均存活时间 | - |
 | **Pending Flush** | 待落库对话积压数量 | > 100 条 |
 
-### 7.2 埋点位置
+### 8.2 埋点位置
 
 | 模块 | 埋点方法 | 记录指标 |
 |------|----------|----------|
@@ -428,9 +546,9 @@ a1b2c3d4-e5f6-7890-abcd-ef1234567890/
 
 ---
 
-## 8. 完成情况
+## 9. 完成情况
 
-### 7.1 已完成
+### 9.1 已完成
 
 **LLM 模块**
 - [x] `BaseLLMProvider` 抽象基类
@@ -458,7 +576,7 @@ a1b2c3d4-e5f6-7890-abcd-ef1234567890/
 - [x] `BaseOSSClient` 抽象基类
 - [x] `LocalOSSClient` 本地存储
 
-### 7.2 待扩展
+### 9.2 待扩展
 
 - [ ] `AliyunOSSClient` 阿里云 OSS 实现
 - [ ] `ImageHandler` 完整实现（VLM/OCR）

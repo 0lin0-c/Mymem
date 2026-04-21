@@ -117,7 +117,7 @@ async def _warmup_and_generate_categories(
 
         # 预热：发送简单请求
         await llm.generate_chat_response(
-            system_prompt="你是一个助手",
+            system_prompt="You are an assistant",
             context="",
             user_query="OK",
         )

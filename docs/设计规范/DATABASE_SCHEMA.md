@@ -83,7 +83,7 @@ Mymem/
 | `description` | `Text` | `Nullable` | LLM 生成的对话综合摘要（客观第三人称描述），用于向量化。 |
 | `assistant_response` | `Text` | `Nullable` | AI 助手回复的摘要。 |
 | `description_vector` | `Vector(1536)` | `pgvector` 专有类型，需启用扩展 | **语义检索核心**。存储由 OpenAI/特定模型生成的 1536 维向量。SQLAlchemy 使用 `pgvector.sqlalchemy.Vector` 映射。 |
-| `importance_score` | `Integer` | 默认 `5` | 由 LLM 在入库前打分 (1-10)。用于在检索库过大时，硬性过滤掉分值低于 3 的日常"废话"。 |
+| `importance_score` | `Integer` | 默认 `2` | 由 LLM 在入库前打分 (0-3)。检索默认不按重要性提前硬过滤，排序阶段通过可配置四因子评分使用该值。 |
 | `access_count` | `Integer` | 默认 `0` | 被检索引用的次数。用于遗忘机制的访问加成计算。 |
 | `created_at` | `DateTime` | `timezone=True`, 默认 `func.now()` | 记忆发生的确切时间戳。**强制带时区**。 |
 | `updated_at` | `DateTime` | `timezone=True`, `Nullable` | 更新时间（合并/覆盖时更新，用于遗忘曲线计算）。**强制带时区**。 |
@@ -98,7 +98,7 @@ Mymem/
 | `user_id` | `String` | `ForeignKey('users.id', ondelete='CASCADE')`, `Index` | 绑定用户。`CASCADE` 确保注销用户时自动清理记忆残余。 |
 | `category_name` | `String` | `Index` | 归属的分类名（核心自我/情景时间轴/语义知识库/社交关系图谱/动态分类）。 |
 | `content` | `Text` | - | 原子化的记忆内容（一条独立的信息）。 |
-| `importance_score` | `Integer` | 默认 `5` | 该条信息的重要性评分 (1-10)。 |
+| `importance_score` | `Integer` | 默认 `2` | 该条信息的重要性评分 (0-3)。检索默认不按重要性提前硬过滤，排序阶段通过可配置四因子评分使用该值。 |
 | `access_count` | `Integer` | 默认 `0` | 被检索引用的次数。用于遗忘机制的访问加成计算。 |
 | `created_at` | `DateTime` | `timezone=True`, 默认 `func.now()` | 分类首次建立时间。**强制带时区**。 |
 | `updated_at` | `DateTime` | `timezone=True`, 触发器自动更新 | 更新时间。**强制带时区**。 |

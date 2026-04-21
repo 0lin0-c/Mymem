@@ -1,0 +1,51 @@
+{
+  "test_info": {
+    "timestamp": "20260421_141929",
+    "eval_mode": "assistant_eval"
+  },
+  "statistics": {
+    "total_questions": 43,
+    "correct_count": 8,
+    "accuracy": 18.6046511627907,
+    "adjusted_accuracy_excluding_empty_standard": 18.6046511627907,
+    "answer_failure_patterns": {
+      "retrieval_gap": 35
+    },
+    "recall_at_k": 16.27906976744186,
+    "top1_hit_rate": 2.3255813953488373,
+    "top3_hit_rate": 9.30232558139535,
+    "top5_hit_rate": 16.27906976744186,
+    "storage_coverage_rate": 100.0,
+    "category_accuracy": {
+      "2": {
+        "label": "时间相关（when/how long）",
+        "display_name": "Category 2 - 时间相关（when/how long）",
+        "count": 19,
+        "correct": 3,
+        "accuracy": 15.789473684210526
+      },
+      "3": {
+        "label": "推理归纳（需要综合多事实）",
+        "display_name": "Category 3 - 推理归纳（需要综合多事实）",
+        "count": 7,
+        "correct": 3,
+        "accuracy": 42.857142857142854
+      },
+      "1": {
+        "label": "事实回忆（单一事实）",
+        "display_name": "Category 1 - 事实回忆（单一事实）",
+        "count": 13,
+        "correct": 2,
+        "accuracy": 15.384615384615385
+      },
+      "4": {
+        "label": "偏好态度",
+        "display_name": "Category 4 - 偏好态度",
+        "count": 4,
+        "correct": 0,
+        "accuracy": 0.0
+      }
+    }
+  },
+  "samples": []
+}

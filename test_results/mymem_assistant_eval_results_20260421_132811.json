@@ -1,0 +1,44 @@
+{
+  "test_info": {
+    "timestamp": "20260421_132811",
+    "eval_mode": "assistant_eval"
+  },
+  "statistics": {
+    "total_questions": 36,
+    "correct_count": 8,
+    "accuracy": 22.22222222222222,
+    "adjusted_accuracy_excluding_empty_standard": 22.22222222222222,
+    "answer_failure_patterns": {
+      "retrieval_gap": 28
+    },
+    "recall_at_k": 19.444444444444446,
+    "top1_hit_rate": 8.333333333333332,
+    "top3_hit_rate": 11.11111111111111,
+    "top5_hit_rate": 19.444444444444446,
+    "storage_coverage_rate": 100.0,
+    "category_accuracy": {
+      "2": {
+        "label": "时间相关（when/how long）",
+        "display_name": "Category 2 - 时间相关（when/how long）",
+        "count": 18,
+        "correct": 2,
+        "accuracy": 11.11111111111111
+      },
+      "3": {
+        "label": "推理归纳（需要综合多事实）",
+        "display_name": "Category 3 - 推理归纳（需要综合多事实）",
+        "count": 6,
+        "correct": 4,
+        "accuracy": 66.66666666666666
+      },
+      "1": {
+        "label": "事实回忆（单一事实）",
+        "display_name": "Category 1 - 事实回忆（单一事实）",
+        "count": 12,
+        "correct": 2,
+        "accuracy": 16.666666666666664
+      }
+    }
+  },
+  "samples": []
+}

@@ -1,0 +1,1603 @@
+{
+  "test_info": {
+    "timestamp": "20260421_173554",
+    "eval_mode": "assistant_eval"
+  },
+  "statistics": {
+    "total_questions": 10,
+    "correct_count": 2,
+    "accuracy": 20.0,
+    "adjusted_accuracy_excluding_empty_standard": 20.0,
+    "answer_failure_patterns": {
+      "retrieval_gap": 8
+    },
+    "recall_at_k": 0.0,
+    "top1_hit_rate": 0.0,
+    "top3_hit_rate": 0.0,
+    "top5_hit_rate": 0.0,
+    "storage_coverage_rate": 100.0,
+    "category_accuracy": {
+      "2": {
+        "label": "时间相关（when/how long）",
+        "display_name": "Category 2 - 时间相关（when/how long）",
+        "count": 5,
+        "correct": 0,
+        "accuracy": 0.0
+      },
+      "3": {
+        "label": "推理归纳（需要综合多事实）",
+        "display_name": "Category 3 - 推理归纳（需要综合多事实）",
+        "count": 1,
+        "correct": 1,
+        "accuracy": 100.0
+      },
+      "1": {
+        "label": "事实回忆（单一事实）",
+        "display_name": "Category 1 - 事实回忆（单一事实）",
+        "count": 4,
+        "correct": 1,
+        "accuracy": 25.0
+      }
+    }
+  },
+  "samples": [
+    {
+      "sample_index": 0,
+      "character": "Caroline",
+      "total_memories": 100,
+      "total_questions": 10,
+      "completed_questions": 10,
+      "status": "completed",
+      "qa_results": [
+        {
+          "question": "When did Caroline go to the LGBTQ support group?",
+          "standard_answer": "4 January 2026",
+          "generated_answer": "根据我已有的记忆，没有明确记录Caroline去过\"LGBTQ支持小组\"的具体时间。\n\n最接近的信息是：Caroline在 **2026年2月3日（星期二）** 加入了一个新的 **LGBTQ行动小组（activist group）**。\n\n不过\"行动小组\"和\"支持小组\"可能有区别，如果你指的是其他活动，可以告诉我更多细节，我帮你回忆一下。",
+          "is_correct": false,
+          "category": 2,
+          "storage_hit": true,
+          "retrieval_hit": false,
+          "rank_position": null,
+          "failure_type": "retrieval_gap",
+          "trace_summary": {
+            "resolved_layer": "category_only",
+            "top_contexts": [
+              "Mel's son was involved in an accident around 2026-03-24; the other children were scared but reassured that their brother would be OK",
+              "User is hosting/participating in an LGBTQ art show in March 2026"
+            ],
+            "top_scores": [
+              0.1107,
+              0.096
+            ],
+            "diagnosis_type": "retrieval_gap"
+          },
+          "trace_detail": {
+            "evaluation_trace": {
+              "storage_eval": {
+                "storage_hit": true,
+                "keywords": [
+                  "when",
+                  "did",
+                  "caroline",
+                  "the",
+                  "lgbtq",
+                  "support",
+                  "group",
+                  "january"
+                ],
+                "db_hits": {
+                  "resource_count": 55,
+                  "category_count": 71
+                },
+                "db_memories_sample": [
+                  {
+                    "id": "05ad4845-551f-4569-8df7-f44ed9fc825e",
+                    "source": "resource",
+                    "text": "The user expressed their dream of creating a safe and loving home for children in need, emphasizing that love and acceptance are fundamental rights that everyone deserves. They conveyed deep passion and commitment toward helping these kids experience a nurturing environment. The AI responded with supportive encouragement, acknowledging and validating the user's dedication.",
+                    "importance_score": 3,
+                    "updated_at": "2026-03-25T09:55:00+00:00",
+                    "matched_keyword": "the"
+                  },
+                  {
+                    "id": "60196345-826f-4d8c-9437-a77515214f1c",
+                    "source": "resource",
+                    "text": "The user thanked someone named Melanie for something beautiful and reflected on the love found in both blood families and chosen families. The user shared a deeply personal life goal: they hope to build their own family through adoption, specifically to provide a home for children who haven't had one before. For the user, adoption represents a way of giving back and showing love and acceptance.",
+                    "importance_score": 3,
+                    "updated_at": "2026-03-25T09:55:00+00:00",
+                    "matched_keyword": "the"
+                  },
+                  {
+                    "id": "e4554626-c1dc-4293-906b-adf30201a61c",
+                    "source": "resource",
+                    "text": "The user shared a heartfelt reflection on their personal transition journey, expressing gratitude for the support they received from friends, family, and role models during difficult times. They credited this support with helping them discover their true identity and stated their desire to pay that support forward by helping others going through similar experiences. They emphasized that bringing comfort and helping others grow brings them deep joy. The AI responded with warm encouragement, calling the user inspiring.",
+                    "importance_score": 3,
+                    "updated_at": "2026-03-25T09:55:00+00:00",
+                    "matched_keyword": "the"
+                  },
+                  {
+                    "id": "7ef23c10-de15-4356-90d8-93437276d611",
+                    "source": "resource",
+                    "text": "The user expressed excitement about starting the adoption process, describing it as a long-held dream to provide a safe, loving home for children in need. They asked the AI (addressed as \"Melanie\") about adoption experience. The AI shared that a friend adopted last year and is very happy, and mentioned it inspired thoughts of possibly adopting as well.",
+                    "importance_score": 3,
+                    "updated_at": "2026-03-20T10:31:00+00:00",
+                    "matched_keyword": "the"
+                  },
+                  {
+                    "id": "5b25487d-52e1-4037-927e-449facb4eb26",
+                    "source": "resource",
+                    "text": "The user finds a sense of freedom through art and supportive communities. They are passionate about LGBTQ rights, living authentically, and helping others do the same. Their work positively impacts the LGBTQ+ community, giving them a sense of meaning in creating a more loving world. They credit friends, family, and mentors for their support, and this motivation continues to inspire their art practice.",
+                    "importance_score": 3,
+                    "updated_at": "2026-03-06T00:09:00+00:00",
+                    "matched_keyword": "the"
+                  }
+                ]
+              }
+            },
+            "retrieval_layer": {
+              "resolved_layer": "category_only",
+              "is_sufficient_at_category": true,
+              "llm_classified_categories": [
+                "Timeline"
+              ],
+              "category_results_count": 5,
+              "resource_results_count": 0
+            },
+            "retrieved_contexts": [
+              "Mel's son was involved in an accident around 2026-03-24; the other children were scared but reassured that their brother would be OK",
+              "User is hosting/participating in an LGBTQ art show in March 2026",
+              "The user attended a transgender poetry reading event.",
+              "Melanie joined a mentorship program for LGBTQ youth last weekend (around January 31 - February 1, 2026).",
+              "User joined a new LGBTQ activist group on 2026-02-03 (Tuesday)."
+            ],
+            "retrieved_scores": [
+              0.1107,
+              0.096,
+              0.0876,
+              0.085,
+              0.0845
+            ],
+            "db_diagnosis": {
+              "diagnosis_type": "retrieval_gap",
+              "summary": "数据库命中相关记忆但未被检索召回，倾向检索/排序失效",
+              "matched_in_retrieved": [],
+              "missed_in_retrieval": [
+                {
+                  "id": "32eebffc-3389-4c7f-a377-d62bd5d2d27c",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-21T09:25:55.704434+00:00",
+                  "matched_keyword": "the",
+                  "text_preview": "The user excitedly shared that they took a major life step this week by applying to adoption agencies, marking the beginning of their journey to become a mot..."
+                },
+                {
+                  "id": "1c13f99e-312a-4fdc-9792-a0273378cd1d",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-21T09:25:55.704434+00:00",
+                  "matched_keyword": "the",
+                  "text_preview": "The user, Caro, shared a painting they created symbolizing their journey as a trans woman. The painting uses red and blue to represent the binary gender syst..."
+                },
+                {
+                  "id": "60196345-826f-4d8c-9437-a77515214f1c",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-21T09:25:55.704434+00:00",
+                  "matched_keyword": "the",
+                  "text_preview": "The user thanked someone named Melanie for something beautiful and reflected on the love found in both blood families and chosen families. The user shared a..."
+                },
+                {
+                  "id": "05ad4845-551f-4569-8df7-f44ed9fc825e",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-03-25T09:55:00+00:00",
+                  "matched_keyword": "the",
+                  "text_preview": "The user expressed their dream of creating a safe and loving home for children in need, emphasizing that love and acceptance are fundamental rights that ever..."
+                },
+                {
+                  "id": "e4554626-c1dc-4293-906b-adf30201a61c",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-03-25T09:55:00+00:00",
+                  "matched_keyword": "the",
+                  "text_preview": "The user shared a heartfelt reflection on their personal transition journey, expressing gratitude for the support they received from friends, family, and rol..."
+                }
+              ],
+              "llm_verification": {
+                "can_answer": false,
+                "reason": "片段未提及LGBTQ支持小组及具体时间，无法回答。",
+                "raw": "<can_answer>NO</can_answer>\n<reason>片段未提及LGBTQ支持小组及具体时间，无法回答。</reason>"
+              }
+            },
+            "correctness_explanation": "The generated answer explicitly states there is no record of Caroline going to an \"LGBTQ support group\" and provides an incorrect date (3 February 2026) for a different type of group (an \"action group\"). It fails to provide the correct date of 4 January 2026.",
+            "evidence": [
+              "D1:3"
+            ]
+          }
+        },
+        {
+          "question": "What fields would Caroline be likely to pursue in her educaton?",
+          "standard_answer": "Psychology, counseling certification",
+          "generated_answer": "Based on Caroline's interests and what I know about her, she'd likely be drawn to fields like:\n\n- **Psychology/Counseling** — given her strong interest in 心理咨询 and her caring, empathetic nature\n- **Social Work or Child Advocacy** — she's deeply passionate about helping vulnerable children\n- **Gender/Sexuality Studies** — her commitment to LGBTQ权益 suggests she'd gravitate toward this area\n- **Arts (Fine Arts, Music)** — with her love for 绘画, 钢琴, and 吉他, she might explore creative disciplines\n- **Education** — combining her desire to support others with her love for 阅读 and learning\n\nIt feels like she's someone who would naturally lean toward paths that blend helping people with creative or intellectual expression — maybe something like art therapy or music therapy could be a really fitting intersection for her.",
+          "is_correct": true,
+          "category": 3,
+          "storage_hit": true,
+          "retrieval_hit": false,
+          "rank_position": null,
+          "failure_type": "none",
+          "trace_summary": {
+            "resolved_layer": "category_only",
+            "top_contexts": [
+              "Melanie deeply values her family as her core support system and rock.",
+              "The user addresses the AI by the name \"Melanie\""
+            ],
+            "top_scores": [
+              0.1121,
+              0.0914
+            ],
+            "diagnosis_type": null
+          },
+          "trace_detail": {
+            "evaluation_trace": {
+              "storage_eval": {
+                "storage_hit": true,
+                "keywords": [
+                  "what",
+                  "fields",
+                  "would",
+                  "caroline",
+                  "likely",
+                  "pursue",
+                  "her",
+                  "educaton"
+                ],
+                "db_hits": {
+                  "resource_count": 46,
+                  "category_count": 33
+                },
+                "db_memories_sample": [
+                  {
+                    "id": "c0b8dcfd-5f96-4191-b3fd-e4576a52e970",
+                    "source": "resource",
+                    "text": "The user shared their excitement about being a mom and mentioned they are building a book library in preparation for having children. They expressed a strong desire to read to their future kids and nurture their curiosity and open-mindedness through books. The AI responded positively and asked what books they have collected so far.",
+                    "importance_score": 3,
+                    "updated_at": "2026-02-02T20:18:00+00:00",
+                    "matched_keyword": "what"
+                  },
+                  {
+                    "id": "21642627-47d6-4567-b25c-f86264439b94",
+                    "source": "resource",
+                    "text": "The user expressed heartfelt gratitude to someone named Melanie for her kind words and encouragement regarding a significant life commitment: providing a safe and loving home for some children (likely through foster care or adoption). The user affirmed their dedication to this responsibility. The AI responded with supportive and encouraging words, expressing confidence in the user's ability to provide love and stability.",
+                    "importance_score": 3,
+                    "updated_at": "2026-01-13T13:14:00+00:00",
+                    "matched_keyword": "likely"
+                  },
+                  {
+                    "id": "e4554626-c1dc-4293-906b-adf30201a61c",
+                    "source": "resource",
+                    "text": "The user shared a heartfelt reflection on their personal transition journey, expressing gratitude for the support they received from friends, family, and role models during difficult times. They credited this support with helping them discover their true identity and stated their desire to pay that support forward by helping others going through similar experiences. They emphasized that bringing comfort and helping others grow brings them deep joy. The AI responded with warm encouragement, calling the user inspiring.",
+                    "importance_score": 3,
+                    "updated_at": "2026-03-25T09:55:00+00:00",
+                    "matched_keyword": "her"
+                  },
+                  {
+                    "id": "5b25487d-52e1-4037-927e-449facb4eb26",
+                    "source": "resource",
+                    "text": "The user finds a sense of freedom through art and supportive communities. They are passionate about LGBTQ rights, living authentically, and helping others do the same. Their work positively impacts the LGBTQ+ community, giving them a sense of meaning in creating a more loving world. They credit friends, family, and mentors for their support, and this motivation continues to inspire their art practice.",
+                    "importance_score": 3,
+                    "updated_at": "2026-03-06T00:09:00+00:00",
+                    "matched_keyword": "her"
+                  },
+                  {
+                    "id": "32eebffc-3389-4c7f-a377-d62bd5d2d27c",
+                    "source": "resource",
+                    "text": "The user excitedly shared that they took a major life step this week by applying to adoption agencies, marking the beginning of their journey to become a mother. They mentioned receiving significant help from an adoption advice/assistance group they attended. The AI congratulated them, expressed pride, and asked about their feelings and whether they have any pets.",
+                    "importance_score": 3,
+                    "updated_at": "2026-02-24T15:31:00+00:00",
+                    "matched_keyword": "her"
+                  }
+                ]
+              }
+            },
+            "retrieval_layer": {
+              "resolved_layer": "category_only",
+              "is_sufficient_at_category": true,
+              "llm_classified_categories": [
+                "Core Self"
+              ],
+              "category_results_count": 5,
+              "resource_results_count": 0
+            },
+            "retrieved_contexts": [
+              "Melanie deeply values her family as her core support system and rock.",
+              "The user addresses the AI by the name \"Melanie\"",
+              "The user is deeply passionate about helping and caring for vulnerable children.",
+              "User's name is Caro.",
+              "The user has an interest in poetry readings."
+            ],
+            "retrieved_scores": [
+              0.1121,
+              0.0914,
+              0.0903,
+              0.0716,
+              0.0712
+            ],
+            "db_diagnosis": null,
+            "correctness_explanation": "The generated answer correctly includes \"Psychology/Counseling,\" which directly covers the key information (\"Psychology\", \"counseling certification\") required by the standard answer. The addition of other potential fields does not detract from the accurate inclusion of the required facts.",
+            "evidence": [
+              "D1:9",
+              "D1:11"
+            ]
+          }
+        },
+        {
+          "question": "What did Caroline research?",
+          "standard_answer": "Adoption agencies",
+          "generated_answer": "根据之前的对话，Caroline研究过**收养机构或律师**，这是她在分享收养流程的实用建议时提到的，包括收集所需文件（推荐信、财务信息和体检）以及为可能的艰难等待做好心理准备。",
+          "is_correct": true,
+          "category": 1,
+          "storage_hit": true,
+          "retrieval_hit": false,
+          "rank_position": null,
+          "failure_type": "none",
+          "trace_summary": {
+            "resolved_layer": "category+resource",
+            "top_contexts": [
+              "The user shared an inspiring experience from attending an LGBTQ celebration event last night (2026-02-19), describing a diverse crowd celebrating love and acceptance. They expressed that the event motivated them to continue fighting for LGBTQ rights. The user also indicated they work as an artist. The AI responded enthusiastically, reflecting on the importance of cultivating a loving environment and asked the user how they stay inclusive in their artistic work.",
+              "The user is a visual artist (painter)."
+            ],
+            "top_scores": [
+              0.0668,
+              0.0462
+            ],
+            "diagnosis_type": null
+          },
+          "trace_detail": {
+            "evaluation_trace": {
+              "storage_eval": {
+                "storage_hit": true,
+                "keywords": [
+                  "what",
+                  "did",
+                  "caroline",
+                  "research",
+                  "adoption",
+                  "agencies"
+                ],
+                "db_hits": {
+                  "resource_count": 37,
+                  "category_count": 18
+                },
+                "db_memories_sample": [
+                  {
+                    "id": "c0b8dcfd-5f96-4191-b3fd-e4576a52e970",
+                    "source": "resource",
+                    "text": "The user shared their excitement about being a mom and mentioned they are building a book library in preparation for having children. They expressed a strong desire to read to their future kids and nurture their curiosity and open-mindedness through books. The AI responded positively and asked what books they have collected so far.",
+                    "importance_score": 3,
+                    "updated_at": "2026-02-02T20:18:00+00:00",
+                    "matched_keyword": "what"
+                  },
+                  {
+                    "id": "e10a99f9-2ba3-43eb-b799-a2048958463a",
+                    "source": "resource",
+                    "text": "Researching adoption agencies — it's been a dream to have a family and give a loving home to kids who need it.",
+                    "importance_score": 3,
+                    "updated_at": "2026-01-13T13:14:00+00:00",
+                    "matched_keyword": "research"
+                  },
+                  {
+                    "id": "60196345-826f-4d8c-9437-a77515214f1c",
+                    "source": "resource",
+                    "text": "The user thanked someone named Melanie for something beautiful and reflected on the love found in both blood families and chosen families. The user shared a deeply personal life goal: they hope to build their own family through adoption, specifically to provide a home for children who haven't had one before. For the user, adoption represents a way of giving back and showing love and acceptance.",
+                    "importance_score": 3,
+                    "updated_at": "2026-03-25T09:55:00+00:00",
+                    "matched_keyword": "adoption"
+                  },
+                  {
+                    "id": "7ef23c10-de15-4356-90d8-93437276d611",
+                    "source": "resource",
+                    "text": "The user expressed excitement about starting the adoption process, describing it as a long-held dream to provide a safe, loving home for children in need. They asked the AI (addressed as \"Melanie\") about adoption experience. The AI shared that a friend adopted last year and is very happy, and mentioned it inspired thoughts of possibly adopting as well.",
+                    "importance_score": 3,
+                    "updated_at": "2026-03-20T10:31:00+00:00",
+                    "matched_keyword": "adoption"
+                  },
+                  {
+                    "id": "32eebffc-3389-4c7f-a377-d62bd5d2d27c",
+                    "source": "resource",
+                    "text": "The user excitedly shared that they took a major life step this week by applying to adoption agencies, marking the beginning of their journey to become a mother. They mentioned receiving significant help from an adoption advice/assistance group they attended. The AI congratulated them, expressed pride, and asked about their feelings and whether they have any pets.",
+                    "importance_score": 3,
+                    "updated_at": "2026-02-24T15:31:00+00:00",
+                    "matched_keyword": "adoption"
+                  }
+                ]
+              }
+            },
+            "retrieval_layer": {
+              "resolved_layer": "category+resource",
+              "is_sufficient_at_category": false,
+              "llm_classified_categories": [
+                "Knowledge Base"
+              ],
+              "category_results_count": 2,
+              "resource_results_count": 3
+            },
+            "retrieved_contexts": [
+              "The user shared an inspiring experience from attending an LGBTQ celebration event last night (2026-02-19), describing a diverse crowd celebrating love and acceptance. They expressed that the event motivated them to continue fighting for LGBTQ rights. The user also indicated they work as an artist. The AI responded enthusiastically, reflecting on the importance of cultivating a loving environment and asked the user how they stay inclusive in their artistic work.",
+              "The user is a visual artist (painter).",
+              "The user shared practical advice about the adoption process, mentioning the need to research adoption agencies or lawyers, gather required documents (references, financial information, and medical checks), and prepare emotionally for a potentially difficult wait. The user's remark \"It's all worth it in the end\" suggests personal experience with adoption. In response, the AI (or the person it represents) mentioned having a setback — getting hurt last month (around February 2026) and having to take a break from pottery, which is used for self-expression and peace.",
+              "The painting 'Embracing Identity' features a woman symbolizing a journey of acceptance",
+              "The user complimented a piece of artwork/design, noting that the blue color adds a lot to it, and asked about the intended feelings behind the piece. The AI explained that they wanted the peaceful blue streaks to convey tranquility, mentioning that blue is personally calming and they aimed for a serene vibe while still incorporating vibrant colors."
+            ],
+            "retrieved_scores": [
+              0.0668,
+              0.0462,
+              0.0372,
+              0.0357,
+              0.0301
+            ],
+            "db_diagnosis": null,
+            "correctness_explanation": "The generated answer explicitly includes \"adoption agencies\" (收养机构), which directly matches the key information in the standard answer. The addition of extra context and \"or lawyers\" does not contradict the standard answer and is acceptable under lenient phrasing guidelines.",
+            "evidence": [
+              "D2:8"
+            ]
+          }
+        },
+        {
+          "question": "What is Caroline's identity?",
+          "standard_answer": "Transgender woman",
+          "generated_answer": "根据我了解的信息，Caroline 的身份标注为 \"other\"。",
+          "is_correct": false,
+          "category": 1,
+          "storage_hit": true,
+          "retrieval_hit": false,
+          "rank_position": null,
+          "failure_type": "retrieval_gap",
+          "trace_summary": {
+            "resolved_layer": "category_only",
+            "top_contexts": [
+              "User's name is Caro.",
+              "The user addresses the AI by the name \"Melanie\""
+            ],
+            "top_scores": [
+              0.432,
+              0.2408
+            ],
+            "diagnosis_type": "retrieval_gap"
+          },
+          "trace_detail": {
+            "evaluation_trace": {
+              "storage_eval": {
+                "storage_hit": true,
+                "keywords": [
+                  "what",
+                  "caroline",
+                  "identity",
+                  "transgender",
+                  "woman"
+                ],
+                "db_hits": {
+                  "resource_count": 34,
+                  "category_count": 29
+                },
+                "db_memories_sample": [
+                  {
+                    "id": "c0b8dcfd-5f96-4191-b3fd-e4576a52e970",
+                    "source": "resource",
+                    "text": "The user shared their excitement about being a mom and mentioned they are building a book library in preparation for having children. They expressed a strong desire to read to their future kids and nurture their curiosity and open-mindedness through books. The AI responded positively and asked what books they have collected so far.",
+                    "importance_score": 3,
+                    "updated_at": "2026-02-02T20:18:00+00:00",
+                    "matched_keyword": "what"
+                  },
+                  {
+                    "id": "e4554626-c1dc-4293-906b-adf30201a61c",
+                    "source": "resource",
+                    "text": "The user shared a heartfelt reflection on their personal transition journey, expressing gratitude for the support they received from friends, family, and role models during difficult times. They credited this support with helping them discover their true identity and stated their desire to pay that support forward by helping others going through similar experiences. They emphasized that bringing comfort and helping others grow brings them deep joy. The AI responded with warm encouragement, calling the user inspiring.",
+                    "importance_score": 3,
+                    "updated_at": "2026-03-25T09:55:00+00:00",
+                    "matched_keyword": "identity"
+                  },
+                  {
+                    "id": "8fcec33c-fab9-4ded-9982-9235a30c343e",
+                    "source": "resource",
+                    "text": "The user expressed gratitude to someone named Mel for their support and shared their experience of giving a talk about their personal journey as a transgender person. They discussed their struggles and personal growth since coming out, and noted that the audience was deeply engaged and inspired to be better allies. The user spoke about gender identity and inclusion, expressing pride in giving a voice to the trans community. Reflecting on the importance of sharing personal experiences to promote understanding and acceptance, the user mentioned being blessed with love and support throughout their journey and expressed a desire to pass that support on to others by building a strong, supportive community of hope. The AI responded with encouragement, praising the user's bravery in advocating for the trans community and affirming the value of vulnerability and storytelling in creating connection and supporting others facing similar challenges.",
+                    "importance_score": 3,
+                    "updated_at": "2026-01-20T19:55:00+00:00",
+                    "matched_keyword": "identity"
+                  },
+                  {
+                    "id": "22283f1b-f645-4bab-8540-cb3e42c12d42",
+                    "source": "resource",
+                    "text": "The user shared that they created artwork for a local church, which depicts themes of time changing lives. The artwork represents their personal journey as a transgender woman and carries a message about accepting growth and change. The AI responded positively, praising the colors and the inspiring story behind the piece.",
+                    "importance_score": 3,
+                    "updated_at": "2026-02-25T13:33:00+00:00",
+                    "matched_keyword": "transgender"
+                  },
+                  {
+                    "id": "1c13f99e-312a-4fdc-9792-a0273378cd1d",
+                    "source": "resource",
+                    "text": "The user, Caro, shared a painting they created symbolizing their journey as a trans woman. The painting uses red and blue to represent the binary gender system, with mixed colors signifying the rejection of rigid gender thinking. Caro expressed that the painting is a reminder to love their authentic self and that they have reached a point of being proud of who they are after a long journey. The AI, Melanie, responded with encouragement and asked about how the journey has affected Caro's relationships.",
+                    "importance_score": 3,
+                    "updated_at": "2026-03-06T00:09:00+00:00",
+                    "matched_keyword": "woman"
+                  }
+                ]
+              }
+            },
+            "retrieval_layer": {
+              "resolved_layer": "category_only",
+              "is_sufficient_at_category": true,
+              "llm_classified_categories": [
+                "Core Self"
+              ],
+              "category_results_count": 5,
+              "resource_results_count": 0
+            },
+            "retrieved_contexts": [
+              "User's name is Caro.",
+              "The user addresses the AI by the name \"Melanie\"",
+              "Melanie deeply values her family as her core support system and rock.",
+              "The user is deeply passionate about helping and caring for vulnerable children.",
+              "The user has an interest in poetry readings."
+            ],
+            "retrieved_scores": [
+              0.432,
+              0.2408,
+              0.2326,
+              0.1949,
+              0.1334
+            ],
+            "db_diagnosis": {
+              "diagnosis_type": "retrieval_gap",
+              "summary": "数据库命中相关记忆但未被检索召回，倾向检索/排序失效",
+              "matched_in_retrieved": [],
+              "missed_in_retrieval": [
+                {
+                  "id": "c0b8dcfd-5f96-4191-b3fd-e4576a52e970",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-02-02T20:18:00+00:00",
+                  "matched_keyword": "what",
+                  "text_preview": "The user shared their excitement about being a mom and mentioned they are building a book library in preparation for having children. They expressed a strong..."
+                },
+                {
+                  "id": "e4554626-c1dc-4293-906b-adf30201a61c",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-03-25T09:55:00+00:00",
+                  "matched_keyword": "identity",
+                  "text_preview": "The user shared a heartfelt reflection on their personal transition journey, expressing gratitude for the support they received from friends, family, and rol..."
+                },
+                {
+                  "id": "8fcec33c-fab9-4ded-9982-9235a30c343e",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-01-20T19:55:00+00:00",
+                  "matched_keyword": "identity",
+                  "text_preview": "The user expressed gratitude to someone named Mel for their support and shared their experience of giving a talk about their personal journey as a transgende..."
+                },
+                {
+                  "id": "22283f1b-f645-4bab-8540-cb3e42c12d42",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-02-25T13:33:00+00:00",
+                  "matched_keyword": "transgender",
+                  "text_preview": "The user shared that they created artwork for a local church, which depicts themes of time changing lives. The artwork represents their personal journey as a..."
+                },
+                {
+                  "id": "1c13f99e-312a-4fdc-9792-a0273378cd1d",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-21T09:25:55.704434+00:00",
+                  "matched_keyword": "woman",
+                  "text_preview": "The user, Caro, shared a painting they created symbolizing their journey as a trans woman. The painting uses red and blue to represent the binary gender syst..."
+                }
+              ],
+              "llm_verification": {
+                "can_answer": true,
+                "reason": "片段[5]明确指出用户Caro（即Caroline）的画作象征其作为trans woman的旅程，足以得出其身份。",
+                "raw": "<can_answer>YES</can_answer>\n<reason>片段[5]明确指出用户Caro（即Caroline）的画作象征其作为trans woman的旅程，足以得出其身份。</reason>"
+              }
+            },
+            "correctness_explanation": "The generated answer states Caroline's identity is \"other\", which factually contradicts the standard answer that she is a \"Transgender woman\".",
+            "evidence": [
+              "D1:5"
+            ]
+          }
+        },
+        {
+          "question": "What is Caroline's relationship status?",
+          "standard_answer": "Single",
+          "generated_answer": "根据我目前了解的信息，我没有关于Caroline明确恋爱关系状态的具体信息。\n\n我知道的是：\n- 她通过了收养机构的面试，正在组建家庭\n- 她已经有孩子了\n- 她和一位叫Melanie的人关系很好，但不确定是否是恋爱关系\n- 她与LGBTQ社群有紧密联系\n\n如果你想了解更多，可能需要直接问她哦～",
+          "is_correct": false,
+          "category": 1,
+          "storage_hit": true,
+          "retrieval_hit": false,
+          "rank_position": null,
+          "failure_type": "retrieval_gap",
+          "trace_summary": {
+            "resolved_layer": "category+resource",
+            "top_contexts": [
+              "The user enthusiastically announced to Melanie that they passed adoption agency interviews last Friday (March 20, 2026), describing it as a significant step toward their goal of having a family. The AI congratulated them and asked about their future vision.",
+              "The user shared a recent negative hiking experience where they encountered religious conservatives who made upsetting remarks, which led them to reflect on the ongoing fight for LGBTQ rights. They expressed gratitude for their supportive community and affirmed they would be okay. The AI responded with empathy and mentioned having finished another pottery project, offering to share a picture."
+            ],
+            "top_scores": [
+              0.1223,
+              0.1042
+            ],
+            "diagnosis_type": "retrieval_gap"
+          },
+          "trace_detail": {
+            "evaluation_trace": {
+              "storage_eval": {
+                "storage_hit": true,
+                "keywords": [
+                  "what",
+                  "caroline",
+                  "relationship",
+                  "status",
+                  "single"
+                ],
+                "db_hits": {
+                  "resource_count": 25,
+                  "category_count": 9
+                },
+                "db_memories_sample": [
+                  {
+                    "id": "c0b8dcfd-5f96-4191-b3fd-e4576a52e970",
+                    "source": "resource",
+                    "text": "The user shared their excitement about being a mom and mentioned they are building a book library in preparation for having children. They expressed a strong desire to read to their future kids and nurture their curiosity and open-mindedness through books. The AI responded positively and asked what books they have collected so far.",
+                    "importance_score": 3,
+                    "updated_at": "2026-02-02T20:18:00+00:00",
+                    "matched_keyword": "what"
+                  },
+                  {
+                    "id": "1c13f99e-312a-4fdc-9792-a0273378cd1d",
+                    "source": "resource",
+                    "text": "The user, Caro, shared a painting they created symbolizing their journey as a trans woman. The painting uses red and blue to represent the binary gender system, with mixed colors signifying the rejection of rigid gender thinking. Caro expressed that the painting is a reminder to love their authentic self and that they have reached a point of being proud of who they are after a long journey. The AI, Melanie, responded with encouragement and asked about how the journey has affected Caro's relationships.",
+                    "importance_score": 3,
+                    "updated_at": "2026-03-06T00:09:00+00:00",
+                    "matched_keyword": "relationship"
+                  },
+                  {
+                    "id": "60864a3a-430f-44ed-8633-75f5fb1a79cd",
+                    "source": "resource",
+                    "text": "The user expressed excitement and commitment about becoming a single parent and creating a family for children in need, acknowledging the challenges but expressing readiness to take on the responsibility. The AI responded with encouragement and support.",
+                    "importance_score": 3,
+                    "updated_at": "2026-01-13T13:14:00+00:00",
+                    "matched_keyword": "single"
+                  },
+                  {
+                    "id": "a95894cf-2816-4125-9f9e-d2d91ff266ec",
+                    "source": "category",
+                    "category_name": "Social Graph",
+                    "text": "The user mentors a transgender teen and they have a positive, supportive relationship.",
+                    "importance_score": 3,
+                    "updated_at": "2026-02-07T14:31:00+00:00",
+                    "matched_keyword": "relationship"
+                  },
+                  {
+                    "id": "7b0144b9-abe1-4ae7-b4c3-5fc4cc8fe687",
+                    "source": "category",
+                    "category_name": "Core Self",
+                    "text": "The user is pursuing single parenthood to create a family for children in need, viewing it as a major life calling and core value.",
+                    "importance_score": 3,
+                    "updated_at": "2026-01-13T13:14:00+00:00",
+                    "matched_keyword": "single"
+                  }
+                ]
+              }
+            },
+            "retrieval_layer": {
+              "resolved_layer": "category+resource",
+              "is_sufficient_at_category": false,
+              "llm_classified_categories": [
+                "Social Graph"
+              ],
+              "category_results_count": 2,
+              "resource_results_count": 3
+            },
+            "retrieved_contexts": [
+              "The user enthusiastically announced to Melanie that they passed adoption agency interviews last Friday (March 20, 2026), describing it as a significant step toward their goal of having a family. The AI congratulated them and asked about their future vision.",
+              "The user shared a recent negative hiking experience where they encountered religious conservatives who made upsetting remarks, which led them to reflect on the ongoing fight for LGBTQ rights. They expressed gratitude for their supportive community and affirmed they would be okay. The AI responded with empathy and mentioned having finished another pottery project, offering to share a picture.",
+              "The user has a caring relationship with someone named Melanie who does pottery.",
+              "The user shared that they attended a pride parade last Friday (2026-02-13) and had an amazing experience. They described the event as full of energy and love, and expressed that it reinforced their commitment to standing up for equality. They also mentioned a friend named Mel who had been to a concert recently, indicating they hadn't spoken in a while (\"a lot's happened since we talked\").",
+              "The user has kids."
+            ],
+            "retrieved_scores": [
+              0.1223,
+              0.1042,
+              0.0884,
+              0.0868,
+              0.0845
+            ],
+            "db_diagnosis": {
+              "diagnosis_type": "retrieval_gap",
+              "summary": "数据库命中相关记忆但未被检索召回，倾向检索/排序失效",
+              "matched_in_retrieved": [],
+              "missed_in_retrieval": [
+                {
+                  "id": "c0b8dcfd-5f96-4191-b3fd-e4576a52e970",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-02-02T20:18:00+00:00",
+                  "matched_keyword": "what",
+                  "text_preview": "The user shared their excitement about being a mom and mentioned they are building a book library in preparation for having children. They expressed a strong..."
+                },
+                {
+                  "id": "1c13f99e-312a-4fdc-9792-a0273378cd1d",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-21T09:25:55.704434+00:00",
+                  "matched_keyword": "relationship",
+                  "text_preview": "The user, Caro, shared a painting they created symbolizing their journey as a trans woman. The painting uses red and blue to represent the binary gender syst..."
+                },
+                {
+                  "id": "60864a3a-430f-44ed-8633-75f5fb1a79cd",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-01-13T13:14:00+00:00",
+                  "matched_keyword": "single",
+                  "text_preview": "The user expressed excitement and commitment about becoming a single parent and creating a family for children in need, acknowledging the challenges but expr..."
+                },
+                {
+                  "id": "a95894cf-2816-4125-9f9e-d2d91ff266ec",
+                  "source": "category",
+                  "importance_score": 3,
+                  "updated_at": "2026-02-07T14:31:00+00:00",
+                  "matched_keyword": "relationship",
+                  "text_preview": "The user mentors a transgender teen and they have a positive, supportive relationship."
+                },
+                {
+                  "id": "7b0144b9-abe1-4ae7-b4c3-5fc4cc8fe687",
+                  "source": "category",
+                  "importance_score": 3,
+                  "updated_at": "2026-01-13T13:14:00+00:00",
+                  "matched_keyword": "single",
+                  "text_preview": "The user is pursuing single parenthood to create a family for children in need, viewing it as a major life calling and core value."
+                }
+              ],
+              "llm_verification": {
+                "can_answer": true,
+                "reason": "片段[3]和[5]明确提到用户正在追求并准备成为single parent（单亲父母），足以推断其关系状态为单身。",
+                "raw": "<can_answer>YES</can_answer>\n<reason>片段[3]和[5]明确提到用户正在追求并准备成为single parent（单亲父母），足以推断其关系状态为单身。</reason>"
+              }
+            },
+            "correctness_explanation": "The generated answer explicitly states that it does not have specific information about Caroline's relationship status, completely failing to provide the key information \"Single\" from the standard answer.",
+            "evidence": [
+              "D3:13",
+              "D2:14"
+            ]
+          }
+        },
+        {
+          "question": "When did Caroline give a speech at a school?",
+          "standard_answer": "The week before 20 January 2026",
+          "generated_answer": "I don't have any record of Caroline giving a speech at a school. The memories I have don't include that event. Could you share more details about it? I'd love to hear the story and remember it for next time.",
+          "is_correct": false,
+          "category": 2,
+          "storage_hit": true,
+          "retrieval_hit": false,
+          "rank_position": null,
+          "failure_type": "retrieval_gap",
+          "trace_summary": {
+            "resolved_layer": "category+resource",
+            "top_contexts": [
+              "Mel's son was involved in an accident around 2026-03-24; the other children were scared but reassured that their brother would be OK",
+              "User is hosting/participating in an LGBTQ art show in March 2026"
+            ],
+            "top_scores": [
+              0.1838,
+              0.1688
+            ],
+            "diagnosis_type": "retrieval_gap"
+          },
+          "trace_detail": {
+            "evaluation_trace": {
+              "storage_eval": {
+                "storage_hit": true,
+                "keywords": [
+                  "when",
+                  "did",
+                  "caroline",
+                  "give",
+                  "speech",
+                  "school",
+                  "the",
+                  "week"
+                ],
+                "db_hits": {
+                  "resource_count": 45,
+                  "category_count": 33
+                },
+                "db_memories_sample": [
+                  {
+                    "id": "e10a99f9-2ba3-43eb-b799-a2048958463a",
+                    "source": "resource",
+                    "text": "Researching adoption agencies — it's been a dream to have a family and give a loving home to kids who need it.",
+                    "importance_score": 3,
+                    "updated_at": "2026-01-13T13:14:00+00:00",
+                    "matched_keyword": "give"
+                  },
+                  {
+                    "id": "32eebffc-3389-4c7f-a377-d62bd5d2d27c",
+                    "source": "resource",
+                    "text": "The user excitedly shared that they took a major life step this week by applying to adoption agencies, marking the beginning of their journey to become a mother. They mentioned receiving significant help from an adoption advice/assistance group they attended. The AI congratulated them, expressed pride, and asked about their feelings and whether they have any pets.",
+                    "importance_score": 3,
+                    "updated_at": "2026-04-21T09:25:55.704434+00:00",
+                    "matched_keyword": "the"
+                  },
+                  {
+                    "id": "1c13f99e-312a-4fdc-9792-a0273378cd1d",
+                    "source": "resource",
+                    "text": "The user, Caro, shared a painting they created symbolizing their journey as a trans woman. The painting uses red and blue to represent the binary gender system, with mixed colors signifying the rejection of rigid gender thinking. Caro expressed that the painting is a reminder to love their authentic self and that they have reached a point of being proud of who they are after a long journey. The AI, Melanie, responded with encouragement and asked about how the journey has affected Caro's relationships.",
+                    "importance_score": 3,
+                    "updated_at": "2026-04-21T09:25:55.704434+00:00",
+                    "matched_keyword": "the"
+                  },
+                  {
+                    "id": "60196345-826f-4d8c-9437-a77515214f1c",
+                    "source": "resource",
+                    "text": "The user thanked someone named Melanie for something beautiful and reflected on the love found in both blood families and chosen families. The user shared a deeply personal life goal: they hope to build their own family through adoption, specifically to provide a home for children who haven't had one before. For the user, adoption represents a way of giving back and showing love and acceptance.",
+                    "importance_score": 3,
+                    "updated_at": "2026-04-21T09:25:55.704434+00:00",
+                    "matched_keyword": "the"
+                  },
+                  {
+                    "id": "05ad4845-551f-4569-8df7-f44ed9fc825e",
+                    "source": "resource",
+                    "text": "The user expressed their dream of creating a safe and loving home for children in need, emphasizing that love and acceptance are fundamental rights that everyone deserves. They conveyed deep passion and commitment toward helping these kids experience a nurturing environment. The AI responded with supportive encouragement, acknowledging and validating the user's dedication.",
+                    "importance_score": 3,
+                    "updated_at": "2026-03-25T09:55:00+00:00",
+                    "matched_keyword": "the"
+                  }
+                ]
+              }
+            },
+            "retrieval_layer": {
+              "resolved_layer": "category+resource",
+              "is_sufficient_at_category": false,
+              "llm_classified_categories": [
+                "Timeline"
+              ],
+              "category_results_count": 4,
+              "resource_results_count": 1
+            },
+            "retrieved_contexts": [
+              "Mel's son was involved in an accident around 2026-03-24; the other children were scared but reassured that their brother would be OK",
+              "User is hosting/participating in an LGBTQ art show in March 2026",
+              "The user attended a transgender poetry reading event.",
+              "Melanie joined a mentorship program for LGBTQ youth last weekend (around January 31 - February 1, 2026).",
+              "The user enthusiastically announced to Melanie that they passed adoption agency interviews last Friday (March 20, 2026), describing it as a significant step toward their goal of having a family. The AI congratulated them and asked about their future vision."
+            ],
+            "retrieved_scores": [
+              0.1838,
+              0.1688,
+              0.1523,
+              0.148,
+              0.1399
+            ],
+            "db_diagnosis": {
+              "diagnosis_type": "retrieval_gap",
+              "summary": "数据库命中相关记忆但未被检索召回，倾向检索/排序失效",
+              "matched_in_retrieved": [],
+              "missed_in_retrieval": [
+                {
+                  "id": "e10a99f9-2ba3-43eb-b799-a2048958463a",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-01-13T13:14:00+00:00",
+                  "matched_keyword": "give",
+                  "text_preview": "Researching adoption agencies — it's been a dream to have a family and give a loving home to kids who need it."
+                },
+                {
+                  "id": "32eebffc-3389-4c7f-a377-d62bd5d2d27c",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-21T09:25:55.704434+00:00",
+                  "matched_keyword": "the",
+                  "text_preview": "The user excitedly shared that they took a major life step this week by applying to adoption agencies, marking the beginning of their journey to become a mot..."
+                },
+                {
+                  "id": "1c13f99e-312a-4fdc-9792-a0273378cd1d",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-21T09:25:55.704434+00:00",
+                  "matched_keyword": "the",
+                  "text_preview": "The user, Caro, shared a painting they created symbolizing their journey as a trans woman. The painting uses red and blue to represent the binary gender syst..."
+                },
+                {
+                  "id": "60196345-826f-4d8c-9437-a77515214f1c",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-21T09:25:55.704434+00:00",
+                  "matched_keyword": "the",
+                  "text_preview": "The user thanked someone named Melanie for something beautiful and reflected on the love found in both blood families and chosen families. The user shared a..."
+                },
+                {
+                  "id": "05ad4845-551f-4569-8df7-f44ed9fc825e",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-03-25T09:55:00+00:00",
+                  "matched_keyword": "the",
+                  "text_preview": "The user expressed their dream of creating a safe and loving home for children in need, emphasizing that love and acceptance are fundamental rights that ever..."
+                }
+              ],
+              "llm_verification": {
+                "can_answer": false,
+                "reason": "片段仅提及Caro的收养计划、画作及家庭梦想，未包含任何关于在学校发表演讲的时间信息。",
+                "raw": "<can_answer>NO</can_answer>\n<reason>片段仅提及Caro的收养计划、画作及家庭梦想，未包含任何关于在学校发表演讲的时间信息。</reason>"
+              }
+            },
+            "correctness_explanation": "The generated answer fails to provide the key information from the standard answer. Instead of stating that Caroline gave a speech at a school the week before 20 January 2026, it incorrectly claims to have no record of the event.",
+            "evidence": [
+              "D3:1"
+            ]
+          }
+        },
+        {
+          "question": "When did Caroline meet up with her friends, family, and mentors?",
+          "standard_answer": "The week before 20 January 2026",
+          "generated_answer": "根据我现有的记忆，没有找到关于Caroline具体在什么时间与朋友、家人和导师见面的完整记录。\n\n我能从记忆中找到的相关信息包括：\n\n- **Melanie**（Caro的朋友）在2026年1月底至2月初左右参加了一个LGBTQ青年导师项目。\n- **2026年3月20日**，Caro通过了收养机构的面试，并兴奋地告诉了Melanie这个消息。\n- **2026年3月24日**左右，Mel的儿子发生了意外。\n- **2026年3月**，Caro参与/举办了一个LGBTQ艺术展。\n\n但这些记忆并没有详细记录Caroline与朋友、家人和导师具体见面的时间。如果你能提供更多细节，我可以帮你补充记录下来 😊",
+          "is_correct": false,
+          "category": 2,
+          "storage_hit": true,
+          "retrieval_hit": false,
+          "rank_position": null,
+          "failure_type": "retrieval_gap",
+          "trace_summary": {
+            "resolved_layer": "category+resource",
+            "top_contexts": [
+              "Melanie joined a mentorship program for LGBTQ youth last weekend (around January 31 - February 1, 2026).",
+              "Mel's son was involved in an accident around 2026-03-24; the other children were scared but reassured that their brother would be OK"
+            ],
+            "top_scores": [
+              0.3794,
+              0.3459
+            ],
+            "diagnosis_type": "retrieval_gap"
+          },
+          "trace_detail": {
+            "evaluation_trace": {
+              "storage_eval": {
+                "storage_hit": true,
+                "keywords": [
+                  "when",
+                  "did",
+                  "caroline",
+                  "meet",
+                  "with",
+                  "her",
+                  "friends",
+                  "family"
+                ],
+                "db_hits": {
+                  "resource_count": 59,
+                  "category_count": 66
+                },
+                "db_memories_sample": [
+                  {
+                    "id": "1c13f99e-312a-4fdc-9792-a0273378cd1d",
+                    "source": "resource",
+                    "text": "The user, Caro, shared a painting they created symbolizing their journey as a trans woman. The painting uses red and blue to represent the binary gender system, with mixed colors signifying the rejection of rigid gender thinking. Caro expressed that the painting is a reminder to love their authentic self and that they have reached a point of being proud of who they are after a long journey. The AI, Melanie, responded with encouragement and asked about how the journey has affected Caro's relationships.",
+                    "importance_score": 3,
+                    "updated_at": "2026-04-21T09:25:55.704434+00:00",
+                    "matched_keyword": "with"
+                  },
+                  {
+                    "id": "e4554626-c1dc-4293-906b-adf30201a61c",
+                    "source": "resource",
+                    "text": "The user shared a heartfelt reflection on their personal transition journey, expressing gratitude for the support they received from friends, family, and role models during difficult times. They credited this support with helping them discover their true identity and stated their desire to pay that support forward by helping others going through similar experiences. They emphasized that bringing comfort and helping others grow brings them deep joy. The AI responded with warm encouragement, calling the user inspiring.",
+                    "importance_score": 3,
+                    "updated_at": "2026-03-25T09:55:00+00:00",
+                    "matched_keyword": "with"
+                  },
+                  {
+                    "id": "05ad4845-551f-4569-8df7-f44ed9fc825e",
+                    "source": "resource",
+                    "text": "The user expressed their dream of creating a safe and loving home for children in need, emphasizing that love and acceptance are fundamental rights that everyone deserves. They conveyed deep passion and commitment toward helping these kids experience a nurturing environment. The AI responded with supportive encouragement, acknowledging and validating the user's dedication.",
+                    "importance_score": 3,
+                    "updated_at": "2026-03-25T09:55:00+00:00",
+                    "matched_keyword": "with"
+                  },
+                  {
+                    "id": "3bc9138c-7302-4496-a059-975ad1d699b4",
+                    "source": "resource",
+                    "text": "The user, Caro, shared a deeply personal reflection about their gender transition experience, expressing that finding the courage to transition and live authentically without fear has been the most rewarding part of their journey. They emphasized the freeing nature of authentic self-expression and the importance of having supportive people in their life. The AI responded with encouragement, acknowledging the significance of being true to oneself for mental health and inner peace.",
+                    "importance_score": 3,
+                    "updated_at": "2026-02-06T13:51:00+00:00",
+                    "matched_keyword": "with"
+                  },
+                  {
+                    "id": "29b3ad30-6ad6-42b1-ad54-fbe3b16b9a1c",
+                    "source": "resource",
+                    "text": "The user shared their personal experience with mental health struggles and how the support they received was transformative. This experience inspired them to explore counseling and mental health career options, driven by a desire to help others on their mental health journeys. The AI responded with encouragement and shared a personal anecdote about a book that inspired pursuing dreams.",
+                    "importance_score": 3,
+                    "updated_at": "2026-02-04T16:33:00+00:00",
+                    "matched_keyword": "with"
+                  }
+                ]
+              }
+            },
+            "retrieval_layer": {
+              "resolved_layer": "category+resource",
+              "is_sufficient_at_category": false,
+              "llm_classified_categories": [
+                "Social Graph",
+                "Timeline"
+              ],
+              "category_results_count": 4,
+              "resource_results_count": 1
+            },
+            "retrieved_contexts": [
+              "Melanie joined a mentorship program for LGBTQ youth last weekend (around January 31 - February 1, 2026).",
+              "Mel's son was involved in an accident around 2026-03-24; the other children were scared but reassured that their brother would be OK",
+              "Caro's friend/interlocutor is named Melanie, who is supportive of Caro's identity.",
+              "User is hosting/participating in an LGBTQ art show in March 2026",
+              "The user enthusiastically announced to Melanie that they passed adoption agency interviews last Friday (March 20, 2026), describing it as a significant step toward their goal of having a family. The AI congratulated them and asked about their future vision."
+            ],
+            "retrieved_scores": [
+              0.3794,
+              0.3459,
+              0.3182,
+              0.3138,
+              0.3095
+            ],
+            "db_diagnosis": {
+              "diagnosis_type": "retrieval_gap",
+              "summary": "数据库命中相关记忆但未被检索召回，倾向检索/排序失效",
+              "matched_in_retrieved": [],
+              "missed_in_retrieval": [
+                {
+                  "id": "1c13f99e-312a-4fdc-9792-a0273378cd1d",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-21T09:25:55.704434+00:00",
+                  "matched_keyword": "with",
+                  "text_preview": "The user, Caro, shared a painting they created symbolizing their journey as a trans woman. The painting uses red and blue to represent the binary gender syst..."
+                },
+                {
+                  "id": "e4554626-c1dc-4293-906b-adf30201a61c",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-03-25T09:55:00+00:00",
+                  "matched_keyword": "with",
+                  "text_preview": "The user shared a heartfelt reflection on their personal transition journey, expressing gratitude for the support they received from friends, family, and rol..."
+                },
+                {
+                  "id": "05ad4845-551f-4569-8df7-f44ed9fc825e",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-03-25T09:55:00+00:00",
+                  "matched_keyword": "with",
+                  "text_preview": "The user expressed their dream of creating a safe and loving home for children in need, emphasizing that love and acceptance are fundamental rights that ever..."
+                },
+                {
+                  "id": "3bc9138c-7302-4496-a059-975ad1d699b4",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-02-06T13:51:00+00:00",
+                  "matched_keyword": "with",
+                  "text_preview": "The user, Caro, shared a deeply personal reflection about their gender transition experience, expressing that finding the courage to transition and live auth..."
+                },
+                {
+                  "id": "29b3ad30-6ad6-42b1-ad54-fbe3b16b9a1c",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-02-04T16:33:00+00:00",
+                  "matched_keyword": "with",
+                  "text_preview": "The user shared their personal experience with mental health struggles and how the support they received was transformative. This experience inspired them to..."
+                }
+              ],
+              "llm_verification": {
+                "can_answer": false,
+                "reason": "片段仅提及Caro受到朋友、家人和榜样的支持，未包含任何关于他们见面的具体时间信息。",
+                "raw": "<can_answer>NO</can_answer>\n<reason>片段仅提及Caro受到朋友、家人和榜样的支持，未包含任何关于他们见面的具体时间信息。</reason>"
+              }
+            },
+            "correctness_explanation": "The generated answer fails to provide the key information. Instead of stating that Caroline met up with her friends, family, and mentors \"the week before 20 January 2026,\" it incorrectly claims that no such record exists in the memory.",
+            "evidence": [
+              "D3:11"
+            ]
+          }
+        },
+        {
+          "question": "How long has Caroline had her current group of friends for?",
+          "standard_answer": "4 years",
+          "generated_answer": "I don't have specific information about how long this friend group has been together. From what I know, Melanie is someone close who's been supportive, and there are connections through LGBTQ community activities like the mentorship program and art show — but I don't actually know when these friendships first formed.\n\nThat's something you'd know better than me! Is this something you've been thinking about lately?",
+          "is_correct": false,
+          "category": 2,
+          "storage_hit": true,
+          "retrieval_hit": false,
+          "rank_position": null,
+          "failure_type": "retrieval_gap",
+          "trace_summary": {
+            "resolved_layer": "category_only",
+            "top_contexts": [
+              "Mel's son was involved in an accident around 2026-03-24; the other children were scared but reassured that their brother would be OK",
+              "Melanie joined a mentorship program for LGBTQ youth last weekend (around January 31 - February 1, 2026)."
+            ],
+            "top_scores": [
+              0.336,
+              0.3232
+            ],
+            "diagnosis_type": "retrieval_gap"
+          },
+          "trace_detail": {
+            "evaluation_trace": {
+              "storage_eval": {
+                "storage_hit": true,
+                "keywords": [
+                  "how",
+                  "long",
+                  "has",
+                  "caroline",
+                  "had",
+                  "her",
+                  "current",
+                  "group"
+                ],
+                "db_hits": {
+                  "resource_count": 72,
+                  "category_count": 72
+                },
+                "db_memories_sample": [
+                  {
+                    "id": "60196345-826f-4d8c-9437-a77515214f1c",
+                    "source": "resource",
+                    "text": "The user thanked someone named Melanie for something beautiful and reflected on the love found in both blood families and chosen families. The user shared a deeply personal life goal: they hope to build their own family through adoption, specifically to provide a home for children who haven't had one before. For the user, adoption represents a way of giving back and showing love and acceptance.",
+                    "importance_score": 3,
+                    "updated_at": "2026-04-21T09:25:55.704434+00:00",
+                    "matched_keyword": "how"
+                  },
+                  {
+                    "id": "1c13f99e-312a-4fdc-9792-a0273378cd1d",
+                    "source": "resource",
+                    "text": "The user, Caro, shared a painting they created symbolizing their journey as a trans woman. The painting uses red and blue to represent the binary gender system, with mixed colors signifying the rejection of rigid gender thinking. Caro expressed that the painting is a reminder to love their authentic self and that they have reached a point of being proud of who they are after a long journey. The AI, Melanie, responded with encouragement and asked about how the journey has affected Caro's relationships.",
+                    "importance_score": 3,
+                    "updated_at": "2026-04-21T09:25:55.704434+00:00",
+                    "matched_keyword": "how"
+                  },
+                  {
+                    "id": "c05de023-a104-42f1-8abc-f77e1a017dda",
+                    "source": "resource",
+                    "text": "The user shared that art has been a meaningful tool for them to explore their transition and changing body, helping them process their experiences. They expressed appreciation for how art teaches them to accept the beauty of imperfections.",
+                    "importance_score": 3,
+                    "updated_at": "2026-02-20T14:24:00+00:00",
+                    "matched_keyword": "how"
+                  },
+                  {
+                    "id": "29b3ad30-6ad6-42b1-ad54-fbe3b16b9a1c",
+                    "source": "resource",
+                    "text": "The user shared their personal experience with mental health struggles and how the support they received was transformative. This experience inspired them to explore counseling and mental health career options, driven by a desire to help others on their mental health journeys. The AI responded with encouragement and shared a personal anecdote about a book that inspired pursuing dreams.",
+                    "importance_score": 3,
+                    "updated_at": "2026-02-04T16:33:00+00:00",
+                    "matched_keyword": "how"
+                  },
+                  {
+                    "id": "7ef23c10-de15-4356-90d8-93437276d611",
+                    "source": "resource",
+                    "text": "The user expressed excitement about starting the adoption process, describing it as a long-held dream to provide a safe, loving home for children in need. They asked the AI (addressed as \"Melanie\") about adoption experience. The AI shared that a friend adopted last year and is very happy, and mentioned it inspired thoughts of possibly adopting as well.",
+                    "importance_score": 3,
+                    "updated_at": "2026-03-20T10:31:00+00:00",
+                    "matched_keyword": "long"
+                  }
+                ]
+              }
+            },
+            "retrieval_layer": {
+              "resolved_layer": "category_only",
+              "is_sufficient_at_category": true,
+              "llm_classified_categories": [
+                "Social Graph",
+                "Timeline"
+              ],
+              "category_results_count": 5,
+              "resource_results_count": 0
+            },
+            "retrieved_contexts": [
+              "Mel's son was involved in an accident around 2026-03-24; the other children were scared but reassured that their brother would be OK",
+              "Melanie joined a mentorship program for LGBTQ youth last weekend (around January 31 - February 1, 2026).",
+              "User is hosting/participating in an LGBTQ art show in March 2026",
+              "Caro's friend/interlocutor is named Melanie, who is supportive of Caro's identity.",
+              "Melanie has family support that helps her during difficult times."
+            ],
+            "retrieved_scores": [
+              0.336,
+              0.3232,
+              0.3219,
+              0.3127,
+              0.2749
+            ],
+            "db_diagnosis": {
+              "diagnosis_type": "retrieval_gap",
+              "summary": "数据库命中相关记忆但未被检索召回，倾向检索/排序失效",
+              "matched_in_retrieved": [],
+              "missed_in_retrieval": [
+                {
+                  "id": "1c13f99e-312a-4fdc-9792-a0273378cd1d",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-21T09:25:55.704434+00:00",
+                  "matched_keyword": "how",
+                  "text_preview": "The user, Caro, shared a painting they created symbolizing their journey as a trans woman. The painting uses red and blue to represent the binary gender syst..."
+                },
+                {
+                  "id": "60196345-826f-4d8c-9437-a77515214f1c",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-21T09:25:55.704434+00:00",
+                  "matched_keyword": "how",
+                  "text_preview": "The user thanked someone named Melanie for something beautiful and reflected on the love found in both blood families and chosen families. The user shared a..."
+                },
+                {
+                  "id": "c05de023-a104-42f1-8abc-f77e1a017dda",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-02-20T14:24:00+00:00",
+                  "matched_keyword": "how",
+                  "text_preview": "The user shared that art has been a meaningful tool for them to explore their transition and changing body, helping them process their experiences. They expr..."
+                },
+                {
+                  "id": "29b3ad30-6ad6-42b1-ad54-fbe3b16b9a1c",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-02-04T16:33:00+00:00",
+                  "matched_keyword": "how",
+                  "text_preview": "The user shared their personal experience with mental health struggles and how the support they received was transformative. This experience inspired them to..."
+                },
+                {
+                  "id": "7ef23c10-de15-4356-90d8-93437276d611",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-03-20T10:31:00+00:00",
+                  "matched_keyword": "long",
+                  "text_preview": "The user expressed excitement about starting the adoption process, describing it as a long-held dream to provide a safe, loving home for children in need. Th..."
+                }
+              ],
+              "llm_verification": {
+                "can_answer": false,
+                "reason": "片段仅涉及画作、收养意愿和心理健康等，未提及Caroline及其朋友圈的时间信息。",
+                "raw": "<can_answer>NO</can_answer>\n<reason>片段仅涉及画作、收养意愿和心理健康等，未提及Caroline及其朋友圈的时间信息。</reason>"
+              }
+            },
+            "correctness_explanation": "The generated answer explicitly states that it does not have the specific information about how long the friend group has been together, completely failing to provide the factual answer of \"4 years\" required by the standard answer.",
+            "evidence": [
+              "D3:13"
+            ]
+          }
+        },
+        {
+          "question": "Where did Caroline move from 4 years ago?",
+          "standard_answer": "Sweden",
+          "generated_answer": "我没有关于你四年前从哪里搬来的信息。如果你愿意的话，可以告诉我呀～",
+          "is_correct": false,
+          "category": 1,
+          "storage_hit": true,
+          "retrieval_hit": false,
+          "rank_position": null,
+          "failure_type": "retrieval_gap",
+          "trace_summary": {
+            "resolved_layer": "category+resource",
+            "top_contexts": [
+              "Mel's son was involved in an accident around 2026-03-24; the other children were scared but reassured that their brother would be OK",
+              "User is hosting/participating in an LGBTQ art show in March 2026"
+            ],
+            "top_scores": [
+              0.2987,
+              0.2755
+            ],
+            "diagnosis_type": "retrieval_gap"
+          },
+          "trace_detail": {
+            "evaluation_trace": {
+              "storage_eval": {
+                "storage_hit": true,
+                "keywords": [
+                  "where",
+                  "did",
+                  "caroline",
+                  "move",
+                  "from",
+                  "years",
+                  "ago",
+                  "sweden"
+                ],
+                "db_hits": {
+                  "resource_count": 32,
+                  "category_count": 23
+                },
+                "db_memories_sample": [
+                  {
+                    "id": "32eebffc-3389-4c7f-a377-d62bd5d2d27c",
+                    "source": "resource",
+                    "text": "The user excitedly shared that they took a major life step this week by applying to adoption agencies, marking the beginning of their journey to become a mother. They mentioned receiving significant help from an adoption advice/assistance group they attended. The AI congratulated them, expressed pride, and asked about their feelings and whether they have any pets.",
+                    "importance_score": 3,
+                    "updated_at": "2026-04-21T09:25:55.704434+00:00",
+                    "matched_keyword": "from"
+                  },
+                  {
+                    "id": "e4554626-c1dc-4293-906b-adf30201a61c",
+                    "source": "resource",
+                    "text": "The user shared a heartfelt reflection on their personal transition journey, expressing gratitude for the support they received from friends, family, and role models during difficult times. They credited this support with helping them discover their true identity and stated their desire to pay that support forward by helping others going through similar experiences. They emphasized that bringing comfort and helping others grow brings them deep joy. The AI responded with warm encouragement, calling the user inspiring.",
+                    "importance_score": 3,
+                    "updated_at": "2026-03-25T09:55:00+00:00",
+                    "matched_keyword": "from"
+                  },
+                  {
+                    "id": "f2d81c3b-2764-4bbb-89a2-bad75c6d1307",
+                    "source": "resource",
+                    "text": "The user expressed their goal of adopting children and giving them a loving home. They shared gratitude for support received from friends and mentors, and mentioned they are looking into a specific adoption agency (which they shared a link/reference to). They described feeling hopeful and optimistic about the process ahead, acknowledging the hard work required to turn this dream into reality.",
+                    "importance_score": 3,
+                    "updated_at": "2026-01-13T13:14:00+00:00",
+                    "matched_keyword": "from"
+                  },
+                  {
+                    "id": "b8ccd735-fd84-4097-8af9-10e75971280d",
+                    "source": "category",
+                    "category_name": "Core Self",
+                    "text": "Caro deeply values authentic self-expression, freedom from fear, and living as their true self.",
+                    "importance_score": 3,
+                    "updated_at": "2026-02-06T13:51:00+00:00",
+                    "matched_keyword": "from"
+                  },
+                  {
+                    "id": "22c86974-9d57-4752-bc62-8fc8b6e60120",
+                    "source": "category",
+                    "category_name": "Core Self",
+                    "text": "User is from Sweden (their home country)",
+                    "importance_score": 3,
+                    "updated_at": "2026-01-28T10:37:00+00:00",
+                    "matched_keyword": "from"
+                  }
+                ]
+              }
+            },
+            "retrieval_layer": {
+              "resolved_layer": "category+resource",
+              "is_sufficient_at_category": false,
+              "llm_classified_categories": [
+                "Timeline"
+              ],
+              "category_results_count": 4,
+              "resource_results_count": 1
+            },
+            "retrieved_contexts": [
+              "Mel's son was involved in an accident around 2026-03-24; the other children were scared but reassured that their brother would be OK",
+              "User is hosting/participating in an LGBTQ art show in March 2026",
+              "Melanie joined a mentorship program for LGBTQ youth last weekend (around January 31 - February 1, 2026).",
+              "The user enthusiastically announced to Melanie that they passed adoption agency interviews last Friday (March 20, 2026), describing it as a significant step toward their goal of having a family. The AI congratulated them and asked about their future vision.",
+              "User joined a new LGBTQ activist group on 2026-02-03 (Tuesday)."
+            ],
+            "retrieved_scores": [
+              0.2987,
+              0.2755,
+              0.2288,
+              0.1694,
+              0.1454
+            ],
+            "db_diagnosis": {
+              "diagnosis_type": "retrieval_gap",
+              "summary": "数据库命中相关记忆但未被检索召回，倾向检索/排序失效",
+              "matched_in_retrieved": [],
+              "missed_in_retrieval": [
+                {
+                  "id": "32eebffc-3389-4c7f-a377-d62bd5d2d27c",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-21T09:25:55.704434+00:00",
+                  "matched_keyword": "from",
+                  "text_preview": "The user excitedly shared that they took a major life step this week by applying to adoption agencies, marking the beginning of their journey to become a mot..."
+                },
+                {
+                  "id": "e4554626-c1dc-4293-906b-adf30201a61c",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-03-25T09:55:00+00:00",
+                  "matched_keyword": "from",
+                  "text_preview": "The user shared a heartfelt reflection on their personal transition journey, expressing gratitude for the support they received from friends, family, and rol..."
+                },
+                {
+                  "id": "f2d81c3b-2764-4bbb-89a2-bad75c6d1307",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-01-13T13:14:00+00:00",
+                  "matched_keyword": "from",
+                  "text_preview": "The user expressed their goal of adopting children and giving them a loving home. They shared gratitude for support received from friends and mentors, and me..."
+                },
+                {
+                  "id": "b8ccd735-fd84-4097-8af9-10e75971280d",
+                  "source": "category",
+                  "importance_score": 3,
+                  "updated_at": "2026-02-06T13:51:00+00:00",
+                  "matched_keyword": "from",
+                  "text_preview": "Caro deeply values authentic self-expression, freedom from fear, and living as their true self."
+                },
+                {
+                  "id": "22c86974-9d57-4752-bc62-8fc8b6e60120",
+                  "source": "category",
+                  "importance_score": 3,
+                  "updated_at": "2026-01-28T10:37:00+00:00",
+                  "matched_keyword": "from",
+                  "text_preview": "User is from Sweden (their home country)"
+                }
+              ],
+              "llm_verification": {
+                "can_answer": false,
+                "reason": "片段仅提及用户来自瑞典，未包含“4年前搬来”的时间信息，无法支撑该具体问题的回答。",
+                "raw": "<can_answer>NO</can_answer>\n<reason>片段仅提及用户来自瑞典，未包含“4年前搬来”的时间信息，无法支撑该具体问题的回答。</reason>"
+              }
+            },
+            "correctness_explanation": "The generated answer explicitly states that it does not have the information and fails to provide the key fact from the standard answer, which is \"Sweden\".",
+            "evidence": [
+              "D3:13",
+              "D4:3"
+            ]
+          }
+        },
+        {
+          "question": "How long ago was Caroline's 18th birthday?",
+          "standard_answer": "10 years ago",
+          "generated_answer": "我没有关于你18岁生日时间的信息呢，没有记录过你的出生日期。你能告诉我吗？",
+          "is_correct": false,
+          "category": 2,
+          "storage_hit": true,
+          "retrieval_hit": false,
+          "rank_position": null,
+          "failure_type": "retrieval_gap",
+          "trace_summary": {
+            "resolved_layer": "category+resource",
+            "top_contexts": [
+              "Mel's son was involved in an accident around 2026-03-24; the other children were scared but reassured that their brother would be OK",
+              "User is hosting/participating in an LGBTQ art show in March 2026"
+            ],
+            "top_scores": [
+              0.3863,
+              0.3718
+            ],
+            "diagnosis_type": "retrieval_gap"
+          },
+          "trace_detail": {
+            "evaluation_trace": {
+              "storage_eval": {
+                "storage_hit": true,
+                "keywords": [
+                  "how",
+                  "long",
+                  "ago",
+                  "was",
+                  "caroline",
+                  "birthday",
+                  "years"
+                ],
+                "db_hits": {
+                  "resource_count": 52,
+                  "category_count": 27
+                },
+                "db_memories_sample": [
+                  {
+                    "id": "60196345-826f-4d8c-9437-a77515214f1c",
+                    "source": "resource",
+                    "text": "The user thanked someone named Melanie for something beautiful and reflected on the love found in both blood families and chosen families. The user shared a deeply personal life goal: they hope to build their own family through adoption, specifically to provide a home for children who haven't had one before. For the user, adoption represents a way of giving back and showing love and acceptance.",
+                    "importance_score": 3,
+                    "updated_at": "2026-04-21T09:25:55.704434+00:00",
+                    "matched_keyword": "how"
+                  },
+                  {
+                    "id": "1c13f99e-312a-4fdc-9792-a0273378cd1d",
+                    "source": "resource",
+                    "text": "The user, Caro, shared a painting they created symbolizing their journey as a trans woman. The painting uses red and blue to represent the binary gender system, with mixed colors signifying the rejection of rigid gender thinking. Caro expressed that the painting is a reminder to love their authentic self and that they have reached a point of being proud of who they are after a long journey. The AI, Melanie, responded with encouragement and asked about how the journey has affected Caro's relationships.",
+                    "importance_score": 3,
+                    "updated_at": "2026-04-21T09:25:55.704434+00:00",
+                    "matched_keyword": "how"
+                  },
+                  {
+                    "id": "c05de023-a104-42f1-8abc-f77e1a017dda",
+                    "source": "resource",
+                    "text": "The user shared that art has been a meaningful tool for them to explore their transition and changing body, helping them process their experiences. They expressed appreciation for how art teaches them to accept the beauty of imperfections.",
+                    "importance_score": 3,
+                    "updated_at": "2026-02-20T14:24:00+00:00",
+                    "matched_keyword": "how"
+                  },
+                  {
+                    "id": "29b3ad30-6ad6-42b1-ad54-fbe3b16b9a1c",
+                    "source": "resource",
+                    "text": "The user shared their personal experience with mental health struggles and how the support they received was transformative. This experience inspired them to explore counseling and mental health career options, driven by a desire to help others on their mental health journeys. The AI responded with encouragement and shared a personal anecdote about a book that inspired pursuing dreams.",
+                    "importance_score": 3,
+                    "updated_at": "2026-02-04T16:33:00+00:00",
+                    "matched_keyword": "how"
+                  },
+                  {
+                    "id": "7ef23c10-de15-4356-90d8-93437276d611",
+                    "source": "resource",
+                    "text": "The user expressed excitement about starting the adoption process, describing it as a long-held dream to provide a safe, loving home for children in need. They asked the AI (addressed as \"Melanie\") about adoption experience. The AI shared that a friend adopted last year and is very happy, and mentioned it inspired thoughts of possibly adopting as well.",
+                    "importance_score": 3,
+                    "updated_at": "2026-03-20T10:31:00+00:00",
+                    "matched_keyword": "long"
+                  }
+                ]
+              }
+            },
+            "retrieval_layer": {
+              "resolved_layer": "category+resource",
+              "is_sufficient_at_category": false,
+              "llm_classified_categories": [
+                "Timeline"
+              ],
+              "category_results_count": 3,
+              "resource_results_count": 2
+            },
+            "retrieved_contexts": [
+              "Mel's son was involved in an accident around 2026-03-24; the other children were scared but reassured that their brother would be OK",
+              "User is hosting/participating in an LGBTQ art show in March 2026",
+              "Melanie joined a mentorship program for LGBTQ youth last weekend (around January 31 - February 1, 2026).",
+              "The user enthusiastically announced to Melanie that they passed adoption agency interviews last Friday (March 20, 2026), describing it as a significant step toward their goal of having a family. The AI congratulated them and asked about their future vision.",
+              "The user commented on a photo, asking if it was recent. The AI (or the person represented) confirmed the photo was from yesterday (March 23, 2026), mentioned the kids loved the activity, and noted it was a nice way to relax after a road trip."
+            ],
+            "retrieved_scores": [
+              0.3863,
+              0.3718,
+              0.2845,
+              0.2271,
+              0.2249
+            ],
+            "db_diagnosis": {
+              "diagnosis_type": "retrieval_gap",
+              "summary": "数据库命中相关记忆但未被检索召回，倾向检索/排序失效",
+              "matched_in_retrieved": [],
+              "missed_in_retrieval": [
+                {
+                  "id": "1c13f99e-312a-4fdc-9792-a0273378cd1d",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-21T09:25:55.704434+00:00",
+                  "matched_keyword": "how",
+                  "text_preview": "The user, Caro, shared a painting they created symbolizing their journey as a trans woman. The painting uses red and blue to represent the binary gender syst..."
+                },
+                {
+                  "id": "60196345-826f-4d8c-9437-a77515214f1c",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-21T09:25:55.704434+00:00",
+                  "matched_keyword": "how",
+                  "text_preview": "The user thanked someone named Melanie for something beautiful and reflected on the love found in both blood families and chosen families. The user shared a..."
+                },
+                {
+                  "id": "c05de023-a104-42f1-8abc-f77e1a017dda",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-02-20T14:24:00+00:00",
+                  "matched_keyword": "how",
+                  "text_preview": "The user shared that art has been a meaningful tool for them to explore their transition and changing body, helping them process their experiences. They expr..."
+                },
+                {
+                  "id": "29b3ad30-6ad6-42b1-ad54-fbe3b16b9a1c",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-02-04T16:33:00+00:00",
+                  "matched_keyword": "how",
+                  "text_preview": "The user shared their personal experience with mental health struggles and how the support they received was transformative. This experience inspired them to..."
+                },
+                {
+                  "id": "7ef23c10-de15-4356-90d8-93437276d611",
+                  "source": "resource",
+                  "importance_score": 3,
+                  "updated_at": "2026-03-20T10:31:00+00:00",
+                  "matched_keyword": "long",
+                  "text_preview": "The user expressed excitement about starting the adoption process, describing it as a long-held dream to provide a safe, loving home for children in need. Th..."
+                }
+              ],
+              "llm_verification": {
+                "can_answer": false,
+                "reason": "片段仅提及Caro的艺术创作、收养计划及心理健康经历，未包含任何关于其18岁生日及距今时间的信息。",
+                "raw": "<can_answer>NO</can_answer>\n<reason>片段仅提及Caro的艺术创作、收养计划及心理健康经历，未包含任何关于其18岁生日及距今时间的信息。</reason>"
+              }
+            },
+            "correctness_explanation": "The generated answer completely fails to provide the key information. Instead of stating that Caroline's 18th birthday was 10 years ago, it claims to have no record of the birth date and asks the user for the information.",
+            "evidence": [
+              "D4:5"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

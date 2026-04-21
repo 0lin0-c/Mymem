@@ -582,7 +582,7 @@ User 表已有两个模板字段用于存储个性化配置：
 | `raw_content` | **用户原始输入**（用户提问/图片路径/语音路径/视频路径） |
 | `description` | **对话的综合摘要**（LLM 生成的客观第三人称描述，用于向量化） |
 | `description_vector` | description 的 1536 维向量 |
-| `importance_score` | 对综合摘要的整体重要性评分 (1-10)，详见 [打分细则](./IMPORTANCE_SCORING.md) |
+| `importance_score` | 对综合摘要的整体重要性评分 (0-3)，详见 [打分细则](./IMPORTANCE_SCORING.md) |
 | `assistant_response` | **AI 回复的总结**（LLM 对回答内容的精简摘要） |
 | `created_at` | 创建时间 |
 | `updated_at` | 更新时间（合并/覆盖时更新，用于遗忘曲线计算） |
@@ -1055,7 +1055,7 @@ EffectiveScore = Importance × e^(-Days / (Importance × 5)) × (1 + log(AccessC
 ```
 
 **公式拆解**：
-- `Importance`：原始重要性评分 (1-10)
+- `Importance`：原始重要性评分 (0-3)
 - `Days`：距创建/最后访问的天数
 - `AccessCount`：被检索引用的次数
 - `e^(-Days / (Importance × 5))`：时间衰减因子（半衰期与重要性正相关）
@@ -1079,7 +1079,7 @@ def calculate_decay(importance_score: int, days_since_access: int) -> float:
     """计算衰减后的有效重要性
 
     Args:
-        importance_score: 原始重要性 (1-10)
+        importance_score: 原始重要性 (0-3)
         days_since_access: 距上次访问的天数
 
     Returns:

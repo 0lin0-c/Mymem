@@ -9,6 +9,10 @@ from sqlalchemy import text, select
 from services.llm.base import BaseLLMProvider
 from services.retrieval.vector_strategy import VectorStrategy
 from services.memory.dedup_config import cosine_distance_to_similarity
+from services.retrieval.scoring_config import (
+    DEFAULT_RETRIEVAL_SCORING_CONFIG,
+    RetrievalScoringConfig,
+)
 from repositories import CategoryRepository, ResourceRepository
 from tables import Resource, Category
 
@@ -17,7 +21,7 @@ logger = logging.getLogger(__name__)
 # 四因子评分阈值（详见 retrieval-pipeline/config/scoring.md）
 FOUR_FACTOR_THRESHOLD_HIGH = 0.6   # 降级策略：足够
 FOUR_FACTOR_THRESHOLD_MEDIUM = 0.2
-FOUR_FACTOR_THRESHOLD_LOW = 0.1    # 过滤阈值
+FOUR_FACTOR_THRESHOLD_LOW = 0.03   # 过滤阈值（0-3 importance + 温和权重后整体分数更低）
 
 # 四因子评分参数
 RECENCY_DECAY_DAYS = 60  # 时间衰减半衰期（天）
@@ -51,6 +55,7 @@ class MemoryRetriever:
         query: str,
         top_k: int = 5,
         use_llm_classification: bool = True,
+        scoring_config: RetrievalScoringConfig | None = None,
     ) -> List[Dict[str, Any]]:
         """检索相关记忆
 
@@ -64,6 +69,7 @@ class MemoryRetriever:
             检索结果列表，每项包含 resource, score, strategy, category
         """
         results = []
+        scoring_config = scoring_config or DEFAULT_RETRIEVAL_SCORING_CONFIG
 
         # Step 1: LLM 分类判断
         categories = []
@@ -79,6 +85,7 @@ class MemoryRetriever:
                 categories=categories,
                 query=query,
                 top_k=top_k,
+                scoring_config=scoring_config,
             )
             logger.info(f"Category 层检索结果: {len(category_results)} 条")
 
@@ -97,6 +104,7 @@ class MemoryRetriever:
                     categories=categories,
                     query=query,
                     top_k=top_k,
+                    scoring_config=scoring_config,
                 )
                 logger.info(f"Resource 层检索结果: {len(resource_results)} 条")
                 results = self._merge_results(category_results, resource_results)
@@ -106,6 +114,7 @@ class MemoryRetriever:
                     user_id=user_id,
                     query=query,
                     top_k=top_k,
+                    scoring_config=scoring_config,
                 )
 
         # Step 5: 去重、排序、阈值过滤
@@ -137,7 +146,7 @@ class MemoryRetriever:
 
         try:
             response = await self.llm.generate_chat_response(
-                system_prompt="你是一个分类专家，擅长判断用户问题属于哪个记忆分类。",
+                system_prompt="You are a classification expert, skilled at determining which memory category a user question belongs to.",
                 context="",
                 user_query=prompt,
             )
@@ -164,35 +173,35 @@ class MemoryRetriever:
         return list(stats.keys()) if stats else []
 
     def _build_classification_prompt(self, query: str, available_categories: List[str]) -> str:
-        """构建分类判断 prompt
+        """Build classification prompt
 
         Args:
-            query: 用户查询
-            available_categories: 可用的分类列表
+            query: User query
+            available_categories: List of available categories
 
         Returns:
-            构建的 prompt
+            Constructed prompt
         """
         categories_text = "\n".join(available_categories)
 
         return f"""# Role
-你是一个记忆分类专家。根据用户查询，判断需要检索哪些类别的记忆。
+You are a memory classification expert. Determine which categories of memories need to be retrieved based on the user query.
 
-# 用户查询
+# User Query
 {query}
 
-# 可用分类
+# Available Categories
 {categories_text}
 
-# 判断规则
-1. 只返回与查询直接相关的分类
-2. 数量不限，但不要过度泛化
-3. 如果查询明确指向某个领域，只返回该领域
-4. 如果查询模糊，可以返回多个相关分类
+# Classification Rules
+1. Only return categories directly related to the query
+2. No limit on quantity, but avoid over-generalization
+3. If the query clearly points to a specific domain, return only that domain
+4. If the query is ambiguous, multiple related categories can be returned
 
-# 输出格式
-返回 JSON 数组：
-["分类名1", "分类名2", ...]"""
+# Output Format
+Return a JSON array:
+["CategoryName1", "CategoryName2", ...]"""
 
     def _parse_classification_response(self, response: str, valid_categories: List[str]) -> List[str]:
         """解析分类结果
@@ -215,11 +224,14 @@ class MemoryRetriever:
                 json_str = response[start:end]
                 categories = json.loads(json_str)
 
-                # 过滤有效分类
-                valid_categories_set = set(valid_categories)
+                # 归一化：构建有效分类集合（同时接受带/不带方括号的格式）
+                valid_categories_set = set()
+                for vc in valid_categories:
+                    valid_categories_set.add(vc)
+                    valid_categories_set.add(vc.strip("[]"))
                 return [
-                    cat for cat in categories
-                    if cat in valid_categories_set
+                    cat.strip("[]") for cat in categories
+                    if cat in valid_categories_set or cat.strip("[]") in valid_categories_set
                 ]
 
         except (json.JSONDecodeError, TypeError):
@@ -233,7 +245,8 @@ class MemoryRetriever:
         categories: List[str],
         query: str,
         top_k: int = 5,
-        min_importance: int = 3,
+        min_importance: int = 0,
+        scoring_config: RetrievalScoringConfig | None = None,
     ) -> List[Dict[str, Any]]:
         """Category 层向量检索（第一层）
 
@@ -267,7 +280,7 @@ class MemoryRetriever:
             category_names=categories,
             top_k=top_k,
             min_importance=min_importance,
-            recency_decay_days=RECENCY_DECAY_DAYS,
+            scoring_config=scoring_config or DEFAULT_RETRIEVAL_SCORING_CONFIG,
         )
 
         # Step 3: 格式化结果（直接使用 Repository 返回的四因子评分）
@@ -286,45 +299,45 @@ class MemoryRetriever:
         query: str,
         category_results: List[Dict[str, Any]],
     ) -> bool:
-        """LLM 充足性判断
+        """LLM sufficiency check
 
-        判断 Category 层检索结果是否足够回答用户问题。
+        Determine whether Category layer results are sufficient to answer the user's question.
 
         Args:
-            query: 用户查询
-            category_results: Category 层检索结果
+            query: User query
+            category_results: Category layer retrieval results
 
         Returns:
-            True 表示足够，False 表示不足
+            True if sufficient, False if insufficient
         """
-        # 无结果，直接判定不足
+        # No results, directly judge as insufficient
         if not category_results:
             return False
 
-        # 构建充足性判断 prompt
+        # Build sufficiency check prompt
         memories_text = "\n".join([
             f"- [{r['category'].category_name}] {r['category'].content}"
             for r in category_results
         ])
 
-        prompt = f"""# 用户问题
+        prompt = f"""# User Question
 {query}
 
-# 检索到的记忆片段
+# Retrieved Memory Fragments
 {memories_text}
 
-# 判断规则
-1. 记忆片段提供了回答问题所需的全部关键信息 → 足够
-2. 记忆片段信息模糊、缺少细节、需要更多上下文 → 不足
-3. 优先判断为"足够"，避免过度检索
+# Decision Rules
+1. Memory fragments provide all key information needed to answer the question → Sufficient
+2. Memory fragments are vague, lack details, or need more context → Insufficient
+3. Prefer "Sufficient" judgment to avoid over-retrieval
 
-# 输出格式
-返回 JSON：
-{{"sufficient": true/false, "reason": "简要说明判断理由"}}"""
+# Output Format
+Return JSON:
+{{"sufficient": true/false, "reason": "Brief explanation of the decision"}}"""
 
         try:
             response = await self.llm.generate_chat_response(
-                system_prompt="你是一个判断专家，擅长判断已有信息是否足够回答问题。",
+                system_prompt="You are a decision expert, skilled at determining whether available information is sufficient to answer a question.",
                 context="",
                 user_query=prompt,
             )
@@ -355,7 +368,8 @@ class MemoryRetriever:
         categories: List[str],
         query: str,
         top_k: int = 5,
-        min_importance: int = 3,
+        min_importance: int = 0,
+        scoring_config: RetrievalScoringConfig | None = None,
     ) -> List[Dict[str, Any]]:
         """Resource 层向量检索（第二层）
 
@@ -381,6 +395,7 @@ class MemoryRetriever:
         except Exception as e:
             logger.error(f"获取查询向量失败: {e}")
             return []
+        scoring_config = scoring_config or DEFAULT_RETRIEVAL_SCORING_CONFIG
 
         # Step 2: 执行四因子评分向量检索 SQL
         sql = text("""
@@ -388,10 +403,10 @@ class MemoryRetriever:
                 r.id, r.user_id, r.modality, r.raw_content, r.description,
                 r.description_vector, r.importance_score, r.created_at,
                 r.assistant_response, r.access_count, r.updated_at,
-                (1 - (r.description_vector <=> CAST(:query_vector AS vector)))
-                * ln(r.access_count + 1)
-                * exp(-0.693 * EXTRACT(EPOCH FROM (NOW() - r.updated_at)) / 86400 / :recency_decay_days)
-                * (r.importance_score / 5.0) AS score
+                power(GREATEST((1 - (r.description_vector <=> CAST(:query_vector AS vector))), 0), :similarity_power)
+                * power(ln(r.access_count + 2), :access_power)
+                * power(exp(-0.693 * EXTRACT(EPOCH FROM (NOW() - r.updated_at)) / 86400 / :recency_decay_days), :recency_power)
+                * power((0.7 + (r.importance_score / 10.0)), :importance_power) AS score
             FROM resources r
             JOIN resource_categories rc ON r.id = rc.resource_id
             JOIN categories c ON rc.category_id = c.id
@@ -410,8 +425,8 @@ class MemoryRetriever:
                 "user_id": user_id,
                 "target_categories": categories,
                 "min_importance": min_importance,
-                "recency_decay_days": RECENCY_DECAY_DAYS,
                 "limit": top_k * 2,  # 多取一些用于去重
+                **scoring_config.sql_params(),
             },
         )
         rows = result.fetchall()
@@ -548,11 +563,11 @@ class MemoryRetriever:
                 continue
 
             # 重要性阈值过滤（针对 Resource）
-            if resource and resource.importance_score < 3:
+            if resource and resource.importance_score < 0:
                 continue
 
             # 重要性阈值过滤（针对 Category）
-            if category and category.importance_score < 3:
+            if category and category.importance_score < 0:
                 continue
 
             filtered.append(result)
@@ -655,6 +670,7 @@ class MemoryRetriever:
         user_id: str,
         query: str,
         max_tokens: int = 2000,
+        scoring_config: RetrievalScoringConfig | None = None,
     ) -> str:
         """构建检索上下文
 
@@ -668,5 +684,5 @@ class MemoryRetriever:
         Returns:
             格式化的上下文字符串
         """
-        results = await self.retrieve(user_id, query)
+        results = await self.retrieve(user_id, query, scoring_config=scoring_config)
         return await self.build_context_from_results(results, max_tokens=max_tokens)

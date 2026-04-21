@@ -10,6 +10,10 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from tables.resource import Resource
 from tables.resource_category import ResourceCategory
 from repositories.base import BaseRepository
+from services.retrieval.scoring_config import (
+    DEFAULT_RETRIEVAL_SCORING_CONFIG,
+    RetrievalScoringConfig,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -103,19 +107,29 @@ class ResourceRepository(BaseRepository[Resource]):
         modality: str = "text",
         description: str | None = None,
         description_vector: list[float] | None = None,
-        importance_score: int = 5,
+        importance_score: int = 2,
         assistant_response: str | None = None,
+        created_at: datetime | None = None,
+        updated_at: datetime | None = None,
     ) -> Resource:
         """创建新资源"""
+        create_data = {
+            "id": str(uuid.uuid4()),
+            "user_id": user_id,
+            "raw_content": raw_content,
+            "modality": modality,
+            "description": description,
+            "description_vector": description_vector,
+            "importance_score": min(max(importance_score, 0), 3),
+            "assistant_response": assistant_response,
+        }
+        if created_at is not None:
+            create_data["created_at"] = created_at
+        if updated_at is not None:
+            create_data["updated_at"] = updated_at
+
         return await super().create(
-            id=str(uuid.uuid4()),
-            user_id=user_id,
-            raw_content=raw_content,
-            modality=modality,
-            description=description,
-            description_vector=description_vector,
-            importance_score=importance_score,
-            assistant_response=assistant_response,
+            **create_data,
         )
 
     async def search_by_vector(
@@ -123,8 +137,9 @@ class ResourceRepository(BaseRepository[Resource]):
         user_id: str,
         query_vector: list[float],
         top_k: int = 5,
-        min_importance: int = 3,
+        min_importance: int = 0,
         recency_decay_days: int = 60,
+        scoring_config: RetrievalScoringConfig | None = None,
     ) -> list[Resource]:
         """向量相似度检索（四因子乘法评分）
 
@@ -139,15 +154,17 @@ class ResourceRepository(BaseRepository[Resource]):
             按四因子评分排序的资源列表
         """
         logger.debug(f"Resource 向量检索: user_id={user_id}, top_k={top_k}")
-        # 四因子评分: cosine_similarity × log(access_count+1) × exp(-decay) × (importance/5)
+        scoring_config = scoring_config or DEFAULT_RETRIEVAL_SCORING_CONFIG
+        # 四因子评分: cosine_similarity × log(access_count+2) × exp(-decay) × small importance boost
+        # 注: +2 而非 +1，确保 access_count=0 时评分不为0（ln(2)≈0.693）
         sql = text("""
             SELECT id, user_id, modality, raw_content, description,
                    description_vector, importance_score, created_at, updated_at,
                    assistant_response, access_count,
-                   (1 - (description_vector <=> CAST(:query_vector AS vector)))
-                   * ln(access_count + 1)
-                   * exp(-0.693 * EXTRACT(EPOCH FROM (NOW() - updated_at)) / 86400 / :recency_decay_days)
-                   * (importance_score / 5.0) AS score
+                   power(GREATEST((1 - (description_vector <=> CAST(:query_vector AS vector))), 0), :similarity_power)
+                   * power(ln(access_count + 2), :access_power)
+                   * power(exp(-0.693 * EXTRACT(EPOCH FROM (NOW() - updated_at)) / 86400 / :recency_decay_days), :recency_power)
+                   * power((0.7 + (importance_score / 10.0)), :importance_power) AS score
             FROM resources
             WHERE user_id = :user_id
               AND importance_score >= :min_importance
@@ -163,7 +180,7 @@ class ResourceRepository(BaseRepository[Resource]):
                 "user_id": user_id,
                 "min_importance": min_importance,
                 "top_k": top_k,
-                "recency_decay_days": recency_decay_days,
+                **scoring_config.sql_params(),
             },
         )
         rows = result.fetchall()
@@ -191,6 +208,7 @@ class ResourceRepository(BaseRepository[Resource]):
         query_vector: list[float],
         top_k: int = 5,
         recency_decay_days: int = 60,
+        scoring_config: RetrievalScoringConfig | None = None,
     ) -> list[tuple[Resource, float]]:
         """在指定分类内进行向量相似度检索（四因子乘法评分）
 
@@ -204,14 +222,15 @@ class ResourceRepository(BaseRepository[Resource]):
         Returns:
             (Resource, score) 元组列表
         """
+        scoring_config = scoring_config or DEFAULT_RETRIEVAL_SCORING_CONFIG
         sql = text("""
             SELECT r.id, r.user_id, r.modality, r.raw_content, r.description,
                    r.description_vector, r.importance_score, r.created_at,
                    r.updated_at, r.assistant_response, r.access_count,
-                   (1 - (r.description_vector <=> CAST(:query_vector AS vector)))
-                   * ln(r.access_count + 1)
-                   * exp(-0.693 * EXTRACT(EPOCH FROM (NOW() - r.updated_at)) / 86400 / :recency_decay_days)
-                   * (r.importance_score / 5.0) AS score
+                   power(GREATEST((1 - (r.description_vector <=> CAST(:query_vector AS vector))), 0), :similarity_power)
+                   * power(ln(r.access_count + 2), :access_power)
+                   * power(exp(-0.693 * EXTRACT(EPOCH FROM (NOW() - r.updated_at)) / 86400 / :recency_decay_days), :recency_power)
+                   * power((0.7 + (r.importance_score / 10.0)), :importance_power) AS score
             FROM resources r
             INNER JOIN resource_categories rc ON r.id = rc.resource_id
             WHERE r.user_id = :user_id
@@ -228,7 +247,7 @@ class ResourceRepository(BaseRepository[Resource]):
                 "user_id": user_id,
                 "category_id": category_id,
                 "top_k": top_k,
-                "recency_decay_days": recency_decay_days,
+                **scoring_config.sql_params(),
             },
         )
         rows = result.fetchall()
@@ -274,7 +293,7 @@ class ResourceRepository(BaseRepository[Resource]):
         """更新重要性分数"""
         return await self.update(
             resource_id,
-            importance_score=min(max(importance_score, 1), 10),  # 限制在 1-10
+            importance_score=min(max(importance_score, 0), 3),
         )
 
     async def update_content(

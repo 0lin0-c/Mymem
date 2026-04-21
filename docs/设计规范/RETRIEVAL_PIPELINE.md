@@ -93,9 +93,9 @@
 
 ```
 1. 过滤条件：user_id + category_name IN (目标类别列表)
-2. 重要性过滤：importance_score >= min_importance
+2. 重要性过滤：importance_score >= min_importance（当前默认 0，兼容 0-3 分制）
 3. 向量相似度：计算 query_vector 与 description_vector 的距离
-4. 综合排序：importance_score + 向量相似度
+4. 综合排序：可配置四因子评分，默认提高向量相似度的相对影响
 5. 返回 Top-K
 ```
 
@@ -110,16 +110,26 @@ WHERE user_id = :user_id
   AND importance_score >= :min_importance
   AND description_vector IS NOT NULL
 ORDER BY
-    (importance_score * 0.4 + (1 - cosine_distance) * 10 * 0.6) DESC
+    power(GREATEST((1 - cosine_distance), 0), :similarity_power)
+    * power(ln(access_count + 2), :access_power)
+    * power(exp(-0.693 * EXTRACT(EPOCH FROM (NOW() - updated_at)) / 86400 / :recency_decay_days), :recency_power)
+    * power((0.7 + (importance_score / 10.0)), :importance_power) DESC
 LIMIT :top_k
 ```
 
 ### 3.3 排序权重
 
-| 因素 | 权重 | 说明 |
-|------|------|------|
-| `向量相似度` | 60% | 语义匹配的核心指标 |
-| `importance_score` | 40% | 高价值记忆优先 |
+当前实现不再使用线性固定权重，而是使用 `RetrievalScoringConfig` 控制四因子指数。默认配置放在 `services/retrieval/scoring_config.py`：
+
+| 参数 | 默认值 | 说明 |
+|------|--------|------|
+| `recency_decay_days` | 60 | 时间衰减半衰期 |
+| `similarity_power` | 1.5 | 提高相似度差异的影响；0-1 范围内指数大于 1 会压低低相似结果 |
+| `access_power` | 1.0 | 访问次数因子的指数 |
+| `recency_power` | 1.0 | 时间衰减因子的指数 |
+| `importance_power` | 1.0 | 重要性因子的指数 |
+
+测试/CLI 可以覆盖这些参数做实验，但 `/v1/retrieve` 当前不暴露这些参数为公开 API 契约。
 
 ---
 
@@ -129,32 +139,45 @@ LIMIT :top_k
 
 ```python
 def calculate_retrieval_score(
-    resource: Resource,
-    vector_distance: float,
+    cosine_distance: float,
+    access_count: int,
+    days_ago: float,
+    importance_score: int,
+    config: RetrievalScoringConfig,
 ) -> float:
     """
-    计算单条记忆的检索分数
-
-    分数越高，越应该被返回
+    计算单条记忆的检索分数。分数越高，越应该被返回。
     """
-    # 1. 向量相似度分数（距离越小，分数越高）
-    similarity_score = 1 - vector_distance  # 0-1 范围
+    similarity = max(1 - cosine_distance, 0)
+    access_factor = math.log(access_count + 2)
+    recency_factor = math.exp(-0.693 * days_ago / config.recency_decay_days)
+    importance_factor = 0.7 + (importance_score / 10.0)
 
-    # 2. 重要性加权
-    importance_weight = resource.importance_score / 10  # 0.1-1 范围
-
-    # 综合分数
-    final_score = similarity_score * 0.6 + importance_weight * 0.4
-
-    return final_score
+    return (
+        similarity ** config.similarity_power
+        * access_factor ** config.access_power
+        * recency_factor ** config.recency_power
+        * importance_factor ** config.importance_power
+    )
 ```
 
-### 4.2 分数组成权重
+对应 SQL 公式：
 
-| 维度 | 权重 | 说明 |
-|------|------|------|
-| **向量相似度** | 60% | 语义匹配的核心指标 |
-| **重要性分数** | 40% | 高价值记忆优先 |
+```sql
+power(GREATEST((1 - (vector <=> CAST(:query_vector AS vector))), 0), :similarity_power)
+* power(ln(access_count + 2), :access_power)
+* power(exp(-0.693 * EXTRACT(EPOCH FROM (NOW() - updated_at)) / 86400 / :recency_decay_days), :recency_power)
+* power((0.7 + (importance_score / 10.0)), :importance_power)
+```
+
+### 4.2 分数组成
+
+| 维度 | 当前实现 | 说明 |
+|------|----------|------|
+| **向量相似度** | `power(GREATEST(similarity, 0), similarity_power)` | 语义匹配的核心指标，默认 `similarity_power=1.5` |
+| **访问次数** | `power(ln(access_count + 2), access_power)` | `+2` 保证 0 次访问也不把结果乘成 0 |
+| **时间衰减** | `power(exp(-0.693 * days_ago / recency_decay_days), recency_power)` | 默认半衰期 60 天 |
+| **重要性分数** | `power(0.7 + importance_score / 10.0, importance_power)` | 兼容 0-3 分制，避免 importance 过度支配 |
 
 ### 4.3 向量相似度阈值
 
@@ -163,11 +186,11 @@ def calculate_retrieval_score(
 | ≥ 0.85 | 高度相关 | 优先返回 |
 | 0.70 - 0.85 | 相关 | 正常返回 |
 | 0.55 - 0.70 | 弱相关 | 仅在候选不足时返回 |
-| < 0.55 | 不相关 | 过滤掉 |
+| < 0.55 | 不相关 | 旧设计建议过滤；当前实现主要依赖综合分数阈值过滤 |
 
 ### 4.4 最低重要性过滤
 
-默认过滤 `importance_score < 3` 的记忆，避免返回低价值内容。
+当前记忆重要性为 0-3 分制。检索默认 `min_importance=0`，避免在检索阶段提前丢弃可能语义相关的低分记忆；结果质量主要由综合分数、top-k、去重和 LLM 最终使用判断控制。
 
 ---
 
@@ -263,6 +286,52 @@ part_tokens = await llm.count_tokens(part)
 
 用户问题：我的项目进度怎么样了？
 ```
+
+### 5.6 ChatOrchestrator 上下文契约
+
+真实 `/v1/chat` 不直接在路由层拼接检索上下文，而是通过 `services/chat_orchestrator.py` 统一编排：
+
+```
+system_prompt:
+  assistant rules
+  profile/persona
+  memory-use priority rules
+
+context:
+  # Recent Conversation
+  ...
+
+  # Retrieved Memories
+  ...
+
+user_query:
+  current user message only
+```
+
+优先级规则必须进入 system prompt：
+
+```
+When answering, prioritize information in this order:
+1. The user's current message.
+2. Relevant retrieved memories.
+3. Stable user profile.
+4. Assistant persona and style.
+
+Use retrieved memories when they help answer the current message.
+If the user's current message updates or contradicts older information, follow the current message.
+Do not infer the user's current intent only from profile interests.
+```
+
+`ChatOrchestrator.build_context()` 可以返回 `trace` 给测试、评估和开发者调试使用。`trace` 至少包含：
+
+| 字段 | 说明 |
+|------|------|
+| `retrieved_results` | 原始检索结果列表 |
+| `retrieved_context` | 格式化后的检索上下文 |
+| `recent_context` | 最近 pending conversation 上下文 |
+| `context` | 最终传给 LLM 的 context |
+
+`/v1/chat` 默认不把 `trace`、`retrieved_results` 或 `retrieved_context` 暴露给最终用户。
 
 ---
 

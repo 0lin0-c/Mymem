@@ -1,31 +1,37 @@
-# 记忆管理相关 Prompts
+# Memory Management Prompts
 
 MEMORY_MERGE_PROMPT = """# Role
-你是一个记忆管理专家。请判断新输入与已有记忆的关系，并决定如何处理。
+You are a memory management expert. Determine the relationship between new input and existing memory, and decide how to handle it.
 
-# 已有记忆
+# Existing Memory
 {existing_memory}
 
-# 新输入
+# New Input
 {new_input}
 
-# 任务
-判断新输入与已有记忆的关系，并返回操作类型：
+# Task
+Determine the relationship between the new input and existing memory, and return an action type:
 
-1. **merge**：新信息是对已有记忆的补充，应合并到已有记忆中
-   - 例如：已有"喜欢咖啡" + 新"每天早上喝美式" → 合并为"喜欢咖啡，每天早上喝美式"
+1. **merge**: The new information supplements the existing memory and should be merged into it
+   - Example: Existing "likes coffee" + New "drinks Americano every morning" → Merge to "likes coffee, drinks Americano every morning"
 
-2. **update**：新信息修正/覆盖已有记忆
-   - 例如：已有"25岁" + 新"其实26岁了" → 更新为"26岁"
+2. **update**: The new information corrects/overrides the existing memory
+   - Example: Existing "25 years old" + New "actually 26 now" → Update to "26 years old"
 
-3. **create**：新信息是独立内容，应新建记录
-   - 例如：已有"学Python" + 新"学机器学习" → 两条独立记录
+3. **create**: The new information is independent content and should create a new record
+   - Example: Existing "learning Python" + New "learning machine learning" → Two independent records
 
-# 输出格式
-仅输出 JSON，不要包含任何解释：
+# Output Language (Critical)
+- **ALWAYS** output in the same language as the new input.
+- If the new input is in Chinese, output merged/updated content in Chinese.
+- If the new input is in English, output merged/updated content in English.
+- This ensures the memory language follows the user's current input language.
+
+# Output Format
+Output only JSON without any explanation:
 {
   "action": "merge" | "update" | "create",
-  "reason": "判断理由",
-  "merged_content": "合并/更新后的内容（仅 merge/update 时需要）"
+  "reason": "Reason for the decision",
+  "merged_content": "Merged/updated content (required only for merge/update)"
 }
 """

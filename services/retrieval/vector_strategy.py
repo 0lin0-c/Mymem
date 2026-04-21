@@ -8,6 +8,10 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from tables import Resource
 from services.retrieval.base import RetrievalStrategy
 from services.llm.base import BaseLLMProvider
+from services.retrieval.scoring_config import (
+    DEFAULT_RETRIEVAL_SCORING_CONFIG,
+    RetrievalScoringConfig,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -33,28 +37,30 @@ class VectorStrategy(RetrievalStrategy):
         user_id: str,
         query: str,
         top_k: int = 5,
-        min_importance: int = 3,
+        min_importance: int = 0,
+        scoring_config: RetrievalScoringConfig | None = None,
     ) -> List[dict]:
         """
         通过向量相似度深度检索记忆
 
         使用四因子乘法评分：
-        score = cosine_similarity × log(access_count+1) × exp(-0.693 × days_ago / 60) × (importance_score / 5)
+        score = cosine_similarity × log(access_count+1) × exp(-0.693 × days_ago / 60) × small importance boost
 
         适用于：需要语义理解的模糊查询
         """
         # Step 1: 将 query 转为向量
         embedding = await self.llm.get_embedding(query)
+        scoring_config = scoring_config or DEFAULT_RETRIEVAL_SCORING_CONFIG
 
         # Step 2: 向量检索（四因子评分）
         sql = text("""
             SELECT id, user_id, modality, raw_content, description,
                    description_vector, importance_score, created_at, assistant_response,
                    access_count, updated_at,
-                   (1 - (description_vector <=> CAST(:query_vector AS vector)))
-                   * ln(access_count + 1)
-                   * exp(-0.693 * EXTRACT(EPOCH FROM (NOW() - updated_at)) / 86400 / :recency_decay_days)
-                   * (importance_score / 5.0) AS score
+                   power(GREATEST((1 - (description_vector <=> CAST(:query_vector AS vector))), 0), :similarity_power)
+                   * power(ln(access_count + 2), :access_power)
+                   * power(exp(-0.693 * EXTRACT(EPOCH FROM (NOW() - updated_at)) / 86400 / :recency_decay_days), :recency_power)
+                   * power((0.7 + (importance_score / 10.0)), :importance_power) AS score
             FROM resources
             WHERE user_id = :user_id
               AND importance_score >= :min_importance
@@ -70,7 +76,7 @@ class VectorStrategy(RetrievalStrategy):
                 "user_id": user_id,
                 "min_importance": min_importance,
                 "top_k": top_k,
-                "recency_decay_days": RECENCY_DECAY_DAYS,
+                **scoring_config.sql_params(),
             },
         )
         rows = result.fetchall()

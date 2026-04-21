@@ -29,7 +29,7 @@ EffectiveScore = Importance × e^(-Days / (Importance × 5)) × (1 + log(AccessC
 
 | 因子 | 公式 | 说明 |
 |------|------|------|
-| 基础重要性 | `Importance` | 原始重要性评分 (1-10) |
+| 基础重要性 | `Importance` | 原始重要性评分 (0-3) |
 | 时间衰减 | `e^(-Days / (Importance × 5))` | 半衰期与重要性正相关 |
 | 访问加成 | `(1 + log(AccessCount + 1))` | 对数增长，防止过度膨胀 |
 

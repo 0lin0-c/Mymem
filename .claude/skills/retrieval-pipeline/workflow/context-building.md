@@ -24,16 +24,31 @@
 ## 3. System Prompt 结构
 
 ```
-# 用户画像
-{user_prompt_template}
+system_prompt:
+  assistant rules
+  profile/persona
+  memory-use priority rules
 
-# AI 人设
-{agent_persona_template}
+context:
+  # Recent Conversation
+  ...
 
-# 相关记忆（供参考）
-{retrieved_context}
+  # Retrieved Memories
+  ...
 
----
-
-请根据以上信息回答用户的问题。
+user_query:
+  current user message only
 ```
+
+`user_query` 必须只包含当前用户消息，不把 recent conversation 或 retrieved memories 拼进去。
+
+## 4. ChatOrchestrator Trace
+
+`ChatOrchestrator.build_context()` 可以返回 trace，供测试、评估和开发者调试使用。普通 `/v1/chat` 默认不暴露 trace。
+
+| 字段 | 说明 |
+|------|------|
+| `retrieved_results` | `MemoryRetriever.retrieve()` 原始结果 |
+| `retrieved_context` | 格式化后的检索上下文 |
+| `recent_context` | 最近 pending conversation 上下文 |
+| `context` | 最终传给 LLM 的 context |

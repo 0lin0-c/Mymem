@@ -1,0 +1,200 @@
+{
+  "session_date": "2026-04-21",
+  "project": "Mymem",
+  "export_type": "workspace_session_summary",
+  "note": "This is a local session summary export created from the current workspace context, not a raw platform transcript.",
+  "high_level_goals": [
+    "Align converted-data evaluation with real project logic",
+    "Make assistant_eval runs more efficient and resumable",
+    "Reduce JSON/report noise while preserving important trace detail",
+    "Improve post-run analysis so retrieval failures are easier to diagnose"
+  ],
+  "key_decisions": [
+    {
+      "topic": "Chat flow",
+      "decision": "Real chat flow should be: read profile/persona -> retrieve long-term memory every turn -> merge pending chats -> generate answer -> write pending chats -> flush when conditions are met"
+    },
+    {
+      "topic": "Prompt/context priority",
+      "decision": "Priority order is current user message > relevant retrieved memories > stable user profile > assistant persona/style"
+    },
+    {
+      "topic": "Retrieved context placement",
+      "decision": "Retrieved memories go into context, while current user input remains clean in user_query"
+    },
+    {
+      "topic": "Trace exposure",
+      "decision": "ChatOrchestrator should return trace for tests/evals/debugging, but /v1/chat should not expose trace to normal end users"
+    },
+    {
+      "topic": "Retrieval scoring",
+      "decision": "Scoring powers should be configurable via scoring_config; similarity uses power(GREATEST(similarity, 0), :similarity_power)"
+    },
+    {
+      "topic": "Reporting",
+      "decision": "Evaluation reports should be deterministic and mode-aware, not rely on free-form LLM analysis"
+    },
+    {
+      "topic": "Analysis defaults",
+      "decision": "retrieval_eval and assistant_eval markdown reports should automatically include a retrieval failure breakdown table without requiring manual prompting"
+    }
+  ],
+  "implemented_changes": [
+    {
+      "area": "Chat orchestration",
+      "files": [
+        "services/chat_orchestrator.py",
+        "api/v1/chat.py",
+        "tests/contract/test_chat_orchestrator_contract.py"
+      ],
+      "summary": [
+        "Introduced ChatOrchestrator and wired it into real chat flow",
+        "Preserved streaming/pending/flush behavior",
+        "Added trace contract coverage"
+      ]
+    },
+    {
+      "area": "Retrieval scoring configuration",
+      "files": [
+        "services/retrieval/scoring_config.py",
+        "services/retrieval/*",
+        "repositories/*"
+      ],
+      "summary": [
+        "Moved retrieval scoring defaults into scoring_config",
+        "Passed scoring powers through SQL path",
+        "Kept API contract stable"
+      ]
+    },
+    {
+      "area": "Converted-data evaluation architecture",
+      "files": [
+        "tests/evals/converted_data/runner.py",
+        "tests/evals/converted_data/report_json.py",
+        "tests/evals/converted_data/report_text.py",
+        "tests/evals/converted_data/report_analysis.py",
+        "tests/evals/converted_data/categories.py",
+        "tests/evals/converted_data/reporting.py",
+        "tests/evals/converted_data/test_eval_runner.py",
+        "tests/unit/test_converted_data_reporting.py",
+        "tests/unit/test_converted_data_postprocess.py"
+      ],
+      "summary": [
+        "Split reporting logic out of runner",
+        "Made JSON output more compact while keeping trace_detail",
+        "Added sample-level live persistence with in_progress/completed/interrupted status",
+        "Moved bad-case diagnosis to postprocess stage",
+        "Reused first retrieval in assistant_eval instead of retrieving twice"
+      ]
+    },
+    {
+      "area": "Template/language cleanup",
+      "files": [
+        "scripts/fix_user_templates.py",
+        "services/profile_service.py"
+      ],
+      "summary": [
+        "Added a one-off DB fixer for user_prompt_template and agent_persona_template",
+        "Shifted profile update paths toward English template generation",
+        "Added explicit language-follow rules in orchestrator prompts"
+      ]
+    },
+    {
+      "area": "Docs",
+      "files": [
+        "AGENTS.md",
+        "docs/设计规范/RETRIEVAL_PIPELINE.md",
+        "docs/设计规范/SERVICE_DESIGN.md"
+      ],
+      "summary": [
+        "Documented test commands",
+        "Synced trace/scoring design docs with implementation"
+      ]
+    }
+  ],
+  "reporting_state": {
+    "json_output_contract": {
+      "top_level": [
+        "test_info",
+        "statistics",
+        "samples"
+      ],
+      "sample_fields": [
+        "sample_index",
+        "character",
+        "total_memories",
+        "total_questions",
+        "completed_questions",
+        "status",
+        "qa_results"
+      ],
+      "qa_result_fields": [
+        "question",
+        "standard_answer",
+        "generated_answer",
+        "is_correct",
+        "category",
+        "storage_hit",
+        "retrieval_hit",
+        "rank_position",
+        "failure_type",
+        "trace_summary",
+        "trace_detail"
+      ]
+    },
+    "analysis_markdown_behavior": [
+      "Reports are generated deterministically from result JSON",
+      "assistant_eval and retrieval_eval reports now auto-include retrieval failure breakdown",
+      "Representative cases include top1_context, missed_evidence_preview, and reason"
+    ]
+  },
+  "latest_validation": {
+    "long_run": {
+      "command_type": "assistant_eval",
+      "scope": "sample 0 / Caroline / 10 questions / retrieval_only / postprocess_bad_cases",
+      "result_files": [
+        "test_results/mymem_test_results_20260421_173554.json",
+        "test_results/mymem_test_results_20260421_173554_analysis.md"
+      ],
+      "summary": {
+        "accuracy": "20.00%",
+        "recall_at_k": "0.00%",
+        "storage_coverage_rate": "100.00%",
+        "main_issue": "retrieval_gap dominates failures"
+      }
+    },
+    "unit_tests": [
+      {
+        "target": "tests/unit/test_converted_data_reporting.py",
+        "result": "9 passed"
+      }
+    ]
+  },
+  "latest_analysis_conclusion": {
+    "main_problem": "Retrieval is the biggest bottleneck, not answer generation.",
+    "evidence": [
+      "Storage coverage remained 100%",
+      "Recall@K was 0%",
+      "Wrong answers were dominated by retrieval_gap",
+      "Some correct answers happened even with retrieval_hit=false, so they cannot be treated as retrieval success"
+    ],
+    "retrieval_failure_breakdown_from_latest_report": {
+      "noise_outrank_target": 4,
+      "route_miss_category_only": 3,
+      "keyword_false_positive_risk": 1
+    }
+  },
+  "recent_files_of_interest": [
+    "test_results/mymem_test_results_20260421_173554.json",
+    "test_results/mymem_test_results_20260421_173554_analysis.md",
+    "tests/evals/converted_data/report_analysis.py",
+    "tests/unit/test_converted_data_reporting.py",
+    "progress.json"
+  ],
+  "remaining_follow_ups": [
+    "Refine retrieval subtype rules with richer scoring trace if needed",
+    "Consider aggregating Top1 noise types in a cleaner human-readable summary",
+    "Continue splitting converted_data runner internals into smaller modules over time",
+    "Standardize long-run timeout practice around 6 hours for large assistant_eval runs"
+  ]
+}

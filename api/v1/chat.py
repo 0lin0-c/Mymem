@@ -13,6 +13,7 @@ from services.llm.base import BaseLLMProvider
 from services.llm.user_llm_factory import UserLLMFactory
 from repositories import UserRepository
 from services.memory import MemoryWriter
+from services.chat_orchestrator import ChatOrchestrator
 from services.session import session_manager, UserIdentifier, flush_session_immediately
 from services.session.flush_service import _generate_batch_summary
 from schemas.chat_schema import ChatRequest, SaveMemoryRequest, SaveMemoryResponse
@@ -127,37 +128,22 @@ async def chat(
             from tables import User
             user = await session.get(User, session_state.user_id)
 
-            # 构建 System Prompt：拼接 user_prompt + agent_persona
-            system_prompt = ""
-            if user and user.user_prompt_template:
-                system_prompt += user.user_prompt_template
-            if user and user.agent_persona_template:
-                if system_prompt:
-                    system_prompt += "\n\n"
-                system_prompt += user.agent_persona_template
-            # 如果两个模板都没有，使用默认值
-            if not system_prompt:
-                system_prompt = "你是一个友好的智能助手。"
-
-            history_context = ""
-            if session_state.pending_chats:
-                history_context = "\n".join([
-                    f"用户: {chat.user_input}\n助手: {chat.assistant_response}"
-                    for chat in session_state.pending_chats[-5:]
-                ])
-
             # 流式输出
             full_answer = []
             try:
-                async for chunk in llm.generate_stream_response(
-                    system_prompt=system_prompt,
-                    context=history_context,
+                orchestrator = ChatOrchestrator(session=session, llm=llm)
+                async for chunk in orchestrator.stream(
+                    user_id=session_state.user_id,
                     user_query=request.query,
+                    user_prompt_template=user.user_prompt_template if user else None,
+                    agent_persona_template=user.agent_persona_template if user else None,
+                    pending_chats=session_state.pending_chats,
+                    top_k=5,
                 ):
                     full_answer.append(chunk)
                     yield json.dumps({"type": "content", "text": chunk}, ensure_ascii=False) + "\n"
             except Exception as e:
-                error_msg = f"抱歉，我遇到了一些问题：{str(e)}"
+                error_msg = f"Sorry, I encountered a problem: {str(e)}"
                 logger.error(f"LLM 流式输出失败: {type(e).__name__}: {e}")
                 yield json.dumps({"type": "content", "text": error_msg}, ensure_ascii=False) + "\n"
                 full_answer = [error_msg]

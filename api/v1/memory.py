@@ -194,7 +194,7 @@ async def delete_resource(
 
     await session.commit()
     logger.info(f"资源删除成功: resource_id={resource_id}")
-    return {"success": True, "message": "对话摘要已删除"}
+    return {"success": True, "message": "Conversation summary deleted"}
 
 
 @router.delete("/atomic-items/{item_id}")
@@ -215,7 +215,7 @@ async def delete_atomic_item(
     await category_repo.delete(item_id)
     await session.commit()
     logger.info(f"原子化记忆删除成功: item_id={item_id}")
-    return {"success": True, "message": "原子化记忆已删除"}
+    return {"success": True, "message": "Atomic memory deleted"}
 
 
 @router.put("/resources/{resource_id}")
@@ -241,7 +241,7 @@ async def update_resource(
     await resource_repo.update(resource_id, **update_data)
     await session.commit()
     logger.info(f"资源更新成功: resource_id={resource_id}")
-    return {"success": True, "message": "对话摘要已更新"}
+    return {"success": True, "message": "Conversation summary updated"}
 
 
 @router.put("/atomic-items/{item_id}")
@@ -267,7 +267,7 @@ async def update_atomic_item(
     await category_repo.update(item_id, **update_data)
     await session.commit()
     logger.info(f"原子化记忆更新成功: item_id={item_id}")
-    return {"success": True, "message": "原子化记忆已更新"}
+    return {"success": True, "message": "Atomic memory updated"}
 
 
 @router.post("/forget")
@@ -290,7 +290,7 @@ async def forget_low_importance(
     return {
         "success": True,
         "deleted_categories": deleted.get("categories", 0),
-        "message": f"已清理 {deleted.get('categories', 0)} 条低重要性记忆",
+        "message": f"Cleaned {deleted.get('categories', 0)} low-importance memories",
     }
 
 
@@ -310,5 +310,5 @@ async def decay_importance(
         "success": True,
         "updated_resources": updated.get("resources", 0),
         "updated_categories": updated.get("categories", 0),
-        "message": f"已更新 {updated.get('categories', 0)} 条原子化记忆的重要性",
+        "message": f"Updated importance for {updated.get('categories', 0)} atomic memories",
     }

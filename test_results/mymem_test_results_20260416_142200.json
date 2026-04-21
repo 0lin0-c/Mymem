@@ -1,0 +1,1938 @@
+{
+  "test_info": {
+    "timestamp": "20260416_142200",
+    "total_samples": 1,
+    "total_questions": 90
+  },
+  "statistics": {
+    "total_questions": 90,
+    "evaluated_questions": 0,
+    "correct_count": 0,
+    "accuracy": 0
+  },
+  "samples": [
+    {
+      "sample_index": 0,
+      "character": "Caroline",
+      "user_id": "e048f4ca-ae03-4028-b82e-4da7f6443d65",
+      "total_sessions": 19,
+      "total_memories": 100,
+      "total_questions": 90,
+      "qa_results": [
+        {
+          "question": "When did Caroline go to the LGBTQ support group?",
+          "standard_answer": "7 May 2023",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 2,
+          "evidence": [
+            "D1:3"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What fields would Caroline be likely to pursue in her educaton?",
+          "standard_answer": "Psychology, counseling certification",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 3,
+          "evidence": [
+            "D1:9",
+            "D1:11"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What did Caroline research?",
+          "standard_answer": "Adoption agencies",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 1,
+          "evidence": [
+            "D2:8"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What is Caroline's identity?",
+          "standard_answer": "Transgender woman",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 1,
+          "evidence": [
+            "D1:5"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What is Caroline's relationship status?",
+          "standard_answer": "Single",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 1,
+          "evidence": [
+            "D3:13",
+            "D2:14"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "When did Caroline give a speech at a school?",
+          "standard_answer": "The week before 9 June 2023",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 2,
+          "evidence": [
+            "D3:1"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "When did Caroline meet up with her friends, family, and mentors?",
+          "standard_answer": "The week before 9 June 2023",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 2,
+          "evidence": [
+            "D3:11"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "How long has Caroline had her current group of friends for?",
+          "standard_answer": "4 years",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 2,
+          "evidence": [
+            "D3:13"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "Where did Caroline move from 4 years ago?",
+          "standard_answer": "Sweden",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 1,
+          "evidence": [
+            "D3:13",
+            "D4:3"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "How long ago was Caroline's 18th birthday?",
+          "standard_answer": "10 years ago",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 2,
+          "evidence": [
+            "D4:5"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What career path has Caroline decided to persue?",
+          "standard_answer": "counseling or mental health for Transgender people",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 1,
+          "evidence": [
+            "D4:13",
+            "D1:11"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "Would Caroline still want to pursue counseling as a career if she hadn't received support growing up?",
+          "standard_answer": "Likely no",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 3,
+          "evidence": [
+            "D4:15",
+            "D3:5"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "When is Caroline going to the transgender conference?",
+          "standard_answer": "July 2023",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 2,
+          "evidence": [
+            "D5:13"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "When did Caroline have a picnic?",
+          "standard_answer": "The week before 6 July 2023",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 2,
+          "evidence": [
+            "D6:11"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "Would Caroline likely have Dr. Seuss books on her bookshelf?",
+          "standard_answer": "Yes, since she collects classic children's books",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 3,
+          "evidence": [
+            "D6:9"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "When did Caroline go to the LGBTQ conference?",
+          "standard_answer": "10 July 2023",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 2,
+          "evidence": [
+            "D7:1"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "Would Caroline pursue writing as a career option?",
+          "standard_answer": "LIkely no; though she likes reading, she wants to be a counselor",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 3,
+          "evidence": [
+            "D7:5",
+            "D7:9"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "When did Caroline go to the adoption meeting?",
+          "standard_answer": "The friday before 15 July 2023",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 2,
+          "evidence": [
+            "D8:9"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What LGBTQ+ events has Caroline participated in?",
+          "standard_answer": "Pride parade, school speech, support group",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 1,
+          "evidence": [
+            "D5:1",
+            "D8:17",
+            "D3:1",
+            "D1:3"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "When did Caroline go to a pride parade during the summer?",
+          "standard_answer": "The week before 3 July 2023",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 2,
+          "evidence": [
+            "D5:1"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What events has Caroline participated in to help children?",
+          "standard_answer": "Mentoring program, school speech",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 1,
+          "evidence": [
+            "D9:2",
+            "D3:3"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "When did Caroline join a mentorship program?",
+          "standard_answer": "The weekend before 17 July 2023",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 2,
+          "evidence": [
+            "D9:2"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "In what ways is Caroline participating in the LGBTQ community?",
+          "standard_answer": "Joining activist group, going to pride parades, participating in an art show, mentoring program",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 1,
+          "evidence": [
+            "D10:3",
+            "D5:1",
+            "D9:12",
+            "D9:2"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "When did Caroline join a new activist group?",
+          "standard_answer": "The Tuesday before 20 July 2023",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 2,
+          "evidence": [
+            "D10:3"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What kind of art does Caroline make?",
+          "standard_answer": "abstract art",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 1,
+          "evidence": [
+            "D11:12",
+            "D11:8",
+            "D9:14"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "When did Caroline attend a pride parade in August?",
+          "standard_answer": "The Friday before 14 August 2023",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 2,
+          "evidence": [
+            "D11:4"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "Who supports Caroline when she has a negative experience?",
+          "standard_answer": "Her mentors, family, and friends",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 1,
+          "evidence": [
+            "D12:1",
+            "D3:11"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What would Caroline's political leaning likely be?",
+          "standard_answer": "Liberal",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 3,
+          "evidence": [
+            "D12:1"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "When did Caroline apply to adoption agencies?",
+          "standard_answer": "The week of 23 August 2023",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 2,
+          "evidence": [
+            "D13:1"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "When did Caroline draw a self-portrait?",
+          "standard_answer": "The week before 23 August 2023",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 2,
+          "evidence": [
+            "D13:11"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What symbols are important to Caroline?",
+          "standard_answer": "Rainbow flag, transgender symbol",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 1,
+          "evidence": [
+            "D14:15",
+            "D4:1"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "When did Caroline encounter people on a hike and have a negative experience?",
+          "standard_answer": "The week before 25 August 2023",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 2,
+          "evidence": [
+            "D14:1"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "Would Caroline be considered religious?",
+          "standard_answer": "Somewhat, but not extremely religious",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 3,
+          "evidence": [
+            "D14:19",
+            "D12:1"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "When is Caroline's youth center putting on a talent show?",
+          "standard_answer": "September 2023",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 2,
+          "evidence": [
+            "D15:11"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What are some changes Caroline has faced during her transition journey?",
+          "standard_answer": "Changes to her body, losing unsupportive friends",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 1,
+          "evidence": [
+            "D16:15",
+            "D11:14"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "When did Caroline go biking with friends?",
+          "standard_answer": "The weekend before 13 September 2023",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 2,
+          "evidence": [
+            "D16:1"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What transgender-specific events has Caroline attended?",
+          "standard_answer": "Poetry reading, conference",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 1,
+          "evidence": [
+            "D17:19",
+            "D15:13"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "When did Caroline pass the adoption interview?",
+          "standard_answer": "The Friday before 22 October 2023",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 2,
+          "evidence": [
+            "D19:1"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "Would Caroline want to move back to her home country soon?",
+          "standard_answer": "No; she's in the process of adopting children.",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 3,
+          "evidence": [
+            "D19:1",
+            "D19:3"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What are Caroline's plans for the summer?",
+          "standard_answer": "researching adoption agencies",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 4,
+          "evidence": [
+            "D2:8"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What type of individuals does the adoption agency Caroline is considering support?",
+          "standard_answer": "LGBTQ+ individuals",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 4,
+          "evidence": [
+            "D2:12"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "Why did Caroline choose the adoption agency?",
+          "standard_answer": "because of their inclusivity and support for LGBTQ+ individuals",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 4,
+          "evidence": [
+            "D2:12"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What is Caroline excited about in the adoption process?",
+          "standard_answer": "creating a family for kids who need one",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 4,
+          "evidence": [
+            "D2:14"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What does Caroline's necklace symbolize?",
+          "standard_answer": "love, faith, and strength",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 4,
+          "evidence": [
+            "D4:3"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What country is Caroline's grandma from?",
+          "standard_answer": "Sweden",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 4,
+          "evidence": [
+            "D4:3"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What was grandma's gift to Caroline?",
+          "standard_answer": "necklace",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 4,
+          "evidence": [
+            "D4:3"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What kind of counseling and mental health services is Caroline interested in pursuing?",
+          "standard_answer": "working with trans people, helping them accept themselves and supporting their mental health",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 4,
+          "evidence": [
+            "D4:13"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What workshop did Caroline attend recently?",
+          "standard_answer": "LGBTQ+ counseling workshop",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 4,
+          "evidence": [
+            "D4:13"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What motivated Caroline to pursue counseling?",
+          "standard_answer": "her own journey and the support she received, and how counseling improved her life",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 4,
+          "evidence": [
+            "D4:15"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What kind of place does Caroline want to create for people?",
+          "standard_answer": "a safe and inviting place for people to grow",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 4,
+          "evidence": [
+            "D4:15"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What kind of books does Caroline have in her library?",
+          "standard_answer": "kids' books - classics, stories from different cultures, educational books",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 4,
+          "evidence": [
+            "D6:9"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What did Caroline take away from the book \"Becoming Nicole\"?",
+          "standard_answer": "Lessons on self-acceptance and finding support",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 4,
+          "evidence": [
+            "D7:13"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What did Caroline see at the council meeting for adoption?",
+          "standard_answer": "many people wanting to create loving homes for children in need",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 4,
+          "evidence": [
+            "D8:9"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What do sunflowers represent according to Caroline?",
+          "standard_answer": "warmth and happiness",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 4,
+          "evidence": [
+            "D8:11"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What inspired Caroline's painting for the art show?",
+          "standard_answer": "visiting an LGBTQ center and wanting to capture unity and strength",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 4,
+          "evidence": [
+            "D9:16"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What pet does Caroline have?",
+          "standard_answer": "guinea pig",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 4,
+          "evidence": [
+            "D13:3"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What activity did Caroline used to do with her dad?",
+          "standard_answer": "Horseback riding",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 4,
+          "evidence": [
+            "D13:7"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What did Caroline make for a local church?",
+          "standard_answer": "a stained glass window",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 4,
+          "evidence": [
+            "D14:17"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What did Caroline find in her neighborhood during her walk?",
+          "standard_answer": "a rainbow sidewalk",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 4,
+          "evidence": [
+            "D14:23"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "Which song motivates Caroline to be courageous?",
+          "standard_answer": "Brave by Sara Bareilles",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 4,
+          "evidence": [
+            "D15:23"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What advice does Caroline give for getting started with adoption?",
+          "standard_answer": "Do research, find an adoption agency or lawyer, gather necessary documents, and prepare emotionally.",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 4,
+          "evidence": [
+            "D17:7"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What was the poetry reading that Caroline attended about?",
+          "standard_answer": "It was a transgender poetry reading where transgender people shared their stories.",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 4,
+          "evidence": [
+            "D17:18"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What does Caroline's drawing symbolize for her?",
+          "standard_answer": "Freedom and being true to herself.",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 4,
+          "evidence": [
+            "D17:23"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What did Caroline realize after her charity race?",
+          "standard_answer": "",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 5,
+          "evidence": [
+            "D2:3"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What was grandpa's gift to Caroline?",
+          "standard_answer": "",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 5,
+          "evidence": [
+            "D4:3"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What is Caroline's hand-painted bowl a reminder of?",
+          "standard_answer": "",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 5,
+          "evidence": [
+            "D4:5"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What did Caroline and her family do while camping?",
+          "standard_answer": "",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 5,
+          "evidence": [
+            "D4:8"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "Did Caroline make the black and white bowl in the photo?",
+          "standard_answer": "No",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 5,
+          "evidence": [
+            "D5:8"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What are the new shoes that Caroline got used for?",
+          "standard_answer": "",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 5,
+          "evidence": [
+            "D7:19"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What is Caroline's reason for getting into running?",
+          "standard_answer": "",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 5,
+          "evidence": [
+            "D7:21"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What does Caroline say running has been great for?",
+          "standard_answer": "",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 5,
+          "evidence": [
+            "D7:24"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What inspired Caroline's sculpture for the art show?",
+          "standard_answer": "",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 5,
+          "evidence": [
+            "D9:16"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "How often does Caroline go to the beach with her kids?",
+          "standard_answer": "",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 5,
+          "evidence": [
+            "D10:10"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What did Caroline and her family see during their camping trip last year?",
+          "standard_answer": "",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 5,
+          "evidence": [
+            "D10:14"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "How did Caroline feel while watching the meteor shower?",
+          "standard_answer": "",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 5,
+          "evidence": [
+            "D10:18"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "Why did Caroline choose to use colors and patterns in her pottery project?",
+          "standard_answer": "",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 5,
+          "evidence": [
+            "D12:6"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What type of instrument does Caroline play?",
+          "standard_answer": "",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 5,
+          "evidence": [
+            "D15:26"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "Which classical musicians does Caroline enjoy listening to?",
+          "standard_answer": "",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 5,
+          "evidence": [
+            "D15:28"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "Who is Caroline a fan of in terms of modern music?",
+          "standard_answer": "",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 5,
+          "evidence": [
+            "D15:28"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What precautionary sign did Caroline see at the café?",
+          "standard_answer": "",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 5,
+          "evidence": [
+            "D16:16"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What setback did Caroline face recently?",
+          "standard_answer": "",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 5,
+          "evidence": [
+            "D17:8"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What does Caroline do to keep herself busy during her pottery break?",
+          "standard_answer": "",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 5,
+          "evidence": [
+            "D17:10"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What happened to Caroline's son on their road trip?",
+          "standard_answer": "",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 5,
+          "evidence": [
+            "D18:1"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "How did Caroline's son handle the accident?",
+          "standard_answer": "",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 5,
+          "evidence": [
+            "D18:6",
+            "D18:7"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "How did Caroline feel about her family after the accident?",
+          "standard_answer": "",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 5,
+          "evidence": [
+            "D18:5"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "How did Caroline's children handle the accident?",
+          "standard_answer": "",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 5,
+          "evidence": [
+            "D18:7"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "How did Caroline feel after the accident?",
+          "standard_answer": "",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 5,
+          "evidence": [
+            "D18:5"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What was Caroline's reaction to her children enjoying the Grand Canyon?",
+          "standard_answer": "",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 5,
+          "evidence": [
+            "D18:5"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What did Caroline do after the road trip to relax?",
+          "standard_answer": "",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 5,
+          "evidence": [
+            "D18:17"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        },
+        {
+          "question": "What does Caroline love most about camping with her family?",
+          "standard_answer": "",
+          "generated_answer": null,
+          "is_correct": null,
+          "correctness_explanation": null,
+          "category": 5,
+          "evidence": [
+            "D18:21"
+          ],
+          "retrieval_layer": {
+            "resolved_layer": "none",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [],
+            "category_results_count": 0,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [],
+          "retrieved_scores": [],
+          "error": null
+        }
+      ],
+      "sample_accuracy": 0
+    }
+  ]
+}

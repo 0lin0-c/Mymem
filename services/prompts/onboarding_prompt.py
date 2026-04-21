@@ -1,25 +1,33 @@
-# 用户初始化相关 Prompts
+# User Initialization Prompts
 
 DYNAMIC_CATEGORY_PROMPT = """# Role
-你是一个顶级的人类行为分析师与 AI 记忆架构师。你的任务是根据用户的身份背景，为他/她量身定制 2 个专属的"动态记忆分类（Dynamic Domains）"。
+You are a top-tier human behavior analyst and AI memory architect. Your task is to create 2 personalized "Dynamic Memory Categories (Dynamic Domains)" based on the user's background.
 
 # System Context
-我们的记忆系统已经具备 4 个底层固定分类，请你**绝对不要**生成与它们功能重叠的分类：
-1. [核心自我]: 用户的静态画像、偏好、价值观、长远目标。
-2. [情景时间轴]: 绑定在特定时间的微观事件（已发生）或具体待办计划（未发生）。
-3. [语义知识库]: 客观的专业知识、学习笔记、通用概念（不带时间属性）。
-4. [社交关系图谱]: 人际交往、亲友同事信息。
+Our memory system already has 4 built-in fixed categories. Please **DO NOT** create categories that overlap with them:
+1. [Core Self]: User's static profile, preferences, values, and long-term goals.
+2. [Timeline]: Specific micro-events bound to particular times (past) or concrete to-do plans (future).
+3. [Knowledge Base]: Objective professional knowledge, study notes, general concepts (no time attributes).
+4. [Social Graph]: Interpersonal connections, information about friends, family, and colleagues.
 
 # Task
-仔细分析下方的【User Profile】，推断该用户在日常学习、工作和生活中**最高频产生数据、且最需要独立归档的两个核心主阵地**。生成 2 个专属分类。
+Carefully analyze the 【User Profile】 below and infer the two core domains where the user most frequently generates data and needs independent archiving in daily study, work, and life. Generate 2 personalized categories.
+
+# Output Language Rules
+- **ALWAYS output category names and descriptions in English.**
+- Category names must be concise (2-4 words in English).
+- Descriptions can briefly mention the domain context.
 
 # Constraints
-1. **颗粒度要大 (Macro-level)**：必须是"生活/工作的核心领域"，能够容纳各种细碎的长尾事项。
-   - ❌ 错误示范（太碎）：[Docker报错记录]、[今天的高数课]。
-   - ✅ 正确示范（宏大）：[项目研发与实验]、[服务器与运维]、[校园生活]、[内容创作]。
-2. **互斥性原则 (Mutually Exclusive)**：生成的这两个分类，相互之间不能重叠，且绝不能与前述的 4 个固定分类重叠。
-3. **命名规范**：分类名称必须极度精炼，严格控制在 4-8 个中文字符以内。
-4. **输出格式**：仅输出干净的 JSON 字符串，绝对不要包含 ```json 等 Markdown 代码块包裹，也不要输出任何解释性文字。
+1. **Macro-level granularity**: Must be "core life/work domains" that can accommodate various fragmented long-tail items.
+   - Wrong (too granular): [Docker Error Logs], [Today's Calculus Class]
+   - Correct (macro-level): [Project Development], [Server & DevOps], [Campus Life], [Content Creation]
+
+2. **Mutually Exclusive Principle**: The two generated categories must not overlap with each other, and must not overlap with the 4 fixed categories above.
+
+3. **Naming convention**: Category names must be extremely concise, strictly limited to 2-4 English words, using Title Case.
+
+4. **Output format**: Output only clean JSON string, absolutely no Markdown code block wrapping (no ```json), and no explanatory text.
 
 # User Profile
 {user_profile}
@@ -28,12 +36,12 @@ DYNAMIC_CATEGORY_PROMPT = """# Role
 {{
   "dynamic_categories": [
     {{
-      "name": "<生成的分类名称1>",
-      "description": "<一句话向系统解释该分类应该收录什么样的数据，以便后续意图提取时使用>"
+      "name": "<Generated category name 1 in English>",
+      "description": "<One sentence in English explaining what kind of data this category should collect>"
     }},
     {{
-      "name": "<生成的分类名称2>",
-      "description": "<一句话向系统解释该分类应该收录什么样的数据>"
+      "name": "<Generated category name 2 in English>",
+      "description": "<One sentence in English explaining what kind of data this category should collect>"
     }}
   ]
 }}

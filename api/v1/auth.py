@@ -88,4 +88,4 @@ async def logout(
     UserLLMFactory.remove(user_id)
     logger.info(f"用户 {user_id} 的 LLM 客户端缓存已清除")
 
-    return {"success": True, "message": "登出成功"}
+    return {"success": True, "message": "Logout successful"}

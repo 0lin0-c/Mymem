@@ -1,36 +1,36 @@
-# ⚖️ 记忆去重配置：定义各分类的相似度阈值
+# Deduplication Configuration: Define similarity thresholds for each category
 from dataclasses import dataclass
 from typing import Dict
 
 
 @dataclass
 class DedupThreshold:
-    """去重阈值配置"""
-    skip_threshold: float  # 相似度 >= 此值则跳过（强化已有）
-    merge_threshold: float  # 相似度在此范围内则合并
+    """Dedup threshold configuration"""
+    skip_threshold: float  # similarity >= this value then skip (reinforce existing)
+    merge_threshold: float  # similarity in this range then merge
 
 
-# 各分类的去重阈值
+# Dedup thresholds for each category
 CATEGORY_DEDUP_THRESHOLDS: Dict[str, DedupThreshold] = {
-    "核心自我": DedupThreshold(
-        skip_threshold=0.85,  # 核心自我信息高度相似则跳过
-        merge_threshold=0.75,  # 75%-85% 合并
+    "Core Self": DedupThreshold(
+        skip_threshold=0.85,  # Core Self info skips if highly similar
+        merge_threshold=0.75,  # 75%-85% merge
     ),
-    "情景时间轴": DedupThreshold(
-        skip_threshold=0.90,  # 情景信息需要更高相似度才跳过
-        merge_threshold=0.75,  # 75%-90% 合并
+    "Timeline": DedupThreshold(
+        skip_threshold=0.90,  # Timeline info needs higher similarity to skip
+        merge_threshold=0.75,  # 75%-90% merge
     ),
-    "语义知识库": DedupThreshold(
-        skip_threshold=0.88,  # 知识信息较高相似度跳过
-        merge_threshold=0.75,  # 75%-88% 合并
+    "Knowledge Base": DedupThreshold(
+        skip_threshold=0.88,  # Knowledge info skips at higher similarity
+        merge_threshold=0.75,  # 75%-88% merge
     ),
-    "社交关系图谱": DedupThreshold(
-        skip_threshold=0.85,  # 社交信息较高相似度跳过
-        merge_threshold=0.75,  # 75%-85% 合并
+    "Social Graph": DedupThreshold(
+        skip_threshold=0.85,  # Social info skips at higher similarity
+        merge_threshold=0.75,  # 75%-85% merge
     ),
-    "动态领域分类": DedupThreshold(
-        skip_threshold=0.92,  # 动态分类需要非常高相似度才跳过
-        merge_threshold=0.75,  # 75%-92% 合并
+    "Dynamic Category": DedupThreshold(
+        skip_threshold=0.92,  # Dynamic categories need very high similarity to skip
+        merge_threshold=0.75,  # 75%-92% merge
     ),
 }
 

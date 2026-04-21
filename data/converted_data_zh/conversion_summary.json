@@ -1,0 +1,20 @@
+{
+  "source_file": "D:\\Research\\Agent Memory\\Project\\memU\\data\\locomo10.json",
+  "total_samples": 1,
+  "samples": [
+    {
+      "sample_index": 0,
+      "characters": [
+        "Caroline",
+        "Melanie"
+      ],
+      "total_sessions": 19,
+      "total_qa": 199,
+      "converted_files": [
+        "D:\\Research\\Agent Memory\\Project\\memU\\tier_test_results\\converted_data_zh\\sample_0_caroline_converted.json",
+        "D:\\Research\\Agent Memory\\Project\\memU\\tier_test_results\\converted_data_zh\\sample_0_melanie_converted.json"
+      ],
+      "qa_file": "D:\\Research\\Agent Memory\\Project\\memU\\tier_test_results\\converted_data_zh\\sample_0_qa.json"
+    }
+  ]
+}

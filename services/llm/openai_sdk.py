@@ -121,6 +121,7 @@ class OpenAIProvider(BaseLLMProvider):
             response = await self.embedding_client.embeddings.create(
                 model=self.embedding_model,
                 input=text,
+                dimensions=self.embedding_dimensions,
             )
             logger.debug(f"Embedding API 调用成功: dimensions={len(response.data[0].embedding)}")
             return response.data[0].embedding
@@ -133,6 +134,7 @@ class OpenAIProvider(BaseLLMProvider):
         text: str,
         categories: List[Dict],
         assistant_response: str = "",
+        reference_time: str | None = None,
     ) -> Dict:
         """提取记忆意图
 
@@ -142,15 +144,16 @@ class OpenAIProvider(BaseLLMProvider):
             text: 用户输入文本
             categories: 用户的 6 个分类列表
             assistant_response: AI 回复内容
+            reference_time: 参考时间戳（可选，用于历史数据导入）
         """
         logger.debug(f"调用记忆提取: text_length={len(text)}, categories_count={len(categories)}")
         tools = [EXTRACT_MEMORY_TOOL_OPENAI]
-        system_prompt = build_memory_extraction_prompt(categories)
+        system_prompt = build_memory_extraction_prompt(categories, reference_time=reference_time)
 
         # 构建用户消息
-        user_content = f"[用户输入]\n{text}"
+        user_content = f"[User Input]\n{text}"
         if assistant_response:
-            user_content += f"\n\n[AI 回复]\n{assistant_response}"
+            user_content += f"\n\n[AI Response]\n{assistant_response}"
 
         messages = [
             {"role": "system", "content": system_prompt},
@@ -180,7 +183,7 @@ class OpenAIProvider(BaseLLMProvider):
 
                 return {
                     "summary": result.get("summary", ""),
-                    "importance_score": result.get("importance_score", 5),
+                    "importance_score": result.get("importance_score", 2),
                     "response_summary": result.get("response_summary", ""),
                     "atomic_items": result.get("atomic_items", []),
                 }
@@ -201,7 +204,7 @@ class OpenAIProvider(BaseLLMProvider):
         logger.warning(f"extract_memory_intent 失败，返回默认值: error={last_error}")
         return {
             "summary": text[:200],
-            "importance_score": 5,
+            "importance_score": 2,
             "response_summary": assistant_response[:50] if assistant_response else "",
             "atomic_items": [],
         }

@@ -1,0 +1,1946 @@
+{
+  "sample_index": 8,
+  "characters": [
+    "Evan",
+    "Sam"
+  ],
+  "total_questions": 196,
+  "questions": [
+    {
+      "question": "What kind of car does Evan drive?",
+      "answer": "Prius",
+      "category": 1,
+      "evidence": [
+        "D1:2",
+        "D1:4",
+        "D18:1",
+        "D18:3",
+        "D22:2"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What kinds of things did Evan have broken?",
+      "answer": "His old Prius and his new Prius.",
+      "category": 1,
+      "evidence": [
+        "D18:1",
+        "D18:2",
+        "D18:3",
+        "D1:2",
+        "D1:4"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "Where has Evan been on roadtrips with his family?",
+      "answer": "Rockies, Jasper",
+      "category": 1,
+      "evidence": [
+        "D1:2",
+        "D1:4",
+        "D2:1"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "How many Prius has Evan owned?",
+      "answer": "two",
+      "category": 1,
+      "evidence": [
+        "D1:2",
+        "D1:4"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "Which hobby did Sam take up in May 2025?",
+      "answer": "painting",
+      "category": 2,
+      "evidence": [
+        "D1:11"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "Which country was Evan visiting in May 2025?",
+      "answer": "Canada",
+      "category": 3,
+      "evidence": [
+        "D2:1"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "How many roadtrips did Evan take in May 2025?",
+      "answer": "two",
+      "category": 1,
+      "evidence": [
+        "D1:4",
+        "D2:1"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What new hobbies did Sam consider trying?",
+      "answer": "Painting, kayaking, hiking, cooking, running",
+      "category": 1,
+      "evidence": [
+        "D1:11",
+        "D2:10",
+        "D10:8",
+        "D13:6",
+        "D13:8",
+        "D20:6",
+        "D7:2",
+        "D7:4",
+        "D7:6",
+        "D21:19"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What hobby did Evan start practicing a few years ago that he enjoys?",
+      "answer": "Watercolor painting",
+      "category": 1,
+      "evidence": [
+        "D1:14",
+        "D1:16",
+        "D8:13",
+        "D8:14"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "When did Evan go to Jasper with his family?",
+      "answer": "weekend before May 24, 2025",
+      "category": 2,
+      "evidence": [
+        "D2:1"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "Which type of vacation would Evan prefer with his family, walking tours in metropolitan cities or camping trip in the outdoors?",
+      "answer": "camping trip in the outdoors",
+      "category": 3,
+      "evidence": [
+        "D2:1",
+        "D2:3",
+        "D19:1",
+        "D19:3"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What health issue did Sam face that motivated him to change his lifestyle?",
+      "answer": "Weight problem",
+      "category": 1,
+      "evidence": [
+        "D2:6",
+        "D3:4",
+        "D24:12",
+        "D24:14",
+        "D5:5",
+        "D6:2",
+        "D7:2",
+        "D7:12",
+        "D8:1",
+        "D10:6",
+        "D12:1",
+        "D13:2",
+        "D14:1",
+        "D15:1",
+        "D16:3",
+        "D17:3",
+        "D24:20",
+        "D25:1",
+        "D25:3"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "When did Sam first go to the doctor and find out he had a weight problem?",
+      "answer": "A few days before May 24, 2025.",
+      "category": 2,
+      "evidence": [
+        "D2:6"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "When did Evan have his sudden heart palpitation incident that really shocked him up?",
+      "answer": "first week of June 2025",
+      "category": 2,
+      "evidence": [
+        "D3:1"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What is Evan's favorite food?",
+      "answer": "Ginger snaps",
+      "category": 1,
+      "evidence": [
+        "D3:3",
+        "D5:5",
+        "D23:15",
+        "D22:12"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What kind of unhealthy snacks does Sam enjoy eating?",
+      "answer": "soda, candy",
+      "category": 1,
+      "evidence": [
+        "D3:4"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What recurring issue frustrates Sam at the grocery store?",
+      "answer": "Malfunctioning self-checkout machines.",
+      "category": 1,
+      "evidence": [
+        "D3:16",
+        "D22:19"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "When did Sam's friends mock him for being overweight?",
+      "answer": "Friday before 27 July 2025",
+      "category": 2,
+      "evidence": [
+        "D4:1"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What kind of healthy food suggestions has Evan given to Sam?",
+      "answer": "flavored seltzer water, dark chocolate with high cocoa content, air-popped popcorn and fruit, veggies, healthy sandwich snacks, energy balls, grilled chicken salad with avocado",
+      "category": 1,
+      "evidence": [
+        "D3:5",
+        "D4:10",
+        "D22:10",
+        "D22:14",
+        "D24:15"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "Considering their conversations and personal growth, what advice might Evan and Sam give to someone facing a major life transition or challenge?",
+      "answer": "Evan and Sam would likely advise embracing small, consistent changes​​, finding stress-relieving activities like hiking​​, painting, and road trips​​, and the importance of friendship and support in navigating challenges​​.",
+      "category": 3,
+      "evidence": [
+        "D3:10",
+        "D3:15",
+        "D22:1",
+        "D8:17",
+        "D8:22",
+        "D9:8",
+        "D9:11",
+        "D14:7",
+        "D14:12",
+        "D12:7",
+        "D12:11"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "In light of the health and dietary changes discussed, what would be an appropriate gift for both Evan and Sam to encourage their healthy lifestyles?",
+      "answer": "a cookbook with healthy recipes or a subscription to a healthy meal delivery service.",
+      "category": 3,
+      "evidence": [
+        "D2:9",
+        "D3:1",
+        "D3:3",
+        "D3:5",
+        "D4:10",
+        "D14:12",
+        "D5:9",
+        "D7:3",
+        "D7:2",
+        "D7:5",
+        "D7:12",
+        "D8:1",
+        "D8:5",
+        "D8:7",
+        "D8:8",
+        "D8:12",
+        "D9:1"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "How does Evan describe the woman and his feelings for her that he met in Canada?",
+      "answer": "He says she's cool, incredible, like something out of a movie, and that he feels alive around her. Every moment with her is fun and energetic, also Evan feels really lucky to have someone who gets him.",
+      "category": 1,
+      "evidence": [
+        "D5:1",
+        "D5:3",
+        "D23:3"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "When Evan did meet his future wife?",
+      "answer": "week before August 7, 2025.",
+      "category": 2,
+      "evidence": [
+        "D5:1"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "When did Sam start working out at the gym?",
+      "answer": "July 28, 2025",
+      "category": 2,
+      "evidence": [
+        "D4:15"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What significant event happened in Sam's life towards the end of summer 2025?",
+      "answer": "He fell in love with a Canadian woman",
+      "category": 2,
+      "evidence": [
+        "D5:1"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "Which year did Evan start taking care of his health seriously?",
+      "answer": "2023",
+      "category": 2,
+      "evidence": [
+        "D5:6",
+        "D5:7"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What motivates Evan to take care of his health?",
+      "answer": "family, fitness tracker, thirst for adventure on interesting hikes",
+      "category": 1,
+      "evidence": [
+        "D5:9",
+        "D5:11",
+        "D5:13"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What electronic device could Evan gift Sam to help him keep up with his fitness goals?",
+      "answer": "fitness tracker",
+      "category": 3,
+      "evidence": [
+        "D5:7"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "What kind of writing does Sam do to relax and cope with his health issues?",
+      "answer": "journalling, creative writing",
+      "category": 1,
+      "evidence": [
+        "D6:4",
+        "D11:7"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "Who did Evan meet on his trip to Canada, and who did he come back from Canada with?",
+      "answer": "Evan met the woman he fell in love with and returned with her.",
+      "category": 1,
+      "evidence": [
+        "D5:1",
+        "D6:1"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "When Evan get back from a vacation with his SO?",
+      "answer": "August 13, 2025",
+      "category": 2,
+      "evidence": [
+        "D6:1"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "How might Evan and Sam's experiences with health and lifestyle changes influence their approach to stress and challenges?",
+      "answer": "Their experiences likely lead them to view challenges as opportunities for growth and change. They both have embraced healthier lifestyles, indicating a proactive approach to managing stress and challenges.",
+      "category": 3,
+      "evidence": [
+        "D9:1 D4:4 D4:6"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "What recurring frustration does Evan experience?",
+      "answer": "Evan consistently misplaces his keys every week.",
+      "category": 1,
+      "evidence": [
+        "D6:13",
+        "D21:20"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What is the recurring dream that Sam keeps having?",
+      "answer": "he's flying over a cityscape.",
+      "category": 1,
+      "evidence": [
+        "D6:14",
+        "D24:22"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What accidents has Evan's son faced lately?",
+      "answer": "injured at a soccer game, fell off his bike",
+      "category": 1,
+      "evidence": [
+        "D7:1",
+        "D20:3"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "When was Evan's son injured at soccer?",
+      "answer": "Saturday before August 15, 2025.",
+      "category": 2,
+      "evidence": [
+        "D7:1"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What kind of foods or recipes has Sam recommended to Evan?",
+      "answer": "grilled vegetables, grilled chicken and veggie stir-fry, poutine",
+      "category": 1,
+      "evidence": [
+        "D7:8",
+        "D8:7",
+        "D23:26"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "What kind of healthy meals did Sam start eating after getting a health scare?",
+      "answer": "salad, grilled salmon and vegetables, grilled chicken and veggie stir-fry, Beef Merlot, fruit bowl, smoothie bowl",
+      "category": 1,
+      "evidence": [
+        "D3:2",
+        "D8:1",
+        "D7:4",
+        "D8:7",
+        "D10:2",
+        "D11:1",
+        "D18:6"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What role does nature and the outdoors play in Evan and Sam's mental well-being?",
+      "answer": "Nature and outdoor activities seem to be significant stress relievers and sources of joy for both Evan and Sam. These activities likely contribute positively to their mental well-being.",
+      "category": 3,
+      "evidence": [
+        "D22:1 D22:2 D9:10 D9:11"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "How many months lapsed between Sam's first and second doctor's appointment?",
+      "answer": "three months",
+      "category": 2,
+      "evidence": [
+        "D2:6",
+        "D7:2"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "When did Evan start taking painting classes?",
+      "answer": "Few days before 19 August, 2025.",
+      "category": 2,
+      "evidence": [
+        "D8:12"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "Which classes did Evan join in mid-August 2025?",
+      "answer": "painting classes",
+      "category": 2,
+      "evidence": [
+        "D8:12"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "How did Evan get into painting?",
+      "answer": "His friend got him into it by gifting him a painting and giving him some advice. The painting inspired Evan.",
+      "category": 1,
+      "evidence": [
+        "D1:14",
+        "D1:15",
+        "D1:16",
+        "D8:14"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "How often does Sam get health checkups?",
+      "answer": "every three months",
+      "category": 3,
+      "evidence": [
+        "D2:6",
+        "D7:2",
+        "D12:1"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What kind of subjects does Evan enjoy painting?",
+      "answer": "nature landscapes, portraits, abstract minimalism",
+      "category": 1,
+      "evidence": [
+        "D8:20",
+        "D20:13",
+        "D20:15",
+        "D21:10",
+        "D21:14"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "Which places in Canada was Evan visiting in July 2025?",
+      "answer": "Banff, Rocky Mountains",
+      "category": 2,
+      "evidence": [
+        "D8:27",
+        "D9:8",
+        "D9:10"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "How do Evan and Sam use creative outlets to cope with life's challenges?",
+      "answer": "Evan and Sam use creative activities, like painting and writing, as therapeutic tools to express themselves and cope with stress.",
+      "category": 3,
+      "evidence": [
+        "D21:18 D21:22 D11:15 D11:19"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "When did Evan go skiing in Banff?",
+      "answer": "July 2025",
+      "category": 2,
+      "evidence": [
+        "D8:26",
+        "D8:27",
+        "D8:28"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What new diet and lifestyle change did Sam adopt over time?",
+      "answer": "Healthy eating, exercise routine, running, hiking",
+      "category": 1,
+      "evidence": [
+        "D8:1",
+        "D9:1",
+        "D21:9",
+        "D22:1"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "Who was injured in Evan's family?",
+      "answer": "Evan's son and Evan himself",
+      "category": 1,
+      "evidence": [
+        "D7:1",
+        "D7:9",
+        "D7:10",
+        "D9:2",
+        "D11:2",
+        "D11:3"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What kind of hobbies does Evan pursue?",
+      "answer": "painting, hiking, reading books, biking, skiing, snowboarding, ice skating, swimming, camping, kayaking",
+      "category": 1,
+      "evidence": [
+        "D1:14",
+        "D1:6",
+        "D4:8",
+        "D6:1",
+        "D8:30",
+        "D9:6",
+        "D25:8",
+        "D25:10"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What challenges does Sam face in his quest for a healthier lifestyle, and how does he address them?",
+      "answer": "Sam faces challenges like maintaining motivation and making dietary changes. He addresses them by enrolling in cooking classes and seeking support from friends like Evan.",
+      "category": 3,
+      "evidence": [
+        "D4:2",
+        "D4:6",
+        "D14:1",
+        "D14:2"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "Which activity do Evan and Sam plan on doing together during September 2025?",
+      "answer": "painting",
+      "category": 2,
+      "evidence": [
+        "D10:12",
+        "D10:13",
+        "D10:14"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "When did Evan and Sam decide to paint together?",
+      "answer": "Saturday after 11 September, 2025.",
+      "category": 2,
+      "evidence": [
+        "D10:12",
+        "D10:13",
+        "D10:14"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "What personal health incidents does Evan face in 2025?",
+      "answer": "heart palpitations, twisted ankle, twisted ankle",
+      "category": 1,
+      "evidence": [
+        "D3:1",
+        "D9:2",
+        "D11:2"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What recurring adventure does Evan have with strangers?",
+      "answer": "Helping lost tourists and experiencing unexpected adventures in the city.",
+      "category": 1,
+      "evidence": [
+        "D11:6",
+        "D14:2"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What is Sam's persistent problem with his phone?",
+      "answer": "His new phone malfunctioning, particularly with the navigation app.",
+      "category": 1,
+      "evidence": [
+        "D11:15",
+        "D14:1"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "Which US state was Sam travelling in during October 2025?",
+      "answer": "California",
+      "category": 3,
+      "evidence": [
+        "D13:14"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "When did Evan start lifting weights?",
+      "answer": "October 2024",
+      "category": 2,
+      "evidence": [
+        "D12:2"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "When did Sam and his friend decide to try kayaking?",
+      "answer": "October 14, 2025",
+      "category": 2,
+      "evidence": [
+        "D13:10"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "Which new activity does Sam take up in October 2025?",
+      "answer": "kayaking",
+      "category": 2,
+      "evidence": [
+        "D13:8"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What kind of stress was Sam dealing with in October 2025?",
+      "answer": "work-related stress",
+      "category": 2,
+      "evidence": [
+        "D13:4"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What health scares did Sam and Evan experience?",
+      "answer": "Sam faced a health scare with stomach pains that turned out to be gastritis, prompting him to rethink his health habits. Evan, on the other hand, experienced two separate incidents: a sudden heart palpitation incident and a different event involving a misunderstanding during a medical check-up. These experiences have significantly influenced their perspectives on health and well-being.",
+      "category": 1,
+      "evidence": [
+        "D3:1",
+        "D14:1",
+        "D14:2",
+        "D17:2"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "When was Sam in the ER?",
+      "answer": "weekend before 17 October, 2025.",
+      "category": 2,
+      "evidence": [
+        "D14:1"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "Which ailment does Sam have to face due to his weight?",
+      "answer": "gastritis",
+      "category": 1,
+      "evidence": [
+        "D2:6",
+        "D7:2",
+        "D12:1",
+        "D14:1"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "Does Evan live close to a beach or mountains?",
+      "answer": "beach",
+      "category": 3,
+      "evidence": [
+        "D16:16",
+        "D16:18",
+        "D16:20"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "When did Evan lose his job?",
+      "answer": "end of October 2025",
+      "category": 2,
+      "evidence": [
+        "D16:10"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "When did Evan and Sam planned a trip to the beach together?",
+      "answer": "December, 2025",
+      "category": 2,
+      "evidence": [
+        "D16:24"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "What was Sam doing on December 4, 2025?",
+      "answer": "Attending a Weight Watchers meeting",
+      "category": 2,
+      "evidence": [
+        "D18:6"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "Which two significant life events occur in Evan's life in December 2025 with his partner?",
+      "answer": "his partner gets pregnant and they get married",
+      "category": 1,
+      "evidence": [
+        "D19:1",
+        "D21:2"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "How long did Evan and his partner date before getting married?",
+      "answer": "four months",
+      "category": 2,
+      "evidence": [
+        "D5:1",
+        "D21:1"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "Which major holiday season conincides with Evan's wedding?",
+      "answer": "Christmas",
+      "category": 3,
+      "evidence": [
+        "D21:2"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "Which activity did Sam resume in December 2025 after a long time?",
+      "answer": "hiking",
+      "category": 1,
+      "evidence": [
+        "D20:6",
+        "D22:1"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "When is Evan planning a big family reunion?",
+      "answer": "Summer 2026",
+      "category": 2,
+      "evidence": [
+        "D19:11"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "When did Evan's son fall off his bike?",
+      "answer": "Thursday before December 17, 2025.",
+      "category": 2,
+      "evidence": [
+        "D20:3"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "When did Evan announce his marriage to his extended family?",
+      "answer": "January 5, 2026",
+      "category": 2,
+      "evidence": [
+        "D23:1"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "When did Evan finish the painting that's hanging in the exhibit?",
+      "answer": "few days before 17 December, 2025.",
+      "category": 2,
+      "evidence": [
+        "D20:13",
+        "D20:15"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "How does Evan spend his time with his bride after the wedding?",
+      "answer": "family get-together, honeymoon in Canada to see snowy landscapes, ski, taste local cuisine and do some snowshoeing",
+      "category": 1,
+      "evidence": [
+        "D23:15",
+        "D23:23",
+        "D23:25",
+        "D24:9"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "Who did Evan tell about his marriage?",
+      "answer": "To Sam, to his friends from work, and to his and his wife's families.",
+      "category": 1,
+      "evidence": [
+        "D21:2",
+        "D22:4",
+        "D22:5",
+        "D23:1",
+        "D23:5"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "When will Evan and his partner have their honeymoon in Canada?",
+      "answer": "February 2026",
+      "category": 2,
+      "evidence": [
+        "D23:23"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "When did Evan have a drunken night with his friends?",
+      "answer": "January 9, 2025",
+      "category": 2,
+      "evidence": [
+        "D24:3"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What is a stress reliever for Evan?",
+      "answer": "Drawing, traveling, places with a beautiful view, yoga, sunsets or something comfortable for Evan",
+      "category": 1,
+      "evidence": [
+        "D1:14",
+        "D2:10",
+        "D2:11",
+        "D2:14",
+        "D8:18",
+        "D10:8",
+        "D11:8",
+        "D16:23",
+        "D18:7",
+        "D24:19",
+        "D24:21"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What is a stress reliever for Sam?",
+      "answer": "Unhealthy snacks, sweets, yoga, places with beautiful views",
+      "category": 1,
+      "evidence": [
+        "D10:6",
+        "D13:2",
+        "D13:4",
+        "D16:17",
+        "D16:23",
+        "D18:8"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What type of car did Evan get after his old Prius broke down?",
+      "answer": "new Prius",
+      "category": 4,
+      "evidence": [
+        "D1:2"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "How did Evan get into watercolor painting?",
+      "answer": "friend's advice",
+      "category": 4,
+      "evidence": [
+        "D1:16"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What did Evan start doing a few years back as a stress-buster?",
+      "answer": "watercolor painting",
+      "category": 4,
+      "evidence": [
+        "D1:14"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What advice did Evan give Sam about finding a passion?",
+      "answer": "keep trying new things until something sparks excitement",
+      "category": 4,
+      "evidence": [
+        "D1:18"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "Where did Evan take his family for a road trip on 24 May, 2025?",
+      "answer": "Jasper",
+      "category": 4,
+      "evidence": [
+        "D2:1"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What did Evan find relaxing about his road trip to Jasper?",
+      "answer": "fresh air, peacefulness, cozy cabin surrounded by mountains and forests",
+      "category": 4,
+      "evidence": [
+        "D2:3"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What habit is Sam trying to change in terms of diet?",
+      "answer": "consuming soda and candy",
+      "category": 4,
+      "evidence": [
+        "D3:4"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What new suggestion did Evan give to Sam regarding his soda and candy consumption?",
+      "answer": "try flavored seltzer water and dark chocolate with high cocoa content",
+      "category": 4,
+      "evidence": [
+        "D3:5"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "What did Sam agree to try instead of soda and candy?",
+      "answer": "flavored seltzer water and dark chocolate with high cocoa content",
+      "category": 4,
+      "evidence": [
+        "D3:6"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What frustrating issue did Sam face at the supermarket?",
+      "answer": "broken self-checkout machines",
+      "category": 4,
+      "evidence": [
+        "D3:16"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What novel is Evan reading that he finds gripping?",
+      "answer": "The Great Gatsby",
+      "category": 4,
+      "evidence": [
+        "D4:10"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What kind of water does Evan suggest Sam try as an alternative to soda?",
+      "answer": "Flavored seltzer water",
+      "category": 4,
+      "evidence": [
+        "D4:8"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "What does the smartwatch help Evan with?",
+      "answer": "tracks progress and serves as a constant reminder to keep going",
+      "category": 4,
+      "evidence": [
+        "D5:9"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What does the bonsai tree symbolize for Evan?",
+      "answer": "strength and resilience",
+      "category": 4,
+      "evidence": [
+        "D5:17"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "Why did Evan decide to get the bonsai tree?",
+      "answer": "motivates him to keep going through tough times",
+      "category": 4,
+      "evidence": [
+        "D5:17"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "According to Sam, what is more important than perfection?",
+      "answer": "progress",
+      "category": 4,
+      "evidence": [
+        "D6:6"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What did Evan suggest Sam to check out for insights into his dream?",
+      "answer": "dream interpretation book",
+      "category": 4,
+      "evidence": [
+        "D6:15"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "What did Evan mention he had been searching for fruitlessly for half an hour?",
+      "answer": "his keys",
+      "category": 4,
+      "evidence": [
+        "D6:13"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What class is Sam taking to learn how to make healthier meals?",
+      "answer": "cooking class",
+      "category": 4,
+      "evidence": [
+        "D7:2"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What dish did Sam make on 18 August, 2025 that turned out flavorful?",
+      "answer": "grilled dish with salmon and vegetables",
+      "category": 4,
+      "evidence": [
+        "D7:4"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What kind of recipe did Evan request from Sam on 19 August, 2025?",
+      "answer": "recipes with more vegetables",
+      "category": 4,
+      "evidence": [
+        "D7:7"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "What food did Sam share a photo of on 19 August, 2025?",
+      "answer": "bowl of spinach, avocado, and strawberries",
+      "category": 4,
+      "evidence": [
+        "D8:1"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What type of painting classes did Evan start taking in 2025?",
+      "answer": "watercolor painting classes",
+      "category": 4,
+      "evidence": [
+        "D8:12"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What did Evan start painting years ago due to being inspired by a friend's gift?",
+      "answer": "forest scene",
+      "category": 4,
+      "evidence": [
+        "D8:14"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What nature concept do watercolor painting classes emphasize according to Evan?",
+      "answer": "observing nature and painting what is seen",
+      "category": 4,
+      "evidence": [
+        "D8:18"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What type of landscapes does Evan love painting the most?",
+      "answer": "sunsets over the ocean",
+      "category": 4,
+      "evidence": [
+        "D8:20"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What fun activity did Evan mention doing in July 2025?",
+      "answer": "skiing",
+      "category": 4,
+      "evidence": [
+        "D8:26"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What injury did Evan suffer from in August 2025?",
+      "answer": "Twisted knee",
+      "category": 4,
+      "evidence": [
+        "D9:2"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What sports activity has Evan been doing to stay active while dealing with the knee injury?",
+      "answer": "Swimming",
+      "category": 4,
+      "evidence": [
+        "D9:6"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What suggestion did Sam give to Evan to help with his knee issue?",
+      "answer": "Consider low-impact exercises or physical therapy",
+      "category": 4,
+      "evidence": [
+        "D9:5"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "What did Evan suggest Sam try as a calming hobby?",
+      "answer": "Painting",
+      "category": 4,
+      "evidence": [
+        "D10:8"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "What did Evan recommend Sam acquire to get started with painting?",
+      "answer": "Acrylic paints, brushes, canvas/paper, palette",
+      "category": 4,
+      "evidence": [
+        "D10:11"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "What activity does Evan do to keep himself busy while healing his knee?",
+      "answer": "Watercolor painting",
+      "category": 4,
+      "evidence": [
+        "D11:6"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What painting did Evan share with Sam in October?",
+      "answer": "a cactus in the desert",
+      "category": 4,
+      "evidence": [
+        "D11:8"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "What kind of writing does Sam enjoy as a form of expression?",
+      "answer": "creative writing",
+      "category": 4,
+      "evidence": [
+        "D11:17"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What electronics issue has been frustrating Sam lately?",
+      "answer": "malfunctioning navigation app on the new phone",
+      "category": 4,
+      "evidence": [
+        "D11:15"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What activity did Evan start one year ago?",
+      "answer": "lifting weights",
+      "category": 4,
+      "evidence": [
+        "D12:2"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What advice did Evan give to Sam to avoid injuries while starting weightlifting?",
+      "answer": "Find a trainer",
+      "category": 4,
+      "evidence": [
+        "D12:4"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "Where did Sam and his mate plan to try kayaking?",
+      "answer": "Lake Tahoe",
+      "category": 4,
+      "evidence": [
+        "D13:14"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What digestive issue did Sam experience lately?",
+      "answer": "Gastritis",
+      "category": 4,
+      "evidence": [
+        "D14:1"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What adventurous theme is emerging in Evan's life as mentioned by Sam?",
+      "answer": "helping lost tourists",
+      "category": 4,
+      "evidence": [
+        "D14:2"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "What does Evan mention about his progress at the gym to Sam?",
+      "answer": "gaining strength",
+      "category": 4,
+      "evidence": [
+        "D14:8"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "How did Evan start his transformation journey two years ago?",
+      "answer": "Changed his diet and started walking regularly",
+      "category": 4,
+      "evidence": [
+        "D15:8"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What gift did Evan receive from a close friend?",
+      "answer": "1968 Kustom K-200A vintage guitar",
+      "category": 4,
+      "evidence": [
+        "D16:10"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "Why had Evan been going through a tough time lately?",
+      "answer": "Lost their job due to downsizing",
+      "category": 4,
+      "evidence": [
+        "D16:10"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "How does Evan describe the island he grew up on?",
+      "answer": "A happy place",
+      "category": 4,
+      "evidence": [
+        "D17:18"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What was the main reason for Evan's frustration with his new Prius breaking down?",
+      "answer": "He relied on it for his active lifestyle and road trips",
+      "category": 4,
+      "evidence": [
+        "D18:1"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "How did Sam suggest Evan view the setback with his broken Prius?",
+      "answer": "As a chance to explore other ways of staying active and traveling",
+      "category": 4,
+      "evidence": [
+        "D18:5"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "What did Sam suggest Evan try for stress relief and flexibility?",
+      "answer": "Yoga",
+      "category": 4,
+      "evidence": [
+        "D18:8"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "What did Sam offer Evan regarding yoga?",
+      "answer": "Support and tips",
+      "category": 4,
+      "evidence": [
+        "D18:10"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "What news did Evan share with Sam on 9th December 2025?",
+      "answer": "partner is pregnant",
+      "category": 4,
+      "evidence": [
+        "D19:1"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "What family event is Evan planning for next summer?",
+      "answer": "big family reunion",
+      "category": 4,
+      "evidence": [
+        "D19:11"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What is the motto of Evan's family?",
+      "answer": "'Bring it on Home'",
+      "category": 4,
+      "evidence": [
+        "D19:7"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "According to Evan, what is important for Sam to believe in concerning his weight?",
+      "answer": "Your worth is not defined by your weight",
+      "category": 4,
+      "evidence": [
+        "D20:9"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "Who helped Evan get the painting published in the exhibition?",
+      "answer": "a close friend",
+      "category": 4,
+      "evidence": [
+        "D20:17"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What did Sam recently start enjoying to clear his head?",
+      "answer": "running in the mornings",
+      "category": 4,
+      "evidence": [
+        "D21:9"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What did Sam suggest Evan should do with his keys?",
+      "answer": "put a GPS sensor on them",
+      "category": 4,
+      "evidence": [
+        "D21:21"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "How did Evan feel when he painted the piece with the bird flying over it?",
+      "answer": "a sense of joy and freedom",
+      "category": 4,
+      "evidence": [
+        "D21:16"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What did Evan suggest Sam should keep doing to find his own version of love?",
+      "answer": "Keep trying new things",
+      "category": 4,
+      "evidence": [
+        "D21:10"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "How did Evan describe the process of creating the painting with the bird flying over it?",
+      "answer": "embracing the creative process without restraint",
+      "category": 4,
+      "evidence": [
+        "D21:16"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What did Evan want to share with his work friends?",
+      "answer": "getting married",
+      "category": 4,
+      "evidence": [
+        "D22:4"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What did Evan share with Sam after their hiking trip?",
+      "answer": "a photo of a man standing on a rock looking out over a valley",
+      "category": 4,
+      "evidence": [
+        "D22:1"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "What did Evan offer to share with Sam after talking about healthy snacks?",
+      "answer": "the recipes for cookies",
+      "category": 4,
+      "evidence": [
+        "D22:12"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "What did Evan and his partner share with their extended family on January 5, 2026?",
+      "answer": "their marriage",
+      "category": 4,
+      "evidence": [
+        "D23:1"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What was Evan limiting himself to on his new diet?",
+      "answer": "just two ginger snaps a day",
+      "category": 4,
+      "evidence": [
+        "D23:15"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What sports activity did Evan and his partner try in a recent weekend?",
+      "answer": "Snowshoeing",
+      "category": 4,
+      "evidence": [
+        "D24:9"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What advice did Evan suggest Sam seek from a doctor?",
+      "answer": "diet plan and low-impact exercises",
+      "category": 4,
+      "evidence": [
+        "D24:11",
+        "D24:14"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "What suggestions did Evan give for low-impact exercises?",
+      "answer": "swimming, yoga, walking",
+      "category": 4,
+      "evidence": [
+        "D24:17"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What movie did Sam watch that motivated him to keep up with his routine?",
+      "answer": "The Godfather",
+      "category": 4,
+      "evidence": [
+        "D24:18"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What activity helped Evan with stress and flexibility?",
+      "answer": "Yoga",
+      "category": 4,
+      "evidence": [
+        "D24:19"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What did Evan share a photo of that was taken on a camping trip?",
+      "answer": "a kayak",
+      "category": 4,
+      "evidence": [
+        "D25:8"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "Why did Evan apologize to his partner?",
+      "answer": "for a drunken night",
+      "category": 4,
+      "evidence": [
+        "D25:2"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "How does Evan describe being out on the water while kayaking and watching the sunset?",
+      "answer": "peaceful",
+      "category": 4,
+      "evidence": [
+        "D25:10"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What type of car did Sam get after his old Prius broke down?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D1:2"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "How did Sam get into watercolor painting?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D1:16"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What did Sam start doing a few years back as a stress-buster?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D1:14"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "Where did Sam take his family for a road trip on 24 May, 2025?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D2:1"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What did Sam find relaxing about his road trip to Jasper?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D2:3"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What habit is Evan trying to change in terms of diet?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D3:4"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What frustrating issue did Evan face at the supermarket?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D3:16"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What novel is Sam reading that he finds gripping?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D4:10"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What does the smartwatch help Sam with?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D5:9"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "Why did Sam decide to get the bonsai tree?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D5:17"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What did Sam mention he had been searching for fruitlessly for half an hour?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D6:13"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What class is Evan taking to learn how to make healthier meals?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D7:2"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What dish did Sam make on 18 August, 2025 that turned out bland?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D7:4"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What food did Evan share a photo of on 19 August, 2025?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D8:1"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What did Evan start sculpting years ago due to being inspired by a friend's gift?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D8:14"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What nature concept do watercolor painting classes emphasize according to Sam?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D8:18"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What type of landscapes does Sam love painting the most?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D8:20"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What sports activity has Sam been doing to stay active while dealing with the knee injury?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D9:6"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What activity does Sam do to keep himself busy while healing his knee?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D11:6"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What kind of writing does Evan enjoy as a form of expression?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D11:17"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What electronics issue has been frustrating Evan lately?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D11:15"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What activity did Evan quit one year ago?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D12:2"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "Where did Sam and his mate plan to try skydiving?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D13:14"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What digestive issue did Evan experience lately?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D14:1"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "How did Sam start his transformation journey two years ago?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D15:8"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What gift did Sam receive from a close friend?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D16:10"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "How does Sam describe the island he grew up on?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D17:18"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What was the main reason for Evan's frustration with his new Prius getting stolen?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D18:1"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What family event is Sam planning for next summer?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D19:11"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What is the motto of Sam's family?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D19:7"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "Who helped Sam get the painting published in the exhibition?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D20:17"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "How did Sam feel when he painted the piece with the bird flying over it?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D21:16"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "How did Sam describe the process of creating the painting with the bird flying over it?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D21:16"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What did Evan and his partner keep from their extended family on January 5, 2026?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D23:1"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What was Sam limiting himself to on his new diet?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D23:15"
+      ],
+      "target_character": "Sam"
+    },
+    {
+      "question": "What dance activity did Evan and his partner try in a recent weekend?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D24:9"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What suggestions did Evan give for high-impact exercises?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D24:17"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What movie did Evan watch that motivated him to keep up with his routine?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D24:18"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What activity hindered Evan's stress and flexibility?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D24:19"
+      ],
+      "target_character": "Evan"
+    },
+    {
+      "question": "What did Sam share a photo of that was taken on a camping trip?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D25:8"
+      ],
+      "target_character": "Sam"
+    }
+  ]
+}

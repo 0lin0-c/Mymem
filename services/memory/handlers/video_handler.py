@@ -269,24 +269,24 @@ class VideoHandler(BaseHandler):
             for i, desc in enumerate(frame_descriptions)
         ])
 
-        prompt = f"""基于以下关键帧描述，生成视频内容的综合摘要：
+        prompt = f"""Based on the following key frame descriptions, generate a comprehensive summary of the video content:
 
 {descriptions_text}
 
-请总结视频的主题、场景变化和关键内容。"""
+Please summarize the video's theme, scene changes, and key content."""
 
         try:
             summary = await self.llm.generate_chat_response(
-                system_prompt="你是一个视频分析专家，擅长总结视频内容。",
+                system_prompt="You are a video analysis expert, skilled at summarizing video content.",
                 context="",
                 user_query=prompt,
             )
             return summary
 
         except Exception as e:
-            logger.error(f"视频摘要生成失败: {e}")
-            # 返回帧描述拼接
-            return "视频内容：\n" + descriptions_text
+            logger.error(f"Video summary generation failed: {e}")
+            # Return frame descriptions concatenated
+            return "Video content:\n" + descriptions_text
 
     async def get_vector(self, text: str) -> bytes:
         """生成向量"""

@@ -1,0 +1,385 @@
+{
+  "test_info": {
+    "timestamp": "20260421_005037",
+    "eval_mode": "assistant_eval",
+    "total_samples": 1,
+    "total_questions": 2
+  },
+  "statistics": {
+    "total_questions": 2,
+    "evaluated_questions": 2,
+    "correct_count": 1,
+    "accuracy": 50.0,
+    "category_accuracy": {
+      "2": {
+        "label": "时间相关（when/how long）",
+        "display_name": "Category 2 - 时间相关（when/how long）",
+        "count": 1,
+        "correct": 0,
+        "accuracy": 0.0
+      },
+      "3": {
+        "label": "推理归纳（需要综合多事实）",
+        "display_name": "Category 3 - 推理归纳（需要综合多事实）",
+        "count": 1,
+        "correct": 1,
+        "accuracy": 100.0
+      }
+    },
+    "answer_accuracy": 50.0,
+    "non_empty_answer_questions": 2,
+    "non_empty_answer_correct_count": 1,
+    "adjusted_accuracy_excluding_empty_standard": 50.0,
+    "answer_failure_patterns": {
+      "retrieval_gap": 1
+    },
+    "retrieval_support_rate": 0.0,
+    "retrieval_hit_count": 0,
+    "recall_at_k": 0.0,
+    "top1_hit_rate": 0.0,
+    "top3_hit_rate": 0.0,
+    "top5_hit_rate": 0.0,
+    "mean_first_evidence_rank": 0,
+    "rank_distribution": {
+      "miss": 2
+    },
+    "avg_retrieval_score": 0.09076652268081027,
+    "layer_distribution": {
+      "category_only": {
+        "count": 2,
+        "rate": 100.0,
+        "correct": 1,
+        "accuracy": 50.0,
+        "recall_at_k": 0.0
+      }
+    },
+    "storage_hit_count": 2,
+    "storage_coverage_rate": 100.0,
+    "db_diagnosis_counts": {
+      "retrieval_gap": 1
+    }
+  },
+  "samples": [
+    {
+      "sample_index": 0,
+      "character": "Caroline",
+      "user_id": "e048f4ca-ae03-4028-b82e-4da7f6443d65",
+      "total_sessions": 19,
+      "total_memories": 100,
+      "total_questions": 2,
+      "sample_accuracy": 50.0,
+      "qa_results": [
+        {
+          "eval_mode": "assistant_eval",
+          "question": "When did Caroline go to the LGBTQ support group?",
+          "standard_answer": "4 January 2026",
+          "generated_answer": "根据记录，Caroline是在2026年2月3日（星期二）加入那个新的LGBTQ行动小组的。",
+          "is_correct": false,
+          "correctness_explanation": "The generated answer states the date as February 3, 2026, while the standard answer is January 4, 2026. The dates do not match.",
+          "category": 2,
+          "evidence": [
+            "D1:3"
+          ],
+          "storage_hit": true,
+          "retrieval_hit": false,
+          "rank_position": null,
+          "evaluation_trace": {
+            "storage_eval": {
+              "storage_hit": true,
+              "keywords": [
+                "when",
+                "did",
+                "caroline",
+                "the",
+                "lgbtq",
+                "support",
+                "group",
+                "january"
+              ],
+              "db_hits": {
+                "resource_count": 55,
+                "category_count": 71
+              },
+              "db_memories_sample": [
+                {
+                  "id": "05ad4845-551f-4569-8df7-f44ed9fc825e",
+                  "source": "resource",
+                  "text": "The user expressed their dream of creating a safe and loving home for children in need, emphasizing that love and acceptance are fundamental rights that everyone deserves. They conveyed deep passion and commitment toward helping these kids experience a nurturing environment. The AI responded with supportive encouragement, acknowledging and validating the user's dedication.",
+                  "importance_score": 3,
+                  "updated_at": "2026-03-25T09:55:00+00:00",
+                  "matched_keyword": "the"
+                },
+                {
+                  "id": "60196345-826f-4d8c-9437-a77515214f1c",
+                  "source": "resource",
+                  "text": "The user thanked someone named Melanie for something beautiful and reflected on the love found in both blood families and chosen families. The user shared a deeply personal life goal: they hope to build their own family through adoption, specifically to provide a home for children who haven't had one before. For the user, adoption represents a way of giving back and showing love and acceptance.",
+                  "importance_score": 3,
+                  "updated_at": "2026-03-25T09:55:00+00:00",
+                  "matched_keyword": "the"
+                },
+                {
+                  "id": "e4554626-c1dc-4293-906b-adf30201a61c",
+                  "source": "resource",
+                  "text": "The user shared a heartfelt reflection on their personal transition journey, expressing gratitude for the support they received from friends, family, and role models during difficult times. They credited this support with helping them discover their true identity and stated their desire to pay that support forward by helping others going through similar experiences. They emphasized that bringing comfort and helping others grow brings them deep joy. The AI responded with warm encouragement, calling the user inspiring.",
+                  "importance_score": 3,
+                  "updated_at": "2026-03-25T09:55:00+00:00",
+                  "matched_keyword": "the"
+                },
+                {
+                  "id": "7ef23c10-de15-4356-90d8-93437276d611",
+                  "source": "resource",
+                  "text": "The user expressed excitement about starting the adoption process, describing it as a long-held dream to provide a safe, loving home for children in need. They asked the AI (addressed as \"Melanie\") about adoption experience. The AI shared that a friend adopted last year and is very happy, and mentioned it inspired thoughts of possibly adopting as well.",
+                  "importance_score": 3,
+                  "updated_at": "2026-03-20T10:31:00+00:00",
+                  "matched_keyword": "the"
+                },
+                {
+                  "id": "5b25487d-52e1-4037-927e-449facb4eb26",
+                  "source": "resource",
+                  "text": "The user finds a sense of freedom through art and supportive communities. They are passionate about LGBTQ rights, living authentically, and helping others do the same. Their work positively impacts the LGBTQ+ community, giving them a sense of meaning in creating a more loving world. They credit friends, family, and mentors for their support, and this motivation continues to inspire their art practice.",
+                  "importance_score": 3,
+                  "updated_at": "2026-03-06T00:09:00+00:00",
+                  "matched_keyword": "the"
+                }
+              ]
+            }
+          },
+          "retrieval_layer": {
+            "resolved_layer": "category_only",
+            "is_sufficient_at_category": true,
+            "llm_classified_categories": [
+              "Timeline"
+            ],
+            "category_results_count": 5,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [
+            "Mel's son was involved in an accident around 2026-03-24; the other children were scared but reassured that their brother would be OK",
+            "User is hosting/participating in an LGBTQ art show in March 2026",
+            "The user attended a transgender poetry reading event.",
+            "Melanie joined a mentorship program for LGBTQ youth last weekend (around January 31 - February 1, 2026).",
+            "User joined a new LGBTQ activist group on 2026-02-03 (Tuesday)."
+          ],
+          "retrieved_scores": [
+            0.1116,
+            0.0968,
+            0.0883,
+            0.0857,
+            0.0852
+          ],
+          "db_diagnosis": {
+            "diagnosis_type": "retrieval_gap",
+            "summary": "数据库命中相关记忆但未被检索召回，倾向检索/排序失效",
+            "keywords": [
+              "when",
+              "did",
+              "caroline",
+              "the",
+              "lgbtq",
+              "support",
+              "group",
+              "january"
+            ],
+            "db_hits": {
+              "resource_count": 53,
+              "category_count": 71
+            },
+            "db_memories_sample": [
+              {
+                "id": "e4554626-c1dc-4293-906b-adf30201a61c",
+                "source": "resource",
+                "text": "The user shared a heartfelt reflection on their personal transition journey, expressing gratitude for the support they received from friends, family, and role models during difficult times. They credited this support with helping them discover their true identity and stated their desire to pay that support forward by helping others going through similar experiences. They emphasized that bringing comfort and helping others grow brings them deep joy. The AI responded with warm encouragement, calling the user inspiring.",
+                "importance_score": 3,
+                "updated_at": "2026-03-25T09:55:00+00:00",
+                "matched_keyword": "the"
+              },
+              {
+                "id": "05ad4845-551f-4569-8df7-f44ed9fc825e",
+                "source": "resource",
+                "text": "The user expressed their dream of creating a safe and loving home for children in need, emphasizing that love and acceptance are fundamental rights that everyone deserves. They conveyed deep passion and commitment toward helping these kids experience a nurturing environment. The AI responded with supportive encouragement, acknowledging and validating the user's dedication.",
+                "importance_score": 3,
+                "updated_at": "2026-03-25T09:55:00+00:00",
+                "matched_keyword": "the"
+              },
+              {
+                "id": "60196345-826f-4d8c-9437-a77515214f1c",
+                "source": "resource",
+                "text": "The user thanked someone named Melanie for something beautiful and reflected on the love found in both blood families and chosen families. The user shared a deeply personal life goal: they hope to build their own family through adoption, specifically to provide a home for children who haven't had one before. For the user, adoption represents a way of giving back and showing love and acceptance.",
+                "importance_score": 3,
+                "updated_at": "2026-03-25T09:55:00+00:00",
+                "matched_keyword": "the"
+              },
+              {
+                "id": "7ef23c10-de15-4356-90d8-93437276d611",
+                "source": "resource",
+                "text": "The user expressed excitement about starting the adoption process, describing it as a long-held dream to provide a safe, loving home for children in need. They asked the AI (addressed as \"Melanie\") about adoption experience. The AI shared that a friend adopted last year and is very happy, and mentioned it inspired thoughts of possibly adopting as well.",
+                "importance_score": 3,
+                "updated_at": "2026-03-20T10:31:00+00:00",
+                "matched_keyword": "the"
+              },
+              {
+                "id": "5b25487d-52e1-4037-927e-449facb4eb26",
+                "source": "resource",
+                "text": "The user finds a sense of freedom through art and supportive communities. They are passionate about LGBTQ rights, living authentically, and helping others do the same. Their work positively impacts the LGBTQ+ community, giving them a sense of meaning in creating a more loving world. They credit friends, family, and mentors for their support, and this motivation continues to inspire their art practice.",
+                "importance_score": 3,
+                "updated_at": "2026-03-06T00:09:00+00:00",
+                "matched_keyword": "the"
+              }
+            ],
+            "matched_in_retrieved": [],
+            "missed_in_retrieval": [
+              {
+                "id": "e4554626-c1dc-4293-906b-adf30201a61c",
+                "source": "resource",
+                "text": "The user shared a heartfelt reflection on their personal transition journey, expressing gratitude for the support they received from friends, family, and role models during difficult times. They credited this support with helping them discover their true identity and stated their desire to pay that support forward by helping others going through similar experiences. They emphasized that bringing comfort and helping others grow brings them deep joy. The AI responded with warm encouragement, calling the user inspiring.",
+                "importance_score": 3,
+                "updated_at": "2026-03-25T09:55:00+00:00",
+                "matched_keyword": "the"
+              },
+              {
+                "id": "05ad4845-551f-4569-8df7-f44ed9fc825e",
+                "source": "resource",
+                "text": "The user expressed their dream of creating a safe and loving home for children in need, emphasizing that love and acceptance are fundamental rights that everyone deserves. They conveyed deep passion and commitment toward helping these kids experience a nurturing environment. The AI responded with supportive encouragement, acknowledging and validating the user's dedication.",
+                "importance_score": 3,
+                "updated_at": "2026-03-25T09:55:00+00:00",
+                "matched_keyword": "the"
+              },
+              {
+                "id": "60196345-826f-4d8c-9437-a77515214f1c",
+                "source": "resource",
+                "text": "The user thanked someone named Melanie for something beautiful and reflected on the love found in both blood families and chosen families. The user shared a deeply personal life goal: they hope to build their own family through adoption, specifically to provide a home for children who haven't had one before. For the user, adoption represents a way of giving back and showing love and acceptance.",
+                "importance_score": 3,
+                "updated_at": "2026-03-25T09:55:00+00:00",
+                "matched_keyword": "the"
+              },
+              {
+                "id": "7ef23c10-de15-4356-90d8-93437276d611",
+                "source": "resource",
+                "text": "The user expressed excitement about starting the adoption process, describing it as a long-held dream to provide a safe, loving home for children in need. They asked the AI (addressed as \"Melanie\") about adoption experience. The AI shared that a friend adopted last year and is very happy, and mentioned it inspired thoughts of possibly adopting as well.",
+                "importance_score": 3,
+                "updated_at": "2026-03-20T10:31:00+00:00",
+                "matched_keyword": "the"
+              },
+              {
+                "id": "5b25487d-52e1-4037-927e-449facb4eb26",
+                "source": "resource",
+                "text": "The user finds a sense of freedom through art and supportive communities. They are passionate about LGBTQ rights, living authentically, and helping others do the same. Their work positively impacts the LGBTQ+ community, giving them a sense of meaning in creating a more loving world. They credit friends, family, and mentors for their support, and this motivation continues to inspire their art practice.",
+                "importance_score": 3,
+                "updated_at": "2026-03-06T00:09:00+00:00",
+                "matched_keyword": "the"
+              }
+            ],
+            "llm_verification": {
+              "can_answer": false,
+              "reason": "片段中未提及Caroline、LGBTQ支持小组及任何具体日期。",
+              "raw": "<can_answer>NO</can_answer>\n<reason>片段中未提及Caroline、LGBTQ支持小组及任何具体日期。</reason>"
+            }
+          },
+          "error": null
+        },
+        {
+          "eval_mode": "assistant_eval",
+          "question": "What fields would Caroline be likely to pursue in her educaton?",
+          "standard_answer": "Psychology, counseling certification",
+          "generated_answer": "根据Caroline的兴趣和热情，我觉得她可能会往这些方向走：\n\n**心理咨询/心理学** — 这个几乎是明牌了，她对心理方面的兴趣很明显，而且本身就在做情感陪伴相关的事情，很有天赋感。\n\n**社会工作** — 她对帮助弱势儿童这件事有很深的热情，社会工作这个方向能把这份关怀变成专业能力。\n\n**儿童发展或特殊教育** — 如果想更聚焦在孩子们身上，这些领域会很适合她。\n\n**艺术治疗** — 这个挺有意思的，她喜欢绘画、钢琴、吉他，又对心理咨询感兴趣，艺术治疗刚好把两者结合起来了。\n\n**性别研究/LGBTQ+研究** — 她对这个议题有持续的关心，学术层面深入探索也很合理。\n\n不过说实话，我觉得她不是那种会把自己框死在一个方向的人。她身上有一种很珍贵的特质——对人的关注是真诚的，不是出于学术兴趣，而是出于心。所以不管选什么领域，最终应该都会绕回到\"怎么更好地理解人、陪伴人\"这件事上。",
+          "is_correct": true,
+          "correctness_explanation": "The generated answer explicitly lists \"心理咨询/心理学\" (Psychological counseling/Psychology) as the top field Caroline would likely pursue, which accurately covers the key information of \"Psychology, counseling certification\" from the standard answer. The additional fields mentioned are reasonable elaborations but do not contradict the standard answer.",
+          "category": 3,
+          "evidence": [
+            "D1:9",
+            "D1:11"
+          ],
+          "storage_hit": true,
+          "retrieval_hit": false,
+          "rank_position": null,
+          "evaluation_trace": {
+            "storage_eval": {
+              "storage_hit": true,
+              "keywords": [
+                "what",
+                "fields",
+                "would",
+                "caroline",
+                "likely",
+                "pursue",
+                "her",
+                "educaton"
+              ],
+              "db_hits": {
+                "resource_count": 46,
+                "category_count": 33
+              },
+              "db_memories_sample": [
+                {
+                  "id": "c0b8dcfd-5f96-4191-b3fd-e4576a52e970",
+                  "source": "resource",
+                  "text": "The user shared their excitement about being a mom and mentioned they are building a book library in preparation for having children. They expressed a strong desire to read to their future kids and nurture their curiosity and open-mindedness through books. The AI responded positively and asked what books they have collected so far.",
+                  "importance_score": 3,
+                  "updated_at": "2026-02-02T20:18:00+00:00",
+                  "matched_keyword": "what"
+                },
+                {
+                  "id": "21642627-47d6-4567-b25c-f86264439b94",
+                  "source": "resource",
+                  "text": "The user expressed heartfelt gratitude to someone named Melanie for her kind words and encouragement regarding a significant life commitment: providing a safe and loving home for some children (likely through foster care or adoption). The user affirmed their dedication to this responsibility. The AI responded with supportive and encouraging words, expressing confidence in the user's ability to provide love and stability.",
+                  "importance_score": 3,
+                  "updated_at": "2026-01-13T13:14:00+00:00",
+                  "matched_keyword": "likely"
+                },
+                {
+                  "id": "e4554626-c1dc-4293-906b-adf30201a61c",
+                  "source": "resource",
+                  "text": "The user shared a heartfelt reflection on their personal transition journey, expressing gratitude for the support they received from friends, family, and role models during difficult times. They credited this support with helping them discover their true identity and stated their desire to pay that support forward by helping others going through similar experiences. They emphasized that bringing comfort and helping others grow brings them deep joy. The AI responded with warm encouragement, calling the user inspiring.",
+                  "importance_score": 3,
+                  "updated_at": "2026-03-25T09:55:00+00:00",
+                  "matched_keyword": "her"
+                },
+                {
+                  "id": "5b25487d-52e1-4037-927e-449facb4eb26",
+                  "source": "resource",
+                  "text": "The user finds a sense of freedom through art and supportive communities. They are passionate about LGBTQ rights, living authentically, and helping others do the same. Their work positively impacts the LGBTQ+ community, giving them a sense of meaning in creating a more loving world. They credit friends, family, and mentors for their support, and this motivation continues to inspire their art practice.",
+                  "importance_score": 3,
+                  "updated_at": "2026-03-06T00:09:00+00:00",
+                  "matched_keyword": "her"
+                },
+                {
+                  "id": "32eebffc-3389-4c7f-a377-d62bd5d2d27c",
+                  "source": "resource",
+                  "text": "The user excitedly shared that they took a major life step this week by applying to adoption agencies, marking the beginning of their journey to become a mother. They mentioned receiving significant help from an adoption advice/assistance group they attended. The AI congratulated them, expressed pride, and asked about their feelings and whether they have any pets.",
+                  "importance_score": 3,
+                  "updated_at": "2026-02-24T15:31:00+00:00",
+                  "matched_keyword": "her"
+                }
+              ]
+            }
+          },
+          "retrieval_layer": {
+            "resolved_layer": "category_only",
+            "is_sufficient_at_category": true,
+            "llm_classified_categories": [
+              "Core Self"
+            ],
+            "category_results_count": 5,
+            "resource_results_count": 0
+          },
+          "retrieved_contexts": [
+            "Melanie deeply values her family as her core support system and rock.",
+            "The user addresses the AI by the name \"Melanie\"",
+            "The user is deeply passionate about helping and caring for vulnerable children.",
+            "User's name is Caro.",
+            "The user has an interest in poetry readings."
+          ],
+          "retrieved_scores": [
+            0.113,
+            0.0921,
+            0.091,
+            0.0722,
+            0.0717
+          ],
+          "db_diagnosis": null,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

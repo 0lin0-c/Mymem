@@ -20,9 +20,10 @@ class AnthropicProvider(BaseLLMProvider):
     """Anthropic Claude 大模型提供商"""
 
     def __init__(self):
-        self.client = anthropic.AsyncAnthropic(
-            api_key=settings.anthropic_api_key,
-        )
+        client_kwargs = {"api_key": settings.anthropic_api_key}
+        if settings.anthropic_base_url:
+            client_kwargs["base_url"] = settings.anthropic_base_url
+        self.client = anthropic.AsyncAnthropic(**client_kwargs)
         self.embedding_dimensions = settings.embedding_dimensions
 
     async def generate_chat_response(
@@ -62,14 +63,15 @@ class AnthropicProvider(BaseLLMProvider):
         text: str,
         categories: List[Dict],
         assistant_response: str = "",
+        reference_time: str | None = None,
     ) -> Dict:
         """提取记忆意图"""
         logger.debug(f"调用 Anthropic 记忆提取: text_length={len(text)}, categories_count={len(categories)}")
-        system_prompt = build_memory_extraction_prompt(categories)
+        system_prompt = build_memory_extraction_prompt(categories, reference_time=reference_time)
 
-        user_content = f"[用户输入]\n{text}"
+        user_content = f"[User Input]\n{text}"
         if assistant_response:
-            user_content += f"\n\n[AI 回复]\n{assistant_response}"
+            user_content += f"\n\n[AI Response]\n{assistant_response}"
 
         try:
             message = await self.client.messages.create(
@@ -88,7 +90,7 @@ class AnthropicProvider(BaseLLMProvider):
                     result = block.input
                     return {
                         "summary": result.get("summary", ""),
-                        "importance_score": result.get("importance_score", 5),
+                        "importance_score": result.get("importance_score", 2),
                         "response_summary": result.get("response_summary", ""),
                         "atomic_items": result.get("atomic_items", []),
                     }
@@ -99,7 +101,7 @@ class AnthropicProvider(BaseLLMProvider):
         logger.warning("extract_memory_intent 失败，返回默认值")
         return {
             "summary": text[:200],
-            "importance_score": 5,
+            "importance_score": 2,
             "response_summary": assistant_response[:50] if assistant_response else "",
             "atomic_items": [],
         }

@@ -28,7 +28,9 @@
       "Read(//d/tmp/**)",
       "Read(//c/msys64/**)",
       "Read(//d/Research/Agent Memory/Project/Mymem/frontend/$TEMP/**)",
-      "Read(//c/Users/23631/AppData/Local/Temp/**)"
+      "Read(//c/Users/23631/AppData/Local/Temp/**)",
+      "Bash(find 'D:/Research/Agent Memory/Project/Mymem' -name *.md -exec grep -l category {})",
+      "Bash(2)"
     ]
   }
 }

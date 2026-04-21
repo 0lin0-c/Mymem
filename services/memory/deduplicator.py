@@ -155,7 +155,7 @@ class MemoryDeduplicator:
             query_vector=vector,
             category_names=[category_name],  # 限定在当前分类内
             top_k=1,
-            min_importance=1,  # 检查所有重要性
+            min_importance=0,  # 检查所有重要性
         )
 
         if not similar_items:
@@ -213,7 +213,7 @@ class MemoryDeduplicator:
         Returns:
             更新后的资源
         """
-        new_score = min(resource.importance_score + 1, 10)
+        new_score = min(resource.importance_score + 1, 3)
         return await self.resource_repo.update_importance(resource.id, new_score)
 
     async def reinforce_category(self, category: Category) -> Category:
@@ -225,7 +225,7 @@ class MemoryDeduplicator:
         Returns:
             更新后的分类项
         """
-        new_score = min(category.importance_score + 1, 10)
+        new_score = min(category.importance_score + 1, 3)
         return await self.category_repo.update_importance(category.id, new_score)
 
     async def merge_resource(
@@ -289,7 +289,7 @@ class MemoryDeduplicator:
 
         try:
             response = await self.llm.generate_chat_response(
-                system_prompt="你是一个记忆管理专家，擅长判断信息之间的关系。",
+                system_prompt="You are a memory management expert, skilled at determining relationships between information.",
                 context="",
                 user_query=prompt,
             )
@@ -308,16 +308,16 @@ class MemoryDeduplicator:
             return DedupResult(
                 action=DedupAction.CREATE,
                 similarity=similarity,
-                reason=result.get("reason", "LLM 判断为独立内容"),
+                reason=result.get("reason", "LLM judged as independent content"),
             )
 
         except Exception as e:
-            logger.error(f"LLM 判断失败: {e}")
-            # 失败时默认新建
+            logger.error(f"LLM judgment failed: {e}")
+            # Default to create on failure
             return DedupResult(
                 action=DedupAction.CREATE,
                 similarity=similarity,
-                reason=f"LLM 判断失败，默认新建: {e}",
+                reason=f"LLM judgment failed, defaulting to create: {e}",
             )
 
     async def _llm_judge_category(
@@ -327,7 +327,7 @@ class MemoryDeduplicator:
         similarity: float,
         category_name: str,
     ) -> DedupResult:
-        """调用 LLM 判断 Category 的 merge/update/create"""
+        """Call LLM to judge Category merge/update/create"""
         prompt = self._build_judge_prompt(
             existing_content=existing.content,
             new_content=new_content,
@@ -335,7 +335,7 @@ class MemoryDeduplicator:
 
         try:
             response = await self.llm.generate_chat_response(
-                system_prompt="你是一个记忆管理专家，擅长判断信息之间的关系。",
+                system_prompt="You are a memory management expert, skilled at determining relationships between information.",
                 context="",
                 user_query=prompt,
             )
@@ -354,15 +354,15 @@ class MemoryDeduplicator:
             return DedupResult(
                 action=DedupAction.CREATE,
                 similarity=similarity,
-                reason=result.get("reason", "LLM 判断为独立内容"),
+                reason=result.get("reason", "LLM judged as independent content"),
             )
 
         except Exception as e:
-            logger.error(f"LLM 判断失败: {e}")
+            logger.error(f"LLM judgment failed: {e}")
             return DedupResult(
                 action=DedupAction.CREATE,
                 similarity=similarity,
-                reason=f"LLM 判断失败，默认新建: {e}",
+                reason=f"LLM judgment failed, defaulting to create: {e}",
             )
 
     def _build_judge_prompt(
@@ -370,26 +370,32 @@ class MemoryDeduplicator:
         existing_content: str,
         new_content: str,
     ) -> str:
-        """构建 LLM 判断 prompt"""
-        return f"""# 已有记忆
+        """Build LLM judge prompt"""
+        return f"""# Existing Memory
 {existing_content}
 
-# 新输入
+# New Input
 {new_content}
 
-# 任务
-判断新输入与已有记忆的关系，并返回操作类型：
+# Task
+Determine the relationship between the new input and existing memory, and return an action type:
 
-1. **merge**：新信息是对已有记忆的补充，应合并到已有记忆中
-2. **update**：新信息修正/覆盖已有记忆
-3. **create**：新信息是独立内容，应新建记录
+1. **merge**: The new information supplements the existing memory and should be merged into it
+2. **update**: The new information corrects/overrides the existing memory
+3. **create**: The new information is independent content and should create a new record
 
-# 输出格式
-仅输出 JSON，不要包含任何解释：
+# Output Language (Critical)
+- **ALWAYS** output merged_content in the same language as the new input.
+- If the new input is in Chinese, output merged_content in Chinese.
+- If the new input is in English, output merged_content in English.
+- This ensures the memory language follows the user's current input language.
+
+# Output Format
+Output only JSON without any explanation:
 {{
   "action": "merge" | "update" | "create",
-  "reason": "判断理由",
-  "merged_content": "合并/更新后的内容（仅 merge/update 时需要）"
+  "reason": "Reason for the decision",
+  "merged_content": "Merged/updated content (required only for merge/update)"
 }}"""
 
     def _parse_llm_response(self, response: str) -> dict:

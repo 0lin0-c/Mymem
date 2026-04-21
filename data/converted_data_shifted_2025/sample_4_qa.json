@@ -1,0 +1,2289 @@
+{
+  "sample_index": 4,
+  "characters": [
+    "Tim",
+    "John"
+  ],
+  "total_questions": 242,
+  "questions": [
+    {
+      "question": "what are John's goals with regards to his basketball career?",
+      "answer": "improve shooting percentage, win a championship",
+      "category": 1,
+      "evidence": [
+        "D1:9",
+        "D6:15",
+        "D11:17"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What are John's goals for his career that are not related to his basketball skills?",
+      "answer": "get endorsements, build his brand, do charity work",
+      "category": 1,
+      "evidence": [
+        "D6:15",
+        "D11:17"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What items does John collect?",
+      "answer": "sneakers, fantasy movie DVDs, jerseys",
+      "category": 1,
+      "evidence": [
+        "D1:15",
+        "D12:18",
+        "D27:20"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Would Tim enjoy reading books by C. S. Lewis or John Greene?",
+      "answer": "C. S.Lewis",
+      "category": 3,
+      "evidence": [
+        "D1:14",
+        "D1:16",
+        "D1:18"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "What books has Tim read?",
+      "answer": "Harry Potter, Game of Thrones, the Name of the Wind, The Alchemist, The Hobbit, A Dance with Dragons, and the Wheel of Time.",
+      "category": 1,
+      "evidence": [
+        "D1:14",
+        "D2:7",
+        "D6:8",
+        "D11:26",
+        "D20:21",
+        "D26:36",
+        "D22:13"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "Based on Tim's collections, what is a shop that he would enjoy visiting in New York city?",
+      "answer": "House of MinaLima",
+      "category": 3,
+      "evidence": [
+        "D2:9"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "In which month's game did John achieve a career-high score in points?",
+      "answer": "June 2025",
+      "category": 2,
+      "evidence": [
+        "D3:1"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Which geographical locations has Tim been to?",
+      "answer": "California, London, the Smoky Mountains",
+      "category": 1,
+      "evidence": [
+        "D1:18",
+        "D3:2",
+        "D14:16"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "Which outdoor gear company likely signed up John for an endorsement deal?",
+      "answer": "Under Armour",
+      "category": 3,
+      "evidence": [
+        "D3:15",
+        "D25:2"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Which endorsement deals has John been offered?",
+      "answer": "basketball shoes and gear deal with Nike, potential sponsorship with Gatorade, Moxie a popular beverage company, outdoor gear company",
+      "category": 1,
+      "evidence": [
+        "D3:13",
+        "D3:15",
+        "D25:2",
+        "D29:4"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "When was John in Seattle for a game?",
+      "answer": "early August, 2025",
+      "category": 2,
+      "evidence": [
+        "D3:19",
+        "D5:2"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What sports does John like besides basketball?",
+      "answer": "surfing",
+      "category": 1,
+      "evidence": [
+        "D1:7",
+        "D2:14",
+        "D3:1",
+        "D3:25"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What year did John start surfing?",
+      "answer": "2020",
+      "category": 2,
+      "evidence": [
+        "D3:27"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What does Tim do to escape reality?",
+      "answer": "Read fantasy books.",
+      "category": 1,
+      "evidence": [
+        "D2:11",
+        "D3:30"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What kind of writing does Tim do?",
+      "answer": "comments on favorite books in a fantasy literature forum, articles on fantasy novels, studying characters, themes, and making book recommendations, writing a fantasy novel",
+      "category": 1,
+      "evidence": [
+        "D2:1",
+        "D4:3",
+        "D4:5",
+        "D15:3"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "Who is Anthony?",
+      "answer": "likely John's friend, colleague or family",
+      "category": 3,
+      "evidence": [
+        "D4:8"
+      ],
+      "target_character": null
+    },
+    {
+      "question": "After how many weeks did Tim reconnect with the fellow Harry Potter fan from California?",
+      "answer": "three weeks",
+      "category": 2,
+      "evidence": [
+        "D3:2",
+        "D5:1"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "How many games has John mentioned winning?",
+      "answer": "6",
+      "category": 1,
+      "evidence": [
+        "D3:3",
+        "D5:2",
+        "D22:4",
+        "D23:7",
+        "D24:2"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What authors has Tim read books from?",
+      "answer": "J.K. Rowling, R.R. Martin, Patrick Rothfuss, Paulo Coelho, and J. R. R. Tolkien.",
+      "category": 1,
+      "evidence": [
+        "D1:14",
+        "D2:7",
+        "D4:7",
+        "D5:15",
+        "D:11:26",
+        "D20:21",
+        "D26:36"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What is a prominent charity organization that John might want to work with and why?",
+      "answer": "Good Sports, because they work with Nike, Gatorade, and Under Armour and they aim toprovide youth sports opportunities for kids ages 3-18 in high-need communities.",
+      "category": 3,
+      "evidence": [
+        "D3:13",
+        "D3:15",
+        "D6:15"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Which city was John in before traveling to Chicago?",
+      "answer": "Seattle",
+      "category": 2,
+      "evidence": [
+        "D3:19",
+        "D5:2",
+        "D6:1",
+        "D6:3"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Which US cities does John mention visiting to Tim?",
+      "answer": "Seattle, Chicago, New York",
+      "category": 1,
+      "evidence": [
+        "D3:19",
+        "D6:3",
+        "D9:6"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "When did John meet with his teammates after returning from Chicago?",
+      "answer": "August 15, 2025",
+      "category": 2,
+      "evidence": [
+        "D7:1"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "When is Tim attending a book conference?",
+      "answer": "September 2025",
+      "category": 2,
+      "evidence": [
+        "D7:6"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "Where was John between August 11 and August 15 2025?",
+      "answer": "Chicago",
+      "category": 2,
+      "evidence": [
+        "D6:1",
+        "D6:3",
+        "D7:1"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What similar sports collectible do Tim and John own?",
+      "answer": "signed basketball",
+      "category": 1,
+      "evidence": [
+        "D7:7",
+        "D7:9",
+        "D16:7",
+        "D16:9"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "Which TV series does Tim mention watching?",
+      "answer": "That, Wheel of Time",
+      "category": 1,
+      "evidence": [
+        "D17:1",
+        "D17:11",
+        "D26:36"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "Which popular time management technique does Tim use to prepare for exams?",
+      "answer": "Pomodoro technique",
+      "category": 3,
+      "evidence": [
+        "D18:3",
+        "D18:7"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "Which popular music composer's tunes does Tim enjoy playing on the piano?",
+      "answer": "John Williams",
+      "category": 3,
+      "evidence": [
+        "D8:14",
+        "D8:16"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What schools did John play basketball in and how many years was he with his team during high school?",
+      "answer": "Middle school, high school, and college and he was with his high school team for 4 years.",
+      "category": 1,
+      "evidence": [
+        "D6:13",
+        "D9:4"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Which cities has John been to?",
+      "answer": "Seattle, Chicago, New York, and Paris.",
+      "category": 1,
+      "evidence": [
+        "D3:19",
+        "D6:3",
+        "D9:6",
+        "D27:36"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What month did Tim plan on going to Universal Studios?",
+      "answer": "September, 2025",
+      "category": 2,
+      "evidence": [
+        "D10:9"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "Which US states might Tim be in during September 2025 based on his plans of visiting Universal Studios?",
+      "answer": "California or Florida",
+      "category": 3,
+      "evidence": [
+        "D10:9"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "When does John plan on traveling with his team on a team trip?",
+      "answer": "October, 2025",
+      "category": 2,
+      "evidence": [
+        "D11:7"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What could John do after his basketball career?",
+      "answer": "become a basketball coach since he likes giving back and leadership",
+      "category": 3,
+      "evidence": [
+        "D11:19",
+        "D26:1",
+        "D27:26"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What outdoor activities does John enjoy?",
+      "answer": "Hiking, surfing",
+      "category": 1,
+      "evidence": [
+        "D3:27",
+        "D12:6"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Who is Tim and John's favorite basketball player?",
+      "answer": "LeBron James",
+      "category": 1,
+      "evidence": [
+        "D12:20",
+        "D12:22",
+        "D16:9"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "Which week did Tim visit the UK for the Harry Potter Conference?",
+      "answer": "The week before October 13th, 2025.",
+      "category": 2,
+      "evidence": [
+        "D13:1"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "which country has Tim visited most frequently in his travels?",
+      "answer": "UK",
+      "category": 1,
+      "evidence": [
+        "D1:18",
+        "D13:1",
+        "D18:1"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What year did Tim go to the Smoky Mountains?",
+      "answer": "2024",
+      "category": 2,
+      "evidence": [
+        "D14:16"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "Has Tim been to North Carolina and/or Tennesee states in the US?",
+      "answer": "Yes",
+      "category": 2,
+      "evidence": [
+        "D14:16"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What kind of fiction stories does Tim write?",
+      "answer": "Fantasy stories with plot twists",
+      "category": 1,
+      "evidence": [
+        "D15:3",
+        "D16:1"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What has John cooked?",
+      "answer": "Soup, a slow cooker meal, and honey garlic chicken with roasted veg.",
+      "category": 1,
+      "evidence": [
+        "D10:4",
+        "D15:30",
+        "D15:31",
+        "D15:32"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What does John like about Lebron James?",
+      "answer": "His heart, determination, skills, and leadership.",
+      "category": 1,
+      "evidence": [
+        "D12:20",
+        "D16:12"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "When did John and his wife go on a European vacation?",
+      "answer": "November, 2025.",
+      "category": 2,
+      "evidence": [
+        "D16:14"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Which country was Tim visiting in the second week of November?",
+      "answer": "UK",
+      "category": 2,
+      "evidence": [
+        "D18:1"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "Where was Tim in the week before 16 November 2025?",
+      "answer": "UK",
+      "category": 2,
+      "evidence": [
+        "D18:1"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "When did John get married at a greenhouse?",
+      "answer": "last week of September 2025",
+      "category": 2,
+      "evidence": [
+        "D12:2"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "When did John get an ankle injury in 2025?",
+      "answer": "around November 16, 2025",
+      "category": 1,
+      "evidence": [
+        "D18:2"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "How many times has John injured his ankle?",
+      "answer": "two times",
+      "category": 1,
+      "evidence": [
+        "D18:2",
+        "D19:6"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "Which book was John reading during his recovery from an ankle injury?",
+      "answer": "The Alchemist",
+      "category": 1,
+      "evidence": [
+        "D19:20",
+        "D18:2"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What kind of yoga for building core strength might John benefit from?",
+      "answer": "Hatha Yoga",
+      "category": 3,
+      "evidence": [
+        "D20:2"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What does John do to supplement his basketball training?",
+      "answer": "Yoga, strength training",
+      "category": 1,
+      "evidence": [
+        "D8:5",
+        "D20:2"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What other exercises can help John with his basketball performance?",
+      "answer": "Sprinting, long-distance running, and boxing.",
+      "category": 3,
+      "evidence": [
+        "D8:5",
+        "D20:2"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "When did John take a trip to the Rocky Mountains?",
+      "answer": "2024",
+      "category": 2,
+      "evidence": [
+        "D20:40"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "When did John start playing professionally?",
+      "answer": "May, 2025",
+      "category": 2,
+      "evidence": [
+        "D1:3",
+        "D21:4"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "When did Tim start playing the violin?",
+      "answer": "August 2025",
+      "category": 2,
+      "evidence": [
+        "D21:13"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What instruments does Tim play?",
+      "answer": "piano, violin",
+      "category": 1,
+      "evidence": [
+        "D8:12",
+        "D21:11"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "When did John attend the Harry Potter trivia?",
+      "answer": "August 2025.",
+      "category": 2,
+      "evidence": [
+        "D4:8",
+        "D22:2"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Which career-high performances did John achieve in 2025?",
+      "answer": "highest point score, highest assist",
+      "category": 1,
+      "evidence": [
+        "D3:1",
+        "D23:2"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "When did John achieve a career-high assist performance?",
+      "answer": "December 11, 2025",
+      "category": 2,
+      "evidence": [
+        "D23:2"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What books has John read?",
+      "answer": "inpsiring book on dreaming big, The Alchemist, fantasy series, non-fiction books on personal development, Dune",
+      "category": 1,
+      "evidence": [
+        "D4:10",
+        "D11:26",
+        "D17:9",
+        "D19:16",
+        "D19:20",
+        "D22:12"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What does John do to share his knowledge?",
+      "answer": "gives seminars, mentors younger players.",
+      "category": 1,
+      "evidence": [
+        "D14:3",
+        "D26:1"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "When did John organize a basketball camp for kids?",
+      "answer": "summer 2025",
+      "category": 2,
+      "evidence": [
+        "D26:23"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Which month was John in Italy?",
+      "answer": "December, 2025",
+      "category": 2,
+      "evidence": [
+        "D27:2"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What fantasy movies does Tim like?",
+      "answer": "Lord of the Rings, Harry Potter, and Star Wars.",
+      "category": 1,
+      "evidence": [
+        "D8:16",
+        "D8:18",
+        "D26:28",
+        "D26:32",
+        "D27:21"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What is a Star Wars book that Tim might enjoy?",
+      "answer": "Star Wars: Jedi Apprentice by Judy Blundell and David Farland. It is a highly rated and immersive series about his favorite movies.",
+      "category": 3,
+      "evidence": [
+        "D27:19",
+        "D27:21"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What would be a good hobby related to his travel dreams for Tim to pick up?",
+      "answer": "Writing a travel blog.",
+      "category": 3,
+      "evidence": [
+        "D4:1",
+        "D6:6",
+        "D15:3",
+        "D27:37"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What day did Tim get into his study abroad program?",
+      "answer": "Januarty 5, 2026",
+      "category": 2,
+      "evidence": [
+        "D28:1"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "When will Tim leave for Ireland?",
+      "answer": "February, 2026",
+      "category": 2,
+      "evidence": [
+        "D28:1"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "Which Star Wars-related locations would Tim enjoy during his visit to Ireland?",
+      "answer": "Skellig Michael, Malin Head, Loop Head, Ceann Sibéal, and Brow Head because they are Star Wars filming locations.",
+      "category": 3,
+      "evidence": [
+        "D1:18",
+        "D27:21",
+        "D28:1"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "Which team did John sign with on 21 May, 2025?",
+      "answer": "The Minnesota Wolves",
+      "category": 4,
+      "evidence": [
+        "D1:5"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What is John's position on the team he signed with?",
+      "answer": "shooting guard",
+      "category": 4,
+      "evidence": [
+        "D1:7"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What challenge did John encounter during pre-season training?",
+      "answer": "fitting into the new team's style of play",
+      "category": 4,
+      "evidence": [
+        "D1:11"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What aspects of the Harry Potter universe will be discussed in John's fan project collaborations?",
+      "answer": "characters, spells, magical creatures",
+      "category": 4,
+      "evidence": [
+        "D1:16"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What forum did Tim join recently?",
+      "answer": "fantasy literature forum",
+      "category": 4,
+      "evidence": [
+        "D2:1"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What kind of picture did Tim share as part of their Harry Potter book collection?",
+      "answer": "MinaLima's creation from the Harry Potter films",
+      "category": 4,
+      "evidence": [
+        "D2:9"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What was the highest number of points John scored in a game recently?",
+      "answer": "40 points",
+      "category": 4,
+      "evidence": [
+        "D3:1"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What did John celebrate at a restaurant with teammates?",
+      "answer": "a tough win",
+      "category": 4,
+      "evidence": [
+        "D3:5"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What kind of deals did John sign with Nike and Gatorade?",
+      "answer": "basketball shoe and gear deal with Nike, potential sponsorship deal with Gatorade",
+      "category": 4,
+      "evidence": [
+        "D3:13"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Which city is John excited to have a game at?",
+      "answer": "Seattle",
+      "category": 4,
+      "evidence": [
+        "D3:19"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "How long has John been surfing?",
+      "answer": "five years",
+      "category": 4,
+      "evidence": [
+        "D3:27"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "How does John feel while surfing?",
+      "answer": "super exciting and free-feeling",
+      "category": 4,
+      "evidence": [
+        "D3:29"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What kind of articles has Tim been writing about for the online magazine?",
+      "answer": "different fantasy novels, characters, themes, and book recommendations",
+      "category": 4,
+      "evidence": [
+        "D4:5"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "Which two fantasy novels does Tim particularly enjoy writing about?",
+      "answer": "Harry Potter and Game of Thrones",
+      "category": 4,
+      "evidence": [
+        "D4:7"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What did Anthony and John end up playing during the charity event?",
+      "answer": "an intense Harry Potter trivia contest",
+      "category": 4,
+      "evidence": [
+        "D4:8"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What did John share with the person he skyped about?",
+      "answer": "Characters from Harry Potter",
+      "category": 4,
+      "evidence": [
+        "D5:1"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "How did John describe the team bond?",
+      "answer": "Awesome",
+      "category": 4,
+      "evidence": [
+        "D5:6"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "How did John get introduced to basketball?",
+      "answer": "Dad signed him up for a local league",
+      "category": 4,
+      "evidence": [
+        "D6:13"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What is John's number one goal in his basketball career?",
+      "answer": "Winning a championship",
+      "category": 4,
+      "evidence": [
+        "D6:15"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What organization is John teaming up with for his charity work?",
+      "answer": "A local organization helping disadvantaged kids with sports and school",
+      "category": 4,
+      "evidence": [
+        "D6:17"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "When did John meet back up with his teammates after his trip in August 2025?",
+      "answer": "Aug 15th",
+      "category": 4,
+      "evidence": [
+        "D7:1"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What did John's teammates give him when they met on Aug 15th?",
+      "answer": "a basketball with autographs on it",
+      "category": 4,
+      "evidence": [
+        "D7:7"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Why did John's teammates sign the basketball they gave him?",
+      "answer": "to show their friendship and appreciation",
+      "category": 4,
+      "evidence": [
+        "D7:9"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What is the main intention behind Tim wanting to attend the book conference?",
+      "answer": "to learn more about literature and create a stronger bond to it",
+      "category": 4,
+      "evidence": [
+        "D7:6"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What new activity has Tim started learning in August 2025?",
+      "answer": "play the piano",
+      "category": 4,
+      "evidence": [
+        "D8:12"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "Which movie's theme is Tim's favorite to play on the piano?",
+      "answer": "\"Harry Potter and the Philosopher's Stone\"",
+      "category": 4,
+      "evidence": [
+        "D8:14",
+        "D8:16"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What special memory does \"Harry Potter and the Philosopher's Stone\" bring to Tim?",
+      "answer": "Watching it with his family",
+      "category": 4,
+      "evidence": [
+        "D8:16"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "Which movie does Tim mention they enjoy watching during Thanksgiving?",
+      "answer": "\"Home Alone\"",
+      "category": 4,
+      "evidence": [
+        "D8:24"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What tradition does Tim mention they love during Thanksgiving?",
+      "answer": "Prepping the feast and talking about what they're thankful for",
+      "category": 4,
+      "evidence": [
+        "D8:22"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "How long did John and his high school basketball teammates play together?",
+      "answer": "Four years",
+      "category": 4,
+      "evidence": [
+        "D9:4"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "How was John's experience in New York City?",
+      "answer": "Amazing",
+      "category": 4,
+      "evidence": [
+        "D9:8"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What did John say about NYC, enticing Tim to visit?",
+      "answer": "It's got so much to check out - the culture, food - you won't regret it.",
+      "category": 4,
+      "evidence": [
+        "D9:10"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "What kind of soup did John make recently?",
+      "answer": "tasty soup with sage",
+      "category": 4,
+      "evidence": [
+        "D10:4",
+        "D10:8"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What spice did John add to the soup for flavor?",
+      "answer": "sage",
+      "category": 4,
+      "evidence": [
+        "D10:8"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What is Tim excited to see at Universal Studios?",
+      "answer": "The Harry Potter stuff",
+      "category": 4,
+      "evidence": [
+        "D10:11"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "Where are John and his teammates planning to explore on a team trip?",
+      "answer": "a new city",
+      "category": 4,
+      "evidence": [
+        "D11:7"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What city did Tim suggest to John for the team trip next month?",
+      "answer": "Edinburgh, Scotland",
+      "category": 4,
+      "evidence": [
+        "D11:10"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "What does John want to do after his basketball career?",
+      "answer": "positively influence and inspire others, potentially start a foundation and engage in charity work",
+      "category": 4,
+      "evidence": [
+        "D11:19"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What advice did Tim give John about picking endorsements?",
+      "answer": "Ensure they align with values and brand, look for companies that share the desire to make a change and help others, make sure the endorsement feels authentic",
+      "category": 4,
+      "evidence": [
+        "D11:22"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "What book recommendation did Tim give to John for the trip?",
+      "answer": "A fantasy novel by Patrick Rothfuss",
+      "category": 4,
+      "evidence": [
+        "D11:24"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "What type of venue did John and his girlfriend choose for their wedding ceremony?",
+      "answer": "Greenhouse",
+      "category": 4,
+      "evidence": [
+        "D12:4"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What was the setting for John and his wife's first dance?",
+      "answer": "Cozy restaurant",
+      "category": 4,
+      "evidence": [
+        "D12:10"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Which basketball team does Tim support?",
+      "answer": "The Wolves",
+      "category": 4,
+      "evidence": [
+        "D12:21"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What passion does Tim mention connects him with people from all over the world?",
+      "answer": "passion for fantasy stuff",
+      "category": 4,
+      "evidence": [
+        "D13:1"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "How does John describe the game season for his team?",
+      "answer": "intense with tough losses and great wins",
+      "category": 4,
+      "evidence": [
+        "D13:4"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "How does John say his team handles tough opponents?",
+      "answer": "by backing each other up and not quitting",
+      "category": 4,
+      "evidence": [
+        "D13:6"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What motivates John's team to get better, according to John?",
+      "answer": "facing tough opponents",
+      "category": 4,
+      "evidence": [
+        "D13:6"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What did John's team win at the end of the season?",
+      "answer": "a trophy",
+      "category": 4,
+      "evidence": [
+        "D13:8"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Where did Tim capture the photography of the sunset over the mountain range?",
+      "answer": "Smoky Mountains",
+      "category": 4,
+      "evidence": [
+        "D14:16"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "How does John feel about being seen as a mentor by some of the younger players?",
+      "answer": "It feels great",
+      "category": 4,
+      "evidence": [
+        "D14:11"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What does John find rewarding about mentoring the younger players?",
+      "answer": "Seeing their growth, improvement, and confidence",
+      "category": 4,
+      "evidence": [
+        "D14:7"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What has John been able to help the younger players achieve?",
+      "answer": "reach their goals",
+      "category": 4,
+      "evidence": [
+        "D14:5"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What genre is the novel that Tim is writing?",
+      "answer": "Fantasy",
+      "category": 4,
+      "evidence": [
+        "D15:3"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "Who is one of Tim's sources of inspiration for writing?",
+      "answer": "J.K. Rowling",
+      "category": 4,
+      "evidence": [
+        "D15:7"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What J.K. Rowling quote does Tim resonate with?",
+      "answer": "\"Turn on the light - happiness hides in the darkest of times.\"",
+      "category": 4,
+      "evidence": [
+        "D15:11"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What does John write on the whiteboard to help him stay motivated?",
+      "answer": "motivational quotes and strategies",
+      "category": 4,
+      "evidence": [
+        "D15:14"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What hobby is a therapy for John when away from the court?",
+      "answer": "Cooking",
+      "category": 4,
+      "evidence": [
+        "D15:30"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What type of meal does John often cook using a slow cooker?",
+      "answer": "honey garlic chicken with roasted veg",
+      "category": 4,
+      "evidence": [
+        "D15:32",
+        "D15:33"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "How will John share the honey garlic chicken recipe with the other person?",
+      "answer": "write it down and mail it",
+      "category": 4,
+      "evidence": [
+        "D15:34"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What was Tim's huge writing issue last week,as mentioned on November 6, 2025?",
+      "answer": "He got stuck on a plot twist",
+      "category": 4,
+      "evidence": [
+        "D16:1"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What does Tim have that serves as a reminder of hard work and is his prized possession?",
+      "answer": "a basketball signed by his favorite player",
+      "category": 4,
+      "evidence": [
+        "D16:7"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "Why do Tim and John find LeBron inspiring?",
+      "answer": "LeBron's determination and the epic block in Game 7 of the '16 Finals",
+      "category": 4,
+      "evidence": [
+        "D16:9",
+        "D16:10"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "How did John describe the views during their road trip out on the European coastline?",
+      "answer": "Spectacular",
+      "category": 4,
+      "evidence": [
+        "D17:3"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What is one of Tim's favorite fantasy TV shows, as mentioned on November 11, 2025?",
+      "answer": "\"That\"",
+      "category": 4,
+      "evidence": [
+        "D17:10"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "How does Tim stay motivated during difficult study sessions?",
+      "answer": "Visualizing goals and success",
+      "category": 4,
+      "evidence": [
+        "D18:6"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What did Tim say about his injury on 16 November, 2025?",
+      "answer": "The doctor said it's not too serious",
+      "category": 4,
+      "evidence": [
+        "D18:10"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What was the setback Tim faced in his writing project on 21 November, 2025?",
+      "answer": "Story based on experiences in the UK didn't go as planned",
+      "category": 4,
+      "evidence": [
+        "D19:3"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "How did John overcome his ankle injury from last season?",
+      "answer": "stayed focused on recovery and worked hard to strengthen his body",
+      "category": 4,
+      "evidence": [
+        "D19:6"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What motivated Tim to keep pushing himself to get better in writing and reading?",
+      "answer": "Love for writing and reading",
+      "category": 4,
+      "evidence": [
+        "D19:9"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "How did John overcome a mistake he made during a big game in basketball?",
+      "answer": "Worked hard to get better and focused on growth",
+      "category": 4,
+      "evidence": [
+        "D19:10"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What book did John recently finish rereading that left him feeling inspired and hopeful about following dreams?",
+      "answer": "The Alchemist",
+      "category": 4,
+      "evidence": [
+        "D19:20"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "How did \"The Alchemist\" impact John's perspective on following dreams?",
+      "answer": "made him think again about following dreams and searching for personal legends",
+      "category": 4,
+      "evidence": [
+        "D19:20"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What is John trying out to improve his strength and flexibility after recovery from ankle injury?",
+      "answer": "yoga",
+      "category": 4,
+      "evidence": [
+        "D20:2"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "How long does John usually hold the yoga pose he shared with Tim?",
+      "answer": "30-60 seconds",
+      "category": 4,
+      "evidence": [
+        "D20:10"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "Where was the forest picture shared by John on December 1,2025 taken?",
+      "answer": "near his hometown",
+      "category": 4,
+      "evidence": [
+        "D20:28"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What did Tim recently start learning in addition to being part of a travel club and working on studies?",
+      "answer": "an instrument",
+      "category": 4,
+      "evidence": [
+        "D21:9"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What instrument is Tim learning to play in December 2025?",
+      "answer": "violin",
+      "category": 4,
+      "evidence": [
+        "D21:11"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "How long has Tim been playing the piano for, as of December 2025?",
+      "answer": "about four months",
+      "category": 4,
+      "evidence": [
+        "D21:13"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What book did Tim just finish reading on 8th December, 2025?",
+      "answer": "\"A Dance with Dragons\"",
+      "category": 4,
+      "evidence": [
+        "D22:13"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "Which book did Tim recommend to John as a good story on 8th December, 2025?",
+      "answer": "\"A Dance with Dragons\"",
+      "category": 4,
+      "evidence": [
+        "D22:13"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "What is the topic of discussion between John and Tim on 11 December, 2025?",
+      "answer": "Academic achievements and sports successes",
+      "category": 4,
+      "evidence": [
+        "D23:1",
+        "D23:2",
+        "D23:3"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "What kind of game did John have a career-high in assists in?",
+      "answer": "basketball",
+      "category": 4,
+      "evidence": [
+        "D23:3"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What was John's way of dealing with doubts and stress when he was younger?",
+      "answer": "practicing basketball outside for hours",
+      "category": 4,
+      "evidence": [
+        "D23:9"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "How did John feel about the atmosphere during the big game against the rival team?",
+      "answer": "electric and intense",
+      "category": 4,
+      "evidence": [
+        "D23:5"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "How did John feel after being able to jog without pain?",
+      "answer": "It was a huge success.",
+      "category": 4,
+      "evidence": [
+        "D24:16"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What kind of deal did John get in December?",
+      "answer": "Deal with a renowned outdoor gear company",
+      "category": 4,
+      "evidence": [
+        "D25:2"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Where was the photoshoot done for John's gear deal?",
+      "answer": "In a gorgeous forest",
+      "category": 4,
+      "evidence": [
+        "D25:4"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "In which area has John's team seen the most growth during training?",
+      "answer": "Communication and bonding",
+      "category": 4,
+      "evidence": [
+        "D25:14"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What type of seminars is John conducting?",
+      "answer": "Sports and marketing seminars",
+      "category": 4,
+      "evidence": [
+        "D26:1"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What activity did Tim do after reading the stories about the Himalayan trek?",
+      "answer": "visited a travel agency",
+      "category": 4,
+      "evidence": [
+        "D26:12"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What is one cause that John supports with his influence and resources?",
+      "answer": "youth sports and fair chances in sports",
+      "category": 4,
+      "evidence": [
+        "D26:21"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What new fantasy TV series is Tim excited about?",
+      "answer": "\"The Wheel of Time\"",
+      "category": 4,
+      "evidence": [
+        "D26:36"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "Which language is Tim learning?",
+      "answer": "German",
+      "category": 4,
+      "evidence": [
+        "D27:5"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What language does Tim know besides German?",
+      "answer": "Spanish",
+      "category": 4,
+      "evidence": [
+        "D27:6"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What book did Tim get in Italy that inspired him to cook?",
+      "answer": "a cooking book",
+      "category": 4,
+      "evidence": [
+        "D27:4"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What is John's favorite book series?",
+      "answer": "Harry Potter",
+      "category": 4,
+      "evidence": [
+        "D27:19"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "According to John, who is his favorite character from Lord of the Rings?",
+      "answer": "Aragorn",
+      "category": 4,
+      "evidence": [
+        "D27:24"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Why does John like Aragorn from Lord of the Rings?",
+      "answer": "brave, selfless, down-to-earth attitude",
+      "category": 4,
+      "evidence": [
+        "D27:30"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What kind of painting does John have in his room as a reminder?",
+      "answer": "a painting of Aragorn",
+      "category": 4,
+      "evidence": [
+        "D27:28"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What is the painting of Aragorn a reminder for John to be in everything he does?",
+      "answer": "be a leader",
+      "category": 4,
+      "evidence": [
+        "D27:28"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What map does Tim show to his friend John?",
+      "answer": "a map of Middle-earth from LOTR",
+      "category": 4,
+      "evidence": [
+        "D27:33"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "Where will Tim be going for a semester abroad?",
+      "answer": "Ireland",
+      "category": 4,
+      "evidence": [
+        "D28:1"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "Which city in Ireland will Tim be staying in during his semester abroad?",
+      "answer": "Galway",
+      "category": 4,
+      "evidence": [
+        "D28:3"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What charity event did John organize recently in 2026?",
+      "answer": "benefit basketball game",
+      "category": 4,
+      "evidence": [
+        "D28:10"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What achievement did John share with Tim in January 2026?",
+      "answer": "endorsement with a popular beverage company",
+      "category": 4,
+      "evidence": [
+        "D29:4"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "What was Johns's reaction to sealing the deal with the beverage company?",
+      "answer": "crazy feeling, sense of accomplishment",
+      "category": 4,
+      "evidence": [
+        "D29:6"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Which city did John recommend to Tim in January 2026?",
+      "answer": "Barcelona",
+      "category": 4,
+      "evidence": [
+        "D29:12"
+      ],
+      "target_character": "ambiguous"
+    },
+    {
+      "question": "Which team did Tim sign with on 21 May, 2025?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D1:5"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What is Tim's position on the team he signed with?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D1:7"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What challenge did Tim encounter during pre-season training?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D1:11"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What cult did Tim join recently?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D2:1"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What was the highest number of points Tim scored in a game recently?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D3:1"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What did Tim celebrate at a restaurant with teammates?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D3:5"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What kind of deals did Tim sign with Nike and Gatorade?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D3:13"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "How does Tim feel while surfing?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D3:29"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What kind of articles has John been writing about for the online magazine?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D4:5"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Which two mystery novels does Tim particularly enjoy writing about?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D4:7"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What did Anthony and Tim end up playing during the charity event?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D4:8"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "How did Tim get introduced to basketball?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D6:13"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What is Tim's number one goal in his basketball career?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D6:15"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What organization is Tim teaming up with for his charity work?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D6:17"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What did Tim's teammates give him when they met on Aug 15th?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D7:7"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "Why did John's teammates sign the football they gave him?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D7:9"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What is the main intention behind John wanting to attend the book conference?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D7:6"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What new activity has John started learning in August 2025?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D8:12"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What special memory does \"Fifty Shades of Grey\" bring to Tim?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D8:16"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "Which movie does John mention they enjoy watching during Thanksgiving?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D8:24"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What tradition does Tim mention they love during Halloween?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D8:22"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "How long did Tim and his high school basketball teammates play together?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D9:4"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "How was Tim's experience in New York City?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D9:8"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What spice did Tim add to the soup for flavor?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D10:8"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What is Tim excited to see at Disneyland?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D10:11"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "Where are John and his teammates planning to avoid on a team trip?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D11:7"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What does Tim want to do after his basketball career?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D11:19"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What type of venue did John and his girlfriend choose for their breakup?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D12:4"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What passion does John mention connects him with people from all over the world?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D13:1"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "How does Tim say his team handles tough opponents?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D13:6"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "Where did Tim capture the painting of the sunset over the mountain range?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D14:16"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What does Tim find rewarding about mentoring the younger players?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D14:7"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What has Tim been able to help the younger players achieve?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D14:5"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What genre is the novel that John is writing?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D15:3"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Who is one of Tim's sources of inspiration for painting?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D15:7"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What does Tim write on the whiteboard to help him stay motivated?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D15:14"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What hobby is a therapy for Tim when away from the court?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D15:30"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What type of meal does Tim often cook using a slow cooker?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D15:32",
+        "D15:33"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "How will Tim share the honey garlic chicken recipe with the other person?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D15:34"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What is one of Tim's favorite crime TV shows, as mentioned on November 11, 2025?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D17:10"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What was the setback Tim faced in his coding project on 21 November, 2025?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D19:3"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "How did Tim overcome his ankle injury from last season?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D19:6"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What motivated John to keep pushing himself to get better in writing and reading?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D19:9"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "How did Tim overcome a mistake he made during a big game in basketball?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D19:10"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What is Tim trying out to improve his strength and flexibility after recovery from ankle injury?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D20:2"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What did John recently start learning in addition to being part of a travel club and working on studies?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D21:9"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What instrument is John learning to play in December 2025?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D21:11"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "How long has John been playing the piano for, as of December 2025?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D21:13"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What movie did Tim just finish watching on 8th December, 2025?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D22:13"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What kind of game did Tim have a career-high in assists in?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D23:3"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What was Tim's way of dealing with doubts and stress when he was younger?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D23:9"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "Where was the photoshoot done for John's fragrance deal?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D25:4"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "In which area has Tim's team seen the most growth during training?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D25:14"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What type of seminars is Tim conducting?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D26:1"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What is one cause that John opposes with his influence and resources?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D26:21"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What new fantasy TV series is John excited about?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D26:36"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Which language is John learning?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D27:5"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "According to John, who is his least favorite character from Lord of the Rings?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D27:24"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Why does Tim like Aragorn from Lord of the Rings?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D27:30"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What kind of painting does Tim have in his room as a reminder?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D27:28"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What is the sculpture of Aragorn a reminder for John to be in everything he does?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D27:28"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "Which city in Ireland will John be staying in during his semester abroad?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D28:3"
+      ],
+      "target_character": "John"
+    },
+    {
+      "question": "What charity event did Tim organize recently in 2026?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D28:10"
+      ],
+      "target_character": "Tim"
+    },
+    {
+      "question": "What was Tims's reaction to sealing the deal with the beverage company?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D29:6"
+      ],
+      "target_character": "Tim"
+    }
+  ]
+}

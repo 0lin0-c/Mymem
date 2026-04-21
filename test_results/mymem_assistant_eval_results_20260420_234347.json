@@ -1,0 +1,63 @@
+{
+  "test_info": {
+    "timestamp": "20260420_234347",
+    "eval_mode": "assistant_eval",
+    "total_samples": 1,
+    "total_questions": 2
+  },
+  "statistics": {
+    "total_questions": 2,
+    "evaluated_questions": 2,
+    "correct_count": 1,
+    "accuracy": 50.0,
+    "category_accuracy": {
+      "2": {
+        "label": "时间相关（when/how long）",
+        "display_name": "Category 2 - 时间相关（when/how long）",
+        "count": 1,
+        "correct": 0,
+        "accuracy": 0.0
+      },
+      "3": {
+        "label": "推理归纳（需要综合多事实）",
+        "display_name": "Category 3 - 推理归纳（需要综合多事实）",
+        "count": 1,
+        "correct": 1,
+        "accuracy": 100.0
+      }
+    },
+    "answer_accuracy": 50.0,
+    "non_empty_answer_questions": 2,
+    "non_empty_answer_correct_count": 1,
+    "adjusted_accuracy_excluding_empty_standard": 50.0,
+    "answer_failure_patterns": {
+      "retrieval_gap": 1
+    },
+    "retrieval_support_rate": 0.0,
+    "retrieval_hit_count": 0,
+    "recall_at_k": 0.0,
+    "top1_hit_rate": 0.0,
+    "top3_hit_rate": 0.0,
+    "top5_hit_rate": 0.0,
+    "mean_first_evidence_rank": 0,
+    "rank_distribution": {
+      "miss": 2
+    },
+    "avg_retrieval_score": 0.09078,
+    "layer_distribution": {
+      "category_only": {
+        "count": 2,
+        "rate": 100.0,
+        "correct": 1,
+        "accuracy": 50.0,
+        "recall_at_k": 0.0
+      }
+    },
+    "storage_hit_count": 2,
+    "storage_coverage_rate": 100.0,
+    "db_diagnosis_counts": {
+      "retrieval_gap": 1
+    }
+  },
+  "samples": []
+}

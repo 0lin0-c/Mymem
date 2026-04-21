@@ -30,3 +30,7 @@ opencv-python>=4.8.0  # 视频帧抽取
 # 异步 HTTP 客户端
 aiohttp>=3.9.0
 httpx>=0.25.0
+
+# Test tooling
+pytest>=9.0.0
+pytest-asyncio>=1.0.0

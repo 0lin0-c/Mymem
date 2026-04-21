@@ -25,6 +25,7 @@ class Settings(BaseSettings):
 
     # Anthropic 配置
     anthropic_api_key: Optional[str] = None
+    anthropic_base_url: Optional[str] = None  # 自定义 Anthropic 端点
 
     # 3. JWT 鉴权配置 (未来做前端登录用)
     secret_key: str = "your-secret-key-change-in-production"

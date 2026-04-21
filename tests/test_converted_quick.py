@@ -15,7 +15,7 @@ DATA_DIR = Path(__file__).parent.parent.parent / "memU" / "tier_test_results" / 
 
 def test_parse_converted():
     """Test parsing converted file"""
-    from tests.test_converted_data import parse_converted_file, parse_conversation_turns
+    from tests.evals.converted_data.loader import parse_converted_file, parse_conversation_turns
 
     # Find first file
     files = sorted(DATA_DIR.glob("sample_0_*_converted.json"))
@@ -41,7 +41,7 @@ def test_parse_converted():
 
 def test_parse_qa():
     """Test parsing QA file"""
-    from tests.test_converted_data import parse_qa_file
+    from tests.evals.converted_data.loader import parse_qa_file
 
     qa_file = DATA_DIR / "sample_0_qa.json"
     if not qa_file.exists():

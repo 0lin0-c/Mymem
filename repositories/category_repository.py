@@ -10,6 +10,10 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from tables.category import Category
 from repositories.base import BaseRepository
+from services.retrieval.scoring_config import (
+    DEFAULT_RETRIEVAL_SCORING_CONFIG,
+    RetrievalScoringConfig,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -80,7 +84,9 @@ class CategoryRepository(BaseRepository[Category]):
         category_name: str,
         content: str,
         content_vector: list[float] | None = None,
-        importance_score: int = 5,
+        importance_score: int = 2,
+        created_at: datetime | None = None,
+        updated_at: datetime | None = None,
     ) -> Category:
         """创建一条原子化记忆
 
@@ -89,16 +95,22 @@ class CategoryRepository(BaseRepository[Category]):
             category_name: 分类名称（核心自我/情景时间轴/...）
             content: 原子化的记忆内容
             content_vector: 内容的向量嵌入
-            importance_score: 重要性评分 (1-10)
+            importance_score: importance score (0-3)
         """
-        return await super().create(
-            id=str(uuid.uuid4()),
-            user_id=user_id,
-            category_name=category_name,
-            content=content,
-            content_vector=content_vector,
-            importance_score=min(max(importance_score, 1), 10),
-        )
+        create_data = {
+            "id": str(uuid.uuid4()),
+            "user_id": user_id,
+            "category_name": category_name,
+            "content": content,
+            "content_vector": content_vector,
+            "importance_score": min(max(importance_score, 0), 3),
+        }
+        if created_at is not None:
+            create_data["created_at"] = created_at
+        if updated_at is not None:
+            create_data["updated_at"] = updated_at
+
+        return await super().create(**create_data)
 
     async def create_items_batch(
         self,
@@ -123,10 +135,10 @@ class CategoryRepository(BaseRepository[Category]):
             instance = Category(
                 id=str(uuid.uuid4()),
                 user_id=user_id,
-                category_name=item.get("category_name", "语义知识库"),
+                category_name=item.get("category_name", "Knowledge Base"),
                 content=item.get("content", ""),
                 content_vector=item.get("content_vector"),
-                importance_score=min(max(item.get("importance_score", 5), 1), 10),
+                importance_score=min(max(item.get("importance_score", 2), 0), 3),
             )
             self.session.add(instance)
             instances.append(instance)
@@ -148,7 +160,7 @@ class CategoryRepository(BaseRepository[Category]):
         """更新重要性分数"""
         return await self.update(
             item_id,
-            importance_score=min(max(importance_score, 1), 10),
+            importance_score=min(max(importance_score, 0), 3),
         )
 
     async def get_category_stats(self, user_id: str) -> dict:
@@ -210,7 +222,7 @@ class CategoryRepository(BaseRepository[Category]):
         if content_vector is not None:
             update_data["content_vector"] = content_vector
         if importance_score is not None:
-            update_data["importance_score"] = min(max(importance_score, 1), 10)
+            update_data["importance_score"] = min(max(importance_score, 0), 3)
 
         return await self.update(item_id, **update_data)
 
@@ -253,8 +265,9 @@ class CategoryRepository(BaseRepository[Category]):
         query_vector: list[float],
         category_names: list[str] | None = None,
         top_k: int = 5,
-        min_importance: int = 3,
+        min_importance: int = 0,
         recency_decay_days: int = 60,
+        scoring_config: RetrievalScoringConfig | None = None,
     ) -> list[tuple[Category, float]]:
         """向量相似度检索（四因子乘法评分）
 
@@ -270,6 +283,7 @@ class CategoryRepository(BaseRepository[Category]):
             (Category, score) 元组列表，按四因子评分降序排序
         """
         logger.debug(f"Category 向量检索: user_id={user_id}, categories={category_names}, top_k={top_k}")
+        scoring_config = scoring_config or DEFAULT_RETRIEVAL_SCORING_CONFIG
         # 构建基础过滤条件
         where_clauses = [
             "user_id = :user_id",
@@ -280,7 +294,7 @@ class CategoryRepository(BaseRepository[Category]):
             "query_vector": str(query_vector),
             "user_id": user_id,
             "min_importance": min_importance,
-            "recency_decay_days": recency_decay_days,
+            **scoring_config.sql_params(),
         }
 
         if category_names:
@@ -288,14 +302,15 @@ class CategoryRepository(BaseRepository[Category]):
             params["category_names"] = category_names
 
         # 四因子评分 SQL
-        # score = cosine_similarity × log(access_count+1) × exp(-0.693 × days_ago / 60) × (importance_score / 5)
+        # score = cosine_similarity × log(access_count+2) × exp(-0.693 × days_ago / 60) × small importance boost
+        # 注: +2 而非 +1，确保 access_count=0 时评分不为0（ln(2)≈0.693）
         sql = text(f"""
             SELECT id, user_id, category_name, content, content_vector,
                    importance_score, access_count, created_at, updated_at,
-                   (1 - (content_vector <=> CAST(:query_vector AS vector)))
-                   * ln(access_count + 1)
-                   * exp(-0.693 * EXTRACT(EPOCH FROM (NOW() - updated_at)) / 86400 / :recency_decay_days)
-                   * (importance_score / 5.0) AS score
+                   power(GREATEST((1 - (content_vector <=> CAST(:query_vector AS vector))), 0), :similarity_power)
+                   * power(ln(access_count + 2), :access_power)
+                   * power(exp(-0.693 * EXTRACT(EPOCH FROM (NOW() - updated_at)) / 86400 / :recency_decay_days), :recency_power)
+                   * power((0.7 + (importance_score / 10.0)), :importance_power) AS score
             FROM categories
             WHERE {' AND '.join(where_clauses)}
             ORDER BY score DESC

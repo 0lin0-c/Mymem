@@ -15,8 +15,8 @@ from services.llm.base import BaseLLMProvider
 logger = logging.getLogger(__name__)
 
 
-# 不参与遗忘机制的固定分类名称
-FORGETTING_EXCLUDED_CATEGORIES = ["核心自我", "社交关系图谱"]
+# Fixed category names excluded from forgetting mechanism
+FORGETTING_EXCLUDED_CATEGORIES = ["Core Self", "Social Graph"]
 
 
 class MemoryLifecycle:
@@ -72,12 +72,13 @@ class MemoryLifecycle:
         else:
             days_since_update = (datetime.now(timezone.utc) - item.created_at).days
 
-        importance = item.importance_score
+        importance = max(item.importance_score, 0)
         access_count = item.access_count or 0
 
         # 时间衰减因子：e^(-Days / (Importance × 5))
         # 半衰期与重要性正相关
-        decay_factor = math.exp(-days_since_update / (importance * 5))
+        decay_base = max(importance, 1)
+        decay_factor = math.exp(-days_since_update / (decay_base * 5))
 
         # 访问加成因子：(1 + log(AccessCount + 1))
         # 对数增长，防止过度膨胀
@@ -109,7 +110,7 @@ class MemoryLifecycle:
             )
 
             if effective_importance < resource.importance_score - 0.5:
-                new_score = max(int(effective_importance), 1)
+                new_score = max(int(effective_importance), 0)
                 await self.resource_repo.update_importance(resource.id, new_score)
                 resource_updated += 1
 
@@ -127,7 +128,7 @@ class MemoryLifecycle:
             )
 
             if effective_importance < category.importance_score - 0.5:
-                new_score = max(int(effective_importance), 1)
+                new_score = max(int(effective_importance), 0)
                 await self.category_repo.update_importance(category.id, new_score)
                 category_updated += 1
 
@@ -232,8 +233,8 @@ class MemoryLifecycle:
 
             # 有效重要性 < 1 标记为待遗忘
             # 这里通过将 importance_score 设为 1 来标记
-            if effective_importance < 1 and resource.importance_score > 1:
-                await self.resource_repo.update_importance(resource.id, 1)
+            if effective_importance < 1 and resource.importance_score > 0:
+                await self.resource_repo.update_importance(resource.id, 0)
                 resource_marked += 1
 
         categories = await self.category_repo.get_by_user_id(user_id, limit=1000)
@@ -247,8 +248,8 @@ class MemoryLifecycle:
                 category.id, is_resource=False
             )
 
-            if effective_importance < 1 and category.importance_score > 1:
-                await self.category_repo.update_importance(category.id, 1)
+            if effective_importance < 1 and category.importance_score > 0:
+                await self.category_repo.update_importance(category.id, 0)
                 category_marked += 1
 
         logger.info(

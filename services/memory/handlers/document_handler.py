@@ -227,34 +227,34 @@ class DocumentHandler(BaseHandler):
         Returns:
             str: 文档摘要
         """
-        # 截取前 4000 字符用于摘要
+        # Truncate to first 4000 characters for summary
         sample_text = text[:4000]
         if len(text) > 4000:
-            sample_text += "\n...[内容已截断]..."
+            sample_text += "\n...[content truncated]..."
 
-        prompt = f"""请为以下文档生成摘要。
+        prompt = f"""Generate a summary for the following document.
 
-文件名: {filename}
-文档内容:
+Filename: {filename}
+Document content:
 {sample_text}
 
-请提供：
-1. 文档主题
-2. 主要内容概述
-3. 关键要点（如有）"""
+Please provide:
+1. Document topic
+2. Main content overview
+3. Key points (if any)"""
 
         try:
             summary = await self.llm.generate_chat_response(
-                system_prompt="你是一个文档分析专家，擅长总结文档内容。",
+                system_prompt="You are a document analysis expert, skilled at summarizing document content.",
                 context="",
                 user_query=prompt,
             )
             return summary
 
         except Exception as e:
-            logger.error(f"文档摘要生成失败: {e}")
-            # 返回原文片段
-            return f"文档内容：\n{text[:500]}..."
+            logger.error(f"Document summary generation failed: {e}")
+            # Return original text snippet
+            return f"Document content:\n{text[:500]}..."
 
     async def get_vector(self, text: str) -> bytes:
         """生成向量"""

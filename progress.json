@@ -1,0 +1,333 @@
+{
+  "completed": [
+    {
+      "id": "decision-chat-flow",
+      "title": "已确认真实聊天流程目标",
+      "details": [
+        "每一轮用户输入都应该读取 profile/persona、检索长期记忆、合并 pending chats、生成 LLM 回复、写入 pending chats，并在满足条件时 flush 到长期记忆。",
+        "真实聊天默认每轮都检索长期记忆。",
+        "用户识别逻辑暂时保留在 api/v1/chat.py。"
+      ]
+    },
+    {
+      "id": "decision-context-order",
+      "title": "已确认 prompt/context 顺序",
+      "details": [
+        "system_prompt 包含助手规则、profile/persona，以及记忆使用优先级规则。",
+        "context 先放最近的 pending conversation，再放 retrieved memories。",
+        "user_query 只包含当前用户消息。",
+        "第一版 retrieved context 的标签使用英文。"
+      ]
+    },
+    {
+      "id": "decision-priority-rules",
+      "title": "已确认记忆优先级规则",
+      "details": [
+        "在 prompt 中加入规则：When answering, prioritize information in this order: 1. The user's current message. 2. Relevant retrieved memories. 3. Stable user profile. 4. Assistant persona and style.",
+        "当 retrieved memories 有助于回答当前消息时使用它们。",
+        "如果当前用户消息更新或反驳了旧信息，优先遵循当前用户消息。",
+        "不要只根据 profile interests 推断用户当前意图。"
+      ]
+    },
+    {
+      "id": "decision-trace-streaming",
+      "title": "已确认 trace 和流式行为",
+      "details": [
+        "ChatOrchestrator 应该为测试、评估和开发者调试返回 retrieved trace。",
+        "/v1/chat 默认不向普通最终用户暴露 retrieved trace。",
+        "ChatOrchestrator 应该提供 stream 方法，以保留真实 /v1/chat 的流式体验。",
+        "将 ChatOrchestrator 接入 chat.py 时，保持现有 pending_chats 和 flush 行为不变。"
+      ]
+    },
+    {
+      "id": "decision-retrieval-scoring",
+      "title": "已确认检索打分方向",
+      "details": [
+        "真实 chat 默认检索 top_k 为 5。",
+        "提高 embedding similarity 在检索打分中的相对重要性。",
+        "SQL 打分中使用 power(GREATEST(similarity, 0), :similarity_power)。",
+        "similarity_power 默认从 1.5 开始，其他打分指数默认 1。",
+        "将检索打分默认值放在 services/retrieval/scoring_config.py。",
+        "第一版不为这些打分值增加可选环境变量支持。",
+        "测试/CLI 应该能够覆盖打分变量，用于实验。"
+      ]
+    },
+    {
+      "id": "task-chat-orchestrator",
+      "title": "已新增 services/chat_orchestrator.py",
+      "details": [
+        "新增 ChatOrchestrator 协调 profile、检索、最近对话上下文、LLM 流式生成和 trace。",
+        "ChatOrchestrator 保持在 services/retrieval 之外，并调用 MemoryRetriever.retrieve()。",
+        "提供 build_context() 返回结构化 context/trace，提供 stream() 保留真实 chat 的流式体验。",
+        "context 顺序为 Recent Conversation 在前，Retrieved Memories 在后，当前 user_query 保持独立。",
+        "retrieved context 使用英文标签，并用 llm.count_tokens() 做长度控制。"
+      ]
+    },
+    {
+      "id": "task-wire-chat-api",
+      "title": "已修改 api/v1/chat.py 使用 ChatOrchestrator",
+      "details": [
+        "chat.py 的 LLM 流式生成改为调用 ChatOrchestrator.stream()。",
+        "现有 pending_chats 写入逻辑保持在 chat.py，行为不变。",
+        "现有 flush 到长期记忆的逻辑保持在 chat.py，行为不变。",
+        "用户/session 识别逻辑暂时继续保留在 chat.py。",
+        "真实 chat 默认每轮检索长期记忆，top_k=5。",
+        "普通 /v1/chat 流式响应不输出 retrieved trace。"
+      ]
+    },
+    {
+      "id": "task-contract-tests",
+      "title": "已新增基础 contract 测试",
+      "details": [
+        "新增 tests/contract/test_chat_orchestrator_contract.py。",
+        "测试 ChatOrchestrator 构建 context 的顺序：最近 conversation 在前，retrieved memories 在后。",
+        "测试当前 user_query 与 retrieved context 保持分离。",
+        "测试 ChatOrchestrator 能返回 retrieved trace。",
+        "测试普通 chat API 流式输出不暴露 retrieved trace/retrieved_results。"
+      ]
+    },
+    {
+      "id": "task-sql-scoring-config",
+      "title": "已把检索打分参数接入 SQL",
+      "details": [
+        "新增 services/retrieval/scoring_config.py，定义 RetrievalScoringConfig 和默认配置。",
+        "similarity_power 默认 1.5，access_power/recency_power/importance_power 默认 1。",
+        "MemoryRetriever、VectorStrategy、CategoryRepository、ResourceRepository 已支持传入 scoring_config。",
+        "SQL 中 similarity 使用 power(GREATEST(similarity, 0), :similarity_power)。",
+        "SQL 中 access、recency、importance 也已接入对应 power 参数。",
+        "/v1/retrieve 请求契约未新增公开参数。"
+      ]
+    },
+    {
+      "id": "docs-sync-trace-scoring",
+      "title": "已同步 trace 和新 scoring config 到设计文档",
+      "details": [
+        "已更新 docs/设计规范/RETRIEVAL_PIPELINE.md，补充 ChatOrchestrator trace 契约和可配置四因子评分公式。",
+        "已更新 docs/设计规范/SERVICE_DESIGN.md，补充 ChatOrchestrator 职责边界、LLM 输入契约、trace 契约和 RetrievalScoringConfig。",
+        "已更新 .claude/skills/retrieval-pipeline 与 .claude/skills/service-design 的相关规范，避免后续 agent 继续按旧公式实现。",
+        "已同步数据库/输入流程文档中的 importance_score 为 0-3 分制。"
+      ]
+    },
+    {
+      "id": "validation-pytest",
+      "title": "已用 memory_agent 运行正式 contract pytest",
+      "details": [
+        "已运行 conda run -n memory_agent python -m pytest -q tests/contract/test_chat_orchestrator_contract.py。",
+        "结果：2 passed。",
+        "第一次运行暴露 services.retrieval.__init__ eager import 导致的循环导入，已改为 __getattr__ 懒加载。",
+        "已完成 python -m py_compile 语法校验。"
+      ]
+    },
+    {
+      "id": "decision-test-control-plane",
+      "title": "已确认测试控制入口应统一到 pytest",
+      "details": [
+        "converted_data 评估不应长期依赖 tests.test_converted_data 自己实现的 CLI 作为主控制入口。",
+        "未来所有测试模块应统一由 pytest 管理，避免不同测试模块各自实现不同的 argparse/CLI 控制方式。",
+        "storage_eval、retrieval_eval、assistant_eval 三层评估仍然保留，但它们应作为 pytest 下的评估模式，而不是独立控制体系。",
+        "旧的 tests.test_converted_data CLI 暂时保留为兼容薄壳，官方入口迁移到 pytest。"
+      ]
+    },
+    {
+      "id": "decision-test-real-project-chain",
+      "title": "已确认测试必须严格使用项目已有链路",
+      "details": [
+        "测试模块不得重新实现存储、检索、回答生成等业务链路。",
+        "storage_eval 必须调用项目已有真实存储链路，例如 ProfileService、MemoryWriter 或等价业务入口。",
+        "retrieval_eval 必须调用项目已有真实检索链路，例如 MemoryRetriever 或等价检索入口，不允许在测试中自写 SQL 排序逻辑。",
+        "assistant_eval 必须调用 ChatOrchestrator 或真实 chat 链路，不允许在测试中自写简化 prompt 生成回答。",
+        "测试模块允许保留测试数据加载、断言、评估 oracle、报告和诊断逻辑。"
+      ]
+    },
+    {
+      "id": "task-split-converted-data-eval",
+      "title": "拆分 tests/test_converted_data.py",
+      "details": [
+        "将现有 tests/test_converted_data.py 中已经验证过的 converted_data 评估能力拆分到 tests/evals/converted_data 内部模块。",
+        "拆分后保留现有 storage_eval、retrieval_eval、assistant_eval 三层诊断能力。",
+        "tests/test_converted_data.py 改为兼容薄壳，只负责转发到新的 converted_data eval runner。",
+        "同步更新依赖 tests.test_converted_data 的现有快速测试，避免导入路径断裂。"
+      ]
+    },
+    {
+      "id": "task-add-pytest-eval-entry",
+      "title": "新增 converted_data 的 pytest 官方入口",
+      "details": [
+        "在 pytest 体系下新增 converted_data 评估入口，使评估可以通过 pytest 命令统一运行。",
+        "在 pytest.ini 或 tests/conftest.py 中补充统一 marker 和命令行参数。",
+        "至少支持 converted_data、storage_eval、retrieval_eval、assistant_eval、slow 等 marker 或等价筛选方式。",
+        "支持通过 pytest 参数选择 data_dir、sample、eval_mode、top_k、是否重置记忆、是否开启去重等 converted_data 评估配置。"
+      ]
+    },
+    {
+      "id": "task-storage-eval-real-chain",
+      "title": "让 storage_eval 使用真实存储链路",
+      "details": [
+        "storage_eval 只负责验证测试数据是否能通过项目真实写入链路进入长期记忆。",
+        "不得在测试中直接构造替代性的数据库写入逻辑。",
+        "保留数据库诊断查询作为测试 oracle 或调试信息，但不能把它当成项目存储链路。"
+      ]
+    },
+    {
+      "id": "task-retrieval-eval-real-chain",
+      "title": "让 retrieval_eval 使用真实检索链路",
+      "details": [
+        "retrieval_eval 必须调用项目真实 MemoryRetriever 或等价检索入口。",
+        "不得在测试中自写检索 SQL、相似度排序或业务排名公式。",
+        "评估可以记录 retrieved trace、目标记忆排名、top_k 命中情况和失败诊断。"
+      ]
+    },
+    {
+      "id": "task-assistant-eval-real-chain",
+      "title": "让 assistant_eval 使用真实回答链路",
+      "details": [
+        "assistant_eval 必须调用 ChatOrchestrator 或真实 chat 链路生成回答。",
+        "不得继续使用测试文件中自写的简化 prompt 或 generate_answer_from_retrieval 作为真实回答路径。",
+        "回答正确性判断可以继续作为测试 oracle 独立存在。"
+      ]
+    },
+    {
+      "id": "task-update-memory-eval-docs",
+      "title": "更新测试范式文档",
+      "details": [
+        "更新 tests/README_memory_eval.md，明确官方运行方式以 pytest 为准。",
+        "说明旧 CLI 仅作为兼容入口，后续测试模块不应复制这种控制方式。",
+        "明确测试模块的边界：控制归 pytest，业务链路归项目真实代码，测试只负责数据、断言、oracle、报告和诊断。"
+      ]
+    },
+    {
+      "id": "task-add-future-eval-skeletons",
+      "title": "为未来测试模块补充框架和 TODO",
+      "details": [
+        "为尚未整理完成的评估层补充最小框架和 TODO。",
+        "框架应遵循 pytest 统一控制入口和真实项目链路原则。",
+        "不要在框架中提前实现新的替代业务逻辑。"
+      ]
+    },
+    {
+      "id": "decision-mode-aware-reporting",
+      "title": "已确认 converted_data 报告必须按 eval mode 独立生成",
+      "details": [
+        "storage_eval、retrieval_eval、assistant_eval 的 is_correct 语义不同，不能共用同一个 accuracy 叙事。",
+        "报告不能把 assistant_eval 的 LLM 回答正确率、生成答案等字段强行套到 storage_eval 或 retrieval_eval 上。",
+        "报告分析必须 data-driven，不能在 fallback 或 prompt 中写死某次历史测试的结论。",
+        "报告模块应从 runner.py 中拆出，变成可单独测试的 reporting/metrics/analysis 组件。"
+      ]
+    },
+    {
+      "id": "task-mode-aware-reporting-refactor",
+      "title": "已重构 converted_data 报告系统为按 eval mode 区分的独立模块",
+      "details": [
+        "已将报告生成逻辑从 tests/evals/converted_data/runner.py 中拆出，runner 不再内置指标计算、JSON 落盘、Markdown 分析和 LLM 分析 prompt。",
+        "已新增 metrics.py、report_json.py、report_text.py、report_analysis.py，并让 reporting.py 作为统一导出 facade。",
+        "报告生成已根据 eval_mode 区分 storage_eval、retrieval_eval、assistant_eval，不再使用同一套偏 assistant/full-pipeline 的报告结构。",
+        "storage_eval 报告聚焦存储覆盖率和 DB evidence，不输出检索或回答质量指标。",
+        "retrieval_eval 报告聚焦 recall@k、top1/top3/top5、first evidence rank、排序噪声和检索层级差异，不输出回答质量指标。",
+        "assistant_eval 报告聚焦回答准确率、adjusted accuracy、retrieval hit 和 storage/retrieval/generation/eval_oracle 链路归因。",
+        "已删除 fallback 分析中写死的历史结论，例如固定提到 2023/2026 时间污染、category 5、category_only 高风险。",
+        "已新增 tests/unit/test_converted_data_reporting.py，验证三种 eval_mode 的指标和 Markdown 不互相污染。"
+      ]
+    },
+    {
+      "id": "decision-report-category-labels-and-metric-dedup",
+      "title": "已确认报告需要补充 QA category 语义并清理重复指标",
+      "details": [
+        "category_accuracy 当前只输出数字 category，读者无法知道 category 1-5 分别代表什么问题类型。",
+        "需要集中定义 QA_CATEGORY_MEANINGS，并在控制台报告、Markdown 报告、analysis prompt 和 representative cases 中显示语义标签。",
+        "storage_coverage_rate 与 storage_hit_rate 当前语义和计算完全重复，应统一以 storage_coverage_rate 作为 storage_eval 主指标。",
+        "recall_at_k 与 retrieval_hit_rate 当前语义和计算重复；retrieval_eval 主指标应统一为 recall_at_k。",
+        "assistant_eval 如需展示检索支持，应使用 retrieval_support_rate 这类辅助链路指标，避免把它和 retrieval_eval 的 recall@k 混为一谈。"
+      ]
+    },
+    {
+      "id": "task-report-category-labels-and-metric-dedup",
+      "title": "已为 converted_data 报告补充 category 语义并清理重复指标",
+      "details": [
+        "已新增 tests/evals/converted_data/categories.py，定义 QA_CATEGORY_MEANINGS、category_label() 和 format_qa_category()。",
+        "metrics.py 的 category_accuracy 保留数字 key，并在 value 中增加 label 和 display_name。",
+        "控制台报告、fallback Markdown、analysis prompt compact payload 和 representative cases 已显示带语义的 category display_name。",
+        "storage_eval 主指标统一为 storage_coverage_rate，已移除重复的 storage_hit_rate。",
+        "retrieval_eval 主指标统一为 recall_at_k，已移除重复的 retrieval_hit_rate。",
+        "assistant_eval 使用 retrieval_support_rate 表示检索支持率，避免与 retrieval_eval 的 recall@k 混淆。",
+        "已更新 tests/unit/test_converted_data_reporting.py，覆盖 category 语义、指标去冗余和三种 eval_mode 报告口径。"
+      ]
+    },
+    {
+      "id": "task-assistant-eval-reuse-retrieval",
+      "title": "已让 assistant_eval 复用第一次 retrieval，避免回答阶段重复检索",
+      "details": [
+        "ChatOrchestrator 现已支持可选注入 retrieved_results 或 retrieved_context，未注入时仍保持原有生产逻辑自行检索。",
+        "assistant_eval 在第一次真实 MemoryRetriever.retrieve() 后，会把这批 retrieved results 直接传给 ChatOrchestrator 生成回答。",
+        "这样 assistant_eval 的回答阶段不再对同一问题重复做第二次完整检索。",
+        "已新增 contract 测试验证：注入 retrieval 结果时，ChatOrchestrator 不会再调用 retriever.retrieve()。"
+      ]
+    },
+    {
+      "id": "task-promote-live-results-to-formal-sample-json",
+      "title": "已将 live 结果升级为 sample 级正式结果落盘，并补上基础中断状态支持",
+      "details": [
+        "LiveResultWriter 现在在 start_sample() 时就把 sample 写入 samples，并标记 status=in_progress。",
+        "每次 add_qa_result() 后都会更新 qa_results、completed_questions 和 statistics，并立即 flush 到 JSON。",
+        "sample 固定新增 status、completed_questions、total_questions 字段；save_results_json() 输出的最终结果也与该结构保持一致。",
+        "run_single_sample() 成功结束时会显式标记 sample 为 completed；若内部抛出异常，会尽力标记为 interrupted。",
+        "已新增单元测试验证 in_progress/completed/interrupted 三种 sample 状态下的落盘行为。"
+      ]
+    },
+    {
+      "id": "task-bad-case-diagnosis-postprocess",
+      "title": "已补上 bad-case diagnosis 的后处理入口",
+      "details": [
+        "新增 postprocess_bad_case_diagnoses()，主评估循环结束后只对失败样本统一补做 diagnose_bad_case()。",
+        "run_single_sample/run_all_samples 现已支持 postprocess_bad_cases 开关；CLI 与 pytest 入口都已接入对应参数。",
+        "开启后处理时，会在 sample 仍处于活动状态时同步回写 live sample 的 qa_results，保证 live 文件与最终结果中的 db_diagnosis 一致。",
+        "已新增单元测试验证：postprocess 只补失败样本，不会污染正确样本。"
+      ]
+    },
+    {
+      "id": "validation-long-assistant-eval-run",
+      "title": "已用 6 小时外层超时完成一轮更长的 assistant_eval 验证",
+      "details": [
+        "使用 retrieval_only + postprocess_bad_cases 跑通了 Caroline 的 10 题 assistant_eval，外层 timeout_ms 设为 21600000（6 小时）。",
+        "主评估阶段 10 题完成，随后执行失败样本的 bad-case 后处理，并最终生成 JSON 与 Markdown 报告。",
+        "结果文件为 test_results/mymem_test_results_20260421_173554.json，分析报告为 test_results/mymem_test_results_20260421_173554_analysis.md。",
+        "最终结果中 sample 已带 status=completed、completed_questions=10，失败样本已补上 db_diagnosis。"
+      ]
+    }
+  ],
+  "failed": [],
+  "pending": [
+    {
+      "id": "task-deepen-converted-data-module-split",
+      "title": "继续细拆 converted_data runner 内部职责",
+      "details": [
+        "当前已完成控制入口迁移、兼容入口保留、pytest 参数接入和模块 facade 拆分。",
+        "后续可以进一步把 runner.py 内部逻辑真实下沉到 models、loader、importer、evaluators、reporting 等模块，减少 runner.py 体积。",
+        "继续细拆时仍必须保持 storage_eval、retrieval_eval、assistant_eval 调用真实项目链路。"
+      ]
+    },
+    {
+      "id": "task-tighten-converted-data-analysis-from-json-trace",
+      "title": "基于当前 JSON trace 重写 converted_data 分析口径与报告结构",
+      "details": [
+        "以 test_results/mymem_test_results_20260421_173554.json 作为当前事实来源，优先修正 assistant_eval 分析报告口径，只输出这轮 trace 可以直接支撑的结论。",
+        "重写分析报告结构，按 storage / retrieval / answer / eval 口径分层归因，避免把所有错题直接压成一个 retrieval_gap 结论。",
+        "在报告中显式区分高置信度 retrieval failure 和低置信度候选证据污染样本；若 db_diagnosis 主要由弱关键词命中支撑，只能写成候选证据不足以高置信定性。",
+        "补充深层原因分析，包括 category_only 过早停止、Timeline 路由过粗、Top1 噪声压制目标记忆、回答层保守拒答或邻近记忆替代。",
+        "把成功样本改写为 evidence-backed success 和 unsupported success 两类，明确当前这轮 assistant_eval 没有 retrieval_hit=True 的证据支撑型成功。",
+        "调整代表案例展示字段，至少包含 question、standard_answer、generated_answer、resolved_layer、llm_classified_categories、top1_context、matched_keyword 质量和 diagnosis confidence。",
+        "修正 missed_evidence_preview 的叙事方式：当前展示的是按 importance 排序后的候选片段，不应直接表述为“最关键漏召回证据”。",
+        "同步修复 report_analysis.py 和生成出的 Markdown 中文乱码问题，确保 UTF-8 可读性。",
+        "如进入实现阶段，优先修改 tests/evals/converted_data/report_analysis.py，并视需要补充 helpers.py 和 runner.py 的诊断辅助字段或排序逻辑。"
+      ]
+    },
+    {
+      "id": "task-extend-eval-timeout-to-6-hours",
+      "title": "将评估命令的外层总超时统一提高到 6 小时",
+      "details": [
+        "assistant_eval 的整轮运行时间当前远大于 30-70 分钟，需要把外层命令总超时提高到 6 小时，避免被执行器提前截断。",
+        "该调整只针对评估命令的总生命周期，不修改单次 LLM/embedding 请求的内部超时配置。",
+        "后续仍以减少 assistant_eval 重复调用、支持中断结果保留为根本优化方向，不把增加超时当作唯一解法。"
+      ]
+    }
+  ]
+}

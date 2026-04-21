@@ -47,19 +47,20 @@ def build_chat_prompt(context: str, user_query: str) -> Dict[str, str]:
     }
 
 
-def build_memory_extraction_prompt(categories: List[Dict]) -> str:
+def build_memory_extraction_prompt(categories: List[Dict], reference_time: str | None = None) -> str:
     """构建记忆提取 prompt
 
     Args:
         categories: 分类列表，每个元素包含 name, description
+        reference_time: 参考时间戳（可选，用于历史数据导入）。不传则使用系统当前时间。
 
     Returns:
         格式化后的 prompt 字符串
     """
-    current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    current_time = reference_time or datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     if not categories:
-        category_details = "暂无分类信息。"
+        category_details = "No category information is available."
     else:
         lines = []
         for i, cat in enumerate(categories, 1):
@@ -89,43 +90,43 @@ EXTRACT_MEMORY_TOOL_OPENAI = {
     "type": "function",
     "function": {
         "name": "extract_memory",
-        "description": "从对话中提取综合摘要和原子化记忆信息",
+        "description": "Extract a comprehensive summary and atomic memory items from the conversation.",
         "parameters": {
             "type": "object",
             "properties": {
                 "summary": {
                     "type": "string",
-                    "description": "对话的综合摘要，以第三人称客观陈述",
+                    "description": "A comprehensive objective third-person summary of the conversation.",
                 },
                 "importance_score": {
                     "type": "integer",
-                    "description": "对综合摘要的整体重要性评分 1-10",
-                    "minimum": 1,
-                    "maximum": 10,
+                    "description": "Overall importance score for the summary, from 0 to 3.",
+                    "minimum": 0,
+                    "maximum": 3,
                 },
                 "response_summary": {
                     "type": "string",
-                    "description": "AI 回复的核心要点摘要，若无回复则为空字符串",
+                    "description": "A concise summary of the AI response; use an empty string if there is no response.",
                 },
                 "atomic_items": {
                     "type": "array",
-                    "description": "从对话中提取的原子化信息列表",
+                    "description": "A list of independent atomic memory items extracted from the conversation.",
                     "items": {
                         "type": "object",
                         "properties": {
                             "category_name": {
                                 "type": "string",
-                                "description": "分类名称",
+                                "description": "The category name, copied exactly from the provided taxonomy.",
                             },
                             "content": {
                                 "type": "string",
-                                "description": "原子化的记忆内容",
+                                "description": "The atomic memory content.",
                             },
                             "importance_score": {
                                 "type": "integer",
-                                "description": "该条信息的重要性评分 1-10",
-                                "minimum": 1,
-                                "maximum": 10,
+                                "description": "Importance score for this atomic item, from 0 to 3.",
+                                "minimum": 0,
+                                "maximum": 3,
                             },
                         },
                         "required": ["category_name", "content", "importance_score"],
@@ -137,42 +138,42 @@ EXTRACT_MEMORY_TOOL_OPENAI = {
     },
 }
 
-# Anthropic Tool Use 格式
+# Anthropic Tool Use format
 EXTRACT_MEMORY_TOOL_ANTHROPIC = {
     "name": "extract_memory",
-    "description": "从对话中提取综合摘要和原子化记忆信息",
+    "description": "Extract a comprehensive summary and atomic memory items from the conversation.",
     "input_schema": {
         "type": "object",
         "properties": {
             "summary": {
                 "type": "string",
-                "description": "对话的综合摘要，以第三人称客观陈述",
+                "description": "A comprehensive objective third-person summary of the conversation.",
             },
             "importance_score": {
                 "type": "integer",
-                "description": "对综合摘要的整体重要性评分 1-10",
+                "description": "Overall importance score for the summary, from 0 to 3.",
             },
             "response_summary": {
                 "type": "string",
-                "description": "AI 回复的核心要点摘要，若无回复则为空字符串",
+                "description": "A concise summary of the AI response; use an empty string if there is no response.",
             },
             "atomic_items": {
                 "type": "array",
-                "description": "从对话中提取的原子化信息列表",
+                "description": "A list of independent atomic memory items extracted from the conversation.",
                 "items": {
                     "type": "object",
                     "properties": {
                         "category_name": {
                             "type": "string",
-                            "description": "分类名称",
+                            "description": "The category name, copied exactly from the provided taxonomy.",
                         },
                         "content": {
                             "type": "string",
-                            "description": "原子化的记忆内容",
+                            "description": "The atomic memory content.",
                         },
                         "importance_score": {
                             "type": "integer",
-                            "description": "该条信息的重要性评分 1-10",
+                            "description": "Importance score for this atomic item, from 0 to 3.",
                         },
                     },
                     "required": ["category_name", "content", "importance_score"],

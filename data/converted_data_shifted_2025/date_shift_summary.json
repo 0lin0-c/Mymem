@@ -1,0 +1,9 @@
+{
+  "source_dir": "data\\converted_data_zh",
+  "year_offset": 2,
+  "shift_year_range": [
+    2010,
+    2024
+  ],
+  "note": "Temporary benchmark copy. Explicit years in shift_year_range in JSON strings and integer year answers were shifted by year_offset."
+}

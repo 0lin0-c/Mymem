@@ -55,9 +55,9 @@ class Category(Base):
     )
     importance_score: Mapped[int] = mapped_column(
         Integer,
-        default=5,
+        default=2,
         nullable=False,
-        comment="该条信息的重要性评分 (1-10)",
+        comment="该条信息的重要性评分 (0-3)",
     )
     access_count: Mapped[int] = mapped_column(
         Integer,

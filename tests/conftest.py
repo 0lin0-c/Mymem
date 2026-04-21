@@ -177,6 +177,32 @@ def temp_storage(tmp_path):
 # Pytest 配置
 # ============================================
 
+def pytest_addoption(parser):
+    """统一 converted_data 评估入口的 pytest 参数。"""
+    group = parser.getgroup("converted_data")
+    group.addoption("--converted-sample", type=int, help="运行指定 converted_data sample")
+    group.addoption("--converted-all", action="store_true", help="运行所有 converted_data samples")
+    group.addoption(
+        "--converted-data-dir",
+        type=str,
+        help="指定 converted_data 数据目录，默认使用 data/converted_data_zh",
+    )
+    group.addoption(
+        "--converted-eval-mode",
+        choices=["storage_eval", "retrieval_eval", "assistant_eval"],
+        default="assistant_eval",
+        help="converted_data 评估模式",
+    )
+    group.addoption("--converted-top-k", type=int, default=5, help="检索 top_k")
+    group.addoption("--converted-character", type=str, help="只评估指定角色")
+    group.addoption("--converted-import-only", action="store_true", help="只导入，不评估")
+    group.addoption("--converted-retrieval-only", action="store_true", help="跳过导入，只评估")
+    group.addoption("--converted-reset-memory", action="store_true", help="导入前清空该测试用户记忆")
+    group.addoption("--converted-no-dedup", action="store_true", help="禁用记忆去重")
+    group.addoption("--converted-max-questions", type=int, help="限制每个角色的 QA 数量，用于端到端冒烟测试")
+    group.addoption("--converted-postprocess-bad-cases", action="store_true", help="主评估完成后再补做失败样本的 bad-case diagnosis")
+
+
 def pytest_configure(config):
     """注册自定义标记"""
     config.addinivalue_line(
@@ -193,4 +219,16 @@ def pytest_configure(config):
     )
     config.addinivalue_line(
         "markers", "oss: 需要真实 OSS 配置的测试"
+    )
+    config.addinivalue_line(
+        "markers", "converted_data: converted_data 数据集驱动评估"
+    )
+    config.addinivalue_line(
+        "markers", "storage_eval: converted_data 存储链路评估"
+    )
+    config.addinivalue_line(
+        "markers", "retrieval_eval: converted_data 检索链路评估"
+    )
+    config.addinivalue_line(
+        "markers", "assistant_eval: converted_data 端到端回答评估"
     )

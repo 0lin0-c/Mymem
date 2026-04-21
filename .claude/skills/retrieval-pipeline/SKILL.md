@@ -122,8 +122,8 @@ version: 1.0
 3. **向量字段位置**：
    - Category 表：`content_vector` (原子化记忆内容的向量)
    - Resource 表：`description_vector` (对话摘要的向量)
-4. **四因子乘法评分**：详见 `config/scoring.md`
-5. **阈值过滤**：相似度 < 0.55 过滤，importance_score < 3 过滤。
+4. **可配置四因子乘法评分**：详见 `config/scoring.md`，默认 `similarity_power=1.5`。
+5. **阈值过滤**：当前实现以综合分数阈值过滤为主，默认 `FOUR_FACTOR_THRESHOLD_LOW=0.03`；`importance_score` 使用 0-3 分制，检索默认不因低重要性提前丢弃语义相关结果。
 
 ---
 

@@ -15,7 +15,7 @@
 | `category_name` | String(100) | 分类名称（在 categories 表，不在 resources 表） |
 | `content` | Text | 原子化的记忆内容 |
 | `content_vector` | Vector(1536) | 记忆内容的向量嵌入 |
-| `importance_score` | Integer | 重要性评分 (1-10) |
+| `importance_score` | Integer | 重要性评分 (0-3) |
 | `access_count` | Integer | 访问次数（用于检索分数计算） |
 | `updated_at` | DateTime | 更新时间（用于时间衰减计算） |
 
@@ -24,8 +24,8 @@
 ## 2. 检索逻辑
 
 ```
-1. 过滤条件：user_id + category_name IN (目标类别列表) + 相似度 >= 0.55
-2. 四因子评分：cosine_similarity × log(access_count+1) × exp(-0.693 × days_ago / 60) × (importance_score / 5)
+1. 过滤条件：user_id + category_name IN (目标类别列表) + content_vector IS NOT NULL
+2. 四因子评分：power(GREATEST(cosine_similarity, 0), similarity_power) × power(log(access_count+2), access_power) × power(recency, recency_power) × power(importance_factor, importance_power)
 3. 按评分降序返回 Top-K
 ```
 
@@ -35,8 +35,12 @@
 
 | 参数 | 值 | 说明 |
 |------|------|------|
-| `recency_decay_days` | 60 | Category 层半衰期更长 |
-| 相似度阈值 | 0.55 | 低于此值过滤 |
+| `recency_decay_days` | 60 | Category 层默认半衰期 |
+| `similarity_power` | 1.5 | 默认提高相似度差异对排序的影响 |
+| `access_power` | 1.0 | 访问次数指数 |
+| `recency_power` | 1.0 | 时间衰减指数 |
+| `importance_power` | 1.0 | 重要性指数 |
+| 综合分数阈值 | 0.03 | 低于此值过滤 |
 
 ---
 

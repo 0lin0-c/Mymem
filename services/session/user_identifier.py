@@ -66,12 +66,12 @@ class UserIdentifier:
                 username=f"guest_{session_state.session_id[:8]}",
                 password="temp",
             )
-            logger.info(f"创建临时用户: {user.username}")
+            logger.info(f"Created temporary user: {user.username}")
             return {
                 "identified": True,
                 "user_id": user.id,
                 "user_name": user.username,
-                "response": "没关系，我为你创建了一个临时身份。有什么我可以帮你的吗？",
+                "response": "No problem, I've created a temporary identity for you. How can I help you today?",
             }
 
         # 使用 LLM 解析用户输入
@@ -85,12 +85,12 @@ class UserIdentifier:
 
             if existing_user:
                 # 已有用户，直接识别
-                logger.info(f"识别已有用户: {user_name}")
+                logger.info(f"Identified existing user: {user_name}")
                 return {
                     "identified": True,
                     "user_id": existing_user.id,
                     "user_name": user_name,
-                    "response": f"欢迎回来，{user_name}！有什么我可以帮你的吗？",
+                    "response": f"Welcome back, {user_name}! How can I help you today?",
                 }
             else:
                 # 新用户，直接创建
@@ -98,12 +98,12 @@ class UserIdentifier:
                     username=user_name,
                     password="default",
                 )
-                logger.info(f"创建新用户: {user_name}")
+                logger.info(f"Created new user: {user_name}")
                 return {
                     "identified": True,
                     "user_id": user.id,
                     "user_name": user_name,
-                    "response": f"你好，{user_name}！很高兴认识你。有什么我可以帮你的吗？",
+                    "response": f"Hello, {user_name}! Nice to meet you. How can I help you today?",
                 }
 
         else:
@@ -113,7 +113,7 @@ class UserIdentifier:
                 "identified": False,
                 "user_id": None,
                 "user_name": None,
-                "response": parse_result.get("response", "你好！我是你的智能助手。请问你是谁呢？"),
+                "response": parse_result.get("response", "Hello! I'm your intelligent assistant. May I ask who you are?"),
             }
 
     async def _llm_parse_identification(self, user_input: str) -> dict:
@@ -130,7 +130,7 @@ class UserIdentifier:
 
         try:
             response = await self.llm.generate_chat_response(
-                system_prompt="你是一个身份识别助手，负责解析用户输入中的身份信息。",
+                system_prompt="You are an identity recognition assistant that parses identity information from user input.",
                 context="",
                 user_query=prompt,
             )
@@ -144,24 +144,24 @@ class UserIdentifier:
             return self._fallback_parse(user_input)
 
     def _build_parse_prompt(self, user_input: str) -> str:
-        """构建解析 prompt"""
-        return f"""分析用户输入，判断用户是否表明了身份。
+        """Build parse prompt"""
+        return f"""Analyze the user input and determine if the user has identified themselves.
 
-用户输入: {user_input}
+User input: {user_input}
 
-请返回 JSON 格式：
+Return JSON format:
 {{
   "action": "identified" | "ask",
-  "user_name": "提取的用户名（如果用户表明了身份）",
-  "response": "如果需要继续询问，返回询问内容"
+  "user_name": "Extracted username (if user identified themselves)",
+  "response": "Question to ask if need to continue inquiring"
 }}
 
-判断规则：
-1. 如果用户说"我是XXX"、"我叫XXX"、"叫我XXX"等 → action: "identified", user_name: XXX
-2. 如果用户说"我是新用户" → action: "identified", user_name: 提取的名字或生成一个
-3. 如果无法识别身份 → action: "ask", response: 友好的询问
+Rules:
+1. If user says "I am XXX", "My name is XXX", "Call me XXX" etc → action: "identified", user_name: XXX
+2. If user says "I am a new user" → action: "identified", user_name: extracted name or generate one
+3. If identity cannot be determined → action: "ask", response: friendly question
 
-只输出 JSON，不要有其他内容。"""
+Output only JSON, no other content."""
 
     def _parse_llm_response(self, response: str) -> dict:
         """解析 LLM 返回的 JSON"""
@@ -188,20 +188,20 @@ class UserIdentifier:
         except (json.JSONDecodeError, TypeError) as e:
             logger.warning(f"LLM 响应解析失败: {e}")
 
-        return {"action": "ask", "response": "你好！我是你的智能助手。请问你是谁呢？"}
+        return {"action": "ask", "response": "Hello! I'm your intelligent assistant. May I ask who you are?"}
 
     def _fallback_parse(self, user_input: str) -> dict:
-        """降级：关键词匹配解析"""
+        """Fallback: keyword matching parse"""
         text = user_input.strip()
 
-        # 检查是否包含身份声明
-        keywords = ["我是", "我叫", "我叫作", "名字是", "叫我"]
+        # Check for identity declaration keywords
+        keywords = ["I am", "My name is", "I'm", "Call me", "我是", "我叫", "名字是"]
         for kw in keywords:
             if kw in text:
-                # 提取名字
+                # Extract name
                 name = text.split(kw)[-1].strip()
-                # 清理多余的词
-                for stop in ["，", "。", "！", "？", " ", "呀", "啊", "吧"]:
+                # Clean up extra words
+                for stop in [",", ".", "!", "?", " ", "呀", "啊", "吧"]:
                     name = name.split(stop)[0]
                 if name and len(name) <= 20:
                     return {
@@ -209,10 +209,10 @@ class UserIdentifier:
                         "user_name": name,
                     }
 
-        # 未识别到身份，返回询问
+        # Identity not recognized, return inquiry
         return {
             "action": "ask",
-            "response": "你好！我是你的智能助手。请问你是谁呢？",
+            "response": "Hello! I'm your intelligent assistant. May I ask who you are?",
         }
 
     async def _get_or_create_user(self, user_name: str):

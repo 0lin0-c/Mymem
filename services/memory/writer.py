@@ -1,6 +1,8 @@
 # ✍️ 记忆写入服务：Handler 模式分发器
 import logging
+import re
 from typing import Any, List
+from datetime import datetime
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -20,6 +22,9 @@ from services.constants import BASE_CATEGORIES
 
 logger = logging.getLogger(__name__)
 
+_CJK_RE = re.compile(r"[\u3400-\u9fff]")
+_LATIN_RE = re.compile(r"[A-Za-z]")
+
 
 def _format_categories_for_prompt(categories: List[dict]) -> List[dict]:
     """将分类列表格式化为 prompt 所需的格式"""
@@ -30,6 +35,80 @@ def _format_categories_for_prompt(categories: List[dict]) -> List[dict]:
         }
         for c in categories
     ]
+
+
+def _detect_source_language(text: str) -> str:
+    """Detect the dominant language for storage guardrails."""
+    if not text:
+        return "unknown"
+
+    cjk_count = len(_CJK_RE.findall(text))
+    latin_count = len(_LATIN_RE.findall(text))
+
+    if cjk_count == 0 and latin_count >= 3:
+        return "en"
+    if cjk_count >= 2 and cjk_count > latin_count:
+        return "zh"
+    if cjk_count > 0 and latin_count > 0:
+        return "mixed"
+    return "unknown"
+
+
+def _violates_source_language(text: str, source_language: str) -> bool:
+    """Return True when model output should not be stored for the source language."""
+    if not text:
+        return False
+    if source_language == "en":
+        return bool(_CJK_RE.search(text))
+    return False
+
+
+def _apply_language_guard(
+    memory_intent: dict,
+    source_text: str,
+) -> tuple[dict, dict]:
+    """Prevent model language drift from entering storage."""
+    source_language = _detect_source_language(source_text)
+    if source_language != "en":
+        return memory_intent, {
+            "source_language": source_language,
+            "summary_replaced": False,
+            "response_summary_cleared": False,
+            "dropped_atomic_items": 0,
+        }
+
+    guarded = dict(memory_intent)
+    summary = guarded.get("summary") or source_text
+    response_summary = guarded.get("response_summary") or ""
+    atomic_items = guarded.get("atomic_items") or []
+
+    summary_replaced = False
+    response_summary_cleared = False
+
+    if _violates_source_language(summary, source_language):
+        guarded["summary"] = source_text[:500]
+        summary_replaced = True
+
+    if _violates_source_language(response_summary, source_language):
+        guarded["response_summary"] = ""
+        response_summary_cleared = True
+
+    filtered_items = []
+    dropped_count = 0
+    for item in atomic_items:
+        content = item.get("content", "") if isinstance(item, dict) else ""
+        if _violates_source_language(content, source_language):
+            dropped_count += 1
+            continue
+        filtered_items.append(item)
+    guarded["atomic_items"] = filtered_items
+
+    return guarded, {
+        "source_language": source_language,
+        "summary_replaced": summary_replaced,
+        "response_summary_cleared": response_summary_cleared,
+        "dropped_atomic_items": dropped_count,
+    }
 
 
 class MemoryWriter:
@@ -70,6 +149,8 @@ class MemoryWriter:
         assistant_response: str,
         modality: str = "text",
         user_categories: List[dict] | None = None,
+        reference_time: str | None = None,
+        memory_time: datetime | None = None,
     ) -> dict:
         """保存用户与 AI 的对话到记忆
 
@@ -88,6 +169,8 @@ class MemoryWriter:
             assistant_response: AI 回复
             modality: 模态类型
             user_categories: 用户的 6 个分类列表（可选，用于 prompt）
+            reference_time: 参考时间戳（可选，用于历史数据导入，格式 "YYYY-MM-DD HH:MM:SS"）
+            memory_time: 记忆发生时间（可选，用于历史数据导入时写入 created_at/updated_at）
 
         Returns:
             dict: 包含 resource_id, atomic_items 等信息
@@ -111,7 +194,22 @@ class MemoryWriter:
 
         # ========== Step 2: 准备分类列表 ==========
         if user_categories is None:
-            user_categories = BASE_CATEGORIES
+            # 默认包含固定分类，再补充用户已有的动态分类
+            user_categories = [
+                {"name": c["name"], "description": c["description"]}
+                for c in BASE_CATEGORIES
+            ]
+
+            category_stats = await self.category_repo.get_category_stats(user_id)
+            if category_stats:
+                base_category_names = {c["name"] for c in user_categories}
+                for category_name in category_stats.keys():
+                    normalized_name = category_name.strip("[]")
+                    if normalized_name not in base_category_names:
+                        user_categories.append({
+                            "name": normalized_name,
+                            "description": f"User-specific memories related to {normalized_name}",
+                        })
         categories_for_prompt = _format_categories_for_prompt(user_categories)
 
         # ========== Step 3: LLM 提取综合摘要和原子化信息 ==========
@@ -119,10 +217,28 @@ class MemoryWriter:
             text=preprocessed_text,
             categories=categories_for_prompt,
             assistant_response=assistant_response,
+            reference_time=reference_time,
         )
+        memory_intent, language_guard_info = _apply_language_guard(
+            memory_intent,
+            preprocessed_text,
+        )
+        if (
+            language_guard_info["summary_replaced"]
+            or language_guard_info["response_summary_cleared"]
+            or language_guard_info["dropped_atomic_items"] > 0
+        ):
+            logger.info(
+                "Language guard applied: source=%s, summary_replaced=%s, "
+                "response_summary_cleared=%s, dropped_atomic_items=%s",
+                language_guard_info["source_language"],
+                language_guard_info["summary_replaced"],
+                language_guard_info["response_summary_cleared"],
+                language_guard_info["dropped_atomic_items"],
+            )
 
         summary = memory_intent.get("summary", preprocessed_text)
-        importance_score = memory_intent.get("importance_score", 5)
+        importance_score = memory_intent.get("importance_score", 2)
         response_summary = memory_intent.get("response_summary", "")
         atomic_items = memory_intent.get("atomic_items", [])
 
@@ -176,7 +292,11 @@ class MemoryWriter:
                 description_vector=embedding_vector,
                 importance_score=importance_score,
                 assistant_response=response_summary,
+                created_at=memory_time,
+                updated_at=memory_time,
             )
+        elif memory_time is not None:
+            resource.updated_at = memory_time
 
         # ========== Step 7: 批量创建 Category（带去重）==========
         created_items = []
@@ -184,15 +304,15 @@ class MemoryWriter:
 
         if atomic_items:
             for item in atomic_items:
-                category_name = item.get("category_name", "语义知识库")
+                category_name = item.get("category_name", "Knowledge Base").strip("[]")
                 content = item.get("content", "")
-                item_importance = item.get("importance_score", 5)
+                item_importance = item.get("importance_score", 2)
+                item_vector = await self._get_embedding(content)
 
                 # Category 级别去重检查
                 category = None
 
                 if self.deduplicator:
-                    item_vector = await self._get_embedding(content)
                     cat_dedup = await self.deduplicator.check_category_duplicate(
                         user_id=user_id,
                         category_name=category_name,
@@ -235,7 +355,11 @@ class MemoryWriter:
                         content=content,
                         content_vector=item_vector,
                         importance_score=item_importance,
+                        created_at=memory_time,
+                        updated_at=memory_time,
                     )
+                elif memory_time is not None:
+                    category.updated_at = memory_time
 
                 created_items.append(category)
                 category_ids.append(category.id)
@@ -259,6 +383,7 @@ class MemoryWriter:
             "importance_score": importance_score,
             "atomic_items_count": len(created_items),
             "dedup_info": dedup_info,
+            "language_guard": language_guard_info,
             "atomic_items": [
                 {
                     "id": item.id,

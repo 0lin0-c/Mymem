@@ -64,7 +64,7 @@ async def update_profile(
 
     if not result.get("success"):
         logger.warning(f"更新用户画像失败: user_id={request.user_id}, reason={result.get('message')}")
-        raise HTTPException(status_code=404, detail=result.get("message", "更新失败"))
+        raise HTTPException(status_code=404, detail=result.get("message", "Update failed"))
 
     logger.info(f"用户画像更新成功: user_id={request.user_id}")
     return result
@@ -86,7 +86,7 @@ async def update_ai_customization(
 
     if not result.get("success"):
         logger.warning(f"更新 AI 定制失败: user_id={request.user_id}, reason={result.get('message')}")
-        raise HTTPException(status_code=404, detail=result.get("message", "更新失败"))
+        raise HTTPException(status_code=404, detail=result.get("message", "Update failed"))
 
     logger.info(f"AI 定制更新成功: user_id={request.user_id}")
     return result

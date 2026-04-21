@@ -78,27 +78,27 @@ async def _generate_batch_summary(llm: BaseLLMProvider, pending_chats: list) -> 
     Returns:
         综合摘要文本
     """
-    # 构建对话内容
+    # Build conversation content
     conversation = "\n".join([
-        f"第{i+1}轮:\n用户: {chat.user_input}\n助手: {chat.assistant_response}"
+        f"Round {i+1}:\nUser: {chat.user_input}\nAssistant: {chat.assistant_response}"
         for i, chat in enumerate(pending_chats)
     ])
 
-    prompt = f"""请为以下多轮对话生成一个综合摘要。
+    prompt = f"""Generate a comprehensive summary for the following multi-turn conversation.
 
-对话内容：
+Conversation:
 {conversation}
 
-要求：
-1. 以第三人称客观陈述
-2. 提取对话的核心主题和关键信息
-3. 保持简洁，不超过 200 字
+Requirements:
+1. Use objective third-person narrative
+2. Extract the core themes and key information from the conversation
+3. Keep it concise, no more than 200 characters
 
-只输出摘要内容，不要有其他说明。"""
+Output only the summary, no additional explanation."""
 
     try:
         summary = await llm.generate_chat_response(
-            system_prompt="你是一个对话摘要专家，擅长从多轮对话中提取核心信息。",
+            system_prompt="You are a conversation summarization expert, skilled at extracting core information from multi-turn conversations.",
             context="",
             user_query=prompt,
         )
@@ -106,7 +106,7 @@ async def _generate_batch_summary(llm: BaseLLMProvider, pending_chats: list) -> 
 
     except Exception as e:
         # 降级：返回简单的统计摘要
-        return f"包含 {len(pending_chats)} 轮对话"
+        return f"Contains {len(pending_chats)} rounds of conversation"
 
 
 async def auto_flush_background_task():
