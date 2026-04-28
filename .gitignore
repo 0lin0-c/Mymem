@@ -29,3 +29,7 @@ build/
 # OS
 .DS_Store
 Thumbs.db
+
+# HuggingFace cache
+data/personamem_v2_hf_cache/
+data/personamem_v2/
