@@ -1,0 +1,470 @@
+[
+  {
+    "top_k": 8,
+    "similarity_power": 2.0,
+    "recency_power": 0.2,
+    "hit_count": 4,
+    "category_only_miss_count": 0,
+    "median_rank": 1.5,
+    "mean_rank": 1.5,
+    "top5_count": 4,
+    "per_question": [
+      {
+        "question": "When did Caroline go to the LGBTQ support group?",
+        "hit": true,
+        "rank": 2,
+        "layer": "category+resource",
+        "category_only_miss": false,
+        "top1": "The user joined a new LGBTQ activist group on Tuesday, February 3, 2026."
+      },
+      {
+        "question": "When did Caroline meet up with her friends, family, and mentors?",
+        "hit": true,
+        "rank": 1,
+        "layer": "category+resource",
+        "category_only_miss": false,
+        "top1": "The user met up with their friends, family, and/or mentors around January 13, 2026 (last week)."
+      },
+      {
+        "question": "How long has Caroline had her current group of friends for?",
+        "hit": true,
+        "rank": 1,
+        "layer": "category_only",
+        "category_only_miss": false,
+        "top1": "The user has a close group of friends they've known for 4 years, who have been a crucial support system through difficult times."
+      },
+      {
+        "question": "Who supports Caroline when she has a negative experience?",
+        "hit": false,
+        "rank": null,
+        "layer": "category+resource",
+        "category_only_miss": false,
+        "top1": "The user has a supportive figure named Melanie who provided meaningful support during their personal journey."
+      },
+      {
+        "question": "What workshop did Caroline attend recently?",
+        "hit": true,
+        "rank": 2,
+        "layer": "category_only",
+        "category_only_miss": false,
+        "top1": "Mel took its kids to a pottery workshop on 2026-01-30 (last Friday); they all made their own pots and found it fun and therapeutic."
+      }
+    ]
+  },
+  {
+    "top_k": 8,
+    "similarity_power": 2.0,
+    "recency_power": 0.35,
+    "hit_count": 4,
+    "category_only_miss_count": 0,
+    "median_rank": 1.5,
+    "mean_rank": 1.75,
+    "top5_count": 4,
+    "per_question": [
+      {
+        "question": "When did Caroline go to the LGBTQ support group?",
+        "hit": true,
+        "rank": 3,
+        "layer": "category+resource",
+        "category_only_miss": false,
+        "top1": "The user joined a new LGBTQ activist group on Tuesday, February 3, 2026."
+      },
+      {
+        "question": "When did Caroline meet up with her friends, family, and mentors?",
+        "hit": true,
+        "rank": 1,
+        "layer": "category+resource",
+        "category_only_miss": false,
+        "top1": "The user met up with their friends, family, and/or mentors around January 13, 2026 (last week)."
+      },
+      {
+        "question": "How long has Caroline had her current group of friends for?",
+        "hit": true,
+        "rank": 1,
+        "layer": "category_only",
+        "category_only_miss": false,
+        "top1": "The user has a close group of friends they've known for 4 years, who have been a crucial support system through difficult times."
+      },
+      {
+        "question": "Who supports Caroline when she has a negative experience?",
+        "hit": false,
+        "rank": null,
+        "layer": "category+resource",
+        "category_only_miss": false,
+        "top1": "The user has a supportive figure named Melanie who provided meaningful support during their personal journey."
+      },
+      {
+        "question": "What workshop did Caroline attend recently?",
+        "hit": true,
+        "rank": 2,
+        "layer": "category_only",
+        "category_only_miss": false,
+        "top1": "Mel took its kids to a pottery workshop on 2026-01-30 (last Friday); they all made their own pots and found it fun and therapeutic."
+      }
+    ]
+  },
+  {
+    "top_k": 8,
+    "similarity_power": 2.0,
+    "recency_power": 0.5,
+    "hit_count": 4,
+    "category_only_miss_count": 0,
+    "median_rank": 1.5,
+    "mean_rank": 1.75,
+    "top5_count": 4,
+    "per_question": [
+      {
+        "question": "When did Caroline go to the LGBTQ support group?",
+        "hit": true,
+        "rank": 3,
+        "layer": "category+resource",
+        "category_only_miss": false,
+        "top1": "The user joined a new LGBTQ activist group on Tuesday, February 3, 2026."
+      },
+      {
+        "question": "When did Caroline meet up with her friends, family, and mentors?",
+        "hit": true,
+        "rank": 1,
+        "layer": "category+resource",
+        "category_only_miss": false,
+        "top1": "The user met up with their friends, family, and/or mentors around January 13, 2026 (last week)."
+      },
+      {
+        "question": "How long has Caroline had her current group of friends for?",
+        "hit": true,
+        "rank": 1,
+        "layer": "category_only",
+        "category_only_miss": false,
+        "top1": "The user has a close group of friends they've known for 4 years, who have been a crucial support system through difficult times."
+      },
+      {
+        "question": "Who supports Caroline when she has a negative experience?",
+        "hit": false,
+        "rank": null,
+        "layer": "category+resource",
+        "category_only_miss": false,
+        "top1": "The user has a supportive figure named Melanie who provided meaningful support during their personal journey."
+      },
+      {
+        "question": "What workshop did Caroline attend recently?",
+        "hit": true,
+        "rank": 2,
+        "layer": "category_only",
+        "category_only_miss": false,
+        "top1": "Mel took its kids to a pottery workshop on 2026-01-30 (last Friday); they all made their own pots and found it fun and therapeutic."
+      }
+    ]
+  },
+  {
+    "top_k": 8,
+    "similarity_power": 2.2,
+    "recency_power": 0.2,
+    "hit_count": 4,
+    "category_only_miss_count": 0,
+    "median_rank": 1.5,
+    "mean_rank": 1.5,
+    "top5_count": 4,
+    "per_question": [
+      {
+        "question": "When did Caroline go to the LGBTQ support group?",
+        "hit": true,
+        "rank": 2,
+        "layer": "category+resource",
+        "category_only_miss": false,
+        "top1": "The user joined a new LGBTQ activist group on Tuesday, February 3, 2026."
+      },
+      {
+        "question": "When did Caroline meet up with her friends, family, and mentors?",
+        "hit": true,
+        "rank": 1,
+        "layer": "category+resource",
+        "category_only_miss": false,
+        "top1": "The user met up with their friends, family, and/or mentors around January 13, 2026 (last week)."
+      },
+      {
+        "question": "How long has Caroline had her current group of friends for?",
+        "hit": true,
+        "rank": 1,
+        "layer": "category_only",
+        "category_only_miss": false,
+        "top1": "The user has a close group of friends they've known for 4 years, who have been a crucial support system through difficult times."
+      },
+      {
+        "question": "Who supports Caroline when she has a negative experience?",
+        "hit": false,
+        "rank": null,
+        "layer": "category+resource",
+        "category_only_miss": false,
+        "top1": "The user has a supportive figure named Melanie who provided meaningful support during their personal journey."
+      },
+      {
+        "question": "What workshop did Caroline attend recently?",
+        "hit": true,
+        "rank": 2,
+        "layer": "category_only",
+        "category_only_miss": false,
+        "top1": "Mel took its kids to a pottery workshop on 2026-01-30 (last Friday); they all made their own pots and found it fun and therapeutic."
+      }
+    ]
+  },
+  {
+    "top_k": 8,
+    "similarity_power": 2.2,
+    "recency_power": 0.35,
+    "hit_count": 4,
+    "category_only_miss_count": 0,
+    "median_rank": 1.5,
+    "mean_rank": 1.5,
+    "top5_count": 4,
+    "per_question": [
+      {
+        "question": "When did Caroline go to the LGBTQ support group?",
+        "hit": true,
+        "rank": 2,
+        "layer": "category_only",
+        "category_only_miss": false,
+        "top1": "The user joined a new LGBTQ activist group on Tuesday, February 3, 2026."
+      },
+      {
+        "question": "When did Caroline meet up with her friends, family, and mentors?",
+        "hit": true,
+        "rank": 1,
+        "layer": "category+resource",
+        "category_only_miss": false,
+        "top1": "The user met up with their friends, family, and/or mentors around January 13, 2026 (last week)."
+      },
+      {
+        "question": "How long has Caroline had her current group of friends for?",
+        "hit": true,
+        "rank": 1,
+        "layer": "category_only",
+        "category_only_miss": false,
+        "top1": "The user has a close group of friends they've known for 4 years, who have been a crucial support system through difficult times."
+      },
+      {
+        "question": "Who supports Caroline when she has a negative experience?",
+        "hit": false,
+        "rank": null,
+        "layer": "category+resource",
+        "category_only_miss": false,
+        "top1": "The user has a supportive figure named Melanie who provided meaningful support during their personal journey."
+      },
+      {
+        "question": "What workshop did Caroline attend recently?",
+        "hit": true,
+        "rank": 2,
+        "layer": "category_only",
+        "category_only_miss": false,
+        "top1": "Mel took its kids to a pottery workshop on 2026-01-30 (last Friday); they all made their own pots and found it fun and therapeutic."
+      }
+    ]
+  },
+  {
+    "top_k": 8,
+    "similarity_power": 2.2,
+    "recency_power": 0.5,
+    "hit_count": 4,
+    "category_only_miss_count": 0,
+    "median_rank": 1.5,
+    "mean_rank": 1.75,
+    "top5_count": 4,
+    "per_question": [
+      {
+        "question": "When did Caroline go to the LGBTQ support group?",
+        "hit": true,
+        "rank": 3,
+        "layer": "category+resource",
+        "category_only_miss": false,
+        "top1": "The user joined a new LGBTQ activist group on Tuesday, February 3, 2026."
+      },
+      {
+        "question": "When did Caroline meet up with her friends, family, and mentors?",
+        "hit": true,
+        "rank": 1,
+        "layer": "category+resource",
+        "category_only_miss": false,
+        "top1": "The user met up with their friends, family, and/or mentors around January 13, 2026 (last week)."
+      },
+      {
+        "question": "How long has Caroline had her current group of friends for?",
+        "hit": true,
+        "rank": 1,
+        "layer": "category_only",
+        "category_only_miss": false,
+        "top1": "The user has a close group of friends they've known for 4 years, who have been a crucial support system through difficult times."
+      },
+      {
+        "question": "Who supports Caroline when she has a negative experience?",
+        "hit": false,
+        "rank": null,
+        "layer": "category+resource",
+        "category_only_miss": false,
+        "top1": "The user has a supportive figure named Melanie who provided meaningful support during their personal journey."
+      },
+      {
+        "question": "What workshop did Caroline attend recently?",
+        "hit": true,
+        "rank": 2,
+        "layer": "category_only",
+        "category_only_miss": false,
+        "top1": "Mel took its kids to a pottery workshop on 2026-01-30 (last Friday); they all made their own pots and found it fun and therapeutic."
+      }
+    ]
+  },
+  {
+    "top_k": 8,
+    "similarity_power": 2.5,
+    "recency_power": 0.2,
+    "hit_count": 4,
+    "category_only_miss_count": 0,
+    "median_rank": 1.5,
+    "mean_rank": 2.0,
+    "top5_count": 4,
+    "per_question": [
+      {
+        "question": "When did Caroline go to the LGBTQ support group?",
+        "hit": true,
+        "rank": 2,
+        "layer": "category+resource",
+        "category_only_miss": false,
+        "top1": "The user joined a new LGBTQ activist group on Tuesday, February 3, 2026."
+      },
+      {
+        "question": "When did Caroline meet up with her friends, family, and mentors?",
+        "hit": true,
+        "rank": 1,
+        "layer": "category+resource",
+        "category_only_miss": false,
+        "top1": "The user met up with their friends, family, and/or mentors around January 13, 2026 (last week)."
+      },
+      {
+        "question": "How long has Caroline had her current group of friends for?",
+        "hit": true,
+        "rank": 1,
+        "layer": "category_only",
+        "category_only_miss": false,
+        "top1": "The user has a close group of friends they've known for 4 years, who have been a crucial support system through difficult times."
+      },
+      {
+        "question": "Who supports Caroline when she has a negative experience?",
+        "hit": false,
+        "rank": null,
+        "layer": "category+resource",
+        "category_only_miss": false,
+        "top1": "The user has a supportive figure named Melanie who provided meaningful support during their personal journey."
+      },
+      {
+        "question": "What workshop did Caroline attend recently?",
+        "hit": true,
+        "rank": 4,
+        "layer": "category_only",
+        "category_only_miss": false,
+        "top1": "Melanie has a spouse (got married recently)"
+      }
+    ]
+  },
+  {
+    "top_k": 8,
+    "similarity_power": 2.5,
+    "recency_power": 0.35,
+    "hit_count": 4,
+    "category_only_miss_count": 0,
+    "median_rank": 1.5,
+    "mean_rank": 2.0,
+    "top5_count": 4,
+    "per_question": [
+      {
+        "question": "When did Caroline go to the LGBTQ support group?",
+        "hit": true,
+        "rank": 2,
+        "layer": "category+resource",
+        "category_only_miss": false,
+        "top1": "The user joined a new LGBTQ activist group on Tuesday, February 3, 2026."
+      },
+      {
+        "question": "When did Caroline meet up with her friends, family, and mentors?",
+        "hit": true,
+        "rank": 1,
+        "layer": "category+resource",
+        "category_only_miss": false,
+        "top1": "The user met up with their friends, family, and/or mentors around January 13, 2026 (last week)."
+      },
+      {
+        "question": "How long has Caroline had her current group of friends for?",
+        "hit": true,
+        "rank": 1,
+        "layer": "category_only",
+        "category_only_miss": false,
+        "top1": "The user has a close group of friends they've known for 4 years, who have been a crucial support system through difficult times."
+      },
+      {
+        "question": "Who supports Caroline when she has a negative experience?",
+        "hit": false,
+        "rank": null,
+        "layer": "category+resource",
+        "category_only_miss": false,
+        "top1": "The user has a supportive figure named Melanie who provided meaningful support during their personal journey."
+      },
+      {
+        "question": "What workshop did Caroline attend recently?",
+        "hit": true,
+        "rank": 4,
+        "layer": "category_only",
+        "category_only_miss": false,
+        "top1": "Melanie has a spouse (got married recently)"
+      }
+    ]
+  },
+  {
+    "top_k": 8,
+    "similarity_power": 2.5,
+    "recency_power": 0.5,
+    "hit_count": 4,
+    "category_only_miss_count": 0,
+    "median_rank": 1.5,
+    "mean_rank": 1.75,
+    "top5_count": 4,
+    "per_question": [
+      {
+        "question": "When did Caroline go to the LGBTQ support group?",
+        "hit": true,
+        "rank": 3,
+        "layer": "category+resource",
+        "category_only_miss": false,
+        "top1": "The user joined a new LGBTQ activist group on Tuesday, February 3, 2026."
+      },
+      {
+        "question": "When did Caroline meet up with her friends, family, and mentors?",
+        "hit": true,
+        "rank": 1,
+        "layer": "category+resource",
+        "category_only_miss": false,
+        "top1": "The user met up with their friends, family, and/or mentors around January 13, 2026 (last week)."
+      },
+      {
+        "question": "How long has Caroline had her current group of friends for?",
+        "hit": true,
+        "rank": 1,
+        "layer": "category_only",
+        "category_only_miss": false,
+        "top1": "The user has a close group of friends they've known for 4 years, who have been a crucial support system through difficult times."
+      },
+      {
+        "question": "Who supports Caroline when she has a negative experience?",
+        "hit": false,
+        "rank": null,
+        "layer": "category+resource",
+        "category_only_miss": false,
+        "top1": "The user has a supportive figure named Melanie who provided meaningful support during their personal journey."
+      },
+      {
+        "question": "What workshop did Caroline attend recently?",
+        "hit": true,
+        "rank": 2,
+        "layer": "category_only",
+        "category_only_miss": false,
+        "top1": "Mel took its kids to a pottery workshop on 2026-01-30 (last Friday); they all made their own pots and found it fun and therapeutic."
+      }
+    ]
+  }
+]

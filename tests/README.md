@@ -7,6 +7,8 @@ tests/
 ├── conftest.py                    # 公共 fixtures: db session, test user, mock LLM
 ├── test_tables.py                 # ORM 模型测试：字段约束、关系映射
 ├── test_repositories.py           # Repository 层测试：CRUD + 真实向量检索
+├── fixtures/                      # 评估输入夹具，不存放运行产物
+├── performance/                   # 手动性能/诊断脚本，perf_*.py 不被默认 pytest 收集
 │
 ├── test_services/
 │   ├── test_llm.py                # LLM 服务测试：真实 API 调用
@@ -28,6 +30,13 @@ tests/
     ├── test_memory.py             # Memory API 端到端测试
     └── test_retrieve.py           # Retrieve API 端到端测试
 ```
+
+## 目录约定
+
+- 测试代码统一放在 `tests/`，由 `pytest.ini` 的 `testpaths = tests` 管理。
+- 评估输入 fixture 放在 `tests/fixtures/`，例如 unsupported-success recheck 输入。
+- 运行产物放在 `test_results/<domain>/`，缓存只放在 `test_results/cache/`。
+- 性能诊断脚本放在 `tests/performance/`，文件名使用 `perf_*.py`，避免默认 pytest 误跑真实 LLM/HTTP 探针。
 
 ## 运行测试
 

@@ -52,6 +52,7 @@ class BaseLLMProvider(ABC):
         categories: List[Dict[str, Any]],
         assistant_response: str = "",
         reference_time: str | None = None,
+        target_category_name: str | None = None,
     ) -> Dict:
         """提取记忆意图
 

@@ -66,6 +66,49 @@ def classify_answer_failure(q: dict[str, Any]) -> str:
     return "wrong_specific_answer"
 
 
+def classify_answer_support_type(q: dict[str, Any]) -> str:
+    """Classify why an assistant answer should be considered supported."""
+    if q.get("is_correct") is False:
+        return "wrong"
+    if not str(q.get("standard_answer") or "").strip():
+        return "empty_gold"
+    if _is_profile_inference_question(q):
+        return "profile_inference"
+    if q.get("retrieval_hit") is True:
+        return "direct_fact"
+    if q.get("is_correct") is True:
+        return "unsupported"
+    return "unknown"
+
+
+def _is_profile_inference_question(q: dict[str, Any]) -> bool:
+    question = str(q.get("question") or "").lower()
+    inference_markers = (
+        "likely",
+        "would",
+        "identity",
+        "political leaning",
+        "fields",
+        "education",
+        "educaton",
+        "interests",
+    )
+    exact_markers = (
+        "when did",
+        "when is",
+        "what date",
+        "what day",
+        "how long",
+        "who ",
+        "where ",
+        "which ",
+        "did ",
+    )
+    if any(marker in question for marker in exact_markers):
+        return False
+    return any(marker in question for marker in inference_markers)
+
+
 def _rank_bucket(rank: int | None) -> str:
     if rank is None:
         return "miss"
@@ -87,7 +130,7 @@ def calculate_metrics(results: list[Any], eval_mode: str | None = None) -> dict[
 
 def _result_to_qa_dict(result: Any) -> dict[str, Any]:
     layer = getattr(result, "retrieval_layer", None)
-    return {
+    data = {
         "eval_mode": getattr(result, "eval_mode", None),
         "question": getattr(result, "question", None),
         "standard_answer": getattr(result, "expected_answer", None),
@@ -103,12 +146,15 @@ def _result_to_qa_dict(result: Any) -> dict[str, Any]:
             "llm_classified_categories": getattr(layer, "llm_classified_categories", []),
             "category_results_count": getattr(layer, "category_results_count", 0),
             "resource_results_count": getattr(layer, "resource_results_count", 0),
+            "low_confidence_fallback": getattr(layer, "low_confidence_fallback", False),
         },
         "retrieved_contexts": getattr(result, "retrieved_contexts", []),
         "retrieved_scores": getattr(result, "retrieved_scores", []),
         "db_diagnosis": getattr(result, "db_diagnosis", None),
         "error": getattr(result, "error", None),
     }
+    data["answer_support_type"] = classify_answer_support_type(data)
+    return data
 
 
 def calculate_metrics_from_qa_dicts(
@@ -226,7 +272,10 @@ def _assistant_metrics(qa_results: list[dict[str, Any]], *, recall_at_k: float =
     ]
     non_empty_answer_correct = sum(1 for q in non_empty_answer_evaluated if q.get("is_correct") is True)
     failure_patterns: dict[str, int] = {}
+    answer_support_counts: dict[str, int] = {}
     for q in qa_results:
+        support_type = q.get("answer_support_type") or classify_answer_support_type(q)
+        answer_support_counts[support_type] = answer_support_counts.get(support_type, 0) + 1
         if q.get("is_correct") is False:
             pattern = classify_answer_failure(q)
             failure_patterns[pattern] = failure_patterns.get(pattern, 0) + 1
@@ -239,6 +288,7 @@ def _assistant_metrics(qa_results: list[dict[str, Any]], *, recall_at_k: float =
             if non_empty_answer_evaluated else 0
         ),
         "answer_failure_patterns": failure_patterns,
+        "answer_support_counts": answer_support_counts,
         "retrieval_support_rate": recall_at_k,
     }
 

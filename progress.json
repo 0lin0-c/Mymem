@@ -289,13 +289,98 @@
       "details": [
         "使用 retrieval_only + postprocess_bad_cases 跑通了 Caroline 的 10 题 assistant_eval，外层 timeout_ms 设为 21600000（6 小时）。",
         "主评估阶段 10 题完成，随后执行失败样本的 bad-case 后处理，并最终生成 JSON 与 Markdown 报告。",
-        "结果文件为 test_results/mymem_test_results_20260421_173554.json，分析报告为 test_results/mymem_test_results_20260421_173554_analysis.md。",
+        "结果文件为 test_results/converted_data/legacy/mymem_test_results_20260421_173554.json，分析报告为 test_results/converted_data/legacy/mymem_test_results_20260421_173554_analysis.md。",
         "最终结果中 sample 已带 status=completed、completed_questions=10，失败样本已补上 db_diagnosis。"
+      ]
+    },
+    {
+      "id": "task-tighten-converted-data-analysis-from-json-trace",
+      "title": "已基于 JSON trace 重写 converted_data assistant_eval 分析口径",
+      "details": [
+        "已以现有 JSON trace 为事实来源，重写 assistant_eval 分析口径，避免把所有失败都直接压成 retrieval_gap。",
+        "报告已按 storage、retrieval、answer、eval oracle 等链路拆分叙事，并强调只输出当前 trace 可直接支撑的结论。",
+        "已在分析报告和 casebook 中区分 evidence-backed success、unsupported success、category_only sufficiency false positive、empty gold 等不同现象。",
+        "已整理 tests/evals/analysis/converted_data/category_only_sufficiency_false_positive_casebook.md 和 tests/evals/analysis/converted_data/unsupported_success_casebook.md，用于沉淀代表样本和失败链路。",
+        "后续新增 answer_support_type 属于新的细化任务，不再归入本历史报告口径修正项。"
+      ]
+    },
+    {
+      "id": "task-extend-eval-timeout-to-6-hours",
+      "title": "已将长评估运行规范统一为 6 小时外层超时",
+      "details": [
+        "已在 AGENTS.md 的测试命令速查中记录：长跑任务默认按 6 小时外层超时准备。",
+        "已在 tests/README_memory_eval.md 中补充长任务建议：完整 90 题 assistant_eval 预估约 1.5 到 2 小时，长跑按 6 小时外层超时准备。",
+        "该项是运行规范和命令执行约束，不修改单次 LLM 或 embedding 请求的内部超时配置。"
+      ]
+    },
+    {
+      "id": "decision-global-retrieval-tuning-before-exact-fact-research",
+      "title": "已完成暂缓 exact fact 特化并优先做全局检索参数调优的决策与落地",
+      "details": [
+        "已基于 5 道代表题完成只读 A/B 验证，比较旧 scoring/top_k=5、新 scoring/top_k=5、旧 scoring/top_k=10、新 scoring/top_k=10。",
+        "已通过参数搜索和复验确认当前默认值：top_k=10、similarity_power=2.0、recency_power=0.5、access_power=1.0、importance_power=1.0。",
+        "services/retrieval/scoring_config.py 已落成默认 similarity_power=2.0、recency_power=0.5。",
+        "tests/test_services/test_retrieval_scoring_config.py 已覆盖当前默认打分参数。",
+        "exact fact 专项优化仍暂缓；下一步重点转向 answer_support_type 分析字段和 resolved_layer=none 低置信兜底。"
+      ]
+    },
+    {
+      "id": "task-answer-support-type-and-retrieval-fallback",
+      "title": "已新增回答支持类型分析字段，并修复检索空结果兜底",
+      "details": [
+        "已新增 answer_support_type，用于区分 direct_fact、profile_inference、empty_gold、unsupported、wrong、unknown 等情况。",
+        "已保留 retrieval_hit 的粗粒度含义不变：仍表示 DB 诊断样本是否出现在最终 retrieved top-k 中，避免破坏 recall_at_k、top1/top3/top5 和历史结果可比性。",
+        "已在 assistant_eval 的 live JSON、最终 JSON、console report 和 analysis markdown 中输出回答支持类型分布。",
+        "已对 identity、political leaning、likely education fields 等画像型问题允许 profile_inference 作为合理正确来源。",
+        "已在检索阈值过滤后加入 low_confidence_fallback：当真实向量检索产生候选但全部被阈值过滤为空时，保留少量低置信候选并显式标记，避免 assistant 完全无上下文。",
+        "仍暂不处理 Mel/Caroline 归属混淆和 speaker/entity guard；仍保持 top_k=10、similarity_power=2.0、recency_power=0.5。"
+      ]
+    },
+    {
+      "id": "task-type-aware-memory-extraction-prompt",
+      "title": "Completed memory extraction prompt adaptation for current Category/Resource architecture",
+      "details": [
+        "Borrowed memU-style type-aware extraction, fact fidelity, user-confirmed-fact constraints, and speaker/entity guards without copying memU category-summary architecture.",
+        "Did not add TurnMemory, evidence_quote, happened_at, or source_role database columns. Category.content remains the normalized fact index.",
+        "Extended LLM atomic_items schema with memory_type, fact_type, subject, source_role, time_text, and confidence for trace/eval metadata only.",
+        "MemoryWriter now returns these fields under atomic_items.metadata from save_chat; raw evidence still comes from ResourceCategory -> Resource.raw_content.",
+        "Memory extraction prompt now covers exact_fact, event_fact, symbolic_meaning, advice_checklist, media_fact, relationship_fact, profile_fact, and knowledge_fact.",
+        "Prompt now emphasizes that only facts directly stated or confirmed by the user should be stored, preventing assistant/Melanie/other-person facts from being attributed to Caroline.",
+        "Sufficiency prompt now asks for query type first. exact/media/symbolic/advice questions require explicit answer facts before Category-only can be sufficient; otherwise Resource fallback should continue.",
+        "Still needs 23-question unsupported_success_casebook assistant_eval regression, focusing on adoption advice, poetry reading topic, drawing symbolize, black and white bowl, What did Caroline research?, and empty-gold speaker/entity interference."
+      ]
+    },
+    {
+      "id": "task-add-personamem-v2-text-snippet-harness",
+      "title": "已新增 PersonaMem-v2 text-only + snippet-based 小样本评测入口",
+      "details": [
+        "已新增 tests/evals/personamem_v2 独立 harness，首版路线为 text-only、snippet-based、小样本，暂不接 multimodal，也不默认跑完整 32k/128k chat history。",
+        "数据来源使用 Hugging Face 数据集 bowen-upenn/PersonaMem-v2 的 benchmark_text split；Hugging Face cache 与原始 rows 快照默认放在 D:\\Research\\Agent Memory\\Project\\Mymem\\data 下。",
+        "已新增 scripts/run_personamem_v2_eval.py 和 pytest opt-in 入口 tests/evals/personamem_v2/test_eval_runner.py，不强行改造 converted_data runner。",
+        "评测仍复用项目真实链路：导入走 MemoryWriter，检索走 MemoryRetriever，assistant_eval 走 ChatOrchestrator。",
+        "转换层已把 persona_id、user_query、correct_answer、incorrect_answers、preference、related_conversation_snippet、pref_type、who、updated 等字段映射为 Mymem 可评测对象。",
+        "首版会话构造使用 related_conversation_snippet 生成 MemoryWriter 输入；每个 persona_id 创建稳定测试用户，例如 personamem_v2_persona_0。",
+        "已提供成本控制参数：split、persona_id、max_personas、max_questions、max_rows、eval_mode、top_k、download_only、retrieval_only、import_only、reset_memory、no_dedup、no_save_raw_snapshot；首版默认 max_rows=100、max_personas=2、max_questions=5，也支持固定单个 persona 做多问题评测。",
+        "结果 JSON 已额外记录 persona_id、pref_type、updated、who、source_split、correct_answer、incorrect_answers、supporting_preference 和 related_conversation_snippet。",
+        "已将 short_persona 与 expanded_persona 接入 onboarding 的 identity_detail.description，并从 expanded_persona 抽取 interests。",
+        "已新增 tests/evals/personamem_v2/rerank_eval.py 和 scripts/run_personamem_v2_rerank_eval.py，支持对固定 persona（默认 66）做只读 GLM rerank 对比。",
+        "已在 requirements.txt 补充 datasets 与 huggingface_hub，并新增 tests/unit/test_personamem_v2_loader.py 覆盖字段映射、snippet 转换、小样本限制和 persona_id 过滤。"
       ]
     }
   ],
   "failed": [],
   "pending": [
+    {
+      "id": "task-rank-aware-soft-rescue",
+      "title": "为 Resource 层增加 rank-aware soft rescue",
+      "details": [
+        "目标：修复 `What did Caroline research?` 这类正确 evidence 已进入 routed resource top rank，但因综合分数低于 FOUR_FACTOR_THRESHOLD_LOW 被最终过滤的问题。",
+        "候选规则建议：仅对 Resource 层前 2-3 名、且 score 接近阈值（例如 >= FOUR_FACTOR_THRESHOLD_LOW * 0.5）的候选做小额保留。",
+        "被 rescue 的候选必须显式标记 low_confidence_fallback=True 或等价 trace 字段，便于 assistant_eval 和报告区分正常高置信召回与低置信补充召回。",
+        "不要全局降低阈值，也不要直接把所有低分结果放入上下文；目标是保住 routed top rank 的直接事实证据，同时控制 empty-gold 噪声回归。",
+        "实现前后需要用 unsupported_success_casebook 的 23 题做只读 retrieval_eval/assistant_eval 回归，重点比较 `What did Caroline research?` 是否修复，以及 empty-gold 样本是否新增回归。"
+      ]
+    },
     {
       "id": "task-deepen-converted-data-module-split",
       "title": "继续细拆 converted_data runner 内部职责",
@@ -306,27 +391,27 @@
       ]
     },
     {
-      "id": "task-tighten-converted-data-analysis-from-json-trace",
-      "title": "基于当前 JSON trace 重写 converted_data 分析口径与报告结构",
+      "id": "task-fix-nonempty-gold-miss-pipeline",
+      "title": "针对 7 道非空 gold miss 分层修复检索、路由、抽取与时间归一化",
       "details": [
-        "以 test_results/mymem_test_results_20260421_173554.json 作为当前事实来源，优先修正 assistant_eval 分析报告口径，只输出这轮 trace 可以直接支撑的结论。",
-        "重写分析报告结构，按 storage / retrieval / answer / eval 口径分层归因，避免把所有错题直接压成一个 retrieval_gap 结论。",
-        "在报告中显式区分高置信度 retrieval failure 和低置信度候选证据污染样本；若 db_diagnosis 主要由弱关键词命中支撑，只能写成候选证据不足以高置信定性。",
-        "补充深层原因分析，包括 category_only 过早停止、Timeline 路由过粗、Top1 噪声压制目标记忆、回答层保守拒答或邻近记忆替代。",
-        "把成功样本改写为 evidence-backed success 和 unsupported success 两类，明确当前这轮 assistant_eval 没有 retrieval_hit=True 的证据支撑型成功。",
-        "调整代表案例展示字段，至少包含 question、standard_answer、generated_answer、resolved_layer、llm_classified_categories、top1_context、matched_keyword 质量和 diagnosis confidence。",
-        "修正 missed_evidence_preview 的叙事方式：当前展示的是按 importance 排序后的候选片段，不应直接表述为“最关键漏召回证据”。",
-        "同步修复 report_analysis.py 和生成出的 Markdown 中文乱码问题，确保 UTF-8 可读性。",
-        "如进入实现阶段，优先修改 tests/evals/converted_data/report_analysis.py，并视需要补充 helpers.py 和 runner.py 的诊断辅助字段或排序逻辑。"
+        "第一层先修检索后处理：针对 `What did Caroline research?` 这类“正确 evidence 已进入当前路由范围前列，但被 score threshold 过滤掉”的问题，调整 resource 层阈值或补充低置信 resource fallback，避免 rank 很高但分数略低的直接证据被整条丢弃。",
+        "第二层再修 query 路由：针对 `Did Caroline make the black and white bowl in the photo?` 这类“正确 evidence 全库 rank 很高，但被错误分类范围挡掉”的问题，增强分类 prompt 和 query-pattern fallback；对 photo / bowl / drawing / workshop / conference / parade 等实体型问句，允许补充更宽的 secondary category，而不是只落到 Social Graph 之类的窄范围。",
+        "第三层回到存储抽取链路：针对 `adoption advice`、`poetry reading about`、`drawing symbolize` 这类原始对话里有明确答案、但 DB 中查不到对应摘要锚点的问题，修改记忆抽取/摘要 prompt，要求显式保留 advice checklist、event topic、symbolism / meaning / stands for 等可问答事实，不要只保留宽泛主题。",
+        "第四层单独处理时间题：针对 `transgender conference`、`pride parade` 这类 DB 中存在相关摘要但时间发生漂移、冲突或事件混叠的问题，检查相对时间到绝对时间的归一化、避免把同主题多事件压成一条泛摘要，并在 when/how long/date 问句中提高显式时间表达的检索权重。",
+        "实现顺序应按收益和风险分层推进：先做 threshold / fallback，后做 route fallback，再做存储抽取增强，最后做时间归一化专项；每改完一层，都用这 7 题做只读回归，确认是哪个环节真正带来提升。",
+        "暂不把 Mel/Caroline 归属混淆作为本任务主目标；空 gold 的 speaker/entity 干扰样本继续单独记录，但不并入这 7 道非空 gold miss 的主修复路径。"
       ]
     },
     {
-      "id": "task-extend-eval-timeout-to-6-hours",
-      "title": "将评估命令的外层总超时统一提高到 6 小时",
+      "id": "task-sensitive-info-answer-context-policy",
+      "title": "Add sensitive-info handling policy for answer context and prompts",
       "details": [
-        "assistant_eval 的整轮运行时间当前远大于 30-70 分钟，需要把外层命令总超时提高到 6 小时，避免被执行器提前截断。",
-        "该调整只针对评估命令的总生命周期，不修改单次 LLM/embedding 请求的内部超时配置。",
-        "后续仍以减少 assistant_eval 重复调用、支持中断结果保留为根本优化方向，不把增加超时当作唯一解法。"
+        "PersonaMem-v2 sensitive_info failures show that answer generation needs explicit handling for credit cards, addresses, IDs, emails, phone numbers, and health information.",
+        "Add prompt-level constraints so assistant answers do not repeat full sensitive values unless strictly necessary, prefer placeholders such as [REDACTED], [Your Address], last-four-only card references, and include practical security guidance when relevant.",
+        "Add context-formatting requirements so retrieved memories passed into ChatOrchestrator can expose the existence/type of sensitive information without unnecessarily placing raw sensitive values into the LLM answer context.",
+        "Prefer a dual representation when feasible: raw_value remains internal/database-only, while safe_display is used in answer context and reports.",
+        "PersonaMem-v2 eval should verify that sensitive-info answers cover required security recommendations such as HTTPS, MFA, data protection, redaction/masking, and secure payment gateway guidance without leaking full sensitive values.",
+        "This is pending design/implementation work; do not mark as completed until prompt/context changes and regression checks are done."
       ]
     }
   ]

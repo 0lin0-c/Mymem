@@ -10,6 +10,7 @@ from tests.evals.converted_data.metrics import (
     calculate_metrics,
     calculate_metrics_from_qa_dicts,
     classify_answer_failure,
+    classify_answer_support_type,
 )
 
 logger = logging.getLogger(__name__)
@@ -43,6 +44,7 @@ SUMMARY_METRIC_KEYS = {
         "accuracy",
         "adjusted_accuracy_excluding_empty_standard",
         "answer_failure_patterns",
+        "answer_support_counts",
         "recall_at_k",
         "top1_hit_rate",
         "top3_hit_rate",
@@ -190,6 +192,7 @@ def _result_to_json_dict(result: Any) -> dict[str, Any]:
     db_diagnosis = _compact_db_diagnosis(result.db_diagnosis)
     trace_summary = {
         "resolved_layer": layer.resolved_layer,
+        "low_confidence_fallback": getattr(layer, "low_confidence_fallback", False),
         "top_contexts": retrieved_contexts[:2],
         "top_scores": retrieved_scores[:2],
         "diagnosis_type": (db_diagnosis or {}).get("diagnosis_type"),
@@ -202,6 +205,7 @@ def _result_to_json_dict(result: Any) -> dict[str, Any]:
             "llm_classified_categories": layer.llm_classified_categories,
             "category_results_count": layer.category_results_count,
             "resource_results_count": layer.resource_results_count,
+            "low_confidence_fallback": getattr(layer, "low_confidence_fallback", False),
         },
         "retrieved_contexts": retrieved_contexts,
         "retrieved_scores": retrieved_scores,
@@ -209,7 +213,7 @@ def _result_to_json_dict(result: Any) -> dict[str, Any]:
         "correctness_explanation": result.correctness_explanation,
         "evidence": result.evidence,
     }
-    return {
+    result_dict = {
         "question": result.question,
         "standard_answer": result.expected_answer,
         "generated_answer": result.llm_answer,
@@ -218,6 +222,14 @@ def _result_to_json_dict(result: Any) -> dict[str, Any]:
         "storage_hit": result.storage_hit,
         "retrieval_hit": result.retrieval_hit,
         "rank_position": result.rank_position,
+        "answer_support_type": classify_answer_support_type(
+            {
+                "question": result.question,
+                "standard_answer": result.expected_answer,
+                "is_correct": result.is_correct,
+                "retrieval_hit": result.retrieval_hit,
+            }
+        ),
         "failure_type": (
             "none"
             if result.is_correct is True
@@ -235,6 +247,7 @@ def _result_to_json_dict(result: Any) -> dict[str, Any]:
         "trace_detail": trace_detail,
         **({"error": result.error} if result.error else {}),
     }
+    return result_dict
 
 
 def _compact_statistics(metrics: dict[str, Any], eval_mode: str | None) -> dict[str, Any]:

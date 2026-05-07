@@ -3,7 +3,7 @@
 
 运行方式：
 cd D:\Research\Agent Memory\Project\Mymem
-python test/test_onboarding_performance.py
+python tests/performance/perf_onboarding_performance.py
 """
 import asyncio
 import sys
@@ -11,7 +11,9 @@ import time
 from pathlib import Path
 
 # 添加项目根目录到路径
-sys.path.insert(0, str(Path(__file__).parent.parent))
+REPO_ROOT = Path(__file__).resolve().parents[2]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 
 from core.database import AsyncSessionLocal
 from services.profile_service import ProfileService

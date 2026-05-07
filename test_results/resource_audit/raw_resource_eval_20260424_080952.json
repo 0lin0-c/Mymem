@@ -1,0 +1,1975 @@
+﻿{
+  "generated_at_utc": "2026-04-24T08:09:52.598967+00:00",
+  "qa_path": "tests\\fixtures\\converted_data\\unsupported_success_recheck\\sample_0_qa.json",
+  "character": "caroline",
+  "user_id": "dbafc7e4-5d73-4acd-b3aa-7d7fd7d79c92",
+  "top_k": 15,
+  "summary": {
+    "total": 23,
+    "current_correct": 10,
+    "raw_routed_correct": 13,
+    "raw_global_correct": 11,
+    "raw_routed_gain": 7,
+    "raw_global_gain": 4,
+    "raw_routed_regression": 4,
+    "raw_global_regression": 3
+  },
+  "questions": [
+    {
+      "question": "What fields would Caroline be likely to pursue in her educaton?",
+      "standard_answer": "Psychology, counseling certification",
+      "evidence": [
+        "D1:9",
+        "D1:11"
+      ],
+      "classified_categories": [
+        "Core Self",
+        "Timeline"
+      ],
+      "current": {
+        "is_correct": true,
+        "answer": "Based on what I know, Caroline would most likely pursue fields related to **psychological counseling** and **mental health**, with a specific interest in supporting trans people with self-acceptance and mental health. She's acknowledged that this path is tough but deeply rewarding.\n\nGiven her broader interests, she might also be drawn to fields connected to **LGBTQ+ rights and advocacy**, which aligns closely with her counseling goals.\n\nBeyond that, her creative side — painting, piano, guitar — and her love for reading and hiking suggest she could also have interest in **arts and humanities** or **expressive therapies** (like art therapy or music therapy), though her primary focus seems to be on mental health counseling.",
+        "explanation": "The generated answer correctly includes \"psychological counseling,\" which directly aligns with the key information from the standard answer (\"Psychology, counseling certification\"). The additional details provided do not contradict the standard answer.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "User is exploring counseling or mental health work as a career direction, acknowledging it is tough but rewarding",
+          "The user's name is Caroline.",
+          "The user plans to continue their education",
+          "Mel (the AI) has kids and is busy balancing work and parenting.",
+          "Melanie enjoys or has skill in painting"
+        ],
+        "top_scores": [
+          0.0845,
+          0.0829,
+          0.0693,
+          0.0509,
+          0.048
+        ]
+      },
+      "raw_routed": {
+        "is_correct": true,
+        "answer": "Based on what Caroline has shared, she'd likely pursue fields related to **counseling and mental health**, with a focus on **LGBTQ+ support** — particularly working with trans people. She's mentioned being keen on counseling and wanting to help others with similar issues accept themselves. She's also been attending LGBTQ+ counseling workshops and a transgender conference, which shows she's actively exploring this direction.",
+        "explanation": "The generated answer correctly identifies \"counseling and mental health\" as the fields Caroline would likely pursue, which accurately captures the key information from the standard answer (\"Psychology, counseling certification\"). The additional details about LGBTQ+ support are consistent with the core fields mentioned in the standard answer.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Gonna continue my edu and check out career options, which is pretty exciting!",
+          "I'm keen on counseling or working in mental health - I'd love to support those with similar issues.",
+          "Wow, Melanie! I'm getting creative too, just learning the piano. What made you try pottery?",
+          "Being a mom is awesome. I'm creating a library for when I have kids. I'm really looking forward to reading to them and opening up their minds.",
+          "I'm still figuring out the details, but I'm thinking of working with trans people, helping them accept themselves and supporting their mental health. Last Friday, I went to an LGBTQ+ counseling workshop and it was really enlightening. They talked about different therapeutic methods and how to best work with trans people. Seeing how passionate these pros were about making a safe space for people like me was amazing."
+        ],
+        "top_scores": [
+          0.0675,
+          0.0509,
+          0.0399,
+          0.0368,
+          0.0346
+        ],
+        "top_similarities": [
+          0.4504,
+          0.3585,
+          0.3406,
+          0.3065,
+          0.2865
+        ]
+      },
+      "raw_global": {
+        "is_correct": true,
+        "answer": "Based on what Caroline has shared, she'd most likely pursue **psychological counseling or mental health** as her field of study. She's specifically interested in working with trans people and supporting their self-acceptance and mental well-being — she even attended an LGBTQ+ counseling workshop that really inspired her.\n\nSo something like a degree in psychology, counseling, social work, or a related mental health field with a focus on LGBTQ+ affirmative therapy would be right up her alley.",
+        "explanation": "The generated answer includes the key fields from the standard answer, explicitly mentioning both \"psychology\" and \"counseling,\" while providing additional relevant context that aligns perfectly with the core requirements.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Gonna continue my edu and check out career options, which is pretty exciting!",
+          "I'm keen on counseling or working in mental health - I'd love to support those with similar issues.",
+          "Wow, Melanie! I'm getting creative too, just learning the piano. What made you try pottery?",
+          "Being a mom is awesome. I'm creating a library for when I have kids. I'm really looking forward to reading to them and opening up their minds.",
+          "I'm still figuring out the details, but I'm thinking of working with trans people, helping them accept themselves and supporting their mental health. Last Friday, I went to an LGBTQ+ counseling workshop and it was really enlightening. They talked about different therapeutic methods and how to best work with trans people. Seeing how passionate these pros were about making a safe space for people like me was amazing."
+        ],
+        "top_scores": [
+          0.0675,
+          0.0509,
+          0.0399,
+          0.0368,
+          0.0346
+        ],
+        "top_similarities": [
+          0.4504,
+          0.3585,
+          0.3406,
+          0.3065,
+          0.2865
+        ]
+      }
+    },
+    {
+      "question": "When did Caroline join a new activist group?",
+      "standard_answer": "The Tuesday before 8 February 2026",
+      "evidence": [
+        "D10:3"
+      ],
+      "classified_categories": [
+        "Timeline",
+        "Social Graph"
+      ],
+      "current": {
+        "is_correct": true,
+        "answer": "Caroline joined the new LGBTQ activist group on Tuesday, February 3, 2026.",
+        "explanation": "The generated answer accurately converts the relative date \"The Tuesday before 8 February 2026\" into the exact calendar date \"Tuesday, February 3, 2026\", maintaining strict factual accuracy.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "The user joined a new LGBTQ activist group on Tuesday, February 3, 2026.",
+          "Melanie is in the process of moving.",
+          "The user shared an exciting life update with the AI, mentioning they joined a new LGBTQ activist group last Tuesday (February 3, 2026). They expressed enthusiasm about meeting passionate people who share their commitment to rights and community support. They described the experience as fulfilling and impactful, feeling they are making a real difference through their activism.",
+          "The user is part of an LGBTQ activist group called 'Connected LGBTQ Activists', which consists of diverse members who invest in positive changes. Through this group, the user is meeting many new like-minded people.",
+          "The group 'Connected LGBTQ Activists' holds regular meetings, plans events, and runs campaigns."
+        ],
+        "top_scores": [
+          0.0977,
+          0.0892,
+          0.0578,
+          0.0548,
+          0.0507
+        ]
+      },
+      "raw_routed": {
+        "is_correct": false,
+        "answer": "Based on what you shared, you joined the new LGBTQ activist group on a Tuesday — though I don't have the exact date beyond that. It was recent when you mentioned it, and you said it was called \"Connected LGBTQ Activists.\"",
+        "explanation": "The generated answer only states that the event occurred \"on a Tuesday\" but fails to provide the specific timeframe found in the standard answer (\"before 8 February 2026\").",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Hey Mel! A lot's happened since we last chatted - I just joined a new LGBTQ activist group last Tues. I'm meeting so many cool people who are as passionate as I am about rights and community support. I'm giving my voice and making a real difference, plus it's fulfilling in so many ways. It's just great, you know?",
+          "Thanks, Melanie! It's awesome to have our own platform to be ourselves and support others' rights. Our group, 'Connected LGBTQ Activists', is made of all kinds of people investing in positive changes. We have regular meetings, plan events and campaigns, to get together and support each other.",
+          "The support group has made me feel accepted and given me courage to embrace myself.",
+          "Hey Mel, great to chat with you again! So much has happened since we last spoke - I went to an LGBTQ conference two days ago and it was really special. I got the chance to meet and connect with people who've gone through similar journeys. It was such a welcoming environment and I felt totally accepted. I'm really thankful for this amazing community - it's shown me how important it is to fight for trans rights and spread awareness.",
+          "Since we last spoke, some big things have happened. Last week I went to an LGBTQ+ pride parade. Everyone was so happy and it made me feel like I belonged. It showed me how much our community has grown, it was amazing!"
+        ],
+        "top_scores": [
+          0.1369,
+          0.0948,
+          0.0291,
+          0.0285,
+          0.0284
+        ],
+        "top_similarities": [
+          0.3721,
+          0.3096,
+          0.2956,
+          0.268,
+          0.2643
+        ]
+      },
+      "raw_global": {
+        "is_correct": false,
+        "answer": "Based on what you told me before, you joined the new LGBTQ activist group on a Tuesday — but I don't have the exact date since you mentioned it as \"last Tues\" in our conversation at the time. Do you remember the specific date?",
+        "explanation": "The generated answer fails to provide the specific date. Instead of stating \"The Tuesday before 8 February 2026,\" it only mentions it was a Tuesday and asks the user for the exact date, missing the key factual information required by the standard answer.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Hey Mel! A lot's happened since we last chatted - I just joined a new LGBTQ activist group last Tues. I'm meeting so many cool people who are as passionate as I am about rights and community support. I'm giving my voice and making a real difference, plus it's fulfilling in so many ways. It's just great, you know?",
+          "Thanks, Melanie! It's awesome to have our own platform to be ourselves and support others' rights. Our group, 'Connected LGBTQ Activists', is made of all kinds of people investing in positive changes. We have regular meetings, plan events and campaigns, to get together and support each other.",
+          "The support group has made me feel accepted and given me courage to embrace myself.",
+          "Hey Mel, great to chat with you again! So much has happened since we last spoke - I went to an LGBTQ conference two days ago and it was really special. I got the chance to meet and connect with people who've gone through similar journeys. It was such a welcoming environment and I felt totally accepted. I'm really thankful for this amazing community - it's shown me how important it is to fight for trans rights and spread awareness.",
+          "Hey Melanie! That sounds great! Last weekend I joined a mentorship program for LGBTQ youth - it's really rewarding to help the community."
+        ],
+        "top_scores": [
+          0.1369,
+          0.0948,
+          0.0291,
+          0.0285,
+          0.0285
+        ],
+        "top_similarities": [
+          0.3721,
+          0.3096,
+          0.2956,
+          0.268,
+          0.2658
+        ]
+      }
+    },
+    {
+      "question": "What is Caroline's identity?",
+      "standard_answer": "Transgender woman",
+      "evidence": [
+        "D1:5"
+      ],
+      "classified_categories": [
+        "Core Self",
+        "Knowledge Base"
+      ],
+      "current": {
+        "is_correct": true,
+        "answer": "Based on what I know about you, Caroline, your identity includes:\n\n- **Transgender** — you're a trans person navigating your journey with self-acceptance\n- **Mother or future mother** — you feel being a mom is awesome and you're building a personal library of books to read to your future kids\n- **Someone in transition** — you're going through a life transition and exploring new paths\n- **Aspiring counselor** — you're interested in pursuing mental health work, particularly to help trans people with self-acceptance and mental health support\n- **Creative soul** — you enjoy painting, play the piano, and have a love for reading\n- **Lifelong learner** — you're planning to continue your education and feel excited about exploring career paths\n- **Community-oriented** — you deeply value being around supportive people who embrace and back you up\n\nYou're someone who channels your own experiences into a desire to help others, especially within the trans community. That's a really meaningful direction.",
+        "explanation": "The generated answer explicitly includes \"Transgender\" as the primary aspect of Caroline's identity, which aligns with the core of the standard answer \"Transgender woman.\" While it does not use the exact word \"woman,\" the rest of the response (referencing being a \"mom\" or \"future mother\") clearly implies the female gender identity, satisfying the requirement for factual accuracy while being lenient with phrasing differences.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "The user's name is Caroline.",
+          "Melanie got married (as of around January 2026)",
+          "The user refers to the AI as \"Melanie\"",
+          "Melanie enjoys or has skill in painting",
+          "The user is going through a life transition and values friendship and compassion deeply."
+        ],
+        "top_scores": [
+          0.4258,
+          0.1794,
+          0.158,
+          0.1341,
+          0.1074
+        ]
+      },
+      "raw_routed": {
+        "is_correct": false,
+        "answer": "Based on Caroline's profile, her identity is listed as \"other.\" However, from conversations, she's mentioned mentoring a transgender teen \"just like me,\" which suggests she's transgender herself. She's also from Sweden and is passionate about LGBTQ rights and activism.",
+        "explanation": "While the generated answer correctly identifies that Caroline is transgender, it phrases this as a mere suggestion (\"suggests she's transgender herself\") rather than a definitive fact, and it omits the specific designation of \"woman\" found in the standard answer. Being strict about factual accuracy, \"transgender\" is a broader category than \"transgender woman,\" making the generated answer incomplete.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Hey Mel! A lot's happened since we last chatted - I just joined a new LGBTQ activist group last Tues. I'm meeting so many cool people who are as passionate as I am about rights and community support. I'm giving my voice and making a real difference, plus it's fulfilling in so many ways. It's just great, you know?",
+          "Thanks, Melanie! It's awesome to have our own platform to be ourselves and support others' rights. Our group, 'Connected LGBTQ Activists', is made of all kinds of people investing in positive changes. We have regular meetings, plan events and campaigns, to get together and support each other.",
+          "Hey Mel, what's up? Been a busy week since we talked.",
+          "Love that purple color! For walking or running?",
+          "Wow, Melanie! I'm getting creative too, just learning the piano. What made you try pottery?"
+        ],
+        "top_scores": [
+          0.0481,
+          0.0397,
+          0.0363,
+          0.032,
+          0.0301
+        ],
+        "top_similarities": [
+          0.2206,
+          0.2004,
+          0.3193,
+          0.3014,
+          0.2959
+        ]
+      },
+      "raw_global": {
+        "is_correct": false,
+        "answer": "Caroline's identity is listed as \"other.\"",
+        "explanation": "The generated answer states \"other,\" which is a generic category and does not contain the specific key information (\"Transgender woman\") required by the standard answer.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Hey Mel! A lot's happened since we last chatted - I just joined a new LGBTQ activist group last Tues. I'm meeting so many cool people who are as passionate as I am about rights and community support. I'm giving my voice and making a real difference, plus it's fulfilling in so many ways. It's just great, you know?",
+          "Hey Melanie! Just wanted to say hi!",
+          "Thanks, Melanie! It's awesome to have our own platform to be ourselves and support others' rights. Our group, 'Connected LGBTQ Activists', is made of all kinds of people investing in positive changes. We have regular meetings, plan events and campaigns, to get together and support each other.",
+          "Hey Mel, what's up? Been a busy week since we talked.",
+          "Love that purple color! For walking or running?"
+        ],
+        "top_scores": [
+          0.0481,
+          0.0406,
+          0.0397,
+          0.0363,
+          0.032
+        ],
+        "top_similarities": [
+          0.2206,
+          0.3588,
+          0.2004,
+          0.3193,
+          0.3014
+        ]
+      }
+    },
+    {
+      "question": "What would Caroline's political leaning likely be?",
+      "standard_answer": "Liberal",
+      "evidence": [
+        "D12:1"
+      ],
+      "classified_categories": [
+        "Core Self",
+        "Social Graph"
+      ],
+      "current": {
+        "is_correct": true,
+        "answer": "Based on what I know about Caroline, she'd likely lean progressive or left-leaning. A few things point in that direction:\n\n- She's transgender and actively supports LGBTQ rights\n- She's interested in mental health counseling, specifically to help trans people with self-acceptance\n- She deeply values compassion and supportive communities\n- She's building a library of books for her future kids, which suggests thoughtfulness about the values she wants to pass on\n\nThat said, I wouldn't want to put a neat label on it. People's political views are personal and complex — someone can care deeply about LGBTQ rights and mental health without fitting neatly into one political category. Caroline seems like someone who forms her views from lived experience and empathy rather than party lines.\n\nIf you're curious about her actual views, the best way would just be to ask her! She seems like someone who'd appreciate a genuine conversation about it.",
+        "explanation": "The generated answer correctly identifies her likely political leaning as \"progressive or left-leaning,\" which is synonymous with the standard answer \"Liberal.\" While it adds extra context, reasoning, and a caveat about strict labels, it accurately conveys the core political alignment specified in the standard answer.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "The user's name is Caroline.",
+          "Melanie got married (as of around January 2026)",
+          "The user is going through a life transition and values friendship and compassion deeply.",
+          "The user refers to the AI as \"Melanie\"",
+          "Melanie enjoys or has skill in painting"
+        ],
+        "top_scores": [
+          0.3476,
+          0.1891,
+          0.1605,
+          0.1404,
+          0.1389
+        ]
+      },
+      "raw_routed": {
+        "is_correct": true,
+        "answer": "Based on what I know, Caroline would likely lean progressive or left-leaning politically. Her active involvement in LGBTQ activism, participation in an LGBTQ activist group focused on rights and community support, and her values around inclusivity all point in that direction. She's clearly passionate about social justice issues and making positive change, which generally aligns with progressive political views.",
+        "explanation": "The generated answer correctly identifies Caroline's political leaning as progressive or left-leaning, which is factually synonymous with \"Liberal\" as provided in the standard answer. The additional context about LGBTQ activism supports this conclusion, and the phrasing difference falls within acceptable leniency.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Thanks, Melanie! It's awesome to have our own platform to be ourselves and support others' rights. Our group, 'Connected LGBTQ Activists', is made of all kinds of people investing in positive changes. We have regular meetings, plan events and campaigns, to get together and support each other.",
+          "Hey Mel! A lot's happened since we last chatted - I just joined a new LGBTQ activist group last Tues. I'm meeting so many cool people who are as passionate as I am about rights and community support. I'm giving my voice and making a real difference, plus it's fulfilling in so many ways. It's just great, you know?",
+          "Hey Mel, what's up? Been a busy week since we talked.",
+          "Love that purple color! For walking or running?",
+          "I chose them 'cause they help LGBTQ+ folks with adoption. Their inclusivity and support really spoke to me."
+        ],
+        "top_scores": [
+          0.0463,
+          0.0427,
+          0.0362,
+          0.0337,
+          0.0303
+        ],
+        "top_similarities": [
+          0.1927,
+          0.2077,
+          0.3191,
+          0.3093,
+          0.2798
+        ]
+      },
+      "raw_global": {
+        "is_correct": true,
+        "answer": "Based on what I know about Caroline, she'd likely lean progressive or left-leaning politically. Her active involvement in LGBTQ activism, her passion for rights and inclusivity, and her choice to support organizations that help LGBTQ+ folks with adoption all point in that direction. People who are deeply engaged in LGBTQ advocacy and community support generally align with progressive values like equality, social justice, and inclusivity.",
+        "explanation": "The generated answer states that Caroline would likely lean \"progressive or left-leaning,\" which is factually synonymous with \"Liberal\" in standard political terminology. It correctly captures the key information from the standard answer while providing appropriate context.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Thanks, Melanie! It's awesome to have our own platform to be ourselves and support others' rights. Our group, 'Connected LGBTQ Activists', is made of all kinds of people investing in positive changes. We have regular meetings, plan events and campaigns, to get together and support each other.",
+          "Hey Mel! A lot's happened since we last chatted - I just joined a new LGBTQ activist group last Tues. I'm meeting so many cool people who are as passionate as I am about rights and community support. I'm giving my voice and making a real difference, plus it's fulfilling in so many ways. It's just great, you know?",
+          "Hey Melanie! Just wanted to say hi!",
+          "Hey Mel, what's up? Been a busy week since we talked.",
+          "Love that purple color! For walking or running?"
+        ],
+        "top_scores": [
+          0.0463,
+          0.0427,
+          0.0369,
+          0.0362,
+          0.0337
+        ],
+        "top_similarities": [
+          0.1927,
+          0.2077,
+          0.342,
+          0.3191,
+          0.3093
+        ]
+      }
+    },
+    {
+      "question": "What did Caroline realize after her charity race?",
+      "standard_answer": "",
+      "evidence": [
+        "D2:3"
+      ],
+      "classified_categories": [
+        "Timeline",
+        "Core Self"
+      ],
+      "current": {
+        "is_correct": false,
+        "answer": "I don't actually have any memory of you (Caroline) participating in a charity race or realizing something after one. The memory I do have is about Mel taking part in a charity race for mental health awareness — but there's no record of what came out of that experience either, as far as realizations go.\n\nDid you maybe mean Mel's race, or is this something you're recalling from a conversation I might not have saved? I'd love to hear more about it either way!",
+        "explanation": "The standard answer is empty, meaning there is no key information provided for the generated answer to match. The generated answer fails to provide the correct factual response and instead hallucinates a conversation about a different character.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "The user's name is Caroline.",
+          "Melanie got married (as of around January 2026)",
+          "The user is going through a life transition and values friendship and compassion deeply.",
+          "Melanie enjoys or has skill in painting",
+          "The user refers to the AI as \"Melanie\""
+        ],
+        "top_scores": [
+          0.3216,
+          0.2235,
+          0.1793,
+          0.1719,
+          0.1301
+        ]
+      },
+      "raw_routed": {
+        "is_correct": true,
+        "answer": "Based on the memories I have, it looks like the charity race was actually something Mel did, not Caroline! Caroline was the one cheering Mel on and saying how great it was that Mel was raising awareness for mental health. There's no record of Caroline doing a charity race herself or having a realization after one.\n\nDid you maybe mean Mel's charity race?",
+        "explanation": "The standard answer is empty, indicating there is no realization to report. The generated answer correctly identifies that the premise of the question is factually inaccurate based on the provided context (Mel did the charity race, not Caroline), rather than hallucinating a realization.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "That charity race sounds great, Mel! Making a difference & raising awareness for mental health is super rewarding - I'm really proud of you for taking part!",
+          "I'm thrilled to make a family for kids who need one. It'll be tough as a single parent, but I'm up for the challenge!",
+          "Hey Mel! Good to see you! How have you been?",
+          "Hey Mel! A lot's happened since we last chatted - I just joined a new LGBTQ activist group last Tues. I'm meeting so many cool people who are as passionate as I am about rights and community support. I'm giving my voice and making a real difference, plus it's fulfilling in so many ways. It's just great, you know?",
+          "Love that purple color! For walking or running?"
+        ],
+        "top_scores": [
+          0.1794,
+          0.0829,
+          0.0581,
+          0.0425,
+          0.0423
+        ],
+        "top_similarities": [
+          0.426,
+          0.2748,
+          0.2749,
+          0.2073,
+          0.3465
+        ]
+      },
+      "raw_global": {
+        "is_correct": false,
+        "answer": "Hey, I don't actually have a memory about you doing a charity race yourself! The charity race I remember was Mel's — you were cheering her on and saying how proud you were of her for raising mental health awareness.\n\nDid you do one too? I'd love to hear about it if you did!",
+        "explanation": "The standard answer is blank, meaning there is no key information provided for the generated answer to match. Additionally, the generated answer fails to answer the question about what Caroline realized, instead deflecting and discussing a different person's (Mel's) charity race.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "That charity race sounds great, Mel! Making a difference & raising awareness for mental health is super rewarding - I'm really proud of you for taking part!",
+          "I'm thrilled to make a family for kids who need one. It'll be tough as a single parent, but I'm up for the challenge!",
+          "Hey Mel! Good to see you! How have you been?",
+          "Wow! What got you into running?",
+          "Hey Mel! A lot's happened since we last chatted - I just joined a new LGBTQ activist group last Tues. I'm meeting so many cool people who are as passionate as I am about rights and community support. I'm giving my voice and making a real difference, plus it's fulfilling in so many ways. It's just great, you know?"
+        ],
+        "top_scores": [
+          0.1794,
+          0.0829,
+          0.0581,
+          0.0576,
+          0.0425
+        ],
+        "top_similarities": [
+          0.426,
+          0.2748,
+          0.2749,
+          0.4323,
+          0.2073
+        ]
+      }
+    },
+    {
+      "question": "What are the new shoes that Caroline got used for?",
+      "standard_answer": "",
+      "evidence": [
+        "D7:19"
+      ],
+      "classified_categories": [
+        "Timeline",
+        "Knowledge Base"
+      ],
+      "current": {
+        "is_correct": false,
+        "answer": "I actually don't have any memory of you mentioning new shoes! Did I miss something, or is this a new topic? 😊 What kind of shoes did you get?",
+        "explanation": "The standard answer is blank, meaning there is no key information provided for the generated answer to match. The generated answer fails to provide the factual answer to the question asked.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Melanie has a spouse (got married recently)",
+          "Melanie is in the process of moving.",
+          "Caroline and Mel have a friendly, casual relationship where they greet each other warmly.",
+          "Caroline greeted Mel (the AI) in a friendly manner. Mel responded warmly, mentioning being busy with kids and work, and asked Caroline what's new.",
+          "User has a friend named Mel who went on a family camping trip recently."
+        ],
+        "top_scores": [
+          0.206,
+          0.1937,
+          0.1418,
+          0.099,
+          0.0962
+        ]
+      },
+      "raw_routed": {
+        "is_correct": true,
+        "answer": "I don't actually have any memory of you mentioning new shoes! Did I miss something, or is this a new topic? Tell me about them! 😊",
+        "explanation": "The standard answer is empty, indicating there is no information available in the context to answer the question. The generated answer correctly reflects this lack of information by stating it does not have any memory or knowledge of the new shoes.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "That charity race sounds great, Mel! Making a difference & raising awareness for mental health is super rewarding - I'm really proud of you for taking part!",
+          "Hey Mel! A lot's happened since we last chatted - I just joined a new LGBTQ activist group last Tues. I'm meeting so many cool people who are as passionate as I am about rights and community support. I'm giving my voice and making a real difference, plus it's fulfilling in so many ways. It's just great, you know?",
+          "Hey Mel, what's up? Been a busy week since we talked.",
+          "I chose them 'cause they help LGBTQ+ folks with adoption. Their inclusivity and support really spoke to me.",
+          "Wow, nice pic! You both looked amazing. One special memory for me was this pride parade I went to a few weeks ago."
+        ],
+        "top_scores": [
+          0.0655,
+          0.0422,
+          0.0403,
+          0.0339,
+          0.0283
+        ],
+        "top_similarities": [
+          0.2291,
+          0.2066,
+          0.3365,
+          0.2958,
+          0.2822
+        ]
+      },
+      "raw_global": {
+        "is_correct": false,
+        "answer": "Hmm, I don't actually have that information in my memories! The only shoe-related thing I can recall is asking someone about their purple shoes — whether they were for walking or running — but nothing about shoes you got yourself.\n\nDid I miss something, or is this from a conversation that didn't get saved? Fill me in! 😊",
+        "explanation": "The generated answer does not contain the key information from the standard answer because the standard answer is empty. The generated answer fails to provide the factual answer to the question.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Hey Mel! Good to see you! How have you been?",
+          "That charity race sounds great, Mel! Making a difference & raising awareness for mental health is super rewarding - I'm really proud of you for taking part!",
+          "I'm thrilled to make a family for kids who need one. It'll be tough as a single parent, but I'm up for the challenge!",
+          "Love that purple color! For walking or running?",
+          "Hey Mel! A lot's happened since we last chatted - I just joined a new LGBTQ activist group last Tues. I'm meeting so many cool people who are as passionate as I am about rights and community support. I'm giving my voice and making a real difference, plus it's fulfilling in so many ways. It's just great, you know?"
+        ],
+        "top_scores": [
+          0.1155,
+          0.0655,
+          0.0583,
+          0.0562,
+          0.0422
+        ],
+        "top_similarities": [
+          0.345,
+          0.2291,
+          0.2304,
+          0.3995,
+          0.2066
+        ]
+      }
+    },
+    {
+      "question": "What is Caroline's reason for getting into running?",
+      "standard_answer": "",
+      "evidence": [
+        "D7:21"
+      ],
+      "classified_categories": [
+        "Core Self",
+        "Timeline"
+      ],
+      "current": {
+        "is_correct": false,
+        "answer": "Based on what I know, Caroline participated in a charity race for mental health awareness — so it seems like that cause was connected to getting into running. But I don't have more details beyond that about her specific reasons or how she got started with it. You'd probably know better than I do! 😊",
+        "explanation": "The standard answer is blank, indicating that no specific reason for Caroline getting into running was provided in the context. The generated answer hallucinates a specific reason (participating in a charity race for mental health awareness), which is factually inaccurate despite the hedging language used.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "The user's name is Caroline.",
+          "The user is going through a life transition and values friendship and compassion deeply.",
+          "The user is a mom or planning to become one, and feels that being a mom is awesome.",
+          "Melanie is in the process of moving.",
+          "Melanie enjoys or has skill in painting"
+        ],
+        "top_scores": [
+          0.4372,
+          0.2738,
+          0.2342,
+          0.2321,
+          0.2241
+        ]
+      },
+      "raw_routed": {
+        "is_correct": true,
+        "answer": "Based on the memories I have, there isn't a clear record of Caroline's personal reason for getting into running. The memories show Caroline encouraging someone else (Melanie) about running and mentioning that \"running can really boost your mood,\" but they don't capture Caroline explaining her own motivation for taking it up.\n\nI'd love to hear more about that if Caroline wants to share!",
+        "explanation": "The standard answer is empty, indicating there is no information provided about Caroline's reason for getting into running. The generated answer correctly identifies this lack of information in the memories.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "That charity race sounds great, Mel! Making a difference & raising awareness for mental health is super rewarding - I'm really proud of you for taking part!",
+          "Love that purple color! For walking or running?",
+          "Cool, Melanie! Running can really boost your mood. Keep it up!",
+          "Hey Mel! Good to see you! How have you been?",
+          "I'm thrilled to make a family for kids who need one. It'll be tough as a single parent, but I'm up for the challenge!"
+        ],
+        "top_scores": [
+          0.2148,
+          0.1816,
+          0.1638,
+          0.1201,
+          0.116
+        ],
+        "top_similarities": [
+          0.3851,
+          0.4546,
+          0.4616,
+          0.3265,
+          0.2892
+        ]
+      },
+      "raw_global": {
+        "is_correct": true,
+        "answer": "Based on the memories I have, I don't actually have information about why Caroline got into running. I can see that running came up in conversation — including someone asking \"What got you into running?\" — but the actual reason wasn't captured.\n\nIf you'd like, you could ask Caroline directly! I'd love to know too.",
+        "explanation": "The standard answer is blank, indicating that there is no information available about Caroline's reason for getting into running. The generated answer correctly reflects this by stating it does not have the information.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "That charity race sounds great, Mel! Making a difference & raising awareness for mental health is super rewarding - I'm really proud of you for taking part!",
+          "Love that purple color! For walking or running?",
+          "Cool, Melanie! Running can really boost your mood. Keep it up!",
+          "Wow! What got you into running?",
+          "Hey Mel! Good to see you! How have you been?"
+        ],
+        "top_scores": [
+          0.2148,
+          0.1816,
+          0.1638,
+          0.1369,
+          0.1201
+        ],
+        "top_similarities": [
+          0.3851,
+          0.4546,
+          0.4616,
+          0.6665,
+          0.3265
+        ]
+      }
+    },
+    {
+      "question": "Which classical musicians does Caroline enjoy listening to?",
+      "standard_answer": "",
+      "evidence": [
+        "D15:28"
+      ],
+      "classified_categories": [
+        "Core Self",
+        "Knowledge Base"
+      ],
+      "current": {
+        "is_correct": true,
+        "answer": "I don't actually have any information about which classical musicians you enjoy listening to! I know you're learning piano, but we haven't talked about specific composers or performers you like yet. I'd love to hear about them though — do you have any favorites?",
+        "explanation": "The standard answer is blank, indicating there is no available information about which classical musicians Caroline enjoys. The generated answer correctly reflects this lack of information by explicitly stating it does not know.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "The user's name is Caroline.",
+          "Melanie enjoys or has skill in painting",
+          "The user is currently learning to play the piano as a creative hobby.",
+          "Melanie got married (as of around January 2026)",
+          "The user refers to the AI as \"Melanie\""
+        ],
+        "top_scores": [
+          0.4183,
+          0.2703,
+          0.198,
+          0.1975,
+          0.1539
+        ]
+      },
+      "raw_routed": {
+        "is_correct": true,
+        "answer": "Honestly, I don't have any info about which classical musicians you enjoy listening to! I know you've been learning piano, but we haven't talked about specific composers or musicians you like yet. I'd love to hear about your favorites though — do you have any?",
+        "explanation": "The standard answer is empty, indicating there is no available information about which classical musicians Caroline enjoys. The generated answer correctly reflects this lack of information.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Hey Mel! Good to see you! How have you been?",
+          "I'm keen on counseling or working in mental health - I'd love to support those with similar issues.",
+          "Love that purple color! For walking or running?",
+          "Wow, Melanie! I'm getting creative too, just learning the piano. What made you try pottery?",
+          "I'm thrilled to make a family for kids who need one. It'll be tough as a single parent, but I'm up for the challenge!"
+        ],
+        "top_scores": [
+          0.1037,
+          0.051,
+          0.0453,
+          0.0442,
+          0.0412
+        ],
+        "top_similarities": [
+          0.2875,
+          0.2023,
+          0.2271,
+          0.3586,
+          0.16
+        ]
+      },
+      "raw_global": {
+        "is_correct": true,
+        "answer": "Hmm, I actually don't have that info! I know you're learning piano and you're into guitar too, but I don't recall you ever mentioning specific classical musicians you enjoy listening to. Who are your favorites? I'd love to know!",
+        "explanation": "The standard answer is empty, indicating there is no information provided about which classical musicians Caroline enjoys. The generated answer correctly reflects this lack of information by stating it does not know.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Hey Mel! Good to see you! How have you been?",
+          "I'm keen on counseling or working in mental health - I'd love to support those with similar issues.",
+          "Love that purple color! For walking or running?",
+          "Wow, Melanie! I'm getting creative too, just learning the piano. What made you try pottery?",
+          "I'm thrilled to make a family for kids who need one. It'll be tough as a single parent, but I'm up for the challenge!"
+        ],
+        "top_scores": [
+          0.1037,
+          0.051,
+          0.0453,
+          0.0442,
+          0.0412
+        ],
+        "top_similarities": [
+          0.2875,
+          0.2023,
+          0.2271,
+          0.3586,
+          0.16
+        ]
+      }
+    },
+    {
+      "question": "What setback did Caroline face recently?",
+      "standard_answer": "",
+      "evidence": [
+        "D17:8"
+      ],
+      "classified_categories": [
+        "Timeline",
+        "Knowledge Base"
+      ],
+      "current": {
+        "is_correct": true,
+        "answer": "Based on the memories I have, I don't see any mention of a recent setback you've faced. The recent updates I'm aware of are mostly positive — joining a new LGBTQ activist group, planning an art show, exploring a counseling career path, and various community events.\n\nIf something happened that you'd like to talk about, I'm here to listen.",
+        "explanation": "The standard answer is blank, indicating there is no information provided about a recent setback. The generated answer correctly reflects this absence of information by stating it does not see any mention of a setback in the memories.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Melanie is in the process of moving.",
+          "Mel participated in a charity race for mental health awareness.",
+          "The user recently spoke with a community and felt deeply motivated by the experience.",
+          "Mel recently went on a family camping trip involving nature exploration, campfire marshmallow roasting, and a hike.",
+          "The user met up with their friends, family, and/or mentors around January 13, 2026 (last week)."
+        ],
+        "top_scores": [
+          0.2339,
+          0.1512,
+          0.1379,
+          0.1093,
+          0.1058
+        ]
+      },
+      "raw_routed": {
+        "is_correct": true,
+        "answer": "Based on the memories I have, there's no mention of any recent setback Caroline faced. The conversations mostly highlight positive things — joining an LGBTQ activist group, attending a pride parade, planning an art show, going to an adoption council meeting, and connecting with supportive friends and community.\n\nIf something did come up that I'm not aware of, I'd love to hear about it and be here for you. 💛",
+        "explanation": "The standard answer is blank, indicating there is no information provided about a recent setback. The generated answer correctly reflects this by stating that there is no mention of a setback in the memories.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "That charity race sounds great, Mel! Making a difference & raising awareness for mental health is super rewarding - I'm really proud of you for taking part!",
+          "I'm keen on counseling or working in mental health - I'd love to support those with similar issues.",
+          "Hey Mel! A lot's happened since we last chatted - I just joined a new LGBTQ activist group last Tues. I'm meeting so many cool people who are as passionate as I am about rights and community support. I'm giving my voice and making a real difference, plus it's fulfilling in so many ways. It's just great, you know?",
+          "Hey Mel, what's up? Been a busy week since we talked.",
+          "I loved \"Becoming Nicole\" by Amy Ellis Nutt. It's a real inspiring true story about a trans girl and her family. It made me feel connected and gave me a lot of hope for my own path. Highly recommend it for sure!"
+        ],
+        "top_scores": [
+          0.0856,
+          0.0815,
+          0.0765,
+          0.0484,
+          0.0449
+        ],
+        "top_similarities": [
+          0.221,
+          0.2372,
+          0.2298,
+          0.3688,
+          0.1897
+        ]
+      },
+      "raw_global": {
+        "is_correct": true,
+        "answer": "Based on the conversations I have with Caroline, I don't actually have any record of her facing a recent setback. The memories I have are mostly positive — she joined a new LGBTQ activist group, she's excited about pursuing a career in mental health counseling, and she's planning to become a single parent. Nothing in our conversations points to a specific setback.\n\nIf something happened that I'm not aware of, I'd love to hear about it and be here for her.",
+        "explanation": "The standard answer is empty, indicating there is no information about a recent setback Caroline faced. The generated answer correctly reflects this by stating there is no record of a recent setback.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Hey Mel! Good to see you! How have you been?",
+          "I'm thrilled to make a family for kids who need one. It'll be tough as a single parent, but I'm up for the challenge!",
+          "That charity race sounds great, Mel! Making a difference & raising awareness for mental health is super rewarding - I'm really proud of you for taking part!",
+          "I'm keen on counseling or working in mental health - I'd love to support those with similar issues.",
+          "Hey Mel! A lot's happened since we last chatted - I just joined a new LGBTQ activist group last Tues. I'm meeting so many cool people who are as passionate as I am about rights and community support. I'm giving my voice and making a real difference, plus it's fulfilling in so many ways. It's just great, you know?"
+        ],
+        "top_scores": [
+          0.1546,
+          0.1017,
+          0.0856,
+          0.0815,
+          0.0765
+        ],
+        "top_similarities": [
+          0.3511,
+          0.2514,
+          0.221,
+          0.2372,
+          0.2298
+        ]
+      }
+    },
+    {
+      "question": "What was grandpa's gift to Caroline?",
+      "standard_answer": "",
+      "evidence": [
+        "D4:3"
+      ],
+      "classified_categories": [
+        "Timeline",
+        "Social Graph"
+      ],
+      "current": {
+        "is_correct": true,
+        "answer": "I don't have any memory of a gift from grandpa to you! The only family gift I remember is the meaningful necklace your grandmother in Sweden gave you when you were young. Did I miss something, or is this a new story you haven't shared yet? I'd love to hear about it if so!",
+        "explanation": "The standard answer is empty, indicating there is no information in the memory context about a gift from grandpa to Caroline. The generated answer correctly reflects this lack of information by stating it has no memory of such a gift.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Melanie has a spouse (got married recently)",
+          "Caroline and Mel have a friendly, casual relationship where they greet each other warmly.",
+          "Melanie is in the process of moving.",
+          "Caroline greeted Mel (the AI) in a friendly manner. Mel responded warmly, mentioning being busy with kids and work, and asked Caroline what's new.",
+          "User has a friend named Mel who went on a family camping trip recently."
+        ],
+        "top_scores": [
+          0.1672,
+          0.1595,
+          0.1467,
+          0.1447,
+          0.0994
+        ]
+      },
+      "raw_routed": {
+        "is_correct": false,
+        "answer": "Based on what I remember, you mentioned a necklace that was a gift from your **grandma** in Sweden — it represents love, faith, and strength. I don't have any memory of a gift from your grandpa though! Did I miss something, or is there a story there you haven't shared yet? 😊",
+        "explanation": "The generated answer fails to provide the requested information. It explicitly states that it does not know what the grandpa's gift was and incorrectly confuses the question with a gift from the grandma.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Thanks, Melanie! This necklace is super special to me - a gift from my grandma in my home country, Sweden. She gave it to me when I was young, and it stands for love, faith and strength. It's like a reminder of my roots and all the love and support I get from my family.",
+          "Hey Mel! Good to see you! How have you been?",
+          "That charity race sounds great, Mel! Making a difference & raising awareness for mental health is super rewarding - I'm really proud of you for taking part!",
+          "Yep, Melanie! I've got some other stuff with sentimental value, like my hand-painted bowl. A friend made it for my 18th birthday ten years ago. The pattern and colors are awesome-- it reminds me of art and self-expression.",
+          "I'm keen on counseling or working in mental health - I'd love to support those with similar issues."
+        ],
+        "top_scores": [
+          0.1389,
+          0.11,
+          0.078,
+          0.0366,
+          0.0314
+        ],
+        "top_similarities": [
+          0.3748,
+          0.2841,
+          0.2042,
+          0.3102,
+          0.1473
+        ]
+      },
+      "raw_global": {
+        "is_correct": true,
+        "answer": "I don't actually have any memory of a gift from your grandpa! The necklace you mentioned was from your grandma, right? The one from Sweden that stands for love, faith, and strength. Did your grandpa give you something special too?",
+        "explanation": "The standard answer is blank, indicating there is no information about a gift from grandpa. The generated answer correctly reflects this absence of information by stating it does not have a memory of a gift from the grandpa.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Thanks, Melanie! This necklace is super special to me - a gift from my grandma in my home country, Sweden. She gave it to me when I was young, and it stands for love, faith and strength. It's like a reminder of my roots and all the love and support I get from my family.",
+          "Hey Mel! Good to see you! How have you been?",
+          "I'm thrilled to make a family for kids who need one. It'll be tough as a single parent, but I'm up for the challenge!",
+          "That charity race sounds great, Mel! Making a difference & raising awareness for mental health is super rewarding - I'm really proud of you for taking part!",
+          "Love that purple color! For walking or running?"
+        ],
+        "top_scores": [
+          0.1389,
+          0.11,
+          0.0791,
+          0.078,
+          0.0645
+        ],
+        "top_similarities": [
+          0.3748,
+          0.2841,
+          0.2217,
+          0.2042,
+          0.271
+        ]
+      }
+    },
+    {
+      "question": "What did Caroline and her family see during their camping trip last year?",
+      "standard_answer": "",
+      "evidence": [
+        "D10:14"
+      ],
+      "classified_categories": [
+        "Timeline",
+        "Knowledge Base"
+      ],
+      "current": {
+        "is_correct": true,
+        "answer": "Based on what I remember, the camping trip involved nature exploration, a hike, and campfire marshmallow roasting — but I don't have specific details about what you all actually *saw* out there during the hike or nature exploration. Do you want to fill me in? 😊",
+        "explanation": "The standard answer is empty, indicating there is no specific information provided about what Caroline and her family saw. The generated answer correctly reflects this lack of information by explicitly stating it does not have the specific details.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Mel recently went on a family camping trip involving nature exploration, campfire marshmallow roasting, and a hike.",
+          "The user had a picnic with friends and family last week (around January 26, 2026).",
+          "Mel took its kids to a pottery workshop on 2026-01-30 (last Friday); they all made their own pots and found it fun and therapeutic.",
+          "The user met up with their friends, family, and/or mentors around January 13, 2026 (last week).",
+          "Melanie is in the process of moving."
+        ],
+        "top_scores": [
+          0.3578,
+          0.2181,
+          0.2148,
+          0.2095,
+          0.1906
+        ]
+      },
+      "raw_routed": {
+        "is_correct": true,
+        "answer": "I don't have any memory of a camping trip from last year! Nothing like that has come up in our conversations before. Maybe you're thinking of a different trip, or maybe it's something you haven't shared with me yet? I'd love to hear about it if you want to tell me though!",
+        "explanation": "The standard answer is blank, indicating no specific information was provided about the camping trip. The generated answer correctly reflects this lack of information by stating it has no memory or knowledge of the event.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "That charity race sounds great, Mel! Making a difference & raising awareness for mental health is super rewarding - I'm really proud of you for taking part!",
+          "Sounds great, Mel. Glad you made some new family mems. How was it? Anything fun?",
+          "That photo is stunning! So glad you bonded over our love of nature. Last Friday I went to a council meeting for adoption. It was inspiring and emotional - so many people wanted to create loving homes for children in need. It made me even more determined to adopt.",
+          "That's awesome, Melanie! How have your family been supportive during your move?",
+          "Since we last spoke, some big things have happened. Last week I went to an LGBTQ+ pride parade. Everyone was so happy and it made me feel like I belonged. It showed me how much our community has grown, it was amazing!"
+        ],
+        "top_scores": [
+          0.1257,
+          0.1201,
+          0.1107,
+          0.107,
+          0.1043
+        ],
+        "top_similarities": [
+          0.2522,
+          0.3696,
+          0.3346,
+          0.3489,
+          0.3249
+        ]
+      },
+      "raw_global": {
+        "is_correct": false,
+        "answer": "I don't actually have any memory of a camping trip with your family last year! It's possible we haven't talked about that yet, or maybe it slipped by in conversation. I'd love to hear about it though — what did you all see?",
+        "explanation": "The standard answer is empty, meaning there is no key information provided to match against. The generated answer fails to provide the requested factual information about what Caroline and her family saw.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Hey Mel! Good to see you! How have you been?",
+          "That charity race sounds great, Mel! Making a difference & raising awareness for mental health is super rewarding - I'm really proud of you for taking part!",
+          "Sounds great, Mel. Glad you made some new family mems. How was it? Anything fun?",
+          "That photo is stunning! So glad you bonded over our love of nature. Last Friday I went to a council meeting for adoption. It was inspiring and emotional - so many people wanted to create loving homes for children in need. It made me even more determined to adopt.",
+          "I'm thrilled to make a family for kids who need one. It'll be tough as a single parent, but I'm up for the challenge!"
+        ],
+        "top_scores": [
+          0.1553,
+          0.1257,
+          0.1201,
+          0.1107,
+          0.1084
+        ],
+        "top_similarities": [
+          0.3377,
+          0.2522,
+          0.3696,
+          0.3346,
+          0.2595
+        ]
+      }
+    },
+    {
+      "question": "What precautionary sign did Caroline see at the café?",
+      "standard_answer": "",
+      "evidence": [
+        "D16:16"
+      ],
+      "classified_categories": [
+        "Timeline",
+        "Knowledge Base"
+      ],
+      "current": {
+        "is_correct": true,
+        "answer": "I don't have any memory of you mentioning a precautionary sign at a café. Could you tell me more about it? I'd love to hear the story!",
+        "explanation": "The standard answer is empty, indicating there is no available information to answer the question. The generated answer correctly reflects this lack of information by stating it does not have any memory of the event and asking the user for more details.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Melanie is in the process of moving.",
+          "The user had a picnic with friends and family last week (around January 26, 2026).",
+          "User has an LGBTQ art show planned for next month (March 2026) featuring their own paintings.",
+          "The user met up with their friends, family, and/or mentors around January 13, 2026 (last week).",
+          "The user recently spoke with a community and felt deeply motivated by the experience."
+        ],
+        "top_scores": [
+          0.1914,
+          0.1408,
+          0.1222,
+          0.1217,
+          0.1153
+        ]
+      },
+      "raw_routed": {
+        "is_correct": true,
+        "answer": "I don't have any memory of you mentioning a precautionary sign at a café. Could you tell me more about it? I'm curious what you saw!",
+        "explanation": "The standard answer is blank, indicating there is no factual information provided about a precautionary sign. The generated answer correctly reflects this absence of information by stating it does not know, thus avoiding any hallucinations or factual inaccuracies.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Wow, that's great! It sure shows how important friendship and compassion are. It's made me appreciate how lucky I am to have my friends and family helping with my transition. They make all the difference. We even had a picnic last week!",
+          "That charity race sounds great, Mel! Making a difference & raising awareness for mental health is super rewarding - I'm really proud of you for taking part!",
+          "Wow, nice pic! You both looked amazing. One special memory for me was this pride parade I went to a few weeks ago.",
+          "That photo is stunning! So glad you bonded over our love of nature. Last Friday I went to a council meeting for adoption. It was inspiring and emotional - so many people wanted to create loving homes for children in need. It made me even more determined to adopt.",
+          "I'm keen on counseling or working in mental health - I'd love to support those with similar issues."
+        ],
+        "top_scores": [
+          0.0656,
+          0.0632,
+          0.0581,
+          0.0555,
+          0.0531
+        ],
+        "top_similarities": [
+          0.2294,
+          0.1746,
+          0.2289,
+          0.211,
+          0.1741
+        ]
+      },
+      "raw_global": {
+        "is_correct": true,
+        "answer": "I don't have any memory of Caroline mentioning a precautionary sign at a café. That detail isn't something that's come up in our conversations before!",
+        "explanation": "The standard answer is empty, indicating there is no information provided about a precautionary sign. The generated answer correctly reflects this absence of information by stating it does not have that detail.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Hey Mel! Good to see you! How have you been?",
+          "Wow, that's great! It sure shows how important friendship and compassion are. It's made me appreciate how lucky I am to have my friends and family helping with my transition. They make all the difference. We even had a picnic last week!",
+          "Love that purple color! For walking or running?",
+          "That charity race sounds great, Mel! Making a difference & raising awareness for mental health is super rewarding - I'm really proud of you for taking part!",
+          "Wow, nice pic! You both looked amazing. One special memory for me was this pride parade I went to a few weeks ago."
+        ],
+        "top_scores": [
+          0.099,
+          0.0656,
+          0.0632,
+          0.0632,
+          0.0581
+        ],
+        "top_similarities": [
+          0.2696,
+          0.2294,
+          0.2683,
+          0.1746,
+          0.2289
+        ]
+      }
+    },
+    {
+      "question": "What did Caroline research?",
+      "standard_answer": "Adoption agencies",
+      "evidence": [
+        "D2:8"
+      ],
+      "classified_categories": [
+        "Timeline",
+        "Knowledge Base"
+      ],
+      "current": {
+        "is_correct": false,
+        "answer": "I don't have any memory of Caroline researching something specific. The information I have doesn't include details about any research Caroline has done. Could you remind me what you're referring to?",
+        "explanation": "The generated answer fails to provide the key information from the standard answer. Instead of stating that Caroline researched \"Adoption agencies,\" it claims to have no memory of the event and asks for clarification.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Melanie is in the process of moving.",
+          "Mel participated in a charity race for mental health awareness.",
+          "The user recently spoke with a community and felt deeply motivated by the experience.",
+          "Mel recently went on a family camping trip involving nature exploration, campfire marshmallow roasting, and a hike.",
+          "The user plans to attend a transgender conference in January 2026."
+        ],
+        "top_scores": [
+          0.2356,
+          0.1618,
+          0.1334,
+          0.1218,
+          0.1214
+        ]
+      },
+      "raw_routed": {
+        "is_correct": true,
+        "answer": "Based on what you've shared before, you were researching adoption agencies — it's been a dream of yours to have a family and give a loving home to kids who need one.",
+        "explanation": "The generated answer explicitly states that Caroline was researching \"adoption agencies,\" which perfectly matches the key information in the standard answer. The additional context provided does not alter this factual accuracy.",
+        "answer_anchor_rank": 13,
+        "top_contexts": [
+          "I'm keen on counseling or working in mental health - I'd love to support those with similar issues.",
+          "That charity race sounds great, Mel! Making a difference & raising awareness for mental health is super rewarding - I'm really proud of you for taking part!",
+          "I loved \"Becoming Nicole\" by Amy Ellis Nutt. It's a real inspiring true story about a trans girl and her family. It made me feel connected and gave me a lot of hope for my own path. Highly recommend it for sure!",
+          "That's awesome, Melanie! How have your family been supportive during your move?",
+          "Hey Mel! A lot's happened since we last chatted - I just joined a new LGBTQ activist group last Tues. I'm meeting so many cool people who are as passionate as I am about rights and community support. I'm giving my voice and making a real difference, plus it's fulfilling in so many ways. It's just great, you know?"
+        ],
+        "top_scores": [
+          0.1566,
+          0.1097,
+          0.0821,
+          0.0643,
+          0.0636
+        ],
+        "top_similarities": [
+          0.2893,
+          0.2254,
+          0.2166,
+          0.2409,
+          0.1986
+        ]
+      },
+      "raw_global": {
+        "is_correct": false,
+        "answer": "I don't have any memory of you mentioning research about something specific. Could you remind me what you're referring to? I'd love to hear about it!",
+        "explanation": "The generated answer fails to provide the key information from the standard answer, which is \"Adoption agencies.\" Instead, it states that it has no memory of the topic being mentioned.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "I'm keen on counseling or working in mental health - I'd love to support those with similar issues.",
+          "Hey Mel! Good to see you! How have you been?",
+          "That charity race sounds great, Mel! Making a difference & raising awareness for mental health is super rewarding - I'm really proud of you for taking part!",
+          "I loved \"Becoming Nicole\" by Amy Ellis Nutt. It's a real inspiring true story about a trans girl and her family. It made me feel connected and gave me a lot of hope for my own path. Highly recommend it for sure!",
+          "Love that purple color! For walking or running?"
+        ],
+        "top_scores": [
+          0.1566,
+          0.125,
+          0.1097,
+          0.0821,
+          0.0785
+        ],
+        "top_similarities": [
+          0.2893,
+          0.3029,
+          0.2254,
+          0.2166,
+          0.2989
+        ]
+      }
+    },
+    {
+      "question": "What advice does Caroline give for getting started with adoption?",
+      "standard_answer": "Do research, find an adoption agency or lawyer, gather necessary documents, and prepare emotionally.",
+      "evidence": [
+        "D17:7"
+      ],
+      "classified_categories": [
+        "Knowledge Base",
+        "Social Graph"
+      ],
+      "current": {
+        "is_correct": false,
+        "answer": "Based on what you've shared about your own adoption journey so far, I can reflect back what I've picked up from you rather than \"advice\" in a formal sense — since you're still in the early stages yourself!\n\nFrom what you've told me, your approach has been:\n\n1. **Attend informational meetings** — like that council meeting you went to on January 30th, which you described as inspiring and emotional. That seems like it really reinforced your determination.\n2. **Research adoption agencies** — you've been actively looking into different options to find the right fit.\n3. **Lean into your support system** — you've expressed a lot of gratitude for the friends, family, and mentors who are supporting you through this process, and that seems to be something you really value.\n4. **Hold onto the \"why\"** — your long-held dream of providing a loving home to a child in need has been a driving force, and you've kept a hopeful, optimistic outlook even when acknowledging the hard work ahead.\n\nHonestly, I think the fact that you're approaching this with so much heart and intention says a lot. You're not rushing — you're doing the groundwork.\n\nIs there a specific part of the process you're trying to figure out next? I'm happy to just listen or help you think things through.",
+        "explanation": "The generated answer completely fails to answer the question from the correct perspective (what \"Caroline\" advises) and instead hallucinates a conversational context about the user's personal journey. Furthermore, it misses key factual points from the standard answer, specifically omitting \"find a lawyer,\" \"gather necessary documents,\" and \"prepare emotionally.\"",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Melanie has a spouse (got married recently)",
+          "The user expressed admiration for a photo and mentioned bonding over a shared love of nature. They shared that they attended a council meeting for adoption last Friday (January 30, 2026), describing it as inspiring and emotional. The experience reinforced their determination to adopt a child.",
+          "Melanie has a supportive family who helped her during her move.",
+          "Caroline greeted Mel (the AI) in a friendly manner. Mel responded warmly, mentioning being busy with kids and work, and asked Caroline what's new.",
+          "Caroline and Mel have a friendly, casual relationship where they greet each other warmly."
+        ],
+        "top_scores": [
+          0.2345,
+          0.21,
+          0.2067,
+          0.2042,
+          0.1856
+        ]
+      },
+      "raw_routed": {
+        "is_correct": false,
+        "answer": "Based on what I know from our conversations, Caroline hasn't really shared specific step-by-step advice about getting started with adoption yet. What she has mentioned is that she's been researching adoption agencies and that attending a council meeting about adoption was inspiring and made her more determined — she described it as emotional and said it was great to see so many people wanting to create loving homes for kids in need.\n\nSo it sounds like she's still in the early stages of her own journey with this, learning and gathering information rather than being at a point where she's doling out advice. If you're curious about her experience so far, it might be worth asking her directly what she's learned from her research!",
+        "explanation": "The generated answer explicitly states that Caroline \"hasn't really shared specific step-by-step advice about getting started with adoption yet,\" which directly contradicts the standard answer that outlines the specific advice she gives (do research, find an agency or lawyer, gather documents, and prepare emotionally).",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Researching adoption agencies — it's been a dream to have a family and give a loving home to kids who need it.",
+          "That photo is stunning! So glad you bonded over our love of nature. Last Friday I went to a council meeting for adoption. It was inspiring and emotional - so many people wanted to create loving homes for children in need. It made me even more determined to adopt.",
+          "That's awesome, Melanie! How have your family been supportive during your move?",
+          "Hey Mel! Good to see you! How have you been?",
+          "I loved \"Becoming Nicole\" by Amy Ellis Nutt. It's a real inspiring true story about a trans girl and her family. It made me feel connected and gave me a lot of hope for my own path. Highly recommend it for sure!"
+        ],
+        "top_scores": [
+          0.3166,
+          0.1944,
+          0.1712,
+          0.1677,
+          0.1474
+        ],
+        "top_similarities": [
+          0.5369,
+          0.3473,
+          0.3647,
+          0.3394,
+          0.2806
+        ]
+      },
+      "raw_global": {
+        "is_correct": false,
+        "answer": "Based on what I know from our conversations, Caroline hasn't really shared specific advice about getting started with adoption — she's still in the early stages of the process herself. What she has mentioned is that she's been **researching adoption agencies** and attended a **council meeting for adoption**, which she found inspiring and emotional because she saw so many people wanting to create loving homes for kids in need.\n\nShe's also mentioned that she's planning to do this as a **single parent**, which she acknowledges will be tough but she's up for the challenge.\n\nSo from her own experience so far, the steps she's taken are:\n- Researching adoption agencies\n- Attending adoption council meetings to learn more and connect with others on the same path\n\nIf you're looking for more detailed guidance, it might be worth asking her directly — she'd probably be happy to share what she's learned so far!",
+        "explanation": "The generated answer explicitly states that Caroline hasn't shared specific advice, which contradicts the standard answer. It also fails to include key actions from the standard answer such as finding a lawyer, gathering necessary documents, and preparing emotionally, only partially matching the \"research\" and \"find an adoption agency\" points.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Researching adoption agencies — it's been a dream to have a family and give a loving home to kids who need it.",
+          "I'm thrilled to make a family for kids who need one. It'll be tough as a single parent, but I'm up for the challenge!",
+          "I'm keen on counseling or working in mental health - I'd love to support those with similar issues.",
+          "That photo is stunning! So glad you bonded over our love of nature. Last Friday I went to a council meeting for adoption. It was inspiring and emotional - so many people wanted to create loving homes for children in need. It made me even more determined to adopt.",
+          "That's awesome, Melanie! How have your family been supportive during your move?"
+        ],
+        "top_scores": [
+          0.3166,
+          0.3015,
+          0.2037,
+          0.1944,
+          0.1712
+        ],
+        "top_similarities": [
+          0.5369,
+          0.4329,
+          0.33,
+          0.3473,
+          0.3647
+        ]
+      }
+    },
+    {
+      "question": "What was the poetry reading that Caroline attended about?",
+      "standard_answer": "It was a transgender poetry reading where transgender people shared their stories.",
+      "evidence": [
+        "D17:18"
+      ],
+      "classified_categories": [
+        "Timeline",
+        "Social Graph"
+      ],
+      "current": {
+        "is_correct": false,
+        "answer": "I don't actually have any memory of a poetry reading that Caroline attended. Nothing about that has come up in our conversations before! Did you mean something else, or maybe you're thinking of a different event?",
+        "explanation": "The generated answer completely fails to provide the key information from the standard answer. Instead of stating that the poetry reading was about transgender people sharing their stories, it denies any knowledge of the event.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "The user recently spoke with a community and felt deeply motivated by the experience.",
+          "Mel participated in a charity race for mental health awareness.",
+          "Melanie has a spouse (got married recently)",
+          "User has an LGBTQ art show planned for next month (March 2026) featuring their own paintings.",
+          "Melanie is in the process of moving."
+        ],
+        "top_scores": [
+          0.2097,
+          0.2035,
+          0.1959,
+          0.1855,
+          0.185
+        ]
+      },
+      "raw_routed": {
+        "is_correct": false,
+        "answer": "I don't have any memory of Caroline attending a poetry reading — it's not something that's come up in our conversations as far as I can recall. Maybe you're thinking of a different event?",
+        "explanation": "The generated answer fails to provide the key information from the standard answer. Instead of stating that it was a transgender poetry reading where transgender people shared their stories, the generated answer incorrectly claims to have no memory of the event.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "That charity race sounds great, Mel! Making a difference & raising awareness for mental health is super rewarding - I'm really proud of you for taking part!",
+          "Wow, that's great! It sure shows how important friendship and compassion are. It's made me appreciate how lucky I am to have my friends and family helping with my transition. They make all the difference. We even had a picnic last week!",
+          "That photo is stunning! So glad you bonded over our love of nature. Last Friday I went to a council meeting for adoption. It was inspiring and emotional - so many people wanted to create loving homes for children in need. It made me even more determined to adopt.",
+          "I'm keen on counseling or working in mental health - I'd love to support those with similar issues.",
+          "Since we last spoke, some big things have happened. Last week I went to an LGBTQ+ pride parade. Everyone was so happy and it made me feel like I belonged. It showed me how much our community has grown, it was amazing!"
+        ],
+        "top_scores": [
+          0.1344,
+          0.1238,
+          0.119,
+          0.105,
+          0.1048
+        ],
+        "top_similarities": [
+          0.2452,
+          0.2771,
+          0.2607,
+          0.2305,
+          0.269
+        ]
+      },
+      "raw_global": {
+        "is_correct": false,
+        "answer": "I don't have any memory of Caroline attending a poetry reading — it's not something that's come up in our conversations as far as I can recall. Maybe you're thinking of a different event? She's mentioned things like a pride parade, an adoption council meeting, and an LGBTQ+ counseling workshop, but no poetry reading that I know of!",
+        "explanation": "The generated answer completely fails to provide the key information from the standard answer. Instead of stating that Caroline attended a transgender poetry reading where people shared their stories, it denies having any memory of the event occurring at all.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "That charity race sounds great, Mel! Making a difference & raising awareness for mental health is super rewarding - I'm really proud of you for taking part!",
+          "Wow, that's great! It sure shows how important friendship and compassion are. It's made me appreciate how lucky I am to have my friends and family helping with my transition. They make all the difference. We even had a picnic last week!",
+          "That photo is stunning! So glad you bonded over our love of nature. Last Friday I went to a council meeting for adoption. It was inspiring and emotional - so many people wanted to create loving homes for children in need. It made me even more determined to adopt.",
+          "I loved \"Becoming Nicole\" by Amy Ellis Nutt. It's a real inspiring true story about a trans girl and her family. It made me feel connected and gave me a lot of hope for my own path. Highly recommend it for sure!",
+          "I'm keen on counseling or working in mental health - I'd love to support those with similar issues."
+        ],
+        "top_scores": [
+          0.1344,
+          0.1238,
+          0.119,
+          0.1081,
+          0.105
+        ],
+        "top_similarities": [
+          0.2452,
+          0.2771,
+          0.2607,
+          0.2403,
+          0.2305
+        ]
+      }
+    },
+    {
+      "question": "Did Caroline make the black and white bowl in the photo?",
+      "standard_answer": "No",
+      "evidence": [
+        "D5:8"
+      ],
+      "classified_categories": [
+        "Timeline",
+        "Knowledge Base"
+      ],
+      "current": {
+        "is_correct": true,
+        "answer": "I don't have any information about Caroline making a black and white bowl. The pottery I know about is from when Mel took their kids to a pottery workshop recently — but that was Mel and the kids, not Caroline. Sorry I can't help with that one!",
+        "explanation": "The generated answer correctly conveys that Caroline did not make the black and white bowl by explicitly stating \"not Caroline\" and providing the correct context, which aligns perfectly with the standard answer \"No\".",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Melanie has a spouse (got married recently)",
+          "Melanie is in the process of moving.",
+          "Mel took its kids to a pottery workshop on 2026-01-30 (last Friday); they all made their own pots and found it fun and therapeutic.",
+          "User has an LGBTQ art show planned for next month (March 2026) featuring their own paintings.",
+          "Caroline and Mel have a friendly, casual relationship where they greet each other warmly."
+        ],
+        "top_scores": [
+          0.3495,
+          0.2784,
+          0.2282,
+          0.2065,
+          0.2021
+        ]
+      },
+      "raw_routed": {
+        "is_correct": false,
+        "answer": "I don't actually know the answer to that! The memory I have is someone asking you if you made it, but I don't have your response. So did you? 😊",
+        "explanation": "The generated answer fails to provide the key information from the standard answer. Instead of stating \"No,\" it explicitly says it does not know the answer.",
+        "answer_anchor_rank": 12,
+        "top_contexts": [
+          "That bowl is gorgeous! The black and white design looks so fancy. Did you make it?",
+          "That photo is stunning! So glad you bonded over our love of nature. Last Friday I went to a council meeting for adoption. It was inspiring and emotional - so many people wanted to create loving homes for children in need. It made me even more determined to adopt.",
+          "That charity race sounds great, Mel! Making a difference & raising awareness for mental health is super rewarding - I'm really proud of you for taking part!",
+          "Wow, nice pic! You both looked amazing. One special memory for me was this pride parade I went to a few weeks ago.",
+          "Aww, that's so sweet! That cup is so cute. It's awesome to see how kids show their personalities through art. What other creative projects do you do with them, besides pottery?"
+        ],
+        "top_scores": [
+          0.3555,
+          0.2399,
+          0.1685,
+          0.168,
+          0.1416
+        ],
+        "top_similarities": [
+          0.68,
+          0.3581,
+          0.2702,
+          0.3424,
+          0.4014
+        ]
+      },
+      "raw_global": {
+        "is_correct": true,
+        "answer": "No, Caroline didn't make it — a friend made that hand-painted bowl for her 18th birthday, about ten years ago. She treasures it because of the pattern and colors, and it reminds her of art and self-expression.",
+        "explanation": "The generated answer explicitly states \"No,\" which directly matches the key information in the standard answer. The additional context provided does not contradict the core factual answer.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "That bowl is gorgeous! The black and white design looks so fancy. Did you make it?",
+          "That photo is stunning! So glad you bonded over our love of nature. Last Friday I went to a council meeting for adoption. It was inspiring and emotional - so many people wanted to create loving homes for children in need. It made me even more determined to adopt.",
+          "Hey Mel! Good to see you! How have you been?",
+          "Thanks, Melanie! That's really sweet. Is this your own painting?",
+          "Yep, Melanie! I've got some other stuff with sentimental value, like my hand-painted bowl. A friend made it for my 18th birthday ten years ago. The pattern and colors are awesome-- it reminds me of art and self-expression."
+        ],
+        "top_scores": [
+          0.3555,
+          0.2399,
+          0.2178,
+          0.1936,
+          0.192
+        ],
+        "top_similarities": [
+          0.68,
+          0.3581,
+          0.3676,
+          0.4694,
+          0.4407
+        ]
+      }
+    },
+    {
+      "question": "When is Caroline going to the transgender conference?",
+      "standard_answer": "February 2026",
+      "evidence": [
+        "D5:13"
+      ],
+      "classified_categories": [
+        "Timeline",
+        "Social Graph"
+      ],
+      "current": {
+        "is_correct": false,
+        "answer": "Based on what I remember, you're planning to attend the transgender conference in January 2026. Are you starting to prepare for it?",
+        "explanation": "The generated answer states January 2026, which factually contradicts the standard answer of February 2026.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "The user plans to attend a transgender conference in January 2026.",
+          "The user participated in a school event around January 13, 2026, where they spoke about their transgender journey and promoted LGBTQ community engagement.",
+          "Melanie has a spouse (got married recently)",
+          "User has an LGBTQ art show planned for next month (March 2026) featuring their own paintings.",
+          "Melanie is in the process of moving."
+        ],
+        "top_scores": [
+          0.5793,
+          0.3823,
+          0.372,
+          0.3532,
+          0.3265
+        ]
+      },
+      "raw_routed": {
+        "is_correct": false,
+        "answer": "Based on what I recall, you mentioned going to a transgender conference \"this month\" — but I don't have a specific date beyond that. Do you remember exactly when it is?",
+        "explanation": "The generated answer fails to provide the specific date (February 2026) and incorrectly states that it does not have a specific date beyond \"this month\".",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Thanks Mel! I'm going to a transgender conference this month. I'm so excited to meet other people in the community and learn more about advocacy. It's gonna be great!",
+          "Wow, that's great! It sure shows how important friendship and compassion are. It's made me appreciate how lucky I am to have my friends and family helping with my transition. They make all the difference. We even had a picnic last week!",
+          "Hey Mel! A lot's happened since we last chatted - I just joined a new LGBTQ activist group last Tues. I'm meeting so many cool people who are as passionate as I am about rights and community support. I'm giving my voice and making a real difference, plus it's fulfilling in so many ways. It's just great, you know?",
+          "Hey Mel! Good to see you! How have you been?",
+          "Since we last spoke, some big things have happened. Last week I went to an LGBTQ+ pride parade. Everyone was so happy and it made me feel like I belonged. It showed me how much our community has grown, it was amazing!"
+        ],
+        "top_scores": [
+          0.2505,
+          0.2364,
+          0.2279,
+          0.2267,
+          0.2131
+        ],
+        "top_similarities": [
+          0.5034,
+          0.3555,
+          0.3395,
+          0.3675,
+          0.3636
+        ]
+      },
+      "raw_global": {
+        "is_correct": false,
+        "answer": "Based on what Caroline mentioned, she said she was going to a transgender conference \"this month\" — but unfortunately there's no specific date mentioned beyond that!",
+        "explanation": "The generated answer fails to provide the specific date (February 2026) and incorrectly states that no specific date was mentioned beyond \"this month\".",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Thanks Mel! I'm going to a transgender conference this month. I'm so excited to meet other people in the community and learn more about advocacy. It's gonna be great!",
+          "Wow, that's great! It sure shows how important friendship and compassion are. It's made me appreciate how lucky I am to have my friends and family helping with my transition. They make all the difference. We even had a picnic last week!",
+          "Hey Mel! A lot's happened since we last chatted - I just joined a new LGBTQ activist group last Tues. I'm meeting so many cool people who are as passionate as I am about rights and community support. I'm giving my voice and making a real difference, plus it's fulfilling in so many ways. It's just great, you know?",
+          "Hey Mel! Good to see you! How have you been?",
+          "Since we last spoke, some big things have happened. Last week I went to an LGBTQ+ pride parade. Everyone was so happy and it made me feel like I belonged. It showed me how much our community has grown, it was amazing!"
+        ],
+        "top_scores": [
+          0.2505,
+          0.2364,
+          0.2279,
+          0.2267,
+          0.2131
+        ],
+        "top_similarities": [
+          0.5034,
+          0.3555,
+          0.3395,
+          0.3675,
+          0.3636
+        ]
+      }
+    },
+    {
+      "question": "When did Caroline attend a pride parade in August?",
+      "standard_answer": "The Friday before 20 February 2026",
+      "evidence": [
+        "D11:4"
+      ],
+      "classified_categories": [
+        "Timeline",
+        "Knowledge Base"
+      ],
+      "current": {
+        "is_correct": false,
+        "answer": "Based on what I know, there's no record of attending a pride parade in August. The pride events I remember you going to were in late January 2026 — you attended one around January 19-25 with the transgender teen you mentor, and there was another one around January 31-February 1 that you missed but were still really inspired by. \n\nMaybe you're thinking of a different time, or mixing it up with the January events?",
+        "explanation": "The generated answer contradicts the standard answer by claiming there is no record of attending a pride parade in August, whereas the standard answer explicitly states she attended one on \"The Friday before 20 February 2026\".",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "The user and the transgender teen they mentor attended an LGBTQ+ pride parade/event together in January 2026 (approximately January 19-25, 2026).",
+          "The user has a strong connection to pride events and is a passionate supporter of equality, inclusivity, and the LGBTQ+ community. They attended an LGBTQ+ pride parade around January 19-25, 2026, describing it as an amazing experience where they felt a strong sense of belonging and were moved by the community's growth. Later, around January 31 - February 1, 2026, their city held another pride parade which they missed, but they were deeply inspired by seeing people marching through the streets with flags and signs celebrating love and diversity.",
+          "The user complimented a picture showing two people and shared that attending a pride parade a few weeks ago (around late January 2026) was a special memory for them. The AI responded positively and asked if the user joined in the parade.",
+          "User has an LGBTQ art show planned for next month (March 2026) featuring their own paintings.",
+          "The user participated in a school event around January 13, 2026, where they spoke about their transgender journey and promoted LGBTQ community engagement."
+        ],
+        "top_scores": [
+          0.3713,
+          0.3518,
+          0.3197,
+          0.3142,
+          0.3075
+        ]
+      },
+      "raw_routed": {
+        "is_correct": false,
+        "answer": "I don't actually have a specific date in August for when you attended a pride parade. The memories I have mention you went to one, but there's no exact date tied to it. Do you remember when it was?",
+        "explanation": "The generated answer explicitly states that it does not have the specific date for the pride parade, completely missing the key information provided in the standard answer (\"The Friday before 20 February 2026\").",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Since we last spoke, some big things have happened. Last week I went to an LGBTQ+ pride parade. Everyone was so happy and it made me feel like I belonged. It showed me how much our community has grown, it was amazing!",
+          "Wow, nice pic! You both looked amazing. One special memory for me was this pride parade I went to a few weeks ago.",
+          "Wow, that's great! It sure shows how important friendship and compassion are. It's made me appreciate how lucky I am to have my friends and family helping with my transition. They make all the difference. We even had a picnic last week!",
+          "Hey Mel! A lot's happened since we last chatted - I just joined a new LGBTQ activist group last Tues. I'm meeting so many cool people who are as passionate as I am about rights and community support. I'm giving my voice and making a real difference, plus it's fulfilling in so many ways. It's just great, you know?",
+          "That charity race sounds great, Mel! Making a difference & raising awareness for mental health is super rewarding - I'm really proud of you for taking part!"
+        ],
+        "top_scores": [
+          0.2937,
+          0.2934,
+          0.1741,
+          0.1607,
+          0.145
+        ],
+        "top_similarities": [
+          0.4096,
+          0.42,
+          0.2968,
+          0.2785,
+          0.244
+        ]
+      },
+      "raw_global": {
+        "is_correct": false,
+        "answer": "I don't have a specific memory of a pride parade in August. The memories I have mention pride events, but none of them specify a date in August. Sorry I can't help with that detail!",
+        "explanation": "The generated answer fails to provide the date specified in the standard answer and incorrectly claims it does not have the information.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Since we last spoke, some big things have happened. Last week I went to an LGBTQ+ pride parade. Everyone was so happy and it made me feel like I belonged. It showed me how much our community has grown, it was amazing!",
+          "Wow, nice pic! You both looked amazing. One special memory for me was this pride parade I went to a few weeks ago.",
+          "Wow, that's great! It sure shows how important friendship and compassion are. It's made me appreciate how lucky I am to have my friends and family helping with my transition. They make all the difference. We even had a picnic last week!",
+          "Hey Mel! A lot's happened since we last chatted - I just joined a new LGBTQ activist group last Tues. I'm meeting so many cool people who are as passionate as I am about rights and community support. I'm giving my voice and making a real difference, plus it's fulfilling in so many ways. It's just great, you know?",
+          "That charity race sounds great, Mel! Making a difference & raising awareness for mental health is super rewarding - I'm really proud of you for taking part!"
+        ],
+        "top_scores": [
+          0.2937,
+          0.2934,
+          0.1741,
+          0.1607,
+          0.145
+        ],
+        "top_similarities": [
+          0.4096,
+          0.42,
+          0.2968,
+          0.2785,
+          0.244
+        ]
+      }
+    },
+    {
+      "question": "What does Caroline's drawing symbolize for her?",
+      "standard_answer": "Freedom and being true to herself.",
+      "evidence": [
+        "D17:23"
+      ],
+      "classified_categories": [
+        "Core Self",
+        "Knowledge Base"
+      ],
+      "current": {
+        "is_correct": false,
+        "answer": "Hey Caroline, I don't actually have any memory of you sharing a specific drawing or talking about what it symbolizes for you. I'd love to hear about it though — care to tell me?",
+        "explanation": "The generated answer completely fails to provide the information requested in the standard answer. Instead of stating that the drawing symbolizes freedom and being true to herself, it incorrectly claims to have no memory of the drawing and asks the user to explain it.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "The user's name is Caroline.",
+          "Melanie enjoys or has skill in painting",
+          "The user is going through a life transition and values friendship and compassion deeply.",
+          "Melanie got married (as of around January 2026)",
+          "The user refers to the AI as \"Melanie\""
+        ],
+        "top_scores": [
+          0.4986,
+          0.3656,
+          0.312,
+          0.2706,
+          0.2341
+        ]
+      },
+      "raw_routed": {
+        "is_correct": false,
+        "answer": "Hey! I don't actually have any specific memory about a drawing and what it symbolizes for you. The closest thing I can think of is that hand-painted bowl a friend made for your 18th birthday — you mentioned it reminds you of art and self-expression.\n\nIf you're talking about something else, I'd love to hear about it! What drawing are you thinking of, and what does it mean to you?",
+        "explanation": "The generated answer fails to provide the key information from the standard answer. Instead of stating that the drawing symbolizes \"freedom and being true to herself,\" it claims to have no memory of the drawing and asks the user for clarification.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Thanks, Melanie! This necklace is super special to me - a gift from my grandma in my home country, Sweden. She gave it to me when I was young, and it stands for love, faith and strength. It's like a reminder of my roots and all the love and support I get from my family.",
+          "Wow, that's great! It sure shows how important friendship and compassion are. It's made me appreciate how lucky I am to have my friends and family helping with my transition. They make all the difference. We even had a picnic last week!",
+          "Hey Mel! Good to see you! How have you been?",
+          "The support group has made me feel accepted and given me courage to embrace myself.",
+          "That charity race sounds great, Mel! Making a difference & raising awareness for mental health is super rewarding - I'm really proud of you for taking part!"
+        ],
+        "top_scores": [
+          0.2303,
+          0.1686,
+          0.1464,
+          0.1361,
+          0.1335
+        ],
+        "top_similarities": [
+          0.3413,
+          0.2853,
+          0.2856,
+          0.2787,
+          0.2313
+        ]
+      },
+      "raw_global": {
+        "is_correct": false,
+        "answer": "I don't actually have specific details about what Caroline's drawing or painting symbolizes for her. From what I know, she did share a painting for an art show, and she has a hand-painted bowl from a friend that reminds her of art and self-expression — but I don't have information on the deeper meaning or symbolism behind her own artwork.\n\nIt'd be worth asking her directly about it! She's really into painting and self-expression, so I'm sure she'd have thoughtful things to say about what her art means to her.",
+        "explanation": "The generated answer explicitly states that it does not have the information regarding what Caroline's drawing symbolizes, completely missing the key points of \"freedom\" and \"being true to herself\" found in the standard answer.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Thanks, Melanie! This necklace is super special to me - a gift from my grandma in my home country, Sweden. She gave it to me when I was young, and it stands for love, faith and strength. It's like a reminder of my roots and all the love and support I get from my family.",
+          "That's awesome, Melanie! How have your family been supportive during your move?",
+          "Wow, that's great! It sure shows how important friendship and compassion are. It's made me appreciate how lucky I am to have my friends and family helping with my transition. They make all the difference. We even had a picnic last week!",
+          "Hey Mel! Good to see you! How have you been?",
+          "The support group has made me feel accepted and given me courage to embrace myself."
+        ],
+        "top_scores": [
+          0.2303,
+          0.1764,
+          0.1686,
+          0.1464,
+          0.1361
+        ],
+        "top_similarities": [
+          0.3413,
+          0.3168,
+          0.2853,
+          0.2856,
+          0.2787
+        ]
+      }
+    },
+    {
+      "question": "What did Caroline and her family do while camping?",
+      "standard_answer": "",
+      "evidence": [
+        "D4:8"
+      ],
+      "classified_categories": [
+        "Timeline",
+        "Knowledge Base"
+      ],
+      "current": {
+        "is_correct": false,
+        "answer": "Based on what I remember, it was actually your friend Mel who went on a family camping trip, not you! During their trip, Mel's family explored nature, roasted marshmallows around a campfire, and went on a hike with amazing views. Mel mentioned the two younger kids really love nature, and the whole experience was really special for them. 😊\n\nDid you go camping recently too, or were you thinking of Mel's trip?",
+        "explanation": "The generated answer completely fails to answer the question about Caroline, instead hallucinating details about a different person named \"Mel\". It does not contain or match any key information from the blank standard answer.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Mel recently went on a family camping trip involving nature exploration, campfire marshmallow roasting, and a hike.",
+          "User has a friend named Mel who went on a family camping trip recently.",
+          "Melanie has a spouse (got married recently)",
+          "Caroline and Mel have a friendly, casual relationship where they greet each other warmly.",
+          "The user is casually chatting with their friend named Mel about family activities. Mel shared that their family enjoys hiking in the mountains and exploring forests as a way to connect with nature and each other. Recently, they went on a family camping trip where they explored nature, roasted marshmallows around a campfire, and went on a hike with amazing views. Mel noted that the two younger kids love nature, and expressed that these family moments are very special, memorable, and are some of their favorite memories that bring the family together and happiness. Mel also appreciated the user sharing in their joy."
+        ],
+        "top_scores": [
+          0.5004,
+          0.474,
+          0.3438,
+          0.3433,
+          0.3128
+        ]
+      },
+      "raw_routed": {
+        "is_correct": true,
+        "answer": "I don't actually have any memory of Caroline going camping with her family — none of our conversations mentioned that! Maybe you're thinking of something else, or it might be from a conversation I don't have access to. Do you remember any other details that might help?",
+        "explanation": "The standard answer is blank, indicating there is no available information about what Caroline and her family did while camping. The generated answer correctly reflects this lack of information by stating it has no memory of the event.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Sounds great, Mel. Glad you made some new family mems. How was it? Anything fun?",
+          "That's awesome, Melanie! How have your family been supportive during your move?",
+          "Wow, that's great! It sure shows how important friendship and compassion are. It's made me appreciate how lucky I am to have my friends and family helping with my transition. They make all the difference. We even had a picnic last week!",
+          "That photo is stunning! So glad you bonded over our love of nature. Last Friday I went to a council meeting for adoption. It was inspiring and emotional - so many people wanted to create loving homes for children in need. It made me even more determined to adopt.",
+          "Researching adoption agencies — it's been a dream to have a family and give a loving home to kids who need it."
+        ],
+        "top_scores": [
+          0.2406,
+          0.2287,
+          0.1679,
+          0.1295,
+          0.1156
+        ],
+        "top_similarities": [
+          0.3803,
+          0.3524,
+          0.279,
+          0.245,
+          0.2294
+        ]
+      },
+      "raw_global": {
+        "is_correct": true,
+        "answer": "Honestly, I don't have any memory of you mentioning a camping trip with your family! I remember you talked about a picnic with family and friends, and lots of other meaningful moments — but nothing about camping specifically. Did I miss something, or is this a new story you haven't shared yet? I'd love to hear about it if so!",
+        "explanation": "The standard answer is blank, indicating there is no available information about what Caroline and her family did while camping. The generated answer correctly reflects this absence of information by stating it does not recall a camping trip being mentioned.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "Sounds great, Mel. Glad you made some new family mems. How was it? Anything fun?",
+          "That's awesome, Melanie! How have your family been supportive during your move?",
+          "Hey Mel! Good to see you! How have you been?",
+          "Wow, that's great! It sure shows how important friendship and compassion are. It's made me appreciate how lucky I am to have my friends and family helping with my transition. They make all the difference. We even had a picnic last week!",
+          "That photo is stunning! So glad you bonded over our love of nature. Last Friday I went to a council meeting for adoption. It was inspiring and emotional - so many people wanted to create loving homes for children in need. It made me even more determined to adopt."
+        ],
+        "top_scores": [
+          0.2406,
+          0.2287,
+          0.1837,
+          0.1679,
+          0.1295
+        ],
+        "top_similarities": [
+          0.3803,
+          0.3524,
+          0.3154,
+          0.279,
+          0.245
+        ]
+      }
+    },
+    {
+      "question": "What does Caroline say running has been great for?",
+      "standard_answer": "",
+      "evidence": [
+        "D7:24"
+      ],
+      "classified_categories": [
+        "Core Self",
+        "Knowledge Base"
+      ],
+      "current": {
+        "is_correct": false,
+        "answer": "Based on what you've shared before, you mentioned that running can boost mood! 🏃‍♀️",
+        "explanation": "The standard answer is empty, meaning there is no key information provided to verify. The generated answer hallucinates a specific detail (\"boost mood\") that cannot be confirmed by the blank standard answer.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "The user's name is Caroline.",
+          "Caroline greeted Mel (the AI) in a friendly manner. Mel responded warmly, mentioning being busy with kids and work, and asked Caroline what's new.",
+          "Melanie enjoys or has skill in painting",
+          "The user praised Mel (the AI) for participating in a charity race that raises awareness for mental health. Mel responded that the event was thought-provoking and shared a personal insight about the importance of self-care, describing it as a journey. Mel expressed that taking care of themselves enables them to better care for their family.",
+          "The user is going through a life transition and values friendship and compassion deeply."
+        ],
+        "top_scores": [
+          0.4909,
+          0.2399,
+          0.2319,
+          0.2114,
+          0.2086
+        ]
+      },
+      "raw_routed": {
+        "is_correct": false,
+        "answer": "Based on what Caroline has said, running can really **boost your mood**! She also mentioned a charity race being great for raising awareness for mental health.",
+        "explanation": "The standard answer provided is blank, meaning there is no key information to verify against. Therefore, the generated answer cannot be evaluated as correct based on the standard answer.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "That charity race sounds great, Mel! Making a difference & raising awareness for mental health is super rewarding - I'm really proud of you for taking part!",
+          "Cool, Melanie! Running can really boost your mood. Keep it up!",
+          "Hey Mel! Good to see you! How have you been?",
+          "Love that purple color! For walking or running?",
+          "The support group has made me feel accepted and given me courage to embrace myself."
+        ],
+        "top_scores": [
+          0.2716,
+          0.2442,
+          0.2355,
+          0.2245,
+          0.1782
+        ],
+        "top_similarities": [
+          0.3231,
+          0.4656,
+          0.3525,
+          0.4499,
+          0.3002
+        ]
+      },
+      "raw_global": {
+        "is_correct": false,
+        "answer": "Based on what Caroline has shared, running has been great for boosting your mood!",
+        "explanation": "The standard answer provided is blank, meaning there is no key information to verify against. The generated answer introduces specific details (\"boosting your mood\") that cannot be confirmed by the empty standard answer.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "That charity race sounds great, Mel! Making a difference & raising awareness for mental health is super rewarding - I'm really proud of you for taking part!",
+          "Cool, Melanie! Running can really boost your mood. Keep it up!",
+          "Hey Mel! Good to see you! How have you been?",
+          "Love that purple color! For walking or running?",
+          "The support group has made me feel accepted and given me courage to embrace myself."
+        ],
+        "top_scores": [
+          0.2716,
+          0.2442,
+          0.2355,
+          0.2245,
+          0.1782
+        ],
+        "top_similarities": [
+          0.3231,
+          0.4656,
+          0.3525,
+          0.4499,
+          0.3002
+        ]
+      }
+    },
+    {
+      "question": "How did Caroline feel about her family after the accident?",
+      "standard_answer": "",
+      "evidence": [
+        "D18:5"
+      ],
+      "classified_categories": [
+        "Core Self",
+        "Timeline"
+      ],
+      "current": {
+        "is_correct": false,
+        "answer": "Hey, I don't actually have any memory of an accident in what I know about you. I wouldn't want to guess or make something up about something that important.\n\nIf you want to talk about it, though, I'm here to listen. 💛",
+        "explanation": "The standard answer is empty, meaning there is no key information provided. The generated answer fails to provide any factual information about how Caroline felt about her family after the accident, instead offering a conversational deflection. Since it contains no key information, it cannot be evaluated as correct.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "The user's name is Caroline.",
+          "Melanie got married (as of around January 2026)",
+          "Caroline greeted Mel (the AI) in a friendly manner. Mel responded warmly, mentioning being busy with kids and work, and asked Caroline what's new.",
+          "Melanie is in the process of moving.",
+          "The user is going through a life transition and values friendship and compassion deeply."
+        ],
+        "top_scores": [
+          0.5176,
+          0.3676,
+          0.3103,
+          0.2891,
+          0.2585
+        ]
+      },
+      "raw_routed": {
+        "is_correct": true,
+        "answer": "I don't have any information about an accident in our conversations or memories. I wouldn't want to guess or make something up about something that important. Could you let me know what you're referring to? I'm happy to talk about it once I have more context!",
+        "explanation": "The standard answer is empty, indicating there is no information provided to answer the question. The generated answer correctly identifies this lack of context and declines to guess.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "That's awesome, Melanie! How have your family been supportive during your move?",
+          "Wow, that's great! It sure shows how important friendship and compassion are. It's made me appreciate how lucky I am to have my friends and family helping with my transition. They make all the difference. We even had a picnic last week!",
+          "Sounds great, Mel. Glad you made some new family mems. How was it? Anything fun?",
+          "Hey Mel! Good to see you! How have you been?",
+          "The support group has made me feel accepted and given me courage to embrace myself."
+        ],
+        "top_scores": [
+          0.2935,
+          0.2305,
+          0.217,
+          0.1947,
+          0.1739
+        ],
+        "top_similarities": [
+          0.3912,
+          0.316,
+          0.3432,
+          0.3168,
+          0.2897
+        ]
+      },
+      "raw_global": {
+        "is_correct": true,
+        "answer": "I don't have any information about Caroline experiencing an accident. The memories I have don't mention anything like that — they cover things like her move, family support during her transition, a pride parade, adoption plans, and her support group, but no accident comes up in our conversations.\n\nDid you maybe mean something else, or is this from a conversation I don't have context for?",
+        "explanation": "The standard answer is blank/empty, meaning there is no key information about Caroline's feelings after an accident. The generated answer correctly indicates that no information about an accident exists in the provided memories, which aligns with the empty standard answer.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "That's awesome, Melanie! How have your family been supportive during your move?",
+          "Wow, that's great! It sure shows how important friendship and compassion are. It's made me appreciate how lucky I am to have my friends and family helping with my transition. They make all the difference. We even had a picnic last week!",
+          "Sounds great, Mel. Glad you made some new family mems. How was it? Anything fun?",
+          "Hey Mel! Good to see you! How have you been?",
+          "The support group has made me feel accepted and given me courage to embrace myself."
+        ],
+        "top_scores": [
+          0.2935,
+          0.2305,
+          0.217,
+          0.1947,
+          0.1739
+        ],
+        "top_similarities": [
+          0.3912,
+          0.316,
+          0.3432,
+          0.3168,
+          0.2897
+        ]
+      }
+    },
+    {
+      "question": "What does Caroline love most about camping with her family?",
+      "standard_answer": "",
+      "evidence": [
+        "D18:21"
+      ],
+      "classified_categories": [
+        "Core Self",
+        "Social Graph"
+      ],
+      "current": {
+        "is_correct": false,
+        "answer": "Hmm, I actually don't have any memories of you going camping with your family! The camping trip I remember is the one Mel told you about — the one with the marshmallows, the hike with amazing views, and their two younger kids loving nature.\n\nHave you been on a camping trip recently that I missed? I'd love to hear about it if you have! 🏕️",
+        "explanation": "The standard answer is blank, meaning there is no key information for the generated answer to contain. The generated answer fails to provide the required information.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "The user is casually chatting with their friend named Mel about family activities. Mel shared that their family enjoys hiking in the mountains and exploring forests as a way to connect with nature and each other. Recently, they went on a family camping trip where they explored nature, roasted marshmallows around a campfire, and went on a hike with amazing views. Mel noted that the two younger kids love nature, and expressed that these family moments are very special, memorable, and are some of their favorite memories that bring the family together and happiness. Mel also appreciated the user sharing in their joy.",
+          "The user's name is Caroline.",
+          "User has a friend named Mel who went on a family camping trip recently.",
+          "Caroline and Mel have a friendly, casual relationship where they greet each other warmly.",
+          "Melanie has a spouse (got married recently)"
+        ],
+        "top_scores": [
+          0.4991,
+          0.4025,
+          0.3994,
+          0.3649,
+          0.3349
+        ]
+      },
+      "raw_routed": {
+        "is_correct": true,
+        "answer": "I don't actually have any memories about camping with family, so I can't answer that one! If you've shared that with me before, it might not have stuck. I'd love to hear about it though — what do you love most about camping with your family?",
+        "explanation": "The standard answer is empty, meaning there is no provided information about what Caroline loves most about camping. The generated answer correctly reflects this lack of information by stating it does not have any memories or information to answer the question.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "That's awesome, Melanie! How have your family been supportive during your move?",
+          "Sounds great, Mel. Glad you made some new family mems. How was it? Anything fun?",
+          "That photo is stunning! So glad you bonded over our love of nature. Last Friday I went to a council meeting for adoption. It was inspiring and emotional - so many people wanted to create loving homes for children in need. It made me even more determined to adopt.",
+          "Wow, that's great! It sure shows how important friendship and compassion are. It's made me appreciate how lucky I am to have my friends and family helping with my transition. They make all the difference. We even had a picnic last week!",
+          "Hey Mel! Good to see you! How have you been?"
+        ],
+        "top_scores": [
+          0.2718,
+          0.2606,
+          0.2298,
+          0.2105,
+          0.2063
+        ],
+        "top_similarities": [
+          0.3698,
+          0.3686,
+          0.3206,
+          0.2978,
+          0.3226
+        ]
+      },
+      "raw_global": {
+        "is_correct": true,
+        "answer": "I don't actually have any memories about Caroline going camping with family! The memories I have mention things like family support during a move, a picnic, and a necklace from her grandma in Sweden — but nothing about camping specifically.\n\nIf this is something you'd like to share about, I'd love to hear about it!",
+        "explanation": "The standard answer is empty, indicating the information is not available in the context. The generated answer correctly identifies that there are no memories or information about Caroline going camping with her family.",
+        "answer_anchor_rank": null,
+        "top_contexts": [
+          "That's awesome, Melanie! How have your family been supportive during your move?",
+          "Sounds great, Mel. Glad you made some new family mems. How was it? Anything fun?",
+          "That photo is stunning! So glad you bonded over our love of nature. Last Friday I went to a council meeting for adoption. It was inspiring and emotional - so many people wanted to create loving homes for children in need. It made me even more determined to adopt.",
+          "Wow, that's great! It sure shows how important friendship and compassion are. It's made me appreciate how lucky I am to have my friends and family helping with my transition. They make all the difference. We even had a picnic last week!",
+          "Hey Mel! Good to see you! How have you been?"
+        ],
+        "top_scores": [
+          0.2718,
+          0.2606,
+          0.2298,
+          0.2105,
+          0.2063
+        ],
+        "top_similarities": [
+          0.3698,
+          0.3686,
+          0.3206,
+          0.2978,
+          0.3226
+        ]
+      }
+    }
+  ]
+}

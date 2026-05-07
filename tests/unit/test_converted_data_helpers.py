@@ -36,8 +36,10 @@ def test_extract_keywords_preserves_order_and_filters_stopwords():
         limit=5,
     )
 
-    assert keywords[:4] == ["what", "field", "caroline", "interested"]
+    assert keywords[:5] == ["field", "caroline", "interested", "counseling", "mental"]
     assert "answer" not in keywords
+    assert "what" not in keywords
+    assert "is" not in keywords
 
 
 def test_first_retrieved_rank_finds_db_memory_inside_context():
@@ -57,4 +59,3 @@ def test_first_retrieved_rank_returns_none_without_match():
         db_memories=[{"text": "The user is interested in counseling"}],
         contexts=["The user likes hiking."],
     ) is None
-

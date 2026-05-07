@@ -64,10 +64,19 @@ class AnthropicProvider(BaseLLMProvider):
         categories: List[Dict],
         assistant_response: str = "",
         reference_time: str | None = None,
+        target_category_name: str | None = None,
     ) -> Dict:
         """提取记忆意图"""
         logger.debug(f"调用 Anthropic 记忆提取: text_length={len(text)}, categories_count={len(categories)}")
-        system_prompt = build_memory_extraction_prompt(categories, reference_time=reference_time)
+        logger.debug(
+            "Anthropic category extraction target: %s",
+            target_category_name,
+        )
+        system_prompt = build_memory_extraction_prompt(
+            categories,
+            reference_time=reference_time,
+            target_category_name=target_category_name,
+        )
 
         user_content = f"[User Input]\n{text}"
         if assistant_response:

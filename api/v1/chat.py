@@ -138,7 +138,7 @@ async def chat(
                     user_prompt_template=user.user_prompt_template if user else None,
                     agent_persona_template=user.agent_persona_template if user else None,
                     pending_chats=session_state.pending_chats,
-                    top_k=5,
+                    top_k=10,
                 ):
                     full_answer.append(chunk)
                     yield json.dumps({"type": "content", "text": chunk}, ensure_ascii=False) + "\n"

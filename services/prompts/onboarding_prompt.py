@@ -6,7 +6,7 @@ You are a top-tier human behavior analyst and AI memory architect. Your task is 
 # System Context
 Our memory system already has 4 built-in fixed categories. Please **DO NOT** create categories that overlap with them:
 1. [Core Self]: User's static profile, preferences, values, and long-term goals.
-2. [Timeline]: Specific micro-events bound to particular times (past) or concrete to-do plans (future).
+2. [Episodic Memory]: Concrete situated memories tied to conversation time, including when, who, where, what happened, activities, and object-symbol facts.
 3. [Knowledge Base]: Objective professional knowledge, study notes, general concepts (no time attributes).
 4. [Social Graph]: Interpersonal connections, information about friends, family, and colleagues.
 

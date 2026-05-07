@@ -1,0 +1,84 @@
+{
+  "summary": {
+    "correct_count": 5,
+    "total": 5,
+    "accuracy": 1.0
+  },
+  "results": [
+    {
+      "question": "When did Caroline go to the LGBTQ support group?",
+      "standard_answer": "4 January 2026",
+      "generated_answer": "Caroline went to the LGBTQ support group on January 4, 2026.",
+      "is_correct": true,
+      "correctness_explanation": "The generated answer accurately states the date as January 4, 2026, which is factually identical to the standard answer's \"4 January 2026\", differing only in acceptable phrasing and date formatting.",
+      "resolved_layer": "category+resource",
+      "top_contexts": [
+        "The user joined a new LGBTQ activist group on Tuesday, February 3, 2026.",
+        "User has an LGBTQ art show planned for next month (March 2026) featuring their own paintings.",
+        "Melanie has a spouse (got married recently)",
+        "The user attended an LGBTQ support group on 2026-01-04 (yesterday) and found the experience powerful.",
+        "The user and the transgender teen they mentor attended an LGBTQ+ pride parade/event together in January 2026 (approximately January 19-25, 2026)."
+      ]
+    },
+    {
+      "question": "When did Caroline meet up with her friends, family, and mentors?",
+      "standard_answer": "The week before 20 January 2026",
+      "generated_answer": "Based on what I remember, you met up with your friends, family, and/or mentors around January 13, 2026!",
+      "is_correct": true,
+      "correctness_explanation": "January 13, 2026, is exactly one week before January 20, 2026, making the generated answer factually equivalent to the standard answer despite minor phrasing differences.",
+      "resolved_layer": "category+resource",
+      "top_contexts": [
+        "The user met up with their friends, family, and/or mentors around January 13, 2026 (last week).",
+        "Melanie has a spouse (got married recently)",
+        "Melanie has a supportive family who helped her during her move.",
+        "Caroline and Mel have a friendly, casual relationship where they greet each other warmly.",
+        "The user has a close group of friends they've known for 4 years, who have been a crucial support system through difficult times."
+      ]
+    },
+    {
+      "question": "How long has Caroline had her current group of friends for?",
+      "standard_answer": "4 years",
+      "generated_answer": "Caroline has had her current group of friends for about 4 years. They've been a really important support system through tough times!",
+      "is_correct": true,
+      "correctness_explanation": "The generated answer correctly states that Caroline has had her current group of friends for 4 years, which directly matches the standard answer. The addition of \"about\" and the extra context do not change the factual accuracy.",
+      "resolved_layer": "resource_only",
+      "top_contexts": [
+        "The user has a close group of friends they've known for 4 years, who have been a crucial support system through difficult times.",
+        "Melanie has a spouse (got married recently)",
+        "Caroline and Mel have a friendly, casual relationship where they greet each other warmly.",
+        "The user met up with their friends, family, and/or mentors around January 13, 2026 (last week).",
+        "They have children and regularly do art and craft activities together."
+      ]
+    },
+    {
+      "question": "Who supports Caroline when she has a negative experience?",
+      "standard_answer": "Her mentors, family, and friends",
+      "generated_answer": "Based on what I know, Caroline has a really strong support system that she can lean on when things get tough:\n\n- **Melanie** — who has been a meaningful source of support during Caroline's personal journey\n- **Family** — they provide love and support, which is really important to Caroline\n- **A close group of friends** she's known for about 4 years — they've been a crucial support system through difficult times\n- **A support group** connected to the transgender community that has helped her feel accepted\n- **Mentors** who have been part of her broader support network through personal growth and transition\n\nIt sounds like she's built a really solid circle of people around her over time. That's something to be grateful for, honestly — not everyone has that kind of network when they need it most.",
+      "is_correct": true,
+      "correctness_explanation": "The generated answer includes all the key entities from the standard answer (mentors, family, and friends) while providing additional, specific details. It correctly answers the question.",
+      "resolved_layer": "category+resource",
+      "top_contexts": [
+        "The user has a supportive figure named Melanie who provided meaningful support during their personal journey.",
+        "Melanie has a supportive family who helped her during her move.",
+        "Melanie has a spouse (got married recently)",
+        "Caroline and Mel have a friendly, casual relationship where they greet each other warmly.",
+        "The user's family provides them with love and support, which is very important to them."
+      ]
+    },
+    {
+      "question": "What workshop did Caroline attend recently?",
+      "standard_answer": "LGBTQ+ counseling workshop",
+      "generated_answer": "Based on what I remember, you attended an LGBTQ+ counseling workshop on Friday, January 23, 2026, where you learned about different therapeutic methods for working with trans people.",
+      "is_correct": true,
+      "correctness_explanation": "The generated answer explicitly states \"LGBTQ+ counseling workshop,\" which directly matches the key information in the standard answer. The additional details provided do not contradict the core fact.",
+      "resolved_layer": "resource_only",
+      "top_contexts": [
+        "Mel took its kids to a pottery workshop on 2026-01-30 (last Friday); they all made their own pots and found it fun and therapeutic.",
+        "The user attended an LGBTQ+ counseling workshop on Friday, January 23, 2026, where they learned about different therapeutic methods for working with trans people.",
+        "Melanie is in the process of moving.",
+        "The user recently spoke with a community and felt deeply motivated by the experience.",
+        "The user plans to attend a transgender conference in January 2026."
+      ]
+    }
+  ]
+}

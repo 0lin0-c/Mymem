@@ -109,9 +109,9 @@ Mymem/
 │   ├── test_api/
 │   └── test_services/
 │
-├── test/                    # 📊 性能测试
-│   ├── test_async_timing.py
-│   └── test_onboarding_performance.py
+├── tests/performance/       # 📊 手动性能/诊断脚本（perf_*.py，不被默认 pytest 收集）
+│   ├── perf_async_timing.py
+│   └── perf_onboarding_performance.py
 │
 ├── storage/                 # 📁 本地文件存储目录
 │

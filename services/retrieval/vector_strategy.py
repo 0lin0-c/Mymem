@@ -36,7 +36,7 @@ class VectorStrategy(RetrievalStrategy):
         self,
         user_id: str,
         query: str,
-        top_k: int = 5,
+        top_k: int = 15,
         min_importance: int = 0,
         scoring_config: RetrievalScoringConfig | None = None,
     ) -> List[dict]:

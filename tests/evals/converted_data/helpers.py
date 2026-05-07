@@ -4,6 +4,25 @@ import re
 from datetime import datetime, timezone
 from typing import Any
 
+_ENGLISH_STOPWORDS = {
+    "a", "an", "and", "are", "as", "at", "be", "been", "being", "but", "by",
+    "can", "could", "did", "do", "does", "for", "from", "had", "has", "have",
+    "her", "hers", "him", "his", "how", "i", "if", "in", "into", "is", "it",
+    "its", "me", "might", "my", "of", "on", "or", "our", "ours", "please",
+    "question", "answer", "she", "should", "so", "than", "that", "the", "their",
+    "them", "then", "there", "these", "they", "this", "those", "to", "too",
+    "us", "was", "we", "were", "what", "when", "where", "which", "who", "whom",
+    "why", "will", "with", "would", "you", "your", "yours",
+}
+
+_CHINESE_STOPWORDS = {
+    "什么", "怎么", "是否", "为什么", "以及", "这个", "那个", "可以", "需要", "问题", "回答",
+    "记忆", "系统", "用户", "助手", "一下", "一个", "一些", "这些", "那些", "哪个", "哪位",
+    "哪里", "哪天", "哪年", "哪种", "哪次", "已经", "还是", "就是", "如果", "因为", "所以",
+    "然后", "并且", "而且", "关于", "对于", "有关", "时候", "事情", "情况", "自己",
+    "他们", "她们", "我们", "你们", "是否有", "有没有", "是不是",
+}
+
 
 def parse_session_date(date_str: str) -> str | None:
     """Parse converted-data session dates into a stable DB-friendly string."""
@@ -41,15 +60,15 @@ def extract_keywords(
         candidates.extend(re.findall(r"[\u4e00-\u9fff]{2,10}", src))
         candidates.extend(re.findall(r"[A-Za-z][A-Za-z0-9_\-]{2,}", src))
 
-    stopwords = {
-        "什么", "怎么", "是否", "为什么", "以及", "这个", "那个", "可以", "需要", "问题", "回答",
-        "记忆", "系统", "用户", "助手", "please", "question", "answer",
-    }
     seen = set()
     keywords = []
     for term in candidates:
         normalized = term.strip().lower()
-        if len(normalized) < 2 or normalized in stopwords:
+        if len(normalized) < 2:
+            continue
+        if normalized in _ENGLISH_STOPWORDS or normalized in _CHINESE_STOPWORDS:
+            continue
+        if normalized.isdigit() and len(normalized) < 4:
             continue
         if normalized not in seen:
             seen.add(normalized)
@@ -74,4 +93,3 @@ def first_retrieved_rank(
         if any(mem_norm and mem_norm in ctx_norm for mem_norm in db_norms):
             return idx
     return None
-

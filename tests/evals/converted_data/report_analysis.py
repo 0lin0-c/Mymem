@@ -10,6 +10,7 @@ from services.llm.base import BaseLLMProvider
 from tests.evals.converted_data.categories import format_qa_category
 from tests.evals.converted_data.metrics import (
     classify_answer_failure,
+    classify_answer_support_type,
     enrich_results_data_for_analysis,
     flatten_qa_results,
     get_db_diagnosis,
@@ -271,9 +272,15 @@ def _assistant_direct_fact_lines(
         retrieval_true = sum(1 for q in qa_results if q.get("retrieval_hit") is True)
         lines.append(f"- 有 {retrieval_true} 题 `retrieval_hit=True`，其余题目未在 trace 中形成明确 retrieval 命中。")
 
-    unsupported_success = sum(1 for q in success_cases if q.get("retrieval_hit") is False)
+    unsupported_success = sum(1 for q in success_cases if _answer_support_type(q) == "unsupported")
+    profile_success = sum(1 for q in success_cases if _answer_support_type(q) == "profile_inference")
+    empty_gold_success = sum(1 for q in success_cases if _answer_support_type(q) == "empty_gold")
     if unsupported_success:
-        lines.append(f"- {unsupported_success} 个答对样本同样 `retrieval_hit=False`，因此这轮结果不能证明检索链路有效。")
+        lines.append(f"- {unsupported_success} 个答对样本属于 `unsupported`，即当前 trace 仍不能解释其正确来源。")
+    if profile_success:
+        lines.append(f"- {profile_success} 个答对样本属于 `profile_inference`，可视为画像推断成功，但不等同于直接事实召回。")
+    if empty_gold_success:
+        lines.append(f"- {empty_gold_success} 个答对样本属于 `empty_gold`，主要说明回答保守，不应作为事实检索成功。")
 
     category_lines = _assistant_category_accuracy_lines(stats)
     if category_lines:
@@ -442,7 +449,7 @@ def _assistant_representative_case_lines(
         if conservative_case and conservative_case is not high_conf_case:
             lines.extend(_assistant_case_block("失败案例 2", conservative_case, _assistant_case_conclusion_conservative))
             lines.append("")
-        if resource_case and resource_case not in {high_conf_case, conservative_case}:
+        if resource_case and resource_case is not high_conf_case and resource_case is not conservative_case:
             lines.extend(_assistant_case_block("失败案例 3", resource_case, _assistant_case_conclusion_resource))
             lines.append("")
 
@@ -624,6 +631,7 @@ def _format_case_for_analysis(case: dict[str, Any], index: int) -> dict[str, Any
         "category_display": format_qa_category(case.get("category")),
         "storage_hit": case.get("storage_hit"),
         "retrieval_hit": case.get("retrieval_hit"),
+        "answer_support_type": case.get("answer_support_type") or classify_answer_support_type(case),
         "rank_position": case.get("rank_position"),
         "retrieval_layer": layer,
         "top_contexts": contexts[:3],
@@ -692,15 +700,21 @@ def _assistant_failure_lines(wrong_cases: list[dict[str, Any]]) -> list[str]:
 def _assistant_success_lines(success_cases: list[dict[str, Any]]) -> list[str]:
     if not success_cases:
         return ["- 没有回答成功样本。"]
-    suspicious_success = [case for case in success_cases if case.get("retrieval_hit") is False]
+    support_counts = Counter(_answer_support_type(case) for case in success_cases)
     lines = [
         f"- 回答成功题数: {len(success_cases)}。",
-        f"- 其中检索命中支撑的成功题数: {len(success_cases) - len(suspicious_success)}。",
+        f"- 回答支持类型分布: {_format_counter(support_counts)}。",
     ]
-    if suspicious_success:
+    if support_counts.get("unsupported"):
         lines.append(
-            f"- 有 {len(suspicious_success)} 题属于“回答正确但 retrieval_hit=False”，这类成功不能直接算作检索有效，更可能来自 profile、prompt 或模型推断。"
+            f"- 有 {support_counts['unsupported']} 题属于“回答正确但证据链仍不闭合”，不能直接算作检索有效。"
         )
+    if support_counts.get("profile_inference"):
+        lines.append(
+            f"- 有 {support_counts['profile_inference']} 题属于 profile-supported inference；这类题可以算答对，但应和直接事实召回分开。"
+        )
+    if support_counts.get("empty_gold"):
+        lines.append(f"- 有 {support_counts['empty_gold']} 题属于 empty gold 保守成功，分析价值较低。")
     supportive = [case for case in success_cases if case.get("retrieval_hit") is True]
     if supportive:
         example = supportive[0]
@@ -737,6 +751,8 @@ def _case_lines(
         lines.append(
             f"  - storage_hit={case.get('storage_hit')} | retrieval_hit={case.get('retrieval_hit')} | rank={case.get('rank_position')} | layer={layer}"
         )
+        if case.get("is_correct") is True:
+            lines.append(f"  - answer_support_type: {_answer_support_type(case)}")
         lines.append(f"  - diagnosis: {diagnosis}")
         if top_context:
             lines.append(f"  - top1_context: {_shorten(top_context, 180)}")
@@ -795,19 +811,33 @@ def _failure_reason_text(case: dict[str, Any]) -> str:
 
 
 def _success_bucket(case: dict[str, Any]) -> str:
-    if case.get("retrieval_hit") is True:
+    support_type = _answer_support_type(case)
+    if support_type == "direct_fact":
         return "检索命中并支撑回答"
-    if case.get("storage_hit") is True:
+    if support_type == "profile_inference":
+        return "画像推断支撑回答"
+    if support_type == "empty_gold":
+        return "空标准答案下的保守成功"
+    if support_type == "unsupported":
         return "回答正确但未证明来自检索"
     return "回答正确但链路证据异常"
 
 
 def _success_reason_text(case: dict[str, Any]) -> str:
-    if case.get("retrieval_hit") is True:
+    support_type = _answer_support_type(case)
+    if support_type == "direct_fact":
         return "检索结果里已经带回了支持答案的上下文，回答大概率是在使用检索证据。"
-    if case.get("storage_hit") is True:
+    if support_type == "profile_inference":
+        return "回答正确来源更接近画像推断；这类题可以算答对，但应和直接事实召回分开看。"
+    if support_type == "empty_gold":
+        return "标准答案为空，回答保守不编造，因此被判对。"
+    if support_type == "unsupported":
         return "回答虽然正确，但 retrieval_hit=False，说明这次成功不能直接证明检索链路有效。"
     return "回答正确，但链路 trace 不典型，建议复核评估口径。"
+
+
+def _answer_support_type(case: dict[str, Any]) -> str:
+    return str(case.get("answer_support_type") or classify_answer_support_type(case))
 
 
 def _top_context(case: dict[str, Any]) -> str:

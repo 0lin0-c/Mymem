@@ -18,7 +18,7 @@ class RetrievalStrategy(ABC):
         self,
         user_id: str,
         query: str,
-        top_k: int = 5,
+        top_k: int = 15,
     ) -> List[dict]:
         """
         执行检索

@@ -82,24 +82,6 @@ Mymem/
 4. 检查新增代码是否破坏其他 Skill 模块的既定规则。
 5. 向用户输出简短 QA 报告；如果发现遗漏，主动二次修复。
 
-## Code Review 触发规则
-
-当用户请求 `review`、`code review`、`PR review`、`审查代码`、`检查改动`、`看看有没有 bug` 时，必须先读取 `.claude/skills/code-review/SKILL.md`。
-
-如果 `.claude/skills/code-review/SKILL.md` 中的 Claude、Haiku、Sonnet、`CLAUDE.md`、自动 GitHub 评论等流程不适用于当前 Codex 环境，则采用 Codex 兼容审查流程：
-
-- 读取本 `AGENTS.md` 与相关 `.claude/skills/*/SKILL.md`。
-- 查看用户指定的 diff、PR diff，或本地 `git diff`。
-- 以代码审查姿态输出结果：先列 findings，按严重程度排序，并包含文件和行号。
-- 优先报告 bug、行为回归、架构违规、数据契约风险、安全风险和缺失测试。
-- 不把风格偏好、无明确影响的小重构建议作为主要 finding。
-
-限制说明：
-
-- Codex 不会自动 spawn sub-agents，除非用户明确要求使用子代理、委派或并行 agent 工作。
-- 本地 review 默认不向 GitHub 评论；只有用户明确要求并提供 PR 上下文时，才使用 GitHub 相关命令。
-- 如果用户只要求本地审查，最终输出审查结果，不执行 PR 评论。
-
 ## 编码规范
 
 - **全异步**：所有 I/O 操作使用 `await` 和 `AsyncSession`。
@@ -174,3 +156,9 @@ conda run --no-capture-output -n memory_agent python scripts\run_converted_data_
 - 长时间 `assistant_eval` 建议使用 `--retrieval-only`，避免重复导入数据。
 - 需要深诊断时再加 `--converted-postprocess-bad-cases` 或 `--postprocess-bad-cases`。
 - 长跑任务默认按 6 小时外层超时准备，完整 90 题 assistant_eval 预估约 1.5 到 2 小时。
+
+### 测试目录约定
+
+- 测试代码统一放在 `tests/`，性能/诊断脚本放在 `tests/performance/` 并使用 `perf_*.py` 命名。
+- 评估输入 fixture 放在 `tests/fixtures/`。
+- 运行产物放在 `test_results/<domain>/`，缓存只放在 `test_results/cache/`。

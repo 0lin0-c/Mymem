@@ -1,6 +1,6 @@
 # 🔗 记忆来源关联 Repository
 import uuid
-from typing import List
+from typing import Dict, List
 
 from sqlalchemy import select, delete
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -30,6 +30,29 @@ class ResourceCategoryRepository(BaseRepository[ResourceCategory]):
             .limit(limit)
         )
         return list(result.scalars().all())
+
+    async def get_source_resources_for_categories(
+        self,
+        category_ids: list[str],
+        limit_per_category: int = 1,
+    ) -> Dict[str, List[Resource]]:
+        """Return linked source resources for multiple Category ids."""
+        if not category_ids:
+            return {}
+
+        result = await self.session.execute(
+            select(ResourceCategory.category_id, Resource)
+            .join(Resource, ResourceCategory.resource_id == Resource.id)
+            .where(ResourceCategory.category_id.in_(category_ids))
+            .order_by(ResourceCategory.category_id, ResourceCategory.created_at.desc())
+        )
+
+        resources_by_category: Dict[str, List[Resource]] = {}
+        for category_id, resource in result.all():
+            bucket = resources_by_category.setdefault(category_id, [])
+            if len(bucket) < limit_per_category:
+                bucket.append(resource)
+        return resources_by_category
 
     async def get_categories_for_resource(
         self,

@@ -1,0 +1,121 @@
+﻿{
+  "test_info": {
+    "created_at": "2026-04-25T16:00:37.904408+00:00",
+    "qa_path": "tests\\fixtures\\converted_data\\unsupported_success_recheck\\sample_0_qa.json",
+    "character": "caroline",
+    "retrieve_top_k": 30,
+    "answer_top_k": 15,
+    "rerank_model": "GLM-Rerank"
+  },
+  "summary": {
+    "current_top30": {
+      "total_questions": 1,
+      "correct_count": 1,
+      "accuracy": 100.0,
+      "nonempty_total": 1,
+      "nonempty_correct_count": 1,
+      "nonempty_accuracy": 100.0
+    },
+    "glm_rerank_top30": {
+      "total_questions": 1,
+      "correct_count": 1,
+      "accuracy": 100.0,
+      "nonempty_total": 1,
+      "nonempty_correct_count": 1,
+      "nonempty_accuracy": 100.0
+    }
+  },
+  "rerank_traces": [
+    {
+      "question": "What fields would Caroline be likely to pursue in her educaton?",
+      "latency_ms": 638.66,
+      "candidate_count": 22,
+      "top_n": 15,
+      "model": "GLM-Rerank",
+      "top_contexts": [
+        "[Core Self] fact: The user is currently exploring counseling and mental health jobs as a career direction. | conversation_time: 2026-02-04T16:33:00+00:00 | source_description: [Core Self] fact: The user is currently exploring counseling and mental health jobs as a career direction. | conversation_time: 2026-02-04T16:33:00+00:00 | source_description: The user is exploring counseling or mental health work as a potential career direction. Their motivation stems from their own personal struggles wit",
+        "[Core Self] fact: The user finds great joy in creating art and has been into art since they were around 17 years old. | conversation_time: 2026-02-25T13:33:00+00:00 | source_description: [Core Self] fact: The user finds great joy in creating art and has been into art since they were around 17 years old. | conversation_time: 2026-02-25T13:33:00+00:00 | source_description: The user shared that they have been into art since they were around 17 years old, describing the experience as empowering and ",
+        "[Core Self] fact: The user has always had a love for horses. | conversation_time: 2026-02-24T15:31:00+00:00 | source_description: [Core Self] fact: The user has always had a love for horses. | conversation_time: 2026-02-24T15:31:00+00:00 | source_description: The user fondly recalled childhood memories of going horseback riding with their dad through the fields, describing the experience as special. They expressed that they have always had a love for horses. The AI responded enthusiastically and",
+        "[Core Self] fact: The user addresses the AI by the name \"Caroline.\" | conversation_time: 2026-02-08T20:56:00+00:00 | source_description: [Core Self] fact: The user addresses the AI by the name \"Caroline.\" | conversation_time: 2026-02-08T20:56:00+00:00 | source_description: The user expressed gratitude to the AI (addressed as \"Caroline\") for agreeing with them, and reflected on how the encouragement and support from people close to them shaped who they are. The AI responded positively, affirming ",
+        "[Core Self] fact: The user plans to continue their education. | conversation_time: 2026-01-05T13:56:00+00:00 | source_description: [Core Self] fact: The user plans to continue their education. | conversation_time: 2026-01-05T13:56:00+00:00 | source_description: The user expressed excitement about continuing their education and exploring career options. No specific field of study or career path was mentioned. | source_raw_content: Gonna continue my edu and check out career options, which is prett"
+      ],
+      "top_scores": [
+        0.99999547,
+        0.99998784,
+        0.9999877,
+        0.9999757,
+        0.999972
+      ]
+    }
+  ],
+  "variants": {
+    "current_top30": [
+      {
+        "variant": "current_top30",
+        "question": "What fields would Caroline be likely to pursue in her educaton?",
+        "standard_answer": "Psychology, counseling certification",
+        "generated_answer": "Based on what I know, Caroline would most likely pursue **psychological counseling or mental health** as a field of study. She's been actively exploring counseling and mental health work as a career direction, driven by her own experiences with mental health struggles and the support she received. She's passionate about making that kind of support accessible to others.\n\nBeyond that, given her broader interests and life plans, a few other fields could also be a natural fit:\n\n- **Social work** — she's gone to adoption council meetings, is planning to be a single mom, and is deeply invested in creating loving homes for kids in need. Social work would align with that drive.\n- **Education or child development** — she's building a children's library, organizes talent shows for kids, and clearly cares about nurturing children's growth and confidence.\n- **Something tied to LGBTQ advocacy** — she values LGBTQ rights and has spoken about her own transition, so fields related to gender studies or advocacy work could resonate too.\n\nBut if I had to pick the strongest signal, it's definitely mental health and counseling. That one she's specifically named and actively looked into.",
+        "is_correct": true,
+        "correctness_explanation": "The generated answer correctly identifies \"psychological counseling\" and \"mental health\" as Caroline's primary fields of study, which directly aligns with the standard answer of \"Psychology, counseling certification.\" The inclusion of additional potential fields does not contradict the required key information.",
+        "answer_support_type": "profile_inference",
+        "retrieval_layer": {
+          "resolved_layer": "resource_only",
+          "llm_classified_categories": [
+            "Core Self"
+          ],
+          "category_results_count": 0,
+          "resource_results_count": 15,
+          "low_confidence_fallback": false
+        },
+        "retrieved_contexts": [
+          "[Core Self] fact: The user is currently exploring counseling and mental health jobs as a career direction. | source_description: [Core Self] fact: The user is currently exploring counseling and mental health jobs as a career direction. | conversation_time: 2026-02-04T16:33:00+00:00 | source_description: The user is exploring counseling or mental health work as a potential career direction. Their motivation stems from their own personal struggles with mental health issues and the helpful support they received, which inspired them to value support systems for others. They are driven by a strong passion for helping people on their mental health journeys the way they were helped, making a positive impact, and ensuring people have someone to talk to. Making mental health support accessible is important to them. They acknowledge that while the work is challenging, they find it deeply rewarding. | source_raw_content: Since our last chat, I've been looking into counseling or mental health work more. I'm passionate about helping people and making a positive impact. It's tough, but really rewarding too. Anything new happening with you? | source_raw_content: Since our last chat, I've been looking into counseling or mental health work more. I'm passionate about helping people and making a positive impact. It's tough, but really rewarding too. Anything new happening with you?",
+          "[Core Self] fact: The user addresses the AI by the name \"Caroline.\" | source_description: [Core Self] fact: The user addresses the AI by the name \"Caroline.\" | conversation_time: 2026-02-08T20:56:00+00:00 | source_description: The user expressed gratitude to the AI (addressed as \"Caroline\") for agreeing with them, and reflected on how the encouragement and support from people close to them shaped who they are. The AI responded positively, affirming the value of being oneself and having support. | source_raw_content: Glad you agree, Caroline. Appreciate the support of those close to me. Their encouragement made me who I am. | source_raw_content: Glad you agree, Caroline. Appreciate the support of those close to me. Their encouragement made me who I am.",
+          "[Core Self] fact: The user enjoys exploring nature as an activity. | source_description: [Core Self] fact: The user enjoys exploring nature as an activity. | conversation_time: 2026-02-21T13:50:00+00:00 | source_description: The user greeted the AI after a long absence and shared that they had a great day out biking with their friend group last weekend. They described the outing as refreshing and mentioned they were sending a photo that they considered stunning. The AI responded warmly, complimented the photo, and shared their own recent camping experience. | source_raw_content: Hey Mel, long time no chat! I had a wicked day out with the gang last weekend - we went biking and saw some pretty cool stuff. It was so refreshing, and the pic I'm sending is just stunning, eh? | source_raw_content: Hey Mel, long time no chat! I had a wicked day out with the gang last weekend - we went biking and saw some pretty cool stuff. It was so refreshing, and the pic I'm sending is just stunning, eh?",
+          "[Core Self] fact: The user plans to continue their education. | source_description: [Core Self] fact: The user plans to continue their education. | conversation_time: 2026-01-05T13:56:00+00:00 | source_description: The user expressed excitement about continuing their education and exploring career options. No specific field of study or career path was mentioned. | source_raw_content: Gonna continue my edu and check out career options, which is pretty exciting! | source_raw_content: Gonna continue my edu and check out career options, which is pretty exciting!",
+          "[Core Self] fact: The user owns a collection of children's books that includes classics, stories from different cultures, and educational books. | source_description: [Core Self] fact: The user owns a collection of children's books that includes classics, stories from different cultures, and educational books. | conversation_time: 2026-02-02T20:18:00+00:00 | source_description: The user mentioned they own a collection of children's books that includes classics, stories from different cultures, and educational books. They then asked the AI about its favorite childhood book. The AI responded that \"Charlotte's Web\" was a childhood favorite, highlighting themes of friendship and compassion. | source_raw_content: I've got lots of kids' books- classics, stories from different cultures, educational books, all of that. What's a favorite book you remember from your childhood? | source_raw_content: I've got lots of kids' books- classics, stories from different cultures, educational books, all of that. What's a favorite book you remember from your childhood?"
+        ],
+        "retrieved_scores": [
+          0.0881,
+          0.0665,
+          0.0658,
+          0.0654,
+          0.0573
+        ]
+      }
+    ],
+    "glm_rerank_top30": [
+      {
+        "variant": "glm_rerank_top30",
+        "question": "What fields would Caroline be likely to pursue in her educaton?",
+        "standard_answer": "Psychology, counseling certification",
+        "generated_answer": "Based on what I know, Caroline would most likely be drawn to a few key fields:\n\n1. **Psychology or Counseling** — She's been actively exploring mental health work as a career direction. Her own experiences with mental health struggles and the support she received really inspired her to want to help others in the same way.\n\n2. **Art or Fine Arts** — She's been creating art since around age 17 and finds it deeply empowering and cathartic. Art has also been a meaningful outlet for processing her transition and exploring her changing body.\n\n3. **Gender Studies, LGBTQ+ Studies, or Social Work** — She's a trans woman who's passionate about LGBTQ rights and advocacy. Helping others live authentically and making a difference for the LGBTQ+ community is clearly important to her.\n\n4. **Art Therapy** — This could be a natural combination of her love for art and her desire to support people's mental health, though she hasn't specifically mentioned this path yet.\n\nGiven that she's still exploring and figuring things out, any of these — or some combination of them — would fit really well with who she is and what she cares about.",
+        "is_correct": true,
+        "correctness_explanation": "The generated answer correctly identifies \"Psychology\" and \"Counseling\" as fields Caroline would likely pursue, which directly matches the key information in the standard answer. The inclusion of additional speculative fields does not detract from the presence of the required facts.",
+        "answer_support_type": "profile_inference",
+        "retrieval_layer": {
+          "resolved_layer": "resource_only",
+          "llm_classified_categories": [
+            "Core Self"
+          ],
+          "category_results_count": 0,
+          "resource_results_count": 15,
+          "low_confidence_fallback": false
+        },
+        "retrieved_contexts": [
+          "[Core Self] fact: The user is currently exploring counseling and mental health jobs as a career direction. | source_description: [Core Self] fact: The user is currently exploring counseling and mental health jobs as a career direction. | conversation_time: 2026-02-04T16:33:00+00:00 | source_description: The user is exploring counseling or mental health work as a potential career direction. Their motivation stems from their own personal struggles with mental health issues and the helpful support they received, which inspired them to value support systems for others. They are driven by a strong passion for helping people on their mental health journeys the way they were helped, making a positive impact, and ensuring people have someone to talk to. Making mental health support accessible is important to them. They acknowledge that while the work is challenging, they find it deeply rewarding. | source_raw_content: Since our last chat, I've been looking into counseling or mental health work more. I'm passionate about helping people and making a positive impact. It's tough, but really rewarding too. Anything new happening with you? | source_raw_content: Since our last chat, I've been looking into counseling or mental health work more. I'm passionate about helping people and making a positive impact. It's tough, but really rewarding too. Anything new happening with you?",
+          "[Core Self] fact: The user finds great joy in creating art and has been into art since they were around 17 years old. | source_description: [Core Self] fact: The user finds great joy in creating art and has been into art since they were around 17 years old. | conversation_time: 2026-02-25T13:33:00+00:00 | source_description: The user shared that they have been into art since they were around 17 years old, describing the experience as empowering and cathartic. They expressed appreciation for how art can convey things that are difficult to articulate in words. The user also asked the AI how long they have been into art. The AI responded that they have been into art for seven years, with painting and pottery as their main interests, and mentioned a pottery creation shown in a picture. | source_raw_content: Since I was 17 or so. I find it soempowering and cathartic. It's amazing how art can show things that are hard to put into words. How long have you been into art? | source_raw_content: Since I was 17 or so. I find it soempowering and cathartic. It's amazing how art can show things that are hard to put into words. How long have you been into art?",
+          "[Core Self] fact: The user has always had a love for horses. | source_description: [Core Self] fact: The user has always had a love for horses. | conversation_time: 2026-02-24T15:31:00+00:00 | source_description: The user fondly recalled childhood memories of going horseback riding with their dad through the fields, describing the experience as special. They expressed that they have always had a love for horses. The AI responded enthusiastically and mentioned sharing a horse painting. | source_raw_content: That's so funny! I used to go horseback riding with my dad when I was a kid, we'd go through the fields, feeling the wind. It was so special. I've always had a love for horses! | source_raw_content: That's so funny! I used to go horseback riding with my dad when I was a kid, we'd go through the fields, feeling the wind. It was so special. I've always had a love for horses!",
+          "[Core Self] fact: The user addresses the AI by the name \"Caroline.\" | source_description: [Core Self] fact: The user addresses the AI by the name \"Caroline.\" | conversation_time: 2026-02-08T20:56:00+00:00 | source_description: The user expressed gratitude to the AI (addressed as \"Caroline\") for agreeing with them, and reflected on how the encouragement and support from people close to them shaped who they are. The AI responded positively, affirming the value of being oneself and having support. | source_raw_content: Glad you agree, Caroline. Appreciate the support of those close to me. Their encouragement made me who I am. | source_raw_content: Glad you agree, Caroline. Appreciate the support of those close to me. Their encouragement made me who I am.",
+          "[Core Self] fact: The user plans to continue their education. | source_description: [Core Self] fact: The user plans to continue their education. | conversation_time: 2026-01-05T13:56:00+00:00 | source_description: The user expressed excitement about continuing their education and exploring career options. No specific field of study or career path was mentioned. | source_raw_content: Gonna continue my edu and check out career options, which is pretty exciting! | source_raw_content: Gonna continue my edu and check out career options, which is pretty exciting!"
+        ],
+        "retrieved_scores": [
+          0.0881,
+          0.0376,
+          0.0492,
+          0.0665,
+          0.0654
+        ]
+      }
+    ]
+  }
+}

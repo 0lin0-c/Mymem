@@ -1,0 +1,406 @@
+[
+  {
+    "question": "What did Caroline research?",
+    "standard_answer": "Adoption agencies",
+    "current_retrieval_hit": false,
+    "current_rank_position": null,
+    "resolved_layer": "category+resource",
+    "routed_categories": [
+      "Knowledge Base",
+      "Social Graph"
+    ],
+    "top_contexts": [
+      "Melanie has a spouse (got married recently)",
+      "Caroline greeted Mel (the AI) in a friendly manner. Mel responded warmly, mentioning being busy with kids and work, and asked Caroline what's new.",
+      "Caroline and Mel have a friendly, casual relationship where they greet each other warmly."
+    ],
+    "resource_candidates": [
+      {
+        "id": "9c168ffe-e847-4a24-833d-bb39cc534f73",
+        "rank_global": 11,
+        "rank_routed": 2,
+        "score_global": 0.0173,
+        "score_routed": 0.0173,
+        "similarity": 0.2105,
+        "importance": 3,
+        "access_count": 0,
+        "updated_at": "2026-01-13 13:14:00+00:00",
+        "text": "The user is currently researching adoption agencies, driven by a long-held dream of having a family and providing a loving home to children in need. They have expressed gratitude for the support received from friends and mentors during this process. They are now beginning the hard work to turn this dream into reality a"
+      },
+      {
+        "id": "6cd83537-fb11-4142-b19f-4ca0ecde6ca2",
+        "rank_global": 82,
+        "rank_routed": null,
+        "score_global": 0.006,
+        "score_routed": null,
+        "similarity": 0.1244,
+        "importance": 3,
+        "access_count": 0,
+        "updated_at": "2026-01-13 13:14:00+00:00",
+        "text": "The user shared that they selected their adoption agency because of its LGBTQ+ inclusivity and support, indicating that they are an LGBTQ+ individual pursuing adoption and that inclusivity is an important value to them."
+      }
+    ],
+    "category_candidates": [
+      {
+        "id": "63de0d2b-0a88-4338-bf3c-b14e58893d48",
+        "rank_global": 127,
+        "rank_routed": null,
+        "score_global": 0.0132,
+        "score_routed": null,
+        "similarity": 0.1943,
+        "importance": 2,
+        "access_count": 0,
+        "updated_at": "2026-01-13 13:14:00+00:00",
+        "text": "The user is LGBTQ+ and is pursuing adoption. They chose their adoption agency specifically because of its LGBTQ+ inclusivity and support."
+      },
+      {
+        "id": "1661d1df-6dee-43c9-a311-b94cca9c4161",
+        "rank_global": 77,
+        "rank_routed": null,
+        "score_global": 0.0212,
+        "score_routed": null,
+        "similarity": 0.2462,
+        "importance": 2,
+        "access_count": 0,
+        "updated_at": "2026-01-13 13:14:00+00:00",
+        "text": "The user is currently in the adoption process and has selected an adoption agency."
+      }
+    ]
+  },
+  {
+    "question": "What advice does Caroline give for getting started with adoption?",
+    "standard_answer": "Do research, find an adoption agency or lawyer, gather necessary documents, and prepare emotionally.",
+    "current_retrieval_hit": false,
+    "current_rank_position": null,
+    "resolved_layer": "category+resource",
+    "routed_categories": [
+      "Knowledge Base",
+      "Social Graph"
+    ],
+    "top_contexts": [
+      "The user found the adoption council meeting inspiring and emotional, noting many people there wanted to create loving homes for children in need.",
+      "The user expressed admiration for a photo and mentioned bonding over a shared love of nature. They shared that they attended a council meeting for adoption last Friday (January 30, 2026), describing it as inspiring and emotional. The experience reinforced their determination to adopt a child.",
+      "Melanie has a spouse (got married recently)"
+    ],
+    "resource_candidates": [],
+    "category_candidates": []
+  },
+  {
+    "question": "What was the poetry reading that Caroline attended about?",
+    "standard_answer": "It was a transgender poetry reading where transgender people shared their stories.",
+    "current_retrieval_hit": false,
+    "current_rank_position": null,
+    "resolved_layer": "category+resource",
+    "routed_categories": [
+      "Social Graph",
+      "Timeline"
+    ],
+    "top_contexts": [
+      "Melanie has a spouse (got married recently)",
+      "The user recently spoke with a community and felt deeply motivated by the experience.",
+      "The user participated in a school event around January 13, 2026, where they spoke about their transgender journey and promoted LGBTQ community engagement."
+    ],
+    "resource_candidates": [],
+    "category_candidates": []
+  },
+  {
+    "question": "Did Caroline make the black and white bowl in the photo?",
+    "standard_answer": "No",
+    "current_retrieval_hit": false,
+    "current_rank_position": null,
+    "resolved_layer": "category+resource",
+    "routed_categories": [
+      "Social Graph"
+    ],
+    "top_contexts": [
+      "Melanie has a spouse (got married recently)",
+      "Caroline and Mel have a friendly, casual relationship where they greet each other warmly.",
+      "Melanie finds peace through creativity and family."
+    ],
+    "resource_candidates": [
+      {
+        "id": "6334a7a3-2bdd-45ec-a12c-8f901e752184",
+        "rank_global": 27,
+        "rank_routed": null,
+        "score_global": 0.024,
+        "score_routed": null,
+        "similarity": 0.259,
+        "importance": 1,
+        "access_count": 0,
+        "updated_at": "2026-02-06 13:51:00+00:00",
+        "text": "The user greeted the AI (Mel) casually and mentioned they've had a busy week since their last conversation. Mel responded in kind, sharing that it has also been busy, and mentioned taking its kids to a pottery workshop last Friday where they all made their own pots, which was fun and therapeutic."
+      },
+      {
+        "id": "e9c1d172-7556-4b6a-8203-8f9772bdfc13",
+        "rank_global": 5,
+        "rank_routed": 2,
+        "score_global": 0.0428,
+        "score_routed": 0.0428,
+        "similarity": 0.3456,
+        "importance": 1,
+        "access_count": 0,
+        "updated_at": "2026-02-06 13:51:00+00:00",
+        "text": "The user expressed appreciation for a cute cup (pottery) made by kids and asked about other creative projects done with them. The AI responded that they enjoy painting together, especially nature-inspired paintings, and mentioned their latest work from last weekend."
+      },
+      {
+        "id": "d35571b3-9d9c-4778-843a-ef31d73cfb30",
+        "rank_global": 22,
+        "rank_routed": 9,
+        "score_global": 0.025,
+        "score_routed": 0.025,
+        "similarity": 0.2687,
+        "importance": 1,
+        "access_count": 0,
+        "updated_at": "2026-01-31 13:36:00+00:00",
+        "text": "The user is casually chatting about creative hobbies. They mention they are currently learning to play the piano and ask someone named Melanie about her interest in pottery. The AI responds enthusiastically about pottery, praising its creativity and calming nature."
+      },
+      {
+        "id": "80d5859f-3ef9-48b0-b3f9-137e4ec52acf",
+        "rank_global": 1,
+        "rank_routed": null,
+        "score_global": 0.0853,
+        "score_routed": null,
+        "similarity": 0.5312,
+        "importance": 0,
+        "access_count": 0,
+        "updated_at": "2026-01-31 13:36:00+00:00",
+        "text": "The user complimented a black and white designed bowl, asking if it was handmade. The AI confirmed they made the bowl in a class and expressed pride in their work."
+      },
+      {
+        "id": "399cc535-ecc5-4e4e-a415-53beeeeca7f3",
+        "rank_global": 21,
+        "rank_routed": null,
+        "score_global": 0.0251,
+        "score_routed": null,
+        "similarity": 0.2883,
+        "importance": 0,
+        "access_count": 0,
+        "updated_at": "2026-01-31 13:36:00+00:00",
+        "text": "The user complimented someone's creative work, expressing appreciation for the effort and creativity shown. The AI responded with gratitude and shared that pottery is a significant part of their life and a way to express emotions, finding joy in working with clay."
+      },
+      {
+        "id": "24af6f37-6cff-42a4-9ae3-30621e174f6a",
+        "rank_global": 9,
+        "rank_routed": null,
+        "score_global": 0.0376,
+        "score_routed": null,
+        "similarity": 0.3297,
+        "importance": 1,
+        "access_count": 0,
+        "updated_at": "2026-01-31 13:36:00+00:00",
+        "text": "The user expressed excitement and encouragement toward someone named Mel about their pottery and art hobby. The AI, responding as Mel, thanked the user and asked what they're looking forward to."
+      }
+    ],
+    "category_candidates": [
+      {
+        "id": "122d2160-1e46-49bc-9ae5-3dbaf7443502",
+        "rank_global": 19,
+        "rank_routed": null,
+        "score_global": 0.0465,
+        "score_routed": null,
+        "similarity": 0.3603,
+        "importance": 1,
+        "access_count": 0,
+        "updated_at": "2026-02-06 13:51:00+00:00",
+        "text": "Mel took its kids to a pottery workshop on 2026-01-30 (last Friday); they all made their own pots and found it fun and therapeutic."
+      },
+      {
+        "id": "0dcb97bf-d159-4fb0-8deb-5896686c3e2d",
+        "rank_global": 49,
+        "rank_routed": null,
+        "score_global": 0.0307,
+        "score_routed": null,
+        "similarity": 0.2929,
+        "importance": 1,
+        "access_count": 0,
+        "updated_at": "2026-02-06 13:51:00+00:00",
+        "text": "They enjoy doing creative projects with kids, including pottery and nature-inspired painting."
+      },
+      {
+        "id": "b15b3e08-27c1-44ac-aaf0-2886b343aed2",
+        "rank_global": 17,
+        "rank_routed": null,
+        "score_global": 0.0477,
+        "score_routed": null,
+        "similarity": 0.3973,
+        "importance": 0,
+        "access_count": 0,
+        "updated_at": "2026-01-31 13:36:00+00:00",
+        "text": "The user appreciates black and white design aesthetics and considers them fancy/elegant."
+      },
+      {
+        "id": "b5ba33ea-2615-473c-be74-5950cc61edc6",
+        "rank_global": 2,
+        "rank_routed": null,
+        "score_global": 0.0871,
+        "score_routed": null,
+        "similarity": 0.5366,
+        "importance": 0,
+        "access_count": 0,
+        "updated_at": "2026-01-31 13:36:00+00:00",
+        "text": "The AI made a black and white bowl in a class and is proud of the result."
+      },
+      {
+        "id": "a75e84a2-6aac-4ce1-a704-8d16e3e33652",
+        "rank_global": 27,
+        "rank_routed": 8,
+        "score_global": 0.0395,
+        "score_routed": 0.0395,
+        "similarity": 0.3379,
+        "importance": 1,
+        "access_count": 0,
+        "updated_at": "2026-01-31 13:36:00+00:00",
+        "text": "Melanie is someone in the user's social circle who is interested in pottery and has been addressed or referenced in a painting-related conversation."
+      }
+    ]
+  },
+  {
+    "question": "When is Caroline going to the transgender conference?",
+    "standard_answer": "February 2026",
+    "current_retrieval_hit": false,
+    "current_rank_position": null,
+    "resolved_layer": "category+resource",
+    "routed_categories": [
+      "Timeline"
+    ],
+    "top_contexts": [
+      "The user plans to attend a transgender conference in January 2026.",
+      "The user participated in a school event around January 13, 2026, where they spoke about their transgender journey and promoted LGBTQ community engagement.",
+      "User has an LGBTQ art show planned for next month (March 2026) featuring their own paintings."
+    ],
+    "resource_candidates": [
+      {
+        "id": "3688f19f-ad3d-4752-9d76-e288f0e283de",
+        "rank_global": 14,
+        "rank_routed": 7,
+        "score_global": 0.0336,
+        "score_routed": 0.0336,
+        "similarity": 0.2867,
+        "importance": 2,
+        "access_count": 0,
+        "updated_at": "2026-02-08 20:56:00+00:00",
+        "text": "The user has a strong connection to pride events and is a passionate supporter of equality, inclusivity, and the LGBTQ+ community. They attended an LGBTQ+ pride parade around January 19-25, 2026, describing it as an amazing experience where they felt a strong sense of belonging and were moved by the community's growth."
+      },
+      {
+        "id": "0bb5fee7-adc8-4461-b64c-60b18f68b754",
+        "rank_global": 16,
+        "rank_routed": 8,
+        "score_global": 0.0326,
+        "score_routed": 0.0326,
+        "similarity": 0.2825,
+        "importance": 2,
+        "access_count": 0,
+        "updated_at": "2026-02-08 20:56:00+00:00",
+        "text": "The user shared an exciting life update with the AI, mentioning they joined a new LGBTQ activist group last Tuesday (February 3, 2026). They expressed enthusiasm about meeting passionate people who share their commitment to rights and community support. They described the experience as fulfilling and impactful, feeling"
+      },
+      {
+        "id": "df907a50-3b1b-4e4b-bdac-75a7e3430efa",
+        "rank_global": 3,
+        "rank_routed": 3,
+        "score_global": 0.0526,
+        "score_routed": 0.0526,
+        "similarity": 0.3634,
+        "importance": 2,
+        "access_count": 0,
+        "updated_at": "2026-02-04 16:33:00+00:00",
+        "text": "The user greeted Mel and shared that they attended an LGBTQ conference two days ago (around February 2, 2026). They described it as a deeply meaningful experience where they connected with people who have gone through similar journeys. They expressed feeling totally accepted in the welcoming environment and emphasized "
+      },
+      {
+        "id": "fb408bfc-7f73-4897-a5d6-4de167d87202",
+        "rank_global": 1,
+        "rank_routed": 1,
+        "score_global": 0.0712,
+        "score_routed": 0.0712,
+        "similarity": 0.4279,
+        "importance": 2,
+        "access_count": 0,
+        "updated_at": "2026-01-31 13:36:00+00:00",
+        "text": "The user expressed excitement about attending a transgender conference in January 2026. They mentioned looking forward to meeting others in the community and learning more about advocacy. The AI responded with encouragement and well wishes."
+      }
+    ],
+    "category_candidates": [
+      {
+        "id": "861ab991-38e2-4fbc-93f7-f620d815bd72",
+        "rank_global": 16,
+        "rank_routed": 6,
+        "score_global": 0.0549,
+        "score_routed": 0.0549,
+        "similarity": 0.3669,
+        "importance": 2,
+        "access_count": 0,
+        "updated_at": "2026-02-08 20:56:00+00:00",
+        "text": "The user joined a new LGBTQ activist group on Tuesday, February 3, 2026."
+      },
+      {
+        "id": "cb852b04-999a-4421-b49b-9b958e760e16",
+        "rank_global": 18,
+        "rank_routed": 7,
+        "score_global": 0.0546,
+        "score_routed": 0.0546,
+        "similarity": 0.3926,
+        "importance": 1,
+        "access_count": 0,
+        "updated_at": "2026-02-04 16:33:00+00:00",
+        "text": "The user attended an LGBTQ conference on February 2, 2026 (two days ago from the conversation date), and found it a special and welcoming experience."
+      },
+      {
+        "id": "e7fcd59d-16bd-45bd-994d-827805ba14d4",
+        "rank_global": 15,
+        "rank_routed": null,
+        "score_global": 0.055,
+        "score_routed": null,
+        "similarity": 0.3761,
+        "importance": 2,
+        "access_count": 0,
+        "updated_at": "2026-01-31 13:36:00+00:00",
+        "text": "The user is interested in transgender advocacy and values community connection with other transgender individuals."
+      },
+      {
+        "id": "ccd0a443-cb6d-4126-ad54-ad3494b0ca44",
+        "rank_global": 1,
+        "rank_routed": 1,
+        "score_global": 0.1087,
+        "score_routed": 0.1087,
+        "similarity": 0.5288,
+        "importance": 2,
+        "access_count": 0,
+        "updated_at": "2026-01-31 13:36:00+00:00",
+        "text": "The user plans to attend a transgender conference in January 2026."
+      }
+    ]
+  },
+  {
+    "question": "When did Caroline attend a pride parade in August?",
+    "standard_answer": "The Friday before 20 February 2026",
+    "current_retrieval_hit": true,
+    "current_rank_position": 1,
+    "resolved_layer": "category+resource",
+    "routed_categories": [
+      "Timeline"
+    ],
+    "top_contexts": [
+      "The user has a strong connection to pride events and is a passionate supporter of equality, inclusivity, and the LGBTQ+ community. They attended an LGBTQ+ pride parade around January 19-25, 2026, describing it as an amazing experience where they felt a strong sense of belonging and were moved by the community's growth. Later, around January 31 - February 1, 2026, their city held another pride parade which they missed, but they were deeply inspired by seeing people marching through the streets with flags and signs celebrating love and diversity.",
+      "The user and the transgender teen they mentor attended an LGBTQ+ pride parade/event together in January 2026 (approximately January 19-25, 2026).",
+      "The user complimented a picture showing two people and shared that attending a pride parade a few weeks ago (around late January 2026) was a special memory for them. The AI responded positively and asked if the user joined in the parade."
+    ],
+    "resource_candidates": [],
+    "category_candidates": []
+  },
+  {
+    "question": "What does Caroline's drawing symbolize for her?",
+    "standard_answer": "Freedom and being true to herself.",
+    "current_retrieval_hit": true,
+    "current_rank_position": 1,
+    "resolved_layer": "category+resource",
+    "routed_categories": [
+      "Core Self"
+    ],
+    "top_contexts": [
+      "The user's name is Caroline.",
+      "Melanie enjoys or has skill in painting",
+      "The user is going through a life transition and values friendship and compassion deeply."
+    ],
+    "resource_candidates": [],
+    "category_candidates": []
+  }
+]

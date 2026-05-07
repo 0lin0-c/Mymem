@@ -2,7 +2,7 @@
 import json
 from pathlib import Path
 
-result_file = sorted(Path("test_results").glob("mymem_test_results_20260417_07481*.json"))[-1]
+result_file = sorted(Path("test_results/converted_data/legacy").glob("mymem_test_results_20260417_07481*.json"))[-1]
 d = json.load(open(result_file, "r", encoding="utf-8"))
 sample = d["samples"][0]
 results = sample["qa_results"]

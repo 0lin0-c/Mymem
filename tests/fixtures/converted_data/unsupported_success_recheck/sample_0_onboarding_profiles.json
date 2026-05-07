@@ -1,0 +1,79 @@
+{
+  "description": "Sample 0 角色的模拟 Onboarding 信息，基于 locomo10.json 中 observation 字段提取",
+  "profiles": {
+    "sample_0_caroline": {
+      "username": "Caroline",
+      "password": "test_password",
+      "identity_type": "other",
+      "identity_detail": null,
+      "use_cases": [
+        "emotional companionship",
+        "life advisory"
+      ],
+      "interests": [
+        "psychological counseling",
+        "LGBTQ rights",
+        "painting",
+        "piano",
+        "guitar",
+        "reading",
+        "hiking"
+      ],
+      "ai_customization": {
+        "ai_name": "Cari",
+        "ai_role": "friend",
+        "personality": [
+          "gentle and patient",
+          "encouraging and supportive"
+        ],
+        "communication_style": "casual"
+      },
+      "_source_observation_summary": {
+        "identity": "Transgender woman, started transitioning 3 years ago, moved from Sweden 4 years ago",
+        "career": "Pursuing counseling/mental health career, attended LGBTQ+ counseling workshop, mentoring LGBTQ youth",
+        "family": "Single, researching adoption agencies to build a family, passed adoption interviews",
+        "interests_details": "Painting (since age 17, focuses on trans experience), piano (learning), acoustic guitar (5 years), reading (Becoming Nicole), hiking",
+        "community": "Active in LGBTQ+ activism (Connected LGBTQ Activists group), pride parades, art shows, youth center volunteering",
+        "pets": "Guinea pig named Oscar",
+        "values": "Self-acceptance, community support, authentic expression, helping others"
+      }
+    },
+    "sample_0_melanie": {
+      "username": "Melanie",
+      "password": "test_password",
+      "identity_type": "worker",
+      "identity_detail": {
+        "job_title": "artist"
+      },
+      "use_cases": [
+        "life advisory"
+      ],
+      "interests": [
+        "painting",
+        "pottery",
+        "running",
+        "camping",
+        "reading",
+        "violin",
+        "clarinet"
+      ],
+      "ai_customization": {
+        "ai_name": "Mel",
+        "ai_role": "friend",
+        "personality": [
+          "enthusiastic and lively",
+          "gentle and patient"
+        ],
+        "communication_style": "casual"
+      },
+      "_source_observation_summary": {
+        "identity": "Married for 5 years, mother of multiple kids, manages kids and work",
+        "career": "Artist - painting (7 years) and pottery, values art as therapeutic self-expression",
+        "family": "Husband and kids, dog Luna, cat Oliver, another cat Bailey",
+        "interests_details": "Painting (landscapes, still life, animals, nature-inspired, abstract), pottery, running (for mental health), violin, clarinet, camping, hiking, reading, classical music (Bach, Mozart)",
+        "community": "Volunteered at homeless shelter with family, supports Caroline's LGBTQ advocacy",
+        "values": "Family time, self-care, creativity, inclusivity, nature appreciation"
+      }
+    }
+  }
+}

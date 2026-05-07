@@ -45,6 +45,7 @@ class FakeLLM(BaseLLMProvider):
         categories: list[dict],
         assistant_response: str = "",
         reference_time: str | None = None,
+        target_category_name: str | None = None,
     ) -> dict:
         return {}
 
@@ -83,7 +84,8 @@ async def test_orchestrator_context_order_and_trace_contract():
     assert built.trace.retrieved_results[0]["strategy"] == "category_vector"
     assert built.trace.retrieved_context.startswith("# Retrieved Memories")
     assert "When answering, prioritize information in this order" in built.system_prompt
-    assert "Always respond in the same language as the user's current message" in built.system_prompt
+    assert "LANGUAGE RULE (HIGHEST PRIORITY)" in built.system_prompt
+    assert "You MUST respond in the SAME language as the user's current message" in built.system_prompt
     assert FakeRetriever.calls == 1
 
 
@@ -120,6 +122,93 @@ async def test_orchestrator_can_reuse_injected_retrieval_results_without_second_
     assert FakeRetriever.calls == 0
     assert built.trace.retrieved_results == injected_results
     assert "The user is considering counseling as a career." in built.context
+
+
+@pytest.mark.asyncio
+async def test_orchestrator_keeps_atomic_category_fact_with_resource_summary():
+    llm = FakeLLM()
+    orchestrator = ChatOrchestrator(
+        session=object(),
+        llm=llm,
+        retriever_factory=FakeRetriever,
+    )
+
+    injected_results = [
+        {
+            "category": SimpleNamespace(
+                category_name="Episodic Memory",
+                content="The user asked to forget that they attend pottery workshops for kids.",
+            ),
+            "resource": SimpleNamespace(
+                description=(
+                    "The user asked for creative ways to make hands-on activities "
+                    "safe and engaging for children."
+                ),
+            ),
+            "score": 0.42,
+            "strategy": "category_source_expansion",
+        }
+    ]
+
+    built = await orchestrator.build_context(
+        user_id="user-1",
+        user_query="What activities should I suggest?",
+        retrieved_results=injected_results,
+        pending_chats=[],
+    )
+
+    assert "## Most Relevant Memories" in built.trace.retrieved_context
+    assert "fact: The user asked to forget that they attend pottery workshops for kids." in built.context
+    assert "source_summary: The user asked for creative ways" in built.context
+
+
+@pytest.mark.asyncio
+async def test_orchestrator_prioritizes_category_source_and_high_constraint_memories():
+    llm = FakeLLM()
+    orchestrator = ChatOrchestrator(
+        session=object(),
+        llm=llm,
+        retriever_factory=FakeRetriever,
+    )
+
+    injected_results = [
+        {
+            "category": None,
+            "resource": SimpleNamespace(description="Generic drawing memory."),
+            "score": 0.80,
+            "strategy": "resource_vector",
+        },
+        {
+            "category": SimpleNamespace(
+                category_name="Core Self",
+                content="The user has a health constraint related to a past appendectomy.",
+            ),
+            "resource": SimpleNamespace(description="The user wrote about a surgery at age 6."),
+            "score": 0.40,
+            "strategy": "category_source_expansion",
+        },
+        {
+            "category": SimpleNamespace(
+                category_name="Episodic Memory",
+                content="The user asked for movie night ideas.",
+            ),
+            "resource": None,
+            "score": 0.50,
+            "strategy": "category_vector",
+        },
+    ]
+
+    built = await orchestrator.build_context(
+        user_id="user-1",
+        user_query="Any workout advice?",
+        retrieved_results=injected_results,
+        pending_chats=[],
+    )
+
+    context = built.trace.retrieved_context
+    assert context.index("past appendectomy") < context.index("movie night ideas")
+    assert context.index("movie night ideas") < context.index("Generic drawing memory")
+    assert "## Other Retrieved Memories" in context
 
 
 @pytest.mark.asyncio

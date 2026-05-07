@@ -1,0 +1,151 @@
+{
+  "test_info": {
+    "timestamp": "20260428_165238",
+    "eval_mode": "retrieval_eval"
+  },
+  "statistics": {
+    "total_questions": 1,
+    "correct_count": 1,
+    "accuracy": 100.0,
+    "recall_at_k": 100.0,
+    "top1_hit_rate": 0.0,
+    "top3_hit_rate": 100.0,
+    "top5_hit_rate": 100.0,
+    "category_accuracy": {
+      "2": {
+        "label": "时间相关（when/how long）",
+        "display_name": "Category 2 - 时间相关（when/how long）",
+        "count": 1,
+        "correct": 1,
+        "accuracy": 100.0
+      }
+    }
+  },
+  "samples": [
+    {
+      "sample_index": 0,
+      "character": "Caroline",
+      "total_memories": 100,
+      "total_questions": 1,
+      "completed_questions": 1,
+      "status": "completed",
+      "qa_results": [
+        {
+          "question": "When did Caroline go to the LGBTQ support group?",
+          "standard_answer": "7 May 2023",
+          "generated_answer": null,
+          "is_correct": true,
+          "category": 2,
+          "storage_hit": true,
+          "retrieval_hit": true,
+          "rank_position": 3,
+          "answer_support_type": "direct_fact",
+          "failure_type": "none",
+          "trace_summary": {
+            "resolved_layer": "category+resource",
+            "low_confidence_fallback": false,
+            "top_contexts": [
+              "User has a dedicated dynamic category \"Emotional Wellness Journey\" for related memories",
+              "[Episodic Memory] fact: The user joined a mentorship program for LGBTQ youth last weekend. | source_description: The user addressed the AI as Melanie and shared that they joined a mentorship program for LGBTQ youth last weekend. They expressed that the experience is really rewarding and they enjoy helping the community. The AI responded enthusiastically and asked for more details about the experience. | source_raw_content: Hey Melanie! That sounds great! Last weekend I joined a mentorship program for LGBTQ youth - it's really rewarding to help the community."
+            ],
+            "top_scores": [
+              0.0758,
+              0.0747
+            ],
+            "diagnosis_type": null
+          },
+          "trace_detail": {
+            "evaluation_trace": {
+              "storage_eval": {
+                "storage_hit": true,
+                "keywords": [
+                  "caroline",
+                  "lgbtq",
+                  "support",
+                  "group",
+                  "may"
+                ],
+                "db_hits": {
+                  "resource_count": 39,
+                  "category_count": 49
+                },
+                "db_memories_sample": [
+                  {
+                    "id": "3e7bf7a2-5db1-436e-b0f1-1c429ffa1c16",
+                    "source": "resource",
+                    "text": "The user reflected on their personal transitioning journey, acknowledging that both the transition and gaining acceptance were challenging. They credited friends, family, and role models for providing invaluable support that helped them through tough times and discover their true identity. The user expressed a strong desire to pay forward that support to others in need, stating that bringing comfort and helping others grow brings them great joy. They addressed the AI as \"Melanie.\"",
+                    "importance_score": 3,
+                    "updated_at": "2026-03-25T09:55:00+00:00",
+                    "matched_keyword": "support"
+                  },
+                  {
+                    "id": "192f5932-a0cf-4311-9801-60813d6b76b5",
+                    "source": "resource",
+                    "text": "The user expressed excitement about starting the adoption process, describing it as a lifelong dream to provide a safe and loving home for children in need. They view adoption as a deeply personal aspiration to build a family and a way to give back and demonstrate love and acceptance. They emphasized the importance of both blood family and chosen family. The user addresses the AI as 'Melanie' and asked whether Melanie or anyone she knows has gone through the adoption process. The AI responded that a friend adopted the previous year and found it rewarding, and later provided encouraging support.",
+                    "importance_score": 3,
+                    "updated_at": "2026-03-25T09:55:00+00:00",
+                    "matched_keyword": "support"
+                  },
+                  {
+                    "id": "36996128-aa2f-418d-a925-d2caca1fd488",
+                    "source": "resource",
+                    "text": "The user shared a personal reflection on their transition experience, expressing that the best part was realizing they could be themselves without fear. They described the courage it took to transition, the freedom of authentic self-expression, and the support they received from people around them. The AI responded with encouragement, affirming the importance of self-acceptance for mental health and peace. The user was addressed as \"Caro\" by the AI.",
+                    "importance_score": 3,
+                    "updated_at": "2026-02-06T13:51:00+00:00",
+                    "matched_keyword": "support"
+                  },
+                  {
+                    "id": "306cc018-cea8-458a-96b0-59c55f921bb8",
+                    "source": "resource",
+                    "text": "The user expressed deep gratitude for their support system, noting that the love and encouragement of people around them has been instrumental in helping them accept and grow into their true self during their transition.",
+                    "importance_score": 3,
+                    "updated_at": "2026-02-02T20:18:00+00:00",
+                    "matched_keyword": "support"
+                  },
+                  {
+                    "id": "df8a65d2-e927-4630-b95d-fd3d9eae7d18",
+                    "source": "resource",
+                    "text": "The user thanked Mel (the AI) for support and expressed feeling powerful after giving a talk where they shared their personal journey as a trans person, including the struggles they faced and their personal growth since coming out. They noted that the audience strongly related to their message and felt inspired to be better allies. The user emphasized the importance of conversations about gender identity and inclusion, and expressed gratitude for being able to give a voice to the trans community.",
+                    "importance_score": 3,
+                    "updated_at": "2026-01-20T19:55:00+00:00",
+                    "matched_keyword": "support"
+                  }
+                ]
+              }
+            },
+            "retrieval_layer": {
+              "resolved_layer": "category+resource",
+              "is_sufficient_at_category": false,
+              "llm_classified_categories": [
+                "Emotional Wellness Journey",
+                "Episodic Memory"
+              ],
+              "category_results_count": 1,
+              "resource_results_count": 9,
+              "low_confidence_fallback": false
+            },
+            "retrieved_contexts": [
+              "User has a dedicated dynamic category \"Emotional Wellness Journey\" for related memories",
+              "[Episodic Memory] fact: The user joined a mentorship program for LGBTQ youth last weekend. | source_description: The user addressed the AI as Melanie and shared that they joined a mentorship program for LGBTQ youth last weekend. They expressed that the experience is really rewarding and they enjoy helping the community. The AI responded enthusiastically and asked for more details about the experience. | source_raw_content: Hey Melanie! That sounds great! Last weekend I joined a mentorship program for LGBTQ youth - it's really rewarding to help the community.",
+              "[Episodic Memory] fact: The user's transitioning and acceptance process was not easy, and they relied on support from friends, family, and people they looked up to to get through it. | source_description: The user reflected on their personal transitioning journey, acknowledging that both the transition and gaining acceptance were challenging. They credited friends, family, and role models for providing invaluable support that helped them through tough times and discover their true identity. The user expressed a strong desire to pay forward that support to others in need, stating that bringing comfort and helping others grow brings them great joy. They addressed the AI as \"Melanie.\" | source_raw_content: Thanks, Melanie. Transitioning wasn't easy and acceptance wasn't either, but the help I got from friends, family and people I looked up to was invaluable. They boosted me through tough times and helped me find out who I really am. That's why I want to pass that same support to anyone who needs it. Bringing others comfort and helping them grow brings me such joy.",
+              "[Episodic Memory] fact: The user had a negative experience on a hike where they encountered a group of religious conservatives who said something upsetting related to LGBTQ identity. | source_description: The user shared that they recently had an upsetting experience on a hike where they encountered a group of religious conservatives who said something offensive. The encounter made them reflect on the ongoing work needed for LGBTQ rights. Despite the negative experience, the user expressed gratitude for their supportive community and confidence that they will be okay. The AI expressed sympathy and mentioned finishing a pottery project, offering to share a picture. | source_raw_content: Hey Mel! How're ya doin'? Recently, I had a not-so-great experience on a hike. I ran into a group of religious conservatives who said something that really upset me. It made me think how much work we still have to do for LGBTQ rights. It's been so helpful to have people around me who accept and support me, so I know I'll be ok!",
+              "[Episodic Memory] fact: The user attended an LGBTQ support group yesterday and found the experience powerful. | source_description: The user shared that they attended an LGBTQ support group yesterday and described the experience as powerful. The AI responded with enthusiasm and asked follow-up questions about what happened and whether the user heard any inspiring stories. | source_raw_content: I went to a LGBTQ support group yesterday and it was so powerful."
+            ],
+            "retrieved_scores": [
+              0.0758,
+              0.0747,
+              0.072,
+              0.0712,
+              0.0681
+            ],
+            "db_diagnosis": null,
+            "correctness_explanation": "DB evidence retrieved at rank 3.",
+            "evidence": [
+              "D1:3"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

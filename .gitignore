@@ -4,6 +4,8 @@ __pycache__/
 *$py.class
 *.so
 .Python
+.pytest_cache/
+.pytest_tmp*/
 env/
 venv/
 .venv/
@@ -29,3 +31,7 @@ build/
 # OS
 .DS_Store
 Thumbs.db
+
+# HuggingFace cache
+data/personamem_v2_hf_cache/
+data/personamem_v2/

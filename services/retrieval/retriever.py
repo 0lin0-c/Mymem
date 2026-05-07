@@ -13,7 +13,8 @@ from services.retrieval.scoring_config import (
     DEFAULT_RETRIEVAL_SCORING_CONFIG,
     RetrievalScoringConfig,
 )
-from repositories import CategoryRepository, ResourceRepository
+from repositories import CategoryRepository, ResourceRepository, ResourceCategoryRepository
+from services.constants import BASE_CATEGORIES, EPISODIC_MEMORY_CATEGORY, LEGACY_TIMELINE_CATEGORY, normalize_category_name
 from tables import Resource, Category
 
 logger = logging.getLogger(__name__)
@@ -47,15 +48,17 @@ class MemoryRetriever:
         self.llm = llm
         self.category_repo = CategoryRepository(session)
         self.resource_repo = ResourceRepository(session)
+        self.resource_category_repo = ResourceCategoryRepository(session)
         self.vector_strategy = VectorStrategy(session, llm)
 
     async def retrieve(
         self,
         user_id: str,
         query: str,
-        top_k: int = 5,
+        top_k: int = 15,
         use_llm_classification: bool = True,
         scoring_config: RetrievalScoringConfig | None = None,
+        track_access: bool = True,
     ) -> List[Dict[str, Any]]:
         """检索相关记忆
 
@@ -64,6 +67,7 @@ class MemoryRetriever:
             query: 用户查询
             top_k: 返回数量
             use_llm_classification: 是否使用 LLM 分类判断
+            track_access: 是否更新访问计数；评估场景应关闭以避免样本间相互强化
 
         Returns:
             检索结果列表，每项包含 resource, score, strategy, category
@@ -88,6 +92,12 @@ class MemoryRetriever:
                 scoring_config=scoring_config,
             )
             logger.info(f"Category 层检索结果: {len(category_results)} 条")
+            source_expansion_results = await self._expand_category_source_results(
+                category_results,
+                limit_per_category=1,
+            )
+        else:
+            source_expansion_results = []
 
         # Step 3: LLM 充足性判断
         is_sufficient = await self._check_sufficiency(query, category_results)
@@ -95,7 +105,10 @@ class MemoryRetriever:
 
         if is_sufficient:
             # Category 结果足够，直接构建上下文
-            results = self._format_category_results(category_results)
+            results = self._merge_results(
+                self._format_category_results(category_results),
+                source_expansion_results,
+            )
         else:
             # Step 4: Resource 层向量检索（第二层）
             if categories:
@@ -107,7 +120,10 @@ class MemoryRetriever:
                     scoring_config=scoring_config,
                 )
                 logger.info(f"Resource 层检索结果: {len(resource_results)} 条")
-                results = self._merge_results(category_results, resource_results)
+                results = self._merge_results(
+                    category_results,
+                    resource_results + source_expansion_results,
+                )
             else:
                 # 无分类，使用向量全局检索作为兜底
                 results = await self.vector_strategy.search(
@@ -118,11 +134,14 @@ class MemoryRetriever:
                 )
 
         # Step 5: 去重、排序、阈值过滤
-        results = self._deduplicate_and_rank(results)
-        results = self._filter_by_threshold(results)
+        ranked_results = self._deduplicate_and_rank(results)
+        results = self._filter_by_threshold(ranked_results)
+        if not results and ranked_results:
+            results = self._low_confidence_fallback(ranked_results, top_k=top_k)
 
         # Step 6: 增加访问计数
-        await self._increment_access_counts(results)
+        if track_access:
+            await self._increment_access_counts(results)
 
         return results[:top_k]
 
@@ -170,7 +189,14 @@ class MemoryRetriever:
         """
         # 从 CategoryRepository 获取用户的分类统计
         stats = await self.category_repo.get_category_stats(user_id)
-        return list(stats.keys()) if stats else []
+        category_names = [category["name"] for category in BASE_CATEGORIES]
+        for category_name in (stats or {}).keys():
+            normalized_name = normalize_category_name(category_name)
+            if normalized_name == LEGACY_TIMELINE_CATEGORY:
+                normalized_name = EPISODIC_MEMORY_CATEGORY
+            if normalized_name not in category_names:
+                category_names.append(normalized_name)
+        return category_names
 
     def _build_classification_prompt(self, query: str, available_categories: List[str]) -> str:
         """Build classification prompt
@@ -184,24 +210,35 @@ class MemoryRetriever:
         """
         categories_text = "\n".join(available_categories)
 
-        return f"""# Role
-You are a memory classification expert. Determine which categories of memories need to be retrieved based on the user query.
+        return f"""
+            # Role
+            You are a memory classification expert. Determine which categories of memories need to be retrieved based on the user query.
 
-# User Query
-{query}
+            # User Query
+            {query}
 
-# Available Categories
-{categories_text}
+            # Available Categories
+            {categories_text}
 
-# Classification Rules
-1. Only return categories directly related to the query
-2. No limit on quantity, but avoid over-generalization
-3. If the query clearly points to a specific domain, return only that domain
-4. If the query is ambiguous, multiple related categories can be returned
+            # Classification Rules
+            1. Return 2-3 categories most relevant to the query for factual, event, object, date, symbolic, or advice/checklist questions.
+               Return 1 category only when the query is clearly a single stable profile/preference question.
+            2. Only return categories that are directly related to the query. Do not include unrelated broad categories.
+            3. For fact-seeking questions, avoid over-narrowing to a single category unless the answer is clearly confined to one category.
+            4. If a factual answer could plausibly be stored in more than one category, return one primary category plus 1-2 fallback categories.
+            5. For questions asking about dates, events, actions, people, places, concrete past occurrences, or object-symbol meanings, prefer categories that may contain episodic records, recent activities, or other directly answerable evidence.
+            6. For preference, opinion, identity, or long-term profile questions, prefer categories that describe stable user traits or profile information.
+            7. If the query clearly points to a specific domain, make that domain the first category, but still include a nearby fallback category when the fact might be stored elsewhere.
+            8. You MUST return at least one category from the Available Categories list.
 
-# Output Format
-Return a JSON array:
-["CategoryName1", "CategoryName2", ...]"""
+            # Practical Guidance
+            - Questions about joining, attending, meeting, going somewhere, researching, making something, seeing a photo, object details, symbolic meanings, or recent activities usually need broader factual coverage instead of a single narrow category.
+            - Use 2 categories for many short factual questions unless one category is obviously sufficient.
+            - Keep the first category as the best guess, and use the second or third category as retrieval fallback.
+
+            # Output Format
+            Return a JSON array with 2-3 categories for factual questions:
+            ["CategoryName1", "CategoryName2"]"""
 
     def _parse_classification_response(self, response: str, valid_categories: List[str]) -> List[str]:
         """解析分类结果
@@ -226,13 +263,27 @@ Return a JSON array:
 
                 # 归一化：构建有效分类集合（同时接受带/不带方括号的格式）
                 valid_categories_set = set()
+                canonical_to_valid = {}
                 for vc in valid_categories:
+                    cleaned = vc.strip("[]")
                     valid_categories_set.add(vc)
-                    valid_categories_set.add(vc.strip("[]"))
-                return [
-                    cat.strip("[]") for cat in categories
-                    if cat in valid_categories_set or cat.strip("[]") in valid_categories_set
-                ]
+                    valid_categories_set.add(cleaned)
+                    canonical_to_valid.setdefault(normalize_category_name(cleaned), cleaned)
+
+                parsed = []
+                for cat in categories:
+                    cleaned = cat.strip("[]")
+                    canonical = normalize_category_name(cleaned)
+                    if cleaned in valid_categories_set:
+                        parsed.append(cleaned)
+                    elif canonical in canonical_to_valid:
+                        parsed.append(canonical_to_valid[canonical])
+                if parsed:
+                    deduped: List[str] = []
+                    for cat in parsed:
+                        if cat not in deduped:
+                            deduped.append(cat)
+                    return deduped[:3]
 
         except (json.JSONDecodeError, TypeError):
             pass
@@ -244,7 +295,7 @@ Return a JSON array:
         user_id: str,
         categories: List[str],
         query: str,
-        top_k: int = 5,
+        top_k: int = 15,
         min_importance: int = 0,
         scoring_config: RetrievalScoringConfig | None = None,
     ) -> List[Dict[str, Any]]:
@@ -329,11 +380,15 @@ Return a JSON array:
 # Decision Rules
 1. Memory fragments provide all key information needed to answer the question → Sufficient
 2. Memory fragments are vague, lack details, or need more context → Insufficient
-3. Prefer "Sufficient" judgment to avoid over-retrieval
+3. First classify the query type internally: profile_or_preference, broad_recap, exact_fact, media_or_symbolic, or advice_checklist.
+4. profile_or_preference and broad_recap may be sufficient when the fragments clearly answer the requested granularity.
+5. exact_fact, media_or_symbolic, and advice_checklist are sufficient only when the exact answer-bearing fact is explicitly present.
+6. Related-but-broad fragments are insufficient when they miss who, what, when, where, yes/no, negation, ownership, event topic, symbol meaning, or checklist steps.
+7. If there is any reasonable doubt, prefer Insufficient so the system can continue retrieval.
 
 # Output Format
 Return JSON:
-{{"sufficient": true/false, "reason": "Brief explanation of the decision"}}"""
+{{"query_type": "profile_or_preference|broad_recap|exact_fact|media_or_symbolic|advice_checklist", "sufficient": true/false, "reason": "Brief explanation of the decision"}}"""
 
         try:
             response = await self.llm.generate_chat_response(
@@ -352,11 +407,9 @@ Return JSON:
 
         except Exception as e:
             logger.warning(f"LLM 充足性判断失败: {e}，使用降级策略")
-            # 降级策略：基于四因子评分阈值
+            # 降级策略：仅在单条高分结果时才判定为足够，避免“结果多就提前停止”的误判
             best_score = max(r.get("score", 0) for r in category_results) if category_results else 0
             if best_score >= FOUR_FACTOR_THRESHOLD_HIGH:
-                return True
-            if len(category_results) >= 3:
                 return True
             return False
 
@@ -367,7 +420,7 @@ Return JSON:
         user_id: str,
         categories: List[str],
         query: str,
-        top_k: int = 5,
+        top_k: int = 15,
         min_importance: int = 0,
         scoring_config: RetrievalScoringConfig | None = None,
     ) -> List[Dict[str, Any]]:
@@ -469,6 +522,47 @@ Return JSON:
 
         return results
 
+    async def _expand_category_source_results(
+        self,
+        category_results: List[Dict[str, Any]],
+        limit_per_category: int = 1,
+    ) -> List[Dict[str, Any]]:
+        """Attach linked source Resources for retrieved Category facts.
+
+        Category items are the semantic index; linked Resources are the evidence
+        carrier. Give the expansion a tiny score boost so answer generation sees
+        the source evidence before a broad Category paraphrase.
+        """
+        category_ids = [
+            item["category"].id
+            for item in category_results
+            if item.get("category") and item["category"].id
+        ]
+        if not category_ids:
+            return []
+
+        resources_by_category = await self.resource_category_repo.get_source_resources_for_categories(
+            category_ids=category_ids,
+            limit_per_category=limit_per_category,
+        )
+
+        expanded: List[Dict[str, Any]] = []
+        for item in category_results:
+            category = item.get("category")
+            if not category:
+                continue
+
+            base_score = float(item.get("score", 0) or 0)
+            for resource in resources_by_category.get(category.id, []):
+                expanded.append({
+                    "resource": resource,
+                    "category": category,
+                    "score": base_score + 0.0001,
+                    "strategy": "category_source_expansion",
+                })
+
+        return expanded
+
     def _format_category_results(
         self,
         category_results: List[Dict[str, Any]],
@@ -525,9 +619,17 @@ Return JSON:
         """
         seen_resources = {}
         category_only_results = []
+        categories_with_source_expansion = {
+            result["category"].id
+            for result in results
+            if result.get("strategy") == "category_source_expansion"
+            and result.get("category")
+            and result["category"].id
+        }
 
         for result in results:
             resource = result.get("resource")
+            category = result.get("category")
 
             if resource:
                 # 有 Resource 的结果按 resource_id 去重
@@ -535,6 +637,8 @@ Return JSON:
                     seen_resources[resource.id] = result
             else:
                 # 只有 Category 的结果保留
+                if category and category.id in categories_with_source_expansion:
+                    continue
                 category_only_results.append(result)
 
         # 合并并按分数降序排序
@@ -573,6 +677,25 @@ Return JSON:
             filtered.append(result)
 
         return filtered
+
+    def _low_confidence_fallback(
+        self,
+        results: List[Dict[str, Any]],
+        top_k: int,
+    ) -> List[Dict[str, Any]]:
+        """Return a small marked fallback set when thresholding removes everything.
+
+        This keeps the assistant from receiving an empty context after a real
+        vector search produced only low-score candidates.
+        """
+        fallback_limit = min(3, top_k)
+        fallback_results: List[Dict[str, Any]] = []
+        for result in results[:fallback_limit]:
+            marked = dict(result)
+            marked["low_confidence_fallback"] = True
+            fallback_results.append(marked)
+        return fallback_results
+
 
     async def _increment_access_counts(
         self,
@@ -632,24 +755,45 @@ Return JSON:
 
         context_parts = []
         current_tokens = 0
+        source_resources_by_category = await self._load_episodic_source_resources(results)
 
         for result in results:
             resource = result.get("resource")
             category = result.get("category")
             score = result.get("score", 0)
+            strategy = result.get("strategy", "")
 
             # 优先使用 Resource 的描述，其次使用 Category 的内容
-            if resource and resource.description:
+            if strategy == "category_source_expansion" and resource and category:
+                part = f"[{category.category_name}] fact: {category.content}"
+                if category.created_at:
+                    part += f" | conversation_time: {category.created_at.isoformat()}"
+                if resource.description:
+                    part += f" | source_description: {resource.description}"
+                if resource.raw_content:
+                    part += f" | source_raw_content: {resource.raw_content}"
+            elif resource and resource.description:
                 if category:
                     part = f"[{category.category_name}] {resource.description}"
                 else:
-                    part = f"[记忆] {resource.description}"
+                    part = f"[Memory] {resource.description}"
             elif category and category.content:
                 part = f"[{category.category_name}] {category.content}"
+                if category.category_name == EPISODIC_MEMORY_CATEGORY:
+                    if category.created_at:
+                        part += f" | conversation_time: {category.created_at.isoformat()}"
+                    source_resources = source_resources_by_category.get(category.id, [])
+                    source_texts = [
+                        (source.raw_content or "").strip()
+                        for source in source_resources
+                        if (source.raw_content or "").strip()
+                    ]
+                    if source_texts:
+                        part += f" | source_raw_content: {source_texts[0]}"
             else:
                 continue
 
-            part += f" (相关性: {score:.2f})"
+            part += f" (score: {score:.2f})"
 
             # Token 计数（降级策略：count_tokens 失败时用 len // 4 估算）
             try:
@@ -664,6 +808,24 @@ Return JSON:
             current_tokens += part_tokens
 
         return "\n".join(context_parts)
+
+    async def _load_episodic_source_resources(
+        self,
+        results: List[Dict[str, Any]],
+    ) -> Dict[str, List[Resource]]:
+        category_ids = [
+            result["category"].id
+            for result in results
+            if result.get("category")
+            and result["category"].category_name == EPISODIC_MEMORY_CATEGORY
+            and result["category"].id
+        ]
+        if not category_ids:
+            return {}
+        return await self.resource_category_repo.get_source_resources_for_categories(
+            category_ids=category_ids,
+            limit_per_category=1,
+        )
 
     async def build_context(
         self,

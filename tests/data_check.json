@@ -1,0 +1,147 @@
+{
+  "source_result": "test_results/converted_data/legacy/mymem_test_results_20260423_120916.json",
+  "correct_count": 12,
+  "incorrect_count": 11,
+  "correct": [
+    {
+      "question": "What fields would Caroline be likely to pursue in her educaton?",
+      "standard_answer": "Psychology, counseling certification",
+      "status": "correct",
+      "generate_answer": "Based on what I know about Caroline, she'd most likely pursue fields related to:\n\n- **Psychology / Mental Health Counseling** — She's been exploring this as a career direction and sees it as tough but rewarding work.\n- **LGBTQ+ Studies or Gender Studies** — She has a specific interest in helping trans people with self-acceptance and mental health support, so she might gravitate toward programs that combine counseling with LGBTQ-focused knowledge.\n\nHer interests in painting, piano, guitar, reading, and hiking are more personal passions, so they'd likely stay as hobbies rather than academic pursuits — though art therapy could be an interesting intersection for her given her creative side.\n\nThe through-line seems pretty clear: she wants to do meaningful work that supports people, especially trans folks, in their mental health journeys."
+    },
+    {
+      "question": "When did Caroline join a new activist group?",
+      "standard_answer": "The Tuesday before 8 February 2026",
+      "status": "correct",
+      "generate_answer": "Caroline joined the new LGBTQ activist group on Tuesday, February 3, 2026."
+    },
+    {
+      "question": "What is Caroline's identity?",
+      "standard_answer": "Transgender woman",
+      "status": "correct",
+      "generate_answer": "Based on what I know about you, Caroline, here's what I can share about your identity:\n\n- You're **transgender**\n- You're a **mom** (or planning to become one) — and you feel that being a mom is awesome\n- You're someone going through a **life transition** and deeply values friendship and compassion\n- You're interested in **psychological counseling** as a possible career direction\n- You're planning to **continue your education**\n- Your interests include **painting, piano, guitar, reading, and hiking**, and you care about **LGBTQ rights**\n\nOf course, identity is complex and personal — this is just what I've picked up from our conversations so far. There's always more to a person than what can be summarized in a list. Is there something specific you were reflecting on?"
+    },
+    {
+      "question": "What would Caroline's political leaning likely be?",
+      "standard_answer": "Liberal",
+      "status": "correct",
+      "generate_answer": "Based on what I know about Caroline, she'd likely lean progressive or left-leaning. A few reasons stand out:\n\n- She's transgender and has LGBTQ rights listed as an interest, which generally aligns with progressive politics since those movements tend to advocate more actively for trans rights and protections.\n- She values compassion deeply and is drawn to counseling work — that kind of empathy-driven worldview often pairs with progressive values around social safety nets, healthcare access, and supporting marginalized communities.\n- She's going through a life transition and pursuing education, which can shape a perspective that's more open to systemic change.\n\nThat said, I wouldn't want to put her in a neat box — people's political views are more nuanced than labels suggest. But if I had to guess based on what I know, progressive feels like the most natural fit."
+    },
+    {
+      "question": "What did Caroline realize after her charity race?",
+      "standard_answer": "",
+      "status": "correct",
+      "generate_answer": "I don't actually have any memory of Caroline doing a charity race or a realization that came from it. Could you fill me in on what happened? I'd love to hear about it!"
+    },
+    {
+      "question": "What are the new shoes that Caroline got used for?",
+      "standard_answer": "",
+      "status": "correct",
+      "generate_answer": "I actually don't have any memory of you mentioning new shoes! I'd love to hear about them though — what kind did you get?"
+    },
+    {
+      "question": "What is Caroline's reason for getting into running?",
+      "standard_answer": "",
+      "status": "correct",
+      "generate_answer": "I actually don't have any memory of you mentioning running before, so I'm not sure what your reason was! I'd love to hear about it though — what got you into running?"
+    },
+    {
+      "question": "Which classical musicians does Caroline enjoy listening to?",
+      "standard_answer": "",
+      "status": "correct",
+      "generate_answer": "I actually don't have that information from our conversations! I know you're into piano and guitar, but we haven't talked about specific classical musicians you enjoy listening to. I'd love to hear about your favorites though — who do you like to listen to?"
+    },
+    {
+      "question": "What setback did Caroline face recently?",
+      "standard_answer": "",
+      "status": "correct",
+      "generate_answer": "I don't have any information about a setback Caroline faced recently. The memories I have access to mostly reflect positive experiences — like joining a new LGBTQ activist group, planning an art show, attending an adoption council meeting, and feeling motivated after speaking with a community.\n\nIf something happened that you'd like to talk about, I'm here to listen. 💛"
+    },
+    {
+      "question": "What was grandpa's gift to Caroline?",
+      "standard_answer": "",
+      "status": "correct",
+      "generate_answer": "I don't have any memory of a gift from grandpa to you — sorry! Could you remind me what it was? I'd love to hear about it. 😊"
+    },
+    {
+      "question": "What did Caroline and her family see during their camping trip last year?",
+      "standard_answer": "",
+      "status": "correct",
+      "generate_answer": "Based on what I can recall, the memories I have mention a family camping trip that involved nature exploration, campfire marshmallow roasting, and a hike — but that's actually attributed to someone named \"Mel,\" not specifically to you, Caroline. I don't have a clear memory tying that camping trip to you and your family.\n\nDid you share details about a camping trip that I might be missing, or are you maybe thinking of Mel's trip? I'd love to hear about it if you did go camping!"
+    },
+    {
+      "question": "What precautionary sign did Caroline see at the café?",
+      "standard_answer": "",
+      "status": "correct",
+      "generate_answer": "I don't have any memory of Caroline mentioning a precautionary sign at a café. That detail isn't something I have a record of from our conversations. Could you share more context about what you're referring to?"
+    }
+  ],
+  "incorrect": [
+    {
+      "question": "What did Caroline research?",
+      "standard_answer": "Adoption agencies",
+      "status": "incorrect",
+      "generate_answer": "Based on what I know, I don't have any specific information about research you've done. The memories I have mention you gained exposure to various therapeutic methods for working with trans clients from an LGBTQ+ counseling workshop, but that's more about learning/training rather than research specifically.\n\nIs there something you researched recently that you'd like to tell me about?"
+    },
+    {
+      "question": "What advice does Caroline give for getting started with adoption?",
+      "standard_answer": "Do research, find an adoption agency or lawyer, gather necessary documents, and prepare emotionally.",
+      "status": "incorrect",
+      "generate_answer": "Based on what I know, Caroline hasn't shared specific advice for getting started with adoption — but she did mention that attending an adoption council meeting was really inspiring and emotional for her. She found that many people there wanted to create loving homes for children in need, and the experience reinforced her own determination to adopt.\n\nSo if I had to guess what she'd say, she'd probably encourage going to those kinds of meetings as a first step! They seem to be a great way to learn and connect with others on the same journey. But I don't want to put words in her mouth — if you're curious about her specific take, it'd be worth asking her directly. 😊"
+    },
+    {
+      "question": "What was the poetry reading that Caroline attended about?",
+      "standard_answer": "It was a transgender poetry reading where transgender people shared their stories.",
+      "status": "incorrect",
+      "generate_answer": "I don't have any memory of a poetry reading that Caroline attended. Nothing in what I recall mentions one — it's possible I just didn't hear about it, or maybe it hasn't come up in our conversations yet. Want to tell me about it?"
+    },
+    {
+      "question": "Did Caroline make the black and white bowl in the photo?",
+      "standard_answer": "No",
+      "status": "incorrect",
+      "generate_answer": "I don't have any memory of a black and white bowl in a photo, so I can't say for sure! If you're referring to a photo that was shared in a previous conversation, I might not have that detail stored. Do you remember the context around it?"
+    },
+    {
+      "question": "When is Caroline going to the transgender conference?",
+      "standard_answer": "February 2026",
+      "status": "incorrect",
+      "generate_answer": "Caroline is planning to attend the transgender conference in January 2026."
+    },
+    {
+      "question": "When did Caroline attend a pride parade in August?",
+      "standard_answer": "The Friday before 20 February 2026",
+      "status": "incorrect",
+      "generate_answer": "Based on what I remember, there's no record of attending a pride parade in August. The pride parade I know about was in January 2026, around January 19th to 25th — that was the one you went to with the teen you mentor. There was also another one in your city around January 31st to February 1st, but you missed that one.\n\nIs it possible you're thinking of a different event, or maybe mixing it up with the January one?"
+    },
+    {
+      "question": "What does Caroline's drawing symbolize for her?",
+      "standard_answer": "Freedom and being true to herself.",
+      "status": "incorrect",
+      "generate_answer": "Honestly, I don't have enough context to answer that — I know you enjoy painting, but I don't have any memory of a specific drawing or what it symbolized for you. \n\nIf you'd like to tell me about it, I'd love to hear what meaning it holds for you."
+    },
+    {
+      "question": "What did Caroline and her family do while camping?",
+      "standard_answer": "",
+      "status": "incorrect",
+      "generate_answer": "I don't actually have any memories of you going camping! The camping trip I know about was Mel's family trip — they explored nature, roasted marshmallows around a campfire, and went on a hike with amazing views.\n\nDid you go camping recently too? I'd love to hear about it if you did!"
+    },
+    {
+      "question": "What does Caroline say running has been great for?",
+      "standard_answer": "",
+      "status": "incorrect",
+      "generate_answer": "Based on what you shared, you mentioned that running can be great for boosting mood."
+    },
+    {
+      "question": "How did Caroline feel about her family after the accident?",
+      "standard_answer": "",
+      "status": "incorrect",
+      "generate_answer": "I don't have any memory of you mentioning an accident, so I'm not sure what you're referring to. Could you tell me more about what happened? I'm here to listen if you want to talk about it."
+    },
+    {
+      "question": "What does Caroline love most about camping with her family?",
+      "standard_answer": "",
+      "status": "incorrect",
+      "generate_answer": "I actually don't have any memories of you going camping with your family! The camping trip I remember was your friend Mel's — they shared about their family camping trip where they hiked, roasted marshmallows, and enjoyed nature together with their kids.\n\nHave you been on any camping trips yourself that you haven't told me about yet? I'd love to hear about them if so!"
+    }
+  ]
+}

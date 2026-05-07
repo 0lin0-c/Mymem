@@ -54,6 +54,7 @@ from services.llm.factory import LLMFactory
 from services.llm.base import BaseLLMProvider
 from services.memory.writer import MemoryWriter
 from services.retrieval.retriever import MemoryRetriever
+from services.constants import BASE_CATEGORIES, LEGACY_TIMELINE_CATEGORY
 from services.profile_service import ProfileService
 from services.chat_orchestrator import ChatOrchestrator
 from schemas.onboarding_schema import OnboardingRequest, IdentityDetail, AICustomization
@@ -76,6 +77,7 @@ from tests.evals.converted_data.reporting import (
     generate_overall_console_report,
     save_results_json,
 )
+from tests.evals.converted_data.metrics import classify_answer_support_type
 
 logger = logging.getLogger(__name__)
 
@@ -99,10 +101,14 @@ REPO_ROOT = Path(__file__).parents[3]
 DATA_DIR = REPO_ROOT / "data" / "converted_data_zh"
 
 # 结果输出目录
-OUTPUT_DIR = REPO_ROOT / "test_results"
+OUTPUT_DIR = REPO_ROOT / "test_results" / "converted_data" / "legacy"
 
 # Onboarding 画像文件
 ONBOARDING_PROFILES_FILE = DATA_DIR / "sample_0_onboarding_profiles.json"
+
+
+def _base_category_names() -> set[str]:
+    return {category["name"] for category in BASE_CATEGORIES} | {LEGACY_TIMELINE_CATEGORY}
 
 
 # ============== 数据模型 ==============
@@ -156,6 +162,7 @@ class RetrievalLayerInfo:
     is_sufficient_at_category: bool = False  # 充足性判断是否在 Category 层就够了
     category_results_count: int = 0
     resource_results_count: int = 0
+    low_confidence_fallback: bool = False
 
 
 @dataclass
@@ -323,6 +330,10 @@ async def ensure_user_onboarded(session: AsyncSession, user_id: str) -> str:
     user = await user_repo.get_by_username(username)
     if user and user.user_prompt_template:
         logger.info(f"用户已存在且已 onboarding: {username}")
+        request = _build_onboarding_request(user_id, profile)
+        dynamic_category_names = await _resolve_dynamic_category_names(session, user.id, request)
+        await _seed_dynamic_category_rows(session, user.id, dynamic_category_names)
+        await session.commit()
         return user.id
 
     # 如果用户存在但未 onboarding，先删除再重建
@@ -392,6 +403,79 @@ def _load_onboarding_profiles() -> dict:
     return data.get("profiles", {})
 
 
+def _build_onboarding_request(user_id: str, profile: dict[str, Any] | None) -> OnboardingRequest:
+    if not profile:
+        profile = {
+            "username": user_id,
+            "password": "test_password",
+            "identity_type": "other",
+            "identity_detail": None,
+            "use_cases": [],
+            "interests": [],
+            "ai_customization": {
+                "ai_name": "Assistant",
+                "ai_role": "friend",
+                "personality": ["patient"],
+                "communication_style": "daily",
+            },
+        }
+
+    ai_custom = profile.get("ai_customization", {})
+    return OnboardingRequest(
+        username=profile.get("username", user_id),
+        password=profile.get("password", "test_password"),
+        identity_type=profile.get("identity_type", "other"),
+        identity_detail=IdentityDetail(**profile["identity_detail"]) if profile.get("identity_detail") else None,
+        use_cases=profile.get("use_cases", []),
+        interests=profile.get("interests", []),
+        ai_customization=AICustomization(
+            ai_name=ai_custom.get("ai_name", "Assistant"),
+            ai_role=ai_custom.get("ai_role", "friend"),
+            personality=ai_custom.get("personality", []),
+            communication_style=ai_custom.get("communication_style", "daily"),
+        ),
+    )
+
+
+async def _resolve_dynamic_category_names(
+    session: AsyncSession,
+    user_id: str,
+    onboarding_request: OnboardingRequest,
+) -> list[str]:
+    category_repo = CategoryRepository(session)
+    category_stats = await category_repo.get_category_stats(user_id)
+    existing_dynamic_names = [
+        name
+        for name in category_stats.keys()
+        if name not in _base_category_names()
+    ]
+    if existing_dynamic_names:
+        return existing_dynamic_names
+
+    llm = LLMFactory.get_provider()
+    service = ProfileService(session, llm)
+    return await service.resolve_dynamic_category_names(onboarding_request)
+
+
+async def _seed_dynamic_category_rows(
+    session: AsyncSession,
+    user_id: str,
+    dynamic_category_names: list[str],
+) -> None:
+    if not dynamic_category_names:
+        return
+    category_repo = CategoryRepository(session)
+    category_stats = await category_repo.get_category_stats(user_id)
+    existing_names = set(category_stats.keys())
+    missing_names = [name for name in dynamic_category_names if name not in existing_names]
+    if not missing_names:
+        return
+
+    llm = LLMFactory.get_provider()
+    service = ProfileService(session, llm)
+    await service.store_dynamic_category_seeds(user_id, missing_names)
+
+
 async def import_converted_data(
     session: AsyncSession,
     converted: ConvertedData,
@@ -408,6 +492,9 @@ async def import_converted_data(
 
     # 确保用户完成 onboarding
     user_id = await ensure_user_onboarded(session, converted.user_id)
+    profiles = _load_onboarding_profiles()
+    onboarding_request = _build_onboarding_request(converted.user_id, profiles.get(converted.user_id))
+    dynamic_category_names = await _resolve_dynamic_category_names(session, user_id, onboarding_request)
 
     if reset_memory:
         logger.info(f"清理用户历史记忆后重新导入: user_id={user_id}")
@@ -421,14 +508,15 @@ async def import_converted_data(
         await session.execute(delete(Category).where(Category.user_id == user_id))
         await session.execute(delete(Resource).where(Resource.user_id == user_id))
         await session.commit()
+        await _seed_dynamic_category_rows(session, user_id, dynamic_category_names)
+        await session.commit()
 
     # 获取用户的所有分类（4 基座 + 2 动态），传给 save_chat
     category_repo = CategoryRepository(session)
     category_stats = await category_repo.get_category_stats(user_id)
-    from services.constants import BASE_CATEGORIES
     categories_for_prompt = list(BASE_CATEGORIES)
     for name in category_stats.keys():
-        if name not in {c["name"] for c in BASE_CATEGORIES}:
+        if name not in _base_category_names():
             categories_for_prompt.append({"name": name, "description": f"User-specific memories related to {name}"})
     logger.info(f"用户分类列表: {[c['name'] for c in categories_for_prompt]}")
 
@@ -643,6 +731,7 @@ async def diagnose_bad_case(
     standard_answer: str,
     evidence: list[str],
     retrieved_contexts: list[str],
+    retrieval_layer: RetrievalLayerInfo | None = None,
     max_db_snippets: int = 5,
 ) -> dict[str, Any]:
     """失败样本归因：规则归因 +（条件触发）LLM 二次验证"""
@@ -686,6 +775,59 @@ async def diagnose_bad_case(
             db_memories=missed_in_retrieval,
         )
 
+    retrieval_failure_analysis = None
+    if diagnosis_type == "retrieval_gap":
+        if (
+            retrieval_layer
+            and retrieval_layer.resolved_layer == "category_only"
+            and retrieval_layer.is_sufficient_at_category
+            and llm_verification
+            and llm_verification.get("can_answer") is True
+        ):
+            retrieval_failure_analysis = {
+                "failure_stage": "category_sufficiency_gate",
+                "likely_root_cause": "sufficiency_false_positive",
+                "confidence": "high",
+                "explanation": (
+                    "当前 trace 可以直接支持：category 层被判定为“足够”，系统没有继续走 resource fallback；"
+                    "但数据库中又存在足以直接回答问题的证据。"
+                    "因此失败链路更接近 category_only 提前截断，而不是回答模型自由发挥。"
+                ),
+                "embedding_vs_scoring": (
+                    "这不能单独证明是 embedding 模型故障。更可能是两段式链路共同导致："
+                    "category top-k 没把正确证据排上来，而 sufficiency 误判又阻止了后续补救检索。"
+                ),
+            }
+        elif llm_verification and llm_verification.get("can_answer") is True:
+            retrieval_failure_analysis = {
+                "failure_stage": "retrieval",
+                "likely_root_cause": "ranking_or_filtering_gap",
+                "confidence": "high",
+                "explanation": (
+                    "当前 trace 可以直接支持：数据库里已有足以回答的问题证据，但这些证据没有进入最终检索结果。"
+                    "这说明失败首先发生在召回/排序链路，而不是回答阶段。"
+                ),
+                "embedding_vs_scoring": (
+                    "仅凭当前 trace 不能把原因唯一归到 embedding 模型本身。"
+                    "更稳妥的解释是：category/resource 检索与排序没有把正确记忆顶到 top-k，"
+                    "可能由向量区分度不足、四因子评分排序、或上层过滤共同造成。"
+                ),
+            }
+        else:
+            retrieval_failure_analysis = {
+                "failure_stage": "diagnosis",
+                "likely_root_cause": "db_keyword_probe_noise_or_partial_match",
+                "confidence": "medium",
+                "explanation": (
+                    "数据库关键词探针命中了部分相关记忆，但这批命中片段本身不足以直接回答问题。"
+                    "因此这条 trace 不能高置信断言为纯检索失败，还需要结合更精确的关键词或人工核查。"
+                ),
+                "embedding_vs_scoring": (
+                    "当前证据不足以区分 embedding 问题还是排序问题，"
+                    "更可能是 DB 诊断关键词过宽导致的候选污染。"
+                ),
+            }
+
     return {
         "diagnosis_type": diagnosis_type,
         "summary": summary,
@@ -698,6 +840,7 @@ async def diagnose_bad_case(
         "matched_in_retrieved": matched_in_retrieved,
         "missed_in_retrieval": missed_in_retrieval,
         "llm_verification": llm_verification,
+        "retrieval_failure_analysis": retrieval_failure_analysis,
     }
 
 
@@ -748,7 +891,7 @@ async def generate_answer_with_chat_orchestrator(
     user: Any | None,
     user_id: str,
     question: str,
-    top_k: int = 5,
+    top_k: int = 15,
     retrieved_results: list[dict[str, Any]] | None = None,
 ) -> str:
     """Generate assistant_eval answers through the real production chat orchestration path."""
@@ -799,6 +942,7 @@ async def postprocess_bad_case_diagnoses(
                 standard_answer=result.expected_answer,
                 evidence=result.evidence,
                 retrieved_contexts=result.retrieved_contexts,
+                retrieval_layer=result.retrieval_layer,
             )
         except Exception as exc:
             logger.error("Postprocess bad-case diagnosis failed: %s - %s", result.question, exc)
@@ -824,8 +968,18 @@ def _extract_retrieval_observation(retrieved: list[dict]) -> tuple[list[str], li
         category = r.get("category")
         score = r.get("score", 0)
         strategy = r.get("strategy", "")
+        if r.get("low_confidence_fallback"):
+            layer_info.low_confidence_fallback = True
 
-        if resource and resource.description:
+        if strategy == "category_source_expansion" and resource and category:
+            context = f"[{category.category_name}] fact: {category.content}"
+            if resource.description:
+                context += f" | source_description: {resource.description}"
+            if resource.raw_content:
+                context += f" | source_raw_content: {resource.raw_content}"
+            contexts.append(context)
+            scores.append(score)
+        elif resource and resource.description:
             contexts.append(resource.description)
             scores.append(score)
         elif category and category.content:
@@ -836,7 +990,7 @@ def _extract_retrieval_observation(retrieved: list[dict]) -> tuple[list[str], li
             has_category_result = True
             if category:
                 llm_categories_seen.add(category.category_name)
-        elif strategy == "resource_vector":
+        elif strategy in {"resource_vector", "category_source_expansion"}:
             has_resource_result = True
             if category:
                 llm_categories_seen.add(category.category_name)
@@ -845,7 +999,11 @@ def _extract_retrieval_observation(retrieved: list[dict]) -> tuple[list[str], li
 
     layer_info.llm_classified_categories = sorted(llm_categories_seen)
     layer_info.category_results_count = sum(1 for r in retrieved if r.get("strategy") == "category_vector")
-    layer_info.resource_results_count = sum(1 for r in retrieved if r.get("strategy") == "resource_vector")
+    layer_info.resource_results_count = sum(
+        1
+        for r in retrieved
+        if r.get("strategy") in {"resource_vector", "category_source_expansion"}
+    )
 
     if has_category_result and has_resource_result:
         layer_info.resolved_layer = "category+resource"
@@ -906,6 +1064,14 @@ def _result_to_live_dict(result: TestResult) -> dict[str, Any]:
         "storage_hit": result.storage_hit,
         "retrieval_hit": result.retrieval_hit,
         "rank_position": result.rank_position,
+        "answer_support_type": classify_answer_support_type(
+            {
+                "question": result.question,
+                "standard_answer": result.expected_answer,
+                "is_correct": result.is_correct,
+                "retrieval_hit": result.retrieval_hit,
+            }
+        ),
         "evaluation_trace": result.evaluation_trace,
         "retrieval_layer": {
             "resolved_layer": result.retrieval_layer.resolved_layer,
@@ -913,6 +1079,7 @@ def _result_to_live_dict(result: TestResult) -> dict[str, Any]:
             "llm_classified_categories": result.retrieval_layer.llm_classified_categories,
             "category_results_count": result.retrieval_layer.category_results_count,
             "resource_results_count": result.retrieval_layer.resource_results_count,
+            "low_confidence_fallback": result.retrieval_layer.low_confidence_fallback,
         },
         "retrieved_contexts": result.retrieved_contexts[:5],
         "retrieved_scores": [round(s, 4) for s in result.retrieved_scores[:5]],
@@ -925,7 +1092,7 @@ async def legacy_test_retrieval(
     session: AsyncSession,
     user_id: str,
     qa_data: QAData,
-    top_k: int = 5,
+    top_k: int = 15,
     live_writer: LiveResultWriter | None = None,
     eval_mode: EvalMode = EvalMode.ASSISTANT,
 ) -> list[TestResult]:
@@ -948,7 +1115,7 @@ async def run_layered_qa_evaluation(
     session: AsyncSession,
     user_id: str,
     qa_data: QAData,
-    top_k: int = 5,
+    top_k: int = 15,
     live_writer: LiveResultWriter | None = None,
     eval_mode: EvalMode = EvalMode.ASSISTANT,
 ) -> list[TestResult]:
@@ -1070,7 +1237,7 @@ async def run_single_sample(
     import_only: bool = False,
     retrieval_only: bool = False,
     enable_dedup: bool = False,
-    top_k: int = 5,
+    top_k: int = 15,
     character_filter: str | None = None,
     reset_memory: bool = False,
     eval_mode: EvalMode = EvalMode.ASSISTANT,
@@ -1291,7 +1458,7 @@ def main():
     parser.add_argument("--retrieval-only", action="store_true", help="跳过导入，仅执行检索测试（使用已有数据）")
     parser.add_argument("--reset-memory", action="store_true", help="导入前清空该测试用户的历史记忆，避免旧污染数据影响测试")
     parser.add_argument("--no-dedup", action="store_true", help="禁用记忆去重")
-    parser.add_argument("--top-k", type=int, default=5, help="检索返回数量 (默认: 5)")
+    parser.add_argument("--top-k", type=int, default=15, help="检索返回数量 (默认: 15)")
     parser.add_argument("--character", type=str, help="只测试指定角色（如 caroline、melanie）")
     parser.add_argument("--max-questions", type=int, help="限制每个角色的 QA 数量，用于端到端冒烟测试")
     parser.add_argument("--postprocess-bad-cases", action="store_true", help="主评估完成后再补做失败样本的 bad-case diagnosis")

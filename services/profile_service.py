@@ -157,12 +157,7 @@ class ProfileService:
             )
             user_id = user.id
 
-            if self._is_llm_available():
-                dynamic_category_names = await self._generate_dynamic_categories(request)
-                logger.info("LLM generated dynamic categories: %s", dynamic_category_names)
-            else:
-                dynamic_category_names = self._get_default_dynamic_categories(request.identity_type)
-                logger.info("Using default dynamic categories: %s", dynamic_category_names)
+            dynamic_category_names = await self.resolve_dynamic_category_names(request)
 
             await self._store_initial_profile(user_id, request, dynamic_category_names)
             await self.session.commit()
@@ -205,6 +200,41 @@ class ProfileService:
 
     def _get_default_dynamic_categories(self, identity_type: str) -> list[str]:
         return DEFAULT_DYNAMIC_CATEGORIES.get(identity_type, DEFAULT_DYNAMIC_CATEGORIES["other"])
+
+    async def resolve_dynamic_category_names(self, request: OnboardingRequest) -> list[str]:
+        """Resolve the two profile-driven dynamic category names for a user."""
+        if self._is_llm_available():
+            dynamic_category_names = await self._generate_dynamic_categories(request)
+            logger.info("LLM generated dynamic categories: %s", dynamic_category_names)
+            return dynamic_category_names
+
+        dynamic_category_names = self._get_default_dynamic_categories(request.identity_type)
+        logger.info("Using default dynamic categories: %s", dynamic_category_names)
+        return dynamic_category_names
+
+    async def store_dynamic_category_seeds(
+        self,
+        user_id: str,
+        dynamic_category_names: list[str],
+    ) -> None:
+        """Store placeholder rows so dynamic categories remain visible to retrieval."""
+        items_to_create = [
+            {
+                "category_name": dyn_name,
+                "content": f'User has a dedicated dynamic category "{dyn_name}" for related memories',
+                "importance_score": 2,
+            }
+            for dyn_name in dynamic_category_names
+        ]
+        for item in items_to_create:
+            try:
+                item["content_vector"] = await self.llm.get_embedding(item["content"])
+            except Exception as exc:
+                logger.warning("Failed to generate vector: %s, content=%s", exc, item["content"][:50])
+                item["content_vector"] = None
+
+        if items_to_create:
+            await self.category_repo.create_items_batch(user_id, items_to_create)
 
     async def _generate_dynamic_categories(self, request: OnboardingRequest) -> list[str]:
         user_profile = self._build_user_profile(request)

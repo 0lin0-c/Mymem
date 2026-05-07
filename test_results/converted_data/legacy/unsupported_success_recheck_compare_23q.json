@@ -1,0 +1,481 @@
+[
+  {
+    "question": "What fields would Caroline be likely to pursue in her educaton?",
+    "status": "upgraded_to_evidence_backed",
+    "standard_answer": "Psychology, counseling certification",
+    "old_layer": "category_only",
+    "old_top_contexts": [
+      "User is hosting/participating in an LGBTQ art show in March 2026",
+      "Mel's son was involved in an accident around 2026-03-24; the other children were scared but reassured that their brother would be OK"
+    ],
+    "old_generated_answer": "Based on Caroline's interests and activities, she'd likely gravitate toward fields like:\n\n- **Psychology or Counseling** — 心理咨询 is a direct interest of hers, and her involvement in LGBTQ youth mentorship suggests she's drawn to supporting others emotionally.\n- **Gender Studies / LGBTQ+ Studies** — Between the LGBTQ art show, transgender poetry reading, and mentoring LGBTQ youth, this is a clear thread.\n- **Social Work** — Combines her counseling interest with her community advocacy around LGBTQ rights.\n- **Fine Arts** — 绘画 is a passion, and she's putting it into practice through art shows.\n- **Music** — Piano and guitar are longstanding interests, though this might stay more as a personal pursuit.\n\nIf I had to guess a primary direction, it'd be something at the intersection of **psychology and LGBTQ advocacy** — maybe a counseling or social work path with a focus on queer communities. That ties together a lot of what she's already doing organically.",
+    "old_correctness_explanation": "The generated answer explicitly includes \"Psychology\" and \"Counseling,\" which directly matches the key information required by the standard answer. While it provides additional speculative fields, it accurately contains the required facts.",
+    "new_layer": "category_only",
+    "new_retrieval_hit": true,
+    "new_rank_position": 1,
+    "new_top_contexts": [
+      "User is exploring counseling or mental health work as a career direction, acknowledging it is tough but rewarding",
+      "The user's name is Caroline.",
+      "The user plans to continue their education"
+    ],
+    "new_generated_answer": "Based on what I know about Caroline, she'd most likely pursue fields related to **mental health and counseling**, particularly with a focus on supporting trans people with self-acceptance and mental health. She's acknowledged that this path is tough but rewarding, and she feels genuinely excited about exploring it.\n\nGiven her broader interests, she might also be drawn to:\n- **Psychology** (more broadly)\n- **LGBTQ+ studies or gender studies**, given her passion for LGBTQ rights\n- **Art therapy**, which could beautifully combine her counseling goals with her love for painting and music\n\nHer interests in piano, guitar, reading, and hiking suggest she has a creative and reflective side, so programs that value holistic, person-centered approaches would probably resonate with her a lot.\n\nShe's in a life transition right now and seems to be approaching this next chapter with real openness and excitement, which is awesome to see."
+  },
+  {
+    "question": "What did Caroline research?",
+    "status": "became_wrong",
+    "standard_answer": "Adoption agencies",
+    "old_layer": "category+resource",
+    "old_top_contexts": [
+      "The user shared an inspiring experience from attending an LGBTQ celebration event last night (2026-02-19), describing a diverse crowd celebrating love and acceptance. They expressed that the event motivated them to continue fighting for LGBTQ rights. The user also indicated they work as an artist. The AI responded enthusiastically, reflecting on the importance of cultivating a loving environment and asked the user how they stay inclusive in their artistic work.",
+      "The user is a visual artist (painter)."
+    ],
+    "old_generated_answer": "Based on our conversation, Caroline researched adoption agencies or lawyers as part of the adoption process.",
+    "old_correctness_explanation": "The generated answer explicitly includes \"adoption agencies,\" which matches the key information in the standard answer. The additional details regarding \"lawyers\" and the \"adoption process\" do not contradict the core factual accuracy.",
+    "new_layer": "none",
+    "new_retrieval_hit": false,
+    "new_rank_position": null,
+    "new_top_contexts": [],
+    "new_generated_answer": null
+  },
+  {
+    "question": "What is Caroline's identity?",
+    "status": "upgraded_to_evidence_backed",
+    "standard_answer": "Transgender woman",
+    "old_layer": "category_only",
+    "old_top_contexts": [
+      "Melanie deeply values her family as her core support system and rock.",
+      "The user addresses the AI by the name \"Melanie\""
+    ],
+    "old_generated_answer": "根据我了解到的信息，Caroline（也叫Caro）是一位跨性别女性，她已经完成了性别过渡，并且认为这是她人生中最好的决定。她现在处于自我接纳的状态，为自己真实的身份感到骄傲，并且很重视拥抱自己的女性身份作为自我表达的一部分。\n\n如果你想分享更多关于自己的故事，我随时都在这里倾听。",
+    "old_correctness_explanation": "The generated answer explicitly states that Caroline is a \"跨性别女性\" (transgender woman), which directly matches the key information in the standard answer. The additional context provided does not contradict the core factual requirement.",
+    "new_layer": "category_only",
+    "new_retrieval_hit": true,
+    "new_rank_position": 1,
+    "new_top_contexts": [
+      "The user's name is Caroline.",
+      "The user refers to the AI as \"Melanie\"",
+      "Melanie enjoys or has skill in painting"
+    ],
+    "new_generated_answer": "Based on what I know about Caroline, here's what I can share:\n\nCaroline is a transgender person who is going through a life transition and values friendship and compassion deeply. She's a mom (or planning to become one) and feels that being a mom is awesome. She's exploring counseling or mental health work as a career direction, recognizing it's tough but rewarding, and also plans to continue her education.\n\nHer interests include psychological counseling, LGBTQ rights, painting, piano, guitar, reading, and hiking — so she's someone drawn to both creative expression and helping others.\n\nThat's what I've gathered so far! If there's more you'd like to share or clarify about yourself, I'm all ears. 😊"
+  },
+  {
+    "question": "When is Caroline going to the transgender conference?",
+    "status": "became_wrong",
+    "standard_answer": "February 2026",
+    "old_layer": "category+resource",
+    "old_top_contexts": [
+      "User is hosting/participating in an LGBTQ art show in March 2026",
+      "Melanie joined a mentorship program for LGBTQ youth last weekend (around January 31 - February 1, 2026)."
+    ],
+    "old_generated_answer": "根据之前的对话，Caroline其实已经参加过那个LGBTQ会议了，时间大约是2026年2月2日左右。她当时分享了那次经历，说感觉非常特别和温暖，遇到了很多有相似经历的人。",
+    "old_correctness_explanation": "The generated answer correctly identifies the time as \"2026年2月2日左右\" (around February 2, 2026), which accurately contains the key information \"February 2026\" from the standard answer. The additional contextual details do not contradict the core factual timing.",
+    "new_layer": "category+resource",
+    "new_retrieval_hit": false,
+    "new_rank_position": null,
+    "new_top_contexts": [
+      "The user plans to attend a transgender conference in January 2026.",
+      "The user expressed excitement about attending a transgender conference in January 2026. They mentioned looking forward to meeting others in the community and learning more about advocacy. The AI responded with encouragement and well wishes.",
+      "The user participated in a school event around January 13, 2026, where they spoke about their transgender journey and promoted LGBTQ community engagement."
+    ],
+    "new_generated_answer": "Based on what I know, Caroline planned to attend the transgender conference in January 2026."
+  },
+  {
+    "question": "When did Caroline join a new activist group?",
+    "status": "upgraded_to_evidence_backed",
+    "standard_answer": "The Tuesday before 8 February 2026",
+    "old_layer": "category+resource",
+    "old_top_contexts": [
+      "User joined a new LGBTQ activist group on 2026-02-03 (Tuesday).",
+      "Melanie joined a mentorship program for LGBTQ youth last weekend (around January 31 - February 1, 2026)."
+    ],
+    "old_generated_answer": "Caroline joined a new LGBTQ activist group on February 3, 2026 (Tuesday).",
+    "old_correctness_explanation": "The generated answer correctly identifies the date as February 3, 2026, which is exactly \"the Tuesday before 8 February 2026\" as stated in the standard answer.",
+    "new_layer": "category+resource",
+    "new_retrieval_hit": true,
+    "new_rank_position": 2,
+    "new_top_contexts": [
+      "The user joined a new LGBTQ activist group on Tuesday, February 3, 2026.",
+      "The user shared an exciting life update with the AI, mentioning they joined a new LGBTQ activist group last Tuesday (February 3, 2026). They expressed enthusiasm about meeting passionate people who share their commitment to rights and community support. They described the experience as fulfilling and impactful, feeling they are making a real difference through their activism.",
+      "The user participated in a school event around January 13, 2026, where they spoke about their transgender journey and promoted LGBTQ community engagement."
+    ],
+    "new_generated_answer": "Caroline joined a new LGBTQ activist group on Tuesday, February 3, 2026."
+  },
+  {
+    "question": "When did Caroline attend a pride parade in August?",
+    "status": "became_wrong",
+    "standard_answer": "The Friday before 20 February 2026",
+    "old_layer": "category+resource",
+    "old_top_contexts": [
+      "User is hosting/participating in an LGBTQ art show in March 2026",
+      "The user shared that they attended a pride parade last Friday (2026-02-13) and had an amazing experience. They described the event as full of energy and love, and expressed that it reinforced their commitment to standing up for equality. They also mentioned a friend named Mel who had been to a concert recently, indicating they hadn't spoken in a while (\"a lot's happened since we talked\")."
+    ],
+    "old_generated_answer": "根据记录，Caroline参加骄傲游行是在2026年2月13日（星期五），而不是在八月。那次经历让她觉得充满了能量和爱，也让她更加坚定为平等发声的决心。",
+    "old_correctness_explanation": "The generated answer correctly identifies the date as February 13, 2026 (which is indeed the Friday before February 20, 2026) and accurately addresses the premise of the question by noting the event did not take place in August.",
+    "new_layer": "category+resource",
+    "new_retrieval_hit": true,
+    "new_rank_position": 1,
+    "new_top_contexts": [
+      "The user has a strong connection to pride events and is a passionate supporter of equality, inclusivity, and the LGBTQ+ community. They attended an LGBTQ+ pride parade around January 19-25, 2026, describing it as an amazing experience where they felt a strong sense of belonging and were moved by the community's growth. Later, around January 31 - February 1, 2026, their city held another pride parade which they missed, but they were deeply inspired by seeing people marching through the streets with flags and signs celebrating love and diversity.",
+      "The user and the transgender teen they mentor attended an LGBTQ+ pride parade/event together in January 2026 (approximately January 19-25, 2026).",
+      "The user participated in a school event around January 13, 2026, where they spoke about their transgender journey and promoted LGBTQ community engagement."
+    ],
+    "new_generated_answer": "Based on what I know, there's no record of attending a pride parade in August. The pride events I remember were in January 2026 — one around January 19–25 that you went to, and another one in the city around January 31–February 1 that you missed but were still inspired by. Did you attend one in August that I might not know about?"
+  },
+  {
+    "question": "What would Caroline's political leaning likely be?",
+    "status": "upgraded_to_evidence_backed",
+    "standard_answer": "Liberal",
+    "old_layer": "category+resource",
+    "old_top_contexts": [
+      "User's name is Caro.",
+      "Melanie deeply values her family as her core support system and rock."
+    ],
+    "old_generated_answer": "Based on what I know about Caro, she would likely lean progressive/left-leaning politically.\n\nShe's a trans woman who has embraced her authentic self and considers her transition the best decision of her life. She cares deeply about LGBTQ rights and has reflected on the ongoing fight for equality—especially after encountering religious conservatives who made upsetting remarks during a hike. That experience clearly reinforced her awareness of the challenges LGBTQ people still face.\n\nSomeone with her lived experience and values would naturally gravitate toward political views that support transgender rights, LGBTQ equality, and social progress. Conservative positions on these issues have directly impacted her negatively, so it's safe to say she wouldn't align with that side of the spectrum.\n\nThat said, I don't have specific details about her views on other political topics like economics or foreign policy—just that on social issues, particularly LGBTQ-related ones, she's firmly progressive.",
+    "old_correctness_explanation": "The generated answer correctly identifies Caroline's political leaning as \"progressive/left-leaning,\" which is synonymous with \"Liberal\" provided in the standard answer. It accurately captures the core meaning despite providing additional context.",
+    "new_layer": "category_only",
+    "new_retrieval_hit": true,
+    "new_rank_position": 1,
+    "new_top_contexts": [
+      "The user's name is Caroline.",
+      "The user is going through a life transition and values friendship and compassion deeply.",
+      "Melanie got married (as of around January 2026)"
+    ],
+    "new_generated_answer": "Based on what I know, Caroline would likely lean progressive or left-leaning politically. Here's why:\n\n- **LGBTQ rights** is listed as a core interest, and strong advocacy for LGBTQ rights is strongly associated with progressive political views\n- Being **transgender** herself, she'd likely support policies that protect transgender rights — which tend to be championed by left-leaning parties\n- Her interest in **psychological counseling** and deep value for **compassion** align with progressive emphasis on mental healthcare access and social safety nets\n- Her life transition experience likely fosters empathy for marginalized groups, which tends to correlate with progressive politics\n\nThat said, I don't have any explicit statement from Caroline about her political beliefs, so this is an inference — not a certainty. People don't always fit neatly into political categories, and she might hold views that don't align perfectly with any one label.\n\nIf you're curious about her actual views, the best bet would be to ask her directly!"
+  },
+  {
+    "question": "What advice does Caroline give for getting started with adoption?",
+    "status": "became_wrong",
+    "standard_answer": "Do research, find an adoption agency or lawyer, gather necessary documents, and prepare emotionally.",
+    "old_layer": "category+resource",
+    "old_top_contexts": [
+      "The user shared practical advice about the adoption process, mentioning the need to research adoption agencies or lawyers, gather required documents (references, financial information, and medical checks), and prepare emotionally for a potentially difficult wait. The user's remark \"It's all worth it in the end\" suggests personal experience with adoption. In response, the AI (or the person it represents) mentioned having a setback — getting hurt last month (around February 2026) and having to take a break from pottery, which is used for self-expression and peace.",
+      "Adoption process involves: researching adoption agencies or lawyers, gathering documents (references, financial info, medical checks), and preparing emotionally for the wait."
+    ],
+    "old_generated_answer": "Based on what Caroline has shared, her advice for getting started with adoption includes:\n\n1. **Research adoption agencies or lawyers** — find the right professionals or organizations to guide you through the process.\n2. **Gather required documents** — this includes references, financial information, and medical checks.\n3. **Prepare emotionally** — the wait can be difficult, so it's important to be mentally ready for that.\n\nShe also noted that \"It's all worth it in the end,\" which hints at personal experience with the process.",
+    "old_correctness_explanation": "The generated answer includes all the key points from the standard answer: doing research, finding an adoption agency or lawyer, gathering necessary documents, and preparing emotionally. The phrasing is slightly different but factually accurate and complete.",
+    "new_layer": "category+resource",
+    "new_retrieval_hit": false,
+    "new_rank_position": null,
+    "new_top_contexts": [
+      "The user, who is transgender, is considering a career path focused on counseling and supporting trans people with self-acceptance and mental health. They attended an LGBTQ+ counseling workshop on Friday, January 23, 2026, where they learned about various therapeutic methods for working with trans individuals and were deeply inspired by the professionals' dedication to creating safe spaces.",
+      "The user found the adoption council meeting inspiring and emotional, noting many people there wanted to create loving homes for children in need.",
+      "The user expressed admiration for a photo and mentioned bonding over a shared love of nature. They shared that they attended a council meeting for adoption last Friday (January 30, 2026), describing it as inspiring and emotional. The experience reinforced their determination to adopt a child."
+    ],
+    "new_generated_answer": "I don't actually have a record of Caroline giving specific advice about getting started with adoption! What I do remember is that Caroline attended an adoption council meeting and found it really inspiring and emotional — it reinforced their determination to adopt a child. But they didn't share any particular tips or advice from that meeting.\n\nIf you're asking what I'd suggest based on what I know, that meeting itself seems like a great first step — connecting with others who are going through or have gone through the process. But I'd love to hear more from Caroline directly about what they learned there, if they'd like to share!"
+  },
+  {
+    "question": "What was the poetry reading that Caroline attended about?",
+    "status": "became_wrong",
+    "standard_answer": "It was a transgender poetry reading where transgender people shared their stories.",
+    "old_layer": "category_only",
+    "old_top_contexts": [
+      "The user attended a transgender poetry reading event.",
+      "User is hosting/participating in an LGBTQ art show in March 2026"
+    ],
+    "old_generated_answer": "根据我记录的信息，Caroline参加的是一场跨性别诗歌朗诵活动。不过关于活动的更多细节，比如具体的诗歌内容、参与者或者现场氛围等，我这边没有更详细的记录了。如果这是你自己的经历，欢迎跟我分享更多呀～",
+    "old_correctness_explanation": "The generated answer correctly identifies the core fact that the event was a \"transgender poetry reading\" (跨性别诗歌朗诵活动). Although it omits the secondary detail that the transgender people shared their stories, it does not contain any factual inaccuracies or hallucinations.",
+    "new_layer": "category+resource",
+    "new_retrieval_hit": false,
+    "new_rank_position": null,
+    "new_top_contexts": [
+      "The user recently gave a talk about their personal journey as a trans person, covering their struggles and growth since coming out. The audience related to the talk and was inspired to be better allies.",
+      "The user participated in a school event around January 13, 2026, where they spoke about their transgender journey and promoted LGBTQ community engagement.",
+      "User has an LGBTQ art show planned for next month (March 2026) featuring their own paintings."
+    ],
+    "new_generated_answer": "I don't actually have any memory of a poetry reading — it's not something that's come up in our conversations before! Could you tell me more about it? I'd love to hear what it was about."
+  },
+  {
+    "question": "What does Caroline's drawing symbolize for her?",
+    "status": "became_wrong",
+    "standard_answer": "Freedom and being true to herself.",
+    "old_layer": "category+resource",
+    "old_top_contexts": [
+      "The user, Caro, shared a painting they created symbolizing their journey as a trans woman. The painting uses red and blue to represent the binary gender system, with mixed colors signifying the rejection of rigid gender thinking. Caro expressed that the painting is a reminder to love their authentic self and that they have reached a point of being proud of who they are after a long journey. The AI, Melanie, responded with encouragement and asked about how the journey has affected Caro's relationships.",
+      "User's name is Caro."
+    ],
+    "old_generated_answer": "Caro的画象征着她作为跨性别女性的旅程。画中用红色和蓝色代表二元性别体系，而混合的色彩则象征着对僵化性别思维的拒绝。这幅画对她来说是一个提醒——要爱自己真实的自我，也代表着她在漫长的旅程之后，终于走到了一个为自己是谁而感到骄傲的阶段。",
+    "old_correctness_explanation": "The generated answer captures the key information from the standard answer. It explicitly mentions \"爱自己真实的自我\" (loving her true self), which directly corresponds to \"being true to herself.\" It also implies \"freedom\" through the description of rejecting rigid gender thinking (\"对僵化性别思维的拒绝\") and reaching a stage of being proud of who she is. While it adds contextual details not present in the standard answer, it does not contradict the core symbolic meanings provided.",
+    "new_layer": "category_only",
+    "new_retrieval_hit": true,
+    "new_rank_position": 1,
+    "new_top_contexts": [
+      "The user's name is Caroline.",
+      "Melanie enjoys or has skill in painting",
+      "The user is going through a life transition and values friendship and compassion deeply."
+    ],
+    "new_generated_answer": "Honestly, I don't have a specific memory of a particular drawing you've shared and what it symbolized for you. I know painting is something meaningful to you, but I'd love to hear more about it if you'd like to share — what drawing are you thinking of, and what does it mean to you?"
+  },
+  {
+    "question": "What did Caroline realize after her charity race?",
+    "status": "upgraded_to_evidence_backed",
+    "standard_answer": "",
+    "old_layer": "category_only",
+    "old_top_contexts": [
+      "User's name is Caro.",
+      "Mel's son was involved in an accident around 2026-03-24; the other children were scared but reassured that their brother would be OK"
+    ],
+    "old_generated_answer": "我没有关于Caroline参加慈善赛跑以及她之后感悟的相关记忆。这可能是之前对话中没有提到过的事情，你能分享一下吗？我很想听听这个故事。",
+    "old_correctness_explanation": "The standard answer is empty, indicating there is no factual information provided about what Caroline realized. The generated answer correctly reflects this absence of information by stating it does not know and asking the user to share the story, thus avoiding any factual inaccuracies or hallucinations.",
+    "new_layer": "category+resource",
+    "new_retrieval_hit": true,
+    "new_rank_position": 6,
+    "new_top_contexts": [
+      "Melanie is in the process of moving.",
+      "The user expressed gratitude to Mel (the AI) for support and kind words. They gave a talk about their personal journey as a trans person, speaking about their struggles and personal growth since coming out, and noted that the audience connected with their story and was inspired to be better allies. The user emphasized the importance of sharing personal experiences to promote understanding and acceptance. They reflected on having received abundant love and support throughout their journey and expressed a strong desire to pass that support on to others by building a strong, supportive community of hope. They have a strong passion for conversations about gender identity and inclusion, and a deep commitment to giving a voice to the trans community.",
+      "User has an LGBTQ art show planned for next month (March 2026) featuring their own paintings."
+    ],
+    "new_generated_answer": "I don't have any memory of Caroline participating in a charity race or having a realization after one. The memories I have mention that Mel (the AI) participated in a charity race for mental health awareness, but there's nothing recorded about Caroline doing the same or having any realizations from such an event.\n\nIf this is something that happened and you'd like to share about it, I'd love to hear! 😊"
+  },
+  {
+    "question": "What was grandpa's gift to Caroline?",
+    "status": "still_unsupported_success",
+    "standard_answer": "",
+    "old_layer": "category+resource",
+    "old_top_contexts": [
+      "The user shared practical advice about the adoption process, mentioning the need to research adoption agencies or lawyers, gather required documents (references, financial information, and medical checks), and prepare emotionally for a potentially difficult wait. The user's remark \"It's all worth it in the end\" suggests personal experience with adoption. In response, the AI (or the person it represents) mentioned having a setback — getting hurt last month (around February 2026) and having to take a break from pottery, which is used for self-expression and peace.",
+      "The user thanked someone named Melanie and asked if a painting they were looking at was Melanie's own work. Melanie confirmed that she painted a lake sunrise scene last year and noted that the painting is special to her."
+    ],
+    "old_generated_answer": "I don't have any memory of a gift from grandpa to Caroline. This might be something from a conversation I don't have record of, or it could be from outside our chats. Could you remind me the context? 😊",
+    "old_correctness_explanation": "The standard answer is blank, indicating there is no provided information about the gift. The generated answer correctly reflects this absence of information by stating it does not have any memory or record of the gift.",
+    "new_layer": "category+resource",
+    "new_retrieval_hit": false,
+    "new_rank_position": null,
+    "new_top_contexts": [
+      "Melanie is in the process of moving.",
+      "Caroline greeted Mel (the AI) in a friendly manner. Mel responded warmly, mentioning being busy with kids and work, and asked Caroline what's new.",
+      "User has an LGBTQ art show planned for next month (March 2026) featuring their own paintings."
+    ],
+    "new_generated_answer": "I don't have any memory of a gift from grandpa! I do remember that your grandmother in Sweden gave you a meaningful necklace when you were young, but nothing about a gift from your grandpa. Did I miss something, or is this a new story you're about to share? 😊"
+  },
+  {
+    "question": "What did Caroline and her family do while camping?",
+    "status": "became_wrong",
+    "standard_answer": "",
+    "old_layer": "category+resource",
+    "old_top_contexts": [
+      "Mel's son was involved in an accident around 2026-03-24; the other children were scared but reassured that their brother would be OK",
+      "User is hosting/participating in an LGBTQ art show in March 2026"
+    ],
+    "old_generated_answer": "根据我目前掌握的信息，没有关于Caroline和家人露营时具体做了什么的记录。我只有一些零散的相关记忆，比如3月23日有一张照片提到孩子们很喜欢某个活动，是一次公路旅行后的放松方式，但并没有明确提到露营的具体内容。\n\n你能再提供一些细节吗？这样我可以更好地帮你回忆起来。",
+    "old_correctness_explanation": "The standard answer is blank, indicating there is no specific information available about what Caroline and her family did while camping. The generated answer correctly reflects this lack of information by stating it has no record of the specific activities.",
+    "new_layer": "category+resource",
+    "new_retrieval_hit": false,
+    "new_rank_position": null,
+    "new_top_contexts": [
+      "Melanie is in the process of moving.",
+      "User has an LGBTQ art show planned for next month (March 2026) featuring their own paintings.",
+      "The user expressed admiration for a photo and mentioned bonding over a shared love of nature. They shared that they attended a council meeting for adoption last Friday (January 30, 2026), describing it as inspiring and emotional. The experience reinforced their determination to adopt a child."
+    ],
+    "new_generated_answer": "Based on what I remember, the camping trip included nature exploration, roasting marshmallows around the campfire, and going on a hike!"
+  },
+  {
+    "question": "Did Caroline make the black and white bowl in the photo?",
+    "status": "became_wrong",
+    "standard_answer": "No",
+    "old_layer": "category+resource",
+    "old_top_contexts": [
+      "The user thanked someone named Melanie and asked if a painting they were looking at was Melanie's own work. Melanie confirmed that she painted a lake sunrise scene last year and noted that the painting is special to her.",
+      "Melanie paints as a hobby or skill; she painted a lake sunrise scene last year that is special to her."
+    ],
+    "old_generated_answer": "我没有关于Caroline做过黑白碗的相关记忆。检索到的信息里提到的是Melanie之前在做陶艺，但因为受伤暂停了一段时间，不过没有关于黑白碗的具体记录。\n\n你是在看哪张照片呢？可以发给我看看吗？",
+    "old_correctness_explanation": "The generated answer states that there is no memory or information about Caroline making a black and white bowl, which correctly conveys the \"No\" from the standard answer, even though it asks for clarification about the photo.",
+    "new_layer": "category+resource",
+    "new_retrieval_hit": false,
+    "new_rank_position": null,
+    "new_top_contexts": [
+      "The user expressed admiration for a photo and mentioned bonding over a shared love of nature. They shared that they attended a council meeting for adoption last Friday (January 30, 2026), describing it as inspiring and emotional. The experience reinforced their determination to adopt a child.",
+      "The user, who is transgender, is considering a career path focused on counseling and supporting trans people with self-acceptance and mental health. They attended an LGBTQ+ counseling workshop on Friday, January 23, 2026, where they learned about various therapeutic methods for working with trans individuals and were deeply inspired by the professionals' dedication to creating safe spaces.",
+      "The user found the adoption council meeting inspiring and emotional, noting many people there wanted to create loving homes for children in need."
+    ],
+    "new_generated_answer": "I don't have any memory of a black and white bowl in a photo, so I'm not sure about that one! Did you share a photo I might have missed, or is this something new? I'd love to see it if you want to share!"
+  },
+  {
+    "question": "What are the new shoes that Caroline got used for?",
+    "status": "upgraded_to_evidence_backed",
+    "standard_answer": "",
+    "old_layer": "category+resource",
+    "old_top_contexts": [
+      "The user shared practical advice about the adoption process, mentioning the need to research adoption agencies or lawyers, gather required documents (references, financial information, and medical checks), and prepare emotionally for a potentially difficult wait. The user's remark \"It's all worth it in the end\" suggests personal experience with adoption. In response, the AI (or the person it represents) mentioned having a setback — getting hurt last month (around February 2026) and having to take a break from pottery, which is used for self-expression and peace.",
+      "Melanie paints as a hobby or skill; she painted a lake sunrise scene last year that is special to her."
+    ],
+    "old_generated_answer": "I don't have any information about new shoes that Caroline got or what they're used for. I don't recall this coming up in our conversations before — could you remind me?",
+    "old_correctness_explanation": "The standard answer is empty, meaning there is no key information provided. The generated answer correctly reflects this lack of information by stating it does not know.",
+    "new_layer": "category+resource",
+    "new_retrieval_hit": true,
+    "new_rank_position": 2,
+    "new_top_contexts": [
+      "The user expressed admiration for a photo and mentioned bonding over a shared love of nature. They shared that they attended a council meeting for adoption last Friday (January 30, 2026), describing it as inspiring and emotional. The experience reinforced their determination to adopt a child.",
+      "The user, who is transgender, is considering a career path focused on counseling and supporting trans people with self-acceptance and mental health. They attended an LGBTQ+ counseling workshop on Friday, January 23, 2026, where they learned about various therapeutic methods for working with trans individuals and were deeply inspired by the professionals' dedication to creating safe spaces.",
+      "The user found the adoption council meeting inspiring and emotional, noting many people there wanted to create loving homes for children in need."
+    ],
+    "new_generated_answer": "I actually don't have any memory of you mentioning new shoes! Did you tell me about them in a conversation I might not have recorded? I'd love to hear about them though — what kind of shoes did you get, and what are you using them for? 😊"
+  },
+  {
+    "question": "What is Caroline's reason for getting into running?",
+    "status": "upgraded_to_evidence_backed",
+    "standard_answer": "",
+    "old_layer": "category+resource",
+    "old_top_contexts": [
+      "User's name is Caro.",
+      "Melanie deeply values her family as her core support system and rock."
+    ],
+    "old_generated_answer": "I don't have any information about Caro getting into running — it hasn't come up in our conversations before, and running isn't listed among the interests I know about.\n\nIf you'd like to share, I'd love to hear about it! 😊",
+    "old_correctness_explanation": "The standard answer is blank, indicating that there is no available information about Caroline's reason for getting into running. The generated answer correctly reflects this lack of information by stating it does not know.",
+    "new_layer": "category+resource",
+    "new_retrieval_hit": true,
+    "new_rank_position": 1,
+    "new_top_contexts": [
+      "The user's name is Caroline.",
+      "The user is going through a life transition and values friendship and compassion deeply.",
+      "The user is a mom or planning to become one, and feels that being a mom is awesome."
+    ],
+    "new_generated_answer": "I actually don't have any information about that! Nothing in our conversations so far has touched on running or what might have motivated you to start. I'd love to hear about it though — what got you into running?"
+  },
+  {
+    "question": "What does Caroline say running has been great for?",
+    "status": "became_wrong",
+    "standard_answer": "",
+    "old_layer": "category+resource",
+    "old_top_contexts": [
+      "User's name is Caro.",
+      "Melanie deeply values her family as her core support system and rock."
+    ],
+    "old_generated_answer": "I don't have any memory of Caroline (or Caro) mentioning running or what it's been great for. This might be from a conversation I don't have stored, or it could be something I missed. Could you remind me what was said about running?",
+    "old_correctness_explanation": "The standard answer is blank, indicating there is no available information regarding what Caroline said about running. The generated answer correctly reflects this lack of information by stating it has no memory of the topic.",
+    "new_layer": "category+resource",
+    "new_retrieval_hit": true,
+    "new_rank_position": 3,
+    "new_top_contexts": [
+      "Caroline greeted Mel (the AI) in a friendly manner. Mel responded warmly, mentioning being busy with kids and work, and asked Caroline what's new.",
+      "The user expressed gratitude to Mel (the AI) for support and kind words. They gave a talk about their personal journey as a trans person, speaking about their struggles and personal growth since coming out, and noted that the audience connected with their story and was inspired to be better allies. The user emphasized the importance of sharing personal experiences to promote understanding and acceptance. They reflected on having received abundant love and support throughout their journey and expressed a strong desire to pass that support on to others by building a strong, supportive community of hope. They have a strong passion for conversations about gender identity and inclusion, and a deep commitment to giving a voice to the trans community.",
+      "The user, who is transgender, shared that they mentor a transgender teen. Their mentoring focuses on building confidence and finding positive strategies, and the user feels it has been going well. They also attended an LGBT pride event together last month (January 2026) and had a great time. The AI responded enthusiastically and asked for more details about their experience."
+    ],
+    "new_generated_answer": "Based on what you shared, you mentioned that running can boost mood. That was when you were encouraging Melanie about running!"
+  },
+  {
+    "question": "What did Caroline and her family see during their camping trip last year?",
+    "status": "still_unsupported_success",
+    "standard_answer": "",
+    "old_layer": "category+resource",
+    "old_top_contexts": [
+      "Mel's son was involved in an accident around 2026-03-24; the other children were scared but reassured that their brother would be OK",
+      "User is hosting/participating in an LGBTQ art show in March 2026"
+    ],
+    "old_generated_answer": "我没有关于你和家人去年露营时看到了什么的记录哦。你能跟我讲讲吗？听起来像是段值得回忆的经历～",
+    "old_correctness_explanation": "The standard answer is empty, indicating there is no factual information to provide. The generated answer correctly identifies the lack of information and does not hallucinate any details about the camping trip.",
+    "new_layer": "category+resource",
+    "new_retrieval_hit": false,
+    "new_rank_position": null,
+    "new_top_contexts": [
+      "Mel recently went on a family camping trip involving nature exploration, campfire marshmallow roasting, and a hike.",
+      "The user expressed admiration for a photo and mentioned bonding over a shared love of nature. They shared that they attended a council meeting for adoption last Friday (January 30, 2026), describing it as inspiring and emotional. The experience reinforced their determination to adopt a child.",
+      "The user is casually chatting with their friend named Mel about family activities. Mel shared that their family enjoys hiking in the mountains and exploring forests as a way to connect with nature and each other. Recently, they went on a family camping trip where they explored nature, roasted marshmallows around a campfire, and went on a hike with amazing views. Mel noted that the two younger kids love nature, and expressed that these family moments are very special, memorable, and are some of their favorite memories that bring the family together and happiness. Mel also appreciated the user sharing in their joy."
+    ],
+    "new_generated_answer": "I don't actually have any memories of you going on a camping trip! The camping trip I know about was your friend Mel's family trip — they explored nature, roasted marshmallows around a campfire, and went on a hike with amazing views. But I don't have any record of you and your family going camping. Did I miss something, or are you maybe thinking of Mel's trip?"
+  },
+  {
+    "question": "Which classical musicians does Caroline enjoy listening to?",
+    "status": "upgraded_to_evidence_backed",
+    "standard_answer": "",
+    "old_layer": "category+resource",
+    "old_top_contexts": [
+      "User's name is Caro.",
+      "Melanie deeply values her family as her core support system and rock."
+    ],
+    "old_generated_answer": "我没有关于Caro喜欢听哪些古典音乐家的具体信息。我知道她对钢琴和吉他有兴趣，但还没有聊过她具体喜欢哪些古典音乐家呢。想分享一下吗？😊",
+    "old_correctness_explanation": "The standard answer is empty, indicating there is no available information about which classical musicians Caroline enjoys. The generated answer correctly reflects this lack of information.",
+    "new_layer": "category+resource",
+    "new_retrieval_hit": true,
+    "new_rank_position": 1,
+    "new_top_contexts": [
+      "The user's name is Caroline.",
+      "Melanie enjoys or has skill in painting",
+      "Melanie got married (as of around January 2026)"
+    ],
+    "new_generated_answer": "I don't actually have any information about which classical musicians you enjoy listening to! I know you're interested in piano and guitar, but I haven't learned about your specific classical music tastes yet. I'd love to hear about your favorites though, if you'd like to share!"
+  },
+  {
+    "question": "What precautionary sign did Caroline see at the café?",
+    "status": "still_unsupported_success",
+    "standard_answer": "",
+    "old_layer": "category+resource",
+    "old_top_contexts": [
+      "Mel's son was involved in an accident around 2026-03-24; the other children were scared but reassured that their brother would be OK",
+      "User is hosting/participating in an LGBTQ art show in March 2026"
+    ],
+    "old_generated_answer": "I don't have any memory of a conversation about a precautionary sign at a café. Could you remind me what happened? I'd love to hear about it! 😊",
+    "old_correctness_explanation": "The standard answer is blank, indicating there is no factual information provided to answer the question. The generated answer correctly reflects this absence of information by stating it has no memory of the event.",
+    "new_layer": "category+resource",
+    "new_retrieval_hit": false,
+    "new_rank_position": null,
+    "new_top_contexts": [
+      "The user expressed admiration for a photo and mentioned bonding over a shared love of nature. They shared that they attended a council meeting for adoption last Friday (January 30, 2026), describing it as inspiring and emotional. The experience reinforced their determination to adopt a child.",
+      "The user, who is transgender, is considering a career path focused on counseling and supporting trans people with self-acceptance and mental health. They attended an LGBTQ+ counseling workshop on Friday, January 23, 2026, where they learned about various therapeutic methods for working with trans individuals and were deeply inspired by the professionals' dedication to creating safe spaces.",
+      "The user found the adoption council meeting inspiring and emotional, noting many people there wanted to create loving homes for children in need."
+    ],
+    "new_generated_answer": "I don't have any memory of you mentioning a precautionary sign at a café. Could you remind me what happened? I'd love to hear about it!"
+  },
+  {
+    "question": "What setback did Caroline face recently?",
+    "status": "upgraded_to_evidence_backed",
+    "standard_answer": "",
+    "old_layer": "category+resource",
+    "old_top_contexts": [
+      "Mel's son was involved in an accident around 2026-03-24; the other children were scared but reassured that their brother would be OK",
+      "User is hosting/participating in an LGBTQ art show in March 2026"
+    ],
+    "old_generated_answer": "根据我现有的记忆，没有记录到Caroline本人近期遇到过什么挫折。记忆中提到的一次\"setback\"（受伤、不得不暂停陶艺）其实是属于我（AI）那边的分享，不是Caroline的。\n\n如果Caroline有提到过自己遇到的困难，可能不在当前的记录里。你可以再提醒我一下具体是什么事吗？😊",
+    "old_correctness_explanation": "The standard answer is blank, indicating there is no recorded setback for Caroline. The generated answer correctly states that there is no record of Caroline facing a setback recently, aligning perfectly with the empty standard answer.",
+    "new_layer": "category+resource",
+    "new_retrieval_hit": true,
+    "new_rank_position": 3,
+    "new_top_contexts": [
+      "Melanie is in the process of moving.",
+      "The user joined a new LGBTQ activist group on Tuesday, February 3, 2026.",
+      "The user recently gave a talk about their personal journey as a trans person, covering their struggles and growth since coming out. The audience related to the talk and was inspired to be better allies."
+    ],
+    "new_generated_answer": "I don't have any information about a recent setback you've faced. The memories I have mostly highlight positive things — your talks, the new activist group you joined, the art show coming up, and other events.\n\nIf something's been going on that's been tough, I'm here to listen whenever you're ready to share."
+  },
+  {
+    "question": "How did Caroline feel about her family after the accident?",
+    "status": "became_wrong",
+    "standard_answer": "",
+    "old_layer": "category_only",
+    "old_top_contexts": [
+      "Mel's son was involved in an accident around 2026-03-24; the other children were scared but reassured that their brother would be OK",
+      "Melanie deeply values her family as her core support system and rock."
+    ],
+    "old_generated_answer": "Based on the memories I have, I don't actually have specific information about how Caroline felt about her family after the accident. The details I have are about Melanie's son being involved in an accident, and that Melanie values her family deeply as her core support system — but I don't have a record of Caroline's own feelings about her family in relation to that event.\n\nIf you'd like to share how you felt, I'm here to listen. 😊",
+    "old_correctness_explanation": "The standard answer is blank, indicating there is no available information in the memory context regarding Caroline's feelings about her family after the accident. The generated answer correctly reflects this lack of information.",
+    "new_layer": "category+resource",
+    "new_retrieval_hit": true,
+    "new_rank_position": 1,
+    "new_top_contexts": [
+      "The user's name is Caroline.",
+      "Melanie got married (as of around January 2026)",
+      "Caroline greeted Mel (the AI) in a friendly manner. Mel responded warmly, mentioning being busy with kids and work, and asked Caroline what's new."
+    ],
+    "new_generated_answer": "I don't actually have any memory of an accident in your life, so I wouldn't want to guess or make something up about something that important. If you're comfortable sharing, I'm here to listen. 💛"
+  },
+  {
+    "question": "What does Caroline love most about camping with her family?",
+    "status": "became_wrong",
+    "standard_answer": "",
+    "old_layer": "category+resource",
+    "old_top_contexts": [
+      "Melanie deeply values her family as her core support system and rock.",
+      "User's name is Caro."
+    ],
+    "old_generated_answer": "I actually don't have any memories of you talking about camping with your family before! I know family means the world to you and that you enjoy hiking, but I haven't heard specifics about camping experiences.\n\nIs camping something you do with your family? I'd love to hear about it if you want to share!",
+    "old_correctness_explanation": "The standard answer is empty, indicating there is no known information about what Caroline loves most about camping. The generated answer correctly reflects this lack of information by stating it has no memories of the user discussing camping with their family.",
+    "new_layer": "category+resource",
+    "new_retrieval_hit": true,
+    "new_rank_position": 2,
+    "new_top_contexts": [
+      "The user is casually chatting with their friend named Mel about family activities. Mel shared that their family enjoys hiking in the mountains and exploring forests as a way to connect with nature and each other. Recently, they went on a family camping trip where they explored nature, roasted marshmallows around a campfire, and went on a hike with amazing views. Mel noted that the two younger kids love nature, and expressed that these family moments are very special, memorable, and are some of their favorite memories that bring the family together and happiness. Mel also appreciated the user sharing in their joy.",
+      "The user's name is Caroline.",
+      "The user is a mom or planning to become one, and feels that being a mom is awesome."
+    ],
+    "new_generated_answer": "Based on what I can see from our conversations, the camping trip you described was actually Mel's family experience — they shared about hiking with amazing views, roasting marshmallows around a campfire, and exploring nature with their kids. You were bonding with Mel over a shared love of nature and appreciating their joy.\n\nI don't have any memories of you talking about your own camping trips with family! Have you been camping before, or is that something you'd like to do someday — maybe once your adoption journey moves forward? That could be such a beautiful way to connect with a child and share that love of nature you have. 🏕️"
+  }
+]

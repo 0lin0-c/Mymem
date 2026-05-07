@@ -2,10 +2,10 @@
 import asyncio
 import uuid
 from typing import AsyncGenerator
+from urllib.parse import urlparse
 
 import pytest
 import pytest_asyncio
-from sqlalchemy import text
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
 
 from core.config import settings
@@ -14,6 +14,83 @@ from tables import User
 from repositories import UserRepository
 from services.llm.factory import LLMFactory
 from services.llm.base import BaseLLMProvider
+
+
+REAL_DB_NAME_HINTS = {"postgres", "prod", "production", "main", "mymem"}
+NON_REAL_DB_TOKENS = ("test", "pytest", "tmp", "temporary")
+
+
+def _extract_database_name(database_url: str) -> str:
+    parsed = urlparse(database_url)
+    return parsed.path.rsplit("/", 1)[-1].lower().strip()
+
+
+def _looks_like_real_database(database_url: str) -> bool:
+    lowered = database_url.lower()
+    db_name = _extract_database_name(database_url)
+    if any(token in lowered for token in NON_REAL_DB_TOKENS):
+        return False
+    return db_name in REAL_DB_NAME_HINTS
+
+
+def _converted_eval_requested(pytestconfig: pytest.Config) -> bool:
+    return bool(
+        pytestconfig.getoption("--converted-sample") is not None
+        or pytestconfig.getoption("--converted-all")
+    )
+
+
+def _personamem_v2_eval_requested(pytestconfig: pytest.Config) -> bool:
+    return bool(pytestconfig.getoption("--personamem-v2"))
+
+
+def _converted_eval_requires_write(pytestconfig: pytest.Config) -> bool:
+    retrieval_only = pytestconfig.getoption("--converted-retrieval-only")
+    import_only = pytestconfig.getoption("--converted-import-only")
+    reset_memory = pytestconfig.getoption("--converted-reset-memory")
+    return bool(import_only or reset_memory or not retrieval_only)
+
+
+def _personamem_v2_eval_requires_write(pytestconfig: pytest.Config) -> bool:
+    retrieval_only = pytestconfig.getoption("--personamem-v2-retrieval-only")
+    import_only = pytestconfig.getoption("--personamem-v2-import-only")
+    reset_memory = pytestconfig.getoption("--personamem-v2-reset-memory")
+    return bool(import_only or reset_memory or not retrieval_only)
+
+
+def _assert_real_db_usage_is_safe(pytestconfig: pytest.Config) -> None:
+    database_url = settings.database_url
+    if not _looks_like_real_database(database_url):
+        return
+
+    allow_real_db_write = pytestconfig.getoption("--allow-real-db-write")
+    is_converted_eval = _converted_eval_requested(pytestconfig)
+    is_personamem_v2_eval = _personamem_v2_eval_requested(pytestconfig)
+
+    if is_converted_eval:
+        if _converted_eval_requires_write(pytestconfig) and not allow_real_db_write:
+            raise pytest.UsageError(
+                "Refusing to run a write-path converted_data evaluation against the real database. "
+                "Use --converted-retrieval-only for read-only evaluation, or add "
+                "--allow-real-db-write only when you explicitly want to re-import/reset memory."
+            )
+        return
+
+    if is_personamem_v2_eval:
+        if _personamem_v2_eval_requires_write(pytestconfig) and not allow_real_db_write:
+            raise pytest.UsageError(
+                "Refusing to run a write-path PersonaMem-v2 evaluation against the real database. "
+                "Use --personamem-v2-retrieval-only for read-only evaluation, or add "
+                "--allow-real-db-write only when you explicitly want to import/reset memory."
+            )
+        return
+
+    if not allow_real_db_write:
+        raise pytest.UsageError(
+            "Refusing to run regular pytest database fixtures against the real database. "
+            "Use a test database, or rerun with --allow-real-db-write only when you explicitly "
+            "intend to modify real DB data."
+        )
 
 
 # ============================================
@@ -34,8 +111,9 @@ def event_loop():
 # ============================================
 
 @pytest_asyncio.fixture(scope="session")
-async def db_engine():
+async def db_engine(pytestconfig: pytest.Config):
     """创建测试数据库引擎（session 级别，整个测试会话共享）"""
+    _assert_real_db_usage_is_safe(pytestconfig)
     engine = create_async_engine(settings.database_url, echo=False, pool_pre_ping=True)
 
     # 创建所有表（如果不存在）
@@ -44,13 +122,8 @@ async def db_engine():
 
     yield engine
 
-    # 清理：只清空数据，不删除表结构
-    async with engine.begin() as conn:
-        # 按依赖顺序清空表（先清空有外键依赖的表）
-        await conn.execute(text("DELETE FROM resource_categories"))
-        await conn.execute(text("DELETE FROM categories"))
-        await conn.execute(text("DELETE FROM resources"))
-        await conn.execute(text("DELETE FROM users"))
+    # 重要：无论是否真实库，pytest 结束时都不再自动清表。
+    # 真实库默认只读；写路径由显式 reset/reimport 命令控制，而不是 fixture teardown。
 
     await engine.dispose()
 
@@ -193,7 +266,7 @@ def pytest_addoption(parser):
         default="assistant_eval",
         help="converted_data 评估模式",
     )
-    group.addoption("--converted-top-k", type=int, default=5, help="检索 top_k")
+    group.addoption("--converted-top-k", type=int, default=10, help="检索 top_k")
     group.addoption("--converted-character", type=str, help="只评估指定角色")
     group.addoption("--converted-import-only", action="store_true", help="只导入，不评估")
     group.addoption("--converted-retrieval-only", action="store_true", help="跳过导入，只评估")
@@ -201,6 +274,30 @@ def pytest_addoption(parser):
     group.addoption("--converted-no-dedup", action="store_true", help="禁用记忆去重")
     group.addoption("--converted-max-questions", type=int, help="限制每个角色的 QA 数量，用于端到端冒烟测试")
     group.addoption("--converted-postprocess-bad-cases", action="store_true", help="主评估完成后再补做失败样本的 bad-case diagnosis")
+    personamem = parser.getgroup("personamem_v2")
+    personamem.addoption("--personamem-v2", action="store_true", help="启用 PersonaMem-v2 text snippet 评估")
+    personamem.addoption("--personamem-v2-split", type=str, default="benchmark_text", help="PersonaMem-v2 split")
+    personamem.addoption("--personamem-v2-max-personas", type=int, default=2, help="限制 persona 数量")
+    personamem.addoption("--personamem-v2-max-questions", type=int, default=5, help="限制每个 persona 的问题数")
+    personamem.addoption("--personamem-v2-max-rows", type=int, default=100, help="限制加载的原始行数")
+    personamem.addoption("--personamem-v2-persona-id", type=str, help="只评估指定 PersonaMem persona_id")
+    personamem.addoption(
+        "--personamem-v2-eval-mode",
+        choices=["storage_eval", "retrieval_eval", "assistant_eval"],
+        default="assistant_eval",
+        help="PersonaMem-v2 评估模式",
+    )
+    personamem.addoption("--personamem-v2-top-k", type=int, default=10, help="检索 top_k")
+    personamem.addoption("--personamem-v2-import-only", action="store_true", help="只导入，不评估")
+    personamem.addoption("--personamem-v2-retrieval-only", action="store_true", help="跳过导入，只评估")
+    personamem.addoption("--personamem-v2-reset-memory", action="store_true", help="导入前清空该 persona 用户记忆")
+    personamem.addoption("--personamem-v2-no-dedup", action="store_true", help="禁用记忆去重")
+    personamem.addoption("--personamem-v2-no-save-raw-snapshot", action="store_true", help="不保存原始 rows 快照")
+    group.addoption(
+        "--allow-real-db-write",
+        action="store_true",
+        help="显式允许 pytest 对真实数据库执行写入路径。仅在明确需要重新导入/重置记忆时使用。",
+    )
 
 
 def pytest_configure(config):
@@ -231,4 +328,7 @@ def pytest_configure(config):
     )
     config.addinivalue_line(
         "markers", "assistant_eval: converted_data 端到端回答评估"
+    )
+    config.addinivalue_line(
+        "markers", "personamem_v2: PersonaMem-v2 数据集驱动评估"
     )

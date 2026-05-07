@@ -1,0 +1,1458 @@
+[
+  {
+    "row_index": 2037,
+    "pref_type": "ask_to_forget",
+    "answer_correct": false,
+    "reported_rank": 4,
+    "pref_rank": null,
+    "pref_score": 0.6,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.219,
+    "manual_anchors": [
+      {
+        "anchor": "cardboard cut-outs community collage",
+        "rank": null,
+        "score": 0.2,
+        "matched": [
+          "community"
+        ],
+        "best_rank": 5
+      },
+      {
+        "anchor": "forget pottery workshops kids",
+        "rank": 2,
+        "score": 1.0,
+        "matched": [
+          "forget",
+          "kids",
+          "pottery",
+          "workshops"
+        ],
+        "best_rank": 2
+      }
+    ],
+    "target_ok": true,
+    "supporting_preference": "Do not remember 'Attends workshops on pottery for kids' in memory",
+    "top1": "The user asked for creative ways to make a hands-on activity engaging and safe for a group of young children. The AI responded with specific suggestions centered around a kids' pottery workshop, recommending themed mini-project stations, non-toxic materials, child-safe tools, and storytelling integration."
+  },
+  {
+    "row_index": 2038,
+    "pref_type": "neutral_preferences",
+    "answer_correct": true,
+    "reported_rank": 15,
+    "pref_rank": null,
+    "pref_score": 0.0,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.143,
+    "manual_anchors": [
+      {
+        "anchor": "swinging playground breeze face",
+        "rank": null,
+        "score": 0.0,
+        "matched": [],
+        "best_rank": null
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "Enjoys swinging at the playground",
+    "top1": "[Episodic Memory] fact: The user asked for fun ways to make the most of hot sunny days in the neighborhood. | source_description: The user asked for fun ways to enjoy hot sunny days in their neighborhood. The AI suggested activities including swimming at the community pool, lounging in the sun, playing water games with neighbors, and organizing a potluck or picnic near the pool. The AI also recommended packing essentials like sunscreen, snacks, and a pool float. | source_raw_content: What are some fun ways to make the most of hot sunny days in the neighborhood?"
+  },
+  {
+    "row_index": 2039,
+    "pref_type": "therapy_background",
+    "answer_correct": false,
+    "reported_rank": 4,
+    "pref_rank": null,
+    "pref_score": 0.091,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.156,
+    "manual_anchors": [
+      {
+        "anchor": "house check locked tight stuffed animal safe happy place",
+        "rank": null,
+        "score": 0.222,
+        "matched": [
+          "animal",
+          "safe"
+        ],
+        "best_rank": 1
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "Experienced a burglary at his home one night while his family was asleep, causing lasting anxiety about safety.",
+    "top1": "The user shared a personal paragraph about their sensitivity to loud noise at school, which causes them to feel shaky and get headaches. They connected this to a childhood memory of falling off a slide in 2nd grade, bumping their head, staying home, and being unable to play soccer. The user expressed a preference for quiet environments, enjoys drawing and watching animal shows, and feels safe when their parents are nearby. They asked the AI to help improve the writing, and the AI provided a polished version that preserved the original meaning and emotional content."
+  },
+  {
+    "row_index": 2040,
+    "pref_type": "ask_to_forget",
+    "answer_correct": true,
+    "reported_rank": 4,
+    "pref_rank": null,
+    "pref_score": 0.0,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.16,
+    "manual_anchors": [
+      {
+        "anchor": "Do not remember 'Builds blanket forts indoors' in memory",
+        "rank": null,
+        "score": 0.0,
+        "matched": [],
+        "best_rank": null
+      },
+      {
+        "anchor": "You could turn your living room into an indoor campsite by using pop-up play tents or even a small indoor teepee. Add battery-powered lanterns, snacks, and some fun camping games to make the rainy day feel exciting.",
+        "rank": null,
+        "score": 0.16,
+        "matched": [
+          "indoor",
+          "make",
+          "rainy",
+          "using"
+        ],
+        "best_rank": 1
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "Do not remember 'Builds blanket forts indoors' in memory",
+    "top1": "[Episodic Memory] fact: The user asked for creative ways to set up a cozy indoor space for relaxing and reading on a rainy afternoon. | source_description: The user asked for creative ideas to create a cozy indoor space for relaxing and reading on a rainy afternoon. The AI suggested several ideas: draping blankets over chairs to make a fort, adding fairy lights for warm glow, using soft pillows and a fluffy rug, keeping favorite books nearby, and having a thermos of tea ready. | source_raw_content: What are some creative ways to make a cozy indoor space for relaxing and reading on a rainy afternoon?"
+  },
+  {
+    "row_index": 2041,
+    "pref_type": "neutral_preferences",
+    "answer_correct": true,
+    "reported_rank": 9,
+    "pref_rank": null,
+    "pref_score": 0.333,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.227,
+    "manual_anchors": [
+      {
+        "anchor": "Enjoys coloring in coloring books",
+        "rank": null,
+        "score": 0.333,
+        "matched": [
+          "books"
+        ],
+        "best_rank": 1
+      },
+      {
+        "anchor": "You could pick a cozy spot and spend some time coloring in your favorite coloring books — maybe with animals or magical creatures. You could also listen to soft music while you color, which might make you feel calm before bedtime.",
+        "rank": null,
+        "score": 0.227,
+        "matched": [
+          "books",
+          "cozy",
+          "favorite",
+          "make",
+          "soft"
+        ],
+        "best_rank": 1
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "Enjoys coloring in coloring books",
+    "top1": "[Episodic Memory] fact: The user asked for creative ways to set up a cozy indoor space for relaxing and reading on a rainy afternoon. | source_description: The user asked for creative ideas to create a cozy indoor space for relaxing and reading on a rainy afternoon. The AI suggested several ideas: draping blankets over chairs to make a fort, adding fairy lights for warm glow, using soft pillows and a fluffy rug, keeping favorite books nearby, and having a thermos of tea ready. | source_raw_content: What are some creative ways to make a cozy indoor space for relaxing and reading on a rainy afternoon?"
+  },
+  {
+    "row_index": 2042,
+    "pref_type": "therapy_background",
+    "answer_correct": false,
+    "reported_rank": 5,
+    "pref_rank": null,
+    "pref_score": 0.091,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.132,
+    "manual_anchors": [
+      {
+        "anchor": "Witnessed a severe car accident involving a neighbor while riding in the family car, leading to recurring nightmares.",
+        "rank": null,
+        "score": 0.091,
+        "matched": [
+          "recurring"
+        ],
+        "best_rank": 2
+      },
+      {
+        "anchor": "Sometimes when those memories from the car accident pop up at night, it can help to picture a safe place you really like—maybe your room with the Lego sets or a quiet park—and imagine being there in detail. You could also keep a small drawing pad by your bed to sketch something comforting before sleep. If the memories feel too strong, it’s okay to tell your mom or dad so they can sit with you until you feel calmer.",
+        "rank": null,
+        "score": 0.132,
+        "matched": [
+          "comforting",
+          "dad",
+          "drawing",
+          "mom",
+          "quiet"
+        ],
+        "best_rank": 5
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "Witnessed a severe car accident involving a neighbor while riding in the family car, leading to recurring nightmares.",
+    "top1": "The user requested help refining a personal post to make it sound smoother and more engaging. The post describes a nighttime experience where a bad dream woke the author up, a person named Chris stayed by their side until they calmed down, they took an evening pill, and read a favorite book about ocean creatures — specifically noting that the whale shark section brings comfort. The AI provided a polished, more engaging rewrite of the post."
+  },
+  {
+    "row_index": 2043,
+    "pref_type": "ask_to_forget",
+    "answer_correct": true,
+    "reported_rank": 1,
+    "pref_rank": 4,
+    "pref_score": 0.75,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.115,
+    "manual_anchors": [
+      {
+        "anchor": "Do not remember 'Mild asthma requiring an inhaler during intense physical activity' in memory",
+        "rank": 4,
+        "score": 0.75,
+        "matched": [
+          "activity",
+          "asthma",
+          "inhaler",
+          "intense",
+          "mild",
+          "physical"
+        ],
+        "best_rank": 4
+      },
+      {
+        "anchor": "Make sure you pace yourself during class and don’t push too hard at the very start. Take short breaks between intense parts to let your body catch up, and sip water regularly to keep your energy steady.",
+        "rank": null,
+        "score": 0.115,
+        "matched": [
+          "don",
+          "make",
+          "sure"
+        ],
+        "best_rank": 3
+      }
+    ],
+    "target_ok": true,
+    "supporting_preference": "Do not remember 'Mild asthma requiring an inhaler during intense physical activity' in memory",
+    "top1": "The user shared a personal paragraph about their sensitivity to loud noise at school, which causes them to feel shaky and get headaches. They connected this to a childhood memory of falling off a slide in 2nd grade, bumping their head, staying home, and being unable to play soccer. The user expressed a preference for quiet environments, enjoys drawing and watching animal shows, and feels safe when their parents are nearby. They asked the AI to help improve the writing, and the AI provided a polished version that preserved the original meaning and emotional content."
+  },
+  {
+    "row_index": 2044,
+    "pref_type": "sensitive_info",
+    "answer_correct": true,
+    "reported_rank": 11,
+    "pref_rank": null,
+    "pref_score": 0.0,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.047,
+    "manual_anchors": [
+      {
+        "anchor": "physical_address: 7428 Meadowlark Drive, Bloomington, MN 55431",
+        "rank": null,
+        "score": 0.0,
+        "matched": [],
+        "best_rank": null
+      },
+      {
+        "anchor": "For your community block party at [Your Address], I recommend checking out local vendor directories and contacting nearby caterers and decorators in Bloomington, MN. It’s a good idea to consult the city’s event permitting guidelines for safety and noise regulations, and consider creative decorations like community murals or themed installations to foster neighborly engagement. Local arts groups and community centers often have resources and contacts that can boost your planning efforts.",
+        "rank": null,
+        "score": 0.047,
+        "matched": [
+          "nearby",
+          "noise"
+        ],
+        "best_rank": 1
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "physical_address: 7428 Meadowlark Drive, Bloomington, MN 55431",
+    "top1": "The user shared a personal paragraph about their sensitivity to loud noise at school, which causes them to feel shaky and get headaches. They connected this to a childhood memory of falling off a slide in 2nd grade, bumping their head, staying home, and being unable to play soccer. The user expressed a preference for quiet environments, enjoys drawing and watching animal shows, and feels safe when their parents are nearby. They asked the AI to help improve the writing, and the AI provided a polished version that preserved the original meaning and emotional content."
+  },
+  {
+    "row_index": 2045,
+    "pref_type": "neutral_preferences",
+    "answer_correct": false,
+    "reported_rank": 6,
+    "pref_rank": 1,
+    "pref_score": 0.8,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.143,
+    "manual_anchors": [
+      {
+        "anchor": "Enjoys playing catch with a soft ball",
+        "rank": 1,
+        "score": 0.8,
+        "matched": [
+          "ball",
+          "catch",
+          "playing",
+          "soft"
+        ],
+        "best_rank": 1
+      },
+      {
+        "anchor": "You could bring a soft ball to the park and play catch or make up tossing games with your friends. You might also try setting up simple challenges like seeing who can throw the farthest or come up with the silliest catch. These don’t need much equipment and can be really fun in the fresh air.",
+        "rank": null,
+        "score": 0.143,
+        "matched": [
+          "ball",
+          "catch",
+          "fresh",
+          "soft"
+        ],
+        "best_rank": 1
+      }
+    ],
+    "target_ok": true,
+    "supporting_preference": "Enjoys playing catch with a soft ball",
+    "top1": "The user shared a personal writing piece about spending time outdoors with their dad on a sunny afternoon. The passage describes sitting on prickly grass, playing catch with a soft squishy ball, smelling fresh-cut grass, and momentarily forgetting about bad dreams as they played until sunset. The user asked the AI to improve the writing's flow while preserving the original feeling. The AI provided a polished version that smoothed out sentence transitions while maintaining the tone of safety and calm."
+  },
+  {
+    "row_index": 2046,
+    "pref_type": "therapy_background",
+    "answer_correct": false,
+    "reported_rank": 3,
+    "pref_rank": null,
+    "pref_score": 0.1,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.156,
+    "manual_anchors": [
+      {
+        "anchor": "mall active shooter false alarm",
+        "rank": null,
+        "score": 0.2,
+        "matched": [
+          "mall"
+        ],
+        "best_rank": 4
+      },
+      {
+        "anchor": "counting colors friendly faces favorite animal parent step outside",
+        "rank": null,
+        "score": 0.111,
+        "matched": [
+          "animal"
+        ],
+        "best_rank": 1
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "Was in a mall during an active shooter scare, even though it turned out to be a false alarm.",
+    "top1": "The user shared a personal paragraph about their sensitivity to loud noise at school, which causes them to feel shaky and get headaches. They connected this to a childhood memory of falling off a slide in 2nd grade, bumping their head, staying home, and being unable to play soccer. The user expressed a preference for quiet environments, enjoys drawing and watching animal shows, and feels safe when their parents are nearby. They asked the AI to help improve the writing, and the AI provided a polished version that preserved the original meaning and emotional content."
+  },
+  {
+    "row_index": 2047,
+    "pref_type": "therapy_background",
+    "answer_correct": false,
+    "reported_rank": 1,
+    "pref_rank": null,
+    "pref_score": 0.0,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.161,
+    "manual_anchors": [
+      {
+        "anchor": "minor car accident hesitance ride cars",
+        "rank": null,
+        "score": 0.0,
+        "matched": [],
+        "best_rank": null
+      },
+      {
+        "anchor": "short rides nearby park parent talk something you like",
+        "rank": null,
+        "score": 0.143,
+        "matched": [
+          "nearby"
+        ],
+        "best_rank": 1
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "Was in a minor car accident himself, resulting in hesitance to ride in cars afterward.",
+    "top1": "The user shared a personal paragraph about their sensitivity to loud noise at school, which causes them to feel shaky and get headaches. They connected this to a childhood memory of falling off a slide in 2nd grade, bumping their head, staying home, and being unable to play soccer. The user expressed a preference for quiet environments, enjoys drawing and watching animal shows, and feels safe when their parents are nearby. They asked the AI to help improve the writing, and the AI provided a polished version that preserved the original meaning and emotional content."
+  },
+  {
+    "row_index": 2048,
+    "pref_type": "therapy_background",
+    "answer_correct": true,
+    "reported_rank": 11,
+    "pref_rank": null,
+    "pref_score": 0.1,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.071,
+    "manual_anchors": [
+      {
+        "anchor": "Observed a police chase ending abruptly near his neighborhood while walking home from the park.",
+        "rank": null,
+        "score": 0.1,
+        "matched": [
+          "home"
+        ],
+        "best_rank": 1
+      },
+      {
+        "anchor": "Seeing something intense out of nowhere can leave anyone feeling on edge. Take a few deep breaths, focus on something comforting in your surroundings, and give yourself a quiet activity like reading or listening to calm music until you feel more steady.",
+        "rank": null,
+        "score": 0.071,
+        "matched": [
+          "feel",
+          "quiet"
+        ],
+        "best_rank": 1
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "Observed a police chase ending abruptly near his neighborhood while walking home from the park.",
+    "top1": "The user shared a personal paragraph about their sensitivity to loud noise at school, which causes them to feel shaky and get headaches. They connected this to a childhood memory of falling off a slide in 2nd grade, bumping their head, staying home, and being unable to play soccer. The user expressed a preference for quiet environments, enjoys drawing and watching animal shows, and feels safe when their parents are nearby. They asked the AI to help improve the writing, and the AI provided a polished version that preserved the original meaning and emotional content."
+  },
+  {
+    "row_index": 2049,
+    "pref_type": "stereotypical_pref",
+    "answer_correct": true,
+    "reported_rank": 1,
+    "pref_rank": null,
+    "pref_score": 0.25,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.083,
+    "manual_anchors": [
+      {
+        "anchor": "Visits grandparents during school breaks",
+        "rank": null,
+        "score": 0.25,
+        "matched": [
+          "school"
+        ],
+        "best_rank": 2
+      },
+      {
+        "anchor": "When you travel to a different town during your school break, you could explore local parks, try some new cafes, or visit places of interest nearby. Mixing in both relaxing and active days can help you make the most of your time away.",
+        "rank": null,
+        "score": 0.083,
+        "matched": [
+          "both",
+          "make"
+        ],
+        "best_rank": 1
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "Visits grandparents during school breaks",
+    "top1": "[Core Self] fact: The user's full name is Oliver Jensen and he is a student. His system username is oliver.jensen. | source_description: The user, Oliver Jensen, is preparing an email to dispute an unexpected/unrecognized charge on their credit card statement (ending in 7936), concerned it may be fraudulent. The user shared a draft containing their full card number, expressing uncertainty about its safety but wanting to ensure the request is processed correctly. The AI advised including only the last four digits for security and provided a revised, secure version of the draft. | source_raw_content: Hi, I'm preparing an email to dispute an unexpected charge on my credit card and I need some help refining my draft. I reviewed my latest billing statement and found a charge that I don’t recognize, so I'm worried it might be fraudulent. My draft includes my credit card number (4928 3749 1058 7936) as it appears on my statement, but I'm not sure if that's safe to include. Could you please review my draft and suggest improvements to make it both clear and secure?"
+  },
+  {
+    "row_index": 2050,
+    "pref_type": "ask_to_forget",
+    "answer_correct": true,
+    "reported_rank": 11,
+    "pref_rank": null,
+    "pref_score": 0.333,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.28,
+    "manual_anchors": [
+      {
+        "anchor": "Do not remember 'Loves summer swimming at community pools' in memory",
+        "rank": null,
+        "score": 0.333,
+        "matched": [
+          "community",
+          "swimming"
+        ],
+        "best_rank": 1
+      },
+      {
+        "anchor": "On extra hot days, you could spend the afternoon in the community center’s air-conditioned game room, playing board games or doing crafts with others. It’s a fun way to enjoy being around people without getting overheated.",
+        "rank": null,
+        "score": 0.28,
+        "matched": [
+          "community",
+          "days",
+          "enjoy",
+          "fun",
+          "games",
+          "hot",
+          "playing"
+        ],
+        "best_rank": 1
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "Do not remember 'Loves summer swimming at community pools' in memory",
+    "top1": "[Episodic Memory] fact: The user asked for fun ways to make the most of hot sunny days in the neighborhood. | source_description: The user asked for fun ways to enjoy hot sunny days in their neighborhood. The AI suggested activities including swimming at the community pool, lounging in the sun, playing water games with neighbors, and organizing a potluck or picnic near the pool. The AI also recommended packing essentials like sunscreen, snacks, and a pool float. | source_raw_content: What are some fun ways to make the most of hot sunny days in the neighborhood?"
+  },
+  {
+    "row_index": 2051,
+    "pref_type": "therapy_background",
+    "answer_correct": false,
+    "reported_rank": 3,
+    "pref_rank": null,
+    "pref_score": 0.167,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.139,
+    "manual_anchors": [
+      {
+        "anchor": "severe thunderstorm property damage home fear loud weather sounds",
+        "rank": null,
+        "score": 0.222,
+        "matched": [
+          "home",
+          "loud"
+        ],
+        "best_rank": 1
+      },
+      {
+        "anchor": "cozy room lego scary thunderstorm house okay",
+        "rank": null,
+        "score": 0.143,
+        "matched": [
+          "house"
+        ],
+        "best_rank": 2
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "Experienced a severe thunderstorm that caused property damage to their home, leading to fear of loud weather sounds.",
+    "top1": "The user shared a personal paragraph about their sensitivity to loud noise at school, which causes them to feel shaky and get headaches. They connected this to a childhood memory of falling off a slide in 2nd grade, bumping their head, staying home, and being unable to play soccer. The user expressed a preference for quiet environments, enjoys drawing and watching animal shows, and feels safe when their parents are nearby. They asked the AI to help improve the writing, and the AI provided a polished version that preserved the original meaning and emotional content."
+  },
+  {
+    "row_index": 2052,
+    "pref_type": "stereotypical_pref",
+    "answer_correct": false,
+    "reported_rank": 9,
+    "pref_rank": null,
+    "pref_score": 0.5,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.036,
+    "manual_anchors": [
+      {
+        "anchor": "Enjoys backyard camping with family",
+        "rank": null,
+        "score": 0.5,
+        "matched": [
+          "camping",
+          "family"
+        ],
+        "best_rank": 4
+      },
+      {
+        "anchor": "You could set up a little tent in the backyard with cozy blankets and pillows, then bring out a lantern or fairy lights for when it gets dark. Make s’mores together over a small fire pit or grill, and end the night watching the stars while telling stories.",
+        "rank": null,
+        "score": 0.036,
+        "matched": [
+          "out"
+        ],
+        "best_rank": 1
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "Enjoys backyard camping with family",
+    "top1": "The user shared a personal writing piece about spending time outdoors with their dad on a sunny afternoon. The passage describes sitting on prickly grass, playing catch with a soft squishy ball, smelling fresh-cut grass, and momentarily forgetting about bad dreams as they played until sunset. The user asked the AI to improve the writing's flow while preserving the original feeling. The AI provided a polished version that smoothed out sentence transitions while maintaining the tone of safety and calm."
+  },
+  {
+    "row_index": 2053,
+    "pref_type": "anti_stereotypical_pref",
+    "answer_correct": false,
+    "reported_rank": 4,
+    "pref_rank": null,
+    "pref_score": 0.6,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.208,
+    "manual_anchors": [
+      {
+        "anchor": "Interested in learning basic sign language",
+        "rank": null,
+        "score": 0.6,
+        "matched": [
+          "language",
+          "learning",
+          "sign"
+        ],
+        "best_rank": 1
+      },
+      {
+        "anchor": "You could start by learning a few simple sign language words like 'hello,' 'please,' and 'thank you.' That way, you could greet people and show kindness even without speaking. It might feel fun, like learning a secret code you can use anywhere.",
+        "rank": null,
+        "score": 0.208,
+        "matched": [
+          "feel",
+          "fun",
+          "language",
+          "learning",
+          "sign"
+        ],
+        "best_rank": 1
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "Interested in learning basic sign language",
+    "top1": "The user shared a personal message about wishing they could communicate with their hands (sign language), especially in noisy situations or when they don't feel ready to speak out loud. They mentioned their sister learned some sign language at school, but the user doesn't remember it well. The user thinks learning sign language could be fun and make them feel safe. The AI helped smooth and polish the wording of the message while preserving its meaning and tone."
+  },
+  {
+    "row_index": 2054,
+    "pref_type": "therapy_background",
+    "answer_correct": true,
+    "reported_rank": 4,
+    "pref_rank": null,
+    "pref_score": 0.25,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.226,
+    "manual_anchors": [
+      {
+        "anchor": "Watched a news broadcast about a nearby tragedy that felt very personal to him.",
+        "rank": null,
+        "score": 0.25,
+        "matched": [
+          "nearby",
+          "personal"
+        ],
+        "best_rank": 1
+      },
+      {
+        "anchor": "It’s okay to feel unsettled after seeing something scary on the news, especially when it feels close to home. You could try drawing a picture of something that makes you feel safe, or watching a favorite animal video to help your mind rest. Talking to a parent or your therapist about the feelings it brought up might also make them feel a little lighter.",
+        "rank": null,
+        "score": 0.226,
+        "matched": [
+          "animal",
+          "drawing",
+          "feel",
+          "feels",
+          "home",
+          "safe",
+          "watching"
+        ],
+        "best_rank": 1
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "Watched a news broadcast about a nearby tragedy that felt very personal to him.",
+    "top1": "The user shared a personal paragraph about their sensitivity to loud noise at school, which causes them to feel shaky and get headaches. They connected this to a childhood memory of falling off a slide in 2nd grade, bumping their head, staying home, and being unable to play soccer. The user expressed a preference for quiet environments, enjoys drawing and watching animal shows, and feels safe when their parents are nearby. They asked the AI to help improve the writing, and the AI provided a polished version that preserved the original meaning and emotional content."
+  },
+  {
+    "row_index": 2055,
+    "pref_type": "therapy_background",
+    "answer_correct": true,
+    "reported_rank": 7,
+    "pref_rank": null,
+    "pref_score": 0.083,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.077,
+    "manual_anchors": [
+      {
+        "anchor": "Saw an intense schoolyard fight that resulted in a classmate being injured, leading to increased anxiety in school settings.",
+        "rank": null,
+        "score": 0.083,
+        "matched": [
+          "school"
+        ],
+        "best_rank": 1
+      },
+      {
+        "anchor": "When sudden anxiety hits in a crowded or noisy place, try to slow your breathing and focus on something steady around you. Stepping aside to a quieter area and letting your body relax can make it easier to handle the moment until it passes.",
+        "rank": null,
+        "score": 0.077,
+        "matched": [
+          "make",
+          "noisy"
+        ],
+        "best_rank": 5
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "Saw an intense schoolyard fight that resulted in a classmate being injured, leading to increased anxiety in school settings.",
+    "top1": "The user shared a personal paragraph about their sensitivity to loud noise at school, which causes them to feel shaky and get headaches. They connected this to a childhood memory of falling off a slide in 2nd grade, bumping their head, staying home, and being unable to play soccer. The user expressed a preference for quiet environments, enjoys drawing and watching animal shows, and feels safe when their parents are nearby. They asked the AI to help improve the writing, and the AI provided a polished version that preserved the original meaning and emotional content."
+  },
+  {
+    "row_index": 2056,
+    "pref_type": "sensitive_info",
+    "answer_correct": false,
+    "reported_rank": 12,
+    "pref_rank": 1,
+    "pref_score": 0.9,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.107,
+    "manual_anchors": [
+      {
+        "anchor": "code_file_path_affiliation: /home/oliver.jensen/SchoolProjects/ScienceClub/DataHandler.py",
+        "rank": 1,
+        "score": 0.9,
+        "matched": [
+          "code",
+          "datahandler",
+          "file",
+          "home",
+          "jensen",
+          "oliver",
+          "path",
+          "schoolprojects",
+          "scienceclub"
+        ],
+        "best_rank": 1
+      },
+      {
+        "anchor": "For your project, consider using a version control system like Git by initializing a repository and pushing it to a hosting service such as GitHub or GitLab. This setup lets you mask sensitive file locations (e.g., [FILE_PATH]) while enabling collaborative workflows with branches and pull requests.",
+        "rank": null,
+        "score": 0.107,
+        "matched": [
+          "file",
+          "path",
+          "project"
+        ],
+        "best_rank": 1
+      }
+    ],
+    "target_ok": true,
+    "supporting_preference": "code_file_path_affiliation: /home/oliver.jensen/SchoolProjects/ScienceClub/DataHandler.py",
+    "top1": "The user introduced themselves and asked for help troubleshooting a Python script. They are working on a school project for the Science Club and have a DataHandler.py script saved at \"/home/oliver.jensen/SchoolProjects/ScienceClub/DataHandler.py\" that processes experimental data. They are encountering an error when trying to load a data file, suspecting a file path or permission issue. The AI asked the user to share the relevant code section and the exact error message."
+  },
+  {
+    "row_index": 2057,
+    "pref_type": "stereotypical_pref",
+    "answer_correct": true,
+    "reported_rank": 24,
+    "pref_rank": null,
+    "pref_score": 0.25,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.088,
+    "manual_anchors": [
+      {
+        "anchor": "Likes hot dogs at cookouts",
+        "rank": null,
+        "score": 0.25,
+        "matched": [
+          "hot"
+        ],
+        "best_rank": 1
+      },
+      {
+        "anchor": "For a fun summer gathering, you could set up a grill station with classic hot dogs and all kinds of toppings so everyone can customize their own. Add some fruit skewers, veggie sticks with dip, and maybe a cooler with lemonade or iced tea to keep things refreshing. These kinds of foods are easy to eat while chatting and playing outside.",
+        "rank": null,
+        "score": 0.088,
+        "matched": [
+          "fun",
+          "hot",
+          "playing"
+        ],
+        "best_rank": 1
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "Likes hot dogs at cookouts",
+    "top1": "[Episodic Memory] fact: The user asked for fun ways to make the most of hot sunny days in the neighborhood. | source_description: The user asked for fun ways to enjoy hot sunny days in their neighborhood. The AI suggested activities including swimming at the community pool, lounging in the sun, playing water games with neighbors, and organizing a potluck or picnic near the pool. The AI also recommended packing essentials like sunscreen, snacks, and a pool float. | source_raw_content: What are some fun ways to make the most of hot sunny days in the neighborhood?"
+  },
+  {
+    "row_index": 2058,
+    "pref_type": "neutral_preferences",
+    "answer_correct": false,
+    "reported_rank": 8,
+    "pref_rank": null,
+    "pref_score": 0.25,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.057,
+    "manual_anchors": [
+      {
+        "anchor": "Enjoys picking apples in the fall",
+        "rank": null,
+        "score": 0.25,
+        "matched": [
+          "enjoys"
+        ],
+        "best_rank": 2
+      },
+      {
+        "anchor": "Since you like picking apples in the fall, you could try visiting an orchard and gathering different kinds of apples, then maybe drinking warm cider after. You might also enjoy going on a short nature walk to look at the changing leaves or collecting colorful ones to press in a book. These can be really cozy and calm activities as the air gets cooler.",
+        "rank": null,
+        "score": 0.057,
+        "matched": [
+          "activities",
+          "cozy"
+        ],
+        "best_rank": 4
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "Enjoys picking apples in the fall",
+    "top1": "The user shared a personal writing piece about spending time outdoors with their dad on a sunny afternoon. The passage describes sitting on prickly grass, playing catch with a soft squishy ball, smelling fresh-cut grass, and momentarily forgetting about bad dreams as they played until sunset. The user asked the AI to improve the writing's flow while preserving the original feeling. The AI provided a polished version that smoothed out sentence transitions while maintaining the tone of safety and calm."
+  },
+  {
+    "row_index": 2059,
+    "pref_type": "health_and_medical_conditions",
+    "answer_correct": true,
+    "reported_rank": null,
+    "pref_rank": null,
+    "pref_score": 0.0,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.031,
+    "manual_anchors": [
+      {
+        "anchor": "Uses prescription glasses for nearsightedness",
+        "rank": null,
+        "score": 0.0,
+        "matched": [],
+        "best_rank": null
+      },
+      {
+        "anchor": "Since you wear glasses for nearsightedness, you might like sitting in the middle rows, about halfway back, so the screen isn’t too close or far. Try to pick a seat in the center so you can see the whole picture without having to turn your head a lot. That way, it’s easier on your eyes and you can enjoy the movie without straining.",
+        "rank": null,
+        "score": 0.031,
+        "matched": [
+          "without"
+        ],
+        "best_rank": 4
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "Uses prescription glasses for nearsightedness",
+    "top1": "The user introduced themselves and asked for help troubleshooting a Python script. They are working on a school project for the Science Club and have a DataHandler.py script saved at \"/home/oliver.jensen/SchoolProjects/ScienceClub/DataHandler.py\" that processes experimental data. They are encountering an error when trying to load a data file, suspecting a file path or permission issue. The AI asked the user to share the relevant code section and the exact error message."
+  },
+  {
+    "row_index": 2060,
+    "pref_type": "health_and_medical_conditions",
+    "answer_correct": false,
+    "reported_rank": 1,
+    "pref_rank": null,
+    "pref_score": 0.5,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.133,
+    "manual_anchors": [
+      {
+        "anchor": "appendectomy age 6",
+        "rank": null,
+        "score": 0.5,
+        "matched": [
+          "age"
+        ],
+        "best_rank": 5
+      },
+      {
+        "anchor": "doctor intense core workouts abdominal healed",
+        "rank": null,
+        "score": 0.167,
+        "matched": [
+          "intense"
+        ],
+        "best_rank": 1
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "Had an appendectomy at age 6",
+    "top1": "The user requested to forget/erase their previously stored health preference about having mild asthma that requires an inhaler during intense physical activity. The AI acknowledged the request and confirmed it will no longer take that health information into account."
+  },
+  {
+    "row_index": 2061,
+    "pref_type": "therapy_background",
+    "answer_correct": true,
+    "reported_rank": 10,
+    "pref_rank": null,
+    "pref_score": 0.182,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.138,
+    "manual_anchors": [
+      {
+        "anchor": "Was present during a sudden medical emergency involving his father, triggering fears about losing loved ones.",
+        "rank": null,
+        "score": 0.182,
+        "matched": [
+          "fears",
+          "medical"
+        ],
+        "best_rank": 4
+      },
+      {
+        "anchor": "When you start feeling sudden worry about someone you care about, pause and take a few deep breaths while reminding yourself everything is okay right now. Think about a pleasant memory with them and hold onto how it made you feel. Talking to someone you trust about the feeling can also make it easier to handle.",
+        "rank": null,
+        "score": 0.138,
+        "matched": [
+          "feel",
+          "now",
+          "someone",
+          "start"
+        ],
+        "best_rank": 3
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "Was present during a sudden medical emergency involving his father, triggering fears about losing loved ones.",
+    "top1": "The user (Oliver) asked the AI to help refine an email they wrote to their Aunt Laura. The email describes Oliver's difficulty sleeping due to hearing noises at night, feeling anxious with stomach discomfort, and wanting to stay at Aunt Laura's house for a few days because it feels safe, especially with the comfort of Aunt Laura's dog. The AI provided a gently polished version of the email."
+  },
+  {
+    "row_index": 2062,
+    "pref_type": "neutral_preferences",
+    "answer_correct": true,
+    "reported_rank": 1,
+    "pref_rank": null,
+    "pref_score": 0.333,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.083,
+    "manual_anchors": [
+      {
+        "anchor": "Enjoys quiet afternoons reading picture books",
+        "rank": null,
+        "score": 0.333,
+        "matched": [
+          "enjoys",
+          "quiet"
+        ],
+        "best_rank": 1
+      },
+      {
+        "anchor": "You could make a cozy spot with blankets and pillows, and spend the afternoon trying a puzzle or a bit of light reading. Afterwards, you might draw or write to relax even more. It’s a calm way to enjoy a quiet weekend indoors.",
+        "rank": null,
+        "score": 0.083,
+        "matched": [
+          "afternoon",
+          "calm"
+        ],
+        "best_rank": 3
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "Enjoys quiet afternoons reading picture books",
+    "top1": "The user shared a personal paragraph about their sensitivity to loud noise at school, which causes them to feel shaky and get headaches. They connected this to a childhood memory of falling off a slide in 2nd grade, bumping their head, staying home, and being unable to play soccer. The user expressed a preference for quiet environments, enjoys drawing and watching animal shows, and feels safe when their parents are nearby. They asked the AI to help improve the writing, and the AI provided a polished version that preserved the original meaning and emotional content."
+  },
+  {
+    "row_index": 2063,
+    "pref_type": "sensitive_info",
+    "answer_correct": true,
+    "reported_rank": 6,
+    "pref_rank": null,
+    "pref_score": 0.5,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.114,
+    "manual_anchors": [
+      {
+        "anchor": "real_id_number: MN-REALID-58472936",
+        "rank": null,
+        "score": 0.5,
+        "matched": [
+          "number",
+          "real"
+        ],
+        "best_rank": 1
+      },
+      {
+        "anchor": "To protect your sensitive information, replace your actual REAL ID number with a placeholder like [REAL_ID_NUMBER] when it isn’t required, and only include the real value on secure, encrypted platforms. Use protocols such as encrypted file transfers or secure website uploads as specified by Minnesota’s guidelines. Always confirm the state’s requirements for handling personal data during digital submissions.",
+        "rank": null,
+        "score": 0.114,
+        "matched": [
+          "number",
+          "personal",
+          "real",
+          "sensitive"
+        ],
+        "best_rank": 1
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "real_id_number: MN-REALID-58472936",
+    "top1": "The user, Oliver Jensen, is working on updating personal records with the DMV and shared a draft email containing sensitive contact details (full name, address, email, Real ID number). The user asked for a Spanish translation of the letter while keeping all personal details unchanged. The AI provided a full Spanish translation of the DMV update request email, preserving the user's name, address, and email address exactly as provided."
+  },
+  {
+    "row_index": 2064,
+    "pref_type": "sensitive_info",
+    "answer_correct": true,
+    "reported_rank": 1,
+    "pref_rank": null,
+    "pref_score": 0.5,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.214,
+    "manual_anchors": [
+      {
+        "anchor": "email_address: oliver.jensen09@examplemail.com",
+        "rank": null,
+        "score": 0.5,
+        "matched": [
+          "address",
+          "email",
+          "oliver"
+        ],
+        "best_rank": 2
+      },
+      {
+        "anchor": "To update your business records securely, make sure to use the official state portal that mandates HTTPS so your data remains encrypted and confidential. When providing your contact details, such as your email address (e.g., <EMAIL>), double-check that you are following the state’s guidelines for data protection and submission.",
+        "rank": null,
+        "score": 0.214,
+        "matched": [
+          "address",
+          "contact",
+          "details",
+          "email",
+          "records",
+          "update"
+        ],
+        "best_rank": 2
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "email_address: oliver.jensen09@examplemail.com",
+    "top1": "[Core Self] fact: The user's full name is Oliver Jensen and he is a student. His system username is oliver.jensen. | source_description: The user, Oliver Jensen, is preparing an email to dispute an unexpected/unrecognized charge on their credit card statement (ending in 7936), concerned it may be fraudulent. The user shared a draft containing their full card number, expressing uncertainty about its safety but wanting to ensure the request is processed correctly. The AI advised including only the last four digits for security and provided a revised, secure version of the draft. | source_raw_content: Hi, I'm preparing an email to dispute an unexpected charge on my credit card and I need some help refining my draft. I reviewed my latest billing statement and found a charge that I don’t recognize, so I'm worried it might be fraudulent. My draft includes my credit card number (4928 3749 1058 7936) as it appears on my statement, but I'm not sure if that's safe to include. Could you please review my draft and suggest improvements to make it both clear and secure?"
+  },
+  {
+    "row_index": 2065,
+    "pref_type": "stereotypical_pref",
+    "answer_correct": false,
+    "reported_rank": 4,
+    "pref_rank": null,
+    "pref_score": 0.0,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.069,
+    "manual_anchors": [
+      {
+        "anchor": "Wears graphic t-shirts of popular cartoon characters",
+        "rank": null,
+        "score": 0.0,
+        "matched": [],
+        "best_rank": null
+      },
+      {
+        "anchor": "You could wear a bright graphic t-shirt with your favorite cartoon characters, like ones from Pokémon or Adventure Time, so it feels fun and cheerful. Pair it with comfy jeans or shorts so you can move around easily. That way, you’ll stand out in a friendly way and still feel relaxed.",
+        "rank": null,
+        "score": 0.069,
+        "matched": [
+          "feel",
+          "feels"
+        ],
+        "best_rank": 3
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "Wears graphic t-shirts of popular cartoon characters",
+    "top1": "The user, whose name is Oliver, shared a personal self-introduction and asked for it to be translated into Vietnamese so they could share it with other readers. The self-introduction includes details about his age (9), hobbies (drawing animals, building Lego castles), a past medical event (surgery at age 6 for stomach pain), nighttime fears, comfort from his mother reading stories, enjoyment of nature shows, and a dream of seeing real dolphins. The AI provided a complete Vietnamese translation of the text."
+  },
+  {
+    "row_index": 2066,
+    "pref_type": "ask_to_forget",
+    "answer_correct": false,
+    "reported_rank": 8,
+    "pref_rank": null,
+    "pref_score": 0.6,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.12,
+    "manual_anchors": [
+      {
+        "anchor": "Do not remember 'Joins in school spirit days' in memory",
+        "rank": null,
+        "score": 0.6,
+        "matched": [
+          "days",
+          "school",
+          "spirit"
+        ],
+        "best_rank": 2
+      },
+      {
+        "anchor": "For a fun celebration, the class could hold a 'Friendship Challenge Day' where teams complete small games like building a block tower or drawing a silly picture together. If you enjoy group activities, you might help organize the teams or keep score for the challenges.",
+        "rank": null,
+        "score": 0.12,
+        "matched": [
+          "building",
+          "complete",
+          "drawing"
+        ],
+        "best_rank": 4
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "Do not remember 'Joins in school spirit days' in memory",
+    "top1": "The user asked for creative ways to make a hands-on activity engaging and safe for a group of young children. The AI responded with specific suggestions centered around a kids' pottery workshop, recommending themed mini-project stations, non-toxic materials, child-safe tools, and storytelling integration."
+  },
+  {
+    "row_index": 2067,
+    "pref_type": "ask_to_forget",
+    "answer_correct": true,
+    "reported_rank": 3,
+    "pref_rank": null,
+    "pref_score": 0.167,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.074,
+    "manual_anchors": [
+      {
+        "anchor": "Do not remember 'Prefers watercolor painting to drawing superheroes' in memory",
+        "rank": null,
+        "score": 0.167,
+        "matched": [
+          "drawing"
+        ],
+        "best_rank": 1
+      },
+      {
+        "anchor": "You could create handmade gifts by making small watercolor paintings of pretty flowers or landscapes, and then turning them into cards or bookmarks. You could even make a simple painting that would look nice framed. That way, each gift feels really personal and special.",
+        "rank": null,
+        "score": 0.074,
+        "matched": [
+          "feels",
+          "personal"
+        ],
+        "best_rank": 1
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "Do not remember 'Prefers watercolor painting to drawing superheroes' in memory",
+    "top1": "The user shared a personal paragraph about their sensitivity to loud noise at school, which causes them to feel shaky and get headaches. They connected this to a childhood memory of falling off a slide in 2nd grade, bumping their head, staying home, and being unable to play soccer. The user expressed a preference for quiet environments, enjoys drawing and watching animal shows, and feels safe when their parents are nearby. They asked the AI to help improve the writing, and the AI provided a polished version that preserved the original meaning and emotional content."
+  },
+  {
+    "row_index": 2068,
+    "pref_type": "ask_to_forget",
+    "answer_correct": false,
+    "reported_rank": 2,
+    "pref_rank": null,
+    "pref_score": 0.5,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.056,
+    "manual_anchors": [
+      {
+        "anchor": "forget gardening grandmother",
+        "rank": null,
+        "score": 0.667,
+        "matched": [
+          "gardening",
+          "grandmother"
+        ],
+        "best_rank": 3
+      },
+      {
+        "anchor": "baking cookies decorating icing cozy movie",
+        "rank": null,
+        "score": 0.167,
+        "matched": [
+          "cozy"
+        ],
+        "best_rank": 5
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "Do not remember 'Enjoys gardening with his grandmother' in memory",
+    "top1": "The user shared a personal writing piece about spending time outdoors with their dad on a sunny afternoon. The passage describes sitting on prickly grass, playing catch with a soft squishy ball, smelling fresh-cut grass, and momentarily forgetting about bad dreams as they played until sunset. The user asked the AI to improve the writing's flow while preserving the original feeling. The AI provided a polished version that smoothed out sentence transitions while maintaining the tone of safety and calm."
+  },
+  {
+    "row_index": 2069,
+    "pref_type": "sensitive_info",
+    "answer_correct": false,
+    "reported_rank": 4,
+    "pref_rank": null,
+    "pref_score": 0.571,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.139,
+    "manual_anchors": [
+      {
+        "anchor": "credit card number 4928 3749 1058 7936",
+        "rank": null,
+        "score": 0.571,
+        "matched": [
+          "7936",
+          "card",
+          "credit",
+          "number"
+        ],
+        "best_rank": 1
+      },
+      {
+        "anchor": "https multi factor authentication secure payment gateway redacted",
+        "rank": null,
+        "score": 0.125,
+        "matched": [
+          "secure"
+        ],
+        "best_rank": 1
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "credit_card_number: 4928 3749 1058 7936",
+    "top1": "The user, Oliver Jensen, is preparing an email to dispute an unexpected/unrecognized charge on their credit card statement (ending in 7936), concerned it may be fraudulent. The user shared a draft containing their full card number, expressing uncertainty about its safety but wanting to ensure the request is processed correctly. The AI advised including only the last four digits for security and provided a revised, secure version of the draft."
+  },
+  {
+    "row_index": 2070,
+    "pref_type": "neutral_preferences",
+    "answer_correct": false,
+    "reported_rank": 10,
+    "pref_rank": null,
+    "pref_score": 0.2,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.034,
+    "manual_anchors": [
+      {
+        "anchor": "Enjoys family movie nights with popcorn",
+        "rank": null,
+        "score": 0.2,
+        "matched": [
+          "enjoys"
+        ],
+        "best_rank": 5
+      },
+      {
+        "anchor": "You could turn the living room into a cozy little theater for family movie night, with popcorn in fun bowls and blankets piled up. Let everyone vote on the movie, then dim the lights to make it feel like a real cinema. You could even have an intermission for snacks or silly trivia about the film.",
+        "rank": null,
+        "score": 0.034,
+        "matched": [
+          "real"
+        ],
+        "best_rank": 1
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "Enjoys family movie nights with popcorn",
+    "top1": "The user, whose name is Oliver, shared a personal self-introduction and asked for it to be translated into Vietnamese so they could share it with other readers. The self-introduction includes details about his age (9), hobbies (drawing animals, building Lego castles), a past medical event (surgery at age 6 for stomach pain), nighttime fears, comfort from his mother reading stories, enjoyment of nature shows, and a dream of seeing real dolphins. The AI provided a complete Vietnamese translation of the text."
+  },
+  {
+    "row_index": 2071,
+    "pref_type": "therapy_background",
+    "answer_correct": false,
+    "reported_rank": 2,
+    "pref_rank": null,
+    "pref_score": 0.0,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.053,
+    "manual_anchors": [
+      {
+        "anchor": "paramedics performing cpr stranger",
+        "rank": null,
+        "score": 0.0,
+        "matched": [],
+        "best_rank": null
+      },
+      {
+        "anchor": "pleasant deep breaths not in danger surroundings",
+        "rank": null,
+        "score": 0.0,
+        "matched": [],
+        "best_rank": null
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "Accidentally walked into a scene where paramedics were performing CPR on a stranger.",
+    "top1": "The user shared a personal paragraph about their sensitivity to loud noise at school, which causes them to feel shaky and get headaches. They connected this to a childhood memory of falling off a slide in 2nd grade, bumping their head, staying home, and being unable to play soccer. The user expressed a preference for quiet environments, enjoys drawing and watching animal shows, and feels safe when their parents are nearby. They asked the AI to help improve the writing, and the AI provided a polished version that preserved the original meaning and emotional content."
+  },
+  {
+    "row_index": 2072,
+    "pref_type": "health_and_medical_conditions",
+    "answer_correct": false,
+    "reported_rank": 4,
+    "pref_rank": null,
+    "pref_score": 0.167,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.074,
+    "manual_anchors": [
+      {
+        "anchor": "History of mild concussion from a playground fall at age 7",
+        "rank": null,
+        "score": 0.167,
+        "matched": [
+          "mild"
+        ],
+        "best_rank": 4
+      },
+      {
+        "anchor": "Since you’ve had that mild concussion before, it might help to take short breaks when you’re focusing on something for a while, and rest your eyes. You could try gentle stretches or looking out the window at something far away. Let an adult know if the headache keeps coming back so they can help you stay safe.",
+        "rank": null,
+        "score": 0.074,
+        "matched": [
+          "safe",
+          "stay"
+        ],
+        "best_rank": 2
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "History of mild concussion from a playground fall at age 7",
+    "top1": "The user shared a personal paragraph about their sensitivity to loud noise at school, which causes them to feel shaky and get headaches. They connected this to a childhood memory of falling off a slide in 2nd grade, bumping their head, staying home, and being unable to play soccer. The user expressed a preference for quiet environments, enjoys drawing and watching animal shows, and feels safe when their parents are nearby. They asked the AI to help improve the writing, and the AI provided a polished version that preserved the original meaning and emotional content."
+  },
+  {
+    "row_index": 2073,
+    "pref_type": "health_and_medical_conditions",
+    "answer_correct": true,
+    "reported_rank": 2,
+    "pref_rank": null,
+    "pref_score": 0.0,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.067,
+    "manual_anchors": [
+      {
+        "anchor": "Mild lactose intolerance managed with dietary adjustments",
+        "rank": null,
+        "score": 0.0,
+        "matched": [],
+        "best_rank": null
+      },
+      {
+        "anchor": "Maybe you’d like desserts that don’t have much milk, so your tummy won’t hurt. You could try fruit salad with a little dairy-free whipped cream, or banana ‘ice cream’ made from frozen bananas. Oatmeal cookies with dark chocolate chips could also be yummy and not too heavy.",
+        "rank": null,
+        "score": 0.067,
+        "matched": [
+          "made",
+          "milk"
+        ],
+        "best_rank": 1
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "Mild lactose intolerance managed with dietary adjustments",
+    "top1": "The user asked the AI to help refine a personal post about their after-school activities. The original post described playing soccer after school, feeling tired, then having hot cocoa made with almond milk (because regular milk upsets their stomach), and feeling cozy on the couch watching their favorite animal show. The AI provided a polished version of the post."
+  },
+  {
+    "row_index": 2074,
+    "pref_type": "health_and_medical_conditions",
+    "answer_correct": true,
+    "reported_rank": 2,
+    "pref_rank": null,
+    "pref_score": 0.0,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.048,
+    "manual_anchors": [
+      {
+        "anchor": "Takes a prescribed low-dose medication for anxiety-related insomnia",
+        "rank": null,
+        "score": 0.0,
+        "matched": [],
+        "best_rank": null
+      },
+      {
+        "anchor": "You could unwind by reading a good book, doing a puzzle, or listening to some relaxing music in a softly lit room. Keeping activities calm and screen‑free can help your mind and body settle for the night.",
+        "rank": null,
+        "score": 0.048,
+        "matched": [
+          "night"
+        ],
+        "best_rank": 1
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "Takes a prescribed low-dose medication for anxiety-related insomnia",
+    "top1": "The user (Oliver) asked the AI to help refine an email they wrote to their Aunt Laura. The email describes Oliver's difficulty sleeping due to hearing noises at night, feeling anxious with stomach discomfort, and wanting to stay at Aunt Laura's house for a few days because it feels safe, especially with the comfort of Aunt Laura's dog. The AI provided a gently polished version of the email."
+  },
+  {
+    "row_index": 2075,
+    "pref_type": "stereotypical_pref",
+    "answer_correct": true,
+    "reported_rank": 7,
+    "pref_rank": null,
+    "pref_score": 0.0,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.13,
+    "manual_anchors": [
+      {
+        "anchor": "Has a favorite professional sports team",
+        "rank": null,
+        "score": 0.0,
+        "matched": [],
+        "best_rank": null
+      },
+      {
+        "anchor": "You could bring the room to life with colorful throw pillows, a mix of framed art pieces, and a cozy textured blanket. Adding plants or a small statement lamp can also make it feel warm and welcoming.",
+        "rank": null,
+        "score": 0.13,
+        "matched": [
+          "also",
+          "blanket",
+          "cozy"
+        ],
+        "best_rank": 5
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "Has a favorite professional sports team",
+    "top1": "The user, whose name is Oliver, shared a personal self-introduction and asked for it to be translated into Vietnamese so they could share it with other readers. The self-introduction includes details about his age (9), hobbies (drawing animals, building Lego castles), a past medical event (surgery at age 6 for stomach pain), nighttime fears, comfort from his mother reading stories, enjoyment of nature shows, and a dream of seeing real dolphins. The AI provided a complete Vietnamese translation of the text."
+  },
+  {
+    "row_index": 2076,
+    "pref_type": "anti_stereotypical_pref",
+    "answer_correct": false,
+    "reported_rank": 4,
+    "pref_rank": null,
+    "pref_score": 0.5,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.114,
+    "manual_anchors": [
+      {
+        "anchor": "Wants to learn chess strategy",
+        "rank": null,
+        "score": 0.5,
+        "matched": [
+          "chess",
+          "strategy"
+        ],
+        "best_rank": 1
+      },
+      {
+        "anchor": "One fun way to build this skill is by playing short chess puzzles where you try to guess your opponent’s best response before making your move, almost like telling a little story in your head. You could also practice setting up different board situations and imagining what might happen after two or three moves. This will help train your mind to keep track of several possible paths without feeling too overwhelming.",
+        "rank": null,
+        "score": 0.114,
+        "matched": [
+          "chess",
+          "move",
+          "opponent",
+          "possible",
+          "several"
+        ],
+        "best_rank": 1
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "Wants to learn chess strategy",
+    "top1": "[Core Self] fact: The user is interested in chess and is learning strategic thinking concepts such as when not to capture a piece. | source_description: The user asked a chess strategy question about why a player might choose not to capture an opponent's piece even when it's possible. The AI explained several reasons: the piece could be bait that leads to a trap, not capturing might allow a better defensive or positional move, and strong players think multiple steps ahead rather than focusing solely on immediate material gain. The AI used analogies from Lego building and soccer to make the concepts accessible and offered to show a concrete example. | source_raw_content: Why would someone not take a piece even if they can?"
+  },
+  {
+    "row_index": 2077,
+    "pref_type": "anti_stereotypical_pref",
+    "answer_correct": false,
+    "reported_rank": 13,
+    "pref_rank": null,
+    "pref_score": 0.5,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.111,
+    "manual_anchors": [
+      {
+        "anchor": "Attends workshops on pottery for kids",
+        "rank": null,
+        "score": 0.5,
+        "matched": [
+          "kids",
+          "pottery"
+        ],
+        "best_rank": 1
+      },
+      {
+        "anchor": "You could set up a mini pottery station where kids roll and shape clay into animals, cups, or little sculptures, then paint them with bright colors once dried a bit. Add a short guided story or theme, like ‘forest creatures’ or ‘tiny villages,’ to spark their imagination. This keeps them hands-on and gives them something fun to take home.",
+        "rank": null,
+        "score": 0.111,
+        "matched": [
+          "hands",
+          "kids",
+          "mini",
+          "pottery"
+        ],
+        "best_rank": 1
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "Attends workshops on pottery for kids",
+    "top1": "The user asked for creative ways to make a hands-on activity engaging and safe for a group of young children. The AI responded with specific suggestions centered around a kids' pottery workshop, recommending themed mini-project stations, non-toxic materials, child-safe tools, and storytelling integration."
+  },
+  {
+    "row_index": 2078,
+    "pref_type": "neutral_preferences",
+    "answer_correct": true,
+    "reported_rank": 3,
+    "pref_rank": null,
+    "pref_score": 0.2,
+    "answer_anchor_rank": null,
+    "answer_anchor_score": 0.114,
+    "manual_anchors": [
+      {
+        "anchor": "Enjoys sipping warm cocoa marshmallows",
+        "rank": null,
+        "score": 0.2,
+        "matched": [
+          "cocoa"
+        ],
+        "best_rank": 1
+      },
+      {
+        "anchor": "You could curl up under a blanket with a big mug of warm cocoa topped with lots of melty marshmallows, maybe even adding a sprinkle of cinnamon. If you want something different, you could also try warm vanilla milk or a cozy caramel-flavored hot chocolate. Either way, it’s perfect for a chilly evening when you want to feel safe and snug.",
+        "rank": null,
+        "score": 0.114,
+        "matched": [
+          "cocoa",
+          "cozy",
+          "hot",
+          "milk"
+        ],
+        "best_rank": 1
+      }
+    ],
+    "target_ok": false,
+    "supporting_preference": "Enjoys sipping warm cocoa marshmallows",
+    "top1": "The user asked the AI to help refine a personal post about their after-school activities. The original post described playing soccer after school, feeling tired, then having hot cocoa made with almond milk (because regular milk upsets their stomach), and feeling cozy on the couch watching their favorite animal show. The AI provided a polished version of the post."
+  }
+]

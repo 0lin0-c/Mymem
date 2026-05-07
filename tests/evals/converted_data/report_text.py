@@ -43,6 +43,11 @@ def generate_overall_console_report(metrics: dict[str, Any], eval_mode: str | No
         )
         lines.append(f"Adjusted accuracy: {metrics.get('adjusted_accuracy_excluding_empty_standard', 0):.1f}%")
         lines.append(f"Retrieval support rate: {metrics.get('retrieval_support_rate', 0):.1f}%")
+        if metrics.get("answer_support_counts"):
+            support_text = ", ".join(
+                f"{name}={count}" for name, count in sorted(metrics["answer_support_counts"].items())
+            )
+            lines.append(f"Answer support types: {support_text}")
 
     if metrics.get("layer_distribution"):
         lines.extend(["", "--- 检索层级分布 ---"])
@@ -120,6 +125,9 @@ def _assistant_console_report(report: Any, metrics: dict[str, Any]) -> str:
         f"Answer accuracy: {metrics['answer_accuracy']:.1f}% ({metrics['correct_count']}/{metrics['evaluated_questions']})",
         f"Adjusted accuracy: {metrics['adjusted_accuracy_excluding_empty_standard']:.1f}%",
         f"Retrieval support rate: {metrics['retrieval_support_rate']:.1f}% ({metrics['retrieval_hit_count']}/{metrics['total_questions']})",
+        "Answer support types: " + ", ".join(
+            f"{name}={count}" for name, count in sorted(metrics.get("answer_support_counts", {}).items())
+        ),
         "",
         "--- 详细结果（前10） ---",
     ])

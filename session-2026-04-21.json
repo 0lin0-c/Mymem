@@ -153,8 +153,8 @@
       "command_type": "assistant_eval",
       "scope": "sample 0 / Caroline / 10 questions / retrieval_only / postprocess_bad_cases",
       "result_files": [
-        "test_results/mymem_test_results_20260421_173554.json",
-        "test_results/mymem_test_results_20260421_173554_analysis.md"
+        "test_results/converted_data/legacy/mymem_test_results_20260421_173554.json",
+        "test_results/converted_data/legacy/mymem_test_results_20260421_173554_analysis.md"
       ],
       "summary": {
         "accuracy": "20.00%",
@@ -185,8 +185,8 @@
     }
   },
   "recent_files_of_interest": [
-    "test_results/mymem_test_results_20260421_173554.json",
-    "test_results/mymem_test_results_20260421_173554_analysis.md",
+    "test_results/converted_data/legacy/mymem_test_results_20260421_173554.json",
+    "test_results/converted_data/legacy/mymem_test_results_20260421_173554_analysis.md",
     "tests/evals/converted_data/report_analysis.py",
     "tests/unit/test_converted_data_reporting.py",
     "progress.json"

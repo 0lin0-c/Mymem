@@ -135,6 +135,7 @@ class OpenAIProvider(BaseLLMProvider):
         categories: List[Dict],
         assistant_response: str = "",
         reference_time: str | None = None,
+        target_category_name: str | None = None,
     ) -> Dict:
         """提取记忆意图
 
@@ -146,9 +147,18 @@ class OpenAIProvider(BaseLLMProvider):
             assistant_response: AI 回复内容
             reference_time: 参考时间戳（可选，用于历史数据导入）
         """
-        logger.debug(f"调用记忆提取: text_length={len(text)}, categories_count={len(categories)}")
+        logger.debug(
+            "调用记忆提取: text_length=%s, categories_count=%s, target_category=%s",
+            len(text),
+            len(categories),
+            target_category_name,
+        )
         tools = [EXTRACT_MEMORY_TOOL_OPENAI]
-        system_prompt = build_memory_extraction_prompt(categories, reference_time=reference_time)
+        system_prompt = build_memory_extraction_prompt(
+            categories,
+            reference_time=reference_time,
+            target_category_name=target_category_name,
+        )
 
         # 构建用户消息
         user_content = f"[User Input]\n{text}"

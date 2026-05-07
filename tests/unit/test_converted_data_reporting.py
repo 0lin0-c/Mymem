@@ -113,6 +113,8 @@ def test_assistant_report_keeps_adjusted_accuracy_and_chain_attribution():
     assert metrics["adjusted_accuracy_excluding_empty_standard"] == 100
     assert metrics["non_empty_answer_questions"] == 1
     assert metrics["retrieval_support_rate"] == 100
+    assert metrics["answer_support_counts"]["direct_fact"] == 1
+    assert metrics["answer_support_counts"]["empty_gold"] == 1
 
     markdown = build_fallback_analysis_markdown(
         _results_data("assistant_eval", qa),
@@ -124,6 +126,51 @@ def test_assistant_report_keeps_adjusted_accuracy_and_chain_attribution():
     assert "adjusted accuracy" in markdown
     assert "失败原因" in markdown
     assert "成功模式" in markdown
+    assert "Answer support types" in markdown or "回答支持类型分布" in markdown
+
+
+def test_assistant_answer_support_type_distinguishes_profile_and_unsupported():
+    qa = [
+        {
+            "eval_mode": "assistant_eval",
+            "question": "What would Caroline's political leaning likely be?",
+            "standard_answer": "Liberal",
+            "generated_answer": "Likely liberal.",
+            "is_correct": True,
+            "storage_hit": True,
+            "retrieval_hit": False,
+            "category": 3,
+            "retrieval_layer": {"resolved_layer": "category_only"},
+        },
+        {
+            "eval_mode": "assistant_eval",
+            "question": "What did Caroline research?",
+            "standard_answer": "Adoption agencies",
+            "generated_answer": "Adoption agencies.",
+            "is_correct": True,
+            "storage_hit": True,
+            "retrieval_hit": False,
+            "category": 1,
+            "retrieval_layer": {"resolved_layer": "none"},
+        },
+        {
+            "eval_mode": "assistant_eval",
+            "question": "What was grandpa's gift to Caroline?",
+            "standard_answer": "",
+            "generated_answer": "I don't have a record of that.",
+            "is_correct": True,
+            "storage_hit": True,
+            "retrieval_hit": False,
+            "category": 5,
+            "retrieval_layer": {"resolved_layer": "category+resource"},
+        },
+    ]
+
+    metrics = calculate_metrics_from_qa_dicts(qa, eval_mode="assistant_eval")
+
+    assert metrics["answer_support_counts"]["profile_inference"] == 1
+    assert metrics["answer_support_counts"]["unsupported"] == 1
+    assert metrics["answer_support_counts"]["empty_gold"] == 1
 
 
 def test_analysis_prompt_is_mode_aware_and_data_driven():
@@ -287,6 +334,7 @@ def test_save_results_json_compacts_top_level_and_keeps_trace_detail(tmp_path: P
 
     qa = sample["qa_results"][0]
     assert qa["failure_type"] == "none"
+    assert qa["answer_support_type"] == "direct_fact"
     assert "trace_summary" in qa
     assert "trace_detail" in qa
     assert qa["trace_summary"]["top_contexts"] == ["The user is considering counseling as a career.", "Second context"]

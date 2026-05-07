@@ -1,0 +1,218 @@
+{
+  "sample_index": 0,
+  "characters": [
+    "Caroline",
+    "Melanie"
+  ],
+  "total_questions": 23,
+  "questions": [
+    {
+      "question": "What fields would Caroline be likely to pursue in her educaton?",
+      "answer": "Psychology, counseling certification",
+      "category": 3,
+      "evidence": [
+        "D1:9",
+        "D1:11"
+      ],
+      "target_character": "Caroline"
+    },
+    {
+      "question": "When did Caroline join a new activist group?",
+      "answer": "The Tuesday before 8 February 2026",
+      "category": 2,
+      "evidence": [
+        "D10:3"
+      ],
+      "target_character": "Caroline"
+    },
+    {
+      "question": "What is Caroline's identity?",
+      "answer": "Transgender woman",
+      "category": 1,
+      "evidence": [
+        "D1:5"
+      ],
+      "target_character": "Caroline"
+    },
+    {
+      "question": "What would Caroline's political leaning likely be?",
+      "answer": "Liberal",
+      "category": 3,
+      "evidence": [
+        "D12:1"
+      ],
+      "target_character": "Caroline"
+    },
+    {
+      "question": "What did Caroline realize after her charity race?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D2:3"
+      ],
+      "target_character": "Caroline"
+    },
+    {
+      "question": "What are the new shoes that Caroline got used for?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D7:19"
+      ],
+      "target_character": "Caroline"
+    },
+    {
+      "question": "What is Caroline's reason for getting into running?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D7:21"
+      ],
+      "target_character": "Caroline"
+    },
+    {
+      "question": "Which classical musicians does Caroline enjoy listening to?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D15:28"
+      ],
+      "target_character": "Caroline"
+    },
+    {
+      "question": "What setback did Caroline face recently?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D17:8"
+      ],
+      "target_character": "Caroline"
+    },
+    {
+      "question": "What was grandpa's gift to Caroline?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D4:3"
+      ],
+      "target_character": "Caroline"
+    },
+    {
+      "question": "What did Caroline and her family see during their camping trip last year?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D10:14"
+      ],
+      "target_character": "Caroline"
+    },
+    {
+      "question": "What precautionary sign did Caroline see at the café?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D16:16"
+      ],
+      "target_character": "Caroline"
+    },
+    {
+      "question": "What did Caroline research?",
+      "answer": "Adoption agencies",
+      "category": 1,
+      "evidence": [
+        "D2:8"
+      ],
+      "target_character": "Caroline"
+    },
+    {
+      "question": "What advice does Caroline give for getting started with adoption?",
+      "answer": "Do research, find an adoption agency or lawyer, gather necessary documents, and prepare emotionally.",
+      "category": 4,
+      "evidence": [
+        "D17:7"
+      ],
+      "target_character": "Caroline"
+    },
+    {
+      "question": "What was the poetry reading that Caroline attended about?",
+      "answer": "It was a transgender poetry reading where transgender people shared their stories.",
+      "category": 4,
+      "evidence": [
+        "D17:18"
+      ],
+      "target_character": "Caroline"
+    },
+    {
+      "question": "Did Caroline make the black and white bowl in the photo?",
+      "answer": "No",
+      "category": 5,
+      "evidence": [
+        "D5:8"
+      ],
+      "target_character": "Caroline"
+    },
+    {
+      "question": "When is Caroline going to the transgender conference?",
+      "answer": "February 2026",
+      "category": 2,
+      "evidence": [
+        "D5:13"
+      ],
+      "target_character": "Caroline"
+    },
+    {
+      "question": "When did Caroline attend a pride parade in August?",
+      "answer": "The Friday before 20 February 2026",
+      "category": 2,
+      "evidence": [
+        "D11:4"
+      ],
+      "target_character": "Caroline"
+    },
+    {
+      "question": "What does Caroline's drawing symbolize for her?",
+      "answer": "Freedom and being true to herself.",
+      "category": 4,
+      "evidence": [
+        "D17:23"
+      ],
+      "target_character": "Caroline"
+    },
+    {
+      "question": "What did Caroline and her family do while camping?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D4:8"
+      ],
+      "target_character": "Caroline"
+    },
+    {
+      "question": "What does Caroline say running has been great for?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D7:24"
+      ],
+      "target_character": "Caroline"
+    },
+    {
+      "question": "How did Caroline feel about her family after the accident?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D18:5"
+      ],
+      "target_character": "Caroline"
+    },
+    {
+      "question": "What does Caroline love most about camping with her family?",
+      "answer": "",
+      "category": 5,
+      "evidence": [
+        "D18:21"
+      ],
+      "target_character": "Caroline"
+    }
+  ]
+}

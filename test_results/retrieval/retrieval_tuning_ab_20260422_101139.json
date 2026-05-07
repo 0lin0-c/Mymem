@@ -1,0 +1,1241 @@
+{
+  "generated_at_utc": "2026-04-22T10:11:39.648884+00:00",
+  "sample_index": 0,
+  "character": "caroline",
+  "data_dir": "data\\converted_data_recent_2026q1_name_trimmed",
+  "user_id": "dbafc7e4-5d73-4acd-b3aa-7d7fd7d79c92",
+  "summary": {
+    "scoring_help_count": 1,
+    "top_k_help_count": 1,
+    "both_help_count": 2,
+    "route_blocked_count": 0,
+    "unresolved_count": 1,
+    "overall_judgement": "partial benefit"
+  },
+  "questions": [
+    {
+      "question": "When did Caroline go to the LGBTQ support group?",
+      "expected_answer": "4 January 2026",
+      "conclusion": "scoring helps",
+      "evidence": [
+        "D1:3"
+      ],
+      "evidence_candidates": [
+        {
+          "id": "0731f49d-84f7-4cd3-b740-363d6fe88aae",
+          "source": "resource",
+          "category_name": null,
+          "text": "The user shared that they attended an LGBTQ support group yesterday (2026-01-04) and described the experience as powerful and impactful. The AI responded with enthusiasm and asked for more details about what made the experience so meaningful.",
+          "matched_anchors": [
+            "attended an LGBTQ support group yesterday (2026-01-04)"
+          ],
+          "match_score": 1,
+          "importance_score": 2,
+          "updated_at": "2026-01-05T13:56:00+00:00",
+          "text_preview": "The user shared that they attended an LGBTQ support group yesterday (2026-01-04) and described the experience as powerful and impactful. The AI responded with enthusiasm and asked for more details about what made the exp"
+        },
+        {
+          "id": "d0da4cdf-9ae1-435c-ae9b-5db09e43bfc9",
+          "source": "category",
+          "category_name": "Timeline",
+          "text": "The user attended an LGBTQ support group on 2026-01-04 (yesterday) and found the experience powerful.",
+          "matched_anchors": [
+            "attended an LGBTQ support group on 2026-01-04"
+          ],
+          "match_score": 1,
+          "importance_score": 1,
+          "updated_at": "2026-01-05T13:56:00+00:00",
+          "text_preview": "The user attended an LGBTQ support group on 2026-01-04 (yesterday) and found the experience powerful."
+        }
+      ],
+      "variants": {
+        "A": {
+          "resolved_layer": "category+resource",
+          "category_only": false,
+          "is_sufficient_at_category": false,
+          "llm_classified_categories": [
+            "Timeline"
+          ],
+          "retrieval_hit": false,
+          "rank_position": null,
+          "top_contexts": [
+            "The user joined a new LGBTQ activist group on Tuesday, February 3, 2026.",
+            "User has an LGBTQ art show planned for next month (March 2026) featuring their own paintings.",
+            "The user and the transgender teen they mentor attended an LGBTQ+ pride parade/event together in January 2026 (approximately January 19-25, 2026).",
+            "The user attended an LGBTQ conference on February 2, 2026 (two days ago from the conversation date), and found it a special and welcoming experience.",
+            "The user has a strong connection to pride events and is a passionate supporter of equality, inclusivity, and the LGBTQ+ community. They attended an LGBTQ+ pride parade around January 19-25, 2026, describing it as an amazing experience where they felt a strong sense of belonging and were moved by the community's growth. Later, around January 31 - February 1, 2026, their city held another pride parade which they missed, but they were deeply inspired by seeing people marching through the streets with flags and signs celebrating love and diversity."
+          ],
+          "top_scores": [
+            0.0863,
+            0.0756,
+            0.0657,
+            0.0641,
+            0.0609
+          ],
+          "shadow_resource_hit": false,
+          "shadow_resource_rank": null,
+          "shadow_top_contexts": [
+            "The user has a strong connection to pride events and is a passionate supporter of equality, inclusivity, and the LGBTQ+ community. They attended an LGBTQ+ pride parade around January 19-25, 2026, describing it as an amazing experience where they felt a strong sense of belonging and were moved by the community's growth. Later, around January 31 - February 1, 2026, their city held another pride parade which they missed, but they were deeply inspired by seeing people marching through the streets with flags and signs celebrating love and diversity.",
+            "The user greeted Mel and shared that they attended an LGBTQ conference two days ago (around February 2, 2026). They described it as a deeply meaningful experience where they connected with people who have gone through similar journeys. They expressed feeling totally accepted in the welcoming environment and emphasized the importance of fighting for trans rights and spreading awareness, showing strong appreciation for the LGBTQ community.",
+            "The user shared an exciting life update with the AI, mentioning they joined a new LGBTQ activist group last Tuesday (February 3, 2026). They expressed enthusiasm about meeting passionate people who share their commitment to rights and community support. They described the experience as fulfilling and impactful, feeling they are making a real difference through their activism.",
+            "The user expressed appreciation to Melanie about having their own platform and shared details about their LGBTQ activist group called \"Connected LGBTQ Activists\". The group consists of diverse members who invest in positive changes, hold regular meetings, and plan events and campaigns to support each other. The AI responded with encouragement and asked about recent events or campaigns.",
+            "The user expressed appreciation for their support system of friends and family who are supporting them through a transition, highlighting how much friendship and compassion matter. They noted that their loved ones' encouragement has been instrumental in helping them accept and grow into their true self during this time. They mentioned having a picnic with loved ones last week."
+          ],
+          "shadow_top_scores": [
+            0.0609,
+            0.0606,
+            0.0584,
+            0.0552,
+            0.0541
+          ]
+        },
+        "B": {
+          "resolved_layer": "category_only",
+          "category_only": true,
+          "is_sufficient_at_category": true,
+          "llm_classified_categories": [
+            "Social Graph",
+            "Timeline"
+          ],
+          "retrieval_hit": true,
+          "rank_position": 4,
+          "top_contexts": [
+            "The user joined a new LGBTQ activist group on Tuesday, February 3, 2026.",
+            "User has an LGBTQ art show planned for next month (March 2026) featuring their own paintings.",
+            "Melanie has a spouse (got married recently)",
+            "The user attended an LGBTQ support group on 2026-01-04 (yesterday) and found the experience powerful.",
+            "The user and the transgender teen they mentor attended an LGBTQ+ pride parade/event together in January 2026 (approximately January 19-25, 2026)."
+          ],
+          "top_scores": [
+            0.0897,
+            0.0761,
+            0.0742,
+            0.0713,
+            0.0657
+          ],
+          "shadow_resource_hit": true,
+          "shadow_resource_rank": 3,
+          "shadow_top_contexts": [
+            "The user greeted Mel and shared that they attended an LGBTQ conference two days ago (around February 2, 2026). They described it as a deeply meaningful experience where they connected with people who have gone through similar journeys. They expressed feeling totally accepted in the welcoming environment and emphasized the importance of fighting for trans rights and spreading awareness, showing strong appreciation for the LGBTQ community.",
+            "The user has a strong connection to pride events and is a passionate supporter of equality, inclusivity, and the LGBTQ+ community. They attended an LGBTQ+ pride parade around January 19-25, 2026, describing it as an amazing experience where they felt a strong sense of belonging and were moved by the community's growth. Later, around January 31 - February 1, 2026, their city held another pride parade which they missed, but they were deeply inspired by seeing people marching through the streets with flags and signs celebrating love and diversity.",
+            "The user shared that they attended an LGBTQ support group yesterday (2026-01-04) and described the experience as powerful and impactful. The AI responded with enthusiasm and asked for more details about what made the experience so meaningful.",
+            "The user shared an exciting life update with the AI, mentioning they joined a new LGBTQ activist group last Tuesday (February 3, 2026). They expressed enthusiasm about meeting passionate people who share their commitment to rights and community support. They described the experience as fulfilling and impactful, feeling they are making a real difference through their activism.",
+            "The user expressed appreciation for their support system of friends and family who are supporting them through a transition, highlighting how much friendship and compassion matter. They noted that their loved ones' encouragement has been instrumental in helping them accept and grow into their true self during this time. They mentioned having a picnic with loved ones last week."
+          ],
+          "shadow_top_scores": [
+            0.0583,
+            0.0564,
+            0.0556,
+            0.0533,
+            0.051
+          ]
+        },
+        "C": {
+          "resolved_layer": "category+resource",
+          "category_only": false,
+          "is_sufficient_at_category": false,
+          "llm_classified_categories": [
+            "Timeline"
+          ],
+          "retrieval_hit": false,
+          "rank_position": null,
+          "top_contexts": [
+            "The user joined a new LGBTQ activist group on Tuesday, February 3, 2026.",
+            "User has an LGBTQ art show planned for next month (March 2026) featuring their own paintings.",
+            "The user and the transgender teen they mentor attended an LGBTQ+ pride parade/event together in January 2026 (approximately January 19-25, 2026).",
+            "The user attended an LGBTQ conference on February 2, 2026 (two days ago from the conversation date), and found it a special and welcoming experience.",
+            "The user has a strong connection to pride events and is a passionate supporter of equality, inclusivity, and the LGBTQ+ community. They attended an LGBTQ+ pride parade around January 19-25, 2026, describing it as an amazing experience where they felt a strong sense of belonging and were moved by the community's growth. Later, around January 31 - February 1, 2026, their city held another pride parade which they missed, but they were deeply inspired by seeing people marching through the streets with flags and signs celebrating love and diversity.",
+            "The user greeted Mel and shared that they attended an LGBTQ conference two days ago (around February 2, 2026). They described it as a deeply meaningful experience where they connected with people who have gone through similar journeys. They expressed feeling totally accepted in the welcoming environment and emphasized the importance of fighting for trans rights and spreading awareness, showing strong appreciation for the LGBTQ community.",
+            "The user shared an exciting life update with the AI, mentioning they joined a new LGBTQ activist group last Tuesday (February 3, 2026). They expressed enthusiasm about meeting passionate people who share their commitment to rights and community support. They described the experience as fulfilling and impactful, feeling they are making a real difference through their activism.",
+            "The group 'Connected LGBTQ Activists' holds regular meetings, plans events, and runs campaigns.",
+            "The user participated in a school event around January 13, 2026, where they spoke about their transgender journey and promoted LGBTQ community engagement.",
+            "The user attended an LGBTQ+ counseling workshop on Friday, January 23, 2026, where they learned about different therapeutic methods for working with trans people."
+          ],
+          "top_scores": [
+            0.0863,
+            0.0756,
+            0.0657,
+            0.0641,
+            0.0609,
+            0.0606,
+            0.0584,
+            0.0572,
+            0.0569,
+            0.0565
+          ],
+          "shadow_resource_hit": true,
+          "shadow_resource_rank": 8,
+          "shadow_top_contexts": [
+            "The user has a strong connection to pride events and is a passionate supporter of equality, inclusivity, and the LGBTQ+ community. They attended an LGBTQ+ pride parade around January 19-25, 2026, describing it as an amazing experience where they felt a strong sense of belonging and were moved by the community's growth. Later, around January 31 - February 1, 2026, their city held another pride parade which they missed, but they were deeply inspired by seeing people marching through the streets with flags and signs celebrating love and diversity.",
+            "The user greeted Mel and shared that they attended an LGBTQ conference two days ago (around February 2, 2026). They described it as a deeply meaningful experience where they connected with people who have gone through similar journeys. They expressed feeling totally accepted in the welcoming environment and emphasized the importance of fighting for trans rights and spreading awareness, showing strong appreciation for the LGBTQ community.",
+            "The user shared an exciting life update with the AI, mentioning they joined a new LGBTQ activist group last Tuesday (February 3, 2026). They expressed enthusiasm about meeting passionate people who share their commitment to rights and community support. They described the experience as fulfilling and impactful, feeling they are making a real difference through their activism.",
+            "The user expressed appreciation to Melanie about having their own platform and shared details about their LGBTQ activist group called \"Connected LGBTQ Activists\". The group consists of diverse members who invest in positive changes, hold regular meetings, and plan events and campaigns to support each other. The AI responded with encouragement and asked about recent events or campaigns.",
+            "The user expressed appreciation for their support system of friends and family who are supporting them through a transition, highlighting how much friendship and compassion matter. They noted that their loved ones' encouragement has been instrumental in helping them accept and grow into their true self during this time. They mentioned having a picnic with loved ones last week.",
+            "The user complimented a picture showing two people and shared that attending a pride parade a few weeks ago (around late January 2026) was a special memory for them. The AI responded positively and asked if the user joined in the parade.",
+            "The user is excited about an upcoming LGBTQ art show happening next month (March 2026), which will feature their own paintings. They expressed enthusiasm about the event. The AI responded with encouragement and asked if the user had any previews of the artwork.",
+            "The user shared that they attended an LGBTQ support group yesterday (2026-01-04) and described the experience as powerful and impactful. The AI responded with enthusiasm and asked for more details about what made the experience so meaningful.",
+            "The user greeted someone named Melanie and shared about a school event from the previous week (around January 13, 2026) where they gave a talk about their transgender journey and encouraged students to get involved in the LGBTQ community. They reflected on their personal progress since beginning their transition three years ago, which would be approximately since January 2023. The AI responded with encouragement and support, acknowledging the user's courage in spreading awareness.",
+            "The user, who is transgender, is considering a career path focused on counseling and supporting trans people with self-acceptance and mental health. They attended an LGBTQ+ counseling workshop on Friday, January 23, 2026, where they learned about various therapeutic methods for working with trans individuals and were deeply inspired by the professionals' dedication to creating safe spaces."
+          ],
+          "shadow_top_scores": [
+            0.0609,
+            0.0606,
+            0.0584,
+            0.0552,
+            0.0541,
+            0.0485,
+            0.0475,
+            0.047,
+            0.0469,
+            0.0468
+          ]
+        },
+        "D": {
+          "resolved_layer": "category+resource",
+          "category_only": false,
+          "is_sufficient_at_category": false,
+          "llm_classified_categories": [
+            "Timeline"
+          ],
+          "retrieval_hit": true,
+          "rank_position": 3,
+          "top_contexts": [
+            "The user joined a new LGBTQ activist group on Tuesday, February 3, 2026.",
+            "User has an LGBTQ art show planned for next month (March 2026) featuring their own paintings.",
+            "The user attended an LGBTQ support group on 2026-01-04 (yesterday) and found the experience powerful.",
+            "The user and the transgender teen they mentor attended an LGBTQ+ pride parade/event together in January 2026 (approximately January 19-25, 2026).",
+            "The user attended an LGBTQ conference on February 2, 2026 (two days ago from the conversation date), and found it a special and welcoming experience.",
+            "The user participated in a school event around January 13, 2026, where they spoke about their transgender journey and promoted LGBTQ community engagement.",
+            "The user greeted Mel and shared that they attended an LGBTQ conference two days ago (around February 2, 2026). They described it as a deeply meaningful experience where they connected with people who have gone through similar journeys. They expressed feeling totally accepted in the welcoming environment and emphasized the importance of fighting for trans rights and spreading awareness, showing strong appreciation for the LGBTQ community.",
+            "The user attended an LGBTQ+ counseling workshop on Friday, January 23, 2026, where they learned about different therapeutic methods for working with trans people.",
+            "The user has a strong connection to pride events and is a passionate supporter of equality, inclusivity, and the LGBTQ+ community. They attended an LGBTQ+ pride parade around January 19-25, 2026, describing it as an amazing experience where they felt a strong sense of belonging and were moved by the community's growth. Later, around January 31 - February 1, 2026, their city held another pride parade which they missed, but they were deeply inspired by seeing people marching through the streets with flags and signs celebrating love and diversity.",
+            "The user shared that they attended an LGBTQ support group yesterday (2026-01-04) and described the experience as powerful and impactful. The AI responded with enthusiasm and asked for more details about what made the experience so meaningful."
+          ],
+          "top_scores": [
+            0.0897,
+            0.0761,
+            0.0713,
+            0.0657,
+            0.0654,
+            0.0618,
+            0.0583,
+            0.0569,
+            0.0564,
+            0.0556
+          ],
+          "shadow_resource_hit": true,
+          "shadow_resource_rank": 3,
+          "shadow_top_contexts": [
+            "The user greeted Mel and shared that they attended an LGBTQ conference two days ago (around February 2, 2026). They described it as a deeply meaningful experience where they connected with people who have gone through similar journeys. They expressed feeling totally accepted in the welcoming environment and emphasized the importance of fighting for trans rights and spreading awareness, showing strong appreciation for the LGBTQ community.",
+            "The user has a strong connection to pride events and is a passionate supporter of equality, inclusivity, and the LGBTQ+ community. They attended an LGBTQ+ pride parade around January 19-25, 2026, describing it as an amazing experience where they felt a strong sense of belonging and were moved by the community's growth. Later, around January 31 - February 1, 2026, their city held another pride parade which they missed, but they were deeply inspired by seeing people marching through the streets with flags and signs celebrating love and diversity.",
+            "The user shared that they attended an LGBTQ support group yesterday (2026-01-04) and described the experience as powerful and impactful. The AI responded with enthusiasm and asked for more details about what made the experience so meaningful.",
+            "The user shared an exciting life update with the AI, mentioning they joined a new LGBTQ activist group last Tuesday (February 3, 2026). They expressed enthusiasm about meeting passionate people who share their commitment to rights and community support. They described the experience as fulfilling and impactful, feeling they are making a real difference through their activism.",
+            "The user expressed appreciation for their support system of friends and family who are supporting them through a transition, highlighting how much friendship and compassion matter. They noted that their loved ones' encouragement has been instrumental in helping them accept and grow into their true self during this time. They mentioned having a picnic with loved ones last week.",
+            "The user expressed appreciation to Melanie about having their own platform and shared details about their LGBTQ activist group called \"Connected LGBTQ Activists\". The group consists of diverse members who invest in positive changes, hold regular meetings, and plan events and campaigns to support each other. The AI responded with encouragement and asked about recent events or campaigns.",
+            "The user greeted someone named Melanie and shared about a school event from the previous week (around January 13, 2026) where they gave a talk about their transgender journey and encouraged students to get involved in the LGBTQ community. They reflected on their personal progress since beginning their transition three years ago, which would be approximately since January 2023. The AI responded with encouragement and support, acknowledging the user's courage in spreading awareness.",
+            "The user complimented a picture showing two people and shared that attending a pride parade a few weeks ago (around late January 2026) was a special memory for them. The AI responded positively and asked if the user joined in the parade.",
+            "The user, who is transgender, is considering a career path focused on counseling and supporting trans people with self-acceptance and mental health. They attended an LGBTQ+ counseling workshop on Friday, January 23, 2026, where they learned about various therapeutic methods for working with trans individuals and were deeply inspired by the professionals' dedication to creating safe spaces.",
+            "The user expressed excitement about attending a transgender conference in January 2026. They mentioned looking forward to meeting others in the community and learning more about advocacy. The AI responded with encouragement and well wishes."
+          ],
+          "shadow_top_scores": [
+            0.0583,
+            0.0564,
+            0.0556,
+            0.0533,
+            0.051,
+            0.0495,
+            0.0477,
+            0.0443,
+            0.0427,
+            0.0411
+          ]
+        }
+      },
+      "factor_breakdown": {
+        "target": {
+          "similarity": 0.16504343537528285,
+          "access": 0.6931471805599453,
+          "recency": 0.539564846430839,
+          "importance": 0.8999999999999999,
+          "total": 0.055553301290222415
+        },
+        "shadow_top": {
+          "similarity": 0.14565996007673193,
+          "access": 0.6931471805599453,
+          "recency": 0.6420348657059636,
+          "importance": 0.8999999999999999,
+          "total": 0.0583400463926724
+        }
+      }
+    },
+    {
+      "question": "When did Caroline meet up with her friends, family, and mentors?",
+      "expected_answer": "The week before 20 January 2026",
+      "conclusion": "neither helps",
+      "evidence": [
+        "D3:11"
+      ],
+      "evidence_candidates": [
+        {
+          "id": "84b3b5fb-bb7e-4992-afb3-5ff3bb44622e",
+          "source": "resource",
+          "category_name": null,
+          "text": "The user expressed deep appreciation for their friends, family, and mentors, describing them as their \"rocks\" who motivate them and give them strength. They shared a photo from a meetup with their support circle that took place around January 13, 2026. Their close friends, whom they've known for 4 years since moving from their home country, have been a crucial support system, especially after a tough breakup.",
+          "matched_anchors": [
+            "shared a photo from a meetup with their support circle that took place around January 13, 2026",
+            "meetup with their support circle that took place around January 13, 2026"
+          ],
+          "match_score": 2,
+          "importance_score": 1,
+          "updated_at": "2026-01-20T19:55:00+00:00",
+          "text_preview": "The user expressed deep appreciation for their friends, family, and mentors, describing them as their \"rocks\" who motivate them and give them strength. They shared a photo from a meetup with their support circle that too"
+        }
+      ],
+      "variants": {
+        "A": {
+          "resolved_layer": "category_only",
+          "category_only": true,
+          "is_sufficient_at_category": true,
+          "llm_classified_categories": [
+            "Social Graph",
+            "Timeline"
+          ],
+          "retrieval_hit": false,
+          "rank_position": null,
+          "top_contexts": [
+            "The user met up with their friends, family, and/or mentors around January 13, 2026 (last week).",
+            "Melanie has a supportive family who helped her during her move.",
+            "Melanie has a spouse (got married recently)",
+            "The user has a close group of friends they've known for 4 years, who have been a crucial support system through difficult times.",
+            "The user mentors a transgender teen, working together on building confidence and positive strategies."
+          ],
+          "top_scores": [
+            0.0825,
+            0.0751,
+            0.0714,
+            0.0655,
+            0.0629
+          ],
+          "shadow_resource_hit": true,
+          "shadow_resource_rank": 5,
+          "shadow_top_contexts": [
+            "The user expressed appreciation for their support system of friends and family who are supporting them through a transition, highlighting how much friendship and compassion matter. They noted that their loved ones' encouragement has been instrumental in helping them accept and grow into their true self during this time. They mentioned having a picnic with loved ones last week.",
+            "The user, who is transgender, shared that they mentor a transgender teen. Their mentoring focuses on building confidence and finding positive strategies, and the user feels it has been going well. They also attended an LGBT pride event together last month (January 2026) and had a great time. The AI responded enthusiastically and asked for more details about their experience.",
+            "The user asked Melanie about her family's support during her move. Melanie responded positively, saying her family has been awesome, helpful, and very loving and supportive throughout the process.",
+            "The user has a strong connection to pride events and is a passionate supporter of equality, inclusivity, and the LGBTQ+ community. They attended an LGBTQ+ pride parade around January 19-25, 2026, describing it as an amazing experience where they felt a strong sense of belonging and were moved by the community's growth. Later, around January 31 - February 1, 2026, their city held another pride parade which they missed, but they were deeply inspired by seeing people marching through the streets with flags and signs celebrating love and diversity.",
+            "The user expressed deep appreciation for their friends, family, and mentors, describing them as their \"rocks\" who motivate them and give them strength. They shared a photo from a meetup with their support circle that took place around January 13, 2026. Their close friends, whom they've known for 4 years since moving from their home country, have been a crucial support system, especially after a tough breakup."
+          ],
+          "shadow_top_scores": [
+            0.0615,
+            0.0507,
+            0.0495,
+            0.0482,
+            0.0465
+          ]
+        },
+        "B": {
+          "resolved_layer": "category_only",
+          "category_only": true,
+          "is_sufficient_at_category": true,
+          "llm_classified_categories": [
+            "Social Graph",
+            "Timeline"
+          ],
+          "retrieval_hit": false,
+          "rank_position": null,
+          "top_contexts": [
+            "The user met up with their friends, family, and/or mentors around January 13, 2026 (last week).",
+            "Melanie has a spouse (got married recently)",
+            "Melanie has a supportive family who helped her during her move.",
+            "Caroline and Mel have a friendly, casual relationship where they greet each other warmly.",
+            "The user has a close group of friends they've known for 4 years, who have been a crucial support system through difficult times."
+          ],
+          "top_scores": [
+            0.1055,
+            0.0808,
+            0.0793,
+            0.0786,
+            0.0747
+          ],
+          "shadow_resource_hit": true,
+          "shadow_resource_rank": 3,
+          "shadow_top_contexts": [
+            "The user expressed appreciation for their support system of friends and family who are supporting them through a transition, highlighting how much friendship and compassion matter. They noted that their loved ones' encouragement has been instrumental in helping them accept and grow into their true self during this time. They mentioned having a picnic with loved ones last week.",
+            "Caroline greeted Mel (the AI) in a friendly manner. Mel responded warmly, mentioning being busy with kids and work, and asked Caroline what's new.",
+            "The user expressed deep appreciation for their friends, family, and mentors, describing them as their \"rocks\" who motivate them and give them strength. They shared a photo from a meetup with their support circle that took place around January 13, 2026. Their close friends, whom they've known for 4 years since moving from their home country, have been a crucial support system, especially after a tough breakup.",
+            "The user asked Melanie about her family's support during her move. Melanie responded positively, saying her family has been awesome, helpful, and very loving and supportive throughout the process.",
+            "The user, who is transgender, shared that they mentor a transgender teen. Their mentoring focuses on building confidence and finding positive strategies, and the user feels it has been going well. They also attended an LGBT pride event together last month (January 2026) and had a great time. The AI responded enthusiastically and asked for more details about their experience."
+          ],
+          "shadow_top_scores": [
+            0.0606,
+            0.0586,
+            0.0492,
+            0.0454,
+            0.0447
+          ]
+        },
+        "C": {
+          "resolved_layer": "category+resource",
+          "category_only": false,
+          "is_sufficient_at_category": false,
+          "llm_classified_categories": [
+            "Social Graph",
+            "Timeline"
+          ],
+          "retrieval_hit": false,
+          "rank_position": null,
+          "top_contexts": [
+            "The user met up with their friends, family, and/or mentors around January 13, 2026 (last week).",
+            "Melanie has a supportive family who helped her during her move.",
+            "Melanie has a spouse (got married recently)",
+            "The user has a close group of friends they've known for 4 years, who have been a crucial support system through difficult times.",
+            "The user mentors a transgender teen, working together on building confidence and positive strategies.",
+            "The user expressed appreciation for their support system of friends and family who are supporting them through a transition, highlighting how much friendship and compassion matter. They noted that their loved ones' encouragement has been instrumental in helping them accept and grow into their true self during this time. They mentioned having a picnic with loved ones last week.",
+            "The user has a supportive figure named Melanie who provided meaningful support during their personal journey.",
+            "The user and the transgender teen they mentor attended an LGBTQ+ pride parade/event together in January 2026 (approximately January 19-25, 2026).",
+            "Mel took its kids to a pottery workshop on 2026-01-30 (last Friday); they all made their own pots and found it fun and therapeutic.",
+            "The user has a strong, loving support system—including friends, family, and mentors—that has been instrumental in their personal growth and transition, including their adoption journey."
+          ],
+          "top_scores": [
+            0.0825,
+            0.0751,
+            0.0714,
+            0.0655,
+            0.0629,
+            0.0616,
+            0.0612,
+            0.0608,
+            0.0599,
+            0.0595
+          ],
+          "shadow_resource_hit": true,
+          "shadow_resource_rank": 5,
+          "shadow_top_contexts": [
+            "The user expressed appreciation for their support system of friends and family who are supporting them through a transition, highlighting how much friendship and compassion matter. They noted that their loved ones' encouragement has been instrumental in helping them accept and grow into their true self during this time. They mentioned having a picnic with loved ones last week.",
+            "The user, who is transgender, shared that they mentor a transgender teen. Their mentoring focuses on building confidence and finding positive strategies, and the user feels it has been going well. They also attended an LGBT pride event together last month (January 2026) and had a great time. The AI responded enthusiastically and asked for more details about their experience.",
+            "The user asked Melanie about her family's support during her move. Melanie responded positively, saying her family has been awesome, helpful, and very loving and supportive throughout the process.",
+            "The user has a strong connection to pride events and is a passionate supporter of equality, inclusivity, and the LGBTQ+ community. They attended an LGBTQ+ pride parade around January 19-25, 2026, describing it as an amazing experience where they felt a strong sense of belonging and were moved by the community's growth. Later, around January 31 - February 1, 2026, their city held another pride parade which they missed, but they were deeply inspired by seeing people marching through the streets with flags and signs celebrating love and diversity.",
+            "The user expressed deep appreciation for their friends, family, and mentors, describing them as their \"rocks\" who motivate them and give them strength. They shared a photo from a meetup with their support circle that took place around January 13, 2026. Their close friends, whom they've known for 4 years since moving from their home country, have been a crucial support system, especially after a tough breakup.",
+            "The user expressed admiration for a photo and mentioned bonding over a shared love of nature. They shared that they attended a council meeting for adoption last Friday (January 30, 2026), describing it as inspiring and emotional. The experience reinforced their determination to adopt a child.",
+            "Caroline greeted Mel (the AI) in a friendly manner. Mel responded warmly, mentioning being busy with kids and work, and asked Caroline what's new.",
+            "The user is exploring counseling and mental health as a potential career path, motivated by a desire to help people who have experienced similar life situations as themselves. Talking to a community reinforced this interest, and they are excited about giving back and using their personal story to help others. They express passion for helping people and making a positive impact, acknowledging the field is challenging but rewarding. Currently, they are actively exploring counseling and mental health jobs, emphasizing that it's important to them that people have someone to talk to and can access mental health support. The AI (referred to as Mell) has encouraged the user, affirming that their empathy and understanding make them well-suited for the role, shared a resource, and asked about specific areas of interest and their underlying motivations.",
+            "The user greeted Mel and shared that they attended an LGBTQ conference two days ago (around February 2, 2026). They described it as a deeply meaningful experience where they connected with people who have gone through similar journeys. They expressed feeling totally accepted in the welcoming environment and emphasized the importance of fighting for trans rights and spreading awareness, showing strong appreciation for the LGBTQ community.",
+            "The user expressed great enthusiasm and gratitude about being around supportive people, addressing someone named Melanie. They mentioned that being surrounded by people who embrace and back them up was inspiring and meant a lot to them. The AI responded enthusiastically and asked what the best part of the experience was."
+          ],
+          "shadow_top_scores": [
+            0.0615,
+            0.0507,
+            0.0495,
+            0.0482,
+            0.0465,
+            0.0463,
+            0.046,
+            0.0459,
+            0.0456,
+            0.0448
+          ]
+        },
+        "D": {
+          "resolved_layer": "category+resource",
+          "category_only": false,
+          "is_sufficient_at_category": false,
+          "llm_classified_categories": [
+            "Social Graph",
+            "Timeline"
+          ],
+          "retrieval_hit": false,
+          "rank_position": null,
+          "top_contexts": [
+            "The user met up with their friends, family, and/or mentors around January 13, 2026 (last week).",
+            "Melanie has a spouse (got married recently)",
+            "Melanie has a supportive family who helped her during her move.",
+            "Caroline and Mel have a friendly, casual relationship where they greet each other warmly.",
+            "The user has a close group of friends they've known for 4 years, who have been a crucial support system through difficult times.",
+            "The user has a supportive figure named Melanie who provided meaningful support during their personal journey.",
+            "User has a friend named Mel who went on a family camping trip recently.",
+            "The user expressed appreciation for their support system of friends and family who are supporting them through a transition, highlighting how much friendship and compassion matter. They noted that their loved ones' encouragement has been instrumental in helping them accept and grow into their true self during this time. They mentioned having a picnic with loved ones last week.",
+            "The user mentors a transgender teen, working together on building confidence and positive strategies.",
+            "The user and the transgender teen they mentor attended an LGBTQ+ pride parade/event together in January 2026 (approximately January 19-25, 2026)."
+          ],
+          "top_scores": [
+            0.1055,
+            0.0808,
+            0.0793,
+            0.0786,
+            0.0747,
+            0.0633,
+            0.0616,
+            0.0606,
+            0.0596,
+            0.0593
+          ],
+          "shadow_resource_hit": true,
+          "shadow_resource_rank": 3,
+          "shadow_top_contexts": [
+            "The user expressed appreciation for their support system of friends and family who are supporting them through a transition, highlighting how much friendship and compassion matter. They noted that their loved ones' encouragement has been instrumental in helping them accept and grow into their true self during this time. They mentioned having a picnic with loved ones last week.",
+            "Caroline greeted Mel (the AI) in a friendly manner. Mel responded warmly, mentioning being busy with kids and work, and asked Caroline what's new.",
+            "The user expressed deep appreciation for their friends, family, and mentors, describing them as their \"rocks\" who motivate them and give them strength. They shared a photo from a meetup with their support circle that took place around January 13, 2026. Their close friends, whom they've known for 4 years since moving from their home country, have been a crucial support system, especially after a tough breakup.",
+            "The user asked Melanie about her family's support during her move. Melanie responded positively, saying her family has been awesome, helpful, and very loving and supportive throughout the process.",
+            "The user, who is transgender, shared that they mentor a transgender teen. Their mentoring focuses on building confidence and finding positive strategies, and the user feels it has been going well. They also attended an LGBT pride event together last month (January 2026) and had a great time. The AI responded enthusiastically and asked for more details about their experience.",
+            "The user has a strong connection to pride events and is a passionate supporter of equality, inclusivity, and the LGBTQ+ community. They attended an LGBTQ+ pride parade around January 19-25, 2026, describing it as an amazing experience where they felt a strong sense of belonging and were moved by the community's growth. Later, around January 31 - February 1, 2026, their city held another pride parade which they missed, but they were deeply inspired by seeing people marching through the streets with flags and signs celebrating love and diversity.",
+            "The user is exploring counseling and mental health as a potential career path, motivated by a desire to help people who have experienced similar life situations as themselves. Talking to a community reinforced this interest, and they are excited about giving back and using their personal story to help others. They express passion for helping people and making a positive impact, acknowledging the field is challenging but rewarding. Currently, they are actively exploring counseling and mental health jobs, emphasizing that it's important to them that people have someone to talk to and can access mental health support. The AI (referred to as Mell) has encouraged the user, affirming that their empathy and understanding make them well-suited for the role, shared a resource, and asked about specific areas of interest and their underlying motivations.",
+            "The user greeted someone named Melanie and shared about a school event from the previous week (around January 13, 2026) where they gave a talk about their transgender journey and encouraged students to get involved in the LGBTQ community. They reflected on their personal progress since beginning their transition three years ago, which would be approximately since January 2023. The AI responded with encouragement and support, acknowledging the user's courage in spreading awareness.",
+            "The user expressed admiration for a photo and mentioned bonding over a shared love of nature. They shared that they attended a council meeting for adoption last Friday (January 30, 2026), describing it as inspiring and emotional. The experience reinforced their determination to adopt a child.",
+            "The user greeted Mel and shared that they attended an LGBTQ conference two days ago (around February 2, 2026). They described it as a deeply meaningful experience where they connected with people who have gone through similar journeys. They expressed feeling totally accepted in the welcoming environment and emphasized the importance of fighting for trans rights and spreading awareness, showing strong appreciation for the LGBTQ community."
+          ],
+          "shadow_top_scores": [
+            0.0606,
+            0.0586,
+            0.0492,
+            0.0454,
+            0.0447,
+            0.0412,
+            0.0403,
+            0.04,
+            0.04,
+            0.0399
+          ]
+        }
+      },
+      "factor_breakdown": {
+        "target": {
+          "similarity": 0.15052315435706548,
+          "access": 0.6931471805599453,
+          "recency": 0.5892298302669667,
+          "importance": 0.7999999999999999,
+          "total": 0.04918169408188232
+        },
+        "shadow_top": {
+          "similarity": 0.1527954880485373,
+          "access": 0.6931471805599453,
+          "recency": 0.6352277215672734,
+          "importance": 0.8999999999999999,
+          "total": 0.06054913497943593
+        }
+      }
+    },
+    {
+      "question": "How long has Caroline had her current group of friends for?",
+      "expected_answer": "4 years",
+      "conclusion": "both help",
+      "evidence": [
+        "D3:13"
+      ],
+      "evidence_candidates": [
+        {
+          "id": "da42040c-2aee-4920-b7cb-3e67ebc3d06f",
+          "source": "category",
+          "category_name": "Social Graph",
+          "text": "The user has a close group of friends they've known for 4 years, who have been a crucial support system through difficult times.",
+          "matched_anchors": [
+            "close group of friends they've known for 4 years",
+            "group of friends they've known for 4 years"
+          ],
+          "match_score": 2,
+          "importance_score": 2,
+          "updated_at": "2026-01-20T19:55:00+00:00",
+          "text_preview": "The user has a close group of friends they've known for 4 years, who have been a crucial support system through difficult times."
+        }
+      ],
+      "variants": {
+        "A": {
+          "resolved_layer": "category_only",
+          "category_only": true,
+          "is_sufficient_at_category": true,
+          "llm_classified_categories": [
+            "Social Graph",
+            "Timeline"
+          ],
+          "retrieval_hit": true,
+          "rank_position": 1,
+          "top_contexts": [
+            "The user has a close group of friends they've known for 4 years, who have been a crucial support system through difficult times.",
+            "Melanie has a spouse (got married recently)",
+            "They have children and regularly do art and craft activities together.",
+            "Caroline and Mel have a friendly, casual relationship where they greet each other warmly.",
+            "The user met up with their friends, family, and/or mentors around January 13, 2026 (last week)."
+          ],
+          "top_scores": [
+            0.0803,
+            0.0764,
+            0.0618,
+            0.0581,
+            0.0557
+          ],
+          "shadow_resource_hit": false,
+          "shadow_resource_rank": null,
+          "shadow_top_contexts": [
+            "The user expressed appreciation for their support system of friends and family who are supporting them through a transition, highlighting how much friendship and compassion matter. They noted that their loved ones' encouragement has been instrumental in helping them accept and grow into their true self during this time. They mentioned having a picnic with loved ones last week.",
+            "The user expressed deep appreciation for their friends, family, and mentors, describing them as their \"rocks\" who motivate them and give them strength. They shared a photo from a meetup with their support circle that took place around January 13, 2026. Their close friends, whom they've known for 4 years since moving from their home country, have been a crucial support system, especially after a tough breakup.",
+            "The user shared that they have a hand-painted bowl with sentimental value. A friend made the bowl for their 18th birthday, which was ten years ago, meaning the user is currently around 28 years old. The user appreciates the bowl's pattern and colors and associates it with art and self-expression. The AI responded positively and mentioned taking their family camping in the mountains last week.",
+            "The user complimented a family photo and asked about the duration of marriage. The AI responded that the person has been married for 5 years, expressing that time has flown by.",
+            "Caroline greeted Mel (the AI) in a friendly manner. Mel responded warmly, mentioning being busy with kids and work, and asked Caroline what's new."
+          ],
+          "shadow_top_scores": [
+            0.0433,
+            0.0392,
+            0.0369,
+            0.0365,
+            0.0361
+          ]
+        },
+        "B": {
+          "resolved_layer": "category_only",
+          "category_only": true,
+          "is_sufficient_at_category": true,
+          "llm_classified_categories": [
+            "Social Graph",
+            "Timeline"
+          ],
+          "retrieval_hit": true,
+          "rank_position": 1,
+          "top_contexts": [
+            "The user has a close group of friends they've known for 4 years, who have been a crucial support system through difficult times.",
+            "Melanie has a spouse (got married recently)",
+            "Caroline and Mel have a friendly, casual relationship where they greet each other warmly.",
+            "The user met up with their friends, family, and/or mentors around January 13, 2026 (last week).",
+            "They have children and regularly do art and craft activities together."
+          ],
+          "top_scores": [
+            0.0979,
+            0.0885,
+            0.0766,
+            0.0625,
+            0.0611
+          ],
+          "shadow_resource_hit": false,
+          "shadow_resource_rank": null,
+          "shadow_top_contexts": [
+            "Caroline greeted Mel (the AI) in a friendly manner. Mel responded warmly, mentioning being busy with kids and work, and asked Caroline what's new.",
+            "The user expressed deep appreciation for their friends, family, and mentors, describing them as their \"rocks\" who motivate them and give them strength. They shared a photo from a meetup with their support circle that took place around January 13, 2026. Their close friends, whom they've known for 4 years since moving from their home country, have been a crucial support system, especially after a tough breakup.",
+            "The user expressed appreciation for their support system of friends and family who are supporting them through a transition, highlighting how much friendship and compassion matter. They noted that their loved ones' encouragement has been instrumental in helping them accept and grow into their true self during this time. They mentioned having a picnic with loved ones last week.",
+            "The user complimented a family photo and asked about the duration of marriage. The AI responded that the person has been married for 5 years, expressing that time has flown by.",
+            "The user shared that they have a hand-painted bowl with sentimental value. A friend made the bowl for their 18th birthday, which was ten years ago, meaning the user is currently around 28 years old. The user appreciates the bowl's pattern and colors and associates it with art and self-expression. The AI responded positively and mentioned taking their family camping in the mountains last week."
+          ],
+          "shadow_top_scores": [
+            0.0425,
+            0.0391,
+            0.0379,
+            0.0356,
+            0.0323
+          ]
+        },
+        "C": {
+          "resolved_layer": "category_only",
+          "category_only": true,
+          "is_sufficient_at_category": true,
+          "llm_classified_categories": [
+            "Social Graph",
+            "Timeline"
+          ],
+          "retrieval_hit": true,
+          "rank_position": 1,
+          "top_contexts": [
+            "The user has a close group of friends they've known for 4 years, who have been a crucial support system through difficult times.",
+            "Melanie has a spouse (got married recently)",
+            "They have children and regularly do art and craft activities together.",
+            "Caroline and Mel have a friendly, casual relationship where they greet each other warmly.",
+            "The user met up with their friends, family, and/or mentors around January 13, 2026 (last week).",
+            "User has a friend named Mel who went on a family camping trip recently.",
+            "Melanie has a supportive family who helped her during her move.",
+            "Mel took its kids to a pottery workshop on 2026-01-30 (last Friday); they all made their own pots and found it fun and therapeutic.",
+            "The user had a picnic with friends and family last week (around January 26, 2026).",
+            "The person in the photo has been married for 5 years"
+          ],
+          "top_scores": [
+            0.0803,
+            0.0764,
+            0.0618,
+            0.0581,
+            0.0557,
+            0.0533,
+            0.0522,
+            0.0513,
+            0.0509,
+            0.0505
+          ],
+          "shadow_resource_hit": false,
+          "shadow_resource_rank": null,
+          "shadow_top_contexts": [
+            "The user expressed appreciation for their support system of friends and family who are supporting them through a transition, highlighting how much friendship and compassion matter. They noted that their loved ones' encouragement has been instrumental in helping them accept and grow into their true self during this time. They mentioned having a picnic with loved ones last week.",
+            "The user expressed deep appreciation for their friends, family, and mentors, describing them as their \"rocks\" who motivate them and give them strength. They shared a photo from a meetup with their support circle that took place around January 13, 2026. Their close friends, whom they've known for 4 years since moving from their home country, have been a crucial support system, especially after a tough breakup.",
+            "The user shared that they have a hand-painted bowl with sentimental value. A friend made the bowl for their 18th birthday, which was ten years ago, meaning the user is currently around 28 years old. The user appreciates the bowl's pattern and colors and associates it with art and self-expression. The AI responded positively and mentioned taking their family camping in the mountains last week.",
+            "The user complimented a family photo and asked about the duration of marriage. The AI responded that the person has been married for 5 years, expressing that time has flown by.",
+            "Caroline greeted Mel (the AI) in a friendly manner. Mel responded warmly, mentioning being busy with kids and work, and asked Caroline what's new.",
+            "The user expressed admiration for a photo and mentioned bonding over a shared love of nature. They shared that they attended a council meeting for adoption last Friday (January 30, 2026), describing it as inspiring and emotional. The experience reinforced their determination to adopt a child.",
+            "The user greeted the AI (Mel) casually and mentioned they've had a busy week since their last conversation. Mel responded in kind, sharing that it has also been busy, and mentioned taking its kids to a pottery workshop last Friday where they all made their own pots, which was fun and therapeutic.",
+            "The user greeted someone named Melanie and shared about a school event from the previous week (around January 13, 2026) where they gave a talk about their transgender journey and encouraged students to get involved in the LGBTQ community. They reflected on their personal progress since beginning their transition three years ago, which would be approximately since January 2023. The AI responded with encouragement and support, acknowledging the user's courage in spreading awareness.",
+            "The user expressed appreciation to Melanie about having their own platform and shared details about their LGBTQ activist group called \"Connected LGBTQ Activists\". The group consists of diverse members who invest in positive changes, hold regular meetings, and plan events and campaigns to support each other. The AI responded with encouragement and asked about recent events or campaigns.",
+            "The user asked Melanie about her family's support during her move. Melanie responded positively, saying her family has been awesome, helpful, and very loving and supportive throughout the process."
+          ],
+          "shadow_top_scores": [
+            0.0433,
+            0.0392,
+            0.0369,
+            0.0365,
+            0.0361,
+            0.035,
+            0.0337,
+            0.0329,
+            0.0326,
+            0.032
+          ]
+        },
+        "D": {
+          "resolved_layer": "category_only",
+          "category_only": true,
+          "is_sufficient_at_category": true,
+          "llm_classified_categories": [
+            "Social Graph",
+            "Timeline"
+          ],
+          "retrieval_hit": true,
+          "rank_position": 1,
+          "top_contexts": [
+            "The user has a close group of friends they've known for 4 years, who have been a crucial support system through difficult times.",
+            "Melanie has a spouse (got married recently)",
+            "Caroline and Mel have a friendly, casual relationship where they greet each other warmly.",
+            "The user met up with their friends, family, and/or mentors around January 13, 2026 (last week).",
+            "They have children and regularly do art and craft activities together.",
+            "User has a friend named Mel who went on a family camping trip recently.",
+            "The person in the photo has been married for 5 years",
+            "The user had a picnic with friends and family last week (around January 26, 2026).",
+            "Melanie has a supportive family who helped her during her move.",
+            "Mel took its kids to a pottery workshop on 2026-01-30 (last Friday); they all made their own pots and found it fun and therapeutic."
+          ],
+          "top_scores": [
+            0.0979,
+            0.0885,
+            0.0766,
+            0.0625,
+            0.0611,
+            0.0548,
+            0.0527,
+            0.0489,
+            0.0488,
+            0.0477
+          ],
+          "shadow_resource_hit": false,
+          "shadow_resource_rank": null,
+          "shadow_top_contexts": [
+            "Caroline greeted Mel (the AI) in a friendly manner. Mel responded warmly, mentioning being busy with kids and work, and asked Caroline what's new.",
+            "The user expressed deep appreciation for their friends, family, and mentors, describing them as their \"rocks\" who motivate them and give them strength. They shared a photo from a meetup with their support circle that took place around January 13, 2026. Their close friends, whom they've known for 4 years since moving from their home country, have been a crucial support system, especially after a tough breakup.",
+            "The user expressed appreciation for their support system of friends and family who are supporting them through a transition, highlighting how much friendship and compassion matter. They noted that their loved ones' encouragement has been instrumental in helping them accept and grow into their true self during this time. They mentioned having a picnic with loved ones last week.",
+            "The user complimented a family photo and asked about the duration of marriage. The AI responded that the person has been married for 5 years, expressing that time has flown by.",
+            "The user shared that they have a hand-painted bowl with sentimental value. A friend made the bowl for their 18th birthday, which was ten years ago, meaning the user is currently around 28 years old. The user appreciates the bowl's pattern and colors and associates it with art and self-expression. The AI responded positively and mentioned taking their family camping in the mountains last week."
+          ],
+          "shadow_top_scores": [
+            0.0425,
+            0.0391,
+            0.0379,
+            0.0356,
+            0.0323
+          ]
+        }
+      },
+      "factor_breakdown": null
+    },
+    {
+      "question": "Who supports Caroline when she has a negative experience?",
+      "expected_answer": "Her mentors, family, and friends",
+      "conclusion": "top_k helps",
+      "evidence": [
+        "D12:1",
+        "D3:11"
+      ],
+      "evidence_candidates": [
+        {
+          "id": "84b3b5fb-bb7e-4992-afb3-5ff3bb44622e",
+          "source": "resource",
+          "category_name": null,
+          "text": "The user expressed deep appreciation for their friends, family, and mentors, describing them as their \"rocks\" who motivate them and give them strength. They shared a photo from a meetup with their support circle that took place around January 13, 2026. Their close friends, whom they've known for 4 years since moving from their home country, have been a crucial support system, especially after a tough breakup.",
+          "matched_anchors": [
+            "friends, family, and mentors, describing them as their \"rocks\""
+          ],
+          "match_score": 1,
+          "importance_score": 1,
+          "updated_at": "2026-01-20T19:55:00+00:00",
+          "text_preview": "The user expressed deep appreciation for their friends, family, and mentors, describing them as their \"rocks\" who motivate them and give them strength. They shared a photo from a meetup with their support circle that too"
+        },
+        {
+          "id": "a98e2daa-ddfc-44da-8b30-d9c85e7ec4e3",
+          "source": "category",
+          "category_name": "Social Graph",
+          "text": "The user has a strong, loving support system—including friends, family, and mentors—that has been instrumental in their personal growth and transition, including their adoption journey.",
+          "matched_anchors": [
+            "support system—including friends, family, and mentors"
+          ],
+          "match_score": 1,
+          "importance_score": 2,
+          "updated_at": "2026-02-02T20:18:00+00:00",
+          "text_preview": "The user has a strong, loving support system—including friends, family, and mentors—that has been instrumental in their personal growth and transition, including their adoption journey."
+        }
+      ],
+      "variants": {
+        "A": {
+          "resolved_layer": "category+resource",
+          "category_only": false,
+          "is_sufficient_at_category": false,
+          "llm_classified_categories": [
+            "Social Graph"
+          ],
+          "retrieval_hit": false,
+          "rank_position": null,
+          "top_contexts": [
+            "The user has a supportive figure named Melanie who provided meaningful support during their personal journey.",
+            "Melanie has a supportive family who helped her during her move.",
+            "Melanie has a spouse (got married recently)",
+            "The user mentors a transgender teen, working together on building confidence and positive strategies.",
+            "The user expressed great enthusiasm and gratitude about being around supportive people, addressing someone named Melanie. They mentioned that being surrounded by people who embrace and back them up was inspiring and meant a lot to them. The AI responded enthusiastically and asked what the best part of the experience was."
+          ],
+          "top_scores": [
+            0.0698,
+            0.064,
+            0.0577,
+            0.055,
+            0.0533
+          ],
+          "shadow_resource_hit": false,
+          "shadow_resource_rank": null,
+          "shadow_top_contexts": [
+            "The user expressed great enthusiasm and gratitude about being around supportive people, addressing someone named Melanie. They mentioned that being surrounded by people who embrace and back them up was inspiring and meant a lot to them. The AI responded enthusiastically and asked what the best part of the experience was.",
+            "The user expressed appreciation for their support system of friends and family who are supporting them through a transition, highlighting how much friendship and compassion matter. They noted that their loved ones' encouragement has been instrumental in helping them accept and grow into their true self during this time. They mentioned having a picnic with loved ones last week.",
+            "The user asked Melanie about her family's support during her move. Melanie responded positively, saying her family has been awesome, helpful, and very loving and supportive throughout the process.",
+            "The user, who is transgender, shared that they mentor a transgender teen. Their mentoring focuses on building confidence and finding positive strategies, and the user feels it has been going well. They also attended an LGBT pride event together last month (January 2026) and had a great time. The AI responded enthusiastically and asked for more details about their experience.",
+            "The user expressed gratitude to Mel (the AI) for support and kind words. They gave a talk about their personal journey as a trans person, speaking about their struggles and personal growth since coming out, and noted that the audience connected with their story and was inspired to be better allies. The user emphasized the importance of sharing personal experiences to promote understanding and acceptance. They reflected on having received abundant love and support throughout their journey and expressed a strong desire to pass that support on to others by building a strong, supportive community of hope. They have a strong passion for conversations about gender identity and inclusion, and a deep commitment to giving a voice to the trans community."
+          ],
+          "shadow_top_scores": [
+            0.0533,
+            0.0482,
+            0.0473,
+            0.0381,
+            0.0365
+          ]
+        },
+        "B": {
+          "resolved_layer": "category_only",
+          "category_only": true,
+          "is_sufficient_at_category": true,
+          "llm_classified_categories": [
+            "Social Graph"
+          ],
+          "retrieval_hit": false,
+          "rank_position": null,
+          "top_contexts": [
+            "The user has a supportive figure named Melanie who provided meaningful support during their personal journey.",
+            "Melanie has a supportive family who helped her during her move.",
+            "Melanie has a spouse (got married recently)",
+            "Caroline and Mel have a friendly, casual relationship where they greet each other warmly.",
+            "The user's family provides them with love and support, which is very important to them."
+          ],
+          "top_scores": [
+            0.0755,
+            0.0641,
+            0.0608,
+            0.0558,
+            0.0538
+          ],
+          "shadow_resource_hit": false,
+          "shadow_resource_rank": null,
+          "shadow_top_contexts": [
+            "The user expressed great enthusiasm and gratitude about being around supportive people, addressing someone named Melanie. They mentioned that being surrounded by people who embrace and back them up was inspiring and meant a lot to them. The AI responded enthusiastically and asked what the best part of the experience was.",
+            "The user expressed appreciation for their support system of friends and family who are supporting them through a transition, highlighting how much friendship and compassion matter. They noted that their loved ones' encouragement has been instrumental in helping them accept and grow into their true self during this time. They mentioned having a picnic with loved ones last week.",
+            "The user asked Melanie about her family's support during her move. Melanie responded positively, saying her family has been awesome, helpful, and very loving and supportive throughout the process.",
+            "Caroline greeted Mel (the AI) in a friendly manner. Mel responded warmly, mentioning being busy with kids and work, and asked Caroline what's new.",
+            "The user expressed gratitude to Mel (the AI) for support and kind words. They gave a talk about their personal journey as a trans person, speaking about their struggles and personal growth since coming out, and noted that the audience connected with their story and was inspired to be better allies. The user emphasized the importance of sharing personal experiences to promote understanding and acceptance. They reflected on having received abundant love and support throughout their journey and expressed a strong desire to pass that support on to others by building a strong, supportive community of hope. They have a strong passion for conversations about gender identity and inclusion, and a deep commitment to giving a voice to the trans community."
+          ],
+          "shadow_top_scores": [
+            0.0502,
+            0.0437,
+            0.0427,
+            0.0373,
+            0.0343
+          ]
+        },
+        "C": {
+          "resolved_layer": "category+resource",
+          "category_only": false,
+          "is_sufficient_at_category": false,
+          "llm_classified_categories": [
+            "Social Graph"
+          ],
+          "retrieval_hit": true,
+          "rank_position": 8,
+          "top_contexts": [
+            "The user has a supportive figure named Melanie who provided meaningful support during their personal journey.",
+            "Melanie has a supportive family who helped her during her move.",
+            "Melanie has a spouse (got married recently)",
+            "The user mentors a transgender teen, working together on building confidence and positive strategies.",
+            "The user expressed great enthusiasm and gratitude about being around supportive people, addressing someone named Melanie. They mentioned that being surrounded by people who embrace and back them up was inspiring and meant a lot to them. The AI responded enthusiastically and asked what the best part of the experience was.",
+            "The user's family provides them with love and support, which is very important to them.",
+            "The user has a close group of friends they've known for 4 years, who have been a crucial support system through difficult times.",
+            "The user has a strong, loving support system—including friends, family, and mentors—that has been instrumental in their personal growth and transition, including their adoption journey.",
+            "The user knows someone named Melanie, interacts with her directly in conversation, and is connected to her via a platform the user appreciates.",
+            "The user expressed appreciation for their support system of friends and family who are supporting them through a transition, highlighting how much friendship and compassion matter. They noted that their loved ones' encouragement has been instrumental in helping them accept and grow into their true self during this time. They mentioned having a picnic with loved ones last week."
+          ],
+          "top_scores": [
+            0.0698,
+            0.064,
+            0.0577,
+            0.055,
+            0.0533,
+            0.0526,
+            0.0499,
+            0.0494,
+            0.0489,
+            0.0482
+          ],
+          "shadow_resource_hit": false,
+          "shadow_resource_rank": null,
+          "shadow_top_contexts": [
+            "The user expressed great enthusiasm and gratitude about being around supportive people, addressing someone named Melanie. They mentioned that being surrounded by people who embrace and back them up was inspiring and meant a lot to them. The AI responded enthusiastically and asked what the best part of the experience was.",
+            "The user expressed appreciation for their support system of friends and family who are supporting them through a transition, highlighting how much friendship and compassion matter. They noted that their loved ones' encouragement has been instrumental in helping them accept and grow into their true self during this time. They mentioned having a picnic with loved ones last week.",
+            "The user asked Melanie about her family's support during her move. Melanie responded positively, saying her family has been awesome, helpful, and very loving and supportive throughout the process.",
+            "The user, who is transgender, shared that they mentor a transgender teen. Their mentoring focuses on building confidence and finding positive strategies, and the user feels it has been going well. They also attended an LGBT pride event together last month (January 2026) and had a great time. The AI responded enthusiastically and asked for more details about their experience.",
+            "The user expressed gratitude to Mel (the AI) for support and kind words. They gave a talk about their personal journey as a trans person, speaking about their struggles and personal growth since coming out, and noted that the audience connected with their story and was inspired to be better allies. The user emphasized the importance of sharing personal experiences to promote understanding and acceptance. They reflected on having received abundant love and support throughout their journey and expressed a strong desire to pass that support on to others by building a strong, supportive community of hope. They have a strong passion for conversations about gender identity and inclusion, and a deep commitment to giving a voice to the trans community.",
+            "The user expressed deep gratitude for the support received during their mental health journey, noting that counseling and support groups significantly improved their life. This experience led them to develop a strong passion for mental health, self-understanding, and sharing their personal story to inspire hope. Inspired to explore counseling and mental health career options, they are deeply committed to helping others on their mental health journeys, promoting inclusivity, and using their voice to create a safe, welcoming space for people to grow and uplift others. The AI responded with encouragement, support, and affirmation of the user's positive impact.",
+            "The user expressed appreciation to Melanie about having their own platform and shared details about their LGBTQ activist group called \"Connected LGBTQ Activists\". The group consists of diverse members who invest in positive changes, hold regular meetings, and plan events and campaigns to support each other. The AI responded with encouragement and asked about recent events or campaigns.",
+            "Caroline greeted Mel (the AI) in a friendly manner. Mel responded warmly, mentioning being busy with kids and work, and asked Caroline what's new.",
+            "The user expressed gratitude to Melanie and shared a deeply personal story about a special necklace they own. The necklace was a gift from their grandmother in Sweden, given to them when they were young. It symbolizes love, faith, and strength, and serves as a reminder of their roots and the love and support from their family. The AI responded warmly and asked if the user has other treasured objects.",
+            "The user shared that being part of a support group has made them feel accepted and has given them the courage to embrace themselves. The AI responded with brief encouragement and asked what the user plans to do next."
+          ],
+          "shadow_top_scores": [
+            0.0533,
+            0.0482,
+            0.0473,
+            0.0381,
+            0.0365,
+            0.0362,
+            0.0362,
+            0.0328,
+            0.0305,
+            0.0303
+          ]
+        },
+        "D": {
+          "resolved_layer": "category+resource",
+          "category_only": false,
+          "is_sufficient_at_category": false,
+          "llm_classified_categories": [
+            "Social Graph"
+          ],
+          "retrieval_hit": true,
+          "rank_position": 10,
+          "top_contexts": [
+            "The user has a supportive figure named Melanie who provided meaningful support during their personal journey.",
+            "Melanie has a supportive family who helped her during her move.",
+            "Melanie has a spouse (got married recently)",
+            "Caroline and Mel have a friendly, casual relationship where they greet each other warmly.",
+            "The user's family provides them with love and support, which is very important to them.",
+            "The user has a close group of friends they've known for 4 years, who have been a crucial support system through difficult times.",
+            "The user expressed great enthusiasm and gratitude about being around supportive people, addressing someone named Melanie. They mentioned that being surrounded by people who embrace and back them up was inspiring and meant a lot to them. The AI responded enthusiastically and asked what the best part of the experience was.",
+            "The user is part of a support group connected to transgender stories or the transgender community that has helped them feel accepted.",
+            "The user mentors a transgender teen, working together on building confidence and positive strategies.",
+            "The user has a strong, loving support system—including friends, family, and mentors—that has been instrumental in their personal growth and transition, including their adoption journey."
+          ],
+          "top_scores": [
+            0.0755,
+            0.0641,
+            0.0608,
+            0.0558,
+            0.0538,
+            0.0519,
+            0.0502,
+            0.0501,
+            0.0498,
+            0.0452
+          ],
+          "shadow_resource_hit": false,
+          "shadow_resource_rank": null,
+          "shadow_top_contexts": [
+            "The user expressed great enthusiasm and gratitude about being around supportive people, addressing someone named Melanie. They mentioned that being surrounded by people who embrace and back them up was inspiring and meant a lot to them. The AI responded enthusiastically and asked what the best part of the experience was.",
+            "The user expressed appreciation for their support system of friends and family who are supporting them through a transition, highlighting how much friendship and compassion matter. They noted that their loved ones' encouragement has been instrumental in helping them accept and grow into their true self during this time. They mentioned having a picnic with loved ones last week.",
+            "The user asked Melanie about her family's support during her move. Melanie responded positively, saying her family has been awesome, helpful, and very loving and supportive throughout the process.",
+            "Caroline greeted Mel (the AI) in a friendly manner. Mel responded warmly, mentioning being busy with kids and work, and asked Caroline what's new.",
+            "The user expressed gratitude to Mel (the AI) for support and kind words. They gave a talk about their personal journey as a trans person, speaking about their struggles and personal growth since coming out, and noted that the audience connected with their story and was inspired to be better allies. The user emphasized the importance of sharing personal experiences to promote understanding and acceptance. They reflected on having received abundant love and support throughout their journey and expressed a strong desire to pass that support on to others by building a strong, supportive community of hope. They have a strong passion for conversations about gender identity and inclusion, and a deep commitment to giving a voice to the trans community.",
+            "The user shared that being part of a support group has made them feel accepted and has given them the courage to embrace themselves. The AI responded with brief encouragement and asked what the user plans to do next.",
+            "The user expressed deep gratitude for the support received during their mental health journey, noting that counseling and support groups significantly improved their life. This experience led them to develop a strong passion for mental health, self-understanding, and sharing their personal story to inspire hope. Inspired to explore counseling and mental health career options, they are deeply committed to helping others on their mental health journeys, promoting inclusivity, and using their voice to create a safe, welcoming space for people to grow and uplift others. The AI responded with encouragement, support, and affirmation of the user's positive impact.",
+            "The user, who is transgender, shared that they mentor a transgender teen. Their mentoring focuses on building confidence and finding positive strategies, and the user feels it has been going well. They also attended an LGBT pride event together last month (January 2026) and had a great time. The AI responded enthusiastically and asked for more details about their experience."
+          ],
+          "shadow_top_scores": [
+            0.0502,
+            0.0437,
+            0.0427,
+            0.0373,
+            0.0343,
+            0.0308,
+            0.0305,
+            0.0305
+          ]
+        }
+      },
+      "factor_breakdown": {
+        "target": {
+          "similarity": 0.06093551664393859,
+          "access": 0.6931471805599453,
+          "recency": 0.5892219240533974,
+          "importance": 0.7999999999999999,
+          "total": 0.019909705844975006
+        },
+        "shadow_top": {
+          "similarity": 0.13953508292275954,
+          "access": 0.6931471805599453,
+          "recency": 0.6490554174418107,
+          "importance": 0.7999999999999999,
+          "total": 0.050220454872239216
+        }
+      }
+    },
+    {
+      "question": "What workshop did Caroline attend recently?",
+      "expected_answer": "LGBTQ+ counseling workshop",
+      "conclusion": "both help",
+      "evidence": [
+        "D4:13"
+      ],
+      "evidence_candidates": [
+        {
+          "id": "02155702-cc9a-44a0-90b4-df1265036e84",
+          "source": "resource",
+          "category_name": null,
+          "text": "The user, who is transgender, is considering a career path focused on counseling and supporting trans people with self-acceptance and mental health. They attended an LGBTQ+ counseling workshop on Friday, January 23, 2026, where they learned about various therapeutic methods for working with trans individuals and were deeply inspired by the professionals' dedication to creating safe spaces.",
+          "matched_anchors": [
+            "attended an LGBTQ+ counseling workshop on Friday, January 23, 2026",
+            "LGBTQ+ counseling workshop"
+          ],
+          "match_score": 2,
+          "importance_score": 3,
+          "updated_at": "2026-01-28T10:37:00+00:00",
+          "text_preview": "The user, who is transgender, is considering a career path focused on counseling and supporting trans people with self-acceptance and mental health. They attended an LGBTQ+ counseling workshop on Friday, January 23, 2026"
+        },
+        {
+          "id": "27d7176a-6dc4-4781-bb02-22d0cb5b57b2",
+          "source": "category",
+          "category_name": "Timeline",
+          "text": "The user attended an LGBTQ+ counseling workshop on Friday, January 23, 2026, where they learned about different therapeutic methods for working with trans people.",
+          "matched_anchors": [
+            "attended an LGBTQ+ counseling workshop on Friday, January 23, 2026",
+            "LGBTQ+ counseling workshop"
+          ],
+          "match_score": 2,
+          "importance_score": 2,
+          "updated_at": "2026-01-28T10:37:00+00:00",
+          "text_preview": "The user attended an LGBTQ+ counseling workshop on Friday, January 23, 2026, where they learned about different therapeutic methods for working with trans people."
+        },
+        {
+          "id": "93e80b64-5e5f-4c9c-9a83-2b1bf0be1d77",
+          "source": "category",
+          "category_name": "Knowledge Base",
+          "text": "The user gained exposure to various therapeutic methods for working with trans clients from an LGBTQ+ counseling workshop.",
+          "matched_anchors": [
+            "LGBTQ+ counseling workshop"
+          ],
+          "match_score": 1,
+          "importance_score": 1,
+          "updated_at": "2026-01-28T10:37:00+00:00",
+          "text_preview": "The user gained exposure to various therapeutic methods for working with trans clients from an LGBTQ+ counseling workshop."
+        }
+      ],
+      "variants": {
+        "A": {
+          "resolved_layer": "category_only",
+          "category_only": true,
+          "is_sufficient_at_category": true,
+          "llm_classified_categories": [
+            "Timeline"
+          ],
+          "retrieval_hit": true,
+          "rank_position": 3,
+          "top_contexts": [
+            "Mel took its kids to a pottery workshop on 2026-01-30 (last Friday); they all made their own pots and found it fun and therapeutic.",
+            "Melanie is in the process of moving.",
+            "The user attended an LGBTQ+ counseling workshop on Friday, January 23, 2026, where they learned about different therapeutic methods for working with trans people.",
+            "The user joined a new LGBTQ activist group on Tuesday, February 3, 2026.",
+            "User has an LGBTQ art show planned for next month (March 2026) featuring their own paintings."
+          ],
+          "top_scores": [
+            0.0591,
+            0.0527,
+            0.0516,
+            0.0507,
+            0.0498
+          ],
+          "shadow_resource_hit": true,
+          "shadow_resource_rank": 1,
+          "shadow_top_contexts": [
+            "The user, who is transgender, is considering a career path focused on counseling and supporting trans people with self-acceptance and mental health. They attended an LGBTQ+ counseling workshop on Friday, January 23, 2026, where they learned about various therapeutic methods for working with trans individuals and were deeply inspired by the professionals' dedication to creating safe spaces.",
+            "The user complimented a black and white designed bowl, asking if it was handmade. The AI confirmed they made the bowl in a class and expressed pride in their work.",
+            "The user greeted Mel and shared that they attended an LGBTQ conference two days ago (around February 2, 2026). They described it as a deeply meaningful experience where they connected with people who have gone through similar journeys. They expressed feeling totally accepted in the welcoming environment and emphasized the importance of fighting for trans rights and spreading awareness, showing strong appreciation for the LGBTQ community.",
+            "The user expressed admiration for a photo and mentioned bonding over a shared love of nature. They shared that they attended a council meeting for adoption last Friday (January 30, 2026), describing it as inspiring and emotional. The experience reinforced their determination to adopt a child.",
+            "The user expressed appreciation for a cute cup (pottery) made by kids and asked about other creative projects done with them. The AI responded that they enjoy painting together, especially nature-inspired paintings, and mentioned their latest work from last weekend."
+          ],
+          "shadow_top_scores": [
+            0.041,
+            0.0342,
+            0.0334,
+            0.0332,
+            0.0328
+          ]
+        },
+        "B": {
+          "resolved_layer": "category_only",
+          "category_only": true,
+          "is_sufficient_at_category": true,
+          "llm_classified_categories": [
+            "Timeline"
+          ],
+          "retrieval_hit": true,
+          "rank_position": 2,
+          "top_contexts": [
+            "Mel took its kids to a pottery workshop on 2026-01-30 (last Friday); they all made their own pots and found it fun and therapeutic.",
+            "The user attended an LGBTQ+ counseling workshop on Friday, January 23, 2026, where they learned about different therapeutic methods for working with trans people.",
+            "Melanie is in the process of moving.",
+            "The user recently spoke with a community and felt deeply motivated by the experience.",
+            "The user plans to attend a transgender conference in January 2026."
+          ],
+          "top_scores": [
+            0.0575,
+            0.0504,
+            0.0494,
+            0.0458,
+            0.0443
+          ],
+          "shadow_resource_hit": true,
+          "shadow_resource_rank": 1,
+          "shadow_top_contexts": [
+            "The user, who is transgender, is considering a career path focused on counseling and supporting trans people with self-acceptance and mental health. They attended an LGBTQ+ counseling workshop on Friday, January 23, 2026, where they learned about various therapeutic methods for working with trans individuals and were deeply inspired by the professionals' dedication to creating safe spaces.",
+            "The user complimented a black and white designed bowl, asking if it was handmade. The AI confirmed they made the bowl in a class and expressed pride in their work."
+          ],
+          "shadow_top_scores": [
+            0.0359,
+            0.0308
+          ]
+        },
+        "C": {
+          "resolved_layer": "category_only",
+          "category_only": true,
+          "is_sufficient_at_category": true,
+          "llm_classified_categories": [
+            "Social Graph",
+            "Timeline"
+          ],
+          "retrieval_hit": true,
+          "rank_position": 4,
+          "top_contexts": [
+            "Melanie has a spouse (got married recently)",
+            "Mel took its kids to a pottery workshop on 2026-01-30 (last Friday); they all made their own pots and found it fun and therapeutic.",
+            "Melanie is in the process of moving.",
+            "The user attended an LGBTQ+ counseling workshop on Friday, January 23, 2026, where they learned about different therapeutic methods for working with trans people.",
+            "The user joined a new LGBTQ activist group on Tuesday, February 3, 2026.",
+            "User has an LGBTQ art show planned for next month (March 2026) featuring their own paintings.",
+            "User has a friend named Mel who went on a family camping trip recently.",
+            "Last weekend (around 2026-02-01) they completed a nature-inspired painting together with the kids.",
+            "The user attended a council meeting for adoption on Friday, January 30, 2026.",
+            "The user plans to attend a transgender conference in January 2026."
+          ],
+          "top_scores": [
+            0.0668,
+            0.0591,
+            0.0527,
+            0.0516,
+            0.0507,
+            0.0498,
+            0.0495,
+            0.0481,
+            0.0479,
+            0.0479
+          ],
+          "shadow_resource_hit": true,
+          "shadow_resource_rank": 1,
+          "shadow_top_contexts": [
+            "The user, who is transgender, is considering a career path focused on counseling and supporting trans people with self-acceptance and mental health. They attended an LGBTQ+ counseling workshop on Friday, January 23, 2026, where they learned about various therapeutic methods for working with trans individuals and were deeply inspired by the professionals' dedication to creating safe spaces.",
+            "The user complimented a black and white designed bowl, asking if it was handmade. The AI confirmed they made the bowl in a class and expressed pride in their work.",
+            "The user greeted Mel and shared that they attended an LGBTQ conference two days ago (around February 2, 2026). They described it as a deeply meaningful experience where they connected with people who have gone through similar journeys. They expressed feeling totally accepted in the welcoming environment and emphasized the importance of fighting for trans rights and spreading awareness, showing strong appreciation for the LGBTQ community.",
+            "The user expressed admiration for a photo and mentioned bonding over a shared love of nature. They shared that they attended a council meeting for adoption last Friday (January 30, 2026), describing it as inspiring and emotional. The experience reinforced their determination to adopt a child.",
+            "The user expressed appreciation for a cute cup (pottery) made by kids and asked about other creative projects done with them. The AI responded that they enjoy painting together, especially nature-inspired paintings, and mentioned their latest work from last weekend.",
+            "The user complimented a picture showing two people and shared that attending a pride parade a few weeks ago (around late January 2026) was a special memory for them. The AI responded positively and asked if the user joined in the parade.",
+            "The user greeted the AI (Mel) casually and mentioned they've had a busy week since their last conversation. Mel responded in kind, sharing that it has also been busy, and mentioned taking its kids to a pottery workshop last Friday where they all made their own pots, which was fun and therapeutic.",
+            "The user expressed excitement about attending a transgender conference in January 2026. They mentioned looking forward to meeting others in the community and learning more about advocacy. The AI responded with encouragement and well wishes.",
+            "The user exchanged a brief personal message with someone named Melanie. The user reflected on a long personal journey and expressed pride in their progress, then asked Melanie about finding peace. Melanie responded that creativity and family help her find peace.",
+            "Caroline greeted Mel (the AI) in a friendly manner. Mel responded warmly, mentioning being busy with kids and work, and asked Caroline what's new."
+          ],
+          "shadow_top_scores": [
+            0.041,
+            0.0342,
+            0.0334,
+            0.0332,
+            0.0328,
+            0.0318,
+            0.0311,
+            0.0311,
+            0.0301,
+            0.0301
+          ]
+        },
+        "D": {
+          "resolved_layer": "category_only",
+          "category_only": true,
+          "is_sufficient_at_category": true,
+          "llm_classified_categories": [
+            "Social Graph",
+            "Timeline"
+          ],
+          "retrieval_hit": true,
+          "rank_position": 3,
+          "top_contexts": [
+            "Melanie has a spouse (got married recently)",
+            "Mel took its kids to a pottery workshop on 2026-01-30 (last Friday); they all made their own pots and found it fun and therapeutic.",
+            "The user attended an LGBTQ+ counseling workshop on Friday, January 23, 2026, where they learned about different therapeutic methods for working with trans people.",
+            "User has a friend named Mel who went on a family camping trip recently.",
+            "Melanie is in the process of moving.",
+            "The user recently spoke with a community and felt deeply motivated by the experience.",
+            "The user plans to attend a transgender conference in January 2026.",
+            "The user joined a new LGBTQ activist group on Tuesday, February 3, 2026.",
+            "Last weekend (around 2026-02-01) they completed a nature-inspired painting together with the kids.",
+            "User has an LGBTQ art show planned for next month (March 2026) featuring their own paintings."
+          ],
+          "top_scores": [
+            0.074,
+            0.0575,
+            0.0504,
+            0.0496,
+            0.0494,
+            0.0458,
+            0.0443,
+            0.0442,
+            0.0438,
+            0.0436
+          ],
+          "shadow_resource_hit": true,
+          "shadow_resource_rank": 1,
+          "shadow_top_contexts": [
+            "The user, who is transgender, is considering a career path focused on counseling and supporting trans people with self-acceptance and mental health. They attended an LGBTQ+ counseling workshop on Friday, January 23, 2026, where they learned about various therapeutic methods for working with trans individuals and were deeply inspired by the professionals' dedication to creating safe spaces.",
+            "Caroline greeted Mel (the AI) in a friendly manner. Mel responded warmly, mentioning being busy with kids and work, and asked Caroline what's new.",
+            "The user complimented a black and white designed bowl, asking if it was handmade. The AI confirmed they made the bowl in a class and expressed pride in their work."
+          ],
+          "shadow_top_scores": [
+            0.0359,
+            0.0332,
+            0.0308
+          ]
+        }
+      },
+      "factor_breakdown": {
+        "target": {
+          "similarity": 0.08401686243580923,
+          "access": 0.6931471805599453,
+          "recency": 0.6156981951001653,
+          "importance": 1.0,
+          "total": 0.0358558316855599
+        },
+        "shadow_top": {
+          "similarity": 0.08401686199637456,
+          "access": 0.6931471805599453,
+          "recency": 0.6156981950588883,
+          "importance": 1.0,
+          "total": 0.03585583149561879
+        }
+      }
+    }
+  ]
+}

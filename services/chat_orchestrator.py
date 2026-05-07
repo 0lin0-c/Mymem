@@ -10,6 +10,38 @@ from services.session.state import PendingChat
 
 logger = logging.getLogger(__name__)
 
+HIGH_CONSTRAINT_MEMORY_TERMS = (
+    "forget",
+    "forgot",
+    "erase",
+    "delete",
+    "retract",
+    "retraction",
+    "negation",
+    "do not remember",
+    "don't remember",
+    "no longer",
+    "updated",
+    "update",
+    "sensitive",
+    "credit card",
+    "card number",
+    "address",
+    "email",
+    "phone",
+    "id number",
+    "real id",
+    "health",
+    "medical",
+    "allergy",
+    "allergies",
+    "asthma",
+    "inhaler",
+    "concussion",
+    "surgery",
+    "appendectomy",
+)
+
 
 MEMORY_PRIORITY_RULES = """When answering, prioritize information in this order:
 1. The user's current message.
@@ -20,9 +52,15 @@ MEMORY_PRIORITY_RULES = """When answering, prioritize information in this order:
 Use retrieved memories when they help answer the current message.
 If the user's current message updates or contradicts older information, follow the current message.
 Do not infer the user's current intent only from profile interests.
-Always respond in the same language as the user's current message.
-Do not switch response language because profile, persona, or retrieved memories use another language.
-Preserve proper nouns and quoted terms in their original language."""
+Treat explicit forget/delete/retraction/update memories as high-priority constraints over older memories.
+When a retrieved atomic memory and its source summary are both available, use the atomic memory as the primary fact and the source summary only as supporting context.
+
+LANGUAGE RULE (HIGHEST PRIORITY):
+- You MUST respond in the SAME language as the user's current message. This is a strict requirement, not a suggestion.
+- If the user writes in English, your ENTIRE response MUST be in English. Never use Chinese.
+- If the user writes in Chinese, your ENTIRE response MUST be in Chinese.
+- Do NOT switch response language because profile, persona, or retrieved memories use another language.
+- Preserve proper nouns and quoted terms in their original language."""
 
 
 @dataclass
@@ -62,7 +100,7 @@ class ChatOrchestrator:
         user_prompt_template: str | None = None,
         agent_persona_template: str | None = None,
         pending_chats: Sequence[PendingChat] | None = None,
-        top_k: int = 5,
+        top_k: int = 15,
         max_retrieved_tokens: int = 2000,
         retrieved_results: Sequence[dict[str, Any]] | None = None,
         retrieved_context: str | None = None,
@@ -106,7 +144,7 @@ class ChatOrchestrator:
         user_prompt_template: str | None = None,
         agent_persona_template: str | None = None,
         pending_chats: Sequence[PendingChat] | None = None,
-        top_k: int = 5,
+        top_k: int = 15,
         max_retrieved_tokens: int = 2000,
         retrieved_results: Sequence[dict[str, Any]] | None = None,
         retrieved_context: str | None = None,
@@ -171,27 +209,20 @@ class ChatOrchestrator:
         if not results:
             return ""
 
-        lines = ["# Retrieved Memories"]
+        prioritized_results = self._prioritize_retrieved_results(results)
+        lines = ["# Retrieved Memories", "## Most Relevant Memories"]
         current_tokens = 0
-        for index, result in enumerate(results, start=1):
-            resource = result.get("resource")
-            category = result.get("category")
-            score = result.get("score", 0)
+        emitted = 0
 
-            label = None
-            content = None
-            if category is not None:
-                label = getattr(category, "category_name", None)
-                content = getattr(category, "content", None)
-            if resource is not None:
-                content = getattr(resource, "description", None) or content
-            if not content:
+        for output_index, (result, is_priority) in enumerate(prioritized_results, start=1):
+            if not is_priority and "## Other Retrieved Memories" not in lines:
+                if emitted == 0:
+                    lines.pop()
+                lines.append("## Other Retrieved Memories")
+
+            line = self._format_retrieved_result(output_index, result)
+            if not line:
                 continue
-
-            prefix = f"{index}. "
-            if label:
-                prefix += f"[{label}] "
-            line = f"{prefix}{content} (score: {score:.2f})"
             try:
                 line_tokens = await self.llm.count_tokens(line)
             except Exception:
@@ -201,8 +232,74 @@ class ChatOrchestrator:
 
             lines.append(line)
             current_tokens += line_tokens
+            emitted += 1
 
-        return "\n".join(lines) if len(lines) > 1 else ""
+        return "\n".join(lines) if emitted else ""
+
+    def _prioritize_retrieved_results(
+        self,
+        results: Sequence[dict[str, Any]],
+    ) -> list[tuple[dict[str, Any], bool]]:
+        ranked: list[tuple[tuple[int, int, int, int], dict[str, Any], bool]] = []
+        for original_index, result in enumerate(results):
+            strategy = result.get("strategy")
+            has_category = result.get("category") is not None
+            high_constraint = self._is_high_constraint_memory(result)
+            is_priority = (
+                strategy == "category_source_expansion"
+                or has_category
+                or high_constraint
+            )
+            rank_key = (
+                0 if strategy == "category_source_expansion" else 1,
+                0 if has_category else 1,
+                0 if high_constraint else 1,
+                original_index,
+            )
+            ranked.append((rank_key, result, is_priority))
+
+        ranked.sort(key=lambda item: item[0])
+        return [(result, is_priority) for _, result, is_priority in ranked]
+
+    def _format_retrieved_result(self, index: int, result: dict[str, Any]) -> str | None:
+        resource = result.get("resource")
+        category = result.get("category")
+        score = result.get("score", 0)
+
+        label = getattr(category, "category_name", None) if category is not None else None
+        category_content = (getattr(category, "content", None) or "").strip() if category is not None else ""
+        resource_description = (
+            (getattr(resource, "description", None) or "").strip()
+            if resource is not None
+            else ""
+        )
+
+        if category_content:
+            content = f"fact: {category_content}"
+            if resource_description and resource_description != category_content:
+                content += f" | source_summary: {resource_description}"
+        elif resource_description:
+            content = resource_description
+        else:
+            return None
+
+        prefix = f"{index}. "
+        if label:
+            prefix += f"[{label}] "
+        return f"{prefix}{content} (score: {score:.2f})"
+
+    def _is_high_constraint_memory(self, result: dict[str, Any]) -> bool:
+        resource = result.get("resource")
+        category = result.get("category")
+        parts = [
+            result.get("strategy", ""),
+            getattr(category, "category_name", "") if category is not None else "",
+            getattr(category, "content", "") if category is not None else "",
+            getattr(resource, "description", "") if resource is not None else "",
+            getattr(resource, "raw_content", "") if resource is not None else "",
+        ]
+        text = " ".join(str(part) for part in parts if part).lower()
+        return any(term in text for term in HIGH_CONSTRAINT_MEMORY_TERMS)
 
     def _join_context(self, recent_context: str, retrieved_context: str) -> str:
         parts = [part for part in (recent_context, retrieved_context) if part]

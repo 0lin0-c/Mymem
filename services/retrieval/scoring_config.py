@@ -4,9 +4,9 @@ from dataclasses import dataclass
 @dataclass(frozen=True)
 class RetrievalScoringConfig:
     recency_decay_days: int = 60
-    similarity_power: float = 1.5
+    similarity_power: float = 2.0
     access_power: float = 1.0
-    recency_power: float = 1.0
+    recency_power: float = 0.5
     importance_power: float = 1.0
 
     def sql_params(self) -> dict[str, float | int]:

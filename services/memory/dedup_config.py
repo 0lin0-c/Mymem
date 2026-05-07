@@ -16,9 +16,13 @@ CATEGORY_DEDUP_THRESHOLDS: Dict[str, DedupThreshold] = {
         skip_threshold=0.85,  # Core Self info skips if highly similar
         merge_threshold=0.75,  # 75%-85% merge
     ),
-    "Timeline": DedupThreshold(
-        skip_threshold=0.90,  # Timeline info needs higher similarity to skip
+    "Episodic Memory": DedupThreshold(
+        skip_threshold=0.90,  # Episodic facts need higher similarity to skip
         merge_threshold=0.75,  # 75%-90% merge
+    ),
+    "Timeline": DedupThreshold(
+        skip_threshold=0.90,
+        merge_threshold=0.75,
     ),
     "Knowledge Base": DedupThreshold(
         skip_threshold=0.88,  # Knowledge info skips at higher similarity

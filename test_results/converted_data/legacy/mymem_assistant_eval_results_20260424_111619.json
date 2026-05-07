@@ -1,0 +1,2468 @@
+{
+  "test_info": {
+    "timestamp": "20260424_111619",
+    "eval_mode": "assistant_eval"
+  },
+  "statistics": {
+    "total_questions": 23,
+    "correct_count": 11,
+    "accuracy": 47.82608695652174,
+    "adjusted_accuracy_excluding_empty_standard": 36.36363636363637,
+    "answer_failure_patterns": {
+      "empty_standard_answer": 5,
+      "retrieval_gap": 4,
+      "wrong_specific_answer": 3
+    },
+    "answer_support_counts": {
+      "profile_inference": 3,
+      "direct_fact": 1,
+      "wrong": 12,
+      "empty_gold": 7
+    },
+    "recall_at_k": 60.86956521739131,
+    "top1_hit_rate": 47.82608695652174,
+    "top3_hit_rate": 56.52173913043478,
+    "top5_hit_rate": 56.52173913043478,
+    "storage_coverage_rate": 100.0,
+    "category_accuracy": {
+      "3": {
+        "label": "推理归纳（需要综合多事实）",
+        "display_name": "Category 3 - 推理归纳（需要综合多事实）",
+        "count": 2,
+        "correct": 2,
+        "accuracy": 100.0
+      },
+      "2": {
+        "label": "时间相关（when/how long）",
+        "display_name": "Category 2 - 时间相关（when/how long）",
+        "count": 3,
+        "correct": 1,
+        "accuracy": 33.33333333333333
+      },
+      "1": {
+        "label": "事实回忆（单一事实）",
+        "display_name": "Category 1 - 事实回忆（单一事实）",
+        "count": 2,
+        "correct": 1,
+        "accuracy": 50.0
+      },
+      "5": {
+        "label": "无法回答（测试拒绝能力）",
+        "display_name": "Category 5 - 无法回答（测试拒绝能力）",
+        "count": 13,
+        "correct": 7,
+        "accuracy": 53.84615384615385
+      },
+      "4": {
+        "label": "偏好态度",
+        "display_name": "Category 4 - 偏好态度",
+        "count": 3,
+        "correct": 0,
+        "accuracy": 0.0
+      }
+    }
+  },
+  "samples": [
+    {
+      "sample_index": 0,
+      "character": "Caroline",
+      "total_memories": 86,
+      "total_questions": 23,
+      "completed_questions": 23,
+      "status": "completed",
+      "qa_results": [
+        {
+          "eval_mode": "assistant_eval",
+          "question": "What fields would Caroline be likely to pursue in her educaton?",
+          "standard_answer": "Psychology, counseling certification",
+          "generated_answer": "Based on what I know, Caroline would most likely pursue fields related to:\n\n1. **Psychology or Counseling** — This is the strongest direction she's been exploring, with a specific interest in mental health work. She sees it as tough but rewarding.\n\n2. **LGBTQ+ Studies or Gender Studies** — Her passion for LGBTQ rights and her desire to help trans people specifically with self-acceptance and mental health support suggests she'd be drawn to coursework in this area.\n\n3. **Social Work** — This could complement her counseling interests, especially if she wants to work directly with marginalized communities.\n\n4. **Art Therapy** — Given her interests in both painting and psychology, this could be a natural intersection worth exploring.\n\nHer excitement about continuing education seems really tied to finding a path that combines her compassion for others with her personal values around LGBTQ advocacy. The counseling/mental health route feels like the clearest through-line right now.",
+          "is_correct": true,
+          "correctness_explanation": "The generated answer correctly includes both key fields from the standard answer, \"Psychology\" and \"Counseling,\" explicitly identifying them as the strongest direction for her education. The addition of other potential fields does not contradict the standard answer.",
+          "category": 3,
+          "evidence": [
+            "D1:9",
+            "D1:11"
+          ],
+          "storage_hit": true,
+          "retrieval_hit": true,
+          "rank_position": 1,
+          "answer_support_type": "profile_inference",
+          "evaluation_trace": {
+            "storage_eval": {
+              "storage_hit": true,
+              "keywords": [
+                "fields",
+                "caroline",
+                "likely",
+                "pursue",
+                "educaton",
+                "psychology",
+                "counseling",
+                "certification"
+              ],
+              "db_hits": {
+                "resource_count": 6,
+                "category_count": 10
+              },
+              "db_memories_sample": [
+                {
+                  "id": "02155702-cc9a-44a0-90b4-df1265036e84",
+                  "source": "resource",
+                  "text": "The user, who is transgender, is considering a career path focused on counseling and supporting trans people with self-acceptance and mental health. They attended an LGBTQ+ counseling workshop on Friday, January 23, 2026, where they learned about various therapeutic methods for working with trans individuals and were deeply inspired by the professionals' dedication to creating safe spaces.",
+                  "importance_score": 3,
+                  "updated_at": "2026-01-28T10:37:00+00:00",
+                  "matched_keyword": "counseling"
+                },
+                {
+                  "id": "bf214cdb-8192-462f-9b95-5c107558e146",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user's name is Caroline.",
+                  "importance_score": 3,
+                  "updated_at": "2026-01-05T13:56:00+00:00",
+                  "matched_keyword": "caroline"
+                },
+                {
+                  "id": "ce7ce0c7-59f9-4f59-95a8-bd5b1568ed1d",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "User is exploring counseling or mental health work as a career direction, acknowledging it is tough but rewarding",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-22T08:48:05.641281+00:00",
+                  "matched_keyword": "counseling"
+                },
+                {
+                  "id": "794a3ff2-b4db-4a13-ab1c-8bf4ca6d1ea6",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user went through a significant personal transition involving challenges, where they received help from a support system (including counseling and support groups). This support greatly improved their life, giving them the courage to accept and grow into their true self.",
+                  "importance_score": 3,
+                  "updated_at": "2026-02-02T20:18:00+00:00",
+                  "matched_keyword": "counseling"
+                },
+                {
+                  "id": "12c71212-1d00-46d5-b30e-83204e5bf80f",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user is deeply passionate about mental health and self-understanding, shaped by their own therapeutic experiences. They are drawn to counseling and mental health as a career path and want to use their personal story to help others.",
+                  "importance_score": 3,
+                  "updated_at": "2026-01-31T13:36:00+00:00",
+                  "matched_keyword": "counseling"
+                }
+              ]
+            }
+          },
+          "retrieval_layer": {
+            "resolved_layer": "category_only",
+            "is_sufficient_at_category": true,
+            "llm_classified_categories": [
+              "Core Self"
+            ],
+            "category_results_count": 10,
+            "resource_results_count": 0,
+            "low_confidence_fallback": false
+          },
+          "retrieved_contexts": [
+            "User is exploring counseling or mental health work as a career direction, acknowledging it is tough but rewarding",
+            "The user's name is Caroline.",
+            "The user plans to continue their education",
+            "Mel (the AI) has kids and is busy balancing work and parenting.",
+            "Melanie enjoys or has skill in painting"
+          ],
+          "retrieved_scores": [
+            0.0846,
+            0.083,
+            0.0693,
+            0.0509,
+            0.048
+          ],
+          "db_diagnosis": null,
+          "error": null
+        },
+        {
+          "eval_mode": "assistant_eval",
+          "question": "When did Caroline join a new activist group?",
+          "standard_answer": "The Tuesday before 8 February 2026",
+          "generated_answer": "Caroline joined a new LGBTQ activist group on Tuesday, February 3, 2026.",
+          "is_correct": true,
+          "correctness_explanation": "The generated answer correctly converts the relative date \"The Tuesday before 8 February 2026\" into the exact date of Tuesday, February 3, 2026. The inclusion of the specific type of activist group (LGBTQ) adds extra detail but does not contradict the factual accuracy of the timing.",
+          "category": 2,
+          "evidence": [
+            "D10:3"
+          ],
+          "storage_hit": true,
+          "retrieval_hit": true,
+          "rank_position": 2,
+          "answer_support_type": "direct_fact",
+          "evaluation_trace": {
+            "storage_eval": {
+              "storage_hit": true,
+              "keywords": [
+                "caroline",
+                "join",
+                "new",
+                "activist",
+                "group",
+                "tuesday",
+                "before",
+                "february"
+              ],
+              "db_hits": {
+                "resource_count": 13,
+                "category_count": 13
+              },
+              "db_memories_sample": [
+                {
+                  "id": "bf214cdb-8192-462f-9b95-5c107558e146",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user's name is Caroline.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "caroline"
+                },
+                {
+                  "id": "794a3ff2-b4db-4a13-ab1c-8bf4ca6d1ea6",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user went through a significant personal transition involving challenges, where they received help from a support system (including counseling and support groups). This support greatly improved their life, giving them the courage to accept and grow into their true self.",
+                  "importance_score": 3,
+                  "updated_at": "2026-02-02T20:18:00+00:00",
+                  "matched_keyword": "group"
+                },
+                {
+                  "id": "0bb5fee7-adc8-4461-b64c-60b18f68b754",
+                  "source": "resource",
+                  "text": "The user shared an exciting life update with the AI, mentioning they joined a new LGBTQ activist group last Tuesday (February 3, 2026). They expressed enthusiasm about meeting passionate people who share their commitment to rights and community support. They described the experience as fulfilling and impactful, feeling they are making a real difference through their activism.",
+                  "importance_score": 2,
+                  "updated_at": "2026-02-08T20:56:00+00:00",
+                  "matched_keyword": "join"
+                },
+                {
+                  "id": "eca208d2-8521-4f60-ae9c-f5e33cc1ab03",
+                  "source": "resource",
+                  "text": "Hey Melanie! That sounds great! Last weekend I joined a mentorship program for LGBTQ youth - it's really rewarding to help the community.",
+                  "importance_score": 2,
+                  "updated_at": "2026-02-07T14:31:00+00:00",
+                  "matched_keyword": "join"
+                },
+                {
+                  "id": "5631c0ef-fb8d-417d-a7dd-ae8452132ac7",
+                  "source": "resource",
+                  "text": "The user expressed appreciation to Melanie about having their own platform and shared details about their LGBTQ activist group called \"Connected LGBTQ Activists\". The group consists of diverse members who invest in positive changes, hold regular meetings, and plan events and campaigns to support each other. The AI responded with encouragement and asked about recent events or campaigns.",
+                  "importance_score": 2,
+                  "updated_at": "2026-02-08T20:56:00+00:00",
+                  "matched_keyword": "activist"
+                }
+              ]
+            }
+          },
+          "retrieval_layer": {
+            "resolved_layer": "category+resource",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [
+              "Social Graph",
+              "Timeline"
+            ],
+            "category_results_count": 8,
+            "resource_results_count": 2,
+            "low_confidence_fallback": false
+          },
+          "retrieved_contexts": [
+            "The user joined a new LGBTQ activist group on Tuesday, February 3, 2026.",
+            "The user shared an exciting life update with the AI, mentioning they joined a new LGBTQ activist group last Tuesday (February 3, 2026). They expressed enthusiasm about meeting passionate people who share their commitment to rights and community support. They described the experience as fulfilling and impactful, feeling they are making a real difference through their activism.",
+            "The user is part of an LGBTQ activist group called 'Connected LGBTQ Activists', which consists of diverse members who invest in positive changes. Through this group, the user is meeting many new like-minded people.",
+            "The group 'Connected LGBTQ Activists' holds regular meetings, plans events, and runs campaigns.",
+            "Melanie has a spouse (got married recently)"
+          ],
+          "retrieved_scores": [
+            0.0977,
+            0.0578,
+            0.0548,
+            0.0507,
+            0.0475
+          ],
+          "db_diagnosis": null,
+          "error": null
+        },
+        {
+          "eval_mode": "assistant_eval",
+          "question": "What is Caroline's identity?",
+          "standard_answer": "Transgender woman",
+          "generated_answer": "Based on what I know about you, Caroline, here's what I can share about your identity:\n\n- **Name:** Caroline\n- **Transgender:** You're a trans person\n- **Mom:** You're a mom (or planning to become one), and you feel that being a mom is awesome\n- **Life stage:** You're going through a life transition\n- **Career direction:** You're exploring counseling or mental health work as a possible career path\n- **Education:** You plan to continue your education\n- **Values:** You deeply value friendship and compassion\n\nYour profile also lists your identity simply as \"other,\" which might just be a catch-all category rather than a full description of who you are.\n\nIs there something specific about your identity you were hoping to explore or clarify? I'm happy to talk through it with you.",
+          "is_correct": true,
+          "correctness_explanation": "The generated answer correctly identifies Caroline as a \"trans person,\" which aligns with the core information in the standard answer (\"Transgender woman\"). Furthermore, the generated answer supports the \"woman\" aspect of the standard answer by explicitly stating Caroline is a \"mom.\" The phrasing differs, but the factual accuracy is maintained.",
+          "category": 1,
+          "evidence": [
+            "D1:5"
+          ],
+          "storage_hit": true,
+          "retrieval_hit": true,
+          "rank_position": 1,
+          "answer_support_type": "profile_inference",
+          "evaluation_trace": {
+            "storage_eval": {
+              "storage_hit": true,
+              "keywords": [
+                "caroline",
+                "identity",
+                "transgender",
+                "woman"
+              ],
+              "db_hits": {
+                "resource_count": 8,
+                "category_count": 14
+              },
+              "db_memories_sample": [
+                {
+                  "id": "02155702-cc9a-44a0-90b4-df1265036e84",
+                  "source": "resource",
+                  "text": "The user, who is transgender, is considering a career path focused on counseling and supporting trans people with self-acceptance and mental health. They attended an LGBTQ+ counseling workshop on Friday, January 23, 2026, where they learned about various therapeutic methods for working with trans individuals and were deeply inspired by the professionals' dedication to creating safe spaces.",
+                  "importance_score": 3,
+                  "updated_at": "2026-01-28T10:37:00+00:00",
+                  "matched_keyword": "transgender"
+                },
+                {
+                  "id": "bf214cdb-8192-462f-9b95-5c107558e146",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user's name is Caroline.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "caroline"
+                },
+                {
+                  "id": "2a9f50c7-671f-4ebb-aad0-1a5759bf8f9d",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user is deeply passionate about advocating for LGBTQ rights, gender identity, and inclusion, and is committed to giving a voice to the trans community. They find activism and community support deeply fulfilling.",
+                  "importance_score": 3,
+                  "updated_at": "2026-02-08T20:56:00+00:00",
+                  "matched_keyword": "identity"
+                },
+                {
+                  "id": "2e745376-1926-4246-bb06-6bce4ed13174",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user is on a personal path related to transgender identity and finds hope and connection in stories about trans individuals.",
+                  "importance_score": 3,
+                  "updated_at": "2026-02-04T16:33:00+00:00",
+                  "matched_keyword": "identity"
+                },
+                {
+                  "id": "68c62c77-0d5f-4579-8067-a0921c7e006a",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user is transgender.",
+                  "importance_score": 3,
+                  "updated_at": "2026-02-07T14:31:00+00:00",
+                  "matched_keyword": "transgender"
+                }
+              ]
+            }
+          },
+          "retrieval_layer": {
+            "resolved_layer": "category_only",
+            "is_sufficient_at_category": true,
+            "llm_classified_categories": [
+              "Core Self"
+            ],
+            "category_results_count": 10,
+            "resource_results_count": 0,
+            "low_confidence_fallback": false
+          },
+          "retrieved_contexts": [
+            "The user's name is Caroline.",
+            "The user refers to the AI as \"Melanie\"",
+            "Melanie enjoys or has skill in painting",
+            "The user is going through a life transition and values friendship and compassion deeply.",
+            "Mel (the AI) has kids and is busy balancing work and parenting."
+          ],
+          "retrieved_scores": [
+            0.4258,
+            0.158,
+            0.1341,
+            0.1074,
+            0.1064
+          ],
+          "db_diagnosis": null,
+          "error": null
+        },
+        {
+          "eval_mode": "assistant_eval",
+          "question": "What would Caroline's political leaning likely be?",
+          "standard_answer": "Liberal",
+          "generated_answer": "Based on what I know about Caroline, she would likely lean progressive or left-leaning politically. Here's why:\n\n- **LGBTQ rights** is listed as a core interest, and as a transgender person herself, she'd likely support policies that protect and advance LGBTQ equality.\n- **Psychological counseling** as a career interest suggests she values mental health access and social support systems, which tend to align with progressive policy priorities.\n- **Compassion** is described as a deep value of hers, which often tracks with progressive social attitudes.\n- Her interests in **reading, hiking, and the arts** don't dictate politics, but they fit a profile that often overlaps with progressive-leaning communities.\n\nThat said, I don't have explicit confirmation of her political views from our conversations, so this is an educated guess rather than something she's stated directly. People's political beliefs can be nuanced and don't always follow expected patterns. If you're curious about her actual views, the best approach would just be to ask her!",
+          "is_correct": true,
+          "correctness_explanation": "The generated answer identifies the political leaning as \"progressive or left-leaning,\" which is factually synonymous with \"Liberal\" from the standard answer. The additional reasoning provided does not contradict the core answer.",
+          "category": 3,
+          "evidence": [
+            "D12:1"
+          ],
+          "storage_hit": true,
+          "retrieval_hit": true,
+          "rank_position": 1,
+          "answer_support_type": "profile_inference",
+          "evaluation_trace": {
+            "storage_eval": {
+              "storage_hit": true,
+              "keywords": [
+                "caroline",
+                "political",
+                "leaning",
+                "likely",
+                "liberal",
+                "d12"
+              ],
+              "db_hits": {
+                "resource_count": 3,
+                "category_count": 2
+              },
+              "db_memories_sample": [
+                {
+                  "id": "bf214cdb-8192-462f-9b95-5c107558e146",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user's name is Caroline.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "caroline"
+                },
+                {
+                  "id": "34764353-12ba-4e8c-9b21-7836ff21f251",
+                  "source": "resource",
+                  "text": "The user complimented a purple color on some item (likely shoes) and asked whether it was for walking or running. The AI clarified the purple item is for running and mentioned having been running more since their last conversation as a way to destress and clear the mind.",
+                  "importance_score": 1,
+                  "updated_at": "2026-02-04T16:33:00+00:00",
+                  "matched_keyword": "likely"
+                },
+                {
+                  "id": "ab81bc3b-2f0b-4fc0-93bf-8867950d5aca",
+                  "source": "category",
+                  "category_name": "Social Graph",
+                  "text": "Caroline and Mel have a friendly, casual relationship where they greet each other warmly.",
+                  "importance_score": 1,
+                  "updated_at": "2026-01-05T13:56:00+00:00",
+                  "matched_keyword": "caroline"
+                },
+                {
+                  "id": "77995162-13d7-4259-8fe8-ad4f83ff0c21",
+                  "source": "resource",
+                  "text": "Caroline greeted Mel (the AI) in a friendly manner. Mel responded warmly, mentioning being busy with kids and work, and asked Caroline what's new.",
+                  "importance_score": 0,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "caroline"
+                },
+                {
+                  "id": "a191e810-d963-49f1-9a60-43cb882a9745",
+                  "source": "resource",
+                  "text": "The user made a casual comment expressing that someone (likely friends or family in a photo) looked happy and asked about their day. The AI responded enthusiastically about playing games, eating good food, and spending quality family time together. The conversation consisted of friendly pleasantries and casual social exchange with no significant factual content.",
+                  "importance_score": 0,
+                  "updated_at": "2026-01-20T19:55:00+00:00",
+                  "matched_keyword": "likely"
+                }
+              ]
+            }
+          },
+          "retrieval_layer": {
+            "resolved_layer": "category_only",
+            "is_sufficient_at_category": true,
+            "llm_classified_categories": [
+              "Core Self"
+            ],
+            "category_results_count": 10,
+            "resource_results_count": 0,
+            "low_confidence_fallback": false
+          },
+          "retrieved_contexts": [
+            "The user's name is Caroline.",
+            "The user is going through a life transition and values friendship and compassion deeply.",
+            "Melanie got married (as of around January 2026)",
+            "The user refers to the AI as \"Melanie\"",
+            "Melanie enjoys or has skill in painting"
+          ],
+          "retrieved_scores": [
+            0.3476,
+            0.1605,
+            0.1499,
+            0.1404,
+            0.1389
+          ],
+          "db_diagnosis": null,
+          "error": null
+        },
+        {
+          "eval_mode": "assistant_eval",
+          "question": "What did Caroline realize after her charity race?",
+          "standard_answer": "",
+          "generated_answer": "I don't have any memory of a charity race in our conversations, so I'm not sure what you're referring to! Could you remind me what happened? I'd love to hear about it. 😊",
+          "is_correct": false,
+          "correctness_explanation": "The generated answer fails to provide any factual information about what Caroline realized after her charity race, instead deflecting the question.",
+          "category": 5,
+          "evidence": [
+            "D2:3"
+          ],
+          "storage_hit": true,
+          "retrieval_hit": true,
+          "rank_position": 1,
+          "answer_support_type": "wrong",
+          "evaluation_trace": {
+            "storage_eval": {
+              "storage_hit": true,
+              "keywords": [
+                "caroline",
+                "realize",
+                "after",
+                "charity",
+                "race"
+              ],
+              "db_hits": {
+                "resource_count": 7,
+                "category_count": 7
+              },
+              "db_memories_sample": [
+                {
+                  "id": "bf214cdb-8192-462f-9b95-5c107558e146",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user's name is Caroline.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "caroline"
+                },
+                {
+                  "id": "65e7fbc4-bf75-4567-bbe6-a0f21ecc5c42",
+                  "source": "resource",
+                  "text": "The user praised Mel (the AI) for participating in a charity race that raises awareness for mental health. Mel responded that the event was thought-provoking and shared a personal insight about the importance of self-care, describing it as a journey. Mel expressed that taking care of themselves enables them to better care for their family.",
+                  "importance_score": 2,
+                  "updated_at": "2026-01-13T13:14:00+00:00",
+                  "matched_keyword": "charity"
+                },
+                {
+                  "id": "1131366e-ad71-4253-8fc1-5e703e598074",
+                  "source": "resource",
+                  "text": "The user shared that being part of a support group has made them feel accepted and has given them the courage to embrace themselves. The AI responded with brief encouragement and asked what the user plans to do next.",
+                  "importance_score": 2,
+                  "updated_at": "2026-01-05T13:56:00+00:00",
+                  "matched_keyword": "race"
+                },
+                {
+                  "id": "0d5cf012-9e51-4c21-8d3e-0ef74ff61196",
+                  "source": "category",
+                  "category_name": "Timeline",
+                  "text": "Mel participated in a charity race for mental health awareness.",
+                  "importance_score": 2,
+                  "updated_at": "2026-01-13T13:14:00+00:00",
+                  "matched_keyword": "charity"
+                },
+                {
+                  "id": "a4467ef7-424b-4902-9bb6-669f077fafeb",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "Mel values raising awareness for mental health and participated in a charity race to support this cause.",
+                  "importance_score": 2,
+                  "updated_at": "2026-01-13T13:14:00+00:00",
+                  "matched_keyword": "charity"
+                }
+              ]
+            }
+          },
+          "retrieval_layer": {
+            "resolved_layer": "category+resource",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [
+              "Core Self",
+              "Timeline"
+            ],
+            "category_results_count": 9,
+            "resource_results_count": 1,
+            "low_confidence_fallback": false
+          },
+          "retrieved_contexts": [
+            "The user's name is Caroline.",
+            "Melanie got married (as of around January 2026)",
+            "The user is going through a life transition and values friendship and compassion deeply.",
+            "Melanie enjoys or has skill in painting",
+            "Caroline greeted Mel (the AI) in a friendly manner. Mel responded warmly, mentioning being busy with kids and work, and asked Caroline what's new."
+          ],
+          "retrieved_scores": [
+            0.3216,
+            0.1925,
+            0.1793,
+            0.1719,
+            0.1347
+          ],
+          "db_diagnosis": null,
+          "error": null
+        },
+        {
+          "eval_mode": "assistant_eval",
+          "question": "What are the new shoes that Caroline got used for?",
+          "standard_answer": "",
+          "generated_answer": "I don't actually have any memory of you getting new shoes! Did I miss something, or is this something new you haven't mentioned yet? I'm curious now — what kind of shoes did you get? 😊",
+          "is_correct": true,
+          "correctness_explanation": "The standard answer is blank, indicating there is no factual information provided in the context regarding what the shoes are used for. The generated answer correctly reflects this absence of information by stating it does not have any memory or knowledge of the shoes.",
+          "category": 5,
+          "evidence": [
+            "D7:19"
+          ],
+          "storage_hit": true,
+          "retrieval_hit": false,
+          "rank_position": null,
+          "answer_support_type": "empty_gold",
+          "evaluation_trace": {
+            "storage_eval": {
+              "storage_hit": true,
+              "keywords": [
+                "new",
+                "shoes",
+                "caroline",
+                "got",
+                "used"
+              ],
+              "db_hits": {
+                "resource_count": 8,
+                "category_count": 6
+              },
+              "db_memories_sample": [
+                {
+                  "id": "02155702-cc9a-44a0-90b4-df1265036e84",
+                  "source": "resource",
+                  "text": "The user, who is transgender, is considering a career path focused on counseling and supporting trans people with self-acceptance and mental health. They attended an LGBTQ+ counseling workshop on Friday, January 23, 2026, where they learned about various therapeutic methods for working with trans individuals and were deeply inspired by the professionals' dedication to creating safe spaces.",
+                  "importance_score": 3,
+                  "updated_at": "2026-01-28T10:37:00+00:00",
+                  "matched_keyword": "used"
+                },
+                {
+                  "id": "bf214cdb-8192-462f-9b95-5c107558e146",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user's name is Caroline.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "caroline"
+                },
+                {
+                  "id": "d0bd5be0-f0dc-4270-a5ae-552d1092aaa3",
+                  "source": "category",
+                  "category_name": "Social Graph",
+                  "text": "Melanie has a spouse (got married recently)",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "got"
+                },
+                {
+                  "id": "2945ff40-c117-4526-837e-8f8f1c07fb7f",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "Melanie got married (as of around January 2026)",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "got"
+                },
+                {
+                  "id": "0bb5fee7-adc8-4461-b64c-60b18f68b754",
+                  "source": "resource",
+                  "text": "The user shared an exciting life update with the AI, mentioning they joined a new LGBTQ activist group last Tuesday (February 3, 2026). They expressed enthusiasm about meeting passionate people who share their commitment to rights and community support. They described the experience as fulfilling and impactful, feeling they are making a real difference through their activism.",
+                  "importance_score": 2,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "new"
+                }
+              ]
+            }
+          },
+          "retrieval_layer": {
+            "resolved_layer": "category+resource",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [
+              "Timeline"
+            ],
+            "category_results_count": 9,
+            "resource_results_count": 1,
+            "low_confidence_fallback": false
+          },
+          "retrieved_contexts": [
+            "Melanie is in the process of moving.",
+            "The user joined a new LGBTQ activist group on Tuesday, February 3, 2026.",
+            "The user met up with their friends, family, and/or mentors around January 13, 2026 (last week).",
+            "The user plans to attend a transgender conference in January 2026.",
+            "The user recently spoke with a community and felt deeply motivated by the experience."
+          ],
+          "retrieved_scores": [
+            0.1668,
+            0.0851,
+            0.0695,
+            0.0583,
+            0.0574
+          ],
+          "db_diagnosis": null,
+          "error": null
+        },
+        {
+          "eval_mode": "assistant_eval",
+          "question": "What is Caroline's reason for getting into running?",
+          "standard_answer": "",
+          "generated_answer": "I actually don't have any memory of you mentioning running before, so I'm not sure what your reason is! I'd love to hear about it though — what got you started?",
+          "is_correct": true,
+          "correctness_explanation": "The standard answer is empty, indicating there is no available information regarding Caroline's reason for running. The generated answer correctly reflects this lack of information by stating it does not know the reason.",
+          "category": 5,
+          "evidence": [
+            "D7:21"
+          ],
+          "storage_hit": true,
+          "retrieval_hit": true,
+          "rank_position": 1,
+          "answer_support_type": "empty_gold",
+          "evaluation_trace": {
+            "storage_eval": {
+              "storage_hit": true,
+              "keywords": [
+                "caroline",
+                "reason",
+                "getting",
+                "running"
+              ],
+              "db_hits": {
+                "resource_count": 7,
+                "category_count": 4
+              },
+              "db_memories_sample": [
+                {
+                  "id": "bf214cdb-8192-462f-9b95-5c107558e146",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user's name is Caroline.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "caroline"
+                },
+                {
+                  "id": "ddb64092-df53-4a5e-8231-f44ad4e0a436",
+                  "source": "resource",
+                  "text": "The user expressed delight about some pets and asked about their names. The AI responded that the pets are named Luna and Oliver, describing them as sweet and playful, and also mentioned recently getting new shoes.",
+                  "importance_score": 1,
+                  "updated_at": "2026-02-04T16:33:00+00:00",
+                  "matched_keyword": "getting"
+                },
+                {
+                  "id": "34764353-12ba-4e8c-9b21-7836ff21f251",
+                  "source": "resource",
+                  "text": "The user complimented a purple color on some item (likely shoes) and asked whether it was for walking or running. The AI clarified the purple item is for running and mentioned having been running more since their last conversation as a way to destress and clear the mind.",
+                  "importance_score": 1,
+                  "updated_at": "2026-02-04T16:33:00+00:00",
+                  "matched_keyword": "running"
+                },
+                {
+                  "id": "e9f00bac-2f71-4fd9-9210-06d872f0a96c",
+                  "source": "resource",
+                  "text": "The user expressed agreement with someone named Melanie about the importance of self-care, acknowledging that while it's not always easy, it's important to prioritize it. The AI responded supportively, mentioning daily self-care activities like running, reading, and playing the violin as ways to stay refreshed and present for family.",
+                  "importance_score": 1,
+                  "updated_at": "2026-01-13T13:14:00+00:00",
+                  "matched_keyword": "running"
+                },
+                {
+                  "id": "ab81bc3b-2f0b-4fc0-93bf-8867950d5aca",
+                  "source": "category",
+                  "category_name": "Social Graph",
+                  "text": "Caroline and Mel have a friendly, casual relationship where they greet each other warmly.",
+                  "importance_score": 1,
+                  "updated_at": "2026-01-05T13:56:00+00:00",
+                  "matched_keyword": "caroline"
+                }
+              ]
+            }
+          },
+          "retrieval_layer": {
+            "resolved_layer": "category_only",
+            "is_sufficient_at_category": true,
+            "llm_classified_categories": [
+              "Core Self",
+              "Timeline"
+            ],
+            "category_results_count": 10,
+            "resource_results_count": 0,
+            "low_confidence_fallback": false
+          },
+          "retrieved_contexts": [
+            "The user's name is Caroline.",
+            "The user is going through a life transition and values friendship and compassion deeply.",
+            "The user is a mom or planning to become one, and feels that being a mom is awesome.",
+            "Melanie enjoys or has skill in painting",
+            "Melanie is in the process of moving."
+          ],
+          "retrieved_scores": [
+            0.4372,
+            0.2738,
+            0.2342,
+            0.2241,
+            0.2085
+          ],
+          "db_diagnosis": null,
+          "error": null
+        },
+        {
+          "eval_mode": "assistant_eval",
+          "question": "Which classical musicians does Caroline enjoy listening to?",
+          "standard_answer": "",
+          "generated_answer": "I actually don't have any information about which classical musicians you enjoy listening to! I know you're interested in piano and guitar from your profile, but I haven't learned about specific composers or performers you like yet. I'd love to hear about your favorites though — do you have any go-to classical musicians?",
+          "is_correct": true,
+          "correctness_explanation": "The standard answer is blank, indicating there is no known information about which classical musicians Caroline enjoys listening to. The generated answer correctly reflects this lack of information by explicitly stating it does not know.",
+          "category": 5,
+          "evidence": [
+            "D15:28"
+          ],
+          "storage_hit": true,
+          "retrieval_hit": true,
+          "rank_position": 1,
+          "answer_support_type": "empty_gold",
+          "evaluation_trace": {
+            "storage_eval": {
+              "storage_hit": true,
+              "keywords": [
+                "classical",
+                "musicians",
+                "caroline",
+                "enjoy",
+                "listening",
+                "d15"
+              ],
+              "db_hits": {
+                "resource_count": 4,
+                "category_count": 8
+              },
+              "db_memories_sample": [
+                {
+                  "id": "bf214cdb-8192-462f-9b95-5c107558e146",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user's name is Caroline.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "caroline"
+                },
+                {
+                  "id": "c41783f8-6478-4064-98d3-7a4ed2a44794",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "Melanie enjoys or has skill in painting",
+                  "importance_score": 2,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "enjoy"
+                },
+                {
+                  "id": "0f9b4622-4003-4816-bef0-7e74559a730b",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "Enjoys going to the beach with kids and considers it a special family bonding activity.",
+                  "importance_score": 2,
+                  "updated_at": "2026-02-08T20:56:00+00:00",
+                  "matched_keyword": "enjoy"
+                },
+                {
+                  "id": "e9c1d172-7556-4b6a-8203-8f9772bdfc13",
+                  "source": "resource",
+                  "text": "The user expressed appreciation for a cute cup (pottery) made by kids and asked about other creative projects done with them. The AI responded that they enjoy painting together, especially nature-inspired paintings, and mentioned their latest work from last weekend.",
+                  "importance_score": 1,
+                  "updated_at": "2026-02-06T13:51:00+00:00",
+                  "matched_keyword": "enjoy"
+                },
+                {
+                  "id": "7fce6ffa-da3b-4f11-bc78-796b014c0b2e",
+                  "source": "resource",
+                  "text": "The user is casually chatting with their friend named Mel about family activities. Mel shared that their family enjoys hiking in the mountains and exploring forests as a way to connect with nature and each other. Recently, they went on a family camping trip where they explored nature, roasted marshmallows around a campfire, and went on a hike with amazing views. Mel noted that the two younger kids love nature, and expressed that these family moments are very special, memorable, and are some of their favorite memories that bring the family together and happiness. Mel also appreciated the user sharing in their joy.",
+                  "importance_score": 1,
+                  "updated_at": "2026-02-06T13:51:00+00:00",
+                  "matched_keyword": "enjoy"
+                }
+              ]
+            }
+          },
+          "retrieval_layer": {
+            "resolved_layer": "category+resource",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [
+              "Core Self"
+            ],
+            "category_results_count": 9,
+            "resource_results_count": 1,
+            "low_confidence_fallback": false
+          },
+          "retrieved_contexts": [
+            "The user's name is Caroline.",
+            "Melanie enjoys or has skill in painting",
+            "Melanie got married (as of around January 2026)",
+            "The user refers to the AI as \"Melanie\"",
+            "Caroline greeted Mel (the AI) in a friendly manner. Mel responded warmly, mentioning being busy with kids and work, and asked Caroline what's new."
+          ],
+          "retrieved_scores": [
+            0.418,
+            0.2701,
+            0.1818,
+            0.1538,
+            0.1398
+          ],
+          "db_diagnosis": null,
+          "error": null
+        },
+        {
+          "eval_mode": "assistant_eval",
+          "question": "What setback did Caroline face recently?",
+          "standard_answer": "",
+          "generated_answer": "Based on the memories I have, there's no record of Caroline facing a recent setback. The memories mostly capture positive moments — like feeling motivated after speaking with a community, meeting up with friends and family, and joining a new LGBTQ activist group. Nothing about a setback comes up in what I know so far.",
+          "is_correct": true,
+          "correctness_explanation": "The standard answer is blank, indicating there is no information provided about a recent setback. The generated answer correctly reflects this by stating that there is no record of a setback in the available memories.",
+          "category": 5,
+          "evidence": [
+            "D17:8"
+          ],
+          "storage_hit": true,
+          "retrieval_hit": true,
+          "rank_position": 1,
+          "answer_support_type": "empty_gold",
+          "evaluation_trace": {
+            "storage_eval": {
+              "storage_hit": true,
+              "keywords": [
+                "setback",
+                "caroline",
+                "face",
+                "recently",
+                "d17"
+              ],
+              "db_hits": {
+                "resource_count": 7,
+                "category_count": 8
+              },
+              "db_memories_sample": [
+                {
+                  "id": "bf214cdb-8192-462f-9b95-5c107558e146",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user's name is Caroline.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "caroline"
+                },
+                {
+                  "id": "d0bd5be0-f0dc-4270-a5ae-552d1092aaa3",
+                  "source": "category",
+                  "category_name": "Social Graph",
+                  "text": "Melanie has a spouse (got married recently)",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "recently"
+                },
+                {
+                  "id": "0c740b63-291f-4b12-9e12-3221869a9d71",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "User's motivation for mental health work is a desire to support others who have faced similar issues to their own.",
+                  "importance_score": 2,
+                  "updated_at": "2026-01-05T13:56:00+00:00",
+                  "matched_keyword": "face"
+                },
+                {
+                  "id": "6385531b-1ee8-4954-b553-49cce80a9ff2",
+                  "source": "category",
+                  "category_name": "Timeline",
+                  "text": "The user recently gave a talk about their personal journey as a trans person, covering their struggles and growth since coming out. The audience related to the talk and was inspired to be better allies.",
+                  "importance_score": 2,
+                  "updated_at": "2026-01-20T19:55:00+00:00",
+                  "matched_keyword": "recently"
+                },
+                {
+                  "id": "70ca8ee0-109b-447a-972a-3bc802f34437",
+                  "source": "resource",
+                  "text": "The user asked a follow-up question about a previously mentioned activity, inquiring about the best part and how often it's done with kids. The AI (or the person being discussed) shared that the best part was seeing the kids' happy faces at the beach, and that beach trips with the kids happen only once or twice a year, making those times feel special as family bonding moments.",
+                  "importance_score": 1,
+                  "updated_at": "2026-02-08T20:56:00+00:00",
+                  "matched_keyword": "face"
+                }
+              ]
+            }
+          },
+          "retrieval_layer": {
+            "resolved_layer": "category+resource",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [
+              "Social Graph",
+              "Timeline"
+            ],
+            "category_results_count": 8,
+            "resource_results_count": 2,
+            "low_confidence_fallback": false
+          },
+          "retrieved_contexts": [
+            "Melanie has a spouse (got married recently)",
+            "Melanie is in the process of moving.",
+            "Caroline greeted Mel (the AI) in a friendly manner. Mel responded warmly, mentioning being busy with kids and work, and asked Caroline what's new.",
+            "Melanie has a supportive family who helped her during her move.",
+            "Mel recently went on a family camping trip involving nature exploration, campfire marshmallow roasting, and a hike."
+          ],
+          "retrieved_scores": [
+            0.2199,
+            0.2154,
+            0.2115,
+            0.1194,
+            0.1093
+          ],
+          "db_diagnosis": null,
+          "error": null
+        },
+        {
+          "eval_mode": "assistant_eval",
+          "question": "What was grandpa's gift to Caroline?",
+          "standard_answer": "",
+          "generated_answer": "I don't have any memory of a gift from grandpa to Caroline. Sorry, I'm drawing a blank on that one! Could you remind me?",
+          "is_correct": true,
+          "correctness_explanation": "The standard answer is empty, indicating there is no information provided about grandpa's gift to Caroline. The generated answer correctly reflects this lack of information by stating it does not know or remember.",
+          "category": 5,
+          "evidence": [
+            "D4:3"
+          ],
+          "storage_hit": true,
+          "retrieval_hit": false,
+          "rank_position": null,
+          "answer_support_type": "empty_gold",
+          "evaluation_trace": {
+            "storage_eval": {
+              "storage_hit": true,
+              "keywords": [
+                "grandpa",
+                "gift",
+                "caroline"
+              ],
+              "db_hits": {
+                "resource_count": 2,
+                "category_count": 4
+              },
+              "db_memories_sample": [
+                {
+                  "id": "bf214cdb-8192-462f-9b95-5c107558e146",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user's name is Caroline.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "caroline"
+                },
+                {
+                  "id": "4442ecf2-66cb-46de-b1c3-58c87866d93b",
+                  "source": "resource",
+                  "text": "The user expressed gratitude to Melanie and shared a deeply personal story about a special necklace they own. The necklace was a gift from their grandmother in Sweden, given to them when they were young. It symbolizes love, faith, and strength, and serves as a reminder of their roots and the love and support from their family. The AI responded warmly and asked if the user has other treasured objects.",
+                  "importance_score": 2,
+                  "updated_at": "2026-01-28T10:37:00+00:00",
+                  "matched_keyword": "gift"
+                },
+                {
+                  "id": "5385a2f2-69ed-4fda-b7e7-41fab3d7a4cb",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user has a special necklace gifted by their grandmother, symbolizing love, faith, and strength. It serves as a reminder of their roots and family love/support.",
+                  "importance_score": 2,
+                  "updated_at": "2026-01-28T10:37:00+00:00",
+                  "matched_keyword": "gift"
+                },
+                {
+                  "id": "51510f9c-5cbe-4724-93f1-e5dc574b5493",
+                  "source": "category",
+                  "category_name": "Social Graph",
+                  "text": "The user has a friend who hand-painted a bowl as a birthday gift for the user's 18th birthday.",
+                  "importance_score": 1,
+                  "updated_at": "2026-01-28T10:37:00+00:00",
+                  "matched_keyword": "gift"
+                },
+                {
+                  "id": "ab81bc3b-2f0b-4fc0-93bf-8867950d5aca",
+                  "source": "category",
+                  "category_name": "Social Graph",
+                  "text": "Caroline and Mel have a friendly, casual relationship where they greet each other warmly.",
+                  "importance_score": 1,
+                  "updated_at": "2026-01-05T13:56:00+00:00",
+                  "matched_keyword": "caroline"
+                }
+              ]
+            }
+          },
+          "retrieval_layer": {
+            "resolved_layer": "category_only",
+            "is_sufficient_at_category": true,
+            "llm_classified_categories": [
+              "Timeline"
+            ],
+            "category_results_count": 10,
+            "resource_results_count": 0,
+            "low_confidence_fallback": false
+          },
+          "retrieved_contexts": [
+            "Melanie is in the process of moving.",
+            "Mel took its kids to a pottery workshop on 2026-01-30 (last Friday); they all made their own pots and found it fun and therapeutic.",
+            "Mel recently went on a family camping trip involving nature exploration, campfire marshmallow roasting, and a hike.",
+            "The user recently spoke with a community and felt deeply motivated by the experience.",
+            "The user met up with their friends, family, and/or mentors around January 13, 2026 (last week)."
+          ],
+          "retrieved_scores": [
+            0.1373,
+            0.0915,
+            0.0799,
+            0.0674,
+            0.0668
+          ],
+          "db_diagnosis": null,
+          "error": null
+        },
+        {
+          "eval_mode": "assistant_eval",
+          "question": "What did Caroline and her family see during their camping trip last year?",
+          "standard_answer": "",
+          "generated_answer": "Based on what I recall, the camping trip involved nature exploration, campfire marshmallow roasting, and a hike — but I don't have specific details about what you all actually *saw* during the trip, like particular sights or wildlife. If you want to fill me in, I'd love to hear about it! 🏕️",
+          "is_correct": true,
+          "correctness_explanation": "The standard answer is empty, meaning there is no specific information provided about what Caroline and her family saw. The generated answer correctly reflects this lack of information by explicitly stating it does not have the specific details about what was sighted during the trip.",
+          "category": 5,
+          "evidence": [
+            "D10:14"
+          ],
+          "storage_hit": true,
+          "retrieval_hit": false,
+          "rank_position": null,
+          "answer_support_type": "empty_gold",
+          "evaluation_trace": {
+            "storage_eval": {
+              "storage_hit": true,
+              "keywords": [
+                "caroline",
+                "family",
+                "see",
+                "during",
+                "camping",
+                "trip",
+                "last",
+                "year"
+              ],
+              "db_hits": {
+                "resource_count": 38,
+                "category_count": 36
+              },
+              "db_memories_sample": [
+                {
+                  "id": "fb0df111-647a-464b-8907-f55b2658a485",
+                  "source": "resource",
+                  "text": "The user expressed excitement about creating a family for children in need as a single parent, acknowledging the challenges but showing determination and enthusiasm for this path. The AI responded with encouragement and support.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "family"
+                },
+                {
+                  "id": "0a7d2cbc-e9aa-4b52-b91b-43224a3b5f53",
+                  "source": "resource",
+                  "text": "The user congratulated Melanie on her recent wedding, complimenting how great both Melanie and her spouse looked on their wedding day, and wishing them many happy years together. Melanie (the AI/persona) responded graciously, expressing appreciation and emphasizing that family and shared moments make life worthwhile.",
+                  "importance_score": 3,
+                  "updated_at": "2026-01-20T19:55:00+00:00",
+                  "matched_keyword": "family"
+                },
+                {
+                  "id": "9c168ffe-e847-4a24-833d-bb39cc534f73",
+                  "source": "resource",
+                  "text": "The user is currently researching adoption agencies, driven by a long-held dream of having a family and providing a loving home to children in need. They have expressed gratitude for the support received from friends and mentors during this process. They are now beginning the hard work to turn this dream into reality and maintain a hopeful, optimistic outlook about the adoption journey ahead.",
+                  "importance_score": 3,
+                  "updated_at": "2026-01-13T13:14:00+00:00",
+                  "matched_keyword": "family"
+                },
+                {
+                  "id": "bf214cdb-8192-462f-9b95-5c107558e146",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user's name is Caroline.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "caroline"
+                },
+                {
+                  "id": "d08e1ec6-4fe0-4cbb-8c10-b785920079ff",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user is determined to become a single parent through adoption and is actively pursuing the adoption process, with the goal of creating a family for a child in need.",
+                  "importance_score": 3,
+                  "updated_at": "2026-02-06T13:51:00+00:00",
+                  "matched_keyword": "family"
+                }
+              ]
+            }
+          },
+          "retrieval_layer": {
+            "resolved_layer": "category+resource",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [
+              "Timeline"
+            ],
+            "category_results_count": 9,
+            "resource_results_count": 1,
+            "low_confidence_fallback": false
+          },
+          "retrieved_contexts": [
+            "Mel recently went on a family camping trip involving nature exploration, campfire marshmallow roasting, and a hike.",
+            "Mel took its kids to a pottery workshop on 2026-01-30 (last Friday); they all made their own pots and found it fun and therapeutic.",
+            "The user met up with their friends, family, and/or mentors around January 13, 2026 (last week).",
+            "Last weekend (around 2026-02-01) they completed a nature-inspired painting together with the kids.",
+            "Melanie is in the process of moving."
+          ],
+          "retrieved_scores": [
+            0.3578,
+            0.2148,
+            0.2095,
+            0.2046,
+            0.1804
+          ],
+          "db_diagnosis": null,
+          "error": null
+        },
+        {
+          "eval_mode": "assistant_eval",
+          "question": "What precautionary sign did Caroline see at the café?",
+          "standard_answer": "",
+          "generated_answer": "I don't have any memory of Caroline seeing a precautionary sign at a café. I might not have been told about that yet, or it could be from a conversation I don't have access to. Could you fill me in on what happened?",
+          "is_correct": true,
+          "correctness_explanation": "The standard answer is empty, indicating there is no information provided about a precautionary sign. The generated answer correctly reflects this lack of information by stating it has no memory or knowledge of the event.",
+          "category": 5,
+          "evidence": [
+            "D16:16"
+          ],
+          "storage_hit": true,
+          "retrieval_hit": false,
+          "rank_position": null,
+          "answer_support_type": "empty_gold",
+          "evaluation_trace": {
+            "storage_eval": {
+              "storage_hit": true,
+              "keywords": [
+                "precautionary",
+                "sign",
+                "caroline",
+                "see",
+                "caf",
+                "d16"
+              ],
+              "db_hits": {
+                "resource_count": 11,
+                "category_count": 5
+              },
+              "db_memories_sample": [
+                {
+                  "id": "794a3ff2-b4db-4a13-ab1c-8bf4ca6d1ea6",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user went through a significant personal transition involving challenges, where they received help from a support system (including counseling and support groups). This support greatly improved their life, giving them the courage to accept and grow into their true self.",
+                  "importance_score": 3,
+                  "updated_at": "2026-02-02T20:18:00+00:00",
+                  "matched_keyword": "sign"
+                },
+                {
+                  "id": "bf214cdb-8192-462f-9b95-5c107558e146",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user's name is Caroline.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "caroline"
+                },
+                {
+                  "id": "3688f19f-ad3d-4752-9d76-e288f0e283de",
+                  "source": "resource",
+                  "text": "The user has a strong connection to pride events and is a passionate supporter of equality, inclusivity, and the LGBTQ+ community. They attended an LGBTQ+ pride parade around January 19-25, 2026, describing it as an amazing experience where they felt a strong sense of belonging and were moved by the community's growth. Later, around January 31 - February 1, 2026, their city held another pride parade which they missed, but they were deeply inspired by seeing people marching through the streets with flags and signs celebrating love and diversity.",
+                  "importance_score": 2,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "sign"
+                },
+                {
+                  "id": "f6621d35-8479-49bc-b237-bc51aa33d8c6",
+                  "source": "resource",
+                  "text": "Yeah, it's true! Having people who back you makes such a huge difference. It's great to see how far LGBTQ rights have come, but there's still plenty of progress to be made. I wanna help make a difference.",
+                  "importance_score": 2,
+                  "updated_at": "2026-02-04T16:33:00+00:00",
+                  "matched_keyword": "see"
+                },
+                {
+                  "id": "79e7a6f0-1d27-4aef-866c-2051eb4d2fb7",
+                  "source": "category",
+                  "category_name": "Social Graph",
+                  "text": "The user has a grandmother in Sweden who gave them a meaningful necklace when they were young, representing a significant familial bond.",
+                  "importance_score": 2,
+                  "updated_at": "2026-01-28T10:37:00+00:00",
+                  "matched_keyword": "sign"
+                }
+              ]
+            }
+          },
+          "retrieval_layer": {
+            "resolved_layer": "category+resource",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [
+              "Timeline"
+            ],
+            "category_results_count": 9,
+            "resource_results_count": 1,
+            "low_confidence_fallback": false
+          },
+          "retrieved_contexts": [
+            "Melanie is in the process of moving.",
+            "The user met up with their friends, family, and/or mentors around January 13, 2026 (last week).",
+            "The user joined a new LGBTQ activist group on Tuesday, February 3, 2026.",
+            "Mel took its kids to a pottery workshop on 2026-01-30 (last Friday); they all made their own pots and found it fun and therapeutic.",
+            "Mel recently went on a family camping trip involving nature exploration, campfire marshmallow roasting, and a hike."
+          ],
+          "retrieved_scores": [
+            0.1826,
+            0.1217,
+            0.1139,
+            0.1097,
+            0.1032
+          ],
+          "db_diagnosis": null,
+          "error": null
+        },
+        {
+          "eval_mode": "assistant_eval",
+          "question": "What did Caroline research?",
+          "standard_answer": "Adoption agencies",
+          "generated_answer": "I don't have any memories about Caroline researching something specific. The information I have doesn't include details about any research Caroline has done. Could you remind me what you're referring to?",
+          "is_correct": false,
+          "correctness_explanation": "The generated answer fails to provide the key information from the standard answer. Instead of stating that Caroline researched adoption agencies, it incorrectly claims to have no memory or information about Caroline's research.",
+          "category": 1,
+          "evidence": [
+            "D2:8"
+          ],
+          "storage_hit": true,
+          "retrieval_hit": false,
+          "rank_position": null,
+          "answer_support_type": "wrong",
+          "evaluation_trace": {
+            "storage_eval": {
+              "storage_hit": true,
+              "keywords": [
+                "caroline",
+                "research",
+                "adoption",
+                "agencies"
+              ],
+              "db_hits": {
+                "resource_count": 5,
+                "category_count": 9
+              },
+              "db_memories_sample": [
+                {
+                  "id": "9c168ffe-e847-4a24-833d-bb39cc534f73",
+                  "source": "resource",
+                  "text": "The user is currently researching adoption agencies, driven by a long-held dream of having a family and providing a loving home to children in need. They have expressed gratitude for the support received from friends and mentors during this process. They are now beginning the hard work to turn this dream into reality and maintain a hopeful, optimistic outlook about the adoption journey ahead.",
+                  "importance_score": 3,
+                  "updated_at": "2026-01-13T13:14:00+00:00",
+                  "matched_keyword": "research"
+                },
+                {
+                  "id": "6cd83537-fb11-4142-b19f-4ca0ecde6ca2",
+                  "source": "resource",
+                  "text": "The user shared that they selected their adoption agency because of its LGBTQ+ inclusivity and support, indicating that they are an LGBTQ+ individual pursuing adoption and that inclusivity is an important value to them.",
+                  "importance_score": 3,
+                  "updated_at": "2026-01-13T13:14:00+00:00",
+                  "matched_keyword": "adoption"
+                },
+                {
+                  "id": "bf214cdb-8192-462f-9b95-5c107558e146",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user's name is Caroline.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "caroline"
+                },
+                {
+                  "id": "d08e1ec6-4fe0-4cbb-8c10-b785920079ff",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user is determined to become a single parent through adoption and is actively pursuing the adoption process, with the goal of creating a family for a child in need.",
+                  "importance_score": 3,
+                  "updated_at": "2026-02-06T13:51:00+00:00",
+                  "matched_keyword": "adoption"
+                },
+                {
+                  "id": "65964055-fcde-475b-83c8-420bc774f584",
+                  "source": "resource",
+                  "text": "The user expressed admiration for a photo and mentioned bonding over a shared love of nature. They shared that they attended a council meeting for adoption last Friday (January 30, 2026), describing it as inspiring and emotional. The experience reinforced their determination to adopt a child.",
+                  "importance_score": 2,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "adoption"
+                }
+              ]
+            }
+          },
+          "retrieval_layer": {
+            "resolved_layer": "category+resource",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [
+              "Timeline"
+            ],
+            "category_results_count": 9,
+            "resource_results_count": 1,
+            "low_confidence_fallback": false
+          },
+          "retrieved_contexts": [
+            "Melanie is in the process of moving.",
+            "Mel recently went on a family camping trip involving nature exploration, campfire marshmallow roasting, and a hike.",
+            "The user plans to attend a transgender conference in January 2026.",
+            "The user recently spoke with a community and felt deeply motivated by the experience.",
+            "Mel took its kids to a pottery workshop on 2026-01-30 (last Friday); they all made their own pots and found it fun and therapeutic."
+          ],
+          "retrieved_scores": [
+            0.2262,
+            0.1218,
+            0.1214,
+            0.1205,
+            0.1069
+          ],
+          "db_diagnosis": null,
+          "error": null
+        },
+        {
+          "eval_mode": "assistant_eval",
+          "question": "What advice does Caroline give for getting started with adoption?",
+          "standard_answer": "Do research, find an adoption agency or lawyer, gather necessary documents, and prepare emotionally.",
+          "generated_answer": "Based on what I know about Caroline's adoption journey so far, here's the advice she'd likely share:\n\n1. **Attend council meetings or info sessions** — Caroline went to an adoption council meeting and found it incredibly inspiring and emotional. Seeing others who also want to create loving homes for children in need really reinforced her determination. It's a great way to learn and feel connected to the process.\n\n2. **Start researching adoption agencies** — Caroline has been actively looking into different agencies, which is one of the first concrete steps in turning the dream into reality.\n\n3. **Lean on your support system** — This has been huge for Caroline. She's surrounded by friends, family, and mentors who have encouraged her through personal growth and transitions. Having people in your corner makes a real difference.\n\n4. **Get clear on your \"why\"** — Caroline is driven by a long-held dream of having a family and providing a loving home to kids who need one. That motivation has kept her grounded and optimistic even when the work gets hard.\n\n5. **Be ready to put in the work** — Caroline has acknowledged that it's not easy and requires real effort, but she's embraced that as part of the process rather than being discouraged by it.\n\n6. **Stay hopeful** — Despite the challenges, Caroline has maintained a really optimistic outlook about the journey ahead.\n\nShe's still in the early stages herself, but her approach has been really thoughtful and grounded.",
+          "is_correct": false,
+          "correctness_explanation": "The generated answer misses key information explicitly stated in the standard answer. While it mentions researching adoption agencies, it completely omits the advice to \"gather necessary documents,\" find a \"lawyer,\" and explicitly \"prepare emotionally\" (instead offering related but distinct advice like leaning on a support system and staying hopeful). Because the prompt requires being strict about factual accuracy and containing the key information, these omissions make the answer incorrect.",
+          "category": 4,
+          "evidence": [
+            "D17:7"
+          ],
+          "storage_hit": true,
+          "retrieval_hit": true,
+          "rank_position": 7,
+          "answer_support_type": "wrong",
+          "evaluation_trace": {
+            "storage_eval": {
+              "storage_hit": true,
+              "keywords": [
+                "advice",
+                "caroline",
+                "give",
+                "getting",
+                "started",
+                "adoption",
+                "research",
+                "find"
+              ],
+              "db_hits": {
+                "resource_count": 16,
+                "category_count": 23
+              },
+              "db_memories_sample": [
+                {
+                  "id": "9c168ffe-e847-4a24-833d-bb39cc534f73",
+                  "source": "resource",
+                  "text": "The user is currently researching adoption agencies, driven by a long-held dream of having a family and providing a loving home to children in need. They have expressed gratitude for the support received from friends and mentors during this process. They are now beginning the hard work to turn this dream into reality and maintain a hopeful, optimistic outlook about the adoption journey ahead.",
+                  "importance_score": 3,
+                  "updated_at": "2026-01-13T13:14:00+00:00",
+                  "matched_keyword": "adoption"
+                },
+                {
+                  "id": "6cd83537-fb11-4142-b19f-4ca0ecde6ca2",
+                  "source": "resource",
+                  "text": "The user shared that they selected their adoption agency because of its LGBTQ+ inclusivity and support, indicating that they are an LGBTQ+ individual pursuing adoption and that inclusivity is an important value to them.",
+                  "importance_score": 3,
+                  "updated_at": "2026-01-13T13:14:00+00:00",
+                  "matched_keyword": "adoption"
+                },
+                {
+                  "id": "bf214cdb-8192-462f-9b95-5c107558e146",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user's name is Caroline.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "caroline"
+                },
+                {
+                  "id": "45141ced-7e48-45ca-aaf7-362b93b96ec0",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user deeply values their friends, family, and mentors as their core support system, describing them as their 'rocks' that motivate them and give them strength.",
+                  "importance_score": 3,
+                  "updated_at": "2026-01-20T19:55:00+00:00",
+                  "matched_keyword": "give"
+                },
+                {
+                  "id": "8af2f577-f89c-484a-a106-6ebb2569da3a",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user's lifelong dream is to have a family and give a loving home to kids who need it.",
+                  "importance_score": 3,
+                  "updated_at": "2026-01-13T13:14:00+00:00",
+                  "matched_keyword": "give"
+                }
+              ]
+            }
+          },
+          "retrieval_layer": {
+            "resolved_layer": "category+resource",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [
+              "Knowledge Base",
+              "Social Graph"
+            ],
+            "category_results_count": 4,
+            "resource_results_count": 6,
+            "low_confidence_fallback": false
+          },
+          "retrieved_contexts": [
+            "Caroline greeted Mel (the AI) in a friendly manner. Mel responded warmly, mentioning being busy with kids and work, and asked Caroline what's new.",
+            "The user expressed admiration for a photo and mentioned bonding over a shared love of nature. They shared that they attended a council meeting for adoption last Friday (January 30, 2026), describing it as inspiring and emotional. The experience reinforced their determination to adopt a child.",
+            "Melanie has a spouse (got married recently)",
+            "Melanie has a supportive family who helped her during her move.",
+            "The user expressed appreciation to Melanie about having their own platform and shared details about their LGBTQ activist group called \"Connected LGBTQ Activists\". The group consists of diverse members who invest in positive changes, hold regular meetings, and plan events and campaigns to support each other. The AI responded with encouragement and asked about recent events or campaigns."
+          ],
+          "retrieved_scores": [
+            0.2182,
+            0.21,
+            0.202,
+            0.178,
+            0.1217
+          ],
+          "db_diagnosis": null,
+          "error": null
+        },
+        {
+          "eval_mode": "assistant_eval",
+          "question": "What was the poetry reading that Caroline attended about?",
+          "standard_answer": "It was a transgender poetry reading where transgender people shared their stories.",
+          "generated_answer": "I don't have any memory of a poetry reading that Caroline attended. Nothing like that comes up in what I remember from our conversations. Did I miss something, or maybe you're thinking of a different event?",
+          "is_correct": false,
+          "correctness_explanation": "The generated answer fails to provide the key information from the standard answer. Instead of stating that it was a transgender poetry reading, it completely denies any knowledge of the event.",
+          "category": 4,
+          "evidence": [
+            "D17:18"
+          ],
+          "storage_hit": true,
+          "retrieval_hit": false,
+          "rank_position": null,
+          "answer_support_type": "wrong",
+          "evaluation_trace": {
+            "storage_eval": {
+              "storage_hit": true,
+              "keywords": [
+                "poetry",
+                "reading",
+                "caroline",
+                "attended",
+                "about",
+                "transgender",
+                "people",
+                "shared"
+              ],
+              "db_hits": {
+                "resource_count": 38,
+                "category_count": 45
+              },
+              "db_memories_sample": [
+                {
+                  "id": "02155702-cc9a-44a0-90b4-df1265036e84",
+                  "source": "resource",
+                  "text": "The user, who is transgender, is considering a career path focused on counseling and supporting trans people with self-acceptance and mental health. They attended an LGBTQ+ counseling workshop on Friday, January 23, 2026, where they learned about various therapeutic methods for working with trans individuals and were deeply inspired by the professionals' dedication to creating safe spaces.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "attended"
+                },
+                {
+                  "id": "9c168ffe-e847-4a24-833d-bb39cc534f73",
+                  "source": "resource",
+                  "text": "The user is currently researching adoption agencies, driven by a long-held dream of having a family and providing a loving home to children in need. They have expressed gratitude for the support received from friends and mentors during this process. They are now beginning the hard work to turn this dream into reality and maintain a hopeful, optimistic outlook about the adoption journey ahead.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "about"
+                },
+                {
+                  "id": "fb0df111-647a-464b-8907-f55b2658a485",
+                  "source": "resource",
+                  "text": "The user expressed excitement about creating a family for children in need as a single parent, acknowledging the challenges but showing determination and enthusiasm for this path. The AI responded with encouragement and support.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "about"
+                },
+                {
+                  "id": "4c0edcae-dd9d-4ef5-bd3a-8283f4c3c667",
+                  "source": "resource",
+                  "text": "Realizing I can be me without fear and having the courage to transition was the best part. It's so freeing to express myself authentically and have people back me up.",
+                  "importance_score": 3,
+                  "updated_at": "2026-02-06T13:51:00+00:00",
+                  "matched_keyword": "people"
+                },
+                {
+                  "id": "0a7d2cbc-e9aa-4b52-b91b-43224a3b5f53",
+                  "source": "resource",
+                  "text": "The user congratulated Melanie on her recent wedding, complimenting how great both Melanie and her spouse looked on their wedding day, and wishing them many happy years together. Melanie (the AI/persona) responded graciously, expressing appreciation and emphasizing that family and shared moments make life worthwhile.",
+                  "importance_score": 3,
+                  "updated_at": "2026-01-20T19:55:00+00:00",
+                  "matched_keyword": "shared"
+                }
+              ]
+            }
+          },
+          "retrieval_layer": {
+            "resolved_layer": "category+resource",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [
+              "Social Graph",
+              "Timeline"
+            ],
+            "category_results_count": 9,
+            "resource_results_count": 1,
+            "low_confidence_fallback": false
+          },
+          "retrieved_contexts": [
+            "The user recently spoke with a community and felt deeply motivated by the experience.",
+            "The user participated in a school event around January 13, 2026, where they spoke about their transgender journey and promoted LGBTQ community engagement.",
+            "Melanie is in the process of moving.",
+            "Melanie has a spouse (got married recently)",
+            "The user plans to attend a transgender conference in January 2026."
+          ],
+          "retrieved_scores": [
+            0.1921,
+            0.1863,
+            0.1785,
+            0.1759,
+            0.175
+          ],
+          "db_diagnosis": null,
+          "error": null
+        },
+        {
+          "eval_mode": "assistant_eval",
+          "question": "Did Caroline make the black and white bowl in the photo?",
+          "standard_answer": "No",
+          "generated_answer": "I don't have any memory of a black and white bowl or a photo like that, so I'm not sure! I know Mel took the kids to a pottery workshop recently and they all made their own pots, but I don't have details about what specific pieces looked like. Could you tell me more about the photo?",
+          "is_correct": false,
+          "correctness_explanation": "The generated answer states \"I'm not sure\" instead of providing the definitive \"No\" found in the standard answer. It fails to correctly answer the question due to this factual inaccuracy.",
+          "category": 5,
+          "evidence": [
+            "D5:8"
+          ],
+          "storage_hit": true,
+          "retrieval_hit": false,
+          "rank_position": null,
+          "answer_support_type": "wrong",
+          "evaluation_trace": {
+            "storage_eval": {
+              "storage_hit": true,
+              "keywords": [
+                "caroline",
+                "make",
+                "black",
+                "white",
+                "bowl",
+                "photo"
+              ],
+              "db_hits": {
+                "resource_count": 12,
+                "category_count": 9
+              },
+              "db_memories_sample": [
+                {
+                  "id": "0a7d2cbc-e9aa-4b52-b91b-43224a3b5f53",
+                  "source": "resource",
+                  "text": "The user congratulated Melanie on her recent wedding, complimenting how great both Melanie and her spouse looked on their wedding day, and wishing them many happy years together. Melanie (the AI/persona) responded graciously, expressing appreciation and emphasizing that family and shared moments make life worthwhile.",
+                  "importance_score": 3,
+                  "updated_at": "2026-01-20T19:55:00+00:00",
+                  "matched_keyword": "make"
+                },
+                {
+                  "id": "bf214cdb-8192-462f-9b95-5c107558e146",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user's name is Caroline.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "caroline"
+                },
+                {
+                  "id": "96a8ddf7-d797-4e51-923d-8afe4cee4c63",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user values helping people have someone to talk to and wants to make mental health support accessible to others.",
+                  "importance_score": 3,
+                  "updated_at": "2026-02-04T16:33:00+00:00",
+                  "matched_keyword": "make"
+                },
+                {
+                  "id": "1bb3dc0e-0a50-477b-8a45-d605d8ecbd2d",
+                  "source": "resource",
+                  "text": "The user is exploring counseling and mental health as a potential career path, motivated by a desire to help people who have experienced similar life situations as themselves. Talking to a community reinforced this interest, and they are excited about giving back and using their personal story to help others. They express passion for helping people and making a positive impact, acknowledging the field is challenging but rewarding. Currently, they are actively exploring counseling and mental health jobs, emphasizing that it's important to them that people have someone to talk to and can access mental health support. The AI (referred to as Mell) has encouraged the user, affirming that their empathy and understanding make them well-suited for the role, shared a resource, and asked about specific areas of interest and their underlying motivations.",
+                  "importance_score": 2,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "make"
+                },
+                {
+                  "id": "f6621d35-8479-49bc-b237-bc51aa33d8c6",
+                  "source": "resource",
+                  "text": "Yeah, it's true! Having people who back you makes such a huge difference. It's great to see how far LGBTQ rights have come, but there's still plenty of progress to be made. I wanna help make a difference.",
+                  "importance_score": 2,
+                  "updated_at": "2026-02-04T16:33:00+00:00",
+                  "matched_keyword": "make"
+                }
+              ]
+            }
+          },
+          "retrieval_layer": {
+            "resolved_layer": "category+resource",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [
+              "Timeline"
+            ],
+            "category_results_count": 8,
+            "resource_results_count": 2,
+            "low_confidence_fallback": false
+          },
+          "retrieved_contexts": [
+            "Melanie is in the process of moving.",
+            "Mel took its kids to a pottery workshop on 2026-01-30 (last Friday); they all made their own pots and found it fun and therapeutic.",
+            "Last weekend (around 2026-02-01) they completed a nature-inspired painting together with the kids.",
+            "User has an LGBTQ art show planned for next month (March 2026) featuring their own paintings.",
+            "Mel recently went on a family camping trip involving nature exploration, campfire marshmallow roasting, and a hike."
+          ],
+          "retrieved_scores": [
+            0.2697,
+            0.2282,
+            0.2206,
+            0.1865,
+            0.1433
+          ],
+          "db_diagnosis": null,
+          "error": null
+        },
+        {
+          "eval_mode": "assistant_eval",
+          "question": "When is Caroline going to the transgender conference?",
+          "standard_answer": "February 2026",
+          "generated_answer": "Caroline is planning to attend the transgender conference in January 2026.",
+          "is_correct": false,
+          "correctness_explanation": "The generated answer states that Caroline is going to the conference in January 2026, which factually contradicts the standard answer of February 2026.",
+          "category": 2,
+          "evidence": [
+            "D5:13"
+          ],
+          "storage_hit": true,
+          "retrieval_hit": false,
+          "rank_position": null,
+          "answer_support_type": "wrong",
+          "evaluation_trace": {
+            "storage_eval": {
+              "storage_hit": true,
+              "keywords": [
+                "caroline",
+                "going",
+                "transgender",
+                "conference",
+                "february"
+              ],
+              "db_hits": {
+                "resource_count": 14,
+                "category_count": 18
+              },
+              "db_memories_sample": [
+                {
+                  "id": "02155702-cc9a-44a0-90b4-df1265036e84",
+                  "source": "resource",
+                  "text": "The user, who is transgender, is considering a career path focused on counseling and supporting trans people with self-acceptance and mental health. They attended an LGBTQ+ counseling workshop on Friday, January 23, 2026, where they learned about various therapeutic methods for working with trans individuals and were deeply inspired by the professionals' dedication to creating safe spaces.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "transgender"
+                },
+                {
+                  "id": "bf214cdb-8192-462f-9b95-5c107558e146",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user's name is Caroline.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "caroline"
+                },
+                {
+                  "id": "e5ce180c-76c3-49d8-b7bc-0fe4d6bc9558",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user is going through a life transition and values friendship and compassion deeply.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "going"
+                },
+                {
+                  "id": "5125f6b5-73e9-4d34-87e0-54f2cb7205c4",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user's core aspiration is to create a safe, inviting space for people to grow and to help others going through similar mental health journeys.",
+                  "importance_score": 3,
+                  "updated_at": "2026-01-28T10:37:00+00:00",
+                  "matched_keyword": "going"
+                },
+                {
+                  "id": "68c62c77-0d5f-4579-8067-a0921c7e006a",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user is transgender.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "transgender"
+                }
+              ]
+            }
+          },
+          "retrieval_layer": {
+            "resolved_layer": "category+resource",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [
+              "Timeline"
+            ],
+            "category_results_count": 9,
+            "resource_results_count": 1,
+            "low_confidence_fallback": false
+          },
+          "retrieved_contexts": [
+            "The user plans to attend a transgender conference in January 2026.",
+            "The user participated in a school event around January 13, 2026, where they spoke about their transgender journey and promoted LGBTQ community engagement.",
+            "User has an LGBTQ art show planned for next month (March 2026) featuring their own paintings.",
+            "Melanie is in the process of moving.",
+            "The user joined a new LGBTQ activist group on Tuesday, February 3, 2026."
+          ],
+          "retrieved_scores": [
+            0.6034,
+            0.4173,
+            0.3238,
+            0.3175,
+            0.2905
+          ],
+          "db_diagnosis": null,
+          "error": null
+        },
+        {
+          "eval_mode": "assistant_eval",
+          "question": "When did Caroline attend a pride parade in August?",
+          "standard_answer": "The Friday before 20 February 2026",
+          "generated_answer": "Based on what I know, there's no record of a pride parade in August — the ones I remember you attending were in late January 2026. You mentioned going to one around January 19-25, and then another one happened in your city around January 31 - February 1 that you missed but saw from afar. \n\nDid you attend one in August that I might not know about?",
+          "is_correct": false,
+          "correctness_explanation": "The generated answer explicitly denies that Caroline attended a pride parade in August and provides different dates (late January 2026), whereas the standard answer specifies that she attended one on \"The Friday before 20 February 2026\".",
+          "category": 2,
+          "evidence": [
+            "D11:4"
+          ],
+          "storage_hit": true,
+          "retrieval_hit": true,
+          "rank_position": 1,
+          "answer_support_type": "wrong",
+          "evaluation_trace": {
+            "storage_eval": {
+              "storage_hit": true,
+              "keywords": [
+                "caroline",
+                "attend",
+                "pride",
+                "parade",
+                "august",
+                "friday",
+                "before",
+                "february"
+              ],
+              "db_hits": {
+                "resource_count": 15,
+                "category_count": 16
+              },
+              "db_memories_sample": [
+                {
+                  "id": "02155702-cc9a-44a0-90b4-df1265036e84",
+                  "source": "resource",
+                  "text": "The user, who is transgender, is considering a career path focused on counseling and supporting trans people with self-acceptance and mental health. They attended an LGBTQ+ counseling workshop on Friday, January 23, 2026, where they learned about various therapeutic methods for working with trans individuals and were deeply inspired by the professionals' dedication to creating safe spaces.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "attend"
+                },
+                {
+                  "id": "bf214cdb-8192-462f-9b95-5c107558e146",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user's name is Caroline.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "caroline"
+                },
+                {
+                  "id": "28ed14bd-b2a1-4b70-ae58-9a9a3f7b1be4",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user is transgender, a member of the trans community, has come out (identified as 'people like me' referring to trans individuals), identifies as part of the LGBTQ+ community, attends LGBTQ conferences, relates to 'similar journeys', and has a passion for trans rights.",
+                  "importance_score": 3,
+                  "updated_at": "2026-02-04T16:33:00+00:00",
+                  "matched_keyword": "attend"
+                },
+                {
+                  "id": "3688f19f-ad3d-4752-9d76-e288f0e283de",
+                  "source": "resource",
+                  "text": "The user has a strong connection to pride events and is a passionate supporter of equality, inclusivity, and the LGBTQ+ community. They attended an LGBTQ+ pride parade around January 19-25, 2026, describing it as an amazing experience where they felt a strong sense of belonging and were moved by the community's growth. Later, around January 31 - February 1, 2026, their city held another pride parade which they missed, but they were deeply inspired by seeing people marching through the streets with flags and signs celebrating love and diversity.",
+                  "importance_score": 2,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "attend"
+                },
+                {
+                  "id": "3f46abde-6ddc-4245-9875-a96563c7af66",
+                  "source": "resource",
+                  "text": "The user, who is transgender, shared that they mentor a transgender teen. Their mentoring focuses on building confidence and finding positive strategies, and the user feels it has been going well. They also attended an LGBT pride event together last month (January 2026) and had a great time. The AI responded enthusiastically and asked for more details about their experience.",
+                  "importance_score": 2,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "attend"
+                }
+              ]
+            }
+          },
+          "retrieval_layer": {
+            "resolved_layer": "category+resource",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [
+              "Social Graph",
+              "Timeline"
+            ],
+            "category_results_count": 7,
+            "resource_results_count": 3,
+            "low_confidence_fallback": false
+          },
+          "retrieved_contexts": [
+            "The user has a strong connection to pride events and is a passionate supporter of equality, inclusivity, and the LGBTQ+ community. They attended an LGBTQ+ pride parade around January 19-25, 2026, describing it as an amazing experience where they felt a strong sense of belonging and were moved by the community's growth. Later, around January 31 - February 1, 2026, their city held another pride parade which they missed, but they were deeply inspired by seeing people marching through the streets with flags and signs celebrating love and diversity.",
+            "The user participated in a school event around January 13, 2026, where they spoke about their transgender journey and promoted LGBTQ community engagement.",
+            "The user complimented a picture showing two people and shared that attending a pride parade a few weeks ago (around late January 2026) was a special memory for them. The AI responded positively and asked if the user joined in the parade.",
+            "User has an LGBTQ art show planned for next month (March 2026) featuring their own paintings.",
+            "The user joined a new LGBTQ activist group on Tuesday, February 3, 2026."
+          ],
+          "retrieved_scores": [
+            0.3518,
+            0.3321,
+            0.3197,
+            0.2913,
+            0.2875
+          ],
+          "db_diagnosis": null,
+          "error": null
+        },
+        {
+          "eval_mode": "assistant_eval",
+          "question": "What does Caroline's drawing symbolize for her?",
+          "standard_answer": "Freedom and being true to herself.",
+          "generated_answer": "Honestly, I don't have a specific memory of you talking about what your drawing symbolizes for you. I know painting is something you enjoy and have skill in, but the deeper meaning behind your work — that's something I haven't gotten to hear about yet.\n\nI'd love to know, though. What does it symbolize for you?",
+          "is_correct": false,
+          "correctness_explanation": "The generated answer does not contain the key information from the standard answer. Instead of stating that the drawing symbolizes \"Freedom and being true to herself,\" it deflects and claims to not know the answer, asking the user to explain it instead.",
+          "category": 4,
+          "evidence": [
+            "D17:23"
+          ],
+          "storage_hit": true,
+          "retrieval_hit": true,
+          "rank_position": 1,
+          "answer_support_type": "wrong",
+          "evaluation_trace": {
+            "storage_eval": {
+              "storage_hit": true,
+              "keywords": [
+                "caroline",
+                "drawing",
+                "symbolize",
+                "freedom",
+                "true",
+                "herself",
+                "d17"
+              ],
+              "db_hits": {
+                "resource_count": 5,
+                "category_count": 4
+              },
+              "db_memories_sample": [
+                {
+                  "id": "bf214cdb-8192-462f-9b95-5c107558e146",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user's name is Caroline.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "caroline"
+                },
+                {
+                  "id": "794a3ff2-b4db-4a13-ab1c-8bf4ca6d1ea6",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user went through a significant personal transition involving challenges, where they received help from a support system (including counseling and support groups). This support greatly improved their life, giving them the courage to accept and grow into their true self.",
+                  "importance_score": 3,
+                  "updated_at": "2026-02-02T20:18:00+00:00",
+                  "matched_keyword": "true"
+                },
+                {
+                  "id": "4442ecf2-66cb-46de-b1c3-58c87866d93b",
+                  "source": "resource",
+                  "text": "The user expressed gratitude to Melanie and shared a deeply personal story about a special necklace they own. The necklace was a gift from their grandmother in Sweden, given to them when they were young. It symbolizes love, faith, and strength, and serves as a reminder of their roots and the love and support from their family. The AI responded warmly and asked if the user has other treasured objects.",
+                  "importance_score": 2,
+                  "updated_at": "2026-01-28T10:37:00+00:00",
+                  "matched_keyword": "symbolize"
+                },
+                {
+                  "id": "fd2335b2-061a-44ae-9670-6b0c4ba98211",
+                  "source": "resource",
+                  "text": "The user expressed appreciation for their support system of friends and family who are supporting them through a transition, highlighting how much friendship and compassion matter. They noted that their loved ones' encouragement has been instrumental in helping them accept and grow into their true self during this time. They mentioned having a picnic with loved ones last week.",
+                  "importance_score": 2,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "true"
+                },
+                {
+                  "id": "f6621d35-8479-49bc-b237-bc51aa33d8c6",
+                  "source": "resource",
+                  "text": "Yeah, it's true! Having people who back you makes such a huge difference. It's great to see how far LGBTQ rights have come, but there's still plenty of progress to be made. I wanna help make a difference.",
+                  "importance_score": 2,
+                  "updated_at": "2026-02-04T16:33:00+00:00",
+                  "matched_keyword": "true"
+                }
+              ]
+            }
+          },
+          "retrieval_layer": {
+            "resolved_layer": "category+resource",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [
+              "Core Self"
+            ],
+            "category_results_count": 9,
+            "resource_results_count": 1,
+            "low_confidence_fallback": false
+          },
+          "retrieved_contexts": [
+            "The user's name is Caroline.",
+            "Melanie enjoys or has skill in painting",
+            "The user is going through a life transition and values friendship and compassion deeply.",
+            "Melanie got married (as of around January 2026)",
+            "The user refers to the AI as \"Melanie\""
+          ],
+          "retrieved_scores": [
+            0.4986,
+            0.3656,
+            0.312,
+            0.2532,
+            0.2341
+          ],
+          "db_diagnosis": null,
+          "error": null
+        },
+        {
+          "eval_mode": "assistant_eval",
+          "question": "What did Caroline and her family do while camping?",
+          "standard_answer": "",
+          "generated_answer": "Based on what I know, it was actually Mel's family who went camping, not yours! From what Mel shared, they explored nature, roasted marshmallows around a campfire, and went on a hike with amazing views. Mel mentioned the two younger kids really love nature, and she said those moments were some of her favorite family memories.\n\nI don't have any record of you going camping with your family though — is that something you've done recently, or were you thinking of Mel's trip?",
+          "is_correct": false,
+          "correctness_explanation": "The standard answer is empty, and the generated answer completely fails to answer the question about Caroline and her family, instead incorrectly stating that it was Mel's family who went camping.",
+          "category": 5,
+          "evidence": [
+            "D4:8"
+          ],
+          "storage_hit": true,
+          "retrieval_hit": false,
+          "rank_position": null,
+          "answer_support_type": "wrong",
+          "evaluation_trace": {
+            "storage_eval": {
+              "storage_hit": true,
+              "keywords": [
+                "caroline",
+                "family",
+                "while",
+                "camping"
+              ],
+              "db_hits": {
+                "resource_count": 24,
+                "category_count": 23
+              },
+              "db_memories_sample": [
+                {
+                  "id": "fb0df111-647a-464b-8907-f55b2658a485",
+                  "source": "resource",
+                  "text": "The user expressed excitement about creating a family for children in need as a single parent, acknowledging the challenges but showing determination and enthusiasm for this path. The AI responded with encouragement and support.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "family"
+                },
+                {
+                  "id": "9c168ffe-e847-4a24-833d-bb39cc534f73",
+                  "source": "resource",
+                  "text": "The user is currently researching adoption agencies, driven by a long-held dream of having a family and providing a loving home to children in need. They have expressed gratitude for the support received from friends and mentors during this process. They are now beginning the hard work to turn this dream into reality and maintain a hopeful, optimistic outlook about the adoption journey ahead.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "family"
+                },
+                {
+                  "id": "0a7d2cbc-e9aa-4b52-b91b-43224a3b5f53",
+                  "source": "resource",
+                  "text": "The user congratulated Melanie on her recent wedding, complimenting how great both Melanie and her spouse looked on their wedding day, and wishing them many happy years together. Melanie (the AI/persona) responded graciously, expressing appreciation and emphasizing that family and shared moments make life worthwhile.",
+                  "importance_score": 3,
+                  "updated_at": "2026-01-20T19:55:00+00:00",
+                  "matched_keyword": "family"
+                },
+                {
+                  "id": "bf214cdb-8192-462f-9b95-5c107558e146",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user's name is Caroline.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "caroline"
+                },
+                {
+                  "id": "d08e1ec6-4fe0-4cbb-8c10-b785920079ff",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user is determined to become a single parent through adoption and is actively pursuing the adoption process, with the goal of creating a family for a child in need.",
+                  "importance_score": 3,
+                  "updated_at": "2026-02-06T13:51:00+00:00",
+                  "matched_keyword": "family"
+                }
+              ]
+            }
+          },
+          "retrieval_layer": {
+            "resolved_layer": "category+resource",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [
+              "Social Graph",
+              "Timeline"
+            ],
+            "category_results_count": 8,
+            "resource_results_count": 2,
+            "low_confidence_fallback": false
+          },
+          "retrieved_contexts": [
+            "Mel recently went on a family camping trip involving nature exploration, campfire marshmallow roasting, and a hike.",
+            "The user is casually chatting with their friend named Mel about family activities. Mel shared that their family enjoys hiking in the mountains and exploring forests as a way to connect with nature and each other. Recently, they went on a family camping trip where they explored nature, roasted marshmallows around a campfire, and went on a hike with amazing views. Mel noted that the two younger kids love nature, and expressed that these family moments are very special, memorable, and are some of their favorite memories that bring the family together and happiness. Mel also appreciated the user sharing in their joy.",
+            "Melanie has a spouse (got married recently)",
+            "Caroline greeted Mel (the AI) in a friendly manner. Mel responded warmly, mentioning being busy with kids and work, and asked Caroline what's new.",
+            "Mel took its kids to a pottery workshop on 2026-01-30 (last Friday); they all made their own pots and found it fun and therapeutic."
+          ],
+          "retrieved_scores": [
+            0.4828,
+            0.3127,
+            0.2906,
+            0.2888,
+            0.2788
+          ],
+          "db_diagnosis": null,
+          "error": null
+        },
+        {
+          "eval_mode": "assistant_eval",
+          "question": "What does Caroline say running has been great for?",
+          "standard_answer": "",
+          "generated_answer": "I don't have any memory of Caroline mentioning what running has been great for. The closest thing I can recall is that Mel once participated in a charity race for mental health awareness, but that's about Mel, not Caroline.\n\nDo you remember the context? I'd love to hear about it if you'd like to share!",
+          "is_correct": false,
+          "correctness_explanation": "The standard answer is empty, indicating there is no key information to provide. The generated answer provides conversational filler and hallucinates details about a character named Mel that are not present in the provided context or standard answer.",
+          "category": 5,
+          "evidence": [
+            "D7:24"
+          ],
+          "storage_hit": true,
+          "retrieval_hit": true,
+          "rank_position": 1,
+          "answer_support_type": "wrong",
+          "evaluation_trace": {
+            "storage_eval": {
+              "storage_hit": true,
+              "keywords": [
+                "caroline",
+                "say",
+                "running",
+                "great"
+              ],
+              "db_hits": {
+                "resource_count": 16,
+                "category_count": 5
+              },
+              "db_memories_sample": [
+                {
+                  "id": "0a7d2cbc-e9aa-4b52-b91b-43224a3b5f53",
+                  "source": "resource",
+                  "text": "The user congratulated Melanie on her recent wedding, complimenting how great both Melanie and her spouse looked on their wedding day, and wishing them many happy years together. Melanie (the AI/persona) responded graciously, expressing appreciation and emphasizing that family and shared moments make life worthwhile.",
+                  "importance_score": 3,
+                  "updated_at": "2026-01-20T19:55:00+00:00",
+                  "matched_keyword": "great"
+                },
+                {
+                  "id": "bf214cdb-8192-462f-9b95-5c107558e146",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user's name is Caroline.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "caroline"
+                },
+                {
+                  "id": "794a3ff2-b4db-4a13-ab1c-8bf4ca6d1ea6",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user went through a significant personal transition involving challenges, where they received help from a support system (including counseling and support groups). This support greatly improved their life, giving them the courage to accept and grow into their true self.",
+                  "importance_score": 3,
+                  "updated_at": "2026-02-02T20:18:00+00:00",
+                  "matched_keyword": "great"
+                },
+                {
+                  "id": "3f46abde-6ddc-4245-9875-a96563c7af66",
+                  "source": "resource",
+                  "text": "The user, who is transgender, shared that they mentor a transgender teen. Their mentoring focuses on building confidence and finding positive strategies, and the user feels it has been going well. They also attended an LGBT pride event together last month (January 2026) and had a great time. The AI responded enthusiastically and asked for more details about their experience.",
+                  "importance_score": 2,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "great"
+                },
+                {
+                  "id": "eca208d2-8521-4f60-ae9c-f5e33cc1ab03",
+                  "source": "resource",
+                  "text": "Hey Melanie! That sounds great! Last weekend I joined a mentorship program for LGBTQ youth - it's really rewarding to help the community.",
+                  "importance_score": 2,
+                  "updated_at": "2026-02-07T14:31:00+00:00",
+                  "matched_keyword": "great"
+                }
+              ]
+            }
+          },
+          "retrieval_layer": {
+            "resolved_layer": "category+resource",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [
+              "Core Self",
+              "Timeline"
+            ],
+            "category_results_count": 8,
+            "resource_results_count": 2,
+            "low_confidence_fallback": false
+          },
+          "retrieved_contexts": [
+            "The user's name is Caroline.",
+            "Melanie is in the process of moving.",
+            "Caroline greeted Mel (the AI) in a friendly manner. Mel responded warmly, mentioning being busy with kids and work, and asked Caroline what's new.",
+            "Melanie enjoys or has skill in painting",
+            "The user praised Mel (the AI) for participating in a charity race that raises awareness for mental health. Mel responded that the event was thought-provoking and shared a personal insight about the importance of self-care, describing it as a journey. Mel expressed that taking care of themselves enables them to better care for their family."
+          ],
+          "retrieved_scores": [
+            0.4909,
+            0.2355,
+            0.2333,
+            0.2319,
+            0.2115
+          ],
+          "db_diagnosis": null,
+          "error": null
+        },
+        {
+          "eval_mode": "assistant_eval",
+          "question": "How did Caroline feel about her family after the accident?",
+          "standard_answer": "",
+          "generated_answer": "Hey, I don't actually have any memory of an accident in our conversations. Could you fill me in on what happened? I'd like to understand and be here for you.",
+          "is_correct": false,
+          "correctness_explanation": "The generated answer does not provide any factual information about how Caroline felt about her family after the accident. Instead, it deflects the question by claiming a lack of context.",
+          "category": 5,
+          "evidence": [
+            "D18:5"
+          ],
+          "storage_hit": true,
+          "retrieval_hit": true,
+          "rank_position": 1,
+          "answer_support_type": "wrong",
+          "evaluation_trace": {
+            "storage_eval": {
+              "storage_hit": true,
+              "keywords": [
+                "caroline",
+                "feel",
+                "about",
+                "family",
+                "after",
+                "accident",
+                "d18"
+              ],
+              "db_hits": {
+                "resource_count": 42,
+                "category_count": 46
+              },
+              "db_memories_sample": [
+                {
+                  "id": "02155702-cc9a-44a0-90b4-df1265036e84",
+                  "source": "resource",
+                  "text": "The user, who is transgender, is considering a career path focused on counseling and supporting trans people with self-acceptance and mental health. They attended an LGBTQ+ counseling workshop on Friday, January 23, 2026, where they learned about various therapeutic methods for working with trans individuals and were deeply inspired by the professionals' dedication to creating safe spaces.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "about"
+                },
+                {
+                  "id": "9c168ffe-e847-4a24-833d-bb39cc534f73",
+                  "source": "resource",
+                  "text": "The user is currently researching adoption agencies, driven by a long-held dream of having a family and providing a loving home to children in need. They have expressed gratitude for the support received from friends and mentors during this process. They are now beginning the hard work to turn this dream into reality and maintain a hopeful, optimistic outlook about the adoption journey ahead.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "about"
+                },
+                {
+                  "id": "fb0df111-647a-464b-8907-f55b2658a485",
+                  "source": "resource",
+                  "text": "The user expressed excitement about creating a family for children in need as a single parent, acknowledging the challenges but showing determination and enthusiasm for this path. The AI responded with encouragement and support.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "about"
+                },
+                {
+                  "id": "0a7d2cbc-e9aa-4b52-b91b-43224a3b5f53",
+                  "source": "resource",
+                  "text": "The user congratulated Melanie on her recent wedding, complimenting how great both Melanie and her spouse looked on their wedding day, and wishing them many happy years together. Melanie (the AI/persona) responded graciously, expressing appreciation and emphasizing that family and shared moments make life worthwhile.",
+                  "importance_score": 3,
+                  "updated_at": "2026-01-20T19:55:00+00:00",
+                  "matched_keyword": "family"
+                },
+                {
+                  "id": "bf214cdb-8192-462f-9b95-5c107558e146",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user's name is Caroline.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "caroline"
+                }
+              ]
+            }
+          },
+          "retrieval_layer": {
+            "resolved_layer": "category+resource",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [
+              "Core Self",
+              "Social Graph",
+              "Timeline"
+            ],
+            "category_results_count": 8,
+            "resource_results_count": 2,
+            "low_confidence_fallback": false
+          },
+          "retrieved_contexts": [
+            "The user's name is Caroline.",
+            "Melanie got married (as of around January 2026)",
+            "Melanie has a spouse (got married recently)",
+            "Caroline greeted Mel (the AI) in a friendly manner. Mel responded warmly, mentioning being busy with kids and work, and asked Caroline what's new.",
+            "Melanie is in the process of moving."
+          ],
+          "retrieved_scores": [
+            0.5175,
+            0.3509,
+            0.3488,
+            0.3024,
+            0.2892
+          ],
+          "db_diagnosis": null,
+          "error": null
+        },
+        {
+          "eval_mode": "assistant_eval",
+          "question": "What does Caroline love most about camping with her family?",
+          "standard_answer": "",
+          "generated_answer": "Based on what I know, I don't actually have any memories of you going camping with your family! The camping stories in my memory are from Mel — she shared about her family's camping trip where they explored nature, roasted marshmallows around a campfire, and went on a hike with amazing views. She mentioned those moments are really special to her.\n\nI do know you went on a picnic with loved ones recently, and that you love hiking, so maybe camping is something you enjoy too? I'd love to hear about your own camping experiences if you have any! 🏕️",
+          "is_correct": false,
+          "correctness_explanation": "The standard answer is empty, indicating there is no factual information provided to answer the question. While the generated answer correctly acknowledges it lacks memories of Caroline camping, it hallucinates specific, unprompted details about a person named \"Mel\" instead of simply stating that the information is unavailable.",
+          "category": 5,
+          "evidence": [
+            "D18:21"
+          ],
+          "storage_hit": true,
+          "retrieval_hit": true,
+          "rank_position": 2,
+          "answer_support_type": "wrong",
+          "evaluation_trace": {
+            "storage_eval": {
+              "storage_hit": true,
+              "keywords": [
+                "caroline",
+                "love",
+                "most",
+                "about",
+                "camping",
+                "family",
+                "d18"
+              ],
+              "db_hits": {
+                "resource_count": 48,
+                "category_count": 42
+              },
+              "db_memories_sample": [
+                {
+                  "id": "9c168ffe-e847-4a24-833d-bb39cc534f73",
+                  "source": "resource",
+                  "text": "The user is currently researching adoption agencies, driven by a long-held dream of having a family and providing a loving home to children in need. They have expressed gratitude for the support received from friends and mentors during this process. They are now beginning the hard work to turn this dream into reality and maintain a hopeful, optimistic outlook about the adoption journey ahead.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "about"
+                },
+                {
+                  "id": "02155702-cc9a-44a0-90b4-df1265036e84",
+                  "source": "resource",
+                  "text": "The user, who is transgender, is considering a career path focused on counseling and supporting trans people with self-acceptance and mental health. They attended an LGBTQ+ counseling workshop on Friday, January 23, 2026, where they learned about various therapeutic methods for working with trans individuals and were deeply inspired by the professionals' dedication to creating safe spaces.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "about"
+                },
+                {
+                  "id": "fb0df111-647a-464b-8907-f55b2658a485",
+                  "source": "resource",
+                  "text": "The user expressed excitement about creating a family for children in need as a single parent, acknowledging the challenges but showing determination and enthusiasm for this path. The AI responded with encouragement and support.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "about"
+                },
+                {
+                  "id": "0a7d2cbc-e9aa-4b52-b91b-43224a3b5f53",
+                  "source": "resource",
+                  "text": "The user congratulated Melanie on her recent wedding, complimenting how great both Melanie and her spouse looked on their wedding day, and wishing them many happy years together. Melanie (the AI/persona) responded graciously, expressing appreciation and emphasizing that family and shared moments make life worthwhile.",
+                  "importance_score": 3,
+                  "updated_at": "2026-01-20T19:55:00+00:00",
+                  "matched_keyword": "family"
+                },
+                {
+                  "id": "bf214cdb-8192-462f-9b95-5c107558e146",
+                  "source": "category",
+                  "category_name": "Core Self",
+                  "text": "The user's name is Caroline.",
+                  "importance_score": 3,
+                  "updated_at": "2026-04-24T03:16:19.801561+00:00",
+                  "matched_keyword": "caroline"
+                }
+              ]
+            }
+          },
+          "retrieval_layer": {
+            "resolved_layer": "category+resource",
+            "is_sufficient_at_category": false,
+            "llm_classified_categories": [
+              "Core Self",
+              "Social Graph"
+            ],
+            "category_results_count": 7,
+            "resource_results_count": 3,
+            "low_confidence_fallback": false
+          },
+          "retrieved_contexts": [
+            "The user is casually chatting with their friend named Mel about family activities. Mel shared that their family enjoys hiking in the mountains and exploring forests as a way to connect with nature and each other. Recently, they went on a family camping trip where they explored nature, roasted marshmallows around a campfire, and went on a hike with amazing views. Mel noted that the two younger kids love nature, and expressed that these family moments are very special, memorable, and are some of their favorite memories that bring the family together and happiness. Mel also appreciated the user sharing in their joy.",
+            "The user's name is Caroline.",
+            "Melanie has a spouse (got married recently)",
+            "The user is a mom or planning to become one, and feels that being a mom is awesome.",
+            "Melanie has a supportive family who helped her during her move."
+          ],
+          "retrieved_scores": [
+            0.4507,
+            0.4025,
+            0.3069,
+            0.2872,
+            0.2698
+          ],
+          "db_diagnosis": null,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

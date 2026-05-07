@@ -24,6 +24,13 @@ This test suite separates project tests into four layers:
 
 Use `pytest` as the official control plane for memory evaluations. This keeps unit tests, contract tests, integration evals, and assistant evals under one discovery, marker, fixture, and CI system.
 
+Directory conventions:
+
+- Test and eval code lives under `tests/`.
+- Eval input fixtures live under `tests/fixtures/`.
+- Runtime artifacts live under `test_results/<domain>/`.
+- Embedding and resource caches live under `test_results/cache/`.
+
 The legacy command below remains as a compatibility wrapper only:
 
 ```bash
@@ -38,8 +45,45 @@ Common converted-data examples:
 pytest tests/evals/converted_data --converted-sample 0 --converted-eval-mode storage_eval
 pytest tests/evals/converted_data --converted-sample 0 --converted-eval-mode retrieval_eval
 pytest tests/evals/converted_data --converted-sample 0 --converted-eval-mode assistant_eval
-pytest tests/evals/converted_data --converted-sample 0 --converted-character caroline --converted-top-k 5
+pytest tests/evals/converted_data --converted-sample 0 --converted-character caroline --converted-top-k 10
 ```
+
+只读 A/B 检索调参验证工具：
+
+```bash
+python -m tests.evals.converted_data.retrieval_tuning_ab --sample 0 --data-dir data/converted_data_recent_2026q1_name_trimmed --character caroline
+```
+
+该工具不会重新导入数据，也不会调用会自增 `access_count` 的正式 `retrieve()` 写路径；它只读复现检索步骤，用于比较：
+- 旧 scoring + top_k=5
+- 新 scoring + top_k=5
+- 旧 scoring + top_k=10
+- 新 scoring + top_k=10
+
+## Runtime Safety
+
+When using the real database, treat command modes as permission modes:
+
+- Read-only evals:
+  - use `--converted-retrieval-only`
+  - allowed to read real DB data
+  - must not reset/import memory
+- Write-path evals:
+  - re-import / reset memory
+  - must be explicitly intended
+  - when running through `pytest`, also require `--allow-real-db-write`
+
+Examples:
+
+```bash
+# Read-only evaluation on real DB
+pytest tests/evals/converted_data --converted-sample 0 --converted-eval-mode assistant_eval --converted-character caroline --converted-retrieval-only
+
+# Explicit write-path evaluation on real DB
+pytest tests/evals/converted_data --converted-sample 0 --converted-eval-mode assistant_eval --converted-character caroline --converted-reset-memory --allow-real-db-write
+```
+
+Regular unit / service / contract pytest runs should not target the real database unless you explicitly intend to modify it.
 
 ## Converted Data Modes
 
