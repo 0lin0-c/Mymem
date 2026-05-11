@@ -33,5 +33,4 @@ build/
 Thumbs.db
 
 # HuggingFace cache
-data/personamem_v2_hf_cache/
-data/personamem_v2/
+data/

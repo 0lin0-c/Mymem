@@ -82,3 +82,4 @@ class PersonaMemReport:
     total_memories: int
     total_questions: int
     results: list[PersonaMemResult] = field(default_factory=list)
+    chat_model: str | None = None

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import inspect
+
 import pytest
 
 from tests.evals.personamem_v2.candidate_views import (
@@ -11,6 +13,7 @@ from tests.evals.personamem_v2.candidate_views import (
     save_candidate_view_report,
 )
 from tests.evals.personamem_v2.candidate_view_experiment import (
+    PlannedCandidateTurn,
     build_candidate_turn_plan,
     clone_sample_for_candidate_experiment,
     filter_sample_by_row_indexes,
@@ -22,8 +25,17 @@ from tests.evals.personamem_v2.candidate_view_experiment import (
     summarize_personamem_report,
     summarize_candidate_projection,
     summarize_report_delta,
+    validate_baseline_summary,
+    validate_candidate_sample_isolation,
+)
+from tests.evals.personamem_v2.candidate_view_writer import CandidateViewWriter, CandidateViewWritePolicy
+from tests.evals.personamem_v2.candidate_view_reporting import (
+    build_candidate_results_data,
+    save_candidate_analysis_markdown,
 )
 from tests.evals.personamem_v2.models import PersonaMemQuestion, PersonaMemReport, PersonaMemResult, PersonaMemSample
+from tests.evals.personamem_v2.runner import _username_for_sample, parse_model_sweep
+from tables import Category, Resource, ResourceCategory
 
 
 def _question(
@@ -42,6 +54,24 @@ def _question(
         source_split="benchmark_text",
         row_index=row_index,
     )
+
+
+def test_model_sweep_username_uses_model_prefix_for_persona66():
+    sample = PersonaMemSample(persona_id="66", user_key="personamem_v2_persona_66")
+
+    assert _username_for_sample(sample, chat_model="GLM-5.1") == "GLM-5.1-persona66"
+    assert _username_for_sample(sample) == "personamem_v2_persona_66"
+
+
+def test_parse_model_sweep_supports_default_five_models():
+    assert parse_model_sweep("default") == [
+        "GLM-5-Turbo",
+        "GLM-5",
+        "GLM-5.1",
+        "Qwen3.5-Plus",
+        "DeepSeek-V4-Pro",
+    ]
+    assert parse_model_sweep("GLM-5, Qwen3.5-Plus") == ["GLM-5", "Qwen3.5-Plus"]
 
 
 def test_email_task_extracts_task_event_and_hidden_user_fact():
@@ -232,10 +262,14 @@ def test_candidate_turn_plan_keeps_one_candidate_set_for_multi_turn_row():
 
     planned_turns = build_candidate_turn_plan(question)
 
-    assert len(planned_turns) == 2
-    assert planned_turns[0].candidates is planned_turns[1].candidates
-    assert all("candidate_view=" not in planned.user_input for planned in planned_turns)
-    assert all("forget_conflict=" not in planned.user_input for planned in planned_turns)
+    assert len(planned_turns) == 1
+    assert planned_turns[0].turn_index == 1
+    assert "I like animal coloring pages" in planned_turns[0].user_input
+    assert "It helps me feel calm before class" in planned_turns[0].user_input
+    assert "Sure, here is a draft" in planned_turns[0].assistant_response
+    assert "Here is a warmer version" in planned_turns[0].assistant_response
+    assert "candidate_view=" not in planned_turns[0].user_input
+    assert "forget_conflict=" not in planned_turns[0].user_input
 
 
 def test_candidate_turn_plan_keeps_forget_metadata_out_of_writer_input():
@@ -274,6 +308,25 @@ def test_candidate_experiment_sample_uses_isolated_user_but_keeps_persona_66_que
     assert experiment_sample.questions[0].persona_id == "66"
 
 
+def test_candidate_sample_isolation_rejects_official_persona_user():
+    sample = PersonaMemSample(
+        persona_id="66",
+        user_key="personamem_v2_persona_66",
+        questions=[_question("User: I like blue notebooks.")],
+    )
+
+    with pytest.raises(ValueError, match="isolated candidate user"):
+        validate_candidate_sample_isolation(sample)
+
+
+def test_candidate_experiment_raw_snapshot_is_opt_in():
+    default = inspect.signature(run_candidate_view_trace_experiment).parameters[
+        "save_raw_snapshot"
+    ].default
+
+    assert default is False
+
+
 @pytest.mark.asyncio
 async def test_run_candidate_trace_experiment_rejects_missing_baseline_path():
     with pytest.raises(ValueError, match="baseline_results_path is required"):
@@ -297,32 +350,190 @@ def test_candidate_projection_separates_original_turns_from_writable_candidates(
 
     projection = summarize_candidate_projection(sample)
 
-    assert projection["original_turn_count"] == 2
-    assert projection["writable_candidate_count"] >= 1
+    assert projection["original_turn_count"] == 1
+    assert projection["written_candidate_count"] >= 1
     assert "projected_turns" not in projection
 
 
-def test_candidate_experiment_markdown_describes_trace_only_writes():
+def test_candidate_experiment_markdown_describes_structured_projection_writes():
     markdown = render_candidate_experiment_markdown(
         {
-            "test_info": {"persona_id": "66", "eval_mode": "storage_eval", "top_k": 10},
+            "test_info": {
+                "persona_id": "66",
+                "eval_mode": "storage_eval",
+                "top_k": 10,
+                "projection_mode": "candidate_structured_db_writes",
+            },
             "delta": {"storage_hits_delta": 0, "total_questions": 1},
             "baseline": {"metrics": {"storage_hits": 1}},
-            "candidate_view_trace": {"metrics": {"storage_hits": 1}},
+            "candidate_structured_projection": {"metrics": {"storage_hits": 1}},
             "candidate_projection": {
                 "original_turn_count": 1,
-                "writable_candidate_count": 2,
-                "writable_by_type": {"user_fact": 1, "surviving_need": 1},
-                "skipped_by_type": {},
+                "candidate_count": 3,
+                "written_candidate_count": 2,
+                "skipped_candidate_count": 1,
+                "written_by_type": {"user_fact": 1, "surviving_need": 1},
+                "skipped_by_reason": {"task_event_is_conversation_wrapper": 1},
             },
-            "candidate_trace_errors": [],
+            "candidate_write_trace": [],
         }
     )
 
-    assert "Candidate View Trace Comparison" in markdown
-    assert "candidate_views_write_mode: trace_only_original_turn_writes" in markdown
+    assert "Candidate View Structured Projection Comparison" in markdown
+    assert "projection_mode: candidate_structured_db_writes" in markdown
     assert "original_turn_count: 1" in markdown
-    assert "writable_candidate_count: 2" in markdown
+    assert "written_candidate_count: 2" in markdown
+
+
+def test_candidate_view_reporting_builds_answer_stage_and_saves_analysis(tmp_path):
+    report = PersonaMemReport(
+        sample_index=1,
+        character="66",
+        user_id="candidate-user",
+        total_sessions=1,
+        total_memories=1,
+        total_questions=1,
+        results=[
+            PersonaMemResult(
+                question="What helps me feel calm before class?",
+                expected_answer="Animal coloring pages help the user feel calm before class.",
+                persona_id="66",
+                eval_mode="assistant_eval",
+                preference="Uses animal coloring pages to feel calm before class.",
+                related_conversation_snippet="User: I use animal coloring pages to feel calm before class.",
+                storage_hit=True,
+                retrieval_hit=True,
+                is_correct=True,
+                llm_answer="Animal coloring pages help you feel calm before class.",
+                retrieved_contexts=["The user uses animal coloring pages to feel calm before class."],
+                retrieved_scores=[0.02],
+                rank_position=1,
+                row_index=2038,
+            )
+        ],
+    )
+
+    data = build_candidate_results_data(
+        report,
+        eval_mode="assistant_eval",
+        test_info={"projection_mode": "candidate_structured_db_writes"},
+    )
+    qa = data["samples"][0]["qa_results"][0]
+    analysis_path = save_candidate_analysis_markdown(
+        data,
+        tmp_path / "candidate_results.json",
+    )
+
+    assert data["test_info"]["harness"] == "personamem_v2_candidate_view_structured_projection"
+    assert data["test_info"]["projection_mode"] == "candidate_structured_db_writes"
+    assert qa["generated_answer"] == "Animal coloring pages help you feel calm before class."
+    assert "retrieval_stage" in qa
+    assert "answer_stage" in qa
+    assert analysis_path.name == "candidate_results_analysis.md"
+    assert "PersonaMem-v2" in analysis_path.read_text(encoding="utf-8")
+
+
+def test_candidate_write_policy_projects_user_fact_and_skips_task_event():
+    policy = CandidateViewWritePolicy()
+    candidates = [
+        {
+            "view_type": "task_event",
+            "content": "The user asked the assistant to polish an email.",
+            "subject": "user",
+            "source_segment": "task_wrapper",
+            "confidence": 0.78,
+            "attribution_risk": "low",
+            "sensitivity": "none",
+            "forget_conflict": False,
+        },
+        {
+            "view_type": "user_fact",
+            "content": "The user uses animal coloring pages to feel calm.",
+            "subject": "user",
+            "source_segment": "embedded_personal_detail",
+            "confidence": 0.76,
+            "attribution_risk": "low",
+            "sensitivity": "none",
+            "forget_conflict": False,
+        },
+    ]
+
+    projections = policy.project_candidates(row_index=2038, turn_index=1, candidates=candidates)
+
+    assert projections[0].write_decision == "skipped"
+    assert projections[0].skip_reason == "task_event_is_conversation_wrapper"
+    assert projections[1].write_decision == "written"
+    assert projections[1].category_name == "Core Self"
+    assert projections[1].content == "The user uses animal coloring pages to feel calm."
+
+
+@pytest.mark.asyncio
+async def test_candidate_view_writer_writes_resource_and_projected_categories():
+    class FakeSession:
+        def __init__(self):
+            self.added = []
+            self.flushes = 0
+
+        def add(self, item):
+            self.added.append(item)
+
+        async def flush(self):
+            self.flushes += 1
+
+    class FakeLLM:
+        async def get_embedding(self, text):
+            return [0.01] * 1536
+
+    planned = PlannedCandidateTurn(
+        row_index=2038,
+        turn_index=1,
+        user_input="Can you polish this email? I use animal coloring pages to feel calm.",
+        assistant_response="Sure, here is a cleaner version.",
+        candidates=[
+            {
+                "view_type": "task_event",
+                "content": "The user asked the assistant to polish an email.",
+                "subject": "user",
+                "source_segment": "task_wrapper",
+                "confidence": 0.78,
+                "attribution_risk": "low",
+                "sensitivity": "none",
+                "forget_conflict": False,
+            },
+            {
+                "view_type": "user_fact",
+                "content": "The user uses animal coloring pages to feel calm.",
+                "subject": "user",
+                "source_segment": "embedded_personal_detail",
+                "confidence": 0.76,
+                "attribution_risk": "low",
+                "sensitivity": "none",
+                "forget_conflict": False,
+            },
+        ],
+    )
+    session = FakeSession()
+    writer = CandidateViewWriter(session=session, llm=FakeLLM())
+
+    result = await writer.write_turn(user_id="candidate-user", planned_turn=planned)
+
+    resources = [item for item in session.added if isinstance(item, Resource)]
+    categories = [item for item in session.added if isinstance(item, Category)]
+    links = [item for item in session.added if isinstance(item, ResourceCategory)]
+    assert len(resources) == 1
+    assert resources[0].user_id == "candidate-user"
+    assert resources[0].raw_content == planned.user_input
+    assert "candidate projection source" in resources[0].description
+    assert len(categories) == 1
+    assert categories[0].category_name == "Core Self"
+    assert categories[0].content == "The user uses animal coloring pages to feel calm."
+    assert categories[0].content_vector == [0.01] * 1536
+    assert len(links) == 1
+    assert links[0].resource_id == resources[0].id
+    assert links[0].category_id == categories[0].id
+    assert result.resource_id == resources[0].id
+    assert result.written_category_ids == [categories[0].id]
+    assert [projection.write_decision for projection in result.projections] == ["skipped", "written"]
 
 
 def test_summarize_report_delta_compares_original_and_candidate_metrics():
@@ -519,11 +730,36 @@ def test_make_reused_candidate_summary_marks_existing_db_snapshot():
 
     assert summary["sample"]["user_id"] == "candidate-user"
     assert summary["sample"]["reused_candidate_user"] is True
+    assert summary["sample"]["provenance_warning"] == "candidate DB state was reused without row-level write trace"
     assert summary["metrics"]["total_memories"] == 49
 
 
+def test_validate_baseline_summary_rejects_wrong_question_count():
+    sample = PersonaMemSample(
+        persona_id="66",
+        user_key="personamem_v2_persona_66",
+        questions=[_question("User: first"), _question("User: second")],
+    )
+    baseline = {"metrics": {"total_questions": 1}, "sample": {"persona_id": "66"}}
+
+    with pytest.raises(ValueError, match="Baseline question count mismatch"):
+        validate_baseline_summary(baseline, sample)
+
+
+def test_validate_baseline_summary_rejects_wrong_persona():
+    sample = PersonaMemSample(
+        persona_id="66",
+        user_key="personamem_v2_persona_66",
+        questions=[_question("User: first")],
+    )
+    baseline = {"metrics": {"total_questions": 1}, "sample": {"persona_id": "77"}}
+
+    with pytest.raises(ValueError, match="Baseline persona mismatch"):
+        validate_baseline_summary(baseline, sample)
+
+
 @pytest.mark.asyncio
-async def test_candidate_import_records_failed_original_turn(monkeypatch):
+async def test_candidate_import_fails_on_projection_write_error(monkeypatch):
     class FakeSession:
         def __init__(self):
             self.commits = 0
@@ -535,11 +771,11 @@ async def test_candidate_import_records_failed_original_turn(monkeypatch):
         async def rollback(self):
             self.rollbacks += 1
 
-    class FailingWriter:
+    class FailingCandidateWriter:
         def __init__(self, *args, **kwargs):
             pass
 
-        async def save_chat(self, **kwargs):
+        async def write_turn(self, **kwargs):
             raise RuntimeError("write failed")
 
     from tests.evals.personamem_v2 import candidate_view_experiment as module
@@ -547,13 +783,9 @@ async def test_candidate_import_records_failed_original_turn(monkeypatch):
     async def fake_ensure_user_onboarded(*args, **kwargs):
         return "candidate-user"
 
-    async def fake_categories_for_prompt(*args, **kwargs):
-        return []
-
     monkeypatch.setattr(module, "ensure_user_onboarded", fake_ensure_user_onboarded)
-    monkeypatch.setattr(module, "_categories_for_prompt", fake_categories_for_prompt)
     monkeypatch.setattr(module.LLMFactory, "get_provider", lambda: object())
-    monkeypatch.setattr(module, "MemoryWriter", FailingWriter)
+    monkeypatch.setattr(module, "CandidateViewWriter", FailingCandidateWriter)
 
     sample = PersonaMemSample(
         persona_id="66_candidate_views",
@@ -562,20 +794,6 @@ async def test_candidate_import_records_failed_original_turn(monkeypatch):
     )
     session = FakeSession()
 
-    user_id, memory_count, trace = await import_candidate_view_sample(session, sample)
-
-    assert user_id == "candidate-user"
-    assert memory_count == 0
+    with pytest.raises(RuntimeError, match="Candidate projection write failed"):
+        await import_candidate_view_sample(session, sample)
     assert session.rollbacks == 1
-    assert trace == [
-        {
-            "row_index": 7,
-            "turn_index": 1,
-            "write_input": "original_turn",
-            "status": "error",
-            "error": "write failed",
-            "candidate_count": 1,
-            "candidate_types": ["user_fact"],
-            "candidates": trace[0]["candidates"],
-        }
-    ]

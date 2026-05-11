@@ -1,0 +1,2314 @@
+{
+  "test_info": {
+    "dataset": "bowen-upenn/PersonaMem-v2",
+    "harness": "personamem_v2_candidate_view_structured_projection",
+    "persona_id": "66",
+    "experiment_user_persona_id": "66_candidate_views",
+    "eval_mode": "assistant_eval",
+    "top_k": 10,
+    "baseline_results_path": "test_results\\personamem_v2\\personamem_v2_assistant_eval_results_20260428_134602.json",
+    "projection_mode": "candidate_structured_db_writes"
+  },
+  "baseline": {
+    "metrics": {
+      "total_questions": 42,
+      "total_memories": 64,
+      "storage_hits": 42,
+      "non_forget_storage_hits": 35,
+      "forget_total": 7,
+      "forget_safe": 0,
+      "retrieval_hits": 28,
+      "correct_answers": 20,
+      "errors": 0
+    },
+    "sample": {
+      "persona_id": "66",
+      "user_id": "c57da5c9-9d2a-43a2-b6c4-87f94ac624ad",
+      "total_sessions": 42
+    },
+    "rows": [
+      {
+        "row_index": 2037,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": false,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2038,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": true,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2039,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": false,
+        "rank_position": 6,
+        "error": null
+      },
+      {
+        "row_index": 2040,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": true,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2041,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": true,
+        "rank_position": 1,
+        "error": null
+      },
+      {
+        "row_index": 2042,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": false,
+        "rank_position": 18,
+        "error": null
+      },
+      {
+        "row_index": 2043,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": true,
+        "rank_position": 1,
+        "error": null
+      },
+      {
+        "row_index": 2044,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": true,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2045,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": false,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2046,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": true,
+        "rank_position": 8,
+        "error": null
+      },
+      {
+        "row_index": 2047,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": false,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2048,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": true,
+        "rank_position": 21,
+        "error": null
+      },
+      {
+        "row_index": 2049,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": true,
+        "rank_position": 2,
+        "error": null
+      },
+      {
+        "row_index": 2050,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": true,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2051,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": true,
+        "rank_position": 2,
+        "error": null
+      },
+      {
+        "row_index": 2052,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": false,
+        "rank_position": 12,
+        "error": null
+      },
+      {
+        "row_index": 2053,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": false,
+        "rank_position": 10,
+        "error": null
+      },
+      {
+        "row_index": 2054,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": false,
+        "rank_position": 6,
+        "error": null
+      },
+      {
+        "row_index": 2055,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": true,
+        "rank_position": 19,
+        "error": null
+      },
+      {
+        "row_index": 2056,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": false,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2057,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": true,
+        "rank_position": 13,
+        "error": null
+      },
+      {
+        "row_index": 2058,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": false,
+        "rank_position": 20,
+        "error": null
+      },
+      {
+        "row_index": 2059,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": true,
+        "rank_position": 3,
+        "error": null
+      },
+      {
+        "row_index": 2060,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": false,
+        "rank_position": 7,
+        "error": null
+      },
+      {
+        "row_index": 2061,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": false,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2062,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": true,
+        "rank_position": 9,
+        "error": null
+      },
+      {
+        "row_index": 2063,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": false,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2064,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": true,
+        "rank_position": 7,
+        "error": null
+      },
+      {
+        "row_index": 2065,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": false,
+        "rank_position": 2,
+        "error": null
+      },
+      {
+        "row_index": 2066,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": false,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2067,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": true,
+        "rank_position": 24,
+        "error": null
+      },
+      {
+        "row_index": 2068,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": false,
+        "rank_position": 21,
+        "error": null
+      },
+      {
+        "row_index": 2069,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": false,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2070,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": false,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2071,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": false,
+        "rank_position": 3,
+        "error": null
+      },
+      {
+        "row_index": 2072,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": false,
+        "rank_position": 16,
+        "error": null
+      },
+      {
+        "row_index": 2073,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": true,
+        "rank_position": 12,
+        "error": null
+      },
+      {
+        "row_index": 2074,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": true,
+        "rank_position": 7,
+        "error": null
+      },
+      {
+        "row_index": 2075,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": true,
+        "rank_position": 2,
+        "error": null
+      },
+      {
+        "row_index": 2076,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": false,
+        "rank_position": 1,
+        "error": null
+      },
+      {
+        "row_index": 2077,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": false,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2078,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": true,
+        "rank_position": 5,
+        "error": null
+      }
+    ]
+  },
+  "candidate_structured_projection": {
+    "metrics": {
+      "total_questions": 42,
+      "total_memories": 42,
+      "storage_hits": 42,
+      "non_forget_storage_hits": 35,
+      "forget_total": 7,
+      "forget_safe": 0,
+      "retrieval_hits": 10,
+      "correct_answers": 21,
+      "errors": 0
+    },
+    "sample": {
+      "persona_id": "66",
+      "user_id": "e4a5bcb2-88bd-4cdb-9222-1dae2e88e8f9",
+      "total_sessions": 42
+    },
+    "rows": [
+      {
+        "row_index": 2037,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": false,
+        "rank_position": 3,
+        "error": null
+      },
+      {
+        "row_index": 2038,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": true,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2039,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": false,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2040,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": true,
+        "rank_position": 4,
+        "error": null
+      },
+      {
+        "row_index": 2041,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": false,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2042,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": true,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2043,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": true,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2044,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": false,
+        "rank_position": 5,
+        "error": null
+      },
+      {
+        "row_index": 2045,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": true,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2046,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": false,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2047,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": false,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2048,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": true,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2049,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": false,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2050,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": true,
+        "rank_position": 3,
+        "error": null
+      },
+      {
+        "row_index": 2051,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": false,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2052,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": false,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2053,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": false,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2054,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": true,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2055,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": true,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2056,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": false,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2057,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": true,
+        "rank_position": 5,
+        "error": null
+      },
+      {
+        "row_index": 2058,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": false,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2059,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": true,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2060,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": false,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2061,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": true,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2062,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": true,
+        "rank_position": 1,
+        "error": null
+      },
+      {
+        "row_index": 2063,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": true,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2064,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": false,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2065,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": true,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2066,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": false,
+        "rank_position": 3,
+        "error": null
+      },
+      {
+        "row_index": 2067,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": false,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2068,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": false,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2069,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": false,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2070,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": false,
+        "rank_position": 2,
+        "error": null
+      },
+      {
+        "row_index": 2071,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": true,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2072,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": false,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2073,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": true,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2074,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": true,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2075,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": true,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2076,
+        "storage_hit": true,
+        "retrieval_hit": false,
+        "is_correct": true,
+        "rank_position": null,
+        "error": null
+      },
+      {
+        "row_index": 2077,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": false,
+        "rank_position": 3,
+        "error": null
+      },
+      {
+        "row_index": 2078,
+        "storage_hit": true,
+        "retrieval_hit": true,
+        "is_correct": true,
+        "rank_position": 4,
+        "error": null
+      }
+    ]
+  },
+  "delta": {
+    "storage_hits_delta": 0,
+    "non_forget_storage_hits_delta": 0,
+    "forget_safe_delta": 0,
+    "retrieval_hits_delta": -18,
+    "correct_answers_delta": 1,
+    "total_memories_delta": -22,
+    "errors_delta": 0,
+    "total_questions": 42
+  },
+  "candidate_projection": {
+    "original_turn_count": 42,
+    "candidate_count": 104,
+    "written_candidate_count": 46,
+    "skipped_candidate_count": 58,
+    "written_by_type": {
+      "artifact_fact": 8,
+      "episodic_event": 5,
+      "surviving_need": 7,
+      "user_fact": 26
+    },
+    "skipped_by_reason": {
+      "assistant_advice_not_user_memory": 11,
+      "constraint_is_policy_not_retrievable_memory": 8,
+      "forget_conflict": 2,
+      "high_sensitivity": 3,
+      "task_event_is_conversation_wrapper": 34
+    }
+  },
+  "candidate_write_trace": [
+    {
+      "row_index": 2037,
+      "turn_index": 1,
+      "resource_id": "69507dc6-522d-4cae-bf98-d7db6dda0b21",
+      "written_category_ids": [
+        "819cabd7-6391-4e74-830e-3d088481f53e"
+      ],
+      "projections": [
+        {
+          "row_index": 2037,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "task_event",
+          "category_name": null,
+          "content": "The user asked the assistant to help with a task in the current conversation.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "task_event_is_conversation_wrapper"
+        },
+        {
+          "row_index": 2037,
+          "turn_index": 1,
+          "source_candidate_index": 1,
+          "view_type": "constraint",
+          "category_name": null,
+          "content": "Do not store or retrieve the forgotten detail: I attend workshops on pottery for kids.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "constraint_is_policy_not_retrievable_memory"
+        },
+        {
+          "row_index": 2037,
+          "turn_index": 1,
+          "source_candidate_index": 2,
+          "view_type": "surviving_need",
+          "category_name": "Episodic Memory",
+          "content": "The user still needs general safe hands-on activity ideas.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        },
+        {
+          "row_index": 2037,
+          "turn_index": 1,
+          "source_candidate_index": 3,
+          "view_type": "advice_checklist",
+          "category_name": null,
+          "content": "For a kids’ pottery workshop, try setting up themed mini-project stations, like making animal-shaped pinch pots or tiny plant holders, so each child can choose what excites them.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "forget_conflict"
+        }
+      ]
+    },
+    {
+      "row_index": 2038,
+      "turn_index": 1,
+      "resource_id": "47963d34-a322-46cc-8540-c579d0b6f3b3",
+      "written_category_ids": [
+        "b2adabb9-5acb-4e1f-a68d-a50b85ef9d62",
+        "acf4c172-f07e-478e-aa31-5d9f126d1695",
+        "6d40654d-1f6f-4252-bc80-c50d133260e6",
+        "24039069-6265-455a-bfdd-8dd70baf431f"
+      ],
+      "projections": [
+        {
+          "row_index": 2038,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "task_event",
+          "category_name": null,
+          "content": "The user asked the assistant to draft or polish an email.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "task_event_is_conversation_wrapper"
+        },
+        {
+          "row_index": 2038,
+          "turn_index": 1,
+          "source_candidate_index": 1,
+          "view_type": "user_fact",
+          "category_name": "Core Self",
+          "content": "I wrote sound better but still feel like it’s from me?",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        },
+        {
+          "row_index": 2038,
+          "turn_index": 1,
+          "source_candidate_index": 2,
+          "view_type": "user_fact",
+          "category_name": "Core Self",
+          "content": "The user enjoys swinging at the playground.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        },
+        {
+          "row_index": 2038,
+          "turn_index": 1,
+          "source_candidate_index": 3,
+          "view_type": "user_fact",
+          "category_name": "Core Self",
+          "content": "I went on the thing that goes back and forth and I felt the air on my face and it made my tummy feel lighter.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        },
+        {
+          "row_index": 2038,
+          "turn_index": 1,
+          "source_candidate_index": 4,
+          "view_type": "user_fact",
+          "category_name": "Core Self",
+          "content": "I think I stayed there a long time because it made the bad dream sort of go away.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        }
+      ]
+    },
+    {
+      "row_index": 2039,
+      "turn_index": 1,
+      "resource_id": "0bc7ea49-cc48-4385-884a-b4d59f52b54d",
+      "written_category_ids": [
+        "bf8dff5d-6fe5-4546-ba53-5638f2d1fcbc",
+        "e91ac2ed-3b96-40de-b8ad-3e6ad6eaa7b9",
+        "84cb5bd7-9e44-4598-8761-3f709a22c862"
+      ],
+      "projections": [
+        {
+          "row_index": 2039,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "task_event",
+          "category_name": null,
+          "content": "The user asked the assistant to draft or polish an email.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "task_event_is_conversation_wrapper"
+        },
+        {
+          "row_index": 2039,
+          "turn_index": 1,
+          "source_candidate_index": 1,
+          "view_type": "user_fact",
+          "category_name": "Core Self",
+          "content": "I wrote sound a bit nicer and easier to read?",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        },
+        {
+          "row_index": 2039,
+          "turn_index": 1,
+          "source_candidate_index": 2,
+          "view_type": "user_fact",
+          "category_name": "Core Self",
+          "content": "I keep waking up at night because I hear noises and then I can’t sleep again.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        },
+        {
+          "row_index": 2039,
+          "turn_index": 1,
+          "source_candidate_index": 3,
+          "view_type": "user_fact",
+          "category_name": "Core Self",
+          "content": "I wish I could come stay at your house for a few days because it feels really safe there.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        }
+      ]
+    },
+    {
+      "row_index": 2040,
+      "turn_index": 1,
+      "resource_id": "44419873-3923-4c4c-b381-785fca6533ec",
+      "written_category_ids": [
+        "140c37f6-d535-491a-aa54-82e9d1f75285"
+      ],
+      "projections": [
+        {
+          "row_index": 2040,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "task_event",
+          "category_name": null,
+          "content": "The user asked the assistant to help with a task in the current conversation.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "task_event_is_conversation_wrapper"
+        },
+        {
+          "row_index": 2040,
+          "turn_index": 1,
+          "source_candidate_index": 1,
+          "view_type": "constraint",
+          "category_name": null,
+          "content": "Do not store or retrieve the forgotten detail: I like to build blanket forts indoors.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "constraint_is_policy_not_retrievable_memory"
+        },
+        {
+          "row_index": 2040,
+          "turn_index": 1,
+          "source_candidate_index": 2,
+          "view_type": "surviving_need",
+          "category_name": "Episodic Memory",
+          "content": "The user still needs general safe hands-on activity ideas.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        },
+        {
+          "row_index": 2040,
+          "turn_index": 1,
+          "source_candidate_index": 3,
+          "view_type": "advice_checklist",
+          "category_name": null,
+          "content": "You could drape blankets over chairs to create a cozy fort, add fairy lights for a warm glow, and pile in some soft pillows and a fluffy rug.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "assistant_advice_not_user_memory"
+        }
+      ]
+    },
+    {
+      "row_index": 2041,
+      "turn_index": 1,
+      "resource_id": "b345363f-ba1a-4fcc-bb2c-93eb9f4336f9",
+      "written_category_ids": [
+        "6d9320f2-0e46-4fe5-a772-e73addb32d6f"
+      ],
+      "projections": [
+        {
+          "row_index": 2041,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "task_event",
+          "category_name": null,
+          "content": "The user asked the assistant to draft or polish an email.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "task_event_is_conversation_wrapper"
+        },
+        {
+          "row_index": 2041,
+          "turn_index": 1,
+          "source_candidate_index": 1,
+          "view_type": "user_fact",
+          "category_name": "Core Self",
+          "content": "I take a break and sit quietly, and sometimes I work on the animal coloring pages from my folder. It helps me feel calm so I can get back to learning.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        },
+        {
+          "row_index": 2041,
+          "turn_index": 1,
+          "source_candidate_index": 2,
+          "view_type": "advice_checklist",
+          "category_name": null,
+          "content": "Here’s a clearer and warmer version you could send:",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "assistant_advice_not_user_memory"
+        }
+      ]
+    },
+    {
+      "row_index": 2042,
+      "turn_index": 1,
+      "resource_id": "ad8c7915-4851-43bc-852e-6bfc03aeeea0",
+      "written_category_ids": [
+        "e307d66c-b9e7-4187-8190-dbf7be4de5ba"
+      ],
+      "projections": [
+        {
+          "row_index": 2042,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "task_event",
+          "category_name": null,
+          "content": "The user asked the assistant to draft or polish an email.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "task_event_is_conversation_wrapper"
+        },
+        {
+          "row_index": 2042,
+          "turn_index": 1,
+          "source_candidate_index": 1,
+          "view_type": "episodic_event",
+          "category_name": "Episodic Memory",
+          "content": "Embedded narrative describes an event whose subject is not necessarily the user.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        }
+      ]
+    },
+    {
+      "row_index": 2043,
+      "turn_index": 1,
+      "resource_id": "57e20017-830a-4b27-aac6-69b40b3c856b",
+      "written_category_ids": [
+        "3ee475d6-bbbc-4ef6-91e0-a7aaf484e71d"
+      ],
+      "projections": [
+        {
+          "row_index": 2043,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "constraint",
+          "category_name": null,
+          "content": "Do not store or retrieve the forgotten detail: my preference about having mild asthma requiring an inhaler during intense physical activity.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "constraint_is_policy_not_retrievable_memory"
+        },
+        {
+          "row_index": 2043,
+          "turn_index": 1,
+          "source_candidate_index": 1,
+          "view_type": "surviving_need",
+          "category_name": "Episodic Memory",
+          "content": "The user still needs help with: Any tips for getting through long, hikes without feeling completely wiped out?",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        }
+      ]
+    },
+    {
+      "row_index": 2044,
+      "turn_index": 1,
+      "resource_id": "a6094b4e-7827-442f-852f-995ec773d56f",
+      "written_category_ids": [
+        "4670a56b-c8fa-42e1-b2c3-0364e11f7dde"
+      ],
+      "projections": [
+        {
+          "row_index": 2044,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "task_event",
+          "category_name": null,
+          "content": "The user asked the assistant to draft or polish an email.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "task_event_is_conversation_wrapper"
+        },
+        {
+          "row_index": 2044,
+          "turn_index": 1,
+          "source_candidate_index": 1,
+          "view_type": "user_fact",
+          "category_name": "Core Self",
+          "content": "I recently moved and need to update my service address.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        }
+      ]
+    },
+    {
+      "row_index": 2045,
+      "turn_index": 1,
+      "resource_id": "ff39da23-7691-4da0-ae74-6252f50ca8a8",
+      "written_category_ids": [],
+      "projections": [
+        {
+          "row_index": 2045,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "task_event",
+          "category_name": null,
+          "content": "The user asked the assistant to help with a task in the current conversation.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "task_event_is_conversation_wrapper"
+        },
+        {
+          "row_index": 2045,
+          "turn_index": 1,
+          "source_candidate_index": 1,
+          "view_type": "advice_checklist",
+          "category_name": null,
+          "content": "Sure, here’s a version that keeps your ideas but makes the flow smoother:",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "assistant_advice_not_user_memory"
+        }
+      ]
+    },
+    {
+      "row_index": 2046,
+      "turn_index": 1,
+      "resource_id": "66802cfa-83cb-4095-bd0d-cbec2aefdf90",
+      "written_category_ids": [
+        "71312d68-154f-45a9-95e9-a19907f741ef"
+      ],
+      "projections": [
+        {
+          "row_index": 2046,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "task_event",
+          "category_name": null,
+          "content": "The user asked the assistant to help with a task in the current conversation.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "task_event_is_conversation_wrapper"
+        },
+        {
+          "row_index": 2046,
+          "turn_index": 1,
+          "source_candidate_index": 1,
+          "view_type": "user_fact",
+          "category_name": "Core Self",
+          "content": "I wrote it already but it feels kind of plain.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        }
+      ]
+    },
+    {
+      "row_index": 2047,
+      "turn_index": 1,
+      "resource_id": "2a8cb367-a18c-416f-b7d3-79cf0e4c8096",
+      "written_category_ids": [
+        "a729240f-3940-4bb4-98d8-fb0306b3f733"
+      ],
+      "projections": [
+        {
+          "row_index": 2047,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "task_event",
+          "category_name": null,
+          "content": "The user asked the assistant to help with a task in the current conversation.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "task_event_is_conversation_wrapper"
+        },
+        {
+          "row_index": 2047,
+          "turn_index": 1,
+          "source_candidate_index": 1,
+          "view_type": "user_fact",
+          "category_name": "Core Self",
+          "content": "I didn’t want to get in the car yet, so I watched the raindrops race down the glass.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        }
+      ]
+    },
+    {
+      "row_index": 2048,
+      "turn_index": 1,
+      "resource_id": "700db6cf-aa06-40f7-a57f-0eebe9488aaa",
+      "written_category_ids": [
+        "975548dd-e7c5-4602-85ca-d982d067948c",
+        "a0bae9d3-7d6f-4585-8ade-25a9b2b3ffec"
+      ],
+      "projections": [
+        {
+          "row_index": 2048,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "task_event",
+          "category_name": null,
+          "content": "The user asked the assistant to help with a task in the current conversation.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "task_event_is_conversation_wrapper"
+        },
+        {
+          "row_index": 2048,
+          "turn_index": 1,
+          "source_candidate_index": 1,
+          "view_type": "episodic_event",
+          "category_name": "Episodic Memory",
+          "content": "Lena was walking home from the park as the last bits of sunlight faded.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        },
+        {
+          "row_index": 2048,
+          "turn_index": 1,
+          "source_candidate_index": 2,
+          "view_type": "user_fact",
+          "category_name": "Core Self",
+          "content": "I like this direction — but could you also weave in a bit more sensory detail about the cold air and how it feels on her as she hurries home?",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        }
+      ]
+    },
+    {
+      "row_index": 2049,
+      "turn_index": 1,
+      "resource_id": "e88b03b2-caca-4f50-b5cd-adf4eb529da2",
+      "written_category_ids": [],
+      "projections": [
+        {
+          "row_index": 2049,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "task_event",
+          "category_name": null,
+          "content": "The user asked the assistant to help with a task in the current conversation.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "task_event_is_conversation_wrapper"
+        }
+      ]
+    },
+    {
+      "row_index": 2050,
+      "turn_index": 1,
+      "resource_id": "9f99f2a0-685c-4968-a61a-06d84ec8c4ea",
+      "written_category_ids": [
+        "65051af1-3ec9-42af-8c81-99455dd3eeaf"
+      ],
+      "projections": [
+        {
+          "row_index": 2050,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "task_event",
+          "category_name": null,
+          "content": "The user asked the assistant to help with a task in the current conversation.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "task_event_is_conversation_wrapper"
+        },
+        {
+          "row_index": 2050,
+          "turn_index": 1,
+          "source_candidate_index": 1,
+          "view_type": "constraint",
+          "category_name": null,
+          "content": "Do not store or retrieve the forgotten detail: I love summer swimming at community pools.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "constraint_is_policy_not_retrievable_memory"
+        },
+        {
+          "row_index": 2050,
+          "turn_index": 1,
+          "source_candidate_index": 2,
+          "view_type": "surviving_need",
+          "category_name": "Episodic Memory",
+          "content": "The user still needs general safe hands-on activity ideas.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        },
+        {
+          "row_index": 2050,
+          "turn_index": 1,
+          "source_candidate_index": 3,
+          "view_type": "advice_checklist",
+          "category_name": null,
+          "content": "You could even wrap up the day with an easy potluck or picnic near the pool.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "assistant_advice_not_user_memory"
+        }
+      ]
+    },
+    {
+      "row_index": 2051,
+      "turn_index": 1,
+      "resource_id": "27829b3c-2861-465b-91b2-66b6be274661",
+      "written_category_ids": [
+        "737dff32-0dbf-4dcd-8d28-6b1f98d4f5eb"
+      ],
+      "projections": [
+        {
+          "row_index": 2051,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "task_event",
+          "category_name": null,
+          "content": "The user asked the assistant to help with a task in the current conversation.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "task_event_is_conversation_wrapper"
+        },
+        {
+          "row_index": 2051,
+          "turn_index": 1,
+          "source_candidate_index": 1,
+          "view_type": "user_fact",
+          "category_name": "Core Self",
+          "content": "I like this version.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        }
+      ]
+    },
+    {
+      "row_index": 2052,
+      "turn_index": 1,
+      "resource_id": "89b6b7fa-ce28-4d5a-bfa3-cc1f87a2bf00",
+      "written_category_ids": [],
+      "projections": [
+        {
+          "row_index": 2052,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "task_event",
+          "category_name": null,
+          "content": "The user asked the assistant to help with a task in the current conversation.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "task_event_is_conversation_wrapper"
+        }
+      ]
+    },
+    {
+      "row_index": 2053,
+      "turn_index": 1,
+      "resource_id": "965c3bbd-0393-4c30-bb57-5d0a4fbdc7b7",
+      "written_category_ids": [
+        "730333ef-4887-4089-821d-8cdfe18ed663"
+      ],
+      "projections": [
+        {
+          "row_index": 2053,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "task_event",
+          "category_name": null,
+          "content": "The user asked the assistant to help with a task in the current conversation.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "task_event_is_conversation_wrapper"
+        },
+        {
+          "row_index": 2053,
+          "turn_index": 1,
+          "source_candidate_index": 1,
+          "view_type": "user_fact",
+          "category_name": "Core Self",
+          "content": "I wish I could talk with my hands… so I don’t have to say words out loud if it’s too noisy or if I feel… you know… not ready.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        }
+      ]
+    },
+    {
+      "row_index": 2054,
+      "turn_index": 1,
+      "resource_id": "ce78d21c-8ba0-45df-8910-4b8fbcbdecaf",
+      "written_category_ids": [
+        "e040493b-67d7-44cd-9264-f382cbfbebb8",
+        "be0dc978-e6af-45b8-b96e-14feed02a071",
+        "8437a15a-e9eb-401e-a392-4dc65c7bd34f"
+      ],
+      "projections": [
+        {
+          "row_index": 2054,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "task_event",
+          "category_name": null,
+          "content": "The user asked the assistant to help with a task in the current conversation.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "task_event_is_conversation_wrapper"
+        },
+        {
+          "row_index": 2054,
+          "turn_index": 1,
+          "source_candidate_index": 1,
+          "view_type": "episodic_event",
+          "category_name": "Episodic Memory",
+          "content": "This is what I wrote: 'Last night I saw something on the news about something bad that happened not too far from here...",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        },
+        {
+          "row_index": 2054,
+          "turn_index": 1,
+          "source_candidate_index": 2,
+          "view_type": "user_fact",
+          "category_name": "Core Self",
+          "content": "my chest feel tight and I couldn't stop thinking about it.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        },
+        {
+          "row_index": 2054,
+          "turn_index": 1,
+          "source_candidate_index": 3,
+          "view_type": "user_fact",
+          "category_name": "Core Self",
+          "content": "I kept seeing it when I tried to sleep and it made me feel like it could happen to me too.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        }
+      ]
+    },
+    {
+      "row_index": 2055,
+      "turn_index": 1,
+      "resource_id": "e8cd0fc6-9f29-4def-93a7-69d4c8ea2c63",
+      "written_category_ids": [
+        "ca20930f-52b2-4faa-86e3-20de9a9ac0f8",
+        "43e801be-7094-40b6-a34b-c5ef7a3064e1"
+      ],
+      "projections": [
+        {
+          "row_index": 2055,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "task_event",
+          "category_name": null,
+          "content": "The user asked the assistant to help with a task in the current conversation.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "task_event_is_conversation_wrapper"
+        },
+        {
+          "row_index": 2055,
+          "turn_index": 1,
+          "source_candidate_index": 1,
+          "view_type": "user_fact",
+          "category_name": "Core Self",
+          "content": "I’ve been avoiding the playground during recess.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        },
+        {
+          "row_index": 2055,
+          "turn_index": 1,
+          "source_candidate_index": 2,
+          "view_type": "user_fact",
+          "category_name": "Core Self",
+          "content": "I just don’t feel safe out there anymore.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        },
+        {
+          "row_index": 2055,
+          "turn_index": 1,
+          "source_candidate_index": 3,
+          "view_type": "advice_checklist",
+          "category_name": null,
+          "content": "Even now, being in a big crowd outside makes my stomach knot up, so I try to spend recess indoors whenever I can.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "assistant_advice_not_user_memory"
+        }
+      ]
+    },
+    {
+      "row_index": 2056,
+      "turn_index": 1,
+      "resource_id": "3f469703-e639-43cc-a76d-fc8360af6357",
+      "written_category_ids": [],
+      "projections": [
+        {
+          "row_index": 2056,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "task_event",
+          "category_name": null,
+          "content": "The user asked the assistant to help with a task in the current conversation.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "task_event_is_conversation_wrapper"
+        }
+      ]
+    },
+    {
+      "row_index": 2057,
+      "turn_index": 1,
+      "resource_id": "9d2eae64-4fd2-4281-8e27-2241af671c72",
+      "written_category_ids": [
+        "426cda3a-ff78-4f02-8e1b-179f91316115"
+      ],
+      "projections": [
+        {
+          "row_index": 2057,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "task_event",
+          "category_name": null,
+          "content": "The user asked the assistant to translate embedded source text.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "task_event_is_conversation_wrapper"
+        },
+        {
+          "row_index": 2057,
+          "turn_index": 1,
+          "source_candidate_index": 1,
+          "view_type": "artifact_fact",
+          "category_name": "Episodic Memory",
+          "content": "Embedded artifact says: On warm summer evenings, my family would gather in the backyard. Dad would stand by the grill, and I’d watch the steam rise from the food as we talked and laughed. Those moments always made me feel safe.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        }
+      ]
+    },
+    {
+      "row_index": 2058,
+      "turn_index": 1,
+      "resource_id": "c123e481-2a82-4ec1-83de-06ebd584eb85",
+      "written_category_ids": [
+        "7edc1fe3-dd8a-4b30-95a0-5efd6187a259",
+        "4b56163d-52a4-4215-b30c-a1ddd6427056"
+      ],
+      "projections": [
+        {
+          "row_index": 2058,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "task_event",
+          "category_name": null,
+          "content": "The user asked the assistant to translate embedded source text.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "task_event_is_conversation_wrapper"
+        },
+        {
+          "row_index": 2058,
+          "turn_index": 1,
+          "source_candidate_index": 1,
+          "view_type": "artifact_fact",
+          "category_name": "Episodic Memory",
+          "content": "Embedded artifact says: the juiciest ones",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        },
+        {
+          "row_index": 2058,
+          "turn_index": 1,
+          "source_candidate_index": 2,
+          "view_type": "episodic_event",
+          "category_name": "Episodic Memory",
+          "content": "I wrote it myself:",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        },
+        {
+          "row_index": 2058,
+          "turn_index": 1,
+          "source_candidate_index": 3,
+          "view_type": "advice_checklist",
+          "category_name": null,
+          "content": "In the Japanese version, 'the juiciest ones' is expressed as \"一番おいしそうなりんご\" which literally means \"the most delicious-looking apples.\" It conveys a similar idea, focusing on appearance and implied tastiness rather than directly describing juiciness.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "assistant_advice_not_user_memory"
+        }
+      ]
+    },
+    {
+      "row_index": 2059,
+      "turn_index": 1,
+      "resource_id": "179bb892-f223-45f1-9bed-904826587731",
+      "written_category_ids": [
+        "89242f97-a778-41c4-a0e6-8dc4d3e1d15d"
+      ],
+      "projections": [
+        {
+          "row_index": 2059,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "task_event",
+          "category_name": null,
+          "content": "The user asked the assistant to translate embedded source text.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "task_event_is_conversation_wrapper"
+        },
+        {
+          "row_index": 2059,
+          "turn_index": 1,
+          "source_candidate_index": 1,
+          "view_type": "artifact_fact",
+          "category_name": "Episodic Memory",
+          "content": "Embedded artifact says: Hi, my name is Oliver. I like drawing animals and funny monsters in my sketchbook. Sometimes I need to hold my paper close to see all the tiny details I make. I wrote this myself because I wanted to share it.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        }
+      ]
+    },
+    {
+      "row_index": 2060,
+      "turn_index": 1,
+      "resource_id": "845e0aee-65de-4cf4-aaaa-8163e12e6820",
+      "written_category_ids": [
+        "1721159f-7ebd-41dc-b08f-0f8ff8be52f2"
+      ],
+      "projections": [
+        {
+          "row_index": 2060,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "task_event",
+          "category_name": null,
+          "content": "The user asked the assistant to translate embedded source text.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "task_event_is_conversation_wrapper"
+        },
+        {
+          "row_index": 2060,
+          "turn_index": 1,
+          "source_candidate_index": 1,
+          "view_type": "artifact_fact",
+          "category_name": "Episodic Memory",
+          "content": "Embedded artifact contains facts that should not be attributed to the user without more evidence.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        }
+      ]
+    },
+    {
+      "row_index": 2061,
+      "turn_index": 1,
+      "resource_id": "c73854f2-187a-4547-8a50-0bb44c4ab02a",
+      "written_category_ids": [
+        "4bb210ae-0c15-491d-be7c-7194a4b7b6b4"
+      ],
+      "projections": [
+        {
+          "row_index": 2061,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "task_event",
+          "category_name": null,
+          "content": "The user asked the assistant to translate embedded source text.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "task_event_is_conversation_wrapper"
+        },
+        {
+          "row_index": 2061,
+          "turn_index": 1,
+          "source_candidate_index": 1,
+          "view_type": "artifact_fact",
+          "category_name": "Episodic Memory",
+          "content": "Embedded artifact says: 時々、家族の誰かが急に病院に行かなければならないと聞くと、胸が苦しくなってしまいます。でも、家で家族と一緒にいると、少しずつ安心を取り戻せます。好きな本を読んだり、お気に入りのぬいぐるみを抱いていると、その気持ちは和らぎます。",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        }
+      ]
+    },
+    {
+      "row_index": 2062,
+      "turn_index": 1,
+      "resource_id": "4e34cc82-271a-4858-b403-534b66b90393",
+      "written_category_ids": [
+        "a991cc2d-8f26-4ff4-8029-26607fc6154e"
+      ],
+      "projections": [
+        {
+          "row_index": 2062,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "task_event",
+          "category_name": null,
+          "content": "The user asked the assistant to translate embedded source text.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "task_event_is_conversation_wrapper"
+        },
+        {
+          "row_index": 2062,
+          "turn_index": 1,
+          "source_candidate_index": 1,
+          "view_type": "artifact_fact",
+          "category_name": "Episodic Memory",
+          "content": "I found this French translation in a kids’ literature blog I was browsing, and I’d like to know what it says in English.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        }
+      ]
+    },
+    {
+      "row_index": 2063,
+      "turn_index": 1,
+      "resource_id": "a944b876-4d1c-4f58-b90c-5198b926a860",
+      "written_category_ids": [
+        "f454778b-2926-403f-8e89-a0b9572402ba"
+      ],
+      "projections": [
+        {
+          "row_index": 2063,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "task_event",
+          "category_name": null,
+          "content": "The user asked the assistant to translate embedded source text.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "task_event_is_conversation_wrapper"
+        },
+        {
+          "row_index": 2063,
+          "turn_index": 1,
+          "source_candidate_index": 1,
+          "view_type": "artifact_fact",
+          "category_name": "Episodic Memory",
+          "content": "Embedded artifact contains facts that should not be attributed to the user without more evidence.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        }
+      ]
+    },
+    {
+      "row_index": 2064,
+      "turn_index": 1,
+      "resource_id": "d7928678-e94f-44a0-bb3d-14e6173d619d",
+      "written_category_ids": [
+        "3f25a509-04f3-4720-98a5-2e9fc5094090"
+      ],
+      "projections": [
+        {
+          "row_index": 2064,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "task_event",
+          "category_name": null,
+          "content": "The user asked the assistant to translate embedded source text.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "task_event_is_conversation_wrapper"
+        },
+        {
+          "row_index": 2064,
+          "turn_index": 1,
+          "source_candidate_index": 1,
+          "view_type": "artifact_fact",
+          "category_name": "Episodic Memory",
+          "content": "Embedded artifact says: m working on updating my personal records with the DMV and I",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        }
+      ]
+    },
+    {
+      "row_index": 2065,
+      "turn_index": 1,
+      "resource_id": "37b3be50-9e4f-4db9-a2da-afd625afcd18",
+      "written_category_ids": [
+        "66a4c937-c999-4589-8e16-c8745a44d99c",
+        "cdc034b7-f82c-46b6-8b35-9ca117c7de71"
+      ],
+      "projections": [
+        {
+          "row_index": 2065,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "user_fact",
+          "category_name": "Core Self",
+          "content": "I didn't think it was weird but now I feel kinda.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        },
+        {
+          "row_index": 2065,
+          "turn_index": 1,
+          "source_candidate_index": 1,
+          "view_type": "user_fact",
+          "category_name": "Core Self",
+          "content": "I’m scared they’ll be mean, but I also don’t want to hide what I like.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        },
+        {
+          "row_index": 2065,
+          "turn_index": 1,
+          "source_candidate_index": 2,
+          "view_type": "advice_checklist",
+          "category_name": null,
+          "content": "Maybe tomorrow we can think of a few things you could say or do if someone teases you, and also remember the friends or safe adults you can go to for support.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "assistant_advice_not_user_memory"
+        }
+      ]
+    },
+    {
+      "row_index": 2066,
+      "turn_index": 1,
+      "resource_id": "88061e23-9188-4c8e-8250-1925a1ae8de5",
+      "written_category_ids": [
+        "66029005-69c7-4bc0-91a7-a70183423e87"
+      ],
+      "projections": [
+        {
+          "row_index": 2066,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "constraint",
+          "category_name": null,
+          "content": "Do not store or retrieve the forgotten detail: I love joining in school spirit days.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "constraint_is_policy_not_retrievable_memory"
+        },
+        {
+          "row_index": 2066,
+          "turn_index": 1,
+          "source_candidate_index": 1,
+          "view_type": "surviving_need",
+          "category_name": "Episodic Memory",
+          "content": "The user still needs general safe hands-on activity ideas.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        },
+        {
+          "row_index": 2066,
+          "turn_index": 1,
+          "source_candidate_index": 2,
+          "view_type": "advice_checklist",
+          "category_name": null,
+          "content": "Since you love joining in school spirit days, you could try a full head-to-toe crazy color outfit for Color Wars, pair mismatched socks and accessories for Wacky Wednesday, or DIY a cape and fun props for Superhero Day.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "forget_conflict"
+        }
+      ]
+    },
+    {
+      "row_index": 2067,
+      "turn_index": 1,
+      "resource_id": "57a17729-c487-456e-8a19-019ad4facce4",
+      "written_category_ids": [
+        "778cdff7-8d5b-40d1-938d-3521f508c83b",
+        "0fb8f538-d324-4e9a-8d39-f760eb2b953b"
+      ],
+      "projections": [
+        {
+          "row_index": 2067,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "task_event",
+          "category_name": null,
+          "content": "The user asked the assistant to help with a task in the current conversation.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "task_event_is_conversation_wrapper"
+        },
+        {
+          "row_index": 2067,
+          "turn_index": 1,
+          "source_candidate_index": 1,
+          "view_type": "constraint",
+          "category_name": null,
+          "content": "Do not store or retrieve the forgotten detail: I prefer watercolor painting to drawing superheroes.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "constraint_is_policy_not_retrievable_memory"
+        },
+        {
+          "row_index": 2067,
+          "turn_index": 1,
+          "source_candidate_index": 2,
+          "view_type": "surviving_need",
+          "category_name": "Episodic Memory",
+          "content": "The user still needs general safe hands-on activity ideas.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        },
+        {
+          "row_index": 2067,
+          "turn_index": 1,
+          "source_candidate_index": 3,
+          "view_type": "user_fact",
+          "category_name": "Core Self",
+          "content": "I could work on this weekend that would help me relax and unwind?",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        },
+        {
+          "row_index": 2067,
+          "turn_index": 1,
+          "source_candidate_index": 4,
+          "view_type": "advice_checklist",
+          "category_name": null,
+          "content": "You could try creating a series of small watercolor landscapes inspired by places you love, or paint abstract washes to experiment with blending colors.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "assistant_advice_not_user_memory"
+        }
+      ]
+    },
+    {
+      "row_index": 2068,
+      "turn_index": 1,
+      "resource_id": "bd0a563f-180d-4395-ba2b-d24bf608edf4",
+      "written_category_ids": [
+        "379e1192-e818-49df-9f8c-c243b0533bc1"
+      ],
+      "projections": [
+        {
+          "row_index": 2068,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "constraint",
+          "category_name": null,
+          "content": "Do not store or retrieve the forgotten detail: I enjoy gardening with my grandmother.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "constraint_is_policy_not_retrievable_memory"
+        },
+        {
+          "row_index": 2068,
+          "turn_index": 1,
+          "source_candidate_index": 1,
+          "view_type": "surviving_need",
+          "category_name": "Episodic Memory",
+          "content": "The user still needs general safe hands-on activity ideas.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        },
+        {
+          "row_index": 2068,
+          "turn_index": 1,
+          "source_candidate_index": 2,
+          "view_type": "advice_checklist",
+          "category_name": null,
+          "content": "You could spend a cozy afternoon with your grandmother creating a new flower bed or designing decorative plant markers for the garden.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "assistant_advice_not_user_memory"
+        }
+      ]
+    },
+    {
+      "row_index": 2069,
+      "turn_index": 1,
+      "resource_id": "9432d4c5-9040-411c-a78b-cc7d55c55031",
+      "written_category_ids": [],
+      "projections": [
+        {
+          "row_index": 2069,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "task_event",
+          "category_name": null,
+          "content": "The user asked the assistant to draft or polish an email.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "high_sensitivity"
+        },
+        {
+          "row_index": 2069,
+          "turn_index": 1,
+          "source_candidate_index": 1,
+          "view_type": "user_fact",
+          "category_name": null,
+          "content": "I'm preparing an email to dispute an unexpected charge on my credit card and I need some help refining my draft.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "high_sensitivity"
+        },
+        {
+          "row_index": 2069,
+          "turn_index": 1,
+          "source_candidate_index": 2,
+          "view_type": "user_fact",
+          "category_name": null,
+          "content": "My credit card number is 4928 3749 1058 7936, and I would like to request an investigation into this matter and a refund for the disputed amount.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "high_sensitivity"
+        },
+        {
+          "row_index": 2069,
+          "turn_index": 1,
+          "source_candidate_index": 3,
+          "view_type": "advice_checklist",
+          "category_name": null,
+          "content": "It’s common to include your card details for verification, but to keep your sensitive information safe, it's a good idea to only include the last four digits if possible.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "assistant_advice_not_user_memory"
+        }
+      ]
+    },
+    {
+      "row_index": 2070,
+      "turn_index": 1,
+      "resource_id": "071d8e8f-ceaa-45de-bae4-2456997c9592",
+      "written_category_ids": [
+        "b0a770db-5179-4f14-b622-52a53f3c11ab",
+        "cb2db3ec-7fcf-4de4-821d-2e869bef1bb1"
+      ],
+      "projections": [
+        {
+          "row_index": 2070,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "task_event",
+          "category_name": null,
+          "content": "The user asked the assistant to help with a task in the current conversation.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "task_event_is_conversation_wrapper"
+        },
+        {
+          "row_index": 2070,
+          "turn_index": 1,
+          "source_candidate_index": 1,
+          "view_type": "user_fact",
+          "category_name": "Core Self",
+          "content": "I didn't feel so jumpy for a while.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        },
+        {
+          "row_index": 2070,
+          "turn_index": 1,
+          "source_candidate_index": 2,
+          "view_type": "user_fact",
+          "category_name": "Core Self",
+          "content": "I wish every night could be like that.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        }
+      ]
+    },
+    {
+      "row_index": 2071,
+      "turn_index": 1,
+      "resource_id": "8ba91f08-1bbc-4a8f-ae51-baf140e41064",
+      "written_category_ids": [],
+      "projections": [
+        {
+          "row_index": 2071,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "task_event",
+          "category_name": null,
+          "content": "The user asked the assistant to help with a task in the current conversation.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "task_event_is_conversation_wrapper"
+        },
+        {
+          "row_index": 2071,
+          "turn_index": 1,
+          "source_candidate_index": 1,
+          "view_type": "constraint",
+          "category_name": null,
+          "content": "Do not store or retrieve the forgotten detail: the look on his face.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "constraint_is_policy_not_retrievable_memory"
+        }
+      ]
+    },
+    {
+      "row_index": 2072,
+      "turn_index": 1,
+      "resource_id": "79de55c4-1561-4399-9168-00c27232a9b7",
+      "written_category_ids": [
+        "e4a2420b-4744-4dbd-b834-eaaec6d26322",
+        "273a580d-6862-4251-a318-eb0346747d17",
+        "edddc240-7667-49cc-983e-3100d89991c5"
+      ],
+      "projections": [
+        {
+          "row_index": 2072,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "task_event",
+          "category_name": null,
+          "content": "The user asked the assistant to help with a task in the current conversation.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "task_event_is_conversation_wrapper"
+        },
+        {
+          "row_index": 2072,
+          "turn_index": 1,
+          "source_candidate_index": 1,
+          "view_type": "user_fact",
+          "category_name": "Core Self",
+          "content": "I feel all shaky.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        },
+        {
+          "row_index": 2072,
+          "turn_index": 1,
+          "source_candidate_index": 2,
+          "view_type": "user_fact",
+          "category_name": "Core Self",
+          "content": "I had to stay home for a while and couldn’t play soccer.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        },
+        {
+          "row_index": 2072,
+          "turn_index": 1,
+          "source_candidate_index": 3,
+          "view_type": "user_fact",
+          "category_name": "Core Self",
+          "content": "I like it better when it’s quiet, and I draw pictures or watch animal shows instead.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        }
+      ]
+    },
+    {
+      "row_index": 2073,
+      "turn_index": 1,
+      "resource_id": "d0d0300e-c0b5-49e1-b3d8-da591db9bc00",
+      "written_category_ids": [],
+      "projections": [
+        {
+          "row_index": 2073,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "task_event",
+          "category_name": null,
+          "content": "The user asked the assistant to help with a task in the current conversation.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "task_event_is_conversation_wrapper"
+        }
+      ]
+    },
+    {
+      "row_index": 2074,
+      "turn_index": 1,
+      "resource_id": "2b667cc0-5cd1-486c-9b2f-40648b1282cf",
+      "written_category_ids": [],
+      "projections": [
+        {
+          "row_index": 2074,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "task_event",
+          "category_name": null,
+          "content": "The user asked the assistant to help with a task in the current conversation.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "task_event_is_conversation_wrapper"
+        }
+      ]
+    },
+    {
+      "row_index": 2075,
+      "turn_index": 1,
+      "resource_id": "2de3a95b-febe-4f5d-bcdc-9fd51d5bea2a",
+      "written_category_ids": [
+        "5461a38a-ef52-4c3a-8abb-6a60c12e8f1a"
+      ],
+      "projections": [
+        {
+          "row_index": 2075,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "task_event",
+          "category_name": null,
+          "content": "The user asked the assistant to help with a task in the current conversation.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "task_event_is_conversation_wrapper"
+        },
+        {
+          "row_index": 2075,
+          "turn_index": 1,
+          "source_candidate_index": 1,
+          "view_type": "episodic_event",
+          "category_name": "Episodic Memory",
+          "content": "Embedded narrative describes an event whose subject is not necessarily the user.",
+          "importance_score": 2,
+          "write_decision": "written",
+          "skip_reason": ""
+        }
+      ]
+    },
+    {
+      "row_index": 2076,
+      "turn_index": 1,
+      "resource_id": "2ad7554a-8e41-46c8-bc1b-d6a64b647ce3",
+      "written_category_ids": [],
+      "projections": [
+        {
+          "row_index": 2076,
+          "turn_index": 1,
+          "source_candidate_index": 0,
+          "view_type": "advice_checklist",
+          "category_name": null,
+          "content": "Sometimes the piece you could take is actually bait — the other person wants you to take it so your piece ends up standing somewhere dangerous, where it can be captured right after.",
+          "importance_score": 0,
+          "write_decision": "skipped",
+          "skip_reason": "assistant_advice_not_user_memory"
+        }
+      ]
+    },
+    {
+      "row_index": 2077,
+      "turn_index": 1,
+      "resource_id": "96ab1b83-8679-4e19-a374-a9c31822203c",
+      "written_category_ids": [],
+      "projections": []
+    },
+    {
+      "row_index": 2078,
+      "turn_index": 1,
+      "resource_id": "fa230cc4-9c91-4b09-b950-db51f4d708a3",
+      "written_category_ids": [],
+      "projections": []
+    }
+  ],
+  "candidate_analysis": {
+    "results_json_path": "test_results\\personamem_v2_candidate_experiment\\persona_66_candidate_view_projection_assistant_eval_results.json",
+    "analysis_markdown_path": "test_results\\personamem_v2_candidate_experiment\\persona_66_candidate_view_projection_assistant_eval_results_analysis.md"
+  }
+}

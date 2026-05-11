@@ -293,6 +293,11 @@ def pytest_addoption(parser):
     personamem.addoption("--personamem-v2-reset-memory", action="store_true", help="导入前清空该 persona 用户记忆")
     personamem.addoption("--personamem-v2-no-dedup", action="store_true", help="禁用记忆去重")
     personamem.addoption("--personamem-v2-no-save-raw-snapshot", action="store_true", help="不保存原始 rows 快照")
+    personamem.addoption(
+        "--personamem-v2-model-sweep",
+        type=str,
+        help="Comma-separated CHAT_MODEL list, or 'default' for the five planned model comparisons.",
+    )
     group.addoption(
         "--allow-real-db-write",
         action="store_true",

@@ -1,0 +1,76 @@
+{
+  "test_info": {
+    "timestamp": "20260509_013725",
+    "dataset": "bowen-upenn/PersonaMem-v2",
+    "harness": "personamem_v2_model_sweep",
+    "eval_mode": "assistant_eval"
+  },
+  "ranked_models": [
+    {
+      "chat_model": "Qwen3.5-Plus",
+      "usernames": [
+        "Qwen3.5-Plus-persona66"
+      ],
+      "user_ids": [
+        "624da605-a9e3-4832-ae8c-f883f59a62a7"
+      ],
+      "total_memories": 64,
+      "total_questions": 42,
+      "metrics": {
+        "total_questions": 42,
+        "evaluated_questions": 42,
+        "correct_count": 10,
+        "accuracy": 23.809523809523807,
+        "category_accuracy": {
+          "0": {
+            "label": "未知类别",
+            "display_name": "Category 0 - 未知类别",
+            "count": 42,
+            "correct": 10,
+            "accuracy": 23.809523809523807
+          }
+        },
+        "answer_accuracy": 23.809523809523807,
+        "non_empty_answer_questions": 42,
+        "non_empty_answer_correct_count": 10,
+        "adjusted_accuracy_excluding_empty_standard": 23.809523809523807,
+        "answer_failure_patterns": {
+          "wrong_specific_answer": 22,
+          "retrieval_gap": 10
+        },
+        "answer_support_counts": {
+          "wrong": 32,
+          "unsupported": 2,
+          "direct_fact": 8
+        },
+        "retrieval_support_rate": 71.42857142857143,
+        "retrieval_hit_count": 30,
+        "recall_at_k": 71.42857142857143,
+        "top1_hit_rate": 9.523809523809524,
+        "top3_hit_rate": 30.952380952380953,
+        "top5_hit_rate": 40.476190476190474,
+        "mean_first_evidence_rank": 4.933333333333334,
+        "rank_distribution": {
+          "beyond_top5": 13,
+          "miss": 12,
+          "top1": 4,
+          "top3": 9,
+          "top5": 4
+        },
+        "avg_retrieval_score": 0.1237734730468161,
+        "layer_distribution": {
+          "resource_only": {
+            "count": 42,
+            "rate": 100.0,
+            "correct": 10,
+            "accuracy": 23.809523809523807,
+            "recall_at_k": 71.42857142857143
+          }
+        },
+        "storage_hit_count": 42,
+        "storage_coverage_rate": 100.0,
+        "db_diagnosis_counts": {}
+      }
+    }
+  ]
+}

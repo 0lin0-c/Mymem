@@ -19,18 +19,22 @@ def save_results_json(
     reports: list[PersonaMemReport],
     output_dir: Path,
     eval_mode: str,
+    test_info: dict[str, Any] | None = None,
 ) -> Path:
     output_dir.mkdir(parents=True, exist_ok=True)
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     results_path = output_dir / f"personamem_v2_{eval_mode}_results_{timestamp}.json"
     all_results = [result for report in reports for result in report.results]
+    info = {
+        "timestamp": timestamp,
+        "dataset": "bowen-upenn/PersonaMem-v2",
+        "harness": "personamem_v2",
+        "eval_mode": eval_mode,
+    }
+    if test_info:
+        info.update(test_info)
     data = {
-        "test_info": {
-            "timestamp": timestamp,
-            "dataset": "bowen-upenn/PersonaMem-v2",
-            "harness": "personamem_v2",
-            "eval_mode": eval_mode,
-        },
+        "test_info": info,
         "statistics": calculate_metrics(all_results, eval_mode=eval_mode),
         "samples": [_report_to_dict(report) for report in reports],
     }
@@ -54,6 +58,7 @@ def _report_to_dict(report: PersonaMemReport) -> dict[str, Any]:
         "sample_index": report.sample_index,
         "persona_id": report.character,
         "user_id": report.user_id,
+        "chat_model": report.chat_model,
         "total_sessions": report.total_sessions,
         "total_memories": report.total_memories,
         "total_questions": report.total_questions,

@@ -2,8 +2,10 @@ from __future__ import annotations
 
 import argparse
 import asyncio
+import json
 import logging
 import re
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 
@@ -11,6 +13,7 @@ from sqlalchemy import delete, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from core.database import AsyncSessionLocal
+from core.config import settings
 from repositories import CategoryRepository, ResourceRepository, UserRepository
 from schemas.onboarding_schema import AICustomization, IdentityDetail, OnboardingRequest
 from services.chat_orchestrator import ChatOrchestrator
@@ -30,6 +33,7 @@ from tests.evals.converted_data.runner import (
     evaluate_answer_correctness,
     generate_answer_with_chat_orchestrator,
 )
+from tests.evals.converted_data.metrics import calculate_metrics
 from tests.evals.personamem_v2.loader import (
     DEFAULT_SPLIT,
     PERSONAMEM_CACHE_DIR,
@@ -51,24 +55,47 @@ logger = logging.getLogger(__name__)
 
 REPO_ROOT = Path(__file__).parents[3]
 OUTPUT_DIR = REPO_ROOT / "test_results" / "personamem_v2"
+DEFAULT_MODEL_SWEEP = [
+    "GLM-5-Turbo",
+    "GLM-5",
+    "GLM-5.1",
+    "Qwen3.5-Plus",
+    "DeepSeek-V4-Pro",
+]
 
 
 def _base_category_names() -> set[str]:
     return {category["name"] for category in BASE_CATEGORIES} | {LEGACY_TIMELINE_CATEGORY}
 
 
-def _username_for_sample(sample: PersonaMemSample) -> str:
-    suffix = re.sub(r"[^A-Za-z0-9_\-]+", "_", str(sample.persona_id)).strip("_")
-    return f"personamem_v2_persona_{suffix or 'unknown'}"
+def parse_model_sweep(value: str | None) -> list[str]:
+    if value is None:
+        return []
+    if value.strip().lower() in {"default", "all"}:
+        return list(DEFAULT_MODEL_SWEEP)
+    return [item.strip() for item in value.split(",") if item.strip()]
+
+
+def _safe_username_part(value: str) -> str:
+    return re.sub(r"[^A-Za-z0-9_.\-]+", "_", value).strip("_")
+
+
+def _username_for_sample(sample: PersonaMemSample, chat_model: str | None = None) -> str:
+    suffix = _safe_username_part(str(sample.persona_id)) or "unknown"
+    if chat_model:
+        model_part = _safe_username_part(chat_model)
+        return f"{model_part}-persona{suffix}"
+    return f"personamem_v2_persona_{suffix}"
 
 
 async def ensure_user_onboarded(
     session: AsyncSession,
     sample: PersonaMemSample,
     recreate_existing: bool = False,
+    chat_model: str | None = None,
 ) -> str:
     """Create a stable PersonaMem test user through the real onboarding service."""
-    username = _username_for_sample(sample)
+    username = _username_for_sample(sample, chat_model=chat_model)
     user_repo = UserRepository(session)
     user = await user_repo.get_by_username(username)
     if user and user.user_prompt_template and not recreate_existing:
@@ -142,12 +169,14 @@ async def import_sample(
     sample: PersonaMemSample,
     enable_dedup: bool = False,
     reset_memory: bool = False,
+    chat_model: str | None = None,
 ) -> tuple[str, int]:
     """Import PersonaMem snippets through MemoryWriter."""
     user_id = await ensure_user_onboarded(
         session,
         sample,
         recreate_existing=reset_memory,
+        chat_model=chat_model,
     )
     if reset_memory:
         await _reset_user_memory(session, user_id)
@@ -182,9 +211,13 @@ async def import_sample(
     return user_id, memory_count
 
 
-async def resolve_existing_user(session: AsyncSession, sample: PersonaMemSample) -> tuple[str, int] | None:
+async def resolve_existing_user(
+    session: AsyncSession,
+    sample: PersonaMemSample,
+    chat_model: str | None = None,
+) -> tuple[str, int] | None:
     user_repo = UserRepository(session)
-    user = await user_repo.get_by_username(_username_for_sample(sample))
+    user = await user_repo.get_by_username(_username_for_sample(sample, chat_model=chat_model))
     if not user:
         return None
     resource_repo = ResourceRepository(session)
@@ -200,6 +233,7 @@ async def evaluate_sample(
     sample_index: int,
     eval_mode: EvalMode,
     top_k: int = 10,
+    chat_model: str | None = None,
 ) -> PersonaMemReport:
     llm = LLMFactory.get_provider()
     retriever = MemoryRetriever(session, llm)
@@ -287,6 +321,7 @@ async def evaluate_sample(
         total_memories=memory_count,
         total_questions=sample.total_questions,
         results=results,
+        chat_model=chat_model,
     )
 
 
@@ -304,7 +339,9 @@ async def run_personamem_v2_eval(
     top_k: int = 10,
     save_raw_snapshot: bool = True,
     download_only: bool = False,
+    chat_model: str | None = None,
 ) -> list[PersonaMemReport]:
+    active_chat_model = chat_model or settings.chat_model
     rows = load_personamem_rows(
         split=split,
         max_rows=max_rows,
@@ -333,11 +370,11 @@ async def run_personamem_v2_eval(
     async with AsyncSessionLocal() as session:
         for sample_index, sample in enumerate(samples):
             if retrieval_only:
-                resolved = await resolve_existing_user(session, sample)
+                resolved = await resolve_existing_user(session, sample, chat_model=chat_model)
                 if not resolved:
                     logger.error(
                         "PersonaMem user does not exist for retrieval-only mode: %s",
-                        _username_for_sample(sample),
+                        _username_for_sample(sample, chat_model=chat_model),
                     )
                     continue
                 user_id, memory_count = resolved
@@ -347,6 +384,7 @@ async def run_personamem_v2_eval(
                     sample=sample,
                     enable_dedup=enable_dedup,
                     reset_memory=reset_memory,
+                    chat_model=chat_model,
                 )
 
             if import_only:
@@ -361,11 +399,17 @@ async def run_personamem_v2_eval(
                     sample_index=sample_index,
                     eval_mode=eval_mode,
                     top_k=top_k,
+                    chat_model=active_chat_model,
                 )
             )
 
     if reports:
-        results_path = save_results_json(reports, OUTPUT_DIR, eval_mode=eval_mode.value)
+        results_path = save_results_json(
+            reports,
+            OUTPUT_DIR,
+            eval_mode=eval_mode.value,
+            test_info={"chat_model": active_chat_model},
+        )
         logger.info("PersonaMem-v2 results saved to %s", results_path)
         analysis_path = save_analysis_markdown(results_path)
         if analysis_path:
@@ -401,6 +445,136 @@ def _to_converted_qa(question: PersonaMemQuestion) -> QAQuestion:
     )
 
 
+def _set_chat_model(chat_model: str) -> None:
+    settings.chat_model = chat_model
+    LLMFactory.reset()
+    logger.info("PersonaMem-v2 model sweep using CHAT_MODEL=%s", chat_model)
+
+
+async def run_personamem_v2_model_sweep(
+    chat_models: list[str],
+    split: str = DEFAULT_SPLIT,
+    max_personas: int = 2,
+    max_questions: int = 5,
+    max_rows: int | None = 100,
+    persona_id: str | None = None,
+    import_only: bool = False,
+    retrieval_only: bool = False,
+    enable_dedup: bool = False,
+    reset_memory: bool = False,
+    eval_mode: EvalMode = EvalMode.ASSISTANT,
+    top_k: int = 10,
+    save_raw_snapshot: bool = True,
+    download_only: bool = False,
+) -> dict[str, Any]:
+    """Run the same PersonaMem-v2 flow once per chat model with isolated users."""
+    original_chat_model = settings.chat_model
+    sweep_results: list[dict[str, Any]] = []
+    try:
+        for chat_model in chat_models:
+            _set_chat_model(chat_model)
+            reports = await run_personamem_v2_eval(
+                split=split,
+                max_personas=max_personas,
+                max_questions=max_questions,
+                max_rows=max_rows,
+                persona_id=persona_id,
+                import_only=import_only,
+                retrieval_only=retrieval_only,
+                enable_dedup=enable_dedup,
+                reset_memory=reset_memory,
+                eval_mode=eval_mode,
+                top_k=top_k,
+                save_raw_snapshot=save_raw_snapshot,
+                download_only=download_only,
+                chat_model=chat_model,
+            )
+            all_results = [result for report in reports for result in report.results]
+            metrics = calculate_metrics(all_results, eval_mode=eval_mode.value) if all_results else {}
+            sweep_results.append(
+                {
+                    "chat_model": chat_model,
+                    "usernames": [
+                        _username_for_sample(
+                            PersonaMemSample(persona_id=report.character, user_key=""),
+                            chat_model=chat_model,
+                        )
+                        for report in reports
+                    ],
+                    "user_ids": [report.user_id for report in reports],
+                    "total_memories": sum(report.total_memories for report in reports),
+                    "total_questions": sum(report.total_questions for report in reports),
+                    "metrics": metrics,
+                }
+            )
+    finally:
+        settings.chat_model = original_chat_model
+        LLMFactory.reset()
+
+    if not import_only and sweep_results:
+        return save_model_sweep_summary(
+            sweep_results=sweep_results,
+            eval_mode=eval_mode.value,
+            output_dir=OUTPUT_DIR,
+        )
+    return {"results": sweep_results}
+
+
+def save_model_sweep_summary(
+    sweep_results: list[dict[str, Any]],
+    eval_mode: str,
+    output_dir: Path = OUTPUT_DIR,
+) -> dict[str, Any]:
+    output_dir.mkdir(parents=True, exist_ok=True)
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    ranked = sorted(
+        sweep_results,
+        key=lambda item: (
+            item.get("metrics", {}).get("accuracy")
+            or item.get("metrics", {}).get("answer_accuracy")
+            or 0
+        ),
+        reverse=True,
+    )
+    payload = {
+        "test_info": {
+            "timestamp": timestamp,
+            "dataset": "bowen-upenn/PersonaMem-v2",
+            "harness": "personamem_v2_model_sweep",
+            "eval_mode": eval_mode,
+        },
+        "ranked_models": ranked,
+    }
+    json_path = output_dir / f"personamem_v2_{eval_mode}_model_sweep_{timestamp}.json"
+    markdown_path = output_dir / f"personamem_v2_{eval_mode}_model_sweep_{timestamp}.md"
+    json_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    markdown_path.write_text(_render_model_sweep_markdown(payload), encoding="utf-8")
+    payload["json_path"] = str(json_path)
+    payload["markdown_path"] = str(markdown_path)
+    return payload
+
+
+def _render_model_sweep_markdown(payload: dict[str, Any]) -> str:
+    lines = [
+        "# PersonaMem-v2 Model Sweep",
+        "",
+        f"- eval_mode: {payload['test_info']['eval_mode']}",
+        f"- timestamp: {payload['test_info']['timestamp']}",
+        "",
+        "| Rank | CHAT_MODEL | Accuracy | Total Questions | Total Memories | Username |",
+        "|---:|---|---:|---:|---:|---|",
+    ]
+    for index, item in enumerate(payload["ranked_models"], 1):
+        metrics = item.get("metrics", {})
+        accuracy = metrics.get("accuracy", metrics.get("answer_accuracy", 0))
+        usernames = ", ".join(item.get("usernames") or [])
+        lines.append(
+            f"| {index} | `{item['chat_model']}` | {accuracy} | "
+            f"{item.get('total_questions', 0)} | {item.get('total_memories', 0)} | `{usernames}` |"
+        )
+    return "\n".join(lines) + "\n"
+
+
 def main() -> None:
     logging.basicConfig(level=logging.INFO)
     parser = argparse.ArgumentParser(description="Run PersonaMem-v2 text snippet eval.")
@@ -421,7 +595,41 @@ def main() -> None:
     parser.add_argument("--reset-memory", action="store_true")
     parser.add_argument("--no-dedup", action="store_true")
     parser.add_argument("--no-save-raw-snapshot", action="store_true")
+    parser.add_argument(
+        "--model-sweep",
+        type=str,
+        help=(
+            "Comma-separated CHAT_MODEL list, or 'default' for "
+            "GLM-5-Turbo, GLM-5, GLM-5.1, Qwen3.5-Plus, DeepSeek-V4-Pro."
+        ),
+    )
     args = parser.parse_args()
+
+    model_sweep = parse_model_sweep(args.model_sweep)
+    if model_sweep:
+        result = asyncio.run(
+            run_personamem_v2_model_sweep(
+                chat_models=model_sweep,
+                split=args.split,
+                max_personas=args.max_personas,
+                max_questions=args.max_questions,
+                max_rows=args.max_rows,
+                persona_id=args.persona_id,
+                import_only=args.import_only,
+                retrieval_only=args.retrieval_only,
+                enable_dedup=not args.no_dedup,
+                reset_memory=args.reset_memory,
+                eval_mode=EvalMode(args.eval_mode),
+                top_k=args.top_k,
+                save_raw_snapshot=not args.no_save_raw_snapshot,
+                download_only=args.download_only,
+            )
+        )
+        if result.get("json_path"):
+            print(f"model_sweep_json={result['json_path']}")
+        if result.get("markdown_path"):
+            print(f"model_sweep_markdown={result['markdown_path']}")
+        return
 
     asyncio.run(
         run_personamem_v2_eval(

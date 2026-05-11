@@ -1,0 +1,299 @@
+{
+  "experiment_name": "personamem_v2_persona66_chat_model_comparison",
+  "experiment_date": "2026-05-08_to_2026-05-09",
+  "dataset": "bowen-upenn/PersonaMem-v2",
+  "persona_id": 66,
+  "eval_mode": "assistant_eval",
+  "question_count": 42,
+  "purpose": "比较不同 CHAT_MODEL 在 PersonaMem-v2 persona66 全流程中的记忆入库、检索回答和最终准确率表现。",
+  "run_setup": {
+    "shared_base_url_and_api_key": true,
+    "model_isolation_rule": "users.username = [模型名]-persona66",
+    "reset_memory_before_each_model": true,
+    "max_rows": 5000,
+    "max_questions": 9999,
+    "skipped_models": [
+      {
+        "model": "GLM-5",
+        "reason": "全量运行时持续 APITimeoutError / Request timed out，吞吐过慢，未纳入最终横向比较。"
+      }
+    ],
+    "compatibility_note": "Qwen3.5-Plus 和 DeepSeek-V4-Pro 在该 OpenAI-compatible 网关的 thinking mode 下不支持强制 tool_choice。已在 services/llm/openai_sdk.py 中加入兼容分支：默认强制 tool_choice；如报 tool_choice not support，则降级为 tools auto；如仍无 tool_calls，则降级为 response_format=json_object 解析 JSON。GLM 路径保持原强制 function calling。"
+  },
+  "overall_ranking": [
+    {
+      "rank": 1,
+      "model": "GLM-5.1",
+      "reason": "Accuracy 与 DeepSeek-V4-Pro 并列第一，但 loose recall 和整体检索稳定性明显更好，因此综合最佳。"
+    },
+    {
+      "rank": 2,
+      "model": "DeepSeek-V4-Pro",
+      "reason": "Accuracy 并列第一，但 recall 和 answerable evidence 命中很低，更多依赖生成能力和常识补全。"
+    },
+    {
+      "rank": 3,
+      "model": "GLM-5-Turbo",
+      "reason": "表现中等，生成端能兜底，但检索证据和答案锚点命中不足。"
+    },
+    {
+      "rank": 4,
+      "model": "Qwen3.5-Plus",
+      "reason": "Loose recall 较高但大量是错误邻居，answerable evidence 很少，最终回答准确率最低。"
+    }
+  ],
+  "summary_table": [
+    {
+      "model": "GLM-5.1",
+      "correct": 31,
+      "total": 42,
+      "accuracy": "73.81%",
+      "loose_recall_at_k": "76.19%",
+      "target_preference_hit_at_k": "21.43%",
+      "answerable_context_hit_at_k": "16.67%",
+      "storage_coverage": "100.00%",
+      "total_memories": 64
+    },
+    {
+      "model": "DeepSeek-V4-Pro",
+      "correct": 31,
+      "total": 42,
+      "accuracy": "73.81%",
+      "loose_recall_at_k": "14.29%",
+      "target_preference_hit_at_k": "11.90%",
+      "answerable_context_hit_at_k": "11.90%",
+      "storage_coverage": "100.00%",
+      "total_memories": 64
+    },
+    {
+      "model": "GLM-5-Turbo",
+      "correct": 26,
+      "total": 42,
+      "accuracy": "61.90%",
+      "loose_recall_at_k": "23.81%",
+      "target_preference_hit_at_k": "21.43%",
+      "answerable_context_hit_at_k": "16.67%",
+      "storage_coverage": "100.00%",
+      "total_memories": 64
+    },
+    {
+      "model": "Qwen3.5-Plus",
+      "correct": 10,
+      "total": 42,
+      "accuracy": "23.81%",
+      "loose_recall_at_k": "71.43%",
+      "target_preference_hit_at_k": "16.67%",
+      "answerable_context_hit_at_k": "14.29%",
+      "storage_coverage": "100.00%",
+      "total_memories": 64
+    }
+  ],
+  "model_results": {
+    "GLM-5.1": {
+      "result_json": "test_results/personamem_v2/personamem_v2_assistant_eval_results_20260508_162544.json",
+      "analysis_markdown": "test_results/personamem_v2/personamem_v2_assistant_eval_results_20260508_162544_analysis.md",
+      "user_id": "fc20e640-320d-4ef3-a06a-4f9d5e1913e4",
+      "username": "GLM-5.1-persona66",
+      "core_metrics": {
+        "accuracy": "73.81%",
+        "correct": 31,
+        "total": 42,
+        "loose_recall_at_k": "76.19%",
+        "target_preference_hit_at_k": "21.43%",
+        "target_answer_anchor_hit_at_k": "0.00%",
+        "answerable_context_hit_at_k": "16.67%",
+        "storage_coverage": "100.00%",
+        "total_memories": 64
+      },
+      "strengths": [
+        "存储覆盖完整，42/42 问题都有对应入库记忆。",
+        "最终准确率最高档，31/42 正确。",
+        "loose recall 达 76.19%，经常能找回同主题或相邻画像记忆。",
+        "生成端泛化能力强，即使 answerable context 不足，也能在开放式建议题中给出可接受答案。",
+        "未观察到明显 distractor answer leak。"
+      ],
+      "weaknesses": [
+        "answerable context hit 只有 16.67%，真正可作答证据不足。",
+        "target preference hit 只有 21.43%，很多需要的 persona preference 没进上下文。",
+        "target answer anchor hit 为 0.00%，关键答案锚点没有稳定召回。",
+        "精确个人事实题仍容易错，如旅行焦虑、轻微脑震荡、阑尾手术、Science Club Git、Minnesota 官方门户等。"
+      ],
+      "root_causes": [
+        "主要瓶颈是相似记忆替代目标证据，wrong_neighbor_substitution 很多。",
+        "loose recall 虚高，取回片段常常只是语义相关，不含答案关键约束。",
+        "生成端强常识补全掩盖了检索问题，许多正确答案并非由 answerable context 支撑。",
+        "即使证据排在前面，生成端也偶尔漏掉关键细节。",
+        "负约束/遗忘类记忆容易形成相关但不可作答的上下文。"
+      ],
+      "notable_failure_patterns": {
+        "wrong_neighbor_substitution": 26,
+        "target_evidence_not_retrieved": 7,
+        "partial_context_retrieval_stage": 7,
+        "negative_constraint_only": 2,
+        "generation_missed_key_detail": 4
+      },
+      "final_assessment": "GLM-5.1 是本轮综合最佳模型。它的优势来自强生成能力和较高 loose recall，但高分并不代表记忆链路完全可靠；真正可作答证据和答案锚点召回仍偏低。总体适合作为当前首选，但后续优化重点仍应放在检索排序和 answer-bearing evidence 构建。"
+    },
+    "DeepSeek-V4-Pro": {
+      "result_json": "test_results/personamem_v2/personamem_v2_assistant_eval_results_20260508_230326.json",
+      "analysis_markdown": "test_results/personamem_v2/personamem_v2_assistant_eval_results_20260508_230326_analysis.md",
+      "run_log": "test_results/personamem_v2/run_logs/persona66_DeepSeekV4Pro_full_cli_20260508_145604.err.log",
+      "user_id": "c54634b7-bf63-4da9-a2c4-aaf2261545a9",
+      "username": "DeepSeek-V4-Pro-persona66",
+      "core_metrics": {
+        "accuracy": "73.81%",
+        "correct": 31,
+        "total": 42,
+        "loose_recall_at_k": "14.29%",
+        "target_preference_hit_at_k": "11.90%",
+        "target_answer_anchor_hit_at_k": "0.00%",
+        "answerable_context_hit_at_k": "11.90%",
+        "storage_coverage": "100.00%",
+        "total_memories": 64,
+        "atomic_items_zero_count": 2,
+        "tool_choice_400_count": 1
+      },
+      "strengths": [
+        "最终准确率与 GLM-5.1 并列第一，31/42 正确。",
+        "存储覆盖完整，42/42 问题都有入库记忆。",
+        "生成端很强，在证据不足时仍能用常识和相邻上下文答对不少开放式建议题。",
+        "atomic_items=0 次数较少，记忆抽取稳定性优于 Qwen。"
+      ],
+      "weaknesses": [
+        "loose recall 只有 14.29%，检索命中很弱。",
+        "answerable context hit 只有 11.90%，真正能支撑答案的上下文很少。",
+        "target answer anchor hit 为 0.00%，答案关键锚点缺失。",
+        "大量正确答案缺少记忆证据支撑，可靠性不如准确率表面显示。"
+      ],
+      "root_causes": [
+        "主要瓶颈是 retrieval，而不是 storage。",
+        "语义相邻记忆竞争强，焦虑、睡眠、旅行等场景容易召回同域但非目标证据。",
+        "target snippet 有时可见，但没有转化成 answer-bearing anchor。",
+        "生成能力掩盖检索问题，accuracy 远高于 evidence hit。",
+        "具体偏好和具体个人经历类问题容易因为目标证据未召回而泛化回答。"
+      ],
+      "notable_failure_patterns": {
+        "target_evidence_not_retrieved": 31,
+        "wrong_neighbor_substitution": 6,
+        "partial_context": 5,
+        "retrieval_gap": 9,
+        "wrong_specific_answer": 2
+      },
+      "final_assessment": "DeepSeek-V4-Pro 的答案质量强，但记忆链路弱。它能靠常识和生成能力拿到与 GLM-5.1 相同的准确率，但 recall 与 answerable evidence 明显低，说明它更像是强生成模型在补题，而不是稳定使用 persona memory。"
+    },
+    "Qwen3.5-Plus": {
+      "result_json": "test_results/personamem_v2/personamem_v2_assistant_eval_results_20260509_013724.json",
+      "analysis_markdown": "test_results/personamem_v2/personamem_v2_assistant_eval_results_20260509_013724_analysis.md",
+      "run_log": "test_results/personamem_v2/run_logs/persona66_Qwen35Plus_full_cli_20260508_145604.err.log",
+      "user_id": "624da605-a9e3-4832-ae8c-f883f59a62a7",
+      "username": "Qwen3.5-Plus-persona66",
+      "core_metrics": {
+        "accuracy": "23.81%",
+        "correct": 10,
+        "total": 42,
+        "loose_recall_at_k": "71.43%",
+        "target_preference_hit_at_k": "16.67%",
+        "target_answer_anchor_hit_at_k": "0.00%",
+        "answerable_context_hit_at_k": "14.29%",
+        "storage_coverage": "100.00%",
+        "total_memories": 64,
+        "atomic_items_zero_count": 11,
+        "tool_choice_400_count": 1
+      },
+      "strengths": [
+        "存储覆盖完整，最终有 64 条 memory。",
+        "loose recall 达 71.43%，说明能找回大量泛相关上下文。",
+        "情绪支持语气较稳定，部分 therapy/background 类问题能给出自然回答。",
+        "对部分隐私/安全类问题有一定安全倾向。"
+      ],
+      "weaknesses": [
+        "最终准确率很低，仅 10/42。",
+        "loose recall 与 answerable context hit 差距巨大，相关但不可答的上下文太多。",
+        "target answer anchor hit 为 0.00%，关键答案锚点完全没稳定召回。",
+        "atomic_items=0 达 11 次，记忆抽取稳定性差于其他模型。",
+        "健康/医疗类 persona 题表现尤其差。"
+      ],
+      "root_causes": [
+        "最大问题是 wrong neighbor substitution，召回了同主题但答案方向错误的记忆。",
+        "loose recall 虚高，很多上下文只是相似话题，不含目标 preference 或 answer anchor。",
+        "忘记/否定偏好处理弱，容易继续沿错误线索回答。",
+        "即使 answerable context 存在，生成端也会漏关键细节。",
+        "fallback 后虽然能跑通，但 Qwen 的结构化抽取仍不够稳定，导致部分样本原子记忆为空。"
+      ],
+      "notable_failure_patterns": {
+        "wrong_neighbor_substitution": 27,
+        "target_evidence_not_retrieved": 8,
+        "generation_missed_key_detail": 5,
+        "partial_context": 1,
+        "answer_support_wrong": 32,
+        "answer_support_unsupported": 8
+      },
+      "final_assessment": "Qwen3.5-Plus 是本轮表现最差的模型。它不是完全检索不到，而是经常检索到泛相关但不可作答的错误邻居，再加上结构化抽取不稳和生成端漏细节，导致最终准确率只有 23.81%。"
+    },
+    "GLM-5-Turbo": {
+      "result_json": "test_results/personamem_v2/personamem_v2_assistant_eval_results_20260508_030837.json",
+      "analysis_markdown": "test_results/personamem_v2/personamem_v2_assistant_eval_results_20260508_030837_analysis.md",
+      "user_id": "02481aa6-272a-419f-9a79-5c6bdae1ea44",
+      "username": "GLM-5-Turbo-persona66",
+      "core_metrics": {
+        "accuracy": "61.90%",
+        "correct": 26,
+        "total": 42,
+        "loose_recall_at_k": "23.81%",
+        "target_preference_hit_at_k": "21.43%",
+        "target_answer_anchor_hit_at_k": "0.00%",
+        "answerable_context_hit_at_k": "16.67%",
+        "storage_coverage": "100.00%",
+        "total_memories": 64
+      },
+      "strengths": [
+        "存储覆盖完整，主要问题不是没入库。",
+        "在检索证据较弱时仍能靠常识和语气拿到中等准确率。",
+        "部分 answerable context 命中时回答较稳定。",
+        "整体运行比 GLM-5 更稳定，没有持续 timeout 问题。"
+      ],
+      "weaknesses": [
+        "answerable context hit 只有 16.67%，真正可回答证据不足。",
+        "target preference hit 只有 21.43%，很多目标偏好没召回。",
+        "target answer anchor hit 为 0.00%。",
+        "top1/top3 命中弱，正确证据即使存在也较少排在前面。",
+        "错误答案里 unsupported 和 wrong 占比高。"
+      ],
+      "root_causes": [
+        "核心瓶颈是检索质量，不是存储覆盖。",
+        "检索偏向语义邻居，例如把多个焦虑/噪声/夜晚问题都拉到 staying calm under pressure 之类宽泛记忆。",
+        "记忆粒度和目标问题不匹配，相关片段被宽泛摘要覆盖，关键细节丢失。",
+        "遗忘/否定约束会干扰正向答案锚点。",
+        "生成端能补分，但缺证据时容易给通用建议。"
+      ],
+      "notable_failure_patterns": {
+        "target_evidence_not_retrieved": 24,
+        "wrong_neighbor_substitution": 9,
+        "partial_context": 9,
+        "answer_level_retrieval_gap": 13,
+        "wrong_specific_answer": 3
+      },
+      "final_assessment": "GLM-5-Turbo 是稳定但中等的 baseline。它比 Qwen 可靠，但明显弱于 GLM-5.1；主要短板仍是检索证据质量和答案锚点召回不足。"
+    }
+  },
+  "cross_model_findings": [
+    "四个模型 storage coverage 都是 100%，说明主要瓶颈不是是否入库，而是检索、排序、answer-bearing evidence 以及生成阶段是否忠实使用证据。",
+    "target_answer_anchor_hit_at_k 全部为 0.00%，说明当前记忆表示和检索链路普遍没有稳定抓到标准答案关键锚点。",
+    "GLM-5.1 和 DeepSeek-V4-Pro accuracy 并列最高，但来源不同：GLM-5.1 的检索泛相关能力更强，DeepSeek 更依赖生成补全。",
+    "Qwen3.5-Plus 的 loose recall 高但 accuracy 低，说明它召回大量相似邻居，却没有拿到真正可回答证据。",
+    "所有模型都存在 wrong_neighbor_substitution 或 target_evidence_not_retrieved，后续优化应优先提升 answerable evidence 的召回和 rerank。"
+  ],
+  "recommended_next_steps": [
+    "将评估重点从 loose recall 转向 answerable_context_hit、target_preference_hit 和 answer_anchor_hit。",
+    "优化 retrieval/rerank，使同主题邻居不能压过目标 persona 证据。",
+    "改进 MemoryWriter 的 answer-bearing atomic item 抽取，减少宽泛摘要和空 atomic_items。",
+    "对 ask_to_forget / negative constraint 做专门检索策略，避免只召回负约束而缺少正向答案。",
+    "保留 GLM-5.1 作为当前主测模型，同时继续观察 DeepSeek-V4-Pro 在更强检索链路下是否能超过 GLM-5.1。"
+  ],
+  "source_files": {
+    "GLM-5.1": "test_results/personamem_v2/personamem_v2_assistant_eval_results_20260508_162544_analysis.md",
+    "DeepSeek-V4-Pro": "test_results/personamem_v2/personamem_v2_assistant_eval_results_20260508_230326_analysis.md",
+    "Qwen3.5-Plus": "test_results/personamem_v2/personamem_v2_assistant_eval_results_20260509_013724_analysis.md",
+    "GLM-5-Turbo": "test_results/personamem_v2/personamem_v2_assistant_eval_results_20260508_030837_analysis.md"
+  }
+}

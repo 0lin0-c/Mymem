@@ -33,6 +33,31 @@ def _create_http_client() -> httpx.AsyncClient:
         return httpx.AsyncClient(trust_env=False, timeout=timeout)
 
 
+def _is_unsupported_tool_choice_error(error: Exception) -> bool:
+    message = str(error).lower()
+    return "tool_choice" in message and "not support" in message
+
+
+def _normalize_memory_result(result: Dict, text: str, assistant_response: str) -> Dict:
+    atomic_items = result.get("atomic_items", [])
+    if not isinstance(atomic_items, list):
+        atomic_items = []
+    for item in atomic_items:
+        if not isinstance(item, dict):
+            continue
+        category_name = item.get("category_name")
+        if isinstance(category_name, str):
+            item["category_name"] = category_name.strip().strip("[]")
+
+    return {
+        "summary": result.get("summary", "") or text[:200],
+        "importance_score": result.get("importance_score", 2),
+        "response_summary": result.get("response_summary", "")
+        or (assistant_response[:50] if assistant_response else ""),
+        "atomic_items": atomic_items,
+    }
+
+
 class OpenAIProvider(BaseLLMProvider):
     """OpenAI 大模型提供商"""
 
@@ -73,6 +98,7 @@ class OpenAIProvider(BaseLLMProvider):
 
         # Token 计数器
         self._tokenizer = tiktoken.get_encoding("cl100k_base")
+        self._supports_forced_tool_choice = True
 
     async def generate_chat_response(
         self,
@@ -174,29 +200,37 @@ class OpenAIProvider(BaseLLMProvider):
 
         for attempt in range(MAX_RETRIES):
             try:
-                response = await self.client.chat.completions.create(
-                    model=self.chat_model,
-                    messages=messages,
-                    tools=tools,
-                    tool_choice={"type": "function", "function": {"name": "extract_memory"}},
-                )
+                request_kwargs = {
+                    "model": self.chat_model,
+                    "messages": messages,
+                    "tools": tools,
+                }
+                if self._supports_forced_tool_choice:
+                    request_kwargs["tool_choice"] = {
+                        "type": "function",
+                        "function": {"name": "extract_memory"},
+                    }
+
+                response = await self.client.chat.completions.create(**request_kwargs)
 
                 if not response.choices:
                     raise ValueError("API 返回空 choices")
 
                 message = response.choices[0].message
                 if not message.tool_calls:
+                    if not self._supports_forced_tool_choice:
+                        return await self._extract_memory_intent_json_response(
+                            system_prompt,
+                            user_content,
+                            text,
+                            assistant_response,
+                        )
                     raise ValueError("API 返回空 tool_calls")
 
                 tool_call = message.tool_calls[0]
                 result = json.loads(tool_call.function.arguments)
 
-                return {
-                    "summary": result.get("summary", ""),
-                    "importance_score": result.get("importance_score", 2),
-                    "response_summary": result.get("response_summary", ""),
-                    "atomic_items": result.get("atomic_items", []),
-                }
+                return _normalize_memory_result(result, text, assistant_response)
             except json.JSONDecodeError as e:
                 last_error = e
                 if attempt < MAX_RETRIES - 1:
@@ -205,6 +239,16 @@ class OpenAIProvider(BaseLLMProvider):
                 logger.warning(f"extract_memory_intent 重试 {MAX_RETRIES} 次后仍失败: {e}")
             except Exception as e:
                 last_error = e
+                if (
+                    self._supports_forced_tool_choice
+                    and _is_unsupported_tool_choice_error(e)
+                ):
+                    self._supports_forced_tool_choice = False
+                    logger.warning(
+                        "model=%s does not support forced tool_choice; retrying with tools auto mode",
+                        self.chat_model,
+                    )
+                    continue
                 if attempt < MAX_RETRIES - 1:
                     await asyncio.sleep(RETRY_DELAYS[attempt])
                     continue
@@ -218,6 +262,34 @@ class OpenAIProvider(BaseLLMProvider):
             "response_summary": assistant_response[:50] if assistant_response else "",
             "atomic_items": [],
         }
+
+    async def _extract_memory_intent_json_response(
+        self,
+        system_prompt: str,
+        user_content: str,
+        text: str,
+        assistant_response: str,
+    ) -> Dict:
+        json_system_prompt = (
+            f"{system_prompt}\n\n"
+            "Return only valid JSON with keys: summary, importance_score, "
+            "response_summary, atomic_items. Do not use markdown."
+        )
+        response = await self.client.chat.completions.create(
+            model=self.chat_model,
+            messages=[
+                {"role": "system", "content": json_system_prompt},
+                {"role": "user", "content": user_content},
+            ],
+            response_format={"type": "json_object"},
+        )
+
+        if not response.choices:
+            raise ValueError("API 杩斿洖绌?choices")
+
+        content = response.choices[0].message.content or ""
+        result = json.loads(content)
+        return _normalize_memory_result(result, text, assistant_response)
 
     async def count_tokens(self, text: str) -> int:
         """统计文本的 Token 数量

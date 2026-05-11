@@ -5,7 +5,7 @@ import asyncio
 import json
 import logging
 import sys
-from dataclasses import dataclass, replace
+from dataclasses import asdict, dataclass, replace
 from pathlib import Path
 from typing import Any
 
@@ -13,12 +13,17 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from core.database import AsyncSessionLocal
 from services.llm.factory import LLMFactory
-from services.memory.writer import MemoryWriter
 from tests.evals.personamem_v2.candidate_views import (
     PERSONA_ID,
     CandidateView,
     extract_candidate_views,
 )
+from tests.evals.personamem_v2.candidate_view_writer import (
+    CandidateViewWriter,
+    CandidateViewWriteResult,
+    CandidateViewWritePolicy,
+)
+from tests.evals.personamem_v2.candidate_view_reporting import save_candidate_detailed_report
 from tests.evals.personamem_v2.loader import (
     DEFAULT_SPLIT,
     PERSONAMEM_CACHE_DIR,
@@ -29,7 +34,6 @@ from tests.evals.personamem_v2.loader import (
 )
 from tests.evals.personamem_v2.models import EvalMode, PersonaMemQuestion, PersonaMemReport, PersonaMemSample
 from tests.evals.personamem_v2.runner import (
-    _categories_for_prompt,
     _reset_user_memory,
     ensure_user_onboarded,
     evaluate_sample,
@@ -40,6 +44,8 @@ logger = logging.getLogger(__name__)
 
 OUTPUT_DIR = Path("test_results") / "personamem_v2_candidate_experiment"
 EXPERIMENT_PERSONA_ID = f"{PERSONA_ID}_candidate_views"
+EXPERIMENT_USER_KEY = f"personamem_v2_persona_{EXPERIMENT_PERSONA_ID}"
+WRITE_WINDOW_TURNS = 5
 WRITEABLE_VIEW_TYPES = {
     "user_fact",
     "episodic_event",
@@ -61,25 +67,29 @@ class PlannedCandidateTurn:
 
 
 def build_candidate_turn_plan(question: PersonaMemQuestion) -> list[PlannedCandidateTurn]:
-    """Keep original write turns intact and attach candidates as structured trace only."""
+    """Group original turns into write windows and attach candidates as structured trace only."""
     candidates = []
     for candidate in extract_candidate_views(question):
         item = candidate.to_dict()
         item["writable"] = _should_project_candidate(candidate)
         candidates.append(item)
-    return [
-        PlannedCandidateTurn(
-            row_index=question.row_index,
-            turn_index=turn_index,
-            user_input=user_input,
-            assistant_response=assistant_response,
-            candidates=candidates,
+
+    turns = snippet_to_turns(question)
+    planned_turns: list[PlannedCandidateTurn] = []
+    for window_index, start in enumerate(range(0, len(turns), WRITE_WINDOW_TURNS), start=1):
+        window = turns[start : start + WRITE_WINDOW_TURNS]
+        planned_turns.append(
+            PlannedCandidateTurn(
+                row_index=question.row_index,
+                turn_index=window_index,
+                user_input="\n".join(user_input for user_input, _ in window if user_input),
+                assistant_response="\n".join(
+                    assistant_response for _, assistant_response in window if assistant_response
+                ),
+                candidates=candidates,
+            )
         )
-        for turn_index, (user_input, assistant_response) in enumerate(
-            snippet_to_turns(question),
-            start=1,
-        )
-    ]
+    return planned_turns
 
 
 def clone_sample_for_candidate_experiment(sample: PersonaMemSample) -> PersonaMemSample:
@@ -87,8 +97,16 @@ def clone_sample_for_candidate_experiment(sample: PersonaMemSample) -> PersonaMe
     return replace(
         sample,
         persona_id=EXPERIMENT_PERSONA_ID,
-        user_key=f"personamem_v2_persona_{EXPERIMENT_PERSONA_ID}",
+        user_key=EXPERIMENT_USER_KEY,
     )
+
+
+def validate_candidate_sample_isolation(sample: PersonaMemSample) -> None:
+    if sample.persona_id != EXPERIMENT_PERSONA_ID or sample.user_key != EXPERIMENT_USER_KEY:
+        raise ValueError(
+            "Candidate projection imports must use the isolated candidate user: "
+            f"persona_id={EXPERIMENT_PERSONA_ID} user_key={EXPERIMENT_USER_KEY}."
+        )
 
 
 def filter_sample_by_row_indexes(
@@ -111,6 +129,7 @@ async def import_candidate_view_sample(
     enable_dedup: bool = False,
     reset_memory: bool = False,
 ) -> tuple[str, int, list[dict[str, Any]]]:
+    validate_candidate_sample_isolation(sample)
     user_id = await ensure_user_onboarded(
         session,
         sample,
@@ -120,36 +139,27 @@ async def import_candidate_view_sample(
         await _reset_user_memory(session, user_id)
 
     llm = LLMFactory.get_provider()
-    writer = MemoryWriter(session, llm, enable_dedup=enable_dedup)
-    categories = await _categories_for_prompt(session, user_id)
+    writer = CandidateViewWriter(session=session, llm=llm)
     memory_count = 0
-    candidate_trace: list[dict[str, Any]] = []
+    candidate_write_trace: list[dict[str, Any]] = []
 
     for question in sample.questions:
         for planned in build_candidate_turn_plan(question):
             try:
-                await writer.save_chat(
-                    user_id=user_id,
-                    user_input=planned.user_input,
-                    assistant_response=planned.assistant_response,
-                    modality="text",
-                    user_categories=categories,
-                )
+                write_result = await writer.write_turn(user_id=user_id, planned_turn=planned)
                 memory_count += 1
-                candidate_trace.append(_candidate_trace_item(planned, status="written"))
+                candidate_write_trace.append(_candidate_write_trace_item(write_result))
                 if memory_count % 10 == 0:
                     await session.commit()
             except Exception as exc:
-                logger.exception(
-                    "Failed to import PersonaMem candidate view: persona_id=%s row_index=%s",
-                    question.persona_id,
-                    question.row_index,
-                )
                 await session.rollback()
-                candidate_trace.append(_candidate_trace_item(planned, status="error", error=str(exc)))
+                raise RuntimeError(
+                    "Candidate projection write failed: "
+                    f"row_index={question.row_index} turn_index={planned.turn_index}"
+                ) from exc
 
     await session.commit()
-    return user_id, memory_count, candidate_trace
+    return user_id, memory_count, candidate_write_trace
 
 
 async def run_candidate_view_trace_experiment(
@@ -164,7 +174,7 @@ async def run_candidate_view_trace_experiment(
     reuse_candidate_user: bool = False,
     enable_dedup: bool = False,
     reset_memory: bool = True,
-    save_raw_snapshot: bool = True,
+    save_raw_snapshot: bool = False,
     output_dir: Path = OUTPUT_DIR,
 ) -> dict[str, Any]:
     if baseline_results_path is None:
@@ -179,7 +189,7 @@ async def run_candidate_view_trace_experiment(
         cache_dir=PERSONAMEM_CACHE_DIR,
     )
     if save_raw_snapshot:
-        save_rows_snapshot(rows, split=split)
+        save_rows_snapshot(rows, split=split, output_dir=output_dir / "raw_snapshots")
     samples = build_samples(
         rows,
         split=split,
@@ -197,9 +207,10 @@ async def run_candidate_view_trace_experiment(
     async with AsyncSessionLocal() as session:
         logger.info("Loading baseline summary from %s", baseline_results_path)
         baseline_summary = load_baseline_summary(baseline_results_path, row_indexes=row_indexes)
+        validate_baseline_summary(baseline_summary, sample)
 
         logger.info(
-            "Running candidate-view trace/eval: persona_id=%s original_turn_count=%s mode=%s",
+            "Running candidate-view structured projection/eval: persona_id=%s original_turn_count=%s mode=%s",
             EXPERIMENT_PERSONA_ID,
             summarize_candidate_projection(sample)["original_turn_count"],
             eval_mode.value,
@@ -212,14 +223,14 @@ async def run_candidate_view_trace_experiment(
                     "Run storage import first before using reuse mode."
                 )
             candidate_user_id, candidate_memory_count = resolved
-            candidate_trace = []
+            candidate_write_trace = []
             logger.info(
                 "Reusing existing candidate-view user: user_id=%s resources=%s",
                 candidate_user_id,
                 candidate_memory_count,
             )
         else:
-            candidate_user_id, candidate_memory_count, candidate_trace = await import_candidate_view_sample(
+            candidate_user_id, candidate_memory_count, candidate_write_trace = await import_candidate_view_sample(
                 session=session,
                 sample=candidate_sample,
                 enable_dedup=enable_dedup,
@@ -241,23 +252,33 @@ async def run_candidate_view_trace_experiment(
             candidate_report,
             resource_count=candidate_summary["metrics"]["total_memories"],
         )
+    test_info = {
+        "dataset": "bowen-upenn/PersonaMem-v2",
+        "harness": "personamem_v2_candidate_view_structured_projection",
+        "persona_id": PERSONA_ID,
+        "experiment_user_persona_id": EXPERIMENT_PERSONA_ID,
+        "eval_mode": eval_mode.value,
+        "top_k": top_k,
+        "baseline_results_path": str(baseline_results_path),
+        "projection_mode": "candidate_structured_db_writes",
+    }
+    detailed_results_path, detailed_analysis_path = save_candidate_detailed_report(
+        candidate_report,
+        output_dir / f"persona_{PERSONA_ID}_candidate_view_projection_{eval_mode.value}_results.json",
+        eval_mode=eval_mode.value,
+        test_info=test_info,
+    )
     report = {
-        "test_info": {
-            "dataset": "bowen-upenn/PersonaMem-v2",
-            "harness": "personamem_v2_candidate_view_trace_experiment",
-            "persona_id": PERSONA_ID,
-            "experiment_user_persona_id": EXPERIMENT_PERSONA_ID,
-            "eval_mode": eval_mode.value,
-            "top_k": top_k,
-        },
+        "test_info": test_info,
         "baseline": baseline_summary,
-        "candidate_view_trace": candidate_summary,
+        "candidate_structured_projection": candidate_summary,
         "delta": summarize_report_delta(baseline_summary, candidate_summary),
         "candidate_projection": summarize_candidate_projection(sample),
-        "candidate_trace": candidate_trace,
-        "candidate_trace_errors": [
-            item for item in candidate_trace if item.get("status") == "error"
-        ],
+        "candidate_write_trace": candidate_write_trace,
+        "candidate_analysis": {
+            "results_json_path": str(detailed_results_path),
+            "analysis_markdown_path": str(detailed_analysis_path),
+        },
     }
     json_path, markdown_path = save_candidate_experiment_report(report, output_dir)
     report["paths"] = {"json_path": str(json_path), "markdown_path": str(markdown_path)}
@@ -266,22 +287,37 @@ async def run_candidate_view_trace_experiment(
 
 def summarize_candidate_projection(sample: PersonaMemSample) -> dict[str, Any]:
     original_turn_count = 0
-    writable_candidate_count = 0
-    writable_by_type = {view_type: 0 for view_type in sorted(WRITEABLE_VIEW_TYPES)}
-    skipped_by_type: dict[str, int] = {}
+    candidate_count = 0
+    written_candidate_count = 0
+    skipped_candidate_count = 0
+    written_by_type: dict[str, int] = {}
+    skipped_by_reason: dict[str, int] = {}
+    policy = CandidateViewWritePolicy()
     for question in sample.questions:
-        original_turn_count += len(build_candidate_turn_plan(question))
-        for candidate in extract_candidate_views(question):
-            if _should_project_candidate(candidate):
-                writable_candidate_count += 1
-                writable_by_type[candidate.view_type] += 1
+        planned_turns = build_candidate_turn_plan(question)
+        original_turn_count += len(planned_turns)
+        if not planned_turns:
+            continue
+        projections = policy.project_candidates(
+            row_index=question.row_index,
+            turn_index=1,
+            candidates=planned_turns[0].candidates,
+        )
+        candidate_count += len(projections)
+        for projection in projections:
+            if projection.write_decision == "written":
+                written_candidate_count += 1
+                written_by_type[projection.view_type] = written_by_type.get(projection.view_type, 0) + 1
             else:
-                skipped_by_type[candidate.view_type] = skipped_by_type.get(candidate.view_type, 0) + 1
+                skipped_candidate_count += 1
+                skipped_by_reason[projection.skip_reason] = skipped_by_reason.get(projection.skip_reason, 0) + 1
     return {
         "original_turn_count": original_turn_count,
-        "writable_candidate_count": writable_candidate_count,
-        "writable_by_type": writable_by_type,
-        "skipped_by_type": dict(sorted(skipped_by_type.items())),
+        "candidate_count": candidate_count,
+        "written_candidate_count": written_candidate_count,
+        "skipped_candidate_count": skipped_candidate_count,
+        "written_by_type": dict(sorted(written_by_type.items())),
+        "skipped_by_reason": dict(sorted(skipped_by_reason.items())),
     }
 
 
@@ -294,6 +330,23 @@ def load_baseline_summary(
     if "analyses" in data:
         return _summary_from_storage_quality_json(data, row_indexes=row_indexes)
     return _summary_from_standard_results_json(data, row_indexes=row_indexes)
+
+
+def validate_baseline_summary(
+    baseline_summary: dict[str, Any],
+    sample: PersonaMemSample,
+) -> None:
+    baseline_questions = int(baseline_summary.get("metrics", {}).get("total_questions") or 0)
+    if baseline_questions != sample.total_questions:
+        raise ValueError(
+            "Baseline question count mismatch: "
+            f"baseline={baseline_questions} sample={sample.total_questions}"
+        )
+    baseline_persona = str(baseline_summary.get("sample", {}).get("persona_id") or "")
+    if baseline_persona and baseline_persona != PERSONA_ID:
+        raise ValueError(
+            f"Baseline persona mismatch: baseline={baseline_persona} expected={PERSONA_ID}"
+        )
 
 
 def _summary_from_standard_results_json(
@@ -437,6 +490,9 @@ def make_reused_candidate_summary(
     summary = summarize_personamem_report(report)
     summary["metrics"]["total_memories"] = resource_count
     summary["sample"]["reused_candidate_user"] = True
+    summary["sample"]["provenance_warning"] = (
+        "candidate DB state was reused without row-level write trace"
+    )
     return summary
 
 
@@ -466,21 +522,21 @@ def summarize_report_delta(
 def save_candidate_experiment_report(report: dict[str, Any], output_dir: Path = OUTPUT_DIR) -> tuple[Path, Path]:
     output_dir.mkdir(parents=True, exist_ok=True)
     mode = report["test_info"]["eval_mode"]
-    json_path = output_dir / f"persona_{PERSONA_ID}_candidate_view_trace_{mode}_comparison.json"
-    markdown_path = output_dir / f"persona_{PERSONA_ID}_candidate_view_trace_{mode}_comparison.md"
+    json_path = output_dir / f"persona_{PERSONA_ID}_candidate_view_projection_{mode}_comparison.json"
+    markdown_path = output_dir / f"persona_{PERSONA_ID}_candidate_view_projection_{mode}_comparison.md"
     json_path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     markdown_path.write_text(render_candidate_experiment_markdown(report), encoding="utf-8")
     return json_path, markdown_path
 
 
 def render_candidate_experiment_markdown(report: dict[str, Any]) -> str:
-    candidate_section = report.get("candidate_view_trace") or {}
+    candidate_section = report.get("candidate_structured_projection") or {}
     lines = [
-        f"# PersonaMem-v2 Candidate View Trace Comparison - persona {report['test_info']['persona_id']}",
+        f"# PersonaMem-v2 Candidate View Structured Projection Comparison - persona {report['test_info']['persona_id']}",
         "",
         f"- eval_mode: {report['test_info']['eval_mode']}",
         f"- top_k: {report['test_info']['top_k']}",
-        "- candidate_views_write_mode: trace_only_original_turn_writes",
+        f"- projection_mode: {report['test_info'].get('projection_mode', 'candidate_structured_db_writes')}",
         "",
         "## Delta",
     ]
@@ -491,25 +547,20 @@ def render_candidate_experiment_markdown(report: dict[str, Any]) -> str:
     for key, value in report["baseline"]["metrics"].items():
         lines.append(f"- {key}: {value}")
 
-    lines.extend(["", "## Candidate View Trace"])
+    lines.extend(["", "## Candidate Structured Projection"])
     for key, value in candidate_section.get("metrics", {}).items():
         lines.append(f"- {key}: {value}")
 
     lines.extend(["", "## Candidate Projection"])
     projection = report["candidate_projection"]
     lines.append(f"- original_turn_count: {projection['original_turn_count']}")
-    lines.append(f"- writable_candidate_count: {projection['writable_candidate_count']}")
-    for key, value in projection["writable_by_type"].items():
-        lines.append(f"- writable_{key}: {value}")
-    for key, value in projection["skipped_by_type"].items():
+    lines.append(f"- candidate_count: {projection['candidate_count']}")
+    lines.append(f"- written_candidate_count: {projection['written_candidate_count']}")
+    lines.append(f"- skipped_candidate_count: {projection['skipped_candidate_count']}")
+    for key, value in projection["written_by_type"].items():
+        lines.append(f"- written_{key}: {value}")
+    for key, value in projection["skipped_by_reason"].items():
         lines.append(f"- skipped_{key}: {value}")
-    errors = report.get("candidate_trace_errors", [])
-    if errors:
-        lines.extend(["", "## Candidate Trace Errors"])
-        for item in errors:
-            lines.append(
-                f"- row_index={item.get('row_index')} turn_index={item.get('turn_index')}: {item.get('error')}"
-            )
     return "\n".join(lines).rstrip() + "\n"
 
 
@@ -531,7 +582,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--output-dir", type=Path, default=OUTPUT_DIR)
     parser.add_argument("--no-dedup", action="store_true")
     parser.add_argument("--no-reset-memory", action="store_true")
-    parser.add_argument("--no-save-raw-snapshot", action="store_true")
+    parser.add_argument("--save-raw-snapshot", action="store_true")
     args = parser.parse_args(argv)
 
     report = asyncio.run(
@@ -547,7 +598,7 @@ def main(argv: list[str] | None = None) -> int:
             output_dir=args.output_dir,
             enable_dedup=not args.no_dedup,
             reset_memory=not args.no_reset_memory,
-            save_raw_snapshot=not args.no_save_raw_snapshot,
+            save_raw_snapshot=args.save_raw_snapshot,
         )
     )
     sys.stdout.write(json.dumps(report["paths"], ensure_ascii=False, indent=2) + "\n")
@@ -564,26 +615,14 @@ def _should_project_candidate(candidate: CandidateView) -> bool:
     return True
 
 
-def _candidate_trace_item(
-    planned: PlannedCandidateTurn,
-    *,
-    status: str,
-    error: str | None = None,
-) -> dict[str, Any]:
-    item = {
-        "row_index": planned.row_index,
-        "turn_index": planned.turn_index,
-        "write_input": "original_turn",
-        "status": status,
-        "candidate_count": len(planned.candidates),
-        "candidate_types": [
-            candidate["view_type"] for candidate in planned.candidates
-        ],
-        "candidates": planned.candidates,
+def _candidate_write_trace_item(write_result: CandidateViewWriteResult) -> dict[str, Any]:
+    return {
+        "row_index": write_result.row_index,
+        "turn_index": write_result.turn_index,
+        "resource_id": write_result.resource_id,
+        "written_category_ids": write_result.written_category_ids,
+        "projections": [asdict(projection) for projection in write_result.projections],
     }
-    if error:
-        item["error"] = error
-    return item
 
 def _is_forget_question(preference: str) -> bool:
     normalized = str(preference or "").lower()
