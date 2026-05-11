@@ -132,6 +132,10 @@
         "negative_constraint_only": 2,
         "generation_missed_key_detail": 4
       },
+      "answer_failure_patterns": {
+        "wrong_specific_answer": 7,
+        "retrieval_gap": 4
+      },
       "final_assessment": "GLM-5.1 是本轮综合最佳模型。它的优势来自强生成能力和较高 loose recall，但高分并不代表记忆链路完全可靠；真正可作答证据和答案锚点召回仍偏低。总体适合作为当前首选，但后续优化重点仍应放在检索排序和 answer-bearing evidence 构建。"
     },
     "DeepSeek-V4-Pro": {
@@ -175,7 +179,9 @@
       "notable_failure_patterns": {
         "target_evidence_not_retrieved": 31,
         "wrong_neighbor_substitution": 6,
-        "partial_context": 5,
+        "partial_context": 5
+      },
+      "answer_failure_patterns": {
         "retrieval_gap": 9,
         "wrong_specific_answer": 2
       },
@@ -224,9 +230,17 @@
         "wrong_neighbor_substitution": 27,
         "target_evidence_not_retrieved": 8,
         "generation_missed_key_detail": 5,
-        "partial_context": 1,
-        "answer_support_wrong": 32,
-        "answer_support_unsupported": 8
+        "partial_context": 1
+      },
+      "answer_support_type_counts": {
+        "wrong": 32,
+        "unsupported": 8,
+        "negative_constraint_only": 1,
+        "partial_context": 1
+      },
+      "answer_failure_patterns": {
+        "wrong_specific_answer": 22,
+        "retrieval_gap": 10
       },
       "final_assessment": "Qwen3.5-Plus 是本轮表现最差的模型。它不是完全检索不到，而是经常检索到泛相关但不可作答的错误邻居，再加上结构化抽取不稳和生成端漏细节，导致最终准确率只有 23.81%。"
     },
@@ -269,8 +283,10 @@
       "notable_failure_patterns": {
         "target_evidence_not_retrieved": 24,
         "wrong_neighbor_substitution": 9,
-        "partial_context": 9,
-        "answer_level_retrieval_gap": 13,
+        "partial_context": 9
+      },
+      "answer_failure_patterns": {
+        "retrieval_gap": 13,
         "wrong_specific_answer": 3
       },
       "final_assessment": "GLM-5-Turbo 是稳定但中等的 baseline。它比 Qwen 可靠，但明显弱于 GLM-5.1；主要短板仍是检索证据质量和答案锚点召回不足。"
