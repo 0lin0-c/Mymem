@@ -6,6 +6,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
+from tests.evals.common import build_run_manifest
 from tests.evals.converted_data.metrics import (
     calculate_metrics,
     calculate_metrics_from_qa_dicts,
@@ -58,7 +59,13 @@ SUMMARY_METRIC_KEYS = {
 class LiveResultWriter:
     """Real-time results writer for converted-data evaluation."""
 
-    def __init__(self, output_dir: Path, prefix: str = "mymem_test", eval_mode: str | None = None):
+    def __init__(
+        self,
+        output_dir: Path,
+        prefix: str = "mymem_test",
+        eval_mode: str | None = None,
+        run_manifest: dict[str, Any] | None = None,
+    ):
         output_dir.mkdir(parents=True, exist_ok=True)
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         self.eval_mode = eval_mode
@@ -70,6 +77,13 @@ class LiveResultWriter:
             },
             "statistics": {},
             "samples": [],
+            "run_manifest": run_manifest
+            or build_run_manifest(
+                harness="converted_data",
+                eval_mode=eval_mode,
+                scoring_config=None,
+                rerank_config=None,
+            ),
         }
         self._current_sample_index: int | None = None
         self._flush()
@@ -150,6 +164,8 @@ def save_results_json(
     output_dir: Path,
     prefix: str = "mymem_test",
     eval_mode: str | None = None,
+    test_info: dict[str, Any] | None = None,
+    run_manifest: dict[str, Any] | None = None,
 ) -> Path:
     output_dir.mkdir(parents=True, exist_ok=True)
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -161,9 +177,22 @@ def save_results_json(
         "test_info": {
             "timestamp": timestamp,
             "eval_mode": eval_mode,
+            **(test_info or {}),
         },
         "statistics": _compact_statistics(overall_metrics, eval_mode),
         "samples": [],
+        "run_manifest": run_manifest
+        or build_run_manifest(
+            harness="converted_data",
+            eval_mode=eval_mode,
+            question_count=len(all_results),
+            chat_model=(test_info or {}).get("chat_model"),
+            evaluator_model=(test_info or {}).get("evaluator_model"),
+            evaluator_isolated=(test_info or {}).get("evaluator_isolated"),
+            top_k=(test_info or {}).get("top_k"),
+            scoring_config=(test_info or {}).get("scoring_config"),
+            rerank_config=(test_info or {}).get("rerank_config"),
+        ),
     }
 
     for report in reports:

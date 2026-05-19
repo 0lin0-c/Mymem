@@ -1,0 +1,32 @@
+{
+  "GLM-5.1": {
+    "username": "GLM-5.1-persona66",
+    "user_id": "fc20e640-320d-4ef3-a06a-4f9d5e1913e4",
+    "result_json": "test_results/personamem_v2/personamem_v2_assistant_eval_results_20260508_162544.json"
+  },
+  "DeepSeek-V4-Pro": {
+    "username": "DeepSeek-V4-Pro-persona66",
+    "user_id": "c54634b7-bf63-4da9-a2c4-aaf2261545a9",
+    "result_json": "test_results/personamem_v2/personamem_v2_assistant_eval_results_20260508_230326.json"
+  },
+  "Qwen3.5-Plus": {
+    "username": "Qwen3.5-Plus-persona66",
+    "user_id": "624da605-a9e3-4832-ae8c-f883f59a62a7",
+    "result_json": "test_results/personamem_v2/personamem_v2_assistant_eval_results_20260509_013724.json"
+  },
+  "GLM-5-Turbo": {
+    "username": "GLM-5-Turbo-persona66",
+    "user_id": "02481aa6-272a-419f-9a79-5c6bdae1ea44",
+    "result_json": "test_results/personamem_v2/personamem_v2_assistant_eval_results_20260508_030837.json"
+  },
+  "MiniMax-M2.7": {
+    "username": "MiniMax-M2.7-persona66",
+    "user_id": "942a859a-b8a3-40f9-bd84-8d9436643269",
+    "result_json": "test_results/personamem_v2/personamem_v2_assistant_eval_results_20260508_162544.json"
+  },
+  "Kimi-K2.5": {
+    "username": "Kimi-K2.5-persona66",
+    "user_id": "7968cafb-4403-47b6-ba37-18279f2a73ee",
+    "result_json": "test_results/personamem_v2/personamem_v2_assistant_eval_results_20260511_181143.json"
+  }
+}

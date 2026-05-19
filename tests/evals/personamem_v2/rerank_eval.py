@@ -14,6 +14,8 @@ from core.database import AsyncSessionLocal
 from services.llm.factory import LLMFactory
 from services.retrieval.retriever import MemoryRetriever
 from tables import User
+from core.config import settings
+from tests.evals.common import build_run_manifest, default_scoring_config_payload
 from tests.evals.converted_data.metrics import classify_answer_support_type
 from tests.evals.converted_data.rerank_eval import (
     _result_document,
@@ -36,10 +38,45 @@ from tests.evals.personamem_v2.loader import DEFAULT_SPLIT, build_samples, load_
 
 REPO_ROOT = Path(__file__).parents[3]
 DEFAULT_OUTPUT_DIR = REPO_ROOT / "test_results" / "personamem_v2"
+RERANK_LEGACY_DIAGNOSTIC_REASON = (
+    "legacy_rerank_eval_may_run_online_retrieval_generation_and_evaluator; "
+    "use personamem_v2_orthogonal rerank_ab with a retrieval_snapshot for formal A/B"
+)
 
 
 def _now_stamp() -> str:
     return datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
+
+
+def build_rerank_run_manifest(args: argparse.Namespace, *, question_count: int) -> dict[str, Any]:
+    return build_run_manifest(
+        harness="personamem_v2_legacy_glm_rerank_diagnostic",
+        eval_mode="assistant_eval",
+        dataset="bowen-upenn/PersonaMem-v2",
+        split=args.split,
+        persona_id=args.persona_id,
+        question_count=question_count,
+        import_only=False,
+        retrieval_only=True,
+        reset_memory=False,
+        chat_model=settings.chat_model,
+        evaluator_model=settings.chat_model,
+        evaluator_isolated=False,
+        top_k=args.answer_top_k,
+        scoring_config=default_scoring_config_payload(),
+        rerank_config={
+            "type": "glm_rerank",
+            "rerank_model": args.rerank_model,
+            "retrieve_top_k": args.retrieve_top_k,
+            "answer_top_k": args.answer_top_k,
+            "input_retrieval_json": str(args.input_retrieval_json) if args.input_retrieval_json else None,
+        },
+        extra={
+            "formal_ab_eligible": False,
+            "experiment_conclusion": "diagnostic_only",
+            "diagnostic_reason": RERANK_LEGACY_DIAGNOSTIC_REASON,
+        },
+    )
 
 
 async def _find_personamem_user(session: Any, persona_id: str) -> User:
@@ -386,20 +423,31 @@ async def run_eval(args: argparse.Namespace) -> dict[str, Any]:
             )
             rerank_results_payload[-1]["rerank_stage"] = rerank_stage
 
+    test_info = {
+        "created_at": datetime.now(timezone.utc).isoformat(),
+        "dataset": "bowen-upenn/PersonaMem-v2",
+        "harness": "personamem_v2_legacy_glm_rerank_diagnostic",
+        "split": args.split,
+        "persona_id": args.persona_id,
+        "username": f"personamem_v2_persona_{args.persona_id}",
+        "question_count": len(questions),
+        "retrieve_top_k": args.retrieve_top_k,
+        "answer_top_k": args.answer_top_k,
+        "rerank_model": args.rerank_model,
+        "input_retrieval_json": str(args.input_retrieval_json) if args.input_retrieval_json else None,
+        "mode": "offline_saved_retrieval" if args.input_retrieval_json else "online_retrieval",
+        "formal_ab_eligible": False,
+        "experiment_conclusion": "diagnostic_only",
+        "diagnostic_reason": RERANK_LEGACY_DIAGNOSTIC_REASON,
+    }
     return {
         "test_info": {
-            "created_at": datetime.now(timezone.utc).isoformat(),
-            "dataset": "bowen-upenn/PersonaMem-v2",
-            "split": args.split,
-            "persona_id": args.persona_id,
-            "username": f"personamem_v2_persona_{args.persona_id}",
-            "question_count": len(questions),
-            "retrieve_top_k": args.retrieve_top_k,
-            "answer_top_k": args.answer_top_k,
-            "rerank_model": args.rerank_model,
-            "input_retrieval_json": str(args.input_retrieval_json) if args.input_retrieval_json else None,
-            "mode": "offline_saved_retrieval" if args.input_retrieval_json else "online_retrieval",
+            **test_info,
         },
+        "run_manifest": build_rerank_run_manifest(args, question_count=len(questions)),
+        "experiment_conclusion": "diagnostic_only",
+        "formal_ab_eligible": False,
+        "diagnostic_reason": RERANK_LEGACY_DIAGNOSTIC_REASON,
         "summary": {
             "current_topk": _variant_metrics(current_results),
             "glm_rerank_topk": _variant_metrics(rerank_results_payload),

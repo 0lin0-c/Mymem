@@ -294,10 +294,25 @@ def pytest_addoption(parser):
     personamem.addoption("--personamem-v2-no-dedup", action="store_true", help="禁用记忆去重")
     personamem.addoption("--personamem-v2-no-save-raw-snapshot", action="store_true", help="不保存原始 rows 快照")
     personamem.addoption(
+        "--personamem-v2-evaluator-model",
+        type=str,
+        help="Fixed PersonaMem-v2 evaluator model for answer correctness.",
+    )
+    personamem.addoption(
         "--personamem-v2-model-sweep",
         type=str,
         help="Comma-separated CHAT_MODEL list, or 'default' for the five planned model comparisons.",
     )
+    personamem.addoption("--personamem-v2-orthogonal", action="store_true", help="Run PersonaMem-v2 orthogonal replay eval.")
+    personamem.addoption(
+        "--personamem-v2-orthogonal-mode",
+        choices=["writer_ab", "retrieval_ab", "rerank_ab", "generator_ab", "e2e_diagnostic"],
+        default="retrieval_ab",
+        help="PersonaMem-v2 orthogonal experiment type.",
+    )
+    personamem.addoption("--personamem-v2-baseline-snapshot", type=str, help="Path to baseline snapshot JSON.")
+    personamem.addoption("--personamem-v2-candidate-config", type=str, help="Path to orthogonal candidate config JSON.")
+    personamem.addoption("--personamem-v2-output-dir", type=str, help="Output directory for PersonaMem-v2 orthogonal reports.")
     group.addoption(
         "--allow-real-db-write",
         action="store_true",

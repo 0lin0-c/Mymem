@@ -5,6 +5,7 @@ from pathlib import Path
 import pytest
 
 from services.llm.factory import LLMFactory
+from tests.evals.common import build_run_manifest, default_scoring_config_payload
 from tests.evals.converted_data.runner import EvalMode, OUTPUT_DIR, run_single_sample
 from tests.evals.converted_data.reporting import generate_analysis_markdown, save_results_json
 
@@ -68,7 +69,25 @@ async def test_converted_data_eval(pytestconfig: pytest.Config):
     )
     if not import_only:
         assert reports
-        results_path = save_results_json(reports, OUTPUT_DIR, eval_mode=eval_mode.value)
+        results_path = save_results_json(
+            reports,
+            OUTPUT_DIR,
+            eval_mode=eval_mode.value,
+            test_info={"top_k": top_k, "scoring_config": default_scoring_config_payload()},
+            run_manifest=build_run_manifest(
+                harness="converted_data",
+                eval_mode=eval_mode.value,
+                dataset=str(data_dir) if data_dir else "data/converted_data_zh",
+                sample=sample,
+                question_count=sum(report.total_questions for report in reports),
+                import_only=import_only,
+                retrieval_only=retrieval_only,
+                reset_memory=reset_memory,
+                top_k=top_k,
+                scoring_config=default_scoring_config_payload(),
+                rerank_config=None,
+            ),
+        )
         llm = LLMFactory.get_provider()
         analysis_path = await generate_analysis_markdown(llm, results_path)
         assert analysis_path is not None

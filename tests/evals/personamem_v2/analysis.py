@@ -281,6 +281,12 @@ def calculate_personamem_stage_metrics(
             1 for item in analyses if item.get("distractor_answer_leak")
         ),
     }
+    metrics["wrong_neighbor_substitution_rate"] = pct(
+        failure_counts.get("wrong_neighbor_substitution", 0)
+    )
+    metrics["target_evidence_not_retrieved_rate"] = pct(
+        failure_counts.get("target_evidence_not_retrieved", 0)
+    )
     for k in TOP_K_BUCKETS:
         metrics[f"target_preference_hit_at_{k}"] = pct(
             sum(1 for item in analyses if _rank_within(item.get("target_preference_rank"), k))
@@ -304,6 +310,9 @@ def build_personamem_analysis_markdown(
     retrieval_metrics = personamem_stats.get("retrieval_stage") or {}
     rerank_metrics = personamem_stats.get("rerank_stage") or {}
     answer_metrics = personamem_stats.get("answer_stage") or {}
+    evidence_summary = personamem_stats.get("evidence_first_summary") or {}
+    primary_metrics = evidence_summary.get("primary_metrics") or {}
+    diagnostic_labels = evidence_summary.get("diagnostic_labels") or []
     wrong_cases = [q for q in qa_results if q.get("is_correct") is False]
     false_positive_cases = [
         q for q in qa_results
@@ -321,11 +330,14 @@ def build_personamem_analysis_markdown(
             "## Overall Summary",
             f"- Result file: `{source_name}`",
             f"- Questions: {stats.get('total_questions', len(qa_results))}",
-            f"- Answer accuracy: {stats.get('accuracy', stats.get('answer_accuracy', 0)):.2f}%",
+            f"- Answerable context hit@k: {primary_metrics.get('answerable_context_hit_at_k', retrieval_metrics.get('answerable_context_hit_at_k', 0)):.2f}%",
+            f"- Target preference hit@k: {primary_metrics.get('target_preference_hit_at_k', retrieval_metrics.get('target_preference_hit_at_k', 0)):.2f}%",
+            f"- Answer-anchor hit@k: {primary_metrics.get('target_answer_anchor_hit_at_k', retrieval_metrics.get('target_answer_anchor_hit_at_k', 0)):.2f}%",
+            f"- Wrong-neighbor substitution rate: {primary_metrics.get('wrong_neighbor_substitution_rate', retrieval_metrics.get('wrong_neighbor_substitution_rate', 0)):.2f}%",
+            f"- Target-evidence-not-retrieved rate: {primary_metrics.get('target_evidence_not_retrieved_rate', retrieval_metrics.get('target_evidence_not_retrieved_rate', 0)):.2f}%",
+            f"- Answer accuracy: {primary_metrics.get('accuracy', stats.get('accuracy', stats.get('answer_accuracy', 0))):.2f}%",
             f"- Loose recall@k: {retrieval_metrics.get('loose_recall_at_k', 0):.2f}%",
-            f"- Target preference hit@k: {retrieval_metrics.get('target_preference_hit_at_k', 0):.2f}%",
-            f"- Answer-anchor hit@k: {retrieval_metrics.get('target_answer_anchor_hit_at_k', 0):.2f}%",
-            f"- Answerable context hit@k: {retrieval_metrics.get('answerable_context_hit_at_k', 0):.2f}%",
+            *([f"- Diagnostic labels: {', '.join(f'`{label}`' for label in diagnostic_labels)}"] if diagnostic_labels else []),
             "",
             "## Loose Recall vs Answerable Evidence",
             f"- Loose-vs-answerable gap: {retrieval_metrics.get('loose_vs_answerable_gap', 0):.2f} percentage points.",

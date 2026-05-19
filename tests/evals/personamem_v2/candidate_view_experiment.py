@@ -13,6 +13,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from core.database import AsyncSessionLocal
 from services.llm.factory import LLMFactory
+from tests.evals.common import build_run_manifest, default_scoring_config_payload
 from tests.evals.personamem_v2.candidate_views import (
     PERSONA_ID,
     CandidateView,
@@ -262,14 +263,38 @@ async def run_candidate_view_trace_experiment(
         "baseline_results_path": str(baseline_results_path),
         "projection_mode": "candidate_structured_db_writes",
     }
+    run_manifest = build_run_manifest(
+        harness="personamem_v2_candidate_view_structured_projection",
+        eval_mode=eval_mode.value,
+        dataset="bowen-upenn/PersonaMem-v2",
+        split=split,
+        persona_id=PERSONA_ID,
+        question_count=sample.total_questions,
+        import_only=False,
+        retrieval_only=reuse_candidate_user,
+        reset_memory=reset_memory,
+        chat_model=candidate_report.chat_model,
+        evaluator_model=candidate_report.evaluator_model,
+        evaluator_isolated=candidate_report.evaluator_isolated,
+        top_k=top_k,
+        scoring_config=default_scoring_config_payload(),
+        rerank_config=None,
+        extra={
+            "experiment_user_persona_id": EXPERIMENT_PERSONA_ID,
+            "baseline_results_path": str(baseline_results_path),
+            "projection_mode": "candidate_structured_db_writes",
+        },
+    )
     detailed_results_path, detailed_analysis_path = save_candidate_detailed_report(
         candidate_report,
         output_dir / f"persona_{PERSONA_ID}_candidate_view_projection_{eval_mode.value}_results.json",
         eval_mode=eval_mode.value,
         test_info=test_info,
+        run_manifest=run_manifest,
     )
     report = {
         "test_info": test_info,
+        "run_manifest": run_manifest,
         "baseline": baseline_summary,
         "candidate_structured_projection": candidate_summary,
         "delta": summarize_report_delta(baseline_summary, candidate_summary),

@@ -1,0 +1,74 @@
+{
+  "test_info": {
+    "timestamp": "20260511_181143",
+    "dataset": "bowen-upenn/PersonaMem-v2",
+    "harness": "personamem_v2_model_sweep",
+    "eval_mode": "assistant_eval"
+  },
+  "ranked_models": [
+    {
+      "chat_model": "Kimi-K2.5",
+      "usernames": [
+        "Kimi-K2.5-persona66"
+      ],
+      "user_ids": [
+        "7968cafb-4403-47b6-ba37-18279f2a73ee"
+      ],
+      "total_memories": 64,
+      "total_questions": 42,
+      "metrics": {
+        "total_questions": 42,
+        "evaluated_questions": 42,
+        "correct_count": 0,
+        "accuracy": 0.0,
+        "category_accuracy": {
+          "0": {
+            "label": "未知类别",
+            "display_name": "Category 0 - 未知类别",
+            "count": 42,
+            "correct": 0,
+            "accuracy": 0.0
+          }
+        },
+        "answer_accuracy": 0.0,
+        "non_empty_answer_questions": 42,
+        "non_empty_answer_correct_count": 0,
+        "adjusted_accuracy_excluding_empty_standard": 0.0,
+        "answer_failure_patterns": {
+          "wrong_specific_answer": 21,
+          "retrieval_gap": 21
+        },
+        "answer_support_counts": {
+          "wrong": 42
+        },
+        "retrieval_support_rate": 50.0,
+        "retrieval_hit_count": 21,
+        "recall_at_k": 50.0,
+        "top1_hit_rate": 7.142857142857142,
+        "top3_hit_rate": 16.666666666666664,
+        "top5_hit_rate": 21.428571428571427,
+        "mean_first_evidence_rank": 5.857142857142857,
+        "rank_distribution": {
+          "top3": 4,
+          "beyond_top5": 12,
+          "top5": 2,
+          "miss": 21,
+          "top1": 3
+        },
+        "avg_retrieval_score": 0.08122452447228853,
+        "layer_distribution": {
+          "resource_only": {
+            "count": 42,
+            "rate": 100.0,
+            "correct": 0,
+            "accuracy": 0.0,
+            "recall_at_k": 50.0
+          }
+        },
+        "storage_hit_count": 42,
+        "storage_coverage_rate": 100.0,
+        "db_diagnosis_counts": {}
+      }
+    }
+  ]
+}

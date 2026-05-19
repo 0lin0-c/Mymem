@@ -413,12 +413,36 @@ def safe_name(value: str) -> str:
     return re.sub(r"[^a-zA-Z0-9_.-]+", "_", value)
 
 
-async def run(output_dir: Path) -> None:
-    sources = load_sources(Path(MODELS["GLM-5.1"]["result_json"]))
+def load_model_config(config_path: Path | None) -> dict[str, dict[str, str]]:
+    if config_path is None:
+        return MODELS
+    data = json.loads(config_path.read_text(encoding="utf-8"))
+    models = data.get("models", data)
+    if not isinstance(models, dict):
+        raise ValueError("Model config must be an object or contain a 'models' object.")
+    normalized: dict[str, dict[str, str]] = {}
+    for model, info in models.items():
+        if not isinstance(info, dict):
+            raise ValueError(f"Model config for {model!r} must be an object.")
+        required = {"username", "user_id", "result_json"}
+        missing = required - set(info)
+        if missing:
+            raise ValueError(f"Model config for {model!r} missing keys: {sorted(missing)}")
+        normalized[str(model)] = {
+            "username": str(info["username"]),
+            "user_id": str(info["user_id"]),
+            "result_json": str(info["result_json"]),
+        }
+    return normalized
+
+
+async def run(output_dir: Path, model_config: dict[str, dict[str, str]]) -> None:
+    first_result = next(iter(model_config.values()))["result_json"]
+    sources = load_sources(Path(first_result))
     snapshots: dict[str, dict[str, Any]] = {}
     aligned_by_model: dict[str, list[dict[str, Any]]] = {}
     summaries: list[dict[str, Any]] = []
-    for model, info in MODELS.items():
+    for model, info in model_config.items():
         snapshot = await export_snapshot(model, info)
         aligned = align_snapshot(snapshot, sources)
         summary = summarize_model(snapshot, aligned)
@@ -449,8 +473,13 @@ def main() -> None:
         "--output-dir",
         default="test_results/personamem_v2_storage_review",
     )
+    parser.add_argument(
+        "--model-config",
+        default=None,
+        help="Optional JSON model config with username, user_id, and result_json per model.",
+    )
     args = parser.parse_args()
-    asyncio.run(run(Path(args.output_dir)))
+    asyncio.run(run(Path(args.output_dir), load_model_config(Path(args.model_config) if args.model_config else None)))
 
 
 if __name__ == "__main__":

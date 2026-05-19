@@ -366,6 +366,43 @@
         "已新增 tests/evals/personamem_v2/rerank_eval.py 和 scripts/run_personamem_v2_rerank_eval.py，支持对固定 persona（默认 66）做只读 GLM rerank 对比。",
         "已在 requirements.txt 补充 datasets 与 huggingface_hub，并新增 tests/unit/test_personamem_v2_loader.py 覆盖字段映射、snippet 转换、小样本限制和 persona_id 过滤。"
       ]
+    },
+    {
+      "id": "task-memory-ab-eval-evidence-first-metrics",
+      "title": "已将 PersonaMem-v2 A/B 报告主指标转向 evidence-first",
+      "details": [
+        "PersonaMem-v2 reporting/analysis 已输出 answerable_context_hit@k、target_preference_hit@k、target_answer_anchor_hit@k、wrong_neighbor_substitution、target_evidence_not_retrieved 等 evidence-first 指标。",
+        "模型 sweep 的排序与结论不再只看最终 accuracy，优先使用 answerable evidence、anchor hit、wrong-neighbor 等检索/上下文证据指标；accuracy 仅保留为末端辅助指标。",
+        "相关单测已覆盖 evidence-first summary、ranking key、paired comparison 和 multi-variable experiment diagnostic_only 判定。"
+      ]
+    },
+    {
+      "id": "task-memory-ab-eval-fixed-evaluator",
+      "title": "已固定 PersonaMem-v2 answer correctness evaluator",
+      "details": [
+        "PersonaMem-v2 model sweep 已支持独立 evaluator_model；默认裁判模型固定为 sweep 开始前的原始模型，不再随被测 CHAT_MODEL 变化。",
+        "被测模型仍作为回答者参与 assistant_eval，但 answer correctness 的裁判模型、调用入口和解析逻辑保持一致。",
+        "相关单测覆盖默认 evaluator 固定、显式 --personamem-v2-evaluator-model 参数和报告中的 evaluator_model 记录。"
+      ]
+    },
+    {
+      "id": "task-memory-ab-eval-orthogonal-foundation-and-diagnostic-legacy",
+      "title": "已建立 PersonaMem-v2 正交 A/B replay 基础框架并将旧入口降级为 diagnostic",
+      "details": [
+        "新增 PersonaMem-v2 orthogonal replay harness，支持 writer_ab、retrieval_ab、rerank_ab、generator_ab 和 e2e_diagnostic 模式。",
+        "正交 harness 已校验 changed_layer、controlled_layers、storage/retrieval/context snapshot、candidate pool fingerprint 等，非正交实验默认标记 diagnostic_only 或在 strict 模式下拒绝。",
+        "旧 model sweep、GLM rerank、BM25 rerank 入口已明确写入 formal_ab_eligible=false、experiment_conclusion=diagnostic_only，并提示正式 A/B 应改用 orthogonal replay。",
+        "pytest 已接入 --personamem-v2-orthogonal 与相关配置参数，旧 CLI wrapper 仅作为兼容/诊断入口保留。"
+      ]
+    },
+    {
+      "id": "task-memory-ab-eval-run-manifest-schema-foundation",
+      "title": "已为 PersonaMem-v2/converted_data 报告接入 run manifest 基础 schema",
+      "details": [
+        "新增 tests/evals/common/run_manifest.py，统一记录 run_id、harness、created_at、git_sha、command、dataset、sample、eval_mode、chat_model、embedding_model、evaluator_model、top_k、scoring_config、rerank_config、result_schema_version 等基础字段。",
+        "converted_data、PersonaMem-v2 主 runner、candidate view、orthogonal replay、legacy rerank/BM25 diagnostic 报告均已接入 run_manifest。",
+        "orthogonal replay 已预留 db_snapshot_id、dataset_hash、cache_hash、temperature、result_file_path 等 P0 manifest 字段；后续还需要让正式结果写入非空真实值。"
+      ]
     }
   ],
   "failed": [],
@@ -412,6 +449,23 @@
         "Prefer a dual representation when feasible: raw_value remains internal/database-only, while safe_display is used in answer context and reports.",
         "PersonaMem-v2 eval should verify that sensitive-info answers cover required security recommendations such as HTTPS, MFA, data protection, redaction/masking, and secure payment gateway guidance without leaking full sensitive values.",
         "This is pending design/implementation work; do not mark as completed until prompt/context changes and regression checks are done."
+      ]
+    },
+    {
+      "id": "task-memory-ab-eval-next-directions",
+      "title": "记忆项目 A/B 测试体系下一阶段剩余改造方向",
+      "details": [
+        "P0: 补强正式正交 A/B 的 provenance 与非空运行指纹。writer_ab/retrieval_ab/generator_ab/rerank_ab 必须能证明 controlled layers 未变；正式 run manifest 必须写入真实 DB snapshot id、dataset hash、result file path、temperature、cache hash、运行时间等，不只保留 schema/占位字段。",
+        "P0: 对 PersonaMem-v2 persona66 的现有结论做正式 evidence-first 正交复跑。重点复核 GLM-5.1、DeepSeek-V4-Pro、Qwen3.5-Plus、GLM-5-Turbo 的 answerable_context_hit、target_answer_anchor_hit、wrong_neighbor_substitution，而不是只看 31/42、26/42、10/42 accuracy；旧 model_sweep/diagnostic JSON 不能作为正式胜负依据。",
+        "P1: 改进 MemoryWriter 的 answer-bearing atomic item 抽取。当前 target_answer_anchor_hit_at_k 在主要 PersonaMem-v2 结果中仍偏低/为 0，说明标准答案关键锚点没有稳定进入可检索表示；优先增强 exact_fact、event_fact、symbolic_meaning、advice_checklist、media_fact、relationship_fact、profile_fact、knowledge_fact 的具体答案锚点保留，并做 regression。",
+        "P1: 做错误邻居抑制 rerank。BM25 rerank 在 persona66 最新结果里从 current_topk 29/42 降到 25/42，已降级为 diagnostic baseline；下一版正式 rerank 应显式判断 context 是否包含问题所需 slot/answer-bearing evidence，而不是只依赖词法或语义相似。",
+        "P1: 对 negative constraint / ask_to_forget 做专门检索与上下文策略。避免只召回负约束或相似禁用记忆，却缺少正向可回答证据；forget_safe、negative_constraint_only、empty-gold regression 应单独统计。",
+        "P1: 重新评估 candidate view structured projection。现有结果 correct_answers +1 但 retrieval_hits -18，只能说明有诊断价值，不能证明候选写入方案胜出；下一轮必须以 answerable evidence 和 per-row win/loss 判断。",
+        "P1: 将剩余 standalone A/B 脚本逐步收编到 pytest 官方控制面。PersonaMem-v2 orthogonal 已有 pytest 入口，但 bm25_eval.py、rerank_eval.py 等 legacy diagnostic wrapper 仍需继续收编；正式结果必须通过 pytest option 运行，并写入统一 result schema，避免新实验继续复制 argparse 控制面。",
+        "P2: 建立正式样本分层报告。至少按 exact fact、broad advice、negative constraint、sensitive info、third-person narrative、quoted artifact、forget request、time/date question 分桶，分别报告 win/loss、regression、evidence hit 和 answer accuracy。",
+        "P2: 为 A/B 增加统计可信度输出。小样本 23/42 题只能做诊断；正式决策至少输出 paired win/loss、bootstrap confidence interval 或 McNemar-style 对照，并报告每类 bucket 的样本量。",
+        "P2: 清理 test_results 历史产物与编码问题。区分 legacy、manual review、official pytest result、diagnostic scratch result；新的正式报告必须 UTF-8 可读、JSON schema 稳定，并避免把手工结论混入机器指标。",
+        "验收标准: 下一轮正式 A/B 报告必须能回答四个问题：目标证据是否入库、目标证据是否进入 retrieved top-k、目标证据是否进入 answer context、答案是否由该证据支持；如果只能回答最终 accuracy，则不算合格 A/B。"
       ]
     }
   ]
