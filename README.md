@@ -1,4 +1,12 @@
-# 测试目录
+# MyMem
+
+MyMem 是一个面向 Agent 的长期记忆服务，基于 FastAPI、SQLAlchemy AsyncSession、PostgreSQL 和 pgvector 构建。项目采用 API、Schema、Service、Repository、ORM Model 五层架构，核心能力包括多轮对话缓存、异步记忆写入、原子化记忆抽取、分层存储、向量检索和个性化上下文构建。
+
+系统将记忆拆分为对话摘要层 `Resource`、原子化记忆层 `Category` 和来源关联层 `ResourceCategory`，检索时通过 LLM 分类、Category 层召回、充足性判断、Resource 层兜底和四因子评分公式，尽量在召回准确性、可追溯性和工程可维护性之间取得平衡。
+
+记忆分类包含四类固定分类：`Core Self`（核心自我）、`Episodic Memory`（情景时间轴）、`Knowledge Base`（语义知识库）、`Social Graph`（社交关系图谱），并支持根据用户画像和使用场景扩展动态分类。
+
+## 测试目录
 
 ## 文件说明
 
