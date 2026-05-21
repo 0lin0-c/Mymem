@@ -5,6 +5,7 @@ from sqlalchemy import select
 
 from core.config import settings
 from services.llm.base import BaseLLMProvider
+from services.llm.tools import build_memory_extraction_prompt
 from services.memory.writer import MemoryWriter
 from tables.category import Category
 from tables.resource import Resource
@@ -16,6 +17,21 @@ def _mock_llm(memory_intent: dict) -> AsyncMock:
     llm.get_embedding = AsyncMock(return_value=[0.1] * settings.embedding_dimensions)
     llm.count_tokens = AsyncMock(return_value=10)
     return llm
+
+
+def test_memory_extraction_prompt_requires_answer_bearing_anchor_audit():
+    prompt = build_memory_extraction_prompt(
+        [
+            {"name": "Core Self", "description": "Stable user facts"},
+            {"name": "Episodic Memory", "description": "Concrete situated events"},
+        ],
+        target_category_name="Episodic Memory",
+    )
+
+    assert "Answer-Bearing Anchor Audit" in prompt
+    assert "researched adoption agencies" in prompt
+    assert "made a black and white bowl" in prompt
+    assert "`event_fact`" in prompt
 
 
 @pytest.mark.asyncio

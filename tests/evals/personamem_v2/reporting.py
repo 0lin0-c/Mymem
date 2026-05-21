@@ -5,7 +5,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-from tests.evals.common import RESULT_SCHEMA_VERSION, build_run_manifest
+from tests.evals.common import RESULT_SCHEMA_VERSION, build_run_manifest, finalize_run_manifest
 from tests.evals.converted_data.metrics import calculate_metrics
 from tests.evals.converted_data.report_json import _compact_db_diagnosis
 from tests.evals.personamem_v2.analysis import (
@@ -13,6 +13,11 @@ from tests.evals.personamem_v2.analysis import (
     build_personamem_analysis_markdown,
     calculate_personamem_stage_metrics,
 )
+from tests.evals.personamem_v2.bucket_schema import (
+    bucket_schema_payload,
+    classify_with_bucket_schema,
+)
+from tests.evals.personamem_v2.report_contract import mark_report_contract
 from tests.evals.personamem_v2.models import PersonaMemReport, PersonaMemResult
 
 
@@ -51,9 +56,14 @@ def save_results_json(
             top_k=info.get("top_k"),
             scoring_config=info.get("scoring_config"),
             rerank_config=info.get("rerank_config"),
+            dataset_hash=info.get("dataset_hash"),
+            cache_hash=info.get("cache_hash"),
+            temperature=info.get("temperature", 0),
         ),
     }
     data = add_personamem_statistics(data)
+    finalize_run_manifest(data["run_manifest"], result_file_path=results_path)
+    mark_report_contract(data)
     results_path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
     return results_path
 
@@ -73,6 +83,7 @@ def _report_to_dict(report: PersonaMemReport) -> dict[str, Any]:
         "sample_index": report.sample_index,
         "persona_id": report.character,
         "user_id": report.user_id,
+        "db_snapshot_id": report.db_snapshot_id,
         "chat_model": report.chat_model,
         "total_sessions": report.total_sessions,
         "total_memories": report.total_memories,
@@ -194,7 +205,9 @@ def build_personamem_statistics_from_qa_results(
             "retrieval_stage": retrieval_stage,
             "answer_stage": answer_stage,
             "evidence_first_summary": evidence_first_summary,
-        }
+        },
+        "bucket_schema": bucket_schema_payload(),
+        "bucket_report": build_bucket_report(qa_results),
     }
 
 
@@ -267,8 +280,15 @@ def build_paired_comparison(
         "regression": 0,
         "stable_success": 0,
         "stable_failure": 0,
+        "evidence_gain": 0,
+        "evidence_regression": 0,
+        "evidence_stable_success": 0,
+        "evidence_stable_failure": 0,
         "retrieval_changed_answer_same": 0,
         "retrieval_same_answer_changed": 0,
+        "per_row": [],
+        "bucket_report": {},
+        "statistical_confidence": {},
     }
     for key in shared_keys:
         left = baseline_map[key]
@@ -289,7 +309,120 @@ def build_paired_comparison(
             comparison["retrieval_changed_answer_same"] += 1
         if left_answerable == right_answerable and left_correct != right_correct:
             comparison["retrieval_same_answer_changed"] += 1
+        if not left_answerable and right_answerable:
+            comparison["evidence_gain"] += 1
+        elif left_answerable and not right_answerable:
+            comparison["evidence_regression"] += 1
+        elif left_answerable and right_answerable:
+            comparison["evidence_stable_success"] += 1
+        else:
+            comparison["evidence_stable_failure"] += 1
+        comparison["per_row"].append(
+            {
+                "comparison_key": key,
+                "persona_id": right.get("persona_id") or left.get("persona_id"),
+                "source_split": right.get("source_split") or left.get("source_split"),
+                "row_index": right.get("row_index") if right.get("row_index") is not None else left.get("row_index"),
+                "question": right.get("question") or left.get("question"),
+                "bucket": classify_personamem_eval_bucket(right or left),
+                "baseline_is_correct": left_correct,
+                "candidate_is_correct": right_correct,
+                "baseline_answerable_context_hit": left_answerable,
+                "candidate_answerable_context_hit": right_answerable,
+                "answer_outcome": _paired_outcome(left_correct, right_correct),
+                "evidence_outcome": _paired_outcome(left_answerable, right_answerable),
+            }
+        )
+    comparison["bucket_report"] = build_paired_bucket_report(comparison["per_row"])
+    comparison["statistical_confidence"] = build_statistical_confidence(comparison)
     return comparison
+
+
+def build_bucket_report(qa_results: list[dict[str, Any]]) -> dict[str, Any]:
+    buckets: dict[str, dict[str, Any]] = {}
+    for item in qa_results:
+        bucket, bucket_source = classify_with_bucket_schema(item)
+        entry = buckets.setdefault(
+            bucket,
+            {
+                "sample_count": 0,
+                "bucket_schema_version": bucket_source["bucket_schema_version"],
+                "evidence_source": bucket_source["evidence_source"],
+                "matched_patterns": set(),
+                "answer_correct_count": 0,
+                "answerable_context_hit_count": 0,
+                "target_answer_anchor_hit_count": 0,
+                "wrong_neighbor_substitution_count": 0,
+                "target_evidence_not_retrieved_count": 0,
+                "negative_constraint_only_count": 0,
+                "empty_gold_count": 0,
+            },
+        )
+        stage = item.get("retrieval_stage") or {}
+        entry["sample_count"] += 1
+        entry["matched_patterns"].update(bucket_source["matched_patterns"])
+        entry["answer_correct_count"] += int(item.get("is_correct") is True)
+        entry["answerable_context_hit_count"] += int(stage.get("answerable_context_hit") is True)
+        entry["target_answer_anchor_hit_count"] += int(stage.get("target_answer_anchor_hit") is True)
+        subtype = str(stage.get("retrieval_failure_subtype") or "")
+        support = str(stage.get("answer_support_type") or "")
+        entry["wrong_neighbor_substitution_count"] += int(subtype == "wrong_neighbor_substitution")
+        entry["target_evidence_not_retrieved_count"] += int(subtype == "target_evidence_not_retrieved")
+        entry["negative_constraint_only_count"] += int(
+            subtype == "negative_constraint_only" or support == "negative_constraint_only"
+        )
+        entry["empty_gold_count"] += int(not str(item.get("standard_answer") or item.get("correct_answer") or "").strip())
+    for entry in buckets.values():
+        entry["matched_patterns"] = sorted(entry["matched_patterns"])
+        total = entry["sample_count"] or 1
+        entry["answer_accuracy"] = entry["answer_correct_count"] / total * 100
+        entry["evidence_hit_rate"] = entry["answerable_context_hit_count"] / total * 100
+        entry["target_answer_anchor_hit_rate"] = entry["target_answer_anchor_hit_count"] / total * 100
+        entry["wrong_neighbor_substitution_rate"] = entry["wrong_neighbor_substitution_count"] / total * 100
+        entry["target_evidence_not_retrieved_rate"] = entry["target_evidence_not_retrieved_count"] / total * 100
+    return dict(sorted(buckets.items()))
+
+
+def build_paired_bucket_report(per_row: list[dict[str, Any]]) -> dict[str, Any]:
+    buckets: dict[str, dict[str, Any]] = {}
+    for row in per_row:
+        entry = buckets.setdefault(
+            row["bucket"],
+            {
+                "sample_count": 0,
+                "win": 0,
+                "loss": 0,
+                "stable_success": 0,
+                "stable_failure": 0,
+                "evidence_win": 0,
+                "evidence_loss": 0,
+                "evidence_stable_success": 0,
+                "evidence_stable_failure": 0,
+            },
+        )
+        entry["sample_count"] += 1
+        answer_key = _outcome_bucket_key(row["answer_outcome"], prefix="")
+        evidence_key = _outcome_bucket_key(row["evidence_outcome"], prefix="evidence_")
+        entry[answer_key] += 1
+        entry[evidence_key] += 1
+    return dict(sorted(buckets.items()))
+
+
+def build_statistical_confidence(paired_comparison: dict[str, Any]) -> dict[str, Any]:
+    win = int(paired_comparison.get("gain", 0) or 0)
+    loss = int(paired_comparison.get("regression", 0) or 0)
+    evidence_win = int(paired_comparison.get("evidence_gain", 0) or 0)
+    evidence_loss = int(paired_comparison.get("evidence_regression", 0) or 0)
+    return {
+        "answer_paired_win_loss": _paired_confidence(win, loss),
+        "evidence_paired_win_loss": _paired_confidence(evidence_win, evidence_loss),
+        "method": "normal_approximation_for_paired_win_loss; diagnostic_for_small_n",
+    }
+
+
+def classify_personamem_eval_bucket(item: dict[str, Any]) -> str:
+    bucket, _source = classify_with_bucket_schema(item)
+    return bucket
 
 
 def determine_experiment_conclusion(
@@ -320,3 +453,62 @@ def _comparison_key(item: dict[str, Any]) -> str:
             str(item.get("question") or ""),
         ]
     )
+
+
+def _paired_outcome(left: bool, right: bool) -> str:
+    if not left and right:
+        return "win"
+    if left and not right:
+        return "loss"
+    if left and right:
+        return "stable_success"
+    return "stable_failure"
+
+
+def _outcome_bucket_key(outcome: str, *, prefix: str) -> str:
+    if outcome == "win":
+        return f"{prefix}win"
+    if outcome == "loss":
+        return f"{prefix}loss"
+    if outcome == "stable_success":
+        return f"{prefix}stable_success"
+    return f"{prefix}stable_failure"
+
+
+def _paired_confidence(win: int, loss: int) -> dict[str, Any]:
+    n = win + loss
+    delta = win - loss
+    if n == 0:
+        return {
+            "win": win,
+            "loss": loss,
+            "paired_delta": delta,
+            "discordant_n": 0,
+            "normal_approx_ci_95": [0, 0],
+            "mcnemar_chi_square": None,
+            "decision_strength": "inconclusive",
+        }
+    # Normal approximation over paired +/-1 discordant outcomes; useful as an explicit diagnostic,
+    # not as a replacement for a larger formal benchmark.
+    proportion = delta / n
+    standard_error = ((1 - proportion**2) / n) ** 0.5
+    low = round((proportion - 1.96 * standard_error) * n, 3)
+    high = round((proportion + 1.96 * standard_error) * n, 3)
+    chi_square = round(((abs(win - loss) - 1) ** 2) / n, 4) if n else None
+    if n < 30:
+        strength = "diagnostic_small_sample"
+    elif low > 0:
+        strength = "candidate_win_supported"
+    elif high < 0:
+        strength = "candidate_regression_supported"
+    else:
+        strength = "inconclusive"
+    return {
+        "win": win,
+        "loss": loss,
+        "paired_delta": delta,
+        "discordant_n": n,
+        "normal_approx_ci_95": [low, high],
+        "mcnemar_chi_square": chi_square,
+        "decision_strength": strength,
+    }

@@ -311,6 +311,9 @@ def build_personamem_analysis_markdown(
     rerank_metrics = personamem_stats.get("rerank_stage") or {}
     answer_metrics = personamem_stats.get("answer_stage") or {}
     evidence_summary = personamem_stats.get("evidence_first_summary") or {}
+    bucket_report = stats.get("bucket_report") or {}
+    paired = results_data.get("paired_comparison") or {}
+    statistical_confidence = paired.get("statistical_confidence") or {}
     primary_metrics = evidence_summary.get("primary_metrics") or {}
     diagnostic_labels = evidence_summary.get("diagnostic_labels") or []
     wrong_cases = [q for q in qa_results if q.get("is_correct") is False]
@@ -353,6 +356,12 @@ def build_personamem_analysis_markdown(
             "",
             "## Answer Support Types",
             *_counter_md_lines(answer_metrics.get("answer_support_type_counts") or retrieval_metrics.get("answer_support_type_counts") or {}),
+            "",
+            "## Bucket Report",
+            *_bucket_md_lines(bucket_report),
+            "",
+            "## Statistical Confidence",
+            *_confidence_md_lines(statistical_confidence),
             "",
             "## False-Positive Retrieval Hits",
             *_case_md_lines(false_positive_cases[:8], include_generated=False),
@@ -501,6 +510,34 @@ def _counter_md_lines(counter: dict[str, Any]) -> list[str]:
     if not counter:
         return ["- No data."]
     return [f"- `{key}`: {value}" for key, value in counter.items()]
+
+
+def _bucket_md_lines(bucket_report: dict[str, Any]) -> list[str]:
+    if not bucket_report:
+        return ["- No bucket report recorded."]
+    lines = []
+    for bucket, values in bucket_report.items():
+        lines.append(
+            f"- `{bucket}`: n={values.get('sample_count', 0)}, "
+            f"evidence_hit={float(values.get('evidence_hit_rate', 0)):.2f}%, "
+            f"anchor_hit={float(values.get('target_answer_anchor_hit_rate', 0)):.2f}%, "
+            f"accuracy={float(values.get('answer_accuracy', 0)):.2f}%"
+        )
+    return lines
+
+
+def _confidence_md_lines(confidence: dict[str, Any]) -> list[str]:
+    if not confidence:
+        return ["- No paired confidence statistics recorded."]
+    lines = [f"- Method: {confidence.get('method')}"]
+    for key in ("answer_paired_win_loss", "evidence_paired_win_loss"):
+        item = confidence.get(key) or {}
+        lines.append(
+            f"- `{key}`: win={item.get('win')}, loss={item.get('loss')}, "
+            f"delta={item.get('paired_delta')}, ci95={item.get('normal_approx_ci_95')}, "
+            f"strength={item.get('decision_strength')}"
+        )
+    return lines
 
 
 def _case_md_lines(cases: list[dict[str, Any]], *, include_generated: bool) -> list[str]:

@@ -6,13 +6,15 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-from tests.evals.common import build_run_manifest
+from tests.evals.common import build_run_manifest, finalize_run_manifest, stable_payload_hash, utc_now_iso
+from tests.evals.personamem_v2.answer_bearing_rerank import rerank_answer_bearing_contexts
 from tests.evals.personamem_v2.analysis import analyze_personamem_evidence
 from tests.evals.personamem_v2.reporting import (
     build_paired_comparison,
     build_personamem_statistics_from_qa_results,
     determine_experiment_conclusion,
 )
+from tests.evals.personamem_v2.report_contract import mark_report_contract
 
 
 OUTPUT_DIR = Path("test_results") / "personamem_v2_orthogonal"
@@ -106,7 +108,8 @@ def load_json_file(path: str | Path) -> dict[str, Any]:
 def save_json_file(data: dict[str, Any], output_path: str | Path) -> Path:
     path = Path(output_path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    data["run_manifest"]["result_file_path"] = str(path)
+    finalize_run_manifest(data["run_manifest"], result_file_path=path)
+    mark_report_contract(data)
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
     return path
 
@@ -130,8 +133,18 @@ def fingerprint_contexts(qa_results: list[dict[str, Any]]) -> str:
 def fingerprint_retrieval_candidates(qa_results: list[dict[str, Any]]) -> str:
     payload = []
     for index, item in enumerate(qa_results):
-        contexts = list(item.get("retrieved_contexts") or item.get("answer_contexts") or [])
-        scores = list(item.get("retrieved_scores") or item.get("context_scores") or [])
+        contexts = list(
+            item.get("retrieval_candidate_contexts")
+            or item.get("retrieved_contexts")
+            or item.get("answer_contexts")
+            or []
+        )
+        scores = list(
+            item.get("retrieval_candidate_scores")
+            or item.get("retrieved_scores")
+            or item.get("context_scores")
+            or []
+        )
         candidates = [
             {
                 "context": context,
@@ -142,6 +155,8 @@ def fingerprint_retrieval_candidates(qa_results: list[dict[str, Any]]) -> str:
         payload.append(
             {
                 "question": _question_identity(item, index),
+                "context_count": len(contexts),
+                "score_count": len(scores),
                 "candidates": sorted(candidates, key=lambda value: _canonical_json(value)),
             }
         )
@@ -170,19 +185,30 @@ def build_storage_snapshot(
     db_snapshot_id: str | None = None,
     run_manifest: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    manifest = run_manifest or _orthogonal_manifest(
-        harness="personamem_v2_storage_snapshot",
-        persona_id=persona_id,
-        db_snapshot_id=db_snapshot_id,
-        chat_model=writer_model,
-    )
-    return {
+    snapshot_payload = {
         "snapshot_type": "storage_snapshot",
-        "db_snapshot_id": db_snapshot_id,
         "user_id": user_id,
         "persona_id": persona_id,
         "resources": list(resources or []),
         "categories": list(categories or []),
+        "writer_model": writer_model,
+    }
+    resolved_db_snapshot_id = db_snapshot_id or f"storage:{stable_payload_hash(snapshot_payload)[:16]}"
+    manifest = run_manifest or _orthogonal_manifest(
+        harness="personamem_v2_storage_snapshot",
+        persona_id=persona_id,
+        db_snapshot_id=resolved_db_snapshot_id,
+        dataset_hash=stable_payload_hash(snapshot_payload),
+        cache_hash=stable_payload_hash(snapshot_payload),
+        chat_model=writer_model,
+    )
+    return {
+        "snapshot_type": "storage_snapshot",
+        "db_snapshot_id": resolved_db_snapshot_id,
+        "user_id": user_id,
+        "persona_id": persona_id,
+        "resources": snapshot_payload["resources"],
+        "categories": snapshot_payload["categories"],
         "writer_model": writer_model,
         "run_manifest": manifest,
     }
@@ -196,15 +222,23 @@ def build_retrieval_snapshot(
     run_manifest: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     items = [_normalize_retrieval_item(item, index) for index, item in enumerate(qa_results)]
+    snapshot_payload = {
+        "snapshot_type": "retrieval_snapshot",
+        "persona_id": persona_id,
+        "items": items,
+    }
+    resolved_db_snapshot_id = db_snapshot_id or f"retrieval:{stable_payload_hash(snapshot_payload)[:16]}"
     manifest = run_manifest or _orthogonal_manifest(
         harness="personamem_v2_retrieval_snapshot",
         persona_id=persona_id,
         question_count=len(items),
-        db_snapshot_id=db_snapshot_id,
+        db_snapshot_id=resolved_db_snapshot_id,
+        dataset_hash=stable_payload_hash(snapshot_payload),
+        cache_hash=stable_payload_hash(snapshot_payload),
     )
     return {
         "snapshot_type": "retrieval_snapshot",
-        "db_snapshot_id": db_snapshot_id,
+        "db_snapshot_id": resolved_db_snapshot_id,
         "persona_id": persona_id,
         "items": items,
         "run_manifest": manifest,
@@ -232,15 +266,23 @@ def build_context_snapshot(
                 "row_index": item.get("row_index"),
             }
         )
+    snapshot_payload = {
+        "snapshot_type": "context_snapshot",
+        "persona_id": retrieval_snapshot.get("persona_id"),
+        "items": items,
+    }
+    db_snapshot_id = retrieval_snapshot.get("db_snapshot_id") or f"context:{stable_payload_hash(snapshot_payload)[:16]}"
     manifest = run_manifest or _orthogonal_manifest(
         harness="personamem_v2_context_snapshot",
         persona_id=retrieval_snapshot.get("persona_id"),
         question_count=len(items),
-        db_snapshot_id=retrieval_snapshot.get("db_snapshot_id"),
+        db_snapshot_id=db_snapshot_id,
+        dataset_hash=stable_payload_hash(snapshot_payload),
+        cache_hash=stable_payload_hash(snapshot_payload),
     )
     return {
         "snapshot_type": "context_snapshot",
-        "db_snapshot_id": retrieval_snapshot.get("db_snapshot_id"),
+        "db_snapshot_id": db_snapshot_id,
         "persona_id": retrieval_snapshot.get("persona_id"),
         "items": items,
         "run_manifest": manifest,
@@ -438,8 +480,17 @@ def _run_orthogonal_ab(
         fallback_snapshot=None,
         default_name="candidate",
     )
+    if experiment_type == "rerank_ab" and "rerank_config" not in candidate_variant:
+        candidate_variant["rerank_config"] = candidate_config.get("rerank_config") or {}
     baseline_qa = _variant_qa_results(baseline_variant, baseline_snapshot, experiment_type)
     candidate_qa = _variant_qa_results(candidate_variant, baseline_snapshot, experiment_type)
+    if not baseline_qa or not candidate_qa:
+        reason = "empty_orthogonal_question_set"
+        orthogonality["reasons"].append(reason)
+        orthogonality["valid"] = False
+        orthogonality["experiment_conclusion"] = "diagnostic_only"
+        if strict and not allow_diagnostic:
+            raise ValueError(f"Non-orthogonal PersonaMem-v2 experiment: {reason}")
     replay_check = _validate_replay_inputs(
         experiment_type,
         baseline_snapshot=baseline_snapshot,
@@ -466,16 +517,27 @@ def _run_orthogonal_ab(
         candidate_qa,
         {"accuracy": _accuracy(candidate_qa)},
     )
+    baseline_manifest = baseline_snapshot.get("run_manifest") or {}
+    dataset_hash = (
+        candidate_config.get("dataset_hash")
+        or baseline_manifest.get("dataset_hash")
+        or replay_check["fingerprints"].get("storage_snapshot")
+        or replay_check["fingerprints"]["baseline_question_set"]
+    )
+    cache_hash = candidate_config.get("cache_hash") or stable_payload_hash(replay_check["fingerprints"])
     run_manifest = _orthogonal_manifest(
         harness="personamem_v2_orthogonal",
         eval_mode=experiment_type,
         persona_id=baseline_snapshot.get("persona_id") or candidate_config.get("persona_id") or "66",
         question_count=len(candidate_qa),
         db_snapshot_id=baseline_snapshot.get("db_snapshot_id"),
+        dataset_hash=dataset_hash,
+        cache_hash=cache_hash,
         chat_model=candidate_config.get("chat_model"),
         evaluator_model=candidate_config.get("evaluator_model"),
         top_k=candidate_config.get("top_k"),
         rerank_config=candidate_config.get("rerank_config"),
+        temperature=candidate_config.get("temperature", 0),
         result_file_path=None,
     )
     report = {
@@ -509,6 +571,11 @@ def _run_orthogonal_ab(
             },
         ],
     }
+    if conclusion == "diagnostic_only":
+        report["run_manifest"]["formal_ab_eligible"] = False
+        report["run_manifest"]["diagnostic_reason"] = (
+            "non_orthogonal_or_explicit_diagnostic_experiment"
+        )
     output_path = output_dir / f"personamem_v2_{experiment_type}_{_timestamp()}.json"
     save_json_file(report, output_path)
     return report
@@ -544,9 +611,32 @@ def _variant_qa_results(
         return [_normalize_retrieval_item(item, index) for index, item in enumerate(variant["qa_results"])]
     snapshot = variant.get("snapshot") or baseline_snapshot
     items = snapshot.get("items") or []
+    if experiment_type == "rerank_ab" and variant.get("rerank_config", {}).get("type") == "answer_bearing":
+        return [_answer_bearing_reranked_item(item, index, variant) for index, item in enumerate(items)]
     if snapshot.get("snapshot_type") == "context_snapshot" or experiment_type == "generator_ab":
         return [_qa_from_context_item(item, index, variant) for index, item in enumerate(items)]
     return [_normalize_retrieval_item(item, index) for index, item in enumerate(items)]
+
+
+def _answer_bearing_reranked_item(item: dict[str, Any], index: int, variant: dict[str, Any]) -> dict[str, Any]:
+    contexts = list(item.get("retrieved_contexts") or item.get("answer_contexts") or [])
+    scores = list(item.get("retrieved_scores") or item.get("context_scores") or [])
+    config = variant.get("rerank_config") or {}
+    reranked_contexts, reranked_scores, trace = rerank_answer_bearing_contexts(
+        question=str(item.get("question") or ""),
+        contexts=contexts,
+        scores=scores,
+        top_n=config.get("top_n") or len(contexts),
+    )
+    payload = dict(item)
+    payload["retrieval_candidate_contexts"] = list(item.get("retrieval_candidate_contexts") or contexts)
+    payload["retrieval_candidate_scores"] = list(item.get("retrieval_candidate_scores") or scores)
+    payload["retrieved_contexts"] = reranked_contexts
+    payload["retrieved_scores"] = reranked_scores
+    qa = _normalize_retrieval_item(payload, index)
+    qa["rerank_trace"] = trace
+    qa["rerank_stage"] = qa["retrieval_stage"]
+    return qa
 
 
 def _validate_replay_inputs(
@@ -586,6 +676,8 @@ def _normalize_retrieval_item(item: dict[str, Any], index: int) -> dict[str, Any
     qa = _normalize_qa_result(item, index)
     qa["retrieved_contexts"] = list(item.get("retrieved_contexts") or item.get("answer_contexts") or [])
     qa["retrieved_scores"] = list(item.get("retrieved_scores") or item.get("context_scores") or [])
+    qa["retrieval_candidate_contexts"] = list(item.get("retrieval_candidate_contexts") or qa["retrieved_contexts"])
+    qa["retrieval_candidate_scores"] = list(item.get("retrieval_candidate_scores") or qa["retrieved_scores"])
     qa["retrieval_layer"] = item.get("retrieval_layer") or {}
     qa["retrieval_stage"] = item.get("retrieval_stage") or _evidence_stage(qa, stage="retrieval_top_k")
     qa["answer_stage"] = item.get("answer_stage") or _evidence_stage(qa, stage="answer_context")
@@ -597,6 +689,8 @@ def _qa_from_context_item(item: dict[str, Any], index: int, variant: dict[str, A
     qa = _normalize_qa_result(item, index)
     qa["retrieved_contexts"] = list(item.get("answer_contexts") or item.get("retrieved_contexts") or [])
     qa["retrieved_scores"] = list(item.get("context_scores") or item.get("retrieved_scores") or [])
+    qa["retrieval_candidate_contexts"] = list(item.get("retrieval_candidate_contexts") or qa["retrieved_contexts"])
+    qa["retrieval_candidate_scores"] = list(item.get("retrieval_candidate_scores") or qa["retrieved_scores"])
     generated = variant.get("generated_answers", {}).get(qa["question_id"])
     if generated is not None:
         qa["generated_answer"] = generated
@@ -660,6 +754,9 @@ def _orthogonal_manifest(
     persona_id: str | None = "66",
     question_count: int | None = None,
     db_snapshot_id: str | None = None,
+    dataset_hash: str | None = None,
+    cache_hash: str | None = None,
+    temperature: float | int | None = 0,
     chat_model: str | None = None,
     evaluator_model: str | None = None,
     top_k: int | None = None,
@@ -682,12 +779,14 @@ def _orthogonal_manifest(
         top_k=top_k,
         scoring_config=None,
         rerank_config=rerank_config,
+        db_snapshot_id=db_snapshot_id,
+        dataset_hash=dataset_hash,
+        cache_hash=cache_hash,
+        temperature=temperature,
+        result_file_path=result_file_path,
+        started_at=utc_now_iso(),
         extra={
-            "db_snapshot_id": db_snapshot_id,
-            "dataset_hash": None,
-            "cache_hash": None,
-            "temperature": None,
-            "result_file_path": result_file_path,
+            "formal_ab_eligible": harness == "personamem_v2_orthogonal",
         },
     )
 

@@ -1,0 +1,22 @@
+{
+  "experiment_type": "writer_ab",
+  "changed_layer": "writer",
+  "controlled_layers": ["retrieval", "rerank", "generator", "evaluator"],
+  "baseline_variant": {
+    "name": "prompt_only_writer",
+    "writer_config": {"type": "current_prompt"}
+  },
+  "candidate_variant": {
+    "name": "post_parse_validated_writer",
+    "writer_config": {"type": "post_parse_validator"}
+  },
+  "db_snapshot_id": "REPLACE_WITH_WRITER_AB_SNAPSHOT_ID",
+  "dataset_hash": "REPLACE_WITH_DATASET_HASH",
+  "cache_hash": "REPLACE_WITH_REPLAY_CACHE_HASH",
+  "result_file_path": "test_results/personamem_v2/official/REPLACE_RUN_ID/writer_ab.json",
+  "chat_model": "REPLACE_WITH_FIXED_CHAT_MODEL",
+  "embedding_model": "REPLACE_WITH_FIXED_EMBEDDING_MODEL",
+  "evaluator_model": "REPLACE_WITH_FIXED_EVALUATOR_MODEL",
+  "temperature": 0,
+  "top_k": 5
+}

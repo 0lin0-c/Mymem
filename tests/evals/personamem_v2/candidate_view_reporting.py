@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-from tests.evals.common import build_run_manifest, default_scoring_config_payload
+from tests.evals.common import build_run_manifest, default_scoring_config_payload, finalize_run_manifest
 from tests.evals.converted_data.metrics import calculate_metrics
 from tests.evals.personamem_v2.analysis import build_personamem_analysis_markdown
 from tests.evals.personamem_v2.models import PersonaMemReport
@@ -49,6 +49,9 @@ def build_candidate_results_data(
             top_k=info.get("top_k"),
             scoring_config=info.get("scoring_config") or default_scoring_config_payload(),
             rerank_config=info.get("rerank_config"),
+            dataset_hash=info.get("dataset_hash"),
+            cache_hash=info.get("cache_hash"),
+            temperature=info.get("temperature", 0.7),
         ),
     }
     return add_personamem_statistics(data)
@@ -69,6 +72,7 @@ def save_candidate_results_json(
         test_info=test_info,
         run_manifest=run_manifest,
     )
+    finalize_run_manifest(data["run_manifest"], result_file_path=output_path)
     output_path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
     return output_path
 
@@ -100,6 +104,7 @@ def save_candidate_detailed_report(
         test_info=test_info,
         run_manifest=run_manifest,
     )
+    finalize_run_manifest(data["run_manifest"], result_file_path=output_path)
     output_path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
     analysis_path = save_candidate_analysis_markdown(data, output_path)
     return output_path, analysis_path

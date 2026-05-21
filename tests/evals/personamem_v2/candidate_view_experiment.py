@@ -13,7 +13,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from core.database import AsyncSessionLocal
 from services.llm.factory import LLMFactory
-from tests.evals.common import build_run_manifest, default_scoring_config_payload
+from tests.evals.common import build_run_manifest, default_scoring_config_payload, finalize_run_manifest, stable_payload_hash
+from tests.evals.personamem_v2.analysis import analyze_personamem_evidence
 from tests.evals.personamem_v2.candidate_views import (
     PERSONA_ID,
     CandidateView,
@@ -40,6 +41,7 @@ from tests.evals.personamem_v2.runner import (
     evaluate_sample,
     resolve_existing_user,
 )
+from tests.evals.personamem_v2.reporting import build_paired_comparison
 
 logger = logging.getLogger(__name__)
 
@@ -189,6 +191,7 @@ async def run_candidate_view_trace_experiment(
         max_rows=max_rows,
         cache_dir=PERSONAMEM_CACHE_DIR,
     )
+    dataset_hash = stable_payload_hash(rows)
     if save_raw_snapshot:
         save_rows_snapshot(rows, split=split, output_dir=output_dir / "raw_snapshots")
     samples = build_samples(
@@ -279,6 +282,9 @@ async def run_candidate_view_trace_experiment(
         top_k=top_k,
         scoring_config=default_scoring_config_payload(),
         rerank_config=None,
+        dataset_hash=dataset_hash,
+        cache_hash=stable_payload_hash({"baseline": str(baseline_results_path), "rows": row_indexes}),
+        temperature=0.7,
         extra={
             "experiment_user_persona_id": EXPERIMENT_PERSONA_ID,
             "baseline_results_path": str(baseline_results_path),
@@ -298,6 +304,7 @@ async def run_candidate_view_trace_experiment(
         "baseline": baseline_summary,
         "candidate_structured_projection": candidate_summary,
         "delta": summarize_report_delta(baseline_summary, candidate_summary),
+        "paired_comparison": build_candidate_paired_comparison(baseline_summary, candidate_summary),
         "candidate_projection": summarize_candidate_projection(sample),
         "candidate_write_trace": candidate_write_trace,
         "candidate_analysis": {
@@ -412,6 +419,10 @@ def _summary_from_standard_results_json(
                 "storage_hit": row.get("storage_hit"),
                 "retrieval_hit": row.get("retrieval_hit"),
                 "is_correct": row.get("is_correct"),
+                "question": row.get("question"),
+                "standard_answer": row.get("standard_answer") or row.get("correct_answer"),
+                "supporting_preference": row.get("supporting_preference") or row.get("preference"),
+                "retrieval_stage": row.get("retrieval_stage"),
                 "rank_position": row.get("rank_position"),
                 "error": row.get("error"),
             }
@@ -460,6 +471,14 @@ def _summary_from_storage_quality_json(
                 "storage_hit": bool(row.get("sufficient")),
                 "retrieval_hit": None,
                 "is_correct": bool(row.get("sufficient")),
+                "question": row.get("question"),
+                "standard_answer": row.get("correct_answer") or row.get("answer"),
+                "supporting_preference": row.get("supporting_preference") or row.get("preference"),
+                "retrieval_stage": {
+                    "answerable_context_hit": bool(row.get("sufficient")),
+                    "target_answer_anchor_hit": bool(row.get("exact_match")),
+                    "retrieval_failure_subtype": "none" if row.get("sufficient") else "target_evidence_not_retrieved",
+                },
                 "rank_position": None,
                 "error": None,
             }
@@ -499,6 +518,21 @@ def summarize_personamem_report(report: PersonaMemReport) -> dict[str, Any]:
                 "storage_hit": result.storage_hit,
                 "retrieval_hit": result.retrieval_hit,
                 "is_correct": result.is_correct,
+                "question": result.question,
+                "standard_answer": result.expected_answer,
+                "supporting_preference": result.preference,
+                "retrieval_stage": analyze_personamem_evidence(
+                    question=result.question,
+                    correct_answer=result.expected_answer,
+                    supporting_preference=result.preference,
+                    related_conversation_snippet=result.related_conversation_snippet,
+                    incorrect_answers=result.incorrect_answers,
+                    contexts=result.retrieved_contexts,
+                    scores=result.retrieved_scores,
+                    stage="retrieval_top_k",
+                    loose_rank_position=result.rank_position,
+                    retrieval_hit_loose=result.retrieval_hit,
+                ),
                 "rank_position": result.rank_position,
                 "error": result.error,
             }
@@ -544,11 +578,42 @@ def summarize_report_delta(
     return delta
 
 
+def build_candidate_paired_comparison(
+    baseline: dict[str, Any],
+    candidate: dict[str, Any],
+) -> dict[str, Any]:
+    baseline_rows = [_candidate_row_for_pair(row) for row in baseline.get("rows", [])]
+    candidate_rows = [_candidate_row_for_pair(row) for row in candidate.get("rows", [])]
+    paired = build_paired_comparison(baseline_rows, candidate_rows)
+    paired["formal_ab_eligible"] = False
+    paired["diagnostic_reason"] = (
+        "candidate_view_projection_changes_storage_representation; "
+        "use answerable evidence and per-row win/loss before promotion"
+    )
+    return paired
+
+
+def _candidate_row_for_pair(row: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "persona_id": PERSONA_ID,
+        "source_split": DEFAULT_SPLIT,
+        "row_index": row.get("row_index"),
+        "question": row.get("question") or f"row_{row.get('row_index')}",
+        "standard_answer": row.get("standard_answer"),
+        "supporting_preference": row.get("supporting_preference"),
+        "is_correct": row.get("is_correct"),
+        "retrieval_stage": row.get("retrieval_stage") or {
+            "answerable_context_hit": row.get("retrieval_hit") is True or row.get("storage_hit") is True
+        },
+    }
+
+
 def save_candidate_experiment_report(report: dict[str, Any], output_dir: Path = OUTPUT_DIR) -> tuple[Path, Path]:
     output_dir.mkdir(parents=True, exist_ok=True)
     mode = report["test_info"]["eval_mode"]
     json_path = output_dir / f"persona_{PERSONA_ID}_candidate_view_projection_{mode}_comparison.json"
     markdown_path = output_dir / f"persona_{PERSONA_ID}_candidate_view_projection_{mode}_comparison.md"
+    finalize_run_manifest(report["run_manifest"], result_file_path=json_path)
     json_path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     markdown_path.write_text(render_candidate_experiment_markdown(report), encoding="utf-8")
     return json_path, markdown_path
@@ -567,6 +632,22 @@ def render_candidate_experiment_markdown(report: dict[str, Any]) -> str:
     ]
     for key, value in report["delta"].items():
         lines.append(f"- {key}: {value}")
+    paired = report.get("paired_comparison") or {}
+    if paired:
+        confidence = (paired.get("statistical_confidence") or {}).get("answer_paired_win_loss") or {}
+        lines.extend(
+            [
+                "",
+                "## Per-Row Win/Loss",
+                f"- shared_questions: {paired.get('shared_questions')}",
+                f"- gain: {paired.get('gain')}",
+                f"- regression: {paired.get('regression')}",
+                f"- evidence_gain: {paired.get('evidence_gain')}",
+                f"- evidence_regression: {paired.get('evidence_regression')}",
+                f"- answer_delta_ci95: {confidence.get('normal_approx_ci_95')}",
+                f"- formal_ab_eligible: {paired.get('formal_ab_eligible')}",
+            ]
+        )
 
     lines.extend(["", "## Baseline"])
     for key, value in report["baseline"]["metrics"].items():

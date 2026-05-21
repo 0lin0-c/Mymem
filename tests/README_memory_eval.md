@@ -24,6 +24,19 @@ This test suite separates project tests into four layers:
 
 Use `pytest` as the official control plane for memory evaluations. This keeps unit tests, contract tests, integration evals, and assistant evals under one discovery, marker, fixture, and CI system.
 
+PersonaMem-v2 formal A/B must use the orthogonal replay contract. Reusable
+templates live in `tests/fixtures/personamem_v2/orthogonal_ab/`, with narrative
+rules in `tests/evals/personamem_v2/orthogonal_ab_templates.md`. Thin scripts
+under `scripts/run_personamem_v2_*.py` are compatibility wrappers only; unless a
+report passes `validate_personamem_report_contract(..., require_formal_ab=True)`,
+it is diagnostic and must not be used for winner/loser claims.
+
+Historical `test_results/personamem_v2` artifacts can be planned with the
+test-only organizer in `tests/evals/personamem_v2/result_organizer.py`. The
+organizer moves files into `official/`, `diagnostic/`, `legacy/`, `scratch/`,
+and `logs/` subdirectories and writes `moved_artifacts_manifest_*.json` with
+SHA256 hashes. It never deletes artifacts.
+
 Directory conventions:
 
 - Test and eval code lives under `tests/`.

@@ -15,7 +15,12 @@ from services.llm.factory import LLMFactory
 from services.retrieval.retriever import MemoryRetriever
 from tables import User
 from core.config import settings
-from tests.evals.common import build_run_manifest, default_scoring_config_payload
+from tests.evals.common import (
+    build_run_manifest,
+    default_scoring_config_payload,
+    finalize_run_manifest,
+    stable_file_hash,
+)
 from tests.evals.converted_data.metrics import classify_answer_support_type
 from tests.evals.converted_data.rerank_eval import (
     _result_document,
@@ -71,6 +76,9 @@ def build_rerank_run_manifest(args: argparse.Namespace, *, question_count: int) 
             "answer_top_k": args.answer_top_k,
             "input_retrieval_json": str(args.input_retrieval_json) if args.input_retrieval_json else None,
         },
+        dataset_hash=stable_file_hash(args.input_retrieval_json) if args.input_retrieval_json else None,
+        cache_hash=stable_file_hash(args.input_retrieval_json) if args.input_retrieval_json else None,
+        temperature=0.7,
         extra={
             "formal_ab_eligible": False,
             "experiment_conclusion": "diagnostic_only",
@@ -482,13 +490,19 @@ def main() -> None:
     args = parser.parse_args()
 
     report = asyncio.run(run_eval(args))
-    args.output_dir.mkdir(parents=True, exist_ok=True)
-    output_path = args.output_dir / f"personamem_v2_rerank_eval_{_now_stamp()}.json"
-    output_path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
-    analysis_path = _write_rerank_analysis(report, output_path)
+    output_path, analysis_path = write_rerank_report(report, args.output_dir)
     print(f"\nWrote {output_path}")
     print(f"Wrote {analysis_path}")
     print(json.dumps(report["summary"], ensure_ascii=False, indent=2))
+
+
+def write_rerank_report(report: dict[str, Any], output_dir: Path = DEFAULT_OUTPUT_DIR) -> tuple[Path, Path]:
+    output_dir.mkdir(parents=True, exist_ok=True)
+    output_path = output_dir / f"personamem_v2_rerank_eval_{_now_stamp()}.json"
+    finalize_run_manifest(report["run_manifest"], result_file_path=output_path)
+    output_path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+    analysis_path = _write_rerank_analysis(report, output_path)
+    return output_path, analysis_path
 
 
 if __name__ == "__main__":

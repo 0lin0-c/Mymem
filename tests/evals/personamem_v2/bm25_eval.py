@@ -21,7 +21,12 @@ from core.config import settings
 from core.database import AsyncSessionLocal
 from services.llm.factory import LLMFactory
 from services.retrieval.retriever import MemoryRetriever
-from tests.evals.common import build_run_manifest, default_scoring_config_payload
+from tests.evals.common import (
+    build_run_manifest,
+    default_scoring_config_payload,
+    finalize_run_manifest,
+    stable_file_hash,
+)
 from tests.evals.converted_data.rerank_eval import _result_document, _result_with_document
 from tests.evals.converted_data.runner import _extract_retrieval_observation
 from tests.evals.personamem_v2.analysis import (
@@ -168,6 +173,9 @@ def build_bm25_run_manifest(args: argparse.Namespace, *, question_count: int) ->
             "bm25_b": args.bm25_b,
             "input_retrieval_json": str(args.input_retrieval_json) if args.input_retrieval_json else None,
         },
+        dataset_hash=stable_file_hash(args.input_retrieval_json) if args.input_retrieval_json else None,
+        cache_hash=stable_file_hash(args.input_retrieval_json) if args.input_retrieval_json else None,
+        temperature=0.7,
         extra={
             "formal_ab_eligible": False,
             "experiment_conclusion": "diagnostic_only",
@@ -599,13 +607,19 @@ def main() -> None:
     args = parser.parse_args()
 
     report = asyncio.run(run_eval(args))
-    args.output_dir.mkdir(parents=True, exist_ok=True)
-    output_path = args.output_dir / f"personamem_v2_bm25_eval_{_now_stamp()}.json"
-    output_path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
-    analysis_path = _write_bm25_analysis(report, output_path)
+    output_path, analysis_path = write_bm25_report(report, args.output_dir)
     logger.info("\nWrote %s", output_path)
     logger.info("Wrote %s", analysis_path)
     logger.info(json.dumps(report["summary"], ensure_ascii=False, indent=2))
+
+
+def write_bm25_report(report: dict[str, Any], output_dir: Path = DEFAULT_OUTPUT_DIR) -> tuple[Path, Path]:
+    output_dir.mkdir(parents=True, exist_ok=True)
+    output_path = output_dir / f"personamem_v2_bm25_eval_{_now_stamp()}.json"
+    finalize_run_manifest(report["run_manifest"], result_file_path=output_path)
+    output_path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+    analysis_path = _write_bm25_analysis(report, output_path)
+    return output_path, analysis_path
 
 
 if __name__ == "__main__":

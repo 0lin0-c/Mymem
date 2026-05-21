@@ -27,7 +27,13 @@ from services.retrieval.scoring_config import DEFAULT_RETRIEVAL_SCORING_CONFIG
 from tables.category import Category
 from tables.resource import Resource
 from tables.resource_category import ResourceCategory
-from tests.evals.common import build_run_manifest, default_scoring_config_payload
+from tests.evals.common import (
+    build_run_manifest,
+    default_scoring_config_payload,
+    finalize_run_manifest,
+    stable_payload_hash,
+    utc_now_iso,
+)
 from tests.evals.converted_data.runner import (
     QAQuestion,
     _evaluate_storage_layer,
@@ -61,6 +67,7 @@ from tests.evals.personamem_v2.reporting import (
     save_analysis_markdown,
     save_results_json,
 )
+from tests.evals.personamem_v2.report_contract import mark_report_contract
 
 logger = logging.getLogger(__name__)
 
@@ -240,6 +247,42 @@ async def resolve_existing_user(
     return user.id, memory_count
 
 
+async def build_db_snapshot_id(session: AsyncSession, user_id: str) -> str:
+    resource_repo = ResourceRepository(session)
+    category_repo = CategoryRepository(session)
+    resources = await resource_repo.get_by_user_id(user_id, skip=0, limit=10000)
+    categories = await category_repo.get_by_user_id(user_id, skip=0, limit=10000)
+    payload = {
+        "user_id": user_id,
+        "resource_count": len(resources),
+        "category_count": len(categories),
+        "resources": [
+            {
+                "id": resource.id,
+                "raw_content": resource.raw_content,
+                "description": resource.description,
+                "importance_score": resource.importance_score,
+                "modality": resource.modality,
+                "created_at": resource.created_at.isoformat() if resource.created_at else None,
+                "updated_at": resource.updated_at.isoformat() if resource.updated_at else None,
+            }
+            for resource in resources
+        ],
+        "categories": [
+            {
+                "id": category.id,
+                "category_name": category.category_name,
+                "content": category.content,
+                "importance_score": category.importance_score,
+                "created_at": category.created_at.isoformat() if category.created_at else None,
+                "updated_at": category.updated_at.isoformat() if category.updated_at else None,
+            }
+            for category in categories
+        ],
+    }
+    return f"db:{stable_payload_hash(payload)[:16]}"
+
+
 async def evaluate_sample(
     session: AsyncSession,
     sample: PersonaMemSample,
@@ -251,6 +294,7 @@ async def evaluate_sample(
     chat_model: str | None = None,
     evaluator_model: str | None = None,
     default_evaluator_model: str | None = None,
+    question_timeout_seconds: float | None = None,
 ) -> PersonaMemReport:
     active_chat_model = chat_model or settings.chat_model
     resolved_evaluator_model, evaluator_isolated = _resolve_evaluator_model(
@@ -261,77 +305,49 @@ async def evaluate_sample(
     llm = LLMFactory.get_provider()
     retriever = MemoryRetriever(session, llm)
     user = await UserRepository(session).get_by_id(user_id)
+    db_snapshot_id = await build_db_snapshot_id(session, user_id)
     results: list[PersonaMemResult] = []
 
-    for question in sample.questions:
-        result = _make_result(question, eval_mode)
+    for question_index, question in enumerate(sample.questions, start=1):
+        logger.info(
+            "PersonaMem-v2 eval progress: model=%s persona=%s question=%s/%s row_index=%s",
+            active_chat_model,
+            sample.persona_id,
+            question_index,
+            len(sample.questions),
+            question.row_index,
+        )
         try:
-            qa_question = _to_converted_qa(question)
-            storage_trace = await _evaluate_storage_layer(session, user_id, qa_question)
-            result.storage_hit = storage_trace["storage_hit"]
-            result.evaluation_trace["storage_eval"] = storage_trace
-
-            if eval_mode == EvalMode.STORAGE:
-                result.is_correct = result.storage_hit
-                result.correctness_explanation = (
-                    "Storage evidence found in DB."
-                    if result.storage_hit
-                    else "No DB evidence found for expected PersonaMem answer or evidence."
-                )
+            coroutine = _evaluate_question(
+                session=session,
+                llm=llm,
+                retriever=retriever,
+                user=user,
+                user_id=user_id,
+                question=question,
+                eval_mode=eval_mode,
+                top_k=top_k,
+                evaluator_model=resolved_evaluator_model,
+                evaluator_isolated=evaluator_isolated,
+            )
+            if question_timeout_seconds:
+                result = await asyncio.wait_for(coroutine, timeout=question_timeout_seconds)
             else:
-                retrieved = await retriever.retrieve(
-                    user_id=user_id,
-                    query=question.question,
-                    top_k=top_k,
-                    use_llm_classification=True,
-                    track_access=False,
-                )
-                contexts, scores, layer_info = _extract_retrieval_observation(retrieved)
-                result.retrieved_contexts = contexts
-                result.retrieved_scores = scores
-                result.retrieval_layer = layer_info
-                result.rank_position = _first_retrieved_rank(
-                    storage_trace.get("db_memories_sample", []),
-                    contexts,
-                )
-                result.retrieval_hit = result.rank_position is not None
-
-                if eval_mode == EvalMode.RETRIEVAL:
-                    result.is_correct = result.retrieval_hit
-                    result.correctness_explanation = (
-                        f"DB evidence retrieved at rank {result.rank_position}."
-                        if result.retrieval_hit
-                        else "DB evidence exists but did not appear in retrieved top-k."
-                    )
-                elif contexts:
-                    result.llm_answer = await generate_answer_with_chat_orchestrator(
-                        session=session,
-                        llm=llm,
-                        user=user,
-                        user_id=user_id,
-                        question=question.question,
-                        top_k=top_k,
-                        retrieved_results=retrieved,
-                    )
-                    evaluator_llm = _get_provider_for_model(resolved_evaluator_model)
-                    result.is_correct, result.correctness_explanation = (
-                        await evaluate_answer_correctness(
-                            evaluator_llm,
-                            question.question,
-                            result.llm_answer,
-                            question.answer,
-                        )
-                    )
-                    result.evaluation_trace["evaluator"] = {
-                        "model": resolved_evaluator_model,
-                        "isolated": evaluator_isolated,
-                    }
-                else:
-                    result.is_correct = False
-                    result.correctness_explanation = (
-                        "No retrieved context available for assistant answer generation."
-                    )
+                result = await coroutine
+        except asyncio.TimeoutError:
+            result = _make_result(question, eval_mode)
+            result.is_correct = False
+            result.error = f"question_timeout_after_{question_timeout_seconds}_seconds"
+            result.correctness_explanation = "Question evaluation timed out before completion."
+            logger.error(
+                "PersonaMem evaluation timed out: model=%s persona_id=%s row_index=%s timeout=%s",
+                active_chat_model,
+                question.persona_id,
+                question.row_index,
+                question_timeout_seconds,
+            )
         except Exception as exc:
+            result = _make_result(question, eval_mode)
             logger.exception(
                 "PersonaMem evaluation failed: persona_id=%s row_index=%s",
                 question.persona_id,
@@ -345,6 +361,7 @@ async def evaluate_sample(
         sample_index=sample_index,
         character=sample.persona_id,
         user_id=user_id,
+        db_snapshot_id=db_snapshot_id,
         total_sessions=sample.total_questions,
         total_memories=memory_count,
         total_questions=sample.total_questions,
@@ -353,6 +370,89 @@ async def evaluate_sample(
         evaluator_model=resolved_evaluator_model,
         evaluator_isolated=evaluator_isolated,
     )
+
+
+async def _evaluate_question(
+    *,
+    session: AsyncSession,
+    llm: Any,
+    retriever: MemoryRetriever,
+    user: Any,
+    user_id: str,
+    question: PersonaMemQuestion,
+    eval_mode: EvalMode,
+    top_k: int,
+    evaluator_model: str,
+    evaluator_isolated: bool,
+) -> PersonaMemResult:
+    result = _make_result(question, eval_mode)
+    qa_question = _to_converted_qa(question)
+    storage_trace = await _evaluate_storage_layer(session, user_id, qa_question)
+    result.storage_hit = storage_trace["storage_hit"]
+    result.evaluation_trace["storage_eval"] = storage_trace
+
+    if eval_mode == EvalMode.STORAGE:
+        result.is_correct = result.storage_hit
+        result.correctness_explanation = (
+            "Storage evidence found in DB."
+            if result.storage_hit
+            else "No DB evidence found for expected PersonaMem answer or evidence."
+        )
+        return result
+
+    retrieved = await retriever.retrieve(
+        user_id=user_id,
+        query=question.question,
+        top_k=top_k,
+        use_llm_classification=True,
+        track_access=False,
+    )
+    contexts, scores, layer_info = _extract_retrieval_observation(retrieved)
+    result.retrieved_contexts = contexts
+    result.retrieved_scores = scores
+    result.retrieval_layer = layer_info
+    result.rank_position = _first_retrieved_rank(
+        storage_trace.get("db_memories_sample", []),
+        contexts,
+    )
+    result.retrieval_hit = result.rank_position is not None
+
+    if eval_mode == EvalMode.RETRIEVAL:
+        result.is_correct = result.retrieval_hit
+        result.correctness_explanation = (
+            f"DB evidence retrieved at rank {result.rank_position}."
+            if result.retrieval_hit
+            else "DB evidence exists but did not appear in retrieved top-k."
+        )
+        return result
+
+    if contexts:
+        result.llm_answer = await generate_answer_with_chat_orchestrator(
+            session=session,
+            llm=llm,
+            user=user,
+            user_id=user_id,
+            question=question.question,
+            top_k=top_k,
+            retrieved_results=retrieved,
+        )
+        evaluator_llm = _get_provider_for_model(evaluator_model)
+        result.is_correct, result.correctness_explanation = (
+            await evaluate_answer_correctness(
+                evaluator_llm,
+                question.question,
+                result.llm_answer,
+                question.answer,
+            )
+        )
+        result.evaluation_trace["evaluator"] = {
+            "model": evaluator_model,
+            "isolated": evaluator_isolated,
+        }
+    else:
+        result.is_correct = False
+        result.correctness_explanation = "No retrieved context available for assistant answer generation."
+    return result
 
 
 async def run_personamem_v2_eval(
@@ -372,7 +472,10 @@ async def run_personamem_v2_eval(
     chat_model: str | None = None,
     evaluator_model: str | None = None,
     default_evaluator_model: str | None = None,
+    output_dir: Path | None = None,
+    question_timeout_seconds: float | None = None,
 ) -> list[PersonaMemReport]:
+    started_at = utc_now_iso()
     active_chat_model = chat_model or settings.chat_model
     resolved_evaluator_model, evaluator_isolated = _resolve_evaluator_model(
         active_chat_model=active_chat_model,
@@ -383,6 +486,16 @@ async def run_personamem_v2_eval(
         split=split,
         max_rows=max_rows,
         cache_dir=PERSONAMEM_CACHE_DIR,
+    )
+    dataset_hash = stable_payload_hash(rows)
+    cache_hash = stable_payload_hash(
+        {
+            "cache_dir": str(PERSONAMEM_CACHE_DIR),
+            "split": split,
+            "max_rows": max_rows,
+            "row_count": len(rows),
+            "dataset_hash": dataset_hash,
+        }
     )
     if save_raw_snapshot:
         save_rows_snapshot(rows, split=split)
@@ -439,10 +552,21 @@ async def run_personamem_v2_eval(
                     chat_model=active_chat_model,
                     evaluator_model=evaluator_model,
                     default_evaluator_model=default_evaluator_model,
+                    question_timeout_seconds=question_timeout_seconds,
                 )
             )
 
+    if not import_only and not reports:
+        raise RuntimeError("PersonaMem-v2 evaluation produced no reports.")
+
     if reports:
+        _assert_reports_have_evaluated_questions(reports)
+        sample_db_snapshot_ids = {report.character: report.db_snapshot_id for report in reports}
+        aggregate_db_snapshot_id = (
+            reports[0].db_snapshot_id
+            if len(reports) == 1
+            else f"db-aggregate:{stable_payload_hash(sample_db_snapshot_ids)[:16]}"
+        )
         run_manifest = build_run_manifest(
             harness="personamem_v2",
             eval_mode=eval_mode.value,
@@ -459,10 +583,19 @@ async def run_personamem_v2_eval(
             top_k=top_k,
             scoring_config=default_scoring_config_payload(),
             rerank_config=None,
+            db_snapshot_id=aggregate_db_snapshot_id,
+            dataset_hash=dataset_hash,
+            cache_hash=cache_hash,
+            temperature=0.7,
+            started_at=started_at,
+            extra={
+                "sample_db_snapshot_ids": sample_db_snapshot_ids,
+                "question_timeout_seconds": question_timeout_seconds,
+            },
         )
         results_path = save_results_json(
             reports,
-            OUTPUT_DIR,
+            output_dir or OUTPUT_DIR,
             eval_mode=eval_mode.value,
             test_info={
                 "chat_model": active_chat_model,
@@ -471,6 +604,11 @@ async def run_personamem_v2_eval(
                 "top_k": top_k,
                 "scoring_config": default_scoring_config_payload(),
                 "rerank_config": None,
+                "db_snapshot_id": aggregate_db_snapshot_id,
+                "dataset_hash": dataset_hash,
+                "cache_hash": cache_hash,
+                "temperature": 0.7,
+                "question_timeout_seconds": question_timeout_seconds,
             },
             run_manifest=run_manifest,
         )
@@ -479,6 +617,23 @@ async def run_personamem_v2_eval(
         if analysis_path:
             logger.info("PersonaMem-v2 analysis saved to %s", analysis_path)
     return reports
+
+
+def _assert_reports_have_evaluated_questions(reports: list[PersonaMemReport]) -> None:
+    total_questions = sum(report.total_questions for report in reports)
+    total_results = sum(len(report.results) for report in reports)
+    if total_questions <= 0 or total_results <= 0:
+        raise RuntimeError("PersonaMem-v2 evaluation produced zero evaluated questions.")
+    mismatches = [
+        report.character
+        for report in reports
+        if report.total_questions != len(report.results)
+    ]
+    if mismatches:
+        raise RuntimeError(
+            "PersonaMem-v2 report question/result count mismatch: "
+            + ",".join(str(item) for item in mismatches)
+        )
 
 
 def _make_result(question: PersonaMemQuestion, eval_mode: EvalMode) -> PersonaMemResult:
@@ -629,8 +784,11 @@ async def run_personamem_v2_model_sweep(
     save_raw_snapshot: bool = True,
     download_only: bool = False,
     evaluator_model: str | None = None,
+    output_dir: Path | None = None,
+    question_timeout_seconds: float | None = None,
 ) -> dict[str, Any]:
     """Run the same PersonaMem-v2 flow once per chat model with isolated users."""
+    started_at = utc_now_iso()
     original_chat_model = settings.chat_model
     default_evaluator_model = evaluator_model or original_chat_model
     sweep_results: list[dict[str, Any]] = []
@@ -654,7 +812,11 @@ async def run_personamem_v2_model_sweep(
                 chat_model=chat_model,
                 evaluator_model=evaluator_model,
                 default_evaluator_model=default_evaluator_model,
+                output_dir=output_dir,
+                question_timeout_seconds=question_timeout_seconds,
             )
+            if not import_only and not download_only:
+                _assert_reports_have_evaluated_questions(reports)
             all_results = [result for report in reports for result in report.results]
             metrics = calculate_metrics(all_results, eval_mode=eval_mode.value) if all_results else {}
             personamem_metrics = _build_personamem_metrics_for_reports(reports, metrics)
@@ -669,6 +831,10 @@ async def run_personamem_v2_model_sweep(
                         for report in reports
                     ],
                     "user_ids": [report.user_id for report in reports],
+                    "db_snapshot_ids": {
+                        report.character: report.db_snapshot_id
+                        for report in reports
+                    },
                     "total_memories": sum(report.total_memories for report in reports),
                     "total_questions": sum(report.total_questions for report in reports),
                     "metrics": metrics,
@@ -686,13 +852,14 @@ async def run_personamem_v2_model_sweep(
         return save_model_sweep_summary(
             sweep_results=sweep_results,
             eval_mode=eval_mode.value,
-            output_dir=OUTPUT_DIR,
+            output_dir=output_dir or OUTPUT_DIR,
             split=split,
             persona_id=persona_id,
             top_k=top_k,
             retrieval_only=retrieval_only,
             import_only=import_only,
             reset_memory=reset_memory,
+            started_at=started_at,
         )
     return {"results": sweep_results}
 
@@ -708,6 +875,7 @@ def save_model_sweep_summary(
     retrieval_only: bool | None = None,
     import_only: bool | None = None,
     reset_memory: bool | None = None,
+    started_at: str | None = None,
 ) -> dict[str, Any]:
     output_dir.mkdir(parents=True, exist_ok=True)
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -738,6 +906,17 @@ def save_model_sweep_summary(
             )
     evaluator_model = leader.get("evaluator_model") if leader else None
     evaluator_isolated = leader.get("evaluator_isolated") if leader else None
+    db_snapshot_id = stable_payload_hash([item.get("db_snapshot_ids") for item in sweep_results]) if sweep_results else None
+    dataset_hash = stable_payload_hash(
+        {
+            "dataset": "bowen-upenn/PersonaMem-v2",
+            "split": split,
+            "persona_id": persona_id,
+            "model_sweep_models": [item.get("chat_model") for item in sweep_results],
+            "question_counts": [item.get("total_questions") for item in sweep_results],
+        }
+    )
+    cache_hash = stable_payload_hash([item.get("comparison_items") for item in sweep_results])
     payload = {
         "test_info": {
             "timestamp": timestamp,
@@ -768,14 +947,22 @@ def save_model_sweep_summary(
             top_k=top_k,
             scoring_config=DEFAULT_RETRIEVAL_SCORING_CONFIG.sql_params(),
             rerank_config=None,
+            db_snapshot_id=f"db-sweep:{db_snapshot_id[:16]}" if db_snapshot_id else None,
+            dataset_hash=dataset_hash,
+            cache_hash=cache_hash,
+            temperature=0.7,
+            started_at=started_at,
             extra={
                 "formal_ab_eligible": False,
                 "diagnostic_reason": MODEL_SWEEP_DIAGNOSTIC_REASON,
+                "sample_db_snapshot_ids": [item.get("db_snapshot_ids") for item in sweep_results],
             },
         ),
     }
     json_path = output_dir / f"personamem_v2_{eval_mode}_model_sweep_{timestamp}.json"
     markdown_path = output_dir / f"personamem_v2_{eval_mode}_model_sweep_{timestamp}.md"
+    finalize_run_manifest(payload["run_manifest"], result_file_path=json_path)
+    mark_report_contract(payload)
     json_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     markdown_path.write_text(_render_model_sweep_markdown(payload), encoding="utf-8")
     payload["json_path"] = str(json_path)
@@ -858,6 +1045,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--reset-memory", action="store_true")
     parser.add_argument("--no-dedup", action="store_true")
     parser.add_argument("--no-save-raw-snapshot", action="store_true")
+    parser.add_argument("--question-timeout-seconds", type=float, default=None)
     parser.add_argument(
         "--evaluator-model",
         type=str,
@@ -904,6 +1092,7 @@ def main() -> None:
                 save_raw_snapshot=not args.no_save_raw_snapshot,
                 download_only=args.download_only,
                 evaluator_model=args.evaluator_model,
+                question_timeout_seconds=args.question_timeout_seconds,
             )
         )
         if result.get("json_path"):
@@ -928,6 +1117,7 @@ def main() -> None:
             save_raw_snapshot=not args.no_save_raw_snapshot,
             download_only=args.download_only,
             evaluator_model=args.evaluator_model,
+            question_timeout_seconds=args.question_timeout_seconds,
         )
     )
 

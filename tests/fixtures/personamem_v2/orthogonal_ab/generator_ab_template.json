@@ -1,0 +1,22 @@
+{
+  "experiment_type": "generator_ab",
+  "changed_layer": "generator",
+  "controlled_layers": ["writer", "retrieval", "rerank", "evaluator"],
+  "baseline_variant": {
+    "name": "baseline_generator",
+    "generator_config": {"prompt_version": "current"}
+  },
+  "candidate_variant": {
+    "name": "candidate_generator",
+    "generator_config": {"prompt_version": "candidate"}
+  },
+  "db_snapshot_id": "REPLACE_WITH_FIXED_CONTEXT_SNAPSHOT_ID",
+  "dataset_hash": "REPLACE_WITH_DATASET_HASH",
+  "cache_hash": "REPLACE_WITH_REPLAY_CACHE_HASH",
+  "result_file_path": "test_results/personamem_v2/official/REPLACE_RUN_ID/generator_ab.json",
+  "chat_model": "REPLACE_WITH_CANDIDATE_OR_FIXED_CHAT_MODEL",
+  "embedding_model": "REPLACE_WITH_FIXED_EMBEDDING_MODEL",
+  "evaluator_model": "REPLACE_WITH_FIXED_EVALUATOR_MODEL",
+  "temperature": 0,
+  "top_k": 5
+}

@@ -1,0 +1,23 @@
+{
+  "experiment_type": "rerank_ab",
+  "changed_layer": "rerank",
+  "controlled_layers": ["writer", "retrieval", "generator", "evaluator"],
+  "baseline_variant": {
+    "name": "current_topk",
+    "rerank_config": {"type": "none"}
+  },
+  "candidate_variant": {
+    "name": "answer_bearing_rerank",
+    "rerank_config": {"type": "answer_bearing", "top_n": 5}
+  },
+  "rerank_config": {"type": "answer_bearing", "top_n": 5},
+  "db_snapshot_id": "REPLACE_WITH_FIXED_RETRIEVAL_SNAPSHOT_ID",
+  "dataset_hash": "REPLACE_WITH_DATASET_HASH",
+  "cache_hash": "REPLACE_WITH_REPLAY_CACHE_HASH",
+  "result_file_path": "test_results/personamem_v2/official/REPLACE_RUN_ID/rerank_ab.json",
+  "chat_model": "REPLACE_WITH_FIXED_CHAT_MODEL",
+  "embedding_model": "REPLACE_WITH_FIXED_EMBEDDING_MODEL",
+  "evaluator_model": "REPLACE_WITH_FIXED_EVALUATOR_MODEL",
+  "temperature": 0,
+  "top_k": 5
+}

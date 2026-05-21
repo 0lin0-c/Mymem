@@ -78,6 +78,7 @@ class PersonaMemReport:
     sample_index: int
     character: str
     user_id: str
+    db_snapshot_id: str | None
     total_sessions: int
     total_memories: int
     total_questions: int

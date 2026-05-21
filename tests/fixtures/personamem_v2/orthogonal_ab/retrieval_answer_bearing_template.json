@@ -1,0 +1,22 @@
+{
+  "experiment_type": "retrieval_ab",
+  "changed_layer": "retrieval",
+  "controlled_layers": ["writer", "rerank", "generator", "evaluator"],
+  "baseline_variant": {
+    "name": "current_retrieval",
+    "retrieval_config": {"type": "current_topk"}
+  },
+  "candidate_variant": {
+    "name": "answer_bearing_retrieval_policy",
+    "retrieval_config": {"type": "answer_bearing_policy"}
+  },
+  "db_snapshot_id": "REPLACE_WITH_FIXED_WRITER_SNAPSHOT_ID",
+  "dataset_hash": "REPLACE_WITH_DATASET_HASH",
+  "cache_hash": "REPLACE_WITH_REPLAY_CACHE_HASH",
+  "result_file_path": "test_results/personamem_v2/official/REPLACE_RUN_ID/retrieval_ab.json",
+  "chat_model": "REPLACE_WITH_FIXED_CHAT_MODEL",
+  "embedding_model": "REPLACE_WITH_FIXED_EMBEDDING_MODEL",
+  "evaluator_model": "REPLACE_WITH_FIXED_EVALUATOR_MODEL",
+  "temperature": 0,
+  "top_k": 5
+}

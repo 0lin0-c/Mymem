@@ -65,3 +65,4 @@ def test_quality_filter_drops_assistant_advice_as_core_profile():
     })
 
     assert item is None
+

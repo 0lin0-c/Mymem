@@ -34,3 +34,7 @@ Thumbs.db
 
 # HuggingFace cache
 data/
+.tmp/
+docs/
+session-2026-04-21.json
+test_results

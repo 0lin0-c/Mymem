@@ -52,6 +52,12 @@ def _converted_eval_requires_write(pytestconfig: pytest.Config) -> bool:
 
 
 def _personamem_v2_eval_requires_write(pytestconfig: pytest.Config) -> bool:
+    if (
+        pytestconfig.getoption("--personamem-v2-orthogonal")
+        or pytestconfig.getoption("--personamem-v2-diagnostic-rerank")
+        or pytestconfig.getoption("--personamem-v2-generator-replay-context-snapshot")
+    ):
+        return False
     retrieval_only = pytestconfig.getoption("--personamem-v2-retrieval-only")
     import_only = pytestconfig.getoption("--personamem-v2-import-only")
     reset_memory = pytestconfig.getoption("--personamem-v2-reset-memory")
@@ -282,6 +288,11 @@ def pytest_addoption(parser):
     personamem.addoption("--personamem-v2-max-rows", type=int, default=100, help="限制加载的原始行数")
     personamem.addoption("--personamem-v2-persona-id", type=str, help="只评估指定 PersonaMem persona_id")
     personamem.addoption(
+        "--personamem-v2-chat-model",
+        type=str,
+        help="Run a single official PersonaMem-v2 eval with this CHAT_MODEL.",
+    )
+    personamem.addoption(
         "--personamem-v2-eval-mode",
         choices=["storage_eval", "retrieval_eval", "assistant_eval"],
         default="assistant_eval",
@@ -313,6 +324,32 @@ def pytest_addoption(parser):
     personamem.addoption("--personamem-v2-baseline-snapshot", type=str, help="Path to baseline snapshot JSON.")
     personamem.addoption("--personamem-v2-candidate-config", type=str, help="Path to orthogonal candidate config JSON.")
     personamem.addoption("--personamem-v2-output-dir", type=str, help="Output directory for PersonaMem-v2 orthogonal reports.")
+    personamem.addoption(
+        "--personamem-v2-diagnostic-rerank",
+        choices=["glm", "bm25"],
+        help="Run a legacy diagnostic rerank through the pytest control plane.",
+    )
+    personamem.addoption("--personamem-v2-input-retrieval-json", type=str, help="Saved PersonaMem retrieval JSON for diagnostic rerank.")
+    personamem.addoption("--personamem-v2-retrieve-top-k", type=int, default=30, help="Diagnostic rerank candidate pool size.")
+    personamem.addoption("--personamem-v2-answer-top-k", type=int, default=15, help="Diagnostic rerank answer context size.")
+    personamem.addoption("--personamem-v2-rerank-model", type=str, default="GLM-Rerank", help="GLM rerank model for diagnostic rerank.")
+    personamem.addoption("--personamem-v2-bm25-k1", type=float, default=1.2, help="BM25 k1 for diagnostic rerank.")
+    personamem.addoption("--personamem-v2-bm25-b", type=float, default=0.75, help="BM25 b for diagnostic rerank.")
+    personamem.addoption(
+        "--personamem-v2-question-timeout-seconds",
+        type=float,
+        help="Per-question timeout for official PersonaMem-v2 evals.",
+    )
+    personamem.addoption(
+        "--personamem-v2-generator-replay-context-snapshot",
+        type=str,
+        help="Run official generator replay from a fixed context snapshot JSON.",
+    )
+    personamem.addoption(
+        "--personamem-v2-generator-replay-chat-model",
+        type=str,
+        help="Chat model used for official generator replay.",
+    )
     group.addoption(
         "--allow-real-db-write",
         action="store_true",
