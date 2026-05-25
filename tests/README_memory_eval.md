@@ -44,10 +44,11 @@ Directory conventions:
 - Runtime artifacts live under `test_results/<domain>/`.
 - Embedding and resource caches live under `test_results/cache/`.
 
-The legacy command below remains as a compatibility wrapper only:
+The compatibility script below remains available for existing local workflows,
+but new runs should prefer the pytest examples above:
 
 ```bash
-python -m tests.test_converted_data --sample 0 --eval-mode retrieval_eval
+python scripts/run_converted_data_eval.py --sample 0 --eval-mode retrieval_eval
 ```
 
 New eval modules should not add their own standalone `argparse` control plane. If a new option is needed, add it through `tests/conftest.py` so every test module can be managed consistently.

@@ -224,15 +224,18 @@ async def test_chat_api_stream_does_not_expose_retrieved_trace(monkeypatch):
         agent_persona_template="Be concise.",
     )
 
-    class FakeUserRepository:
+    class FakeSession:
+        async def get(self, model, item_id):
+            return user
+
+    class FakeUserAccountService:
         def __init__(self, session):
             self.session = session
 
-        async def get_by_id(self, user_id):
-            return user
+        async def get_user_llm_context(self, user_id):
+            return user, FakeLLM()
 
-    class FakeSession:
-        async def get(self, model, item_id):
+        async def get_user(self, user_id):
             return user
 
     class FakeChatOrchestrator:
@@ -243,9 +246,8 @@ async def test_chat_api_stream_does_not_expose_retrieved_trace(monkeypatch):
         async def stream(self, **kwargs):
             yield "hello"
 
-    monkeypatch.setattr(chat_api, "UserRepository", FakeUserRepository)
+    monkeypatch.setattr(chat_api, "UserAccountService", FakeUserAccountService)
     monkeypatch.setattr(chat_api, "ChatOrchestrator", FakeChatOrchestrator)
-    monkeypatch.setattr("services.llm.factory.LLMFactory.get_provider", lambda: FakeLLM())
 
     session_id = "contract-chat-session"
     session_manager.destroy_session(session_id)

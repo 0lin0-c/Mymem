@@ -1,4 +1,4 @@
-# AGENTS.md
+﻿# AGENTS.md
 
 ## 架构
 
@@ -21,6 +21,18 @@ Mymem/
 - Repository 使用 SQLAlchemy `select()` 语法，禁止原始 SQL 字符串。
 - 例外：`VectorStrategy` 可以使用原始 SQL 调用 pgvector 的 `<=>` 算子。
 
+## 技术栈
+
+版本以 `requirements.txt` 为准，当前核心依赖包括：
+
+- Web 框架：FastAPI `0.135.1`，Uvicorn `0.42.0`。
+- 数据契约与配置：Pydantic `>=2.9.0`，pydantic-settings `>=2.0.0`。
+- 数据库与 ORM：SQLAlchemy `2.0.48`，AsyncPG `0.29.0`，PostgreSQL + pgvector `0.4.2`。
+- LLM SDK：OpenAI `2.28.0`，Anthropic `0.84.0`。
+- 会话与存储：Redis `>=5.0.0`，阿里云 OSS `oss2>=2.18.0`。
+- 文档/媒体处理：PyPDF2、pdfplumber、python-docx、opencv-python。
+- 测试工具：pytest `>=9.0.0`，pytest-asyncio `>=1.0.0`。
+
 ## 项目 Skills 说明
 
 `.claude/skills` 是本仓库内的强制性技术规范文档目录。Codex 可以读取并遵守这些文档，但它们不是当前 Codex 运行环境的内置自动 Skill；需要根据本文件的路由规则，在修改代码或做代码审查前按需读取。
@@ -28,6 +40,26 @@ Mymem/
 当用户提出代码修改、功能开发、重构、Bug 修复或代码审查请求时，必须先根据触发目录或任务类型定位相关 `.claude/skills/*/SKILL.md`，再按该 `SKILL.md` 内部路由读取最相关的子文档。不要一次性读取整个 skill 目录。
 
 如果一次修改跨越多个目录，必须读取所有相关 skill 的入口文档。例如修改 `api/v1/` + `services/` + `repositories/` 时，需要分别读取 `input-pipeline`、`service-design`、`database-schema`。如果检索逻辑涉及 `services/`，同时读取 `service-design` 与 `retrieval-pipeline`。
+
+## 工作粒度规则
+
+- 单个 Agent 每次只推进一个明确的功能点，必须形成可端到端验证的闭环。
+- 当前功能点完成实现、验证和必要的 QA 后，才能开始下一个功能点。
+- 不要在实现功能 A 时顺手重构、修复或扩展功能 B；除非功能 B 是功能 A 的直接阻塞项。
+- 如果发现额外问题，先记录到待办或在回复中列出，不要未经确认就展开实现。
+- 多 Agent 并行时，可以把多个相互独立、写入范围不冲突的功能点分配给不同 Agent；但每个 Agent 仍应只负责自己的一个功能闭环。
+- 并行任务之间如果共享文件、数据库契约、API 契约或核心业务流程，必须先明确边界，避免互相覆盖或隐式重构。
+
+## 完成定义
+
+- 功能完成 = 端到端验证通过，不是“代码写完了”。
+- 验证必须按层级推进：
+  1. 单元测试通过。
+  2. 集成测试通过。
+  3. 端到端流程验证通过。
+- 在第 1 层没通过时，不许进入第 2 层。
+- 在第 2 层没通过时，不许进入第 3 层。
+- 如果某一层当前没有对应的自动化测试入口，必须说明已执行的替代验证方式，并把缺失的自动化验证记录为待办。
 
 ## 严格开发流程
 
@@ -88,70 +120,40 @@ Mymem/
 - **禁止 `print()`**：使用 `logging` 模块。
 - **禁止硬编码密钥**：所有配置通过 `core/config.py` 的 `Settings` 从 `.env` 读取。
 - **向量存储**：`description_vector` 使用 pgvector 的 `Vector(1536)` 类型，可在 SQL 中使用 `<=>` 操作符进行余弦距离计算。
-## 测试命令速查
+- **文档编码**：中文 Markdown 文档统一保存为 UTF-8，避免在不同终端或 Agent 环境中出现乱码。
 
-优先使用 `pytest` 作为官方测试与评估入口。下面这些命令默认在仓库根目录执行。
+## 测试与评估入口
 
-### 基础校验
+优先使用 `pytest` 作为官方测试与评估入口。命令默认在仓库根目录执行。当前测试大致分为三类：
+
+- `tests/contract/`：契约测试，检查关键服务或编排器对外行为是否符合约定。
+- `tests/unit/`：单元测试，覆盖报告生成、后处理等局部逻辑。
+- `tests/evals/converted_data/`：converted_data 数据集驱动评估，支持存储链路、检索链路和端到端回答评估。
+
+常用入口：
 
 ```powershell
+# 核心文件语法检查
 conda run -n memory_agent python -m py_compile services\chat_orchestrator.py tests\evals\converted_data\runner.py tests\evals\converted_data\report_json.py tests\contract\test_chat_orchestrator_contract.py tests\unit\test_converted_data_reporting.py tests\unit\test_converted_data_postprocess.py
-```
 
-```powershell
+# 核心契约测试与单元测试
 conda run -n memory_agent python -m pytest -q tests\contract\test_chat_orchestrator_contract.py tests\unit\test_converted_data_reporting.py tests\unit\test_converted_data_postprocess.py
-```
 
-### converted_data 官方 pytest 入口
-
-运行单个 sample：
-
-```powershell
-conda run -n memory_agent python -m pytest -q tests\evals\converted_data --converted-sample 0
-```
-
-指定评估模式：
-
-```powershell
-conda run -n memory_agent python -m pytest -q tests\evals\converted_data --converted-sample 0 --converted-eval-mode storage_eval
-conda run -n memory_agent python -m pytest -q tests\evals\converted_data --converted-sample 0 --converted-eval-mode retrieval_eval
-conda run -n memory_agent python -m pytest -q tests\evals\converted_data --converted-sample 0 --converted-eval-mode assistant_eval
-```
-
-指定数据目录、角色、top_k：
-
-```powershell
-conda run -n memory_agent python -m pytest -q tests\evals\converted_data --converted-sample 0 --converted-data-dir data\converted_data_recent_2026q1_name_trimmed --converted-character caroline --converted-top-k 5
-```
-
-只跑已入库数据，不重新导入：
-
-```powershell
-conda run -n memory_agent python -m pytest -q tests\evals\converted_data --converted-sample 0 --converted-eval-mode assistant_eval --converted-data-dir data\converted_data_recent_2026q1_name_trimmed --converted-character caroline --converted-retrieval-only
-```
-
-限制题量做冒烟测试：
-
-```powershell
+# converted_data 评估；按需调整 sample、eval-mode、character、top-k、max-questions 等参数
 conda run -n memory_agent python -m pytest -q tests\evals\converted_data --converted-sample 0 --converted-eval-mode assistant_eval --converted-character caroline --converted-max-questions 10
 ```
 
-主评估结束后补做失败样本 bad-case diagnosis：
+converted_data 支持的常用参数：
 
-```powershell
-conda run -n memory_agent python -m pytest -q tests\evals\converted_data --converted-sample 0 --converted-eval-mode assistant_eval --converted-character caroline --converted-postprocess-bad-cases
-```
+- `--converted-eval-mode storage_eval|retrieval_eval|assistant_eval`
+- `--converted-data-dir <path>`
+- `--converted-character <name>`
+- `--converted-top-k <n>`
+- `--converted-retrieval-only`
+- `--converted-max-questions <n>`
+- `--converted-postprocess-bad-cases`
 
-### CLI 兼容入口
-
-兼容脚本仍可用，但推荐优先使用上面的 pytest 入口：
-
-```powershell
-$env:PYTHONPATH='.'
-conda run --no-capture-output -n memory_agent python scripts\run_converted_data_eval.py --sample 0 --data-dir data\converted_data_recent_2026q1_name_trimmed --eval-mode assistant_eval --character caroline --retrieval-only --max-questions 10 --postprocess-bad-cases
-```
-
-### 长任务建议
+兼容脚本 `scripts\run_converted_data_eval.py` 仍可用，但推荐优先使用 pytest 入口。
 
 - 长时间 `assistant_eval` 建议使用 `--retrieval-only`，避免重复导入数据。
 - 需要深诊断时再加 `--converted-postprocess-bad-cases` 或 `--postprocess-bad-cases`。

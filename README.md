@@ -1,51 +1,102 @@
 # MyMem
 
-MyMem 是一个面向 Agent 的长期记忆服务，基于 FastAPI、SQLAlchemy AsyncSession、PostgreSQL 和 pgvector 构建。项目采用 API、Schema、Service、Repository、ORM Model 五层架构，核心能力包括多轮对话缓存、异步记忆写入、原子化记忆抽取、分层存储、向量检索和个性化上下文构建。
+MyMem 是一个面向 Agent 的长期记忆服务，基于 FastAPI、SQLAlchemy
+AsyncSession、PostgreSQL 和 pgvector 构建。项目采用严格的五层架构：
 
-系统将记忆拆分为对话摘要层 `Resource`、原子化记忆层 `Category` 和来源关联层 `ResourceCategory`，检索时通过 LLM 分类、Category 层召回、充足性判断、Resource 层兜底和四因子评分公式，尽量在召回准确性、可追溯性和工程可维护性之间取得平衡。
-
-记忆分类包含四类固定分类：`Core Self`（核心自我）、`Episodic Memory`（情景时间轴）、`Knowledge Base`（语义知识库）、`Social Graph`（社交关系图谱），并支持根据用户画像和使用场景扩展动态分类。
-
-## 测试目录
-
-## 文件说明
-
-| 文件 | 作用 |
-|------|------|
-| `test_db.py` | 测试数据库连接是否正常，验证 pgvector 插件是否启用 |
-| `test_llm.py` | 测试 LLM 服务（对话、文本向量、记忆意图提取） |
-| `test_repositories.py` | Repository 层单元测试，验证各表的 CRUD 操作 |
-| `test_integration.py` | 完整集成测试：用户输入 → LLM 分析 → 数据库持久化 |
-| `query_db.py` | 查询数据库最新插入的测试数据 |
-
-## 运行命令
-
-```bash
-# 1. 测试数据库连接（首次部署时使用）
-python -m test.test_db
-
-# 2. 测试 LLM 服务（验证 API Key 和连接）
-python -m test.test_llm
-
-# 3. Repository 层单元测试（验证数据库 CRUD）
-python -m test.test_repositories
-
-# 4. 完整集成测试（LLM + 数据库串联）
-python -m test.test_integration
-
-# 5. 查询数据库最新数据（调试用）
-python -m test.query_db
+```text
+api/v1/        路由层：请求校验和响应封装
+schemas/       Schema 层：Pydantic API 契约
+services/      Service 层：业务逻辑唯一所在地
+repositories/  Repository 层：数据访问唯一入口
+tables/        Model 层：SQLAlchemy ORM 实体
+core/          基础设施：配置和数据库连接
 ```
 
-## 测试流程建议
+核心能力包括多轮对话缓存、异步记忆写入、原子化记忆抽取、分层存储、
+向量检索、个性化上下文构建，以及面向 converted_data 和 PersonaMem-v2
+的评估链路。
 
-1. **首次部署**：先跑 `test_db` 确认数据库连通
-2. **LLM 配置后**：跑 `test_llm` 验证 API 连通
-3. **Repository 开发时**：跑 `test_repositories` 验证 CRUD
-4. **完整功能验证**：跑 `test_integration` 验证端到端
-5. **查看数据**：跑 `query_db` 确认数据写入
+## 架构约定
 
-## 注意事项
+- API 层调用 Service，不直接调用 Repository 或 ORM。
+- Service 层编排业务逻辑，并通过 Repository 访问数据。
+- Repository 使用 SQLAlchemy `select()` 语法；仅 pgvector `<=>` 检索路径可使用原始 SQL。
+- 所有 I/O 路径优先使用 `async/await` 和 `AsyncSession`。
+- 配置从 `.env` 读取，入口在 `core/config.py`。
 
-- 测试数据默认**不会自动清理**（方便调试），如需清理请手动删除或取消 `test_repositories.py` 和 `test_integration.py` 中的清理代码注释
-- 所有测试使用 `.env` 中的 `DATABASE_URL` 配置
+## 环境准备
+
+1. 创建并激活 `memory_agent` 环境。
+2. 安装依赖：
+
+```powershell
+conda run -n memory_agent python -m pip install -r requirements.txt
+```
+
+3. 复制并填写环境变量：
+
+```powershell
+Copy-Item .env.example .env
+```
+
+4. 确认 PostgreSQL 已启用 pgvector，并在 `.env` 中配置数据库、Redis、LLM
+   Provider 和模型密钥。
+
+## 启动服务
+
+```powershell
+conda run -n memory_agent python -m uvicorn main:app --reload
+```
+
+默认 API 入口由 `main.py` 注册，路由位于 `api/v1/`。
+
+## 官方验证入口
+
+优先使用 `pytest`。以下命令默认在仓库根目录执行。
+
+```powershell
+# 核心文件语法检查
+conda run -n memory_agent python -m py_compile services\chat_orchestrator.py tests\evals\converted_data\runner.py tests\evals\converted_data\report_json.py tests\contract\test_chat_orchestrator_contract.py tests\unit\test_converted_data_reporting.py tests\unit\test_converted_data_postprocess.py
+
+# 核心契约测试与单元测试
+conda run -n memory_agent python -m pytest -q tests\contract\test_chat_orchestrator_contract.py tests\unit\test_converted_data_reporting.py tests\unit\test_converted_data_postprocess.py
+
+# converted_data 冒烟评估
+conda run -n memory_agent python -m pytest -q tests\evals\converted_data --converted-sample 0 --converted-eval-mode assistant_eval --converted-character caroline --converted-max-questions 10
+```
+
+常用 converted_data 参数：
+
+- `--converted-eval-mode storage_eval|retrieval_eval|assistant_eval`
+- `--converted-data-dir <path>`
+- `--converted-character <name>`
+- `--converted-top-k <n>`
+- `--converted-retrieval-only`
+- `--converted-max-questions <n>`
+- `--converted-postprocess-bad-cases`
+
+PersonaMem-v2 评估也通过 pytest 控制面运行：
+
+```powershell
+conda run -n memory_agent python -m pytest -q tests\evals\personamem_v2 --personamem-v2 --personamem-v2-persona-id 66 --personamem-v2-max-questions 5
+```
+
+`scripts/run_*.py` 中的评估脚本仅作为兼容薄壳或诊断入口。新增正式评估参数应接入
+`tests/conftest.py`，不要再复制新的 standalone `argparse` 控制面。
+
+## 测试目录约定
+
+- `tests/contract/`：服务边界和编排器契约测试。
+- `tests/unit/`：纯逻辑、报告生成、后处理和评估契约单元测试。
+- `tests/evals/`：数据集驱动评估，可能依赖真实数据库或模型。
+- `tests/fixtures/`：评估输入 fixture。
+- `tests/performance/`：手动性能/诊断脚本，文件名使用 `perf_*.py`。
+- `test_results/<domain>/`：运行产物。
+- `test_results/cache/`：缓存产物。
+
+## 文档入口
+
+- `AGENTS.md`：当前 Agent 工作规则、架构约束和验证入口。
+- `.claude/skills/*/SKILL.md`：按目录和任务类型读取的强制技术规范。
+- `tests/README.md`：测试目录和验证层级说明。
+- `tests/README_memory_eval.md`：记忆评估模式、运行安全和结果格式说明。
